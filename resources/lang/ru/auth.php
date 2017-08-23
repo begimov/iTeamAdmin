@@ -24,5 +24,6 @@ return [
     'remember_me' => 'запомнить меня',
     'login_btn' => 'Войти',
     'forgot_your_password' => 'Забыли пароль?',
+    'logout' => 'Выйти',
 
 ];
