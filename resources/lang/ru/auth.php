@@ -17,4 +17,22 @@ return [
     'failed'   => 'Имя пользователя и пароль не совпадают.',
     'throttle' => 'Слишком много попыток входа. Пожалуйста, попробуйте еще раз через :seconds секунд.',
 
+    // Login
+    'email' => 'Email',
+    'login' => 'Вход',
+    'password' => 'Пароль',
+    'remember_me' => 'запомнить меня',
+    'login_btn' => 'Войти',
+    'forgot_your_password' => 'Забыли пароль?',
+    'logout' => 'Выйти',
+
+    // Registration
+    'register' => 'Регистрация',
+    'register_btn' => 'Зарегистрироваться',
+    'name' => 'Имя',
+    'confirm_password' => 'Повторите пароль',
+
+    // Reset Password
+    'reset_password' => 'Восстановление пароля',
+    'send_password_reset_link_btn' => 'Отправить ссылку для смены пароля',
 ];
