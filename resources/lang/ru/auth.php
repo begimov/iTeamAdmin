@@ -32,4 +32,7 @@ return [
     'name' => 'Имя',
     'confirm_password' => 'Повторите пароль',
 
+    // Reset Password
+    'reset_password' => 'Восстановление пароля',
+    'send_password_reset_link_btn' => 'Отправить ссылку для смены пароля',
 ];
