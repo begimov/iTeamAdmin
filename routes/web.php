@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', 'Home\HomeController@index')->name('home');
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+    Route::get('/', 'Home\HomeController@index')->name('home');
+});
 
 Auth::routes();
