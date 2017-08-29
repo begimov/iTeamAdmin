@@ -8,6 +8,8 @@ use App\Repositories\Contracts\LandingRepository;
 
 class HomeController extends Controller
 {
+    protected $landings;
+    
     /**
      * Create a new controller instance.
      *
@@ -27,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $landings = $this->landings->getFewLatest(5);
-        
+
         return view('home.index', compact('landings'));
     }
 }

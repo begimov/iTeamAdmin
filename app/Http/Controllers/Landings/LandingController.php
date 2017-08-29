@@ -4,9 +4,17 @@ namespace App\Http\Controllers\Landings;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\LandingRepository;
 
 class LandingController extends Controller
 {
+    protected $landings;
+
+    public function __construct(LandingRepository $landings)
+    {
+        $this->landings = $landings;
+    }
+
     /**
      * Display a listing of the resource.
      *
