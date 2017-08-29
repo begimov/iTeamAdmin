@@ -29,17 +29,7 @@
     </div>
 
     <div class="col-md-4">
-      <div class="panel panel-danger">
-        <div class="panel-heading"><a href="#">Лендинги ></a></div>
-        <div class="panel-body">
-          <li>Название лендинга 1</li>
-          <li>Название лендинга 2</li>
-          <li>Название лендинга 3</li>
-        </div>
-        <div class="panel-footer">
-          <a href="#" class="btn btn-primary btn-sm">Создать</a>
-        </div>
-      </div>
+      @include('home.components.landings')
     </div>
 
   </div>
