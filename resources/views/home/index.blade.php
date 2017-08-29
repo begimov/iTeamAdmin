@@ -4,11 +4,9 @@
 <div class="container">
 
   <div class="row">
-
     <div class="col-md-12">
-      <orders></orders>
+      <orders :orders-prop="{{ $orders }}"></orders>
     </div>
-
   </div>
 
 </div>

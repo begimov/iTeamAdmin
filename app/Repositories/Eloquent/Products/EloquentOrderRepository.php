@@ -10,7 +10,7 @@ class EloquentOrderRepository implements OrderRepository
 
     public function getAll()
     {
-        //
+        return Order::all();
     }
 
 }
