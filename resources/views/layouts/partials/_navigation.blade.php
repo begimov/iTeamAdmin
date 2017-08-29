@@ -20,6 +20,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
               @if (Auth::check())
+                  <li><a href="{{ route('home') }}">@lang('navigation.orders')</a></li>
                   <li><a href="#">@lang('navigation.landings')</a></li>
                   <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
