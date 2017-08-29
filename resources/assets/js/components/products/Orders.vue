@@ -2,8 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div class="panel panel-danger">
-          <div class="panel-heading">Заказы</div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <a href="#" class="btn btn-primary">Создать заказ</a>
+          </div>
 
           <div class="panel-body">
             <table class="table table-striped table-hover">
