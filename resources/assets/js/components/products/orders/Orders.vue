@@ -4,7 +4,8 @@
       <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <a href="#" class="btn btn-primary">Создать заказ</a>
+            <a href="#" class="btn btn-primary" v-if="!flags.neworder" @click.prevent="flags.neworder = true">Создать заказ</a>
+            <new-order v-if="flags.neworder"></new-order>
           </div>
 
           <div class="panel-body">

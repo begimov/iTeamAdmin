@@ -3,6 +3,9 @@ export default {
   data () {
     return {
       orders: this.ordersProp,
+      flags: {
+        neworder: false
+      },
       filters: {
         id: true
       }

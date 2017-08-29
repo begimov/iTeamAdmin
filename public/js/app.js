@@ -797,7 +797,8 @@ window.Vue = __webpack_require__(35);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('orders', __webpack_require__(50));
+Vue.component('orders', __webpack_require__(54));
+Vue.component('new-order', __webpack_require__(57));
 
 var app = new Vue({
   el: '#app'
@@ -41899,15 +41900,19 @@ module.exports = function normalizeComponent (
 /* 47 */,
 /* 48 */,
 /* 49 */,
-/* 50 */
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(37)(
   /* script */
-  __webpack_require__(53),
+  __webpack_require__(55),
   /* template */
-  __webpack_require__(52),
+  __webpack_require__(56),
   /* styles */
   null,
   /* scopeId */
@@ -41915,7 +41920,7 @@ var Component = __webpack_require__(37)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/Orders.vue"
+Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/orders/Orders.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Orders.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -41926,9 +41931,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-31cf81e3", Component.options)
+    hotAPI.createRecord("data-v-fcba01fe", Component.options)
   } else {
-    hotAPI.reload("data-v-31cf81e3", Component.options)
+    hotAPI.reload("data-v-fcba01fe", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -41939,8 +41944,49 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */,
-/* 52 */
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['ordersProp'],
+  data: function data() {
+    return {
+      orders: this.ordersProp,
+      flags: {
+        neworder: false
+      },
+      filters: {
+        id: true
+      }
+    };
+  },
+
+  methods: {
+    setIdFilter: function setIdFilter() {
+      this.filters.id = !this.filters.id;
+      if (this.filters.id) {
+        this.orders.sort(function (a, b) {
+          return a.id - b.id;
+        });
+      } else {
+        this.orders.sort(function (a, b) {
+          return b.id - a.id;
+        });
+      }
+    }
+  },
+  computed: {
+    //
+  },
+  mounted: function mounted() {
+    //
+  }
+});
+
+/***/ }),
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -41952,7 +41998,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('div', {
     staticClass: "panel panel-default"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [(!_vm.flags.neworder) ? _c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.flags.neworder = true
+      }
+    }
+  }, [_vm._v("Создать заказ")]) : _vm._e(), _vm._v(" "), (_vm.flags.neworder) ? _c('new-order') : _vm._e()], 1), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('table', {
     staticClass: "table table-striped table-hover"
@@ -41973,53 +42032,121 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_vm._v(_vm._s(order.id))]), _vm._v(" "), _c('td', [_vm._v("-")]), _vm._v(" "), _c('td', [_vm._v("-")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(order.created_at))])])
   }))])])])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-fcba01fe", module.exports)
+  }
+}
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(37)(
+  /* script */
+  __webpack_require__(59),
+  /* template */
+  __webpack_require__(58),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/neworder/NewOrder.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] NewOrder.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-45109981", Component.options)
+  } else {
+    hotAPI.reload("data-v-45109981", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "panel panel-danger"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_vm._v("Новый заказ")]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_c('form', {
+    attrs: {
+      "action": "#"
+    },
+    on: {
+      "submit": function($event) {
+        $event.preventDefault();
+        _vm.saveOrder($event)
+      }
+    }
+  }, [_vm._m(0)])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('a', {
-    staticClass: "btn btn-primary",
+    staticClass: "form-group"
+  }, [_c('label', {
     attrs: {
-      "href": "#"
+      "for": "exampleInputEmail1"
     }
-  }, [_vm._v("Создать заказ")])])
+  }, [_vm._v("Email")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "email",
+      "placeholder": "Email"
+    }
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-31cf81e3", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-45109981", module.exports)
   }
 }
 
 /***/ }),
-/* 53 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['ordersProp'],
+  props: [],
   data: function data() {
     return {
-      orders: this.ordersProp,
-      filters: {
-        id: true
-      }
+      //
     };
   },
 
   methods: {
-    setIdFilter: function setIdFilter() {
-      this.filters.id = !this.filters.id;
-      if (this.filters.id) {
-        this.orders.sort(function (a, b) {
-          return a.id - b.id;
-        });
-      } else {
-        this.orders.sort(function (a, b) {
-          return b.id - a.id;
-        });
-      }
+    saveOrder: function saveOrder() {
+      console.log('SAVE');
     }
   },
   computed: {
