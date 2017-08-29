@@ -8,7 +8,10 @@ export default {
   methods: {
     saveOrder () {
       console.log('SAVE');
-    }
+    },
+    cancelOrder () {
+      this.$emit('cancelOrder')
+    },
   },
   computed: {
     //

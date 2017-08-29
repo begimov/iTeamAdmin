@@ -10,6 +10,8 @@
                 <label for="exampleInputEmail1">Email</label>
                 <input type="email" class="form-control" placeholder="Email">
               </div>
+              <button type="submit" class="btn btn-primary">Сохранить</button>
+              <a href="#" class="btn btn-default" @click.prevent="cancelOrder">Отменить</a>
             </form>
           </div>
         </div>

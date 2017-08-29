@@ -4,8 +4,8 @@
       <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <a href="#" class="btn btn-primary" v-if="!flags.neworder" @click.prevent="flags.neworder = true">Создать заказ</a>
-            <new-order v-if="flags.neworder"></new-order>
+            <new-order v-if="flags.neworder" v-on:cancelOrder="flags.neworder = false"></new-order>
+            <a href="#" class="btn btn-primary" v-else @click.prevent="flags.neworder = true">Создать заказ</a>
           </div>
 
           <div class="panel-body">

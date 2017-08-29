@@ -42000,7 +42000,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [(!_vm.flags.neworder) ? _c('a', {
+  }, [(_vm.flags.neworder) ? _c('new-order', {
+    on: {
+      "cancelOrder": function($event) {
+        _vm.flags.neworder = false
+      }
+    }
+  }) : _c('a', {
     staticClass: "btn btn-primary",
     attrs: {
       "href": "#"
@@ -42011,7 +42017,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.flags.neworder = true
       }
     }
-  }, [_vm._v("Создать заказ")]) : _vm._e(), _vm._v(" "), (_vm.flags.neworder) ? _c('new-order') : _vm._e()], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("Создать заказ")])], 1), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('table', {
     staticClass: "table table-striped table-hover"
@@ -42106,7 +42112,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.saveOrder($event)
       }
     }
-  }, [_vm._m(0)])])])])])
+  }, [_vm._m(0), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.cancelOrder($event)
+      }
+    }
+  }, [_vm._v("Отменить")])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "form-group"
@@ -42147,6 +42169,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     saveOrder: function saveOrder() {
       console.log('SAVE');
+    },
+    cancelOrder: function cancelOrder() {
+      this.$emit('cancelOrder');
     }
   },
   computed: {
