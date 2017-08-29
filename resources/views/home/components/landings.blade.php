@@ -2,7 +2,7 @@
   <div class="panel-heading"><a href="#">Лендинги ></a></div>
   <div class="panel-body">
     @foreach ($landings as $landing)
-      <li>{{ str_limit($landing->name, 20) }}</li>
+      <li><a href="{{ route('landings.show', $landing->id) }}">{{ str_limit($landing->name, 20) }}</a></li>
     @endforeach
   </div>
   <div class="panel-footer">
