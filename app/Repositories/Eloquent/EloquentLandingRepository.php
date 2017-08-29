@@ -2,14 +2,15 @@
 
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Contracts\ModelNameRepository;
+use App\Repositories\Contracts\LandingRepository;
+use App\Models\Landings\Landing;
 
-class EloquentModelNameRepository implements ModelNameRepository
+class EloquentLandingRepository implements LandingRepository
 {
 
-    public function all()
+    public function getFewLatest($number)
     {
-        //
+        return Landing::latest()->take($number)->get();
     }
 
 }

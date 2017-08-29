@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Contracts;
 
-interface ModelNameRepository
+interface LandingRepository
 {
-    public function all();
+    public function getFewLatest($number);
 }
