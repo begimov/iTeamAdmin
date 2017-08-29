@@ -41905,7 +41905,7 @@ module.exports = function normalizeComponent (
 var disposed = false
 var Component = __webpack_require__(37)(
   /* script */
-  __webpack_require__(51),
+  __webpack_require__(53),
   /* template */
   __webpack_require__(52),
   /* styles */
@@ -41939,58 +41939,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['ordersProp'],
-  data: function data() {
-    return {
-      orders: this.ordersProp
-    };
-  },
-  mounted: function mounted() {
-    //
-  }
-});
-
-/***/ }),
+/* 51 */,
 /* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -42009,16 +41958,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-body"
   }, [_c('table', {
     staticClass: "table table-striped table-hover"
-  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.orders), function(order) {
+  }, [_c('thead', [_c('tr', [_c('th', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.setIdFilter($event)
+      }
+    }
+  }, [_vm._v("Номер")])]), _vm._v(" "), _c('th', [_vm._v("Клиент")]), _vm._v(" "), _c('th', [_vm._v("Сумма")]), _vm._v(" "), _c('th', [_vm._v("Дата")])])]), _vm._v(" "), _c('tbody', _vm._l((_vm.orders), function(order) {
     return _c('tr', [_c('th', {
       attrs: {
         "scope": "row"
       }
     }, [_vm._v(_vm._s(order.id))]), _vm._v(" "), _c('td', [_vm._v("-")]), _vm._v(" "), _c('td', [_vm._v("-")]), _vm._v(" "), _c('td', [_vm._v(_vm._s(order.created_at))])])
   }))])])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("#")]), _vm._v(" "), _c('th', [_vm._v("Клиент")]), _vm._v(" "), _c('th', [_vm._v("Сумма")]), _vm._v(" "), _c('th', [_vm._v("Дата")])])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -42026,6 +41983,45 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-31cf81e3", module.exports)
   }
 }
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['ordersProp'],
+  data: function data() {
+    return {
+      orders: this.ordersProp,
+      filters: {
+        id: true
+      }
+    };
+  },
+
+  methods: {
+    setIdFilter: function setIdFilter() {
+      this.filters.id = !this.filters.id;
+      if (this.filters.id) {
+        this.orders.sort(function (a, b) {
+          return a.id - b.id;
+        });
+      } else {
+        this.orders.sort(function (a, b) {
+          return b.id - a.id;
+        });
+      }
+    }
+  },
+  computed: {
+    //
+  },
+  mounted: function mounted() {
+    //
+  }
+});
 
 /***/ })
 /******/ ]);

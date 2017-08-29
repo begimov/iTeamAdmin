@@ -9,10 +9,10 @@
             <table class="table table-striped table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th><a href="#" @click.prevent="setIdFilter">Номер</a></th>
                   <th>Клиент</th>
                   <th>Сумма</th>
-                  <th>Дата</th>
+                  <th>Дата</a></th>
                 </tr>
               </thead>
               <tbody>
@@ -31,16 +31,4 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: ['ordersProp'],
-  data () {
-    return {
-      orders: this.ordersProp
-    }
-  },
-  mounted() {
-    //
-  }
-}
-</script>
+<script src="./orders.js"></script>
