@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\Contracts\LandingRepository;
-use App\Repositories\Eloquent\EloquentLandingRepository;
+use App\Repositories\Contracts\Landings\LandingRepository;
+use App\Repositories\Eloquent\Landings\EloquentLandingRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {

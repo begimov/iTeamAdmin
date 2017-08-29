@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\LandingRepository;
+use App\Repositories\Contracts\Landings\LandingRepository;
 
 class HomeController extends Controller
 {
     protected $landings;
-    
+
     /**
      * Create a new controller instance.
      *
@@ -18,7 +18,6 @@ class HomeController extends Controller
     public function __construct(LandingRepository $landings)
     {
         $this->middleware('auth');
-        $this->landings = $landings;
     }
 
     /**
@@ -28,8 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $landings = $this->landings->getFewLatest(5);
-
         return view('home.index', compact('landings'));
     }
 }
