@@ -28,3 +28,9 @@ $factory->define(App\Models\Landings\Landing::class, function (Faker\Generator $
         'name' => $faker->sentence,
     ];
 });
+
+$factory->define(App\Models\Products\Order::class, function (Faker\Generator $faker) {
+    return [
+        //
+    ];
+});
