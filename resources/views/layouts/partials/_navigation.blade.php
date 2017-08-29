@@ -19,7 +19,17 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-
+              @if (Auth::check())
+                  <li><a href="#">@lang('navigation.landings')</a></li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                          @lang('navigation.master_classes') <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Создать</a></li>
+                      </ul>
+                  </li>
+              @endif
             </ul>
 
             <!-- Right Side Of Navbar -->
