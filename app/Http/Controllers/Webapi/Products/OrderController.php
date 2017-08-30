@@ -30,6 +30,7 @@ class OrderController extends Controller
 
         return fractal()
             ->collection($orders)
+            ->parseIncludes(['user'])
             ->transformWith(new OrderTransformer)
             ->toArray();
     }
