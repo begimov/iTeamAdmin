@@ -13,4 +13,9 @@ class EloquentOrderRepository implements OrderRepository
         return Order::all();
     }
 
+    public function getAllLatestPaginateBy($number)
+    {
+        return Order::latestFirst()->paginate($number);
+    }
+
 }

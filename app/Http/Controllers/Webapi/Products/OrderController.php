@@ -25,7 +25,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = $this->orders->getAllLatestPaginateBy(5);
     }
 
     /**
