@@ -42440,7 +42440,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('ul', {
     staticClass: "pagination"
-  }, [_c('li', [(_vm.pagination.links.previous) ? _c('a', {
+  }, [(_vm.pagination.links.previous) ? _c('li', [_c('a', {
     attrs: {
       "href": "#",
       "aria-label": "Previous"
@@ -42455,7 +42455,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("«")])]) : _vm._e()]), _vm._v(" "), _vm._l((parseInt(_vm.pagination.total_pages, 10)), function(page) {
+  }, [_vm._v("«")])])]) : _vm._e(), _vm._v(" "), _vm._l((parseInt(_vm.pagination.total_pages, 10)), function(page) {
     return _c('li', {
       class: {
         'active': page == _vm.pagination.current_page
@@ -42471,7 +42471,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v(_vm._s(page))])])
-  }), _vm._v(" "), _c('li', [(_vm.pagination.links.next) ? _c('a', {
+  }), _vm._v(" "), (_vm.pagination.links.next) ? _c('li', [_c('a', {
     attrs: {
       "href": "#",
       "aria-label": "Next"
@@ -42486,7 +42486,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("»")])]) : _vm._e()])], 2)])])])])
+  }, [_vm._v("»")])])]) : _vm._e()], 2)])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

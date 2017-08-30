@@ -6,8 +6,8 @@
         <nav aria-label="Page navigation">
           <ul class="pagination">
 
-            <li>
-              <a href="#" v-if="pagination.links.previous" aria-label="Previous" @click.prevent="gotoPage(pagination.current_page - 1)">
+            <li v-if="pagination.links.previous">
+              <a href="#" aria-label="Previous" @click.prevent="gotoPage(pagination.current_page - 1)">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
@@ -19,8 +19,8 @@
               <a href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
             </li>
 
-            <li>
-              <a href="#" v-if="pagination.links.next" aria-label="Next" @click.prevent="gotoPage(pagination.current_page + 1)">
+            <li v-if="pagination.links.next">
+              <a href="#" aria-label="Next" @click.prevent="gotoPage(pagination.current_page + 1)">
                 <span aria-hidden="true">&raquo;</span>
               </a>
             </li>
