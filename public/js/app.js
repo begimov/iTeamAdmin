@@ -895,6 +895,7 @@ window.Vue = __webpack_require__(36);
  */
 
 Vue.component('orders', __webpack_require__(37));
+Vue.component('order', __webpack_require__(53));
 Vue.component('new-order', __webpack_require__(40));
 
 var app = new Vue({
@@ -41947,6 +41948,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.get('/webapi/orders?page=' + page).then(function (response) {
         _this.orders = response.data.data;
+        _this.meta = response.data.meta;
       });
     },
     setIdFilter: function setIdFilter() {
@@ -42026,14 +42028,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-hidden": "true"
     }
   })])]), _vm._v(" "), _vm._m(1)])])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {
-    return _c('div', [_c('div', {
-      staticClass: "row panel-row"
-    }, [_c('div', {
-      staticClass: "col-md-6"
-    }, [_c('p'), _vm._m(2, true), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
-      staticClass: "badge"
-    }, [_vm._v("Заказ № " + _vm._s(order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«Как улучшить бизнес-процессы компании»")])]), _vm._v(" "), _vm._m(3, true)]), _vm._v(" "), _vm._m(4, true)])])
-  })], 2), _vm._v(" "), _vm._m(5)])])])])
+    return _c('order', {
+      key: order.id,
+      attrs: {
+        "order": order
+      }
+    })
+  })], 2), _vm._v(" "), _vm._m(2)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-6"
@@ -42049,57 +42050,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-hidden": "true"
     }
   })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h4', [_vm._v("\n                    Артём ООО Торгсервис\n                    "), _c('small', [_c('a', {
-    attrs: {
-      "href": "mailto:"
-    }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-envelope",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" smyshnova@yahoo.com\n                      ")]), _vm._v(" "), _c('span', {
-    staticClass: "glyphicon glyphicon-phone-alt",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" +79190442550\n                    ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('span', {
-    staticClass: "badge"
-  }, [_vm._v("\n                    4000 ₽\n                  ")]), _vm._v(" "), _c('small', [_vm._v("\n                    Робокасса\n                    "), _c('span', {
-    staticClass: "label label-success"
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-ok",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Оплачен 30 ноября в 12:35\n                    ")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-6 text-right orders-edit-block"
-  }, [_c('ul', {
-    staticClass: "list-inline"
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-edit",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Редактировать")])]), _vm._v(" "), _c('li', [_c('select', [_c('option', [_vm._v("Оплачен")]), _vm._v(" "), _c('option', [_vm._v("Ждет оплаты")])])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-remove-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Удалить")])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "panel-footer"
@@ -42303,6 +42253,152 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(8)(
+  /* script */
+  __webpack_require__(54),
+  /* template */
+  __webpack_require__(55),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/orders/Order.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Order.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1cd66e62", Component.options)
+  } else {
+    hotAPI.reload("data-v-1cd66e62", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['order'],
+  data: function data() {
+    return {
+      //
+    };
+  },
+
+  methods: {
+    //
+  },
+  computed: {
+    //
+  },
+  mounted: function mounted() {
+    //
+  }
+});
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row panel-row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('p'), _vm._m(0), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "badge"
+  }, [_vm._v("Заказ № " + _vm._s(_vm.order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«Как улучшить бизнес-процессы компании»")])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _vm._m(2)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h4', [_vm._v("\n        Артём ООО Торгсервис\n        "), _c('small', [_c('a', {
+    attrs: {
+      "href": "mailto:"
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-envelope",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" smyshnova@yahoo.com\n          ")]), _vm._v(" "), _c('span', {
+    staticClass: "glyphicon glyphicon-phone-alt",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" +79190442550\n        ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('p', [_c('span', {
+    staticClass: "badge"
+  }, [_vm._v("\n        4000 ₽\n      ")]), _vm._v(" "), _c('small', [_vm._v("\n        Робокасса\n        "), _c('span', {
+    staticClass: "label label-success"
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-ok",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Оплачен 30 ноября в 12:35\n        ")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-6 text-right orders-edit-block"
+  }, [_c('ul', {
+    staticClass: "list-inline"
+  }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-edit",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Редактировать")])]), _vm._v(" "), _c('li', [_c('select', [_c('option', [_vm._v("Оплачен")]), _vm._v(" "), _c('option', [_vm._v("Ждет оплаты")])])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-remove-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Удалить")])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-1cd66e62", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

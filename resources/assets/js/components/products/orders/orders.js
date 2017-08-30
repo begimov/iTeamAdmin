@@ -15,6 +15,7 @@ export default {
     getOrders (page) {
       axios.get('/webapi/orders?page=' + page).then((response) => {
         this.orders = response.data.data
+        this.meta = response.data.meta
       })
     },
     setIdFilter () {
