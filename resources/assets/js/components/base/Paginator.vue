@@ -6,7 +6,7 @@
         <nav aria-label="Page navigation">
           <ul class="pagination">
 
-            <li class="disabled">
+            <li v-bind:class="{ 'disabled': !pagination.links.previous }">
               <a href="#" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
@@ -14,12 +14,12 @@
 
             <li
               v-for="page in parseInt(pagination.total_pages, 10)"
-              :class ="{ 'active': page == pagination.current_page }"
+              v-bind:class ="{ 'active': page == pagination.current_page }"
             >
-              <a href="#">{{ page }}</a>
+              <a href="#" @click.prevent="gotoPage(page)">{{ page }}</a>
             </li>
 
-            <li>
+            <li :class="{ 'disabled': !pagination.links.next }">
               <a href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
               </a>

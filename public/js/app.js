@@ -42408,7 +42408,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    //
+    gotoPage: function gotoPage(page) {
+      //
+    }
   },
   computed: {
     //
@@ -42435,7 +42437,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('ul', {
     staticClass: "pagination"
-  }, [_vm._m(0), _vm._v(" "), _vm._l((parseInt(_vm.pagination.total_pages, 10)), function(page) {
+  }, [_c('li', {
+    class: {
+      'disabled': !_vm.pagination.links.previous
+    }
+  }, [_vm._m(0)]), _vm._v(" "), _vm._l((parseInt(_vm.pagination.total_pages, 10)), function(page) {
     return _c('li', {
       class: {
         'active': page == _vm.pagination.current_page
@@ -42443,13 +42449,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('a', {
       attrs: {
         "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.gotoPage(page)
+        }
       }
     }, [_vm._v(_vm._s(page))])])
-  }), _vm._v(" "), _vm._m(1)], 2)])])])])
+  }), _vm._v(" "), _c('li', {
+    class: {
+      'disabled': !_vm.pagination.links.next
+    }
+  }, [_vm._m(1)])], 2)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', {
-    staticClass: "disabled"
-  }, [_c('a', {
+  return _c('a', {
     attrs: {
       "href": "#",
       "aria-label": "Previous"
@@ -42458,9 +42472,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("«")])])])
+  }, [_vm._v("«")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
+  return _c('a', {
     attrs: {
       "href": "#",
       "aria-label": "Next"
@@ -42469,7 +42483,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("»")])])])
+  }, [_vm._v("»")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

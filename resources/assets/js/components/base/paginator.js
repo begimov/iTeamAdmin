@@ -6,7 +6,9 @@ export default {
     }
   },
   methods: {
-    //
+    gotoPage (page) {
+      //
+    }
   },
   computed: {
     //
