@@ -1,8 +1,8 @@
 export default {
-  props: ['ordersProp'],
   data () {
     return {
-      orders: this.ordersProp,
+      orders: [],
+      meta: null,
       flags: {
         neworder: false
       },
@@ -12,6 +12,11 @@ export default {
     }
   },
   methods: {
+    getOrders (page) {
+      axios.get('/webapi/orders?page=' + page).then((response) => {
+        this.orders = response.data.data
+      })
+    },
     setIdFilter () {
       this.filters.id = !this.filters.id
       if (this.filters.id) {
@@ -29,6 +34,6 @@ export default {
     //
   },
   mounted() {
-    //
+    this.getOrders(1)
   }
 }

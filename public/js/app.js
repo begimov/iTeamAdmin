@@ -41928,10 +41928,10 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['ordersProp'],
   data: function data() {
     return {
-      orders: this.ordersProp,
+      orders: [],
+      meta: null,
       flags: {
         neworder: false
       },
@@ -41942,6 +41942,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    getOrders: function getOrders(page) {
+      var _this = this;
+
+      axios.get('/webapi/orders?page=' + page).then(function (response) {
+        _this.orders = response.data.data;
+      });
+    },
     setIdFilter: function setIdFilter() {
       this.filters.id = !this.filters.id;
       if (this.filters.id) {
@@ -41959,7 +41966,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //
   },
   mounted: function mounted() {
-    //
+    this.getOrders(1);
   }
 });
 
