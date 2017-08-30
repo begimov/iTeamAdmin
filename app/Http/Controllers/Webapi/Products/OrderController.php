@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Webapi\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Products\OrderRepository;
+use App\Transformers\Products\OrderTransformer;
 
 class OrderController extends Controller
 {
@@ -25,7 +26,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->orders->getAllLatestPaginateBy(5);
+        $orders = $this->orders->getAll();
+
+        return fractal()
+            ->collection($orders)
+            ->transformWith(new OrderTransformer)
+            ->toArray();
     }
 
     /**
