@@ -27,7 +27,7 @@
           </div>
 
           <div class="panel-footer">
-            <paginator></paginator>
+            <paginator v-if="this.meta" :pagination="meta.pagination"></paginator>
           </div>
 
         </div>
