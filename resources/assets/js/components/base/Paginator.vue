@@ -12,7 +12,9 @@
               </a>
             </li>
 
-            <li v-for="page in parseInt(pagination.count, 10)"><a href="#">2</a></li>
+            <li v-for="page in parseInt(pagination.total_pages, 10)">
+              <a href="#">{{ page }}</a>
+            </li>
 
             <li>
               <a href="#" aria-label="Next">

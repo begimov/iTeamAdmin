@@ -42435,12 +42435,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('ul', {
     staticClass: "pagination"
-  }, [_vm._m(0), _vm._v(" "), _vm._l((parseInt(_vm.pagination.count, 10)), function(page) {
+  }, [_vm._m(0), _vm._v(" "), _vm._l((parseInt(_vm.pagination.total_pages, 10)), function(page) {
     return _c('li', [_c('a', {
       attrs: {
         "href": "#"
       }
-    }, [_vm._v("2")])])
+    }, [_vm._v(_vm._s(page))])])
   }), _vm._v(" "), _vm._m(1)], 2)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', {
