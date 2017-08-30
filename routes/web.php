@@ -20,6 +20,11 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     // Landings related routes
     Route::resource('landings', 'Landings\LandingController');
 
+    //WebAPI
+    Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
+        //
+    });
+
 });
 
 // Authentication
