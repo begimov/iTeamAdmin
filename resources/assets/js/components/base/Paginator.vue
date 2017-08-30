@@ -12,7 +12,10 @@
               </a>
             </li>
 
-            <li v-for="page in parseInt(pagination.total_pages, 10)">
+            <li
+              v-for="page in parseInt(pagination.total_pages, 10)"
+              :class ="{ 'active': page == pagination.current_page }"
+            >
               <a href="#">{{ page }}</a>
             </li>
 

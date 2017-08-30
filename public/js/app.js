@@ -42436,7 +42436,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('ul', {
     staticClass: "pagination"
   }, [_vm._m(0), _vm._v(" "), _vm._l((parseInt(_vm.pagination.total_pages, 10)), function(page) {
-    return _c('li', [_c('a', {
+    return _c('li', {
+      class: {
+        'active': page == _vm.pagination.current_page
+      }
+    }, [_c('a', {
       attrs: {
         "href": "#"
       }
