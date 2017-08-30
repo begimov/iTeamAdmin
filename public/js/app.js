@@ -42041,10 +42041,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-footer"
   }, [(_vm.meta && _vm.orders.length) ? _c('paginator', {
     attrs: {
+      "for": "orders",
       "pagination": _vm.meta.pagination
     },
     on: {
-      "pageChanged": _vm.getOrders
+      "orders_pageChanged": _vm.getOrders
     }
   }) : _vm._e()], 1)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -42403,7 +42404,13 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['pagination'],
+  props: {
+    pagination: Object,
+    for: {
+      type: String,
+      default: 'default'
+    }
+  },
   data: function data() {
     return {
       //
@@ -42412,7 +42419,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     gotoPage: function gotoPage(page) {
-      this.$emit('pageChanged', page);
+      this.$emit(this.for + '_pageChanged', page);
     }
   },
   computed: {

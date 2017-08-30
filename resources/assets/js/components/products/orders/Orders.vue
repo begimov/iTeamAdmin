@@ -27,7 +27,7 @@
           </div>
 
           <div class="panel-footer">
-            <paginator v-if="meta && orders.length" :pagination="meta.pagination" v-on:pageChanged="getOrders"></paginator>
+            <paginator v-if="meta && orders.length" for="orders" :pagination="meta.pagination" v-on:orders_pageChanged="getOrders"></paginator>
           </div>
 
         </div>

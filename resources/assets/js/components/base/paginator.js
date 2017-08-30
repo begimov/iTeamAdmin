@@ -1,5 +1,11 @@
 export default {
-  props: ['pagination'],
+  props: {
+    pagination: Object,
+    for: {
+      type: String,
+      default: 'default'
+    }
+  },
   data () {
     return {
       //
@@ -7,7 +13,7 @@ export default {
   },
   methods: {
     gotoPage (page) {
-      this.$emit('pageChanged', page)
+      this.$emit(this.for + '_pageChanged', page)
     }
   },
   computed: {
