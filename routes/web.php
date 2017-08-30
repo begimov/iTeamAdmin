@@ -22,7 +22,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     //WebAPI
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
-        //
+        Route::resource('orders', 'Products\OrderController');
     });
 
 });
