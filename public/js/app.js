@@ -41999,11 +41999,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row panel-subheading"
-  }, [_c('div', {
-    staticClass: "col-md-6"
-  }, [_vm._v("\n              50 на странице на сумму 75751.5; период поиска: 29.08.2014 - 29.08.2017\n            ")]), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "col-md-6 text-right"
-  }, [_c('a', {
+  }, [_c('ul', {
+    staticClass: "list-inline"
+  }, [_c('li', [_c('a', {
     attrs: {
       "href": "#"
     },
@@ -42013,39 +42013,140 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.setIdFilter($event)
       }
     }
-  }, [_vm._v("Сортировать")])])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-sort",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])]), _vm._v(" "), _vm._m(1)])])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {
     return _c('div', [_c('div', {
       staticClass: "row panel-row"
     }, [_c('div', {
       staticClass: "col-md-6"
-    }, [_vm._m(0, true), _vm._v(" "), _c('p', [_vm._v("Заказ № " + _vm._s(order.id) + " Как улучшить бизнес-процессы компании")]), _vm._v(" "), _vm._m(1, true)]), _vm._v(" "), _vm._m(2, true)])])
-  })], 2), _vm._v(" "), _c('div', {
-    staticClass: "panel-footer"
-  }, [_vm._v("\n          pagination\n        ")])])])])])
+    }, [_c('p'), _vm._m(2, true), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
+      staticClass: "badge"
+    }, [_vm._v("Заказ № " + _vm._s(order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«Как улучшить бизнес-процессы компании»")])]), _vm._v(" "), _vm._m(3, true)]), _vm._v(" "), _vm._m(4, true)])])
+  })], 2), _vm._v(" "), _vm._m(5)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_c('a', {
+  return _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('strong', [_vm._v("Сумма:")]), _vm._v(" 75751.5 "), _c('strong', [_vm._v("Период поиска:")]), _vm._v(" 29.08.2014 - 29.08.2017\n            ")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-cog",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('h4', [_vm._v("\n                    Артём ООО Торгсервис\n                    "), _c('small', [_c('a', {
     attrs: {
       "href": "mailto:"
     }
-  }, [_vm._v("smyshnova@yahoo.com")]), _vm._v(" Артём ООО Торгсервис +79190442550")])
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-envelope",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" smyshnova@yahoo.com\n                      ")]), _vm._v(" "), _c('span', {
+    staticClass: "glyphicon glyphicon-phone-alt",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" +79190442550\n                    ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("375  Робокасса  "), _c('span', {
+  return _c('p', [_c('span', {
+    staticClass: "badge"
+  }, [_vm._v("\n                    4000 ₽\n                  ")]), _vm._v(" "), _c('small', [_vm._v("\n                    Робокасса\n                    "), _c('span', {
     staticClass: "label label-success"
-  }, [_vm._v("Оплачен 30 ноября в 00:00")])])
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-ok",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Оплачен 30 ноября в 12:35\n                    ")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "col-md-6 text-right"
+    staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
   }, [_c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("Редактировать")])]), _vm._v(" "), _c('li', [_c('select', [_c('option', [_vm._v("Оплачен")]), _vm._v(" "), _c('option', [_vm._v("Ждет оплаты")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-edit",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Редактировать")])]), _vm._v(" "), _c('li', [_c('select', [_c('option', [_vm._v("Оплачен")]), _vm._v(" "), _c('option', [_vm._v("Ждет оплаты")])])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("Удалить")])])])])
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-remove-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Удалить")])])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "panel-footer"
+  }, [_c('nav', {
+    attrs: {
+      "aria-label": "Page navigation"
+    }
+  }, [_c('ul', {
+    staticClass: "pagination"
+  }, [_c('li', {
+    staticClass: "disabled"
+  }, [_c('a', {
+    attrs: {
+      "href": "#",
+      "aria-label": "Previous"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("«")])])]), _vm._v(" "), _c('li', {
+    staticClass: "active"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("1 "), _c('span', {
+    staticClass: "sr-only"
+  }, [_vm._v("(current)")])])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("2")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("3")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("4")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("5")])]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#",
+      "aria-label": "Next"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("»")])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
