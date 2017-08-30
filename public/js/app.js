@@ -42039,9 +42039,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   })], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
-  }, [(this.meta) ? _c('paginator', {
+  }, [(_vm.meta && _vm.orders.length) ? _c('paginator', {
     attrs: {
       "pagination": _vm.meta.pagination
+    },
+    on: {
+      "pageChanged": _vm.getOrders
     }
   }) : _vm._e()], 1)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -42409,7 +42412,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     gotoPage: function gotoPage(page) {
-      //
+      this.$emit('pageChanged', page);
     }
   },
   computed: {
@@ -42437,11 +42440,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('ul', {
     staticClass: "pagination"
-  }, [_c('li', {
-    class: {
-      'disabled': !_vm.pagination.links.previous
+  }, [_c('li', [(_vm.pagination.links.previous) ? _c('a', {
+    attrs: {
+      "href": "#",
+      "aria-label": "Previous"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.gotoPage(_vm.pagination.current_page - 1)
+      }
     }
-  }, [_vm._m(0)]), _vm._v(" "), _vm._l((parseInt(_vm.pagination.total_pages, 10)), function(page) {
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("«")])]) : _vm._e()]), _vm._v(" "), _vm._l((parseInt(_vm.pagination.total_pages, 10)), function(page) {
     return _c('li', {
       class: {
         'active': page == _vm.pagination.current_page
@@ -42457,34 +42471,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v(_vm._s(page))])])
-  }), _vm._v(" "), _c('li', {
-    class: {
-      'disabled': !_vm.pagination.links.next
-    }
-  }, [_vm._m(1)])], 2)])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "#",
-      "aria-label": "Previous"
-    }
-  }, [_c('span', {
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }, [_vm._v("«")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
+  }), _vm._v(" "), _c('li', [(_vm.pagination.links.next) ? _c('a', {
     attrs: {
       "href": "#",
       "aria-label": "Next"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.gotoPage(_vm.pagination.current_page + 1)
+      }
     }
   }, [_c('span', {
     attrs: {
       "aria-hidden": "true"
     }
-  }, [_vm._v("»")])])
-}]}
+  }, [_vm._v("»")])]) : _vm._e()])], 2)])])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

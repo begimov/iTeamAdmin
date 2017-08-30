@@ -7,7 +7,7 @@ export default {
   },
   methods: {
     gotoPage (page) {
-      //
+      this.$emit('pageChanged', page)
     }
   },
   computed: {
