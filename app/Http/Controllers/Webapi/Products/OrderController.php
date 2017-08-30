@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Products\OrderRepository;
 use App\Transformers\Products\OrderTransformer;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class OrderController extends Controller
 {
@@ -26,12 +27,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = $this->orders->getAll();
+        $orders = $this->orders->getAllLatestPaginateBy(5);
+
+        $ordersCollection = $orders->getCollection();
 
         return fractal()
-            ->collection($orders)
+            ->collection($ordersCollection)
             ->parseIncludes(['user'])
             ->transformWith(new OrderTransformer)
+            ->paginateWith(new IlluminatePaginatorAdapter($orders))
             ->toArray();
     }
 
