@@ -20,8 +20,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     // Landings related routes
     Route::resource('landings', 'Landings\LandingController');
 
-    //WebAPI
+    // WebAPI
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
+        // Route for Orders.vue component
         Route::resource('orders', 'Products\OrderController');
     });
 

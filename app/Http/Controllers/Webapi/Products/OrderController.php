@@ -4,9 +4,20 @@ namespace App\Http\Controllers\Webapi\Products;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\Products\OrderRepository;
 
 class OrderController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(OrderRepository $orders)
+    {
+        $this->orders = $orders;
+    }
+
     /**
      * Display a listing of the resource.
      *
