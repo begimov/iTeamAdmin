@@ -42337,11 +42337,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-row"
   }, [_c('div', {
     staticClass: "col-md-6"
-  }, [_c('p'), _vm._m(0), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
-    staticClass: "badge"
-  }, [_vm._v("Заказ № " + _vm._s(_vm.order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«Как улучшить бизнес-процессы компании»")])]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _vm._m(2)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h4', [_vm._v("\n        Артём ООО Торгсервис\n        "), _c('small', [_c('a', {
+  }, [_c('p'), _c('h4', [_vm._v("\n        " + _vm._s(_vm.order.user.data.name) + "\n        "), _c('small', [_c('a', {
     attrs: {
       "href": "mailto:"
     }
@@ -42350,13 +42346,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }), _vm._v(" smyshnova@yahoo.com\n          ")]), _vm._v(" "), _c('span', {
+  }), _vm._v(" " + _vm._s(_vm.order.user.data.email) + "\n          ")]), _vm._v(" "), _c('span', {
     staticClass: "glyphicon glyphicon-phone-alt",
     attrs: {
       "aria-hidden": "true"
     }
-  }), _vm._v(" +79190442550\n        ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  }), _vm._v(" +79190442550\n        ")])]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "badge"
+  }, [_vm._v("Заказ № " + _vm._s(_vm.order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«Как улучшить бизнес-процессы компании»")])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._m(1)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', [_c('span', {
     staticClass: "badge"
   }, [_vm._v("\n        4000 ₽\n      ")]), _vm._v(" "), _c('small', [_vm._v("\n        Робокасса\n        "), _c('span', {

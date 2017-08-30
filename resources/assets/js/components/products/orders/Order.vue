@@ -4,10 +4,10 @@
     <div class="col-md-6">
       <p>
         <h4>
-          Артём ООО Торгсервис
+          {{ order.user.data.name }}
           <small>
             <a href="mailto:">
-              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> smyshnova@yahoo.com
+              <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ order.user.data.email }}
             </a>
             <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> +79190442550
           </small>
