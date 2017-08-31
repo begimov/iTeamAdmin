@@ -42082,6 +42082,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       orders: [],
       meta: null,
+      timer: 0,
       flags: {
         neworder: false
       },
@@ -42121,11 +42122,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.getOrders(this.meta.pagination.current_page);
     },
     textSearch: function textSearch() {
-      var _this2 = this;
-
-      setTimeout(function () {
-        _this2.getOrders(1);
-      }, 2000);
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function () {
+        this.getOrders(1);
+      }.bind(this), 2000);
     }
   },
   computed: {

@@ -3,6 +3,7 @@ export default {
     return {
       orders: [],
       meta: null,
+      timer: 0,
       flags: {
         neworder: false
       },
@@ -42,9 +43,10 @@ export default {
     },
 
     textSearch () {
-      setTimeout(() => {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function(){
           this.getOrders(1)
-        }, 2000)
+      }.bind(this), 2000)
     }
 
   },
