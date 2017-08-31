@@ -13,29 +13,25 @@ class EloquentOrderRepository implements OrderRepository
             return $value != 0;
         });
 
-        if (empty($sortParams)) {
-            return $this->getAllLatest();
-        }
-
-        return $this->sortBy($sortParams);
+        return (empty($sortParams)) ? $this->getAllLatest() : $this->sortBy($sortParams);
     }
 
     protected function sortBy(array $sortParams) {
 
-        foreach ($sortParams as $key => $value) {
+        foreach ($sortParams as $parameter => $value) {
 
-            switch ($key) {
+            switch ($parameter) {
               case 'latest':
                 return ($value == 1) ? $this->getAllLatest() : $this->getAllOldest();
                 break;
               case 'largestIds':
-                //
+                return ($value == 1) ? $this->orderBy('id', 'desc') : $this->orderBy('id', 'asc');
                 break;
               default:
                 return $this->getAllLatest();
                 break;
             }
-        }  
+        }
     }
 
     protected function getAllLatest() {
@@ -44,5 +40,10 @@ class EloquentOrderRepository implements OrderRepository
 
     protected function getAllOldest() {
         return Order::oldest();
+    }
+
+    protected function orderBy($column, $order)
+    {
+        return Order::orderBy($column, $order);
     }
 }

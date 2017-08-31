@@ -29,7 +29,7 @@ class OrderController extends Controller
     {
         $orders = $this->orders
             ->getSortedAndFiltered(json_decode($request->all()['orderBy'], true))
-            ->paginate(3);
+            ->paginate(5);
 
         $ordersCollection = $orders->getCollection();
 
