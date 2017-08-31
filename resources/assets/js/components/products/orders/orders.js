@@ -12,7 +12,7 @@ export default {
           largestIds: 0
         },
         filters: {
-          //
+          textSearch: ''
         }
       },
 
@@ -39,6 +39,12 @@ export default {
         return 0
       })
       this.getOrders(this.meta.pagination.current_page)
+    },
+
+    textSearch () {
+      setTimeout(() => {
+          this.getOrders(this.meta.pagination.current_page)
+        }, 2000)
     }
 
   },

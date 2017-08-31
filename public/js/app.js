@@ -42091,7 +42091,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           largestIds: 0
         },
         filters: {
-          //
+          textSearch: ''
         }
       }
 
@@ -42119,6 +42119,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return 0;
       });
       this.getOrders(this.meta.pagination.current_page);
+    },
+    textSearch: function textSearch() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.getOrders(_this2.meta.pagination.current_page);
+      }, 2000);
     }
   },
   computed: {
@@ -42169,9 +42176,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(1), _vm._v(" "), _c('li', {
+  }, [_c('li', [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.params.filters.textSearch),
+      expression: "params.filters.textSearch"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Найти..."
+    },
+    domProps: {
+      "value": (_vm.params.filters.textSearch)
+    },
+    on: {
+      "input": [function($event) {
+        if ($event.target.composing) { return; }
+        _vm.params.filters.textSearch = $event.target.value
+      }, _vm.textSearch]
+    }
+  })]), _vm._v(" "), _c('li', {
     staticClass: "dropdown"
-  }, [_vm._m(2), _vm._v(" "), _c('ul', {
+  }, [_vm._m(1), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu",
     attrs: {
       "role": "menu"
@@ -42222,14 +42250,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Сумма:")]), _vm._v(" "), _c('small', [_vm._v("75751.5 ₽")]), _vm._v(" "), _c('span', {
     staticClass: "label label-primary"
   }, [_vm._v("Период поиска:")]), _vm._v(" "), _c('small', [_vm._v("29.08.14 - 29.08.17")])]), _c('br')])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Найти..."
-    }
-  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     staticClass: "dropdown-toggle",

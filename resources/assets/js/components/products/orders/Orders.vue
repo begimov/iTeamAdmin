@@ -16,7 +16,9 @@
               </div>
               <div class="col-md-6 text-right">
                 <ul class="list-inline">
-                  <li><input type="text" class="form-control" placeholder="Найти..."></li>
+                  <li><input type="text" class="form-control" placeholder="Найти..."
+                          v-model="params.filters.textSearch"
+                          @input="textSearch"></li>
                   <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                           <span class="glyphicon glyphicon-sort" aria-hidden="true"></span> Сортировать <span class="caret"></span>
