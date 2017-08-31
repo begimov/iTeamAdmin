@@ -27,9 +27,7 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->all());
-
-        $orders = $this->orders->getAllLatestPaginateBy(5);
+        $orders = $this->orders->getSortedAndFiltered($request->all());
 
         $ordersCollection = $orders->getCollection();
 

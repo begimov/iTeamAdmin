@@ -42085,7 +42085,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       flags: {
         neworder: false
       },
-      sortingFlags: {
+      orderBy: {
         latest: 1,
         largestIds: 0
       }
@@ -42099,7 +42099,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.get('/webapi/orders?page=' + page, {
         params: {
-          sortingFlags: this.sortingFlags
+          orderBy: this.orderBy
         }
       }).then(function (response) {
         _this.orders = response.data.data;
@@ -42107,7 +42107,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     applyFilter: function applyFilter(filterName) {
-      this.sortingFlags = _.mapValues(this.sortingFlags, function (value, flagName) {
+      this.orderBy = _.mapValues(this.orderBy, function (value, flagName) {
         if (flagName == filterName) {
           return value == 0 ? 1 : -value;
         }

@@ -7,15 +7,12 @@ use App\Models\Products\Order;
 
 class EloquentOrderRepository implements OrderRepository
 {
-
-    public function getAll()
+    public function getSortedAndFiltered($parameters)
     {
-        return Order::all();
+        $paramsArr = json_decode($parameters['orderBy'], true);
+        $paramsArr = array_filter($paramsArr, function($value) {
+            return $value != 0;
+        });
+        dd($paramsArr);
     }
-
-    public function getAllLatestPaginateBy($number)
-    {
-        return Order::latestFirst()->paginate($number);
-    }
-
 }
