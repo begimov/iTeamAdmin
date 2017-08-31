@@ -9,30 +9,40 @@ class EloquentOrderRepository implements OrderRepository
 {
     public function getSortedAndFiltered(array $parameters)
     {
-        $sortParams = json_decode($parameters['orderBy'], true);
-        $sortParams = array_filter($sortParams, function($value) {
+        $sortParams = array_filter($parameters, function($value) {
             return $value != 0;
         });
+
+        if (empty($sortParams)) {
+            return $this->getAllLatest();
+        }
 
         return $this->sortBy($sortParams);
     }
 
-    public function sortBy(array $sortParams) {
-        if (empty($sortParams)) {
-            return $this->getAllLatest();
-        }
-        switch ($sortParams[0]) {
-          case 'value':
-            # code...
-            break;
+    protected function sortBy(array $sortParams) {
 
-          default:
-            # code...
-            break;
-        }
+        foreach ($sortParams as $key => $value) {
+
+            switch ($key) {
+              case 'latest':
+                return ($value == 1) ? $this->getAllLatest() : $this->getAllOldest();
+                break;
+              case 'largestIds':
+                //
+                break;
+              default:
+                return $this->getAllLatest();
+                break;
+            }
+        }  
     }
 
-    public function getAllLatest() {
+    protected function getAllLatest() {
         return Order::latest();
+    }
+
+    protected function getAllOldest() {
+        return Order::oldest();
     }
 }
