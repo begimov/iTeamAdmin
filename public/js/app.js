@@ -42113,6 +42113,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
         return 0;
       });
+      this.getOrders(this.meta.pagination.current_page);
     }
   },
   computed: {

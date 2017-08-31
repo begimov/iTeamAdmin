@@ -27,12 +27,13 @@ export default {
     },
 
     applyFilter (filterName) {
-      this.sortingFlags = _.mapValues(this.sortingFlags, function (value, flagName) {
+      this.sortingFlags = _.mapValues(this.sortingFlags, (value, flagName) => {
         if (flagName == filterName) {
           return (value == 0) ? 1 : -value
           }
         return 0
       })
+      this.getOrders(this.meta.pagination.current_page)
     }
 
   },
