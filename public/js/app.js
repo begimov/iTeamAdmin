@@ -42085,10 +42085,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       flags: {
         neworder: false
       },
-      filterFlags: {
-        lastIds: false,
-        latest: true
+      sortingFlags: {
+        latest: 1,
+        largestIds: 0
       }
+
     };
   },
 
@@ -42098,15 +42099,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.get('/webapi/orders?page=' + page, {
         params: {
-          filterFlags: this.filterFlags
+          sortingFlags: this.sortingFlags
         }
       }).then(function (response) {
         _this.orders = response.data.data;
         _this.meta = response.data.meta;
       });
     },
-    switchFilter: function switchFilter(filterName) {
-      this.filterFlags[filterName] = !this.filterFlags[filterName];
+    applyFilter: function applyFilter(filterName) {
+      this.sortingFlags = _.mapValues(this.sortingFlags, function (value, flagName) {
+        if (flagName == filterName) {
+          return value == 0 ? 1 : -value;
+        }
+        return 0;
+      });
     }
   },
   computed: {
@@ -42157,6 +42163,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
+  }, [_c('li', {
+    staticClass: "dropdown"
+  }, [_vm._m(1), _vm._v(" "), _c('ul', {
+    staticClass: "dropdown-menu",
+    attrs: {
+      "role": "menu"
+    }
   }, [_c('li', [_c('a', {
     attrs: {
       "href": "#"
@@ -42164,15 +42177,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.switchFilter('lastIds')
+        _vm.applyFilter('latest')
       }
     }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-sort",
+  }, [_vm._v("По дате")])]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
-      "aria-hidden": "true"
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.applyFilter('largestIds')
+      }
     }
-  })])]), _vm._v(" "), _vm._m(1)])])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {
+  }, [_vm._v("По номеру")])])])])])])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {
     return _c('order', {
       key: order.id,
       attrs: {
@@ -42195,16 +42213,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6"
   }, [_c('strong', [_vm._v("Сумма:")]), _vm._v(" 75751.5 "), _c('strong', [_vm._v("Период поиска:")]), _vm._v(" 29.08.2014 - 29.08.2017\n            ")])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
+  return _c('a', {
+    staticClass: "dropdown-toggle",
     attrs: {
-      "href": "#"
+      "href": "#",
+      "data-toggle": "dropdown",
+      "role": "button",
+      "aria-expanded": "false"
     }
   }, [_c('span', {
-    staticClass: "glyphicon glyphicon-cog",
+    staticClass: "glyphicon glyphicon-sort",
     attrs: {
       "aria-hidden": "true"
     }
-  })])])
+  }), _vm._v(" Сортировать "), _c('span', {
+    staticClass: "caret"
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {

@@ -15,8 +15,15 @@
               </div>
               <div class="col-md-6 text-right">
                 <ul class="list-inline">
-                  <li><a href="#" @click.prevent="switchFilter('lastIds')"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                          <span class="glyphicon glyphicon-sort" aria-hidden="true"></span> Сортировать <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="#" @click.prevent="applyFilter('latest')">По дате</a></li>
+                          <li><a href="#" @click.prevent="applyFilter('largestIds')">По номеру</a></li>
+                      </ul>
+                  </li>
                 </ul>
 
               </div>
