@@ -15,7 +15,7 @@
               </div>
               <div class="col-md-6 text-right">
                 <ul class="list-inline">
-                  <li><a href="#" @click.prevent="setIdFilter"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></li>
+                  <li><a href="#" @click.prevent="switchFilter('lastIds')"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a></li>
                   <li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
                 </ul>
 

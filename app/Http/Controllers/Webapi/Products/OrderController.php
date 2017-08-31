@@ -25,8 +25,10 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        dd($request->all());
+
         $orders = $this->orders->getAllLatestPaginateBy(5);
 
         $ordersCollection = $orders->getCollection();
