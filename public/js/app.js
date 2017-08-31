@@ -42124,7 +42124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       setTimeout(function () {
-        _this2.getOrders(_this2.meta.pagination.current_page);
+        _this2.getOrders(1);
       }, 2000);
     }
   },

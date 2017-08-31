@@ -13,6 +13,10 @@ class EloquentOrderRepository implements OrderRepository
             return $value != 0;
         });
 
+        $filterParams = array_filter($parameters['filters'], function($value) {
+            return $value != '';
+        });
+
         return (empty($sortParams)) ? $this->getAllLatest() : $this->sortBy($sortParams);
     }
 
@@ -31,6 +35,13 @@ class EloquentOrderRepository implements OrderRepository
                 return $this->getAllLatest();
                 break;
             }
+        }
+    }
+
+    protected function filterBy(array $filterParams)
+    {
+        foreach ($filterParams as $parameter => $value) {
+            //
         }
     }
 

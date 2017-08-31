@@ -43,7 +43,7 @@ export default {
 
     textSearch () {
       setTimeout(() => {
-          this.getOrders(this.meta.pagination.current_page)
+          this.getOrders(1)
         }, 2000)
     }
 
