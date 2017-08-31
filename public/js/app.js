@@ -42085,9 +42085,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       flags: {
         neworder: false
       },
-      orderBy: {
-        latest: 1,
-        largestIds: 0
+      params: {
+        orderBy: {
+          latest: 1,
+          largestIds: 0
+        },
+        filters: {
+          //
+        }
       }
 
     };
@@ -42099,16 +42104,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.get('/webapi/orders?page=' + page, {
         params: {
-          orderBy: this.orderBy
+          params: this.params
         }
       }).then(function (response) {
         _this.orders = response.data.data;
         _this.meta = response.data.meta;
       });
     },
-    applyFilter: function applyFilter(filterName) {
-      this.orderBy = _.mapValues(this.orderBy, function (value, flagName) {
-        if (flagName == filterName) {
+    applyOrder: function applyOrder(orderBy) {
+      this.params.orderBy = _.mapValues(this.params.orderBy, function (value, flagName) {
+        if (flagName == orderBy) {
           return value == 0 ? 1 : -value;
         }
         return 0;
@@ -42164,9 +42169,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', {
+  }, [_vm._m(1), _vm._v(" "), _c('li', {
     staticClass: "dropdown"
-  }, [_vm._m(1), _vm._v(" "), _c('ul', {
+  }, [_vm._m(2), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu",
     attrs: {
       "role": "menu"
@@ -42178,7 +42183,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.applyFilter('latest')
+        _vm.applyOrder('latest')
       }
     }
   }, [_vm._v("По дате")])]), _vm._v(" "), _c('li', [_c('a', {
@@ -42188,7 +42193,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.applyFilter('largestIds')
+        _vm.applyOrder('largestIds')
       }
     }
   }, [_vm._v("По номеру")])])])])])])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {
@@ -42212,7 +42217,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-6"
-  }, [_c('strong', [_vm._v("Сумма:")]), _vm._v(" 75751.5 "), _c('strong', [_vm._v("Период поиска:")]), _vm._v(" 29.08.2014 - 29.08.2017\n            ")])
+  }, [_c('h4', [_c('span', {
+    staticClass: "label label-primary"
+  }, [_vm._v("Сумма:")]), _vm._v(" "), _c('small', [_vm._v("75751.5 ₽")]), _vm._v(" "), _c('span', {
+    staticClass: "label label-primary"
+  }, [_vm._v("Период поиска:")]), _vm._v(" "), _c('small', [_vm._v("29.08.14 - 29.08.17")])]), _c('br')])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Найти..."
+    }
+  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     staticClass: "dropdown-toggle",

@@ -6,9 +6,14 @@ export default {
       flags: {
         neworder: false
       },
-      orderBy: {
-        latest: 1,
-        largestIds: 0
+      params: {
+        orderBy: {
+          latest: 1,
+          largestIds: 0
+        },
+        filters: {
+          //
+        }
       },
 
     }
@@ -17,8 +22,8 @@ export default {
 
     getOrders (page) {
       axios.get('/webapi/orders?page=' + page, {
-        params:{
-          orderBy: this.orderBy
+        params: {
+          params: this.params
         }
       }).then((response) => {
         this.orders = response.data.data
@@ -26,9 +31,9 @@ export default {
       })
     },
 
-    applyFilter (filterName) {
-      this.orderBy = _.mapValues(this.orderBy, (value, flagName) => {
-        if (flagName == filterName) {
+    applyOrder (orderBy) {
+      this.params.orderBy = _.mapValues(this.params.orderBy, (value, flagName) => {
+        if (flagName == orderBy) {
           return (value == 0) ? 1 : -value
           }
         return 0

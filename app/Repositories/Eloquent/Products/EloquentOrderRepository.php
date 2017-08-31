@@ -9,7 +9,7 @@ class EloquentOrderRepository implements OrderRepository
 {
     public function getSortedAndFiltered(array $parameters)
     {
-        $sortParams = array_filter($parameters, function($value) {
+        $sortParams = array_filter($parameters['orderBy'], function($value) {
             return $value != 0;
         });
 
