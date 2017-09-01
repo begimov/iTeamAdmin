@@ -25,9 +25,11 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = $this->orders->getAllLatestPaginateBy(5);
+        $orders = $this->orders
+            ->getSortedAndFiltered(json_decode($request->all()['params'], true))
+            ->paginate(5);
 
         $ordersCollection = $orders->getCollection();
 
