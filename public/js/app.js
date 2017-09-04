@@ -42096,7 +42096,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       filters: {
         paymentType: {
           options: [{ id: 1, name: 'Я.Деньги' }, { id: 2, name: 'Карта' }, { id: 3, name: 'Сбербанк' }, { id: 4, name: 'Перевод' }],
-          value: []
+          values: []
+        },
+        paymentState: {
+          options: [{ id: 1, name: 'Не оплачен' }, { id: 2, name: 'Оплачен' }, { id: 3, name: 'Удален' }],
+          values: []
         }
       },
       flags: {
@@ -42189,7 +42193,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-subheading"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "col-md-8 text-right"
-  }, [_c('div', [_c('multiselect', {
+  }, [_c('ul', {
+    staticClass: "list-inline"
+  }, [_c('li', [_c('div', [_c('multiselect', {
     attrs: {
       "select-label": "",
       "track-by": "id",
@@ -42202,13 +42208,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Тип платежа"
     },
     model: {
-      value: (_vm.filters.paymentType.value),
+      value: (_vm.filters.paymentType.values),
       callback: function($$v) {
-        _vm.filters.paymentType.value = $$v
+        _vm.filters.paymentType.values = $$v
       },
-      expression: "filters.paymentType.value"
+      expression: "filters.paymentType.values"
     }
-  })], 1), _vm._v(" "), _c('ul', {
+  })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('multiselect', {
+    attrs: {
+      "select-label": "",
+      "track-by": "id",
+      "label": "name",
+      "options": _vm.filters.paymentState.options,
+      "multiple": true,
+      "close-on-select": false,
+      "hide-selected": true,
+      "searchable": false,
+      "placeholder": "Статус оплаты"
+    },
+    model: {
+      value: (_vm.filters.paymentState.values),
+      callback: function($$v) {
+        _vm.filters.paymentState.values = $$v
+      },
+      expression: "filters.paymentState.values"
+    }
+  })], 1)])]), _vm._v(" "), _c('ul', {
     staticClass: "list-inline"
   }, [_c('li', [_c('input', {
     directives: [{

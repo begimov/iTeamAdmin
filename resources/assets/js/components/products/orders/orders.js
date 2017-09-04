@@ -15,7 +15,15 @@ export default {
             {id: 3, name: 'Сбербанк'},
             {id: 4, name: 'Перевод'},
           ],
-          value: [],
+          values: [],
+        },
+        paymentState: {
+          options: [
+            {id: 1, name: 'Не оплачен'},
+            {id: 2, name: 'Оплачен'},
+            {id: 3, name: 'Удален'},
+          ],
+          values: [],
         }
       },
       flags: {
