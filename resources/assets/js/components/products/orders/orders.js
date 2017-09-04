@@ -10,10 +10,10 @@ export default {
       filters: {
         paymentType: {
           options: [
-            'Карта',
-            'Я.Деньги',
-            'Сбербанк',
-            'Перевод',
+            {id: 1, name: 'Я.Деньги'},
+            {id: 1, name: 'Карта'},
+            {id: 1, name: 'Сбербанк'},
+            {id: 1, name: 'Перевод'},
           ]
         }
       },
@@ -60,7 +60,7 @@ export default {
       this.timer = setTimeout(function(){
           this.getOrders(1)
       }.bind(this), 2000)
-    }
+    },
 
   },
   computed: {

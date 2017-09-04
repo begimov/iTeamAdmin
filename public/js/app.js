@@ -42095,7 +42095,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       timer: 0,
       filters: {
         paymentType: {
-          options: ['Карта', 'Я.Деньги', 'Сбербанк', 'Перевод']
+          options: [{ id: 1, name: 'Я.Деньги' }, { id: 1, name: 'Карта' }, { id: 1, name: 'Сбербанк' }, { id: 1, name: 'Перевод' }]
         }
       },
       flags: {
@@ -42189,16 +42189,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-subheading"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "col-md-8 text-right"
-  }, [_c('ul', {
-    staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_c('multiselect', {
+  }, [_c('div', [_c('multiselect', {
     attrs: {
       "select-label": "",
+      "track-by": "id",
+      "label": "name",
       "options": _vm.filters.paymentType.options,
       "multiple": true,
       "close-on-select": false,
-      "clear-on-select": false,
       "hide-selected": true,
+      "searchable": false,
       "placeholder": "Тип платежа"
     },
     model: {
@@ -42208,7 +42208,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "params.filters.paymentType"
     }
-  })], 1)]), _vm._v(" "), _c('li', [_c('input', {
+  }), _vm._v("\n                " + _vm._s(_vm.params.filters.paymentType) + "\n              ")], 1), _vm._v(" "), _c('ul', {
+    staticClass: "list-inline"
+  }, [_c('li', [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
