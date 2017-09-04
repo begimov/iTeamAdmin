@@ -63,7 +63,10 @@
                   </div>
                 </div>
 
-                <order v-for="order in orders" :order="order" :key="order.id"></order>
+                <order v-for="order in orders"
+                  :order="order"
+                  :payment-states="paymentStates"
+                  :key="order.id"></order>
 
               </div>
 

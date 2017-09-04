@@ -42669,7 +42669,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('order', {
       key: order.id,
       attrs: {
-        "order": order
+        "order": order,
+        "payment-states": _vm.paymentStates
       }
     })
   })], 2), _vm._v(" "), _c('div', {
@@ -42764,7 +42765,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['order'],
+  props: ['order', 'paymentStates'],
   data: function data() {
     return {
       //
@@ -42807,7 +42808,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" +79190442550\n        ")])]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
     staticClass: "badge"
-  }, [_vm._v("Заказ № " + _vm._s(_vm.order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«Как улучшить бизнес-процессы компании»")])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._m(1)])
+  }, [_vm._v("Заказ № " + _vm._s(_vm.order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«Как улучшить бизнес-процессы компании»")])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6 text-right orders-edit-block"
+  }, [_c('ul', {
+    staticClass: "list-inline"
+  }, [_vm._m(1), _vm._v(" "), _c('li', [_c('select', _vm._l((_vm.paymentStates), function(paymentState) {
+    return _c('option', [_vm._v(_vm._s(paymentState.name))])
+  }))]), _vm._v(" "), _vm._m(2)])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('p', [_c('span', {
     staticClass: "badge"
@@ -42827,11 +42834,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" Оплачен 30.11 в 12:35\n        ")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-6 text-right orders-edit-block"
-  }, [_c('ul', {
-    staticClass: "list-inline"
-  }, [_c('li', [_c('a', {
+  return _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
@@ -42840,7 +42843,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }), _vm._v(" Редактировать")])]), _vm._v(" "), _c('li', [_c('select', [_c('option', [_vm._v("Оплачен")]), _vm._v(" "), _c('option', [_vm._v("Ждет оплаты")])])]), _vm._v(" "), _c('li', [_c('a', {
+  }), _vm._v(" Редактировать")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('a', {
     attrs: {
       "href": "#"
     }
@@ -42849,7 +42854,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  })])])])])
+  })])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

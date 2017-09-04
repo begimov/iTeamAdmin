@@ -1,5 +1,5 @@
 export default {
-  props: ['order'],
+  props: ['order', 'paymentStates'],
   data () {
     return {
       //

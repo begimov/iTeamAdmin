@@ -35,8 +35,7 @@
         <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать</a></li>
         <li>
           <select>
-            <option>Оплачен</option>
-            <option>Ждет оплаты</option>
+            <option v-for="paymentState in paymentStates">{{ paymentState.name }}</option>
           </select>
         </li>
         <li><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
