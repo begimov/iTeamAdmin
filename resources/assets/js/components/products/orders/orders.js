@@ -2,6 +2,7 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   components: { Multiselect },
+  props: ['paymentTypes','paymentStates'],
   data () {
     return {
       orders: [],
@@ -9,20 +10,11 @@ export default {
       timer: 0,
       filters: {
         paymentType: {
-          options: [
-            {id: 1, name: 'Я.Деньги'},
-            {id: 2, name: 'Карта'},
-            {id: 3, name: 'Сбербанк'},
-            {id: 4, name: 'Перевод'},
-          ],
+          options: this.paymentTypes,
           values: [],
         },
         paymentState: {
-          options: [
-            {id: 1, name: 'Не оплачен'},
-            {id: 2, name: 'Оплачен'},
-            {id: 3, name: 'Удален'},
-          ],
+          options: this.paymentStates,
           values: [],
         }
       },

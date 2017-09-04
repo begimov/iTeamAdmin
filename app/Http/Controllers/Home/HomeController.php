@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Payments\PaymentType;
+use App\Models\Payments\PaymentState;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.index');
+        $paymentTypes = PaymentType::all();
+        $paymentStates = PaymentState::all();
+        return view('home.index', compact('paymentTypes', 'paymentStates'));
     }
 }
