@@ -11,10 +11,11 @@ export default {
         paymentType: {
           options: [
             {id: 1, name: 'Я.Деньги'},
-            {id: 1, name: 'Карта'},
-            {id: 1, name: 'Сбербанк'},
-            {id: 1, name: 'Перевод'},
-          ]
+            {id: 2, name: 'Карта'},
+            {id: 3, name: 'Сбербанк'},
+            {id: 4, name: 'Перевод'},
+          ],
+          value: [],
         }
       },
       flags: {
@@ -27,7 +28,6 @@ export default {
         },
         filters: {
           textSearch: '',
-          paymentType: [],
         }
       }
     }

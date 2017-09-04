@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-md-8 text-right">
                   <div>
-                    <multiselect v-model="params.filters.paymentType"
+                    <multiselect v-model="filters.paymentType.value"
                     select-label=""
                     track-by="id"
                     label="name"
@@ -26,7 +26,6 @@
                     :hide-selected="true"
                     :searchable="false"
                     placeholder="Тип платежа"/>
-                  {{ params.filters.paymentType }}
                 </div>
                 <ul class="list-inline">
                   <li><input type="text" class="form-control" placeholder="Найти..."

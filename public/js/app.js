@@ -42095,7 +42095,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       timer: 0,
       filters: {
         paymentType: {
-          options: [{ id: 1, name: 'Я.Деньги' }, { id: 1, name: 'Карта' }, { id: 1, name: 'Сбербанк' }, { id: 1, name: 'Перевод' }]
+          options: [{ id: 1, name: 'Я.Деньги' }, { id: 2, name: 'Карта' }, { id: 3, name: 'Сбербанк' }, { id: 4, name: 'Перевод' }],
+          value: []
         }
       },
       flags: {
@@ -42107,8 +42108,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           largestIds: 0
         },
         filters: {
-          textSearch: '',
-          paymentType: []
+          textSearch: ''
         }
       }
     };
@@ -42202,13 +42202,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Тип платежа"
     },
     model: {
-      value: (_vm.params.filters.paymentType),
+      value: (_vm.filters.paymentType.value),
       callback: function($$v) {
-        _vm.params.filters.paymentType = $$v
+        _vm.filters.paymentType.value = $$v
       },
-      expression: "params.filters.paymentType"
+      expression: "filters.paymentType.value"
     }
-  }), _vm._v("\n                " + _vm._s(_vm.params.filters.paymentType) + "\n              ")], 1), _vm._v(" "), _c('ul', {
+  })], 1), _vm._v(" "), _c('ul', {
     staticClass: "list-inline"
   }, [_c('li', [_c('input', {
     directives: [{
