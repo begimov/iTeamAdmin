@@ -14,7 +14,7 @@ class AddPaymentStateIdToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->integer('payment_state_id')->unsigned();
+            $table->integer('payment_state_id')->unsigned()->default(1);
         });
     }
 
@@ -26,7 +26,7 @@ class AddPaymentStateIdToOrdersTable extends Migration
     public function down()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->integer('payment_type_id')->unsigned();
+            $table->dropColumn('payment_state_id');
         });
     }
 }

@@ -14,7 +14,7 @@ class AddPaymentTypeIdToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->integer('payment_type_id')->unsigned();
+            $table->integer('payment_type_id')->unsigned()->nullable();
         });
     }
 
