@@ -46,15 +46,15 @@ class EloquentOrderRepository implements OrderRepository
     }
 
     protected function getAllLatest() {
-        return Order::latest();
+        return Order::latest()->with('user');
     }
 
     protected function getAllOldest() {
-        return Order::oldest();
+        return Order::oldest()->with('user');
     }
 
     protected function orderBy($column, $order)
     {
-        return Order::orderBy($column, $order);
+        return Order::orderBy($column, $order)->with('user');
     }
 }
