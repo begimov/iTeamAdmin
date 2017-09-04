@@ -10,12 +10,25 @@
 
           <div class="panel-body">
             <div class="row panel-subheading">
-              <div class="col-md-6">
+              <div class="col-md-4">
                   <h4><span class="label label-primary">Сумма:</span> <small>75751.5&nbsp;&#8381;</small><br>
                   <span class="label label-primary">Период поиска:</span> <small>29.08.14 - 29.08.17</small></h4><br>
               </div>
-              <div class="col-md-6 text-right">
+              <div class="col-md-8 text-right">
                 <ul class="list-inline">
+                  <li>
+                    <div>
+                      <multiselect v-model="params.filters.paymentType"
+                        select-label=""
+                        :options="filters.paymentType.options"
+                        :multiple="true"
+                        :close-on-select="false"
+                        :clear-on-select="false"
+                        :hide-selected="true"
+                        placeholder="Тип платежа">
+                      </multiselect>
+                    </div>
+                  </li>
                   <li><input type="text" class="form-control" placeholder="Найти..."
                           v-model="params.filters.textSearch"
                           @input="textSearch"></li>
@@ -48,3 +61,4 @@
 </template>
 
 <script src="./orders.js"></script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

@@ -1,9 +1,22 @@
+import Multiselect from 'vue-multiselect'
+
 export default {
+  components: { Multiselect },
   data () {
     return {
       orders: [],
       meta: null,
       timer: 0,
+      filters: {
+        paymentType: {
+          options: [
+            'Карта',
+            'Я.Деньги',
+            'Сбербанк',
+            'Перевод',
+          ]
+        }
+      },
       flags: {
         neworder: false
       },
@@ -13,10 +26,10 @@ export default {
           largestIds: 0
         },
         filters: {
-          textSearch: ''
+          textSearch: '',
+          paymentType: [],
         }
-      },
-
+      }
     }
   },
   methods: {
