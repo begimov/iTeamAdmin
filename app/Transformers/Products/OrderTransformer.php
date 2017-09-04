@@ -13,6 +13,8 @@ class OrderTransformer extends \League\Fractal\TransformerAbstract
     {
         return [
             'id' => $order->id,
+            'payment_state_id' => $order->payment_state_id,
+            'payment_type_id' => $order->payment_type_id,
             'created_at_human' => $order->created_at->diffForHumans(),
         ];
     }
