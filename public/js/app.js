@@ -42264,7 +42264,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }), _vm._v(" Сортировать "), _c('span', {
+  }), _c('span', {
     staticClass: "caret"
   })])
 }]}
@@ -42371,13 +42371,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('p', [_c('span', {
     staticClass: "badge"
   }, [_vm._v("\n        4000 ₽\n      ")]), _vm._v(" "), _c('small', [_vm._v("\n        Робокасса\n        "), _c('span', {
+    staticClass: "label label-warning"
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-ok",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Оформлен 29.11 в 22:35\n        ")]), _vm._v(" "), _c('span', {
     staticClass: "label label-success"
   }, [_c('span', {
     staticClass: "glyphicon glyphicon-ok",
     attrs: {
       "aria-hidden": "true"
     }
-  }), _vm._v(" Оплачен 30 ноября в 12:35\n        ")])])])
+  }), _vm._v(" Оплачен 30.11 в 12:35\n        ")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-6 text-right orders-edit-block"
@@ -42401,7 +42408,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }), _vm._v(" Удалить")])])])])
+  })])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

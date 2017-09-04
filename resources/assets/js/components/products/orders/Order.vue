@@ -20,8 +20,11 @@
         </span>
         <small>
           Робокасса
+          <span class="label label-warning">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Оформлен 29.11 в 22:35
+          </span>
           <span class="label label-success">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Оплачен 30 ноября в 12:35
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Оплачен 30.11 в 12:35
           </span>
         </small>
       </p>
@@ -36,7 +39,7 @@
             <option>Ждет оплаты</option>
           </select>
         </li>
-        <li><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Удалить</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
       </ul>
     </div>
 
