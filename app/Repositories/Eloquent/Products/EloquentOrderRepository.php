@@ -14,23 +14,26 @@ class EloquentOrderRepository implements OrderRepository
         });
 // dd($filterParams);
         $filteredOrders = $this->filterBy($parameters['filters']);
-dd($filteredOrders->get());
-        return (empty($sortParams)) ? $this->getAllLatest() : $this->sortBy($sortParams);
+// dd($filteredOrders->get());
+        return (empty($sortParams)) ? $this->getAllLatest($filteredOrders)
+            : $this->sortBy($filteredOrders, $sortParams);
     }
 
-    protected function sortBy(array $sortParams) {
+    protected function sortBy($filteredOrders, array $sortParams) {
 
         foreach ($sortParams as $parameter => $value) {
 
             switch ($parameter) {
               case 'latest':
-                return ($value == 1) ? $this->getAllLatest() : $this->getAllOldest();
+                return ($value == 1) ? $this->getAllLatest($filteredOrders)
+                    : $this->getAllOldest($filteredOrders);
                 break;
               case 'largestIds':
-                return ($value == 1) ? $this->orderBy('id', 'desc') : $this->orderBy('id', 'asc');
+                return ($value == 1) ? $this->orderBy($filteredOrders, 'id', 'desc')
+                    : $this->orderBy($filteredOrders, 'id', 'asc');
                 break;
               default:
-                return $this->getAllLatest();
+                return $this->getAllLatest($filteredOrders);
                 break;
             }
         }
@@ -44,17 +47,17 @@ dd($filteredOrders->get());
         return $filteredOrders;
     }
 
-    protected function getAllLatest() {
-        return Order::latest()->with('user');
+    protected function getAllLatest($filteredOrders) {
+        return $filteredOrders->latest()->with('user');
     }
 
-    protected function getAllOldest() {
-        return Order::oldest()->with('user');
+    protected function getAllOldest($filteredOrders) {
+        return $filteredOrders->oldest()->with('user');
     }
 
-    protected function orderBy($column, $order)
+    protected function orderBy($filteredOrders, $column, $order)
     {
-        return Order::orderBy($column, $order)->with('user');
+        return $filteredOrders->orderBy($column, $order)->with('user');
     }
 
     protected function prepareFilterParams(array $params)
