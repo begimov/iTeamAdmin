@@ -42818,36 +42818,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "badge"
   }, [_vm._v("Заказ № " + _vm._s(_vm.order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«Как улучшить бизнес-процессы компании»")])]), _vm._v(" "), _c('p', [_c('span', {
     staticClass: "badge"
-  }, [_vm._v("\n        4000 ₽\n      ")]), _vm._v(" "), _c('small', [_vm._v("\n        " + _vm._s(_vm.order.paymentType ? _vm.order.paymentType.data.name : '') + "\n        "), _vm._m(0), _vm._v(" "), _vm._m(1)])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6 text-right orders-edit-block"
-  }, [_c('ul', {
-    staticClass: "list-inline"
-  }, [_vm._m(2), _vm._v(" "), _c('li', [_c('select', _vm._l((_vm.paymentStates), function(paymentState) {
-    return _c('option', {
-      domProps: {
-        "selected": _vm.order.payment_state_id == paymentState.id
-      }
-    }, [_vm._v(_vm._s(paymentState.name))])
-  }))]), _vm._v(" "), _vm._m(3)])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
+  }, [_vm._v("\n        4000 ₽\n      ")]), _vm._v(" "), _c('small', [_vm._v("\n        " + _vm._s(_vm.order.paymentType ? _vm.order.paymentType.data.name : '') + "\n        "), _c('span', {
     staticClass: "label label-warning"
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-ok",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Оформлен 29.11 в 22:35\n        ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('span', {
+  }, [_vm._v("\n          Оформлен " + _vm._s(_vm.order.created_at_human) + "\n        ")]), _vm._v(" "), (_vm.order.paymentType) ? _c('span', {
     staticClass: "label label-success"
   }, [_c('span', {
     staticClass: "glyphicon glyphicon-ok",
     attrs: {
       "aria-hidden": "true"
     }
-  }), _vm._v(" Оплачен 30.11 в 12:35\n        ")])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  }), _vm._v(" Оплачен  " + _vm._s(_vm.order.updated_at_human) + "\n        ")]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6 text-right orders-edit-block"
+  }, [_c('ul', {
+    staticClass: "list-inline"
+  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('select', _vm._l((_vm.paymentStates), function(paymentState) {
+    return _c('option', {
+      domProps: {
+        "selected": _vm.order.payment_state_id == paymentState.id
+      }
+    }, [_vm._v(_vm._s(paymentState.name))])
+  }))]), _vm._v(" "), _vm._m(1)])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('a', {
     attrs: {
       "href": "#"

@@ -21,10 +21,10 @@
         <small>
           {{ order.paymentType ? order.paymentType.data.name : '' }}
           <span class="label label-warning">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Оформлен 29.11 в 22:35
+            Оформлен {{ order.created_at_human }}
           </span>
-          <span class="label label-success">
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Оплачен 30.11 в 12:35
+          <span class="label label-success" v-if="order.paymentType">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Оплачен  {{ order.updated_at_human }}
           </span>
         </small>
       </p>
