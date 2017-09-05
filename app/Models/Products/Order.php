@@ -30,7 +30,7 @@ class Order extends Model
         return $this->belongsTo(PaymentState::class);
     }
 
-    public function order()
+    public function product()
     {
         return $this->belongsTo(Product::class);
     }
