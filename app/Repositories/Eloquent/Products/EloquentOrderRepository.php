@@ -25,12 +25,6 @@ class EloquentOrderRepository implements OrderRepository
             return $query;
         }
 
-        foreach ($params as $key => $param) {
-          $params[$key] = array_map(function($value) {
-              return $value['id'];
-          }, $param);
-        }
-
         foreach ($params as $key => $ids) {
           switch ($key) {
             case 'paymentType':

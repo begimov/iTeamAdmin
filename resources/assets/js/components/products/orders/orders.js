@@ -29,7 +29,13 @@ export default {
     getOrders (page) {
       axios.get('/webapi/orders?page=' + page, {
         params: {
-          params: this.params
+          params: {
+            orderBy: this.params.orderBy,
+            filters: {
+              paymentType: _.map(this.params.filters.paymentType, 'id'),
+              paymentState: _.map(this.params.filters.paymentState, 'id'),
+            }
+          }
         }
       }).then((response) => {
         this.orders = response.data.data

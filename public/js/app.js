@@ -42492,7 +42492,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.get('/webapi/orders?page=' + page, {
         params: {
-          params: this.params
+          params: {
+            orderBy: this.params.orderBy,
+            filters: {
+              paymentType: _.map(this.params.filters.paymentType, 'id'),
+              paymentState: _.map(this.params.filters.paymentState, 'id')
+            }
+          }
         }
       }).then(function (response) {
         _this.orders = response.data.data;
