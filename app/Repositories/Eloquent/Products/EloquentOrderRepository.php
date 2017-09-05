@@ -27,9 +27,24 @@ class EloquentOrderRepository implements OrderRepository
           }, $param);
         }
 
-        return Order::
-            whereIn('payment_type_id', $params['paymentType'])
-            ->whereIn('payment_state_id', $params['paymentState']);
+        $query = Order::query();
+
+        foreach ($params as $key => $ids) {
+          switch ($key) {
+            case 'paymentType':
+              $query->whereIn('payment_type_id', $ids);
+              break;
+
+            case 'paymentState':
+              $query->whereIn('payment_state_id', $ids);
+              break;
+
+            default:
+              break;
+          }
+        }
+
+        return $query;
     }
 
     protected function sortBy($filteredOrders, array $orderByParams) {

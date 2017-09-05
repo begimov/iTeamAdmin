@@ -42592,11 +42592,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Тип платежа"
     },
     model: {
-      value: (_vm.params.filters.paymentType.values),
+      value: (_vm.params.filters.paymentType),
       callback: function($$v) {
-        _vm.params.filters.paymentType.values = $$v
+        _vm.params.filters.paymentType = $$v
       },
-      expression: "params.filters.paymentType.values"
+      expression: "params.filters.paymentType"
     }
   })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('multiselect', {
     attrs: {
@@ -42611,11 +42611,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Статус оплаты"
     },
     model: {
-      value: (_vm.params.filters.paymentState.values),
+      value: (_vm.params.filters.paymentState),
       callback: function($$v) {
-        _vm.params.filters.paymentState.values = $$v
+        _vm.params.filters.paymentState = $$v
       },
-      expression: "params.filters.paymentState.values"
+      expression: "params.filters.paymentState"
     }
   })], 1)])]), _vm._v(" "), _c('ul', {
     staticClass: "list-inline"

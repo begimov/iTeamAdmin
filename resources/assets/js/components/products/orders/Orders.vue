@@ -18,7 +18,7 @@
                   <ul class="list-inline">
                     <li>
                       <div>
-                        <multiselect v-model="params.filters.paymentType.values"
+                        <multiselect v-model="params.filters.paymentType"
                         select-label=""
                         track-by="id"
                         label="name"
@@ -32,7 +32,7 @@
                     </li>
                     <li>
                       <div>
-                        <multiselect v-model="params.filters.paymentState.values"
+                        <multiselect v-model="params.filters.paymentState"
                         select-label=""
                         track-by="id"
                         label="name"
