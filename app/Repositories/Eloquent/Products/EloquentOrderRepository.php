@@ -12,11 +12,9 @@ class EloquentOrderRepository implements OrderRepository
         $sortParams = array_filter($parameters['orderBy'], function($value) {
             return $value != 0;
         });
-
-        $filterParams = array_filter($parameters['filters'], function($value) {
-            return $value != '';
-        });
-
+// dd($filterParams);
+        $filteredOrders = $this->filterBy($parameters['filters']);
+dd($filteredOrders->get());
         return (empty($sortParams)) ? $this->getAllLatest() : $this->sortBy($sortParams);
     }
 
@@ -40,9 +38,10 @@ class EloquentOrderRepository implements OrderRepository
 
     protected function filterBy(array $filterParams)
     {
-        foreach ($filterParams as $parameter => $value) {
-            //
-        }
+        $filteredOrders = Order::
+            whereIn('payment_type_id', $this->prepareFilterParams($filterParams['paymentType']['values']))
+            ->whereIn('payment_state_id', $this->prepareFilterParams($filterParams['paymentState']['values']));
+        return $filteredOrders;
     }
 
     protected function getAllLatest() {
@@ -56,5 +55,14 @@ class EloquentOrderRepository implements OrderRepository
     protected function orderBy($column, $order)
     {
         return Order::orderBy($column, $order)->with('user');
+    }
+
+    protected function prepareFilterParams(array $params)
+    {
+        $filterParams = [];
+        foreach ($params as $parameter => $value) {
+            $filterParams[] = $value['id'];
+        }
+        return $filterParams;
     }
 }

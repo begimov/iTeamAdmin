@@ -42469,14 +42469,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       orders: [],
       meta: null,
       timer: 0,
-      filters: {
-        paymentType: {
-          options: this.paymentTypes,
-          values: []
-        },
-        paymentState: {
-          options: this.paymentStates,
-          values: []
+      indata: {
+        filters: {
+          paymentType: {
+            options: this.paymentTypes
+          },
+          paymentState: {
+            options: this.paymentStates
+          }
         }
       },
       flags: {
@@ -42488,7 +42488,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           largestIds: 0
         },
         filters: {
-          textSearch: ''
+          textSearch: '',
+          paymentType: {
+            values: this.paymentTypes
+          },
+          paymentState: {
+            values: this.paymentStates
+          }
         }
       }
     };
@@ -42582,7 +42588,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "select-label": "",
       "track-by": "id",
       "label": "name",
-      "options": _vm.filters.paymentType.options,
+      "options": _vm.indata.filters.paymentType.options,
       "multiple": true,
       "close-on-select": false,
       "hide-selected": true,
@@ -42590,18 +42596,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Тип платежа"
     },
     model: {
-      value: (_vm.filters.paymentType.values),
+      value: (_vm.params.filters.paymentType.values),
       callback: function($$v) {
-        _vm.filters.paymentType.values = $$v
+        _vm.params.filters.paymentType.values = $$v
       },
-      expression: "filters.paymentType.values"
+      expression: "params.filters.paymentType.values"
     }
   })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('multiselect', {
     attrs: {
       "select-label": "",
       "track-by": "id",
       "label": "name",
-      "options": _vm.filters.paymentState.options,
+      "options": _vm.indata.filters.paymentState.options,
       "multiple": true,
       "close-on-select": false,
       "hide-selected": true,
@@ -42609,11 +42615,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Статус оплаты"
     },
     model: {
-      value: (_vm.filters.paymentState.values),
+      value: (_vm.params.filters.paymentState.values),
       callback: function($$v) {
-        _vm.filters.paymentState.values = $$v
+        _vm.params.filters.paymentState.values = $$v
       },
-      expression: "filters.paymentState.values"
+      expression: "params.filters.paymentState.values"
     }
   })], 1)])]), _vm._v(" "), _c('ul', {
     staticClass: "list-inline"

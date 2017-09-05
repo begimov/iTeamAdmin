@@ -8,14 +8,14 @@ export default {
       orders: [],
       meta: null,
       timer: 0,
-      filters: {
-        paymentType: {
-          options: this.paymentTypes,
-          values: [],
-        },
-        paymentState: {
-          options: this.paymentStates,
-          values: [],
+      indata: {
+        filters: {
+          paymentType: {
+            options: this.paymentTypes,
+          },
+          paymentState: {
+            options: this.paymentStates,
+          }
         }
       },
       flags: {
@@ -28,6 +28,12 @@ export default {
         },
         filters: {
           textSearch: '',
+          paymentType: {
+            values: this.paymentTypes,
+          },
+          paymentState: {
+            values: this.paymentStates,
+          }
         }
       }
     }

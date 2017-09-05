@@ -18,11 +18,11 @@
                   <ul class="list-inline">
                     <li>
                       <div>
-                        <multiselect v-model="filters.paymentType.values"
+                        <multiselect v-model="params.filters.paymentType.values"
                         select-label=""
                         track-by="id"
                         label="name"
-                        :options="filters.paymentType.options"
+                        :options="indata.filters.paymentType.options"
                         :multiple="true"
                         :close-on-select="false"
                         :hide-selected="true"
@@ -32,11 +32,11 @@
                     </li>
                     <li>
                       <div>
-                        <multiselect v-model="filters.paymentState.values"
+                        <multiselect v-model="params.filters.paymentState.values"
                         select-label=""
                         track-by="id"
                         label="name"
-                        :options="filters.paymentState.options"
+                        :options="indata.filters.paymentState.options"
                         :multiple="true"
                         :close-on-select="false"
                         :hide-selected="true"
