@@ -12,7 +12,7 @@ class EloquentOrderRepository implements OrderRepository
         $filtered = $this->filterBy(Order::query(), $parameters['filters']);
         $sortedAndFiltered = $this->sortBy($filtered, $parameters['orderBy']);
 
-        return $sortedAndFiltered->with('user');
+        return $sortedAndFiltered->with(['user', 'paymentType']);
     }
 
     protected function filterBy($query, array $filterParams)
