@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Payments\PaymentType;
 use App\Models\Payments\PaymentState;
+use App\Models\Products\Product;
 
 class Order extends Model
 {
@@ -27,5 +28,10 @@ class Order extends Model
     public function paymentState()
     {
         return $this->belongsTo(PaymentState::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Product::class);
     }
 }
