@@ -8,7 +8,7 @@ export default {
       orders: [],
       meta: null,
       timer: 0,
-      textSearchQuery: '',
+      searchQuery: '',
       flags: {
         neworder: false
       },
