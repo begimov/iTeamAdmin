@@ -42470,16 +42470,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       meta: null,
       timer: 0,
       textSearchQuery: '',
-      indata: {
-        filters: {
-          paymentType: {
-            options: this.paymentTypes
-          },
-          paymentState: {
-            options: this.paymentStates
-          }
-        }
-      },
       flags: {
         neworder: false
       },
@@ -42584,7 +42574,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "select-label": "",
       "track-by": "id",
       "label": "name",
-      "options": _vm.indata.filters.paymentType.options,
+      "options": _vm.paymentTypes,
       "multiple": true,
       "close-on-select": false,
       "hide-selected": true,
@@ -42603,7 +42593,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "select-label": "",
       "track-by": "id",
       "label": "name",
-      "options": _vm.indata.filters.paymentState.options,
+      "options": _vm.paymentStates,
       "multiple": true,
       "close-on-select": false,
       "hide-selected": true,

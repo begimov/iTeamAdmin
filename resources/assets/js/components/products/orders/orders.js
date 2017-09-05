@@ -9,16 +9,6 @@ export default {
       meta: null,
       timer: 0,
       textSearchQuery: '',
-      indata: {
-        filters: {
-          paymentType: {
-            options: this.paymentTypes,
-          },
-          paymentState: {
-            options: this.paymentStates,
-          }
-        }
-      },
       flags: {
         neworder: false
       },

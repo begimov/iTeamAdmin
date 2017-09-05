@@ -69,7 +69,7 @@ class EloquentOrderRepository implements OrderRepository
                     : $filteredOrders->orderBy('id', 'asc');
                 break;
               default:
-                return $this->getAllLatest($filteredOrders);
+                return $filteredOrders->latest();
                 break;
             }
         }
