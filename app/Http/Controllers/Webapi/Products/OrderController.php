@@ -35,7 +35,7 @@ class OrderController extends Controller
 
         return fractal()
             ->collection($ordersCollection)
-            ->parseIncludes(['user', 'paymentType'])
+            ->parseIncludes(['user', 'paymentType', 'product'])
             ->transformWith(new OrderTransformer)
             ->paginateWith(new IlluminatePaginatorAdapter($orders))
             ->toArray();

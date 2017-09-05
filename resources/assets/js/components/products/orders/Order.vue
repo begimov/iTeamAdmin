@@ -13,10 +13,10 @@
           </small>
         </h4>
       </p>
-      <p><span class="badge">Заказ № {{ order.id }}:</span> <small>&laquo;Как улучшить бизнес-процессы компании&raquo;</small></p>
+      <p><span class="badge">Заказ № {{ order.id }}:</span> <small>&laquo;{{ order.product.data.name }}&raquo;</small></p>
       <p>
         <span class="badge">
-          4000&nbsp;&#8381;
+          {{ order.product.data.price }}&nbsp;&#8381;
         </span>
         <small>
           {{ order.paymentType ? order.paymentType.data.name : '' }}
