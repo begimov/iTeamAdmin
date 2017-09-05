@@ -54,37 +54,24 @@ class EloquentOrderRepository implements OrderRepository
         });
 
         if ((empty($orderByActiveParam))) {
-            return $this->getAllLatest($filteredOrders);
+            return $filteredOrders->latest();
         }
 
         foreach ($orderByActiveParam as $parameter => $value) {
 
             switch ($parameter) {
               case 'latest':
-                return ($value == 1) ? $this->getAllLatest($filteredOrders)
-                    : $this->getAllOldest($filteredOrders);
+                return ($value == 1) ? $filteredOrders->latest()
+                    : $filteredOrders->oldest();
                 break;
               case 'largestIds':
-                return ($value == 1) ? $this->orderBy($filteredOrders, 'id', 'desc')
-                    : $this->orderBy($filteredOrders, 'id', 'asc');
+                return ($value == 1) ? $filteredOrders->orderBy('id', 'desc')
+                    : $filteredOrders->orderBy('id', 'asc');
                 break;
               default:
                 return $this->getAllLatest($filteredOrders);
                 break;
             }
         }
-    }
-
-    protected function getAllLatest($filteredOrders) {
-        return $filteredOrders->latest();
-    }
-
-    protected function getAllOldest($filteredOrders) {
-        return $filteredOrders->oldest();
-    }
-
-    protected function orderBy($filteredOrders, $column, $order)
-    {
-        return $filteredOrders->orderBy($column, $order);
     }
 }
