@@ -42479,8 +42479,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           largestIds: 0
         },
         filters: {
-          paymentType: this.paymentTypes,
-          paymentState: this.paymentStates
+          paymentType: [],
+          paymentState: []
         }
       }
     };

@@ -21,6 +21,10 @@ class EloquentOrderRepository implements OrderRepository
             return !empty($value);
         });
 
+        if ((empty($params))) {
+            return $query;
+        }
+
         foreach ($params as $key => $param) {
           $params[$key] = array_map(function($value) {
               return $value['id'];
