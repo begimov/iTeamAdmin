@@ -15,7 +15,7 @@
                   <span class="label label-primary">Сумма:</span> <small>75751.5&nbsp;&#8381;</small><br>
                   <span class="label label-primary">Период поиска:</span> <small>29.08.14 - 29.08.17</small>
                 </h4>
-                <search v-model="searchQuery"></search>
+                <search v-model="params.searchQuery" v-on:input="textSearch"></search>
               </div>
               <div class="col-md-8 text-right">
                 <ul class="list-inline">

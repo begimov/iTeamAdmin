@@ -42470,7 +42470,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       orders: [],
       meta: null,
       timer: 0,
-      searchQuery: '',
       flags: {
         neworder: false
       },
@@ -42482,7 +42481,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         filters: {
           paymentType: [],
           paymentState: []
-        }
+        },
+        searchQuery: ''
       }
     };
   },
@@ -42498,7 +42498,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             filters: {
               paymentType: _.map(this.params.filters.paymentType, 'id'),
               paymentState: _.map(this.params.filters.paymentState, 'id')
-            }
+            },
+            searchQuery: this.params.searchQuery.trim()
           }
         }
       }).then(function (response) {
@@ -42575,12 +42576,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-4"
   }, [_vm._m(0), _vm._v(" "), _c('search', {
+    on: {
+      "input": _vm.textSearch
+    },
     model: {
-      value: (_vm.searchQuery),
+      value: (_vm.params.searchQuery),
       callback: function($$v) {
-        _vm.searchQuery = $$v
+        _vm.params.searchQuery = $$v
       },
-      expression: "searchQuery"
+      expression: "params.searchQuery"
     }
   })], 1), _vm._v(" "), _c('div', {
     staticClass: "col-md-8 text-right"

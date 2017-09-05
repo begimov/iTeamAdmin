@@ -8,7 +8,6 @@ export default {
       orders: [],
       meta: null,
       timer: 0,
-      searchQuery: '',
       flags: {
         neworder: false
       },
@@ -20,7 +19,8 @@ export default {
         filters: {
           paymentType: [],
           paymentState: [],
-        }
+        },
+        searchQuery: '',
       }
     }
   },
@@ -34,7 +34,8 @@ export default {
             filters: {
               paymentType: _.map(this.params.filters.paymentType, 'id'),
               paymentState: _.map(this.params.filters.paymentState, 'id'),
-            }
+            },
+            searchQuery: this.params.searchQuery.trim()
           }
         }
       }).then((response) => {
