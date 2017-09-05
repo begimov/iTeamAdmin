@@ -46,10 +46,6 @@ class EloquentOrderRepository implements OrderRepository
             return $value != 0;
         });
 
-        if ((empty($activeOrderByParams))) {
-            return $query->latest();
-        }
-
         foreach ($activeOrderByParams as $parameter => $value) {
             switch ($parameter) {
               case 'latest':
