@@ -9,19 +9,26 @@ class EloquentOrderRepository implements OrderRepository
 {
     public function getSortedAndFiltered(array $parameters)
     {
-        $sortParams = array_filter($parameters['orderBy'], function($value) {
-            return $value != 0;
-        });
-// dd($filterParams);
-        $filteredOrders = $this->filterBy($parameters['filters']);
-// dd($filteredOrders->get());
-        return (empty($sortParams)) ? $this->getAllLatest($filteredOrders)
-            : $this->sortBy($filteredOrders, $sortParams);
+        $orderByParams = $parameters['orderBy'];
+        $filterParams = $parameters['filters'];
+
+        $filteredOrders = $this->filterBy($filterParams);
+        $resultOrders = $this->sortBy($filteredOrders, $orderByParams);
+
+        return $resultOrders;
     }
 
-    protected function sortBy($filteredOrders, array $sortParams) {
+    protected function sortBy($filteredOrders, array $orderByParams) {
 
-        foreach ($sortParams as $parameter => $value) {
+        $orderByActiveParam = array_filter($orderByParams, function($value) {
+            return $value != 0;
+        });
+
+        if ((empty($orderByActiveParam))) {
+            return $this->getAllLatest($filteredOrders);
+        }
+
+        foreach ($orderByActiveParam as $parameter => $value) {
 
             switch ($parameter) {
               case 'latest':
@@ -39,14 +46,6 @@ class EloquentOrderRepository implements OrderRepository
         }
     }
 
-    protected function filterBy(array $filterParams)
-    {
-        $filteredOrders = Order::
-            whereIn('payment_type_id', $this->prepareFilterParams($filterParams['paymentType']['values']))
-            ->whereIn('payment_state_id', $this->prepareFilterParams($filterParams['paymentState']['values']));
-        return $filteredOrders;
-    }
-
     protected function getAllLatest($filteredOrders) {
         return $filteredOrders->latest()->with('user');
     }
@@ -58,6 +57,14 @@ class EloquentOrderRepository implements OrderRepository
     protected function orderBy($filteredOrders, $column, $order)
     {
         return $filteredOrders->orderBy($column, $order)->with('user');
+    }
+
+    protected function filterBy(array $filterParams)
+    {
+        $filteredOrders = Order::
+            whereIn('payment_type_id', $this->prepareFilterParams($filterParams['paymentType']['values']))
+            ->whereIn('payment_state_id', $this->prepareFilterParams($filterParams['paymentState']['values']));
+        return $filteredOrders;
     }
 
     protected function prepareFilterParams(array $params)
