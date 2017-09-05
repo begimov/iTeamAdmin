@@ -9,13 +9,13 @@ class EloquentOrderRepository implements OrderRepository
 {
     public function getSortedAndFiltered(array $parameters)
     {
-        $filtered = $this->filterBy($parameters['filters']);
+        $filtered = $this->filterBy(Order::query(), $parameters['filters']);
         $sortedAndFiltered = $this->sortBy($filtered, $parameters['orderBy']);
 
         return $sortedAndFiltered->with('user');
     }
 
-    protected function filterBy(array $filterParams)
+    protected function filterBy($query, array $filterParams)
     {
         $params = array_filter($filterParams, function($value) {
             return !empty($value);
@@ -27,51 +27,46 @@ class EloquentOrderRepository implements OrderRepository
           }, $param);
         }
 
-        $query = Order::query();
-
         foreach ($params as $key => $ids) {
           switch ($key) {
             case 'paymentType':
               $query->whereIn('payment_type_id', $ids);
               break;
-
             case 'paymentState':
               $query->whereIn('payment_state_id', $ids);
               break;
-
             default:
               break;
           }
         }
-
         return $query;
     }
 
-    protected function sortBy($filteredOrders, array $orderByParams) {
+    protected function sortBy($query, array $orderByParams) {
 
-        $orderByActiveParam = array_filter($orderByParams, function($value) {
+        $activeOrderByParams = array_filter($orderByParams, function($value) {
             return $value != 0;
         });
 
-        if ((empty($orderByActiveParam))) {
-            return $filteredOrders->latest();
+        if ((empty($activeOrderByParams))) {
+            return $query->latest();
         }
 
-        foreach ($orderByActiveParam as $parameter => $value) {
-
+        foreach ($activeOrderByParams as $parameter => $value) {
             switch ($parameter) {
               case 'latest':
-                return ($value == 1) ? $filteredOrders->latest()
-                    : $filteredOrders->oldest();
+                ($value == 1) ? $query->latest()
+                    : $query->oldest();
                 break;
               case 'largestIds':
-                return ($value == 1) ? $filteredOrders->orderBy('id', 'desc')
-                    : $filteredOrders->orderBy('id', 'asc');
+                ($value == 1) ? $query->orderBy('id', 'desc')
+                    : $query->orderBy('id', 'asc');
                 break;
               default:
-                return $filteredOrders->latest();
+                $query->latest();
                 break;
             }
         }
+        return $query;
     }
 }
