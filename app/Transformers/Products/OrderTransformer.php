@@ -4,11 +4,12 @@ namespace App\Transformers\Products;
 
 use App\Models\Products\Order;
 use App\Transformers\UserTransformer;
+use App\Transformers\Products\ProductTransformer;
 use App\Transformers\Payments\PaymentTypeTransformer;
 
 class OrderTransformer extends \League\Fractal\TransformerAbstract
 {
-    protected $availableIncludes = ['user', 'paymentType'];
+    protected $availableIncludes = ['user', 'paymentType', 'product'];
 
     public function transform(Order $order)
     {
@@ -31,5 +32,10 @@ class OrderTransformer extends \League\Fractal\TransformerAbstract
         if ($order->paymentType) {
             return $this->item($order->paymentType, new PaymentTypeTransformer);
         }
+    }
+
+    public function includeProduct(Order $order)
+    {
+        return $this->item($order->product, new ProductTransformer);
     }
 }
