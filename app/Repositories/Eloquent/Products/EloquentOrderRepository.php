@@ -9,13 +9,27 @@ class EloquentOrderRepository implements OrderRepository
 {
     public function getSortedAndFiltered(array $parameters)
     {
-        $orderByParams = $parameters['orderBy'];
-        $filterParams = $parameters['filters'];
+        $filtered = $this->filterBy($parameters['filters']);
+        $sortedAndFiltered = $this->sortBy($filtered, $parameters['orderBy']);
 
-        $filteredOrders = $this->filterBy($filterParams);
-        $resultOrders = $this->sortBy($filteredOrders, $orderByParams);
+        return $sortedAndFiltered->with('user');
+    }
 
-        return $resultOrders;
+    protected function filterBy(array $filterParams)
+    {
+        $params = array_filter($filterParams, function($value) {
+            return !empty($value);
+        });
+
+        foreach ($params as $key => $param) {
+          $params[$key] = array_map(function($value) {
+              return $value['id'];
+          }, $param);
+        }
+
+        return Order::
+            whereIn('payment_type_id', $params['paymentType'])
+            ->whereIn('payment_state_id', $params['paymentState']);
     }
 
     protected function sortBy($filteredOrders, array $orderByParams) {
@@ -47,32 +61,15 @@ class EloquentOrderRepository implements OrderRepository
     }
 
     protected function getAllLatest($filteredOrders) {
-        return $filteredOrders->latest()->with('user');
+        return $filteredOrders->latest();
     }
 
     protected function getAllOldest($filteredOrders) {
-        return $filteredOrders->oldest()->with('user');
+        return $filteredOrders->oldest();
     }
 
     protected function orderBy($filteredOrders, $column, $order)
     {
-        return $filteredOrders->orderBy($column, $order)->with('user');
-    }
-
-    protected function filterBy(array $filterParams)
-    {
-        $filteredOrders = Order::
-            whereIn('payment_type_id', $this->prepareFilterParams($filterParams['paymentType']['values']))
-            ->whereIn('payment_state_id', $this->prepareFilterParams($filterParams['paymentState']['values']));
-        return $filteredOrders;
-    }
-
-    protected function prepareFilterParams(array $params)
-    {
-        $filterParams = [];
-        foreach ($params as $parameter => $value) {
-            $filterParams[] = $value['id'];
-        }
-        return $filterParams;
+        return $filteredOrders->orderBy($column, $order);
     }
 }

@@ -47,7 +47,7 @@
                   </ul>
                   <ul class="list-inline">
                     <li><input type="text" class="form-control" placeholder="Найти..."
-                      v-model="params.filters.textSearch"
+                      v-model="textSearchQuery"
                       @input="textSearch"></li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

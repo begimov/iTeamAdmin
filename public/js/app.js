@@ -42469,6 +42469,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       orders: [],
       meta: null,
       timer: 0,
+      textSearchQuery: '',
       indata: {
         filters: {
           paymentType: {
@@ -42488,13 +42489,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           largestIds: 0
         },
         filters: {
-          textSearch: '',
-          paymentType: {
-            values: this.paymentTypes
-          },
-          paymentState: {
-            values: this.paymentStates
-          }
+          paymentType: this.paymentTypes,
+          paymentState: this.paymentStates
         }
       }
     };
@@ -42627,8 +42623,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.params.filters.textSearch),
-      expression: "params.filters.textSearch"
+      value: (_vm.textSearchQuery),
+      expression: "textSearchQuery"
     }],
     staticClass: "form-control",
     attrs: {
@@ -42636,12 +42632,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Найти..."
     },
     domProps: {
-      "value": (_vm.params.filters.textSearch)
+      "value": (_vm.textSearchQuery)
     },
     on: {
       "input": [function($event) {
         if ($event.target.composing) { return; }
-        _vm.params.filters.textSearch = $event.target.value
+        _vm.textSearchQuery = $event.target.value
       }, _vm.textSearch]
     }
   })]), _vm._v(" "), _c('li', {

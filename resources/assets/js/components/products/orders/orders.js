@@ -8,6 +8,7 @@ export default {
       orders: [],
       meta: null,
       timer: 0,
+      textSearchQuery: '',
       indata: {
         filters: {
           paymentType: {
@@ -27,13 +28,8 @@ export default {
           largestIds: 0
         },
         filters: {
-          textSearch: '',
-          paymentType: {
-            values: this.paymentTypes,
-          },
-          paymentState: {
-            values: this.paymentStates,
-          }
+          paymentType: this.paymentTypes,
+          paymentState: this.paymentStates,
         }
       }
     }
