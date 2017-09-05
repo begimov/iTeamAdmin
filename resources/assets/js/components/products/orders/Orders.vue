@@ -27,6 +27,7 @@
                         :close-on-select="false"
                         :hide-selected="true"
                         :searchable="false"
+                        @input = "getOrders(1)"
                         placeholder="Тип платежа"/>
                       </div>
                     </li>
@@ -41,6 +42,7 @@
                         :close-on-select="false"
                         :hide-selected="true"
                         :searchable="false"
+                        @input = "getOrders(1)"
                         placeholder="Статус оплаты"/>
                       </div>
                     </li>

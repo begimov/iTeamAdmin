@@ -42581,6 +42581,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "searchable": false,
       "placeholder": "Тип платежа"
     },
+    on: {
+      "input": function($event) {
+        _vm.getOrders(1)
+      }
+    },
     model: {
       value: (_vm.params.filters.paymentType),
       callback: function($$v) {
@@ -42599,6 +42604,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "hide-selected": true,
       "searchable": false,
       "placeholder": "Статус оплаты"
+    },
+    on: {
+      "input": function($event) {
+        _vm.getOrders(1)
+      }
     },
     model: {
       value: (_vm.params.filters.paymentState),
