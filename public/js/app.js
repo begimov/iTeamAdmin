@@ -42571,7 +42571,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row panel-subheading"
+  }, [_c('div', {
+    staticClass: "col-md-4"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.textSearchQuery),
+      expression: "textSearchQuery"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Найти..."
+    },
+    domProps: {
+      "value": (_vm.textSearchQuery)
+    },
+    on: {
+      "input": [function($event) {
+        if ($event.target.composing) { return; }
+        _vm.textSearchQuery = $event.target.value
+      }, _vm.textSearch]
+    }
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
@@ -42623,30 +42648,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "params.filters.paymentState"
     }
-  })], 1)])]), _vm._v(" "), _c('ul', {
-    staticClass: "list-inline"
-  }, [_c('li', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.textSearchQuery),
-      expression: "textSearchQuery"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Найти..."
-    },
-    domProps: {
-      "value": (_vm.textSearchQuery)
-    },
-    on: {
-      "input": [function($event) {
-        if ($event.target.composing) { return; }
-        _vm.textSearchQuery = $event.target.value
-      }, _vm.textSearch]
-    }
-  })]), _vm._v(" "), _c('li', {
+  })], 1)]), _vm._v(" "), _c('li', {
     staticClass: "dropdown"
   }, [_vm._m(1), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu",
@@ -42693,13 +42695,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e()], 1)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('h4', [_c('span', {
+  return _c('h4', [_c('span', {
     staticClass: "label label-primary"
   }, [_vm._v("Сумма:")]), _vm._v(" "), _c('small', [_vm._v("75751.5 ₽")]), _c('br'), _vm._v(" "), _c('span', {
     staticClass: "label label-primary"
-  }, [_vm._v("Период поиска:")]), _vm._v(" "), _c('small', [_vm._v("29.08.14 - 29.08.17")])]), _c('br')])
+  }, [_vm._v("Период поиска:")]), _vm._v(" "), _c('small', [_vm._v("29.08.14 - 29.08.17")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     staticClass: "dropdown-toggle",
