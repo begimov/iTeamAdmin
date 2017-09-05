@@ -24,21 +24,6 @@
                 <ul class="list-inline">
                   <li>
                     <div>
-                      <multiselect v-model="params.filters.paymentType"
-                      select-label=""
-                      track-by="id"
-                      label="name"
-                      :options="paymentTypes"
-                      :multiple="true"
-                      :close-on-select="false"
-                      :hide-selected="true"
-                      :searchable="false"
-                      @input = "getOrders(1)"
-                      placeholder="Тип платежа"/>
-                    </div>
-                  </li>
-                  <li>
-                    <div>
                       <multiselect v-model="params.filters.paymentState"
                       select-label=""
                       track-by="id"
@@ -50,6 +35,21 @@
                       :searchable="false"
                       @input = "getOrders(1)"
                       placeholder="Статус оплаты"/>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <multiselect v-model="params.filters.paymentType"
+                      select-label=""
+                      track-by="id"
+                      label="name"
+                      :options="paymentTypes"
+                      :multiple="true"
+                      :close-on-select="false"
+                      :hide-selected="true"
+                      :searchable="false"
+                      @input = "getOrders(1)"
+                      placeholder="Тип платежа"/>
                     </div>
                   </li>
                   <li class="dropdown">

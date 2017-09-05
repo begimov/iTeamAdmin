@@ -42605,30 +42605,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "select-label": "",
       "track-by": "id",
       "label": "name",
-      "options": _vm.paymentTypes,
-      "multiple": true,
-      "close-on-select": false,
-      "hide-selected": true,
-      "searchable": false,
-      "placeholder": "Тип платежа"
-    },
-    on: {
-      "input": function($event) {
-        _vm.getOrders(1)
-      }
-    },
-    model: {
-      value: (_vm.params.filters.paymentType),
-      callback: function($$v) {
-        _vm.params.filters.paymentType = $$v
-      },
-      expression: "params.filters.paymentType"
-    }
-  })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('multiselect', {
-    attrs: {
-      "select-label": "",
-      "track-by": "id",
-      "label": "name",
       "options": _vm.paymentStates,
       "multiple": true,
       "close-on-select": false,
@@ -42647,6 +42623,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.filters.paymentState = $$v
       },
       expression: "params.filters.paymentState"
+    }
+  })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('multiselect', {
+    attrs: {
+      "select-label": "",
+      "track-by": "id",
+      "label": "name",
+      "options": _vm.paymentTypes,
+      "multiple": true,
+      "close-on-select": false,
+      "hide-selected": true,
+      "searchable": false,
+      "placeholder": "Тип платежа"
+    },
+    on: {
+      "input": function($event) {
+        _vm.getOrders(1)
+      }
+    },
+    model: {
+      value: (_vm.params.filters.paymentType),
+      callback: function($$v) {
+        _vm.params.filters.paymentType = $$v
+      },
+      expression: "params.filters.paymentType"
     }
   })], 1)]), _vm._v(" "), _c('li', {
     staticClass: "dropdown"
