@@ -29,7 +29,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function profile()
+    public function userProfile()
     {
         return $this->hasOne(UserProfile::class);
     }

@@ -9,7 +9,7 @@ use App\Transformers\Payments\PaymentTypeTransformer;
 
 class OrderTransformer extends \League\Fractal\TransformerAbstract
 {
-    protected $availableIncludes = ['user', 'paymentType', 'product'];
+    protected $availableIncludes = ['user', 'user.profile', 'paymentType', 'product'];
 
     public function transform(Order $order)
     {
