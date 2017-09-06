@@ -4,7 +4,7 @@ namespace App\Repositories\Eloquent\Products;
 
 use App\Repositories\Contracts\Products\OrderRepository;
 use App\Models\Products\Order;
-use App\Services\Products\EloquentOrderQueryBuilder;
+use App\Services\Products\EloquentQueryBuilder;
 
 class EloquentOrderRepository implements OrderRepository
 {
@@ -12,10 +12,10 @@ class EloquentOrderRepository implements OrderRepository
 
     public function __construct()
     {
-        $this->queryBuilder = new EloquentOrderQueryBuilder(Order::class);
+        $this->queryBuilder = new EloquentQueryBuilder(Order::class);
     }
 
-    public function orderAndFilterQuery(array $parameters)
+    public function sortedAndFilteredOrders(array $parameters, $paginateBy)
     {
         $filterParams = array_filter($parameters['filters'], function($value) {
             return !empty($value);
@@ -30,6 +30,7 @@ class EloquentOrderRepository implements OrderRepository
             ->orderBy($orderByParams)
             ->search($parameters['searchQuery'], 'user', ['email', 'name'])
             ->with(['user', 'paymentType', 'product', 'user.userProfile'])
-            ->build();
+            ->build()
+            ->paginate($paginateBy);
     }
 }

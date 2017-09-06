@@ -2,7 +2,7 @@
 
 namespace App\Services\Products;
 
-class EloquentOrderQueryBuilder
+class EloquentQueryBuilder
 {
     protected $query;
 

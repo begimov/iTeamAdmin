@@ -28,8 +28,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $orders = $this->orders
-            ->orderAndFilterQuery(json_decode($request->all()['params'], true))
-            ->paginate(5);
+            ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
 
         $ordersCollection = $orders->getCollection();
 
