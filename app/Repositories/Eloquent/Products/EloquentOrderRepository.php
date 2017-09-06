@@ -20,7 +20,7 @@ class EloquentOrderRepository implements OrderRepository
         return $query->whereHas('user', function ($query) use ($searchQuery) {
           $query->where('email', 'like', "%{$searchQuery}%")
               ->orWhere('name', 'like', "%{$searchQuery}%");
-        })->with(['user', 'paymentType', 'product']);
+        })->with(['user', 'paymentType', 'product', 'user.profile']);
     }
 
     protected function filterBy($query, array $filterParams)
