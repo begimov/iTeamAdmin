@@ -42627,7 +42627,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
         this.getOrders(1);
-      }.bind(this), 2000);
+      }.bind(this), 1000);
     }
   },
   computed: {

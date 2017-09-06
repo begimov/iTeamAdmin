@@ -61,7 +61,7 @@ export default {
       clearTimeout(this.timer);
       this.timer = setTimeout(function(){
           this.getOrders(1)
-      }.bind(this), 2000)
+      }.bind(this), 1000)
     },
 
   },
