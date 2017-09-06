@@ -10,12 +10,12 @@ class EloquentOrderRepository implements OrderRepository
 {
     protected $queryBuilder;
 
-    public function __construct(EloquentOrderQueryBuilder $queryBuilder)
+    public function __construct()
     {
-        $this->queryBuilder = $queryBuilder;
+        $this->queryBuilder = new EloquentOrderQueryBuilder(Order::class);
     }
 
-    public function getSortedAndFiltered(array $parameters)
+    public function orderAndFilterQuery(array $parameters)
     {
         $filterParams = array_filter($parameters['filters'], function($value) {
             return !empty($value);
@@ -27,8 +27,8 @@ class EloquentOrderRepository implements OrderRepository
 
         return $this->queryBuilder
             ->filterBy($filterParams)
-            ->sortBy($orderByParams)
-            ->search($parameters['searchQuery'])
+            ->orderBy($orderByParams)
+            ->search($parameters['searchQuery'], 'user', ['email', 'name'])
             ->with(['user', 'paymentType', 'product', 'user.userProfile'])
             ->build();
     }

@@ -6,9 +6,9 @@ class EloquentOrderQueryBuilder
 {
     protected $query;
 
-    public function __construct()
+    public function __construct($model)
     {
-        $this->query = \App\Models\Products\Order::query();
+        $this->query = $model::query();
     }
 
     public function filterBy(array $filterParams)
@@ -16,31 +16,31 @@ class EloquentOrderQueryBuilder
         if (empty($filterParams)) {
             return $this;
         }
-
         foreach ($filterParams as $key => $ids) {
             $this->query->whereIn($key, $ids);
         }
         return $this;
     }
 
-    public function sortBy(array $orderByParams) {
-
+    public function orderBy(array $orderByParams)
+    {
         if (empty($orderByParams)) {
             return $this;
         }
-
         foreach ($orderByParams as $parameter => $value) {
             $this->query->orderBy($parameter, $value);
         }
-        
         return $this;
     }
 
-    public function search($searchQuery)
+    public function search($searchQuery, $relation, array $columns = ['email'])
     {
-        $this->query->whereHas('user', function ($query) use ($searchQuery) {
-          $query->where('email', 'like', "%{$searchQuery}%")
-              ->orWhere('name', 'like', "%{$searchQuery}%");
+        $firstColumn = array_shift($columns);
+
+        $this->query->whereHas($relation, function ($query) use ($searchQuery, $columns, $firstColumn) {
+          array_reduce($columns, function($newQuery, $column) use ($searchQuery) {
+              return $newQuery->orWhere($column, 'like', "%{$searchQuery}%");
+          }, $query->where($firstColumn, 'like', "%{$searchQuery}%"));
         });
 
         return $this;
