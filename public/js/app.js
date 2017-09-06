@@ -42908,7 +42908,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  }), _vm._v(" +79190442550\n        ")])]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
+  }), _vm._v(" " + _vm._s(_vm.order.user.data.userProfile.data.phone) + "\n        ")])]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
     staticClass: "badge"
   }, [_vm._v("Заказ № " + _vm._s(_vm.order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«" + _vm._s(_vm.order.product.data.name) + "»")])]), _vm._v(" "), _c('p', [_c('span', {
     staticClass: "badge"

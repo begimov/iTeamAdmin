@@ -9,7 +9,7 @@
             <a href="mailto:">
               <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ order.user.data.email }}
             </a>
-            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> +79190442550
+            <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> {{ order.user.data.userProfile.data.phone }}
           </small>
         </h4>
       </p>
