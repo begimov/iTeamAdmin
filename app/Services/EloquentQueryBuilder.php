@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Products;
+namespace App\Services;
 
 class EloquentQueryBuilder
 {

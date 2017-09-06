@@ -4,7 +4,7 @@ namespace App\Repositories\Eloquent\Products;
 
 use App\Repositories\Contracts\Products\OrderRepository;
 use App\Models\Products\Order;
-use App\Services\Products\EloquentQueryBuilder;
+use App\Services\EloquentQueryBuilder;
 
 class EloquentOrderRepository implements OrderRepository
 {
