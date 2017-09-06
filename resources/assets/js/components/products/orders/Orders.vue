@@ -36,7 +36,9 @@
                       <template slot="tag" scope="props">
                         <span class="custom__tag">
                           <span>{{ props.option.name }}</span>
-                          <span class="custom__remove" @click="props.remove(props.option)">❌</span>
+                          <span class="custom__remove" @click="props.remove(props.option)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          </span>
                         </span>
                       </template>
                       </multiselect>
@@ -58,7 +60,9 @@
                       <template slot="tag" scope="props">
                         <span class="custom__tag">
                           <span>{{ props.option.name }}</span>
-                          <span class="custom__remove" @click="props.remove(props.option)">❌</span>
+                          <span class="custom__remove" @click="props.remove(props.option)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          </span>
                         </span>
                       </template>
                       </multiselect>

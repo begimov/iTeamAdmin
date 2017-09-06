@@ -42730,7 +42730,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               props.remove(props.option)
             }
           }
-        }, [_vm._v("❌")])])]
+        }, [_c('span', {
+          staticClass: "glyphicon glyphicon-remove",
+          attrs: {
+            "aria-hidden": "true"
+          }
+        })])])]
       }
     }]),
     model: {
@@ -42769,7 +42774,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
               props.remove(props.option)
             }
           }
-        }, [_vm._v("❌")])])]
+        }, [_c('span', {
+          staticClass: "glyphicon glyphicon-remove",
+          attrs: {
+            "aria-hidden": "true"
+          }
+        })])])]
       }
     }]),
     model: {
