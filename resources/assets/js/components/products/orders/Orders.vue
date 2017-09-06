@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        <div v-bind:class="{ 'isActive': flags.isLoading, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <new-order v-if="flags.neworder" v-on:cancelOrder="flags.neworder = false"></new-order>

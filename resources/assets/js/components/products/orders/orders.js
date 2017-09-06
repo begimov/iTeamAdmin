@@ -9,7 +9,8 @@ export default {
       meta: null,
       timer: 0,
       flags: {
-        neworder: false
+        neworder: false,
+        isLoading: false
       },
       params: {
         orderBy: {
@@ -27,6 +28,7 @@ export default {
   methods: {
 
     getOrders (page) {
+      this.flags.isLoading = true;
       axios.get('/webapi/orders?page=' + page, {
         params: {
           params: {
@@ -41,6 +43,7 @@ export default {
       }).then((response) => {
         this.orders = response.data.data
         this.meta = response.data.meta
+        this.flags.isLoading = false;
       })
     },
 
