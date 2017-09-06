@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('additional-css')
-  <link rel="stylesheet" href="{{ asset('css/spinners.css') }}">
-@endsection
-
 @section('content')
 <div class="container">
 
