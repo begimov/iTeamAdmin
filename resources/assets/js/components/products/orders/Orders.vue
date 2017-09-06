@@ -54,7 +54,14 @@
                       :hide-selected="true"
                       :searchable="false"
                       @input = "getOrders(1)"
-                      placeholder="Тип платежа"/>
+                      placeholder="Тип платежа">
+                      <template slot="tag" scope="props">
+                        <span class="custom__tag">
+                          <span>{{ props.option.name }}</span>
+                          <span class="custom__remove" @click="props.remove(props.option)">❌</span>
+                        </span>
+                      </template>
+                      </multiselect>
                     </div>
                   </li>
                   <li class="dropdown">

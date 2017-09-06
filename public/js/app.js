@@ -42757,6 +42757,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.getOrders(1)
       }
     },
+    scopedSlots: _vm._u([{
+      key: "tag",
+      fn: function(props) {
+        return [_c('span', {
+          staticClass: "custom__tag"
+        }, [_c('span', [_vm._v(_vm._s(props.option.name))]), _vm._v(" "), _c('span', {
+          staticClass: "custom__remove",
+          on: {
+            "click": function($event) {
+              props.remove(props.option)
+            }
+          }
+        }, [_vm._v("❌")])])]
+      }
+    }]),
     model: {
       value: (_vm.params.filters.paymentType),
       callback: function($$v) {
