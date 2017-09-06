@@ -17,6 +17,7 @@ window.Vue = require('vue');
 
 // Base components
 Vue.component('paginator', require('./components/base/Paginator.vue'));
+Vue.component('search', require('./components/base/Search.vue'));
 
 Vue.component('orders', require('./components/products/orders/Orders.vue'));
 Vue.component('order', require('./components/products/orders/Order.vue'));

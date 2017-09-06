@@ -1,12 +1,13 @@
 export default {
-  props: ['order', 'paymentStates'],
   data () {
     return {
-      //
+      query: '',
     }
   },
   methods: {
-    //
+    changed () {
+      this.$emit('input', this.query)
+    }
   },
   computed: {
     //

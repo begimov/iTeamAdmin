@@ -4,57 +4,33 @@ namespace App\Repositories\Eloquent\Products;
 
 use App\Repositories\Contracts\Products\OrderRepository;
 use App\Models\Products\Order;
+use App\Services\EloquentQueryBuilder;
 
 class EloquentOrderRepository implements OrderRepository
 {
-    public function getSortedAndFiltered(array $parameters)
+    protected $queryBuilder;
+
+    public function __construct()
     {
-        $sortParams = array_filter($parameters['orderBy'], function($value) {
-            return $value != 0;
+        $this->queryBuilder = new EloquentQueryBuilder(Order::class);
+    }
+
+    public function sortedAndFilteredOrders(array $parameters, $paginateBy)
+    {
+        $filterParams = array_filter($parameters['filters'], function($value) {
+            return !empty($value);
         });
 
-        $filterParams = array_filter($parameters['filters'], function($value) {
+        $orderByParams = array_filter($parameters['orderBy'], function($value) {
             return $value != '';
         });
 
-        return (empty($sortParams)) ? $this->getAllLatest() : $this->sortBy($sortParams);
-    }
-
-    protected function sortBy(array $sortParams) {
-
-        foreach ($sortParams as $parameter => $value) {
-
-            switch ($parameter) {
-              case 'latest':
-                return ($value == 1) ? $this->getAllLatest() : $this->getAllOldest();
-                break;
-              case 'largestIds':
-                return ($value == 1) ? $this->orderBy('id', 'desc') : $this->orderBy('id', 'asc');
-                break;
-              default:
-                return $this->getAllLatest();
-                break;
-            }
-        }
-    }
-
-    protected function filterBy(array $filterParams)
-    {
-        foreach ($filterParams as $parameter => $value) {
-            //
-        }
-    }
-
-    protected function getAllLatest() {
-        return Order::latest();
-    }
-
-    protected function getAllOldest() {
-        return Order::oldest();
-    }
-
-    protected function orderBy($column, $order)
-    {
-        return Order::orderBy($column, $order);
+        return $this->queryBuilder
+            ->filterBy($filterParams)
+            ->orderBy($orderByParams)
+            ->search($parameters['searchQuery'], 'user', ['email', 'name'])
+            ->with(['user', 'paymentType', 'product', 'user.userProfile'])
+            ->build()
+            ->paginate($paginateBy);
     }
 }

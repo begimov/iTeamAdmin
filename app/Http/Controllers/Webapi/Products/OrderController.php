@@ -28,14 +28,13 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $orders = $this->orders
-            ->getSortedAndFiltered(json_decode($request->all()['params'], true))
-            ->paginate(5);
+            ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
 
         $ordersCollection = $orders->getCollection();
 
         return fractal()
             ->collection($ordersCollection)
-            ->parseIncludes(['user'])
+            ->parseIncludes(['user', 'user.userProfile', 'paymentType', 'product'])
             ->transformWith(new OrderTransformer)
             ->paginateWith(new IlluminatePaginatorAdapter($orders))
             ->toArray();

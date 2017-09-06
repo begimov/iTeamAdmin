@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        <div v-bind:class="{ 'isActive': flags.isLoading, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <new-order v-if="flags.neworder" v-on:cancelOrder="flags.neworder = false"></new-order>
@@ -10,30 +11,80 @@
 
           <div class="panel-body">
             <div class="row panel-subheading">
-              <div class="col-md-6">
-                  <h4><span class="label label-primary">Сумма:</span> <small>75751.5&nbsp;&#8381;</small>
-                  <span class="label label-primary">Период поиска:</span> <small>29.08.14 - 29.08.17</small></h4><br>
+              <div class="col-md-4">
+                <h4>
+                  <span class="label label-primary">Сумма:</span> <small>75751.5&nbsp;&#8381;</small><br>
+                  <span class="label label-primary">Период поиска:</span> <small>29.08.14 - 29.08.17</small>
+                </h4>
+                <search v-model="params.searchQuery" v-on:input="textSearch"></search>
               </div>
-              <div class="col-md-6 text-right">
+              <div class="col-md-8 text-right">
                 <ul class="list-inline">
-                  <li><input type="text" class="form-control" placeholder="Найти..."
-                          v-model="params.filters.textSearch"
-                          @input="textSearch"></li>
+                  <li>
+                    <div>
+                      <multiselect v-model="params.filters.paymentState"
+                      select-label=""
+                      track-by="id"
+                      label="name"
+                      :options="paymentStates"
+                      :multiple="true"
+                      :close-on-select="false"
+                      :hide-selected="true"
+                      :searchable="false"
+                      @input = "getOrders(1)"
+                      placeholder="Статус оплаты">
+                      <template slot="tag" scope="props">
+                        <span class="custom__tag">
+                          <span>{{ props.option.name }}</span>
+                          <span class="custom__remove" @click="props.remove(props.option)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          </span>
+                        </span>
+                      </template>
+                      </multiselect>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <multiselect v-model="params.filters.paymentType"
+                      select-label=""
+                      track-by="id"
+                      label="name"
+                      :options="paymentTypes"
+                      :multiple="true"
+                      :close-on-select="false"
+                      :hide-selected="true"
+                      :searchable="false"
+                      @input = "getOrders(1)"
+                      placeholder="Тип платежа">
+                      <template slot="tag" scope="props">
+                        <span class="custom__tag">
+                          <span>{{ props.option.name }}</span>
+                          <span class="custom__remove" @click="props.remove(props.option)">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          </span>
+                        </span>
+                      </template>
+                      </multiselect>
+                    </div>
+                  </li>
                   <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                          <span class="glyphicon glyphicon-sort" aria-hidden="true"></span> Сортировать <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu" role="menu">
-                          <li><a href="#" @click.prevent="applyOrder('latest')">По дате</a></li>
-                          <li><a href="#" @click.prevent="applyOrder('largestIds')">По номеру</a></li>
-                      </ul>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                      <span class="glyphicon glyphicon-sort" aria-hidden="true"></span><span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#" @click.prevent="applyOrder('created_at')">По дате</a></li>
+                      <li><a href="#" @click.prevent="applyOrder('id')">По номеру</a></li>
+                    </ul>
                   </li>
                 </ul>
-
               </div>
             </div>
 
-            <order v-for="order in orders" :order="order" :key="order.id"></order>
+            <order v-for="order in orders"
+            :order="order"
+            :payment-states="paymentStates"
+            :key="order.id"></order>
 
           </div>
 
@@ -48,3 +99,4 @@
 </template>
 
 <script src="./orders.js"></script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

@@ -5,7 +5,8 @@
 
   <div class="row">
     <div class="col-md-12">
-      <orders></orders>
+      <orders :payment-types="{{ $paymentTypes }}"
+        :payment-states="{{ $paymentStates }}"></orders>
     </div>
   </div>
 
