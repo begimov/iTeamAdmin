@@ -42580,8 +42580,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       },
       params: {
         orderBy: {
-          latest: 1,
-          largestIds: 0
+          created_at: 'desc',
+          id: ''
         },
         filters: {
           paymentType: [],
@@ -42602,8 +42602,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           params: {
             orderBy: this.params.orderBy,
             filters: {
-              paymentType: _.map(this.params.filters.paymentType, 'id'),
-              paymentState: _.map(this.params.filters.paymentState, 'id')
+              payment_type_id: _.map(this.params.filters.paymentType, 'id'),
+              payment_state_id: _.map(this.params.filters.paymentState, 'id')
             },
             searchQuery: this.params.searchQuery.trim()
           }
@@ -42617,9 +42617,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     applyOrder: function applyOrder(orderBy) {
       this.params.orderBy = _.mapValues(this.params.orderBy, function (value, flagName) {
         if (flagName == orderBy) {
-          return value == 0 ? 1 : -value;
+          return value == 'desc' ? 'asc' : 'desc';
         }
-        return 0;
+        return '';
       });
       this.getOrders(this.meta.pagination.current_page);
     },
@@ -42793,7 +42793,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.applyOrder('latest')
+        _vm.applyOrder('created_at')
       }
     }
   }, [_vm._v("По дате")])]), _vm._v(" "), _c('li', [_c('a', {
@@ -42803,7 +42803,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.applyOrder('largestIds')
+        _vm.applyOrder('id')
       }
     }
   }, [_vm._v("По номеру")])])])])])])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {

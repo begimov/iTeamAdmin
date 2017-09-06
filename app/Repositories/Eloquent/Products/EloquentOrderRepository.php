@@ -4,75 +4,32 @@ namespace App\Repositories\Eloquent\Products;
 
 use App\Repositories\Contracts\Products\OrderRepository;
 use App\Models\Products\Order;
+use App\Services\Products\EloquentOrderQueryBuilder;
 
 class EloquentOrderRepository implements OrderRepository
 {
+    protected $queryBuilder;
+
+    public function __construct(EloquentOrderQueryBuilder $queryBuilder)
+    {
+        $this->queryBuilder = $queryBuilder;
+    }
+
     public function getSortedAndFiltered(array $parameters)
     {
-        $filtered = $this->filterBy(Order::query(), $parameters['filters']);
-        $sortedAndFiltered = $this->sortBy($filtered, $parameters['orderBy']);
-
-        return $this->search($sortedAndFiltered, $parameters['searchQuery']);
-    }
-
-    protected function search($query, $searchQuery)
-    {
-        return $query->whereHas('user', function ($query) use ($searchQuery) {
-          $query->where('email', 'like', "%{$searchQuery}%")
-              ->orWhere('name', 'like', "%{$searchQuery}%");
-        })->with(['user', 'paymentType', 'product', 'user.userProfile']);
-    }
-
-    protected function filterBy($query, array $filterParams)
-    {
-        $params = array_filter($filterParams, function($value) {
+        $filterParams = array_filter($parameters['filters'], function($value) {
             return !empty($value);
         });
 
-        if (empty($params)) {
-            return $query;
-        }
-
-        foreach ($params as $key => $ids) {
-          switch ($key) {
-            case 'paymentType':
-              $query->whereIn('payment_type_id', $ids);
-              break;
-            case 'paymentState':
-              $query->whereIn('payment_state_id', $ids);
-              break;
-            default:
-              break;
-          }
-        }
-        return $query;
-    }
-
-    protected function sortBy($query, array $orderByParams) {
-
-        $activeOrderByParams = array_filter($orderByParams, function($value) {
-            return $value != 0;
+        $orderByParams = array_filter($parameters['orderBy'], function($value) {
+            return $value != '';
         });
 
-        if (empty($activeOrderByParams)) {
-            return $query;
-        }
-
-        foreach ($activeOrderByParams as $parameter => $value) {
-            switch ($parameter) {
-              case 'latest':
-                ($value == 1) ? $query->latest()
-                    : $query->oldest();
-                break;
-              case 'largestIds':
-                ($value == 1) ? $query->orderBy('id', 'desc')
-                    : $query->orderBy('id', 'asc');
-                break;
-              default:
-                $query->latest();
-                break;
-            }
-        }
-        return $query;
+        return $this->queryBuilder
+            ->filterBy($filterParams)
+            ->sortBy($orderByParams)
+            ->search($parameters['searchQuery'])
+            ->with(['user', 'paymentType', 'product', 'user.userProfile'])
+            ->build();
     }
 }

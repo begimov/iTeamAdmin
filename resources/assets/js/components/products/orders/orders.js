@@ -14,8 +14,8 @@ export default {
       },
       params: {
         orderBy: {
-          latest: 1,
-          largestIds: 0
+          created_at: 'desc',
+          id: ''
         },
         filters: {
           paymentType: [],
@@ -34,8 +34,8 @@ export default {
           params: {
             orderBy: this.params.orderBy,
             filters: {
-              paymentType: _.map(this.params.filters.paymentType, 'id'),
-              paymentState: _.map(this.params.filters.paymentState, 'id'),
+              payment_type_id: _.map(this.params.filters.paymentType, 'id'),
+              payment_state_id: _.map(this.params.filters.paymentState, 'id'),
             },
             searchQuery: this.params.searchQuery.trim()
           }
@@ -50,9 +50,9 @@ export default {
     applyOrder (orderBy) {
       this.params.orderBy = _.mapValues(this.params.orderBy, (value, flagName) => {
         if (flagName == orderBy) {
-          return (value == 0) ? 1 : -value
+          return (value == 'desc') ? 'asc' : 'desc'
           }
-        return 0
+        return ''
       })
       this.getOrders(this.meta.pagination.current_page)
     },
