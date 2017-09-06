@@ -29,7 +29,7 @@ class EloquentOrderRepository implements OrderRepository
             return !empty($value);
         });
 
-        if ((empty($params))) {
+        if (empty($params)) {
             return $query;
         }
 
@@ -53,6 +53,10 @@ class EloquentOrderRepository implements OrderRepository
         $activeOrderByParams = array_filter($orderByParams, function($value) {
             return $value != 0;
         });
+
+        if (empty($activeOrderByParams)) {
+            return $query;
+        }
 
         foreach ($activeOrderByParams as $parameter => $value) {
             switch ($parameter) {
