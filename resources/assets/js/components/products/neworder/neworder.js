@@ -15,11 +15,17 @@ export default {
           { id: 1, name: 'Я.Касса' },
           { id: 2, name: 'Карта' },
         ],
+        paymentStates: [
+          { id: 1, name: 'Не оплачен' },
+          { id: 2, name: 'Оплачен' },
+          { id: 3, name: 'Удален' },
+        ],
       },
       params: {
         product: '',
         email: '',
         paymentType: '',
+        paymentState: '',
       }
     }
   },

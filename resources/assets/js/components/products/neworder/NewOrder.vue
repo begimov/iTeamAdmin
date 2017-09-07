@@ -16,9 +16,9 @@
                   <input type="email" class="form-control" placeholder="Email">
                 </div>
 
-              <div class="form-group">
-                <label>Тип оплаты</label>
-                <multiselect v-model="params.paymentType"
+                <div class="form-group">
+                  <label>Тип оплаты</label>
+                  <multiselect v-model="params.paymentType"
                   :options="options.paymentTypes"
                   select-label=""
                   selected-label="Выбран"
@@ -27,18 +27,18 @@
                   :searchable="false"
                   label="name"
                   track-by="id">
-              </multiselect>
-            </div>
+                  </multiselect>
+              </div>
 
-            <button type="submit" class="btn btn-primary">Сохранить</button>
-            <a href="#" class="btn btn-default" @click.prevent="cancelOrder">Отменить</a>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <a href="#" class="btn btn-default" @click.prevent="cancelOrder">Отменить</a>
 
-          </div>
+              </div>
 
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Продукт</label>
-              <multiselect v-model="params.product"
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Продукт</label>
+                <multiselect v-model="params.product"
                 :options="options.products"
                 select-label=""
                 selected-label="Выбран"
@@ -46,20 +46,36 @@
                 placeholder="Выберите продукт"
                 label="name"
                 track-by="id">
-              <span slot="noResult">Продукт не найден</span>
-            </multiselect>
+                <span slot="noResult">Продукт не найден</span>
+                </multiselect>
+            </div>
+
+            <div class="form-group">
+              <label>Статус оплаты</label>
+              <multiselect v-model="params.paymentState"
+              :options="options.paymentStates"
+              select-label=""
+              selected-label="Выбран"
+              deselect-label="Кликните, чтобы убрать"
+              placeholder="Выберите статус оплаты"
+              :searchable="false"
+              label="name"
+              track-by="id">
+              <span slot="noResult">Статус оплаты не найден</span>
+              </multiselect>
           </div>
-          </div>
 
-        </form>
-      </div>
+        </div>
 
-
-
-
-
+      </form>
     </div>
+
+
+
+
+
   </div>
+</div>
 </div>
 </div>
 </template>

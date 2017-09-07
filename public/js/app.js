@@ -43067,12 +43067,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       options: {
         products: [{ id: 1, name: 'Продукт 1' }, { id: 2, name: 'Продукт 2' }, { id: 3, name: 'Продукт 3' }],
-        paymentTypes: [{ id: 1, name: 'Я.Касса' }, { id: 2, name: 'Карта' }]
+        paymentTypes: [{ id: 1, name: 'Я.Касса' }, { id: 2, name: 'Карта' }],
+        paymentStates: [{ id: 1, name: 'Не оплачен' }, { id: 2, name: 'Оплачен' }, { id: 3, name: 'Удален' }]
       },
       params: {
         product: '',
         email: '',
-        paymentType: ''
+        paymentType: '',
+        paymentState: ''
       }
     };
   },
@@ -43181,7 +43183,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])])], 1)])])])])])])])
+  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Статус оплаты")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "options": _vm.options.paymentStates,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "Кликните, чтобы убрать",
+      "placeholder": "Выберите статус оплаты",
+      "searchable": false,
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.paymentState),
+      callback: function($$v) {
+        _vm.params.paymentState = $$v
+      },
+      expression: "params.paymentState"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Статус оплаты не найден")])])], 1)])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "form-group"
