@@ -54,7 +54,7 @@
                 <div class="form-group">
                   <label>Цена</label>
                   <div class="input-group">
-                    <div class="input-group-addon">{{ params.product ? params.product.price : '-' }}</div>
+                    <div class="input-group-addon">{{ params.product ? Math.round(params.product.price) : '-' }}</div>
                     <input type="text" class="form-control" v-model="params.orderPrice">
                   </div>
                 </div>
@@ -90,7 +90,7 @@
                   :options="options.opf"
                   select-label=""
                   selected-label="Выбран"
-                  deselect-label="Кликните, чтобы убрать"
+                  deselect-label=""
                   placeholder="Выберите"
                   label="name"
                   track-by="id">
@@ -105,7 +105,7 @@
                   :options="options.companies"
                   select-label=""
                   selected-label="Выбран"
-                  deselect-label="Кликните, чтобы убрать"
+                  deselect-label=""
                   placeholder="Выберите"
                   label="name"
                   track-by="id">

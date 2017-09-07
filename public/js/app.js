@@ -43211,7 +43211,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "input-group"
   }, [_c('div', {
     staticClass: "input-group-addon"
-  }, [_vm._v(_vm._s(_vm.params.product ? _vm.params.product.price : '-'))]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.params.product ? Math.round(_vm.params.product.price) : '-'))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -43319,7 +43319,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "options": _vm.options.opf,
       "select-label": "",
       "selected-label": "Выбран",
-      "deselect-label": "Кликните, чтобы убрать",
+      "deselect-label": "",
       "placeholder": "Выберите",
       "label": "name",
       "track-by": "id"
@@ -43342,7 +43342,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "options": _vm.options.companies,
       "select-label": "",
       "selected-label": "Выбран",
-      "deselect-label": "Кликните, чтобы убрать",
+      "deselect-label": "",
       "placeholder": "Выберите",
       "label": "name",
       "track-by": "id"
