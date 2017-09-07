@@ -43066,9 +43066,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       options: {
-        products: [{ id: 1, name: 'Продукт 1' }, { id: 2, name: 'Продукт 2' }, { id: 3, name: 'Продукт 3' }],
-        paymentTypes: [{ id: 1, name: 'Я.Касса' }, { id: 2, name: 'Карта' }],
-        paymentStates: [{ id: 1, name: 'Не оплачен' }, { id: 2, name: 'Оплачен' }, { id: 3, name: 'Удален' }]
+        products: [],
+        paymentTypes: [],
+        paymentStates: []
       },
       params: {
         email: '',
@@ -43102,9 +43102,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //
       }
     }).then(function (response) {
-      _this.options.products = response.data;
-      _this.options.paymentTypes = response.data;
-      _this.options.paymentStates = response.data;
+      _this.options.products = response.data.products.data;
+      _this.options.paymentTypes = response.data.paymentTypes.data;
+      _this.options.paymentStates = response.data.paymentStates.data;
     });
   }
 });
@@ -43296,7 +43296,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "input-group"
   }, [_c('div', {
     staticClass: "input-group-addon"
-  }, [_vm._v("4000 ₽")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(this.params.product.price) + " ₽")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",

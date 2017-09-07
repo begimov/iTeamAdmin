@@ -6,20 +6,9 @@ export default {
   data () {
     return {
       options: {
-        products: [
-          { id: 1, name: 'Продукт 1' },
-          { id: 2, name: 'Продукт 2' },
-          { id: 3, name: 'Продукт 3' },
-        ],
-        paymentTypes: [
-          { id: 1, name: 'Я.Касса' },
-          { id: 2, name: 'Карта' },
-        ],
-        paymentStates: [
-          { id: 1, name: 'Не оплачен' },
-          { id: 2, name: 'Оплачен' },
-          { id: 3, name: 'Удален' },
-        ],
+        products: [],
+        paymentTypes: [],
+        paymentStates: [],
       },
       params: {
         email: '',
@@ -50,9 +39,9 @@ export default {
         //
       }
     }).then((response) => {
-      this.options.products = response.data
-      this.options.paymentTypes = response.data
-      this.options.paymentStates = response.data
+      this.options.products = response.data.products.data
+      this.options.paymentTypes = response.data.paymentTypes.data
+      this.options.paymentStates = response.data.paymentStates.data
     })
   }
 }
