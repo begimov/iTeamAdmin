@@ -12,8 +12,8 @@
               <div class="col-md-6">
 
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email</label>
-                  <input type="email" class="form-control" placeholder="Email">
+                  <label>Email</label>
+                  <input type="email" class="form-control" placeholder="Введите email">
                 </div>
 
                 <div class="form-group">
@@ -28,6 +28,16 @@
                   label="name"
                   track-by="id">
                   </multiselect>
+              </div>
+
+              <div class="form-group">
+                <label>Имя</label>
+                <input type="text" class="form-control" placeholder="Введите имя">
+              </div>
+
+              <div class="form-group">
+                <label>Цена заказа</label>
+                <input type="text" class="form-control" placeholder="Цена заказа">
               </div>
 
                 <button type="submit" class="btn btn-primary">Сохранить</button>
@@ -63,6 +73,16 @@
               track-by="id">
               <span slot="noResult">Статус оплаты не найден</span>
               </multiselect>
+          </div>
+
+          <div class="form-group">
+            <label>Телефон</label>
+            <input type="text" class="form-control" placeholder="Введите телефон">
+          </div>
+
+          <div class="form-group">
+            <label>Комментарий</label>
+            <input type="text" class="form-control" placeholder="Введите комментарий">
           </div>
 
         </div>
