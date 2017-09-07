@@ -5,13 +5,21 @@ export default {
   props: [],
   data () {
     return {
-      products: [
-        { id: 1, name: 'Продукт 1' },
-        { id: 2, name: 'Продукт 2' },
-        { id: 3, name: 'Продукт 3' },
-      ],
+      options: {
+        products: [
+          { id: 1, name: 'Продукт 1' },
+          { id: 2, name: 'Продукт 2' },
+          { id: 3, name: 'Продукт 3' },
+        ],
+        paymentTypes: [
+          { id: 1, name: 'Я.Касса' },
+          { id: 2, name: 'Карта' },
+        ],
+      },
       params: {
-        products: []
+        product: '',
+        email: '',
+        paymentType: '',
       }
     }
   },
