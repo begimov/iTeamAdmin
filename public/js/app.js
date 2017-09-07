@@ -43056,11 +43056,19 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
   props: [],
   data: function data() {
     return {
-      //
+      products: [{ id: 1, name: 'Продукт 1' }, { id: 2, name: 'Продукт 2' }, { id: 3, name: 'Продукт 3' }],
+      params: {
+        products: []
+      }
     };
   },
 
@@ -43105,7 +43113,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.saveOrder($event)
       }
     }
-  }, [_vm._m(0), _vm._v(" "), _c('button', {
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Продукт")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "options": _vm.products,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "Кликните, чтобы убрать",
+      "placeholder": "Выбрать продукт",
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.products),
+      callback: function($$v) {
+        _vm.params.products = $$v
+      },
+      expression: "params.products"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('button', {
     staticClass: "btn btn-primary",
     attrs: {
       "type": "submit"

@@ -7,6 +7,19 @@
           <div class="panel-body">
             <form action="#" @submit.prevent="saveOrder">
               <div class="form-group">
+                <label>Продукт</label>
+                <multiselect v-model="params.products"
+                  :options="products"
+                  select-label=""
+                  selected-label="Выбран"
+                  deselect-label="Кликните, чтобы убрать"
+                  placeholder="Выбрать продукт"
+                  label="name"
+                  track-by="id">
+                  <span slot="noResult">Продукт не найден</span>
+                </multiselect>
+              </div>
+              <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
                 <input type="email" class="form-control" placeholder="Email">
               </div>
