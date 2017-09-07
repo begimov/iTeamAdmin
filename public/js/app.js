@@ -43071,15 +43071,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         paymentStates: []
       },
       params: {
-        email: '',
-        product: '',
-        paymentType: '',
-        paymentState: '',
-        name: '',
-        phone: '',
-        orderPrice: '',
-        date: '',
-        comment: ''
+        email: null,
+        product: null,
+        paymentType: null,
+        paymentState: null,
+        name: null,
+        phone: null,
+        orderPrice: null,
+        date: null,
+        comment: null
       }
     };
   },
@@ -43098,11 +43098,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/webapi/orders/create', {
-      params: {
-        //
-      }
-    }).then(function (response) {
+    axios.get('/webapi/orders/create').then(function (response) {
       _this.options.products = response.data.products.data;
       _this.options.paymentTypes = response.data.paymentTypes.data;
       _this.options.paymentStates = response.data.paymentStates.data;
@@ -43291,7 +43287,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
-  }, [_c('div', {
+  }, [(_vm.params.product) ? _c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Цена продукта / Фактическая цена заказа")]), _vm._v(" "), _c('div', {
     staticClass: "input-group"
@@ -43318,7 +43314,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.orderPrice = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  })])]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Дата заказа")]), _vm._v(" "), _c('input', {
     directives: [{

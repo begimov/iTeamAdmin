@@ -11,15 +11,15 @@ export default {
         paymentStates: [],
       },
       params: {
-        email: '',
-        product: '',
-        paymentType: '',
-        paymentState: '',
-        name: '',
-        phone: '',
-        orderPrice: '',
-        date: '',
-        comment: '',
+        email: null,
+        product: null,
+        paymentType: null,
+        paymentState: null,
+        name: null,
+        phone: null,
+        orderPrice: null,
+        date: null,
+        comment: null,
       }
     }
   },
@@ -35,11 +35,7 @@ export default {
     //
   },
   mounted() {
-    axios.get('/webapi/orders/create', {
-      params: {
-        //
-      }
-    }).then((response) => {
+    axios.get('/webapi/orders/create').then((response) => {
       this.options.products = response.data.products.data
       this.options.paymentTypes = response.data.paymentTypes.data
       this.options.paymentStates = response.data.paymentStates.data

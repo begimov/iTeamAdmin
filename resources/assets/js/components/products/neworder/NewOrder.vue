@@ -80,7 +80,7 @@
 
               <div class="col-md-4">
 
-                <div class="form-group">
+                <div class="form-group" v-if="params.product">
                   <label>Цена продукта / Фактическая цена заказа</label>
                   <div class="input-group">
                     <div class="input-group-addon">{{ this.params.product.price }}&nbsp;&#8381;</div>
