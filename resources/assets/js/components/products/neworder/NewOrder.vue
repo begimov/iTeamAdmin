@@ -14,7 +14,7 @@
 
                 <div class="form-group">
                   <label>Email</label>
-                  <input type="email" class="form-control" placeholder="Введите email">
+                  <input type="email" class="form-control" v-model="params.email" placeholder="Введите email">
                 </div>
 
                 <div class="form-group">
@@ -24,7 +24,7 @@
 
                 <div class="form-group">
                   <label>Имя</label>
-                  <input type="text" class="form-control" placeholder="Введите имя">
+                  <input type="text" class="form-control" v-model="params.name" placeholder="Введите имя">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Сохранить</button>
@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                   <label>Телефон</label>
-                  <input type="text" class="form-control" placeholder="Введите телефон">
+                  <input type="text" class="form-control" v-model="params.phone" placeholder="Введите телефон">
                 </div>
 
               </div>
@@ -61,13 +61,13 @@
                   <label>Цена продукта / Фактическая цена заказа</label>
                   <div class="input-group">
                     <div class="input-group-addon">4000&nbsp;&#8381;</div>
-                    <input type="text" class="form-control" value="4000">
+                    <input type="text" class="form-control" v-model="params.orderPrice" value="4000">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label>Комментарий</label>
-                  <textarea class="form-control" rows="4" cols="50">Введите комментарий</textarea>
+                  <textarea class="form-control" v-model="params.comment" rows="4" cols="50">Введите комментарий</textarea>
                 </div>
 
               </div>
