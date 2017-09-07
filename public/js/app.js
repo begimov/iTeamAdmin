@@ -43108,6 +43108,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_vm._v("Новый заказ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
+  }, [_c('div', {
+    staticClass: "row"
   }, [_c('form', {
     attrs: {
       "action": "#"
@@ -43118,7 +43120,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.saveOrder($event)
       }
     }
+  }, [_c('div', {
+    staticClass: "col-md-6"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Тип оплаты")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "options": _vm.options.paymentTypes,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "Кликните, чтобы убрать",
+      "placeholder": "Выберите тип оплаты",
+      "searchable": false,
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.paymentType),
+      callback: function($$v) {
+        _vm.params.paymentType = $$v
+      },
+      expression: "params.paymentType"
+    }
+  })], 1), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.cancelOrder($event)
+      }
+    }
+  }, [_vm._v("Отменить")])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Продукт")]), _vm._v(" "), _c('multiselect', {
     attrs: {
@@ -43139,44 +43181,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Тип оплаты")]), _vm._v(" "), _c('multiselect', {
-    attrs: {
-      "options": _vm.options.paymentTypes,
-      "select-label": "",
-      "selected-label": "Выбран",
-      "deselect-label": "Кликните, чтобы убрать",
-      "placeholder": "Выберите тип оплаты",
-      "label": "name",
-      "track-by": "id"
-    },
-    model: {
-      value: (_vm.params.paymentType),
-      callback: function($$v) {
-        _vm.params.paymentType = $$v
-      },
-      expression: "params.paymentType"
-    }
-  }, [_c('span', {
-    slot: "noResult"
-  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
-    staticClass: "btn btn-default",
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.cancelOrder($event)
-      }
-    }
-  }, [_vm._v("Отменить")])])])])])])
+  }, [_vm._v("Продукт не найден")])])], 1)])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "form-group"
