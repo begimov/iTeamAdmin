@@ -19,6 +19,7 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
+    "v-autocomplete": "^1.4.1",
     "vue-multiselect": "^2.0.2"
   }
 }

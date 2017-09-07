@@ -65,7 +65,12 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email</label>
-                  <input type="email" class="form-control" v-model="params.email" placeholder="Введите email">
+                  <autocomplete :items="options.emails"
+                  v-model="params.email"
+                  placeholder="Введите email"
+                  input-class="form-control"
+                  @update-items="updateEmails">
+                  </autocomplete>
                 </div>
               </div>
               <div class="col-md-4">
