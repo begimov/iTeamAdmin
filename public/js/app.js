@@ -43068,7 +43068,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       options: {
         products: [],
         paymentTypes: [],
-        paymentStates: []
+        paymentStates: [],
+        opf: [{ id: 1, name: 'ООО' }, { id: 2, name: 'ОАО' }, { id: 3, name: 'ЗАО' }],
+        companies: [{ id: 1, name: 'Компания 1' }, { id: 2, name: 'Компания 2' }, { id: 3, name: 'Компания 3' }]
       },
       params: {
         email: null,
@@ -43078,6 +43080,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: null,
         phone: null,
         orderPrice: null,
+        opf: null,
+        company: null,
         comment: null
       }
     };
@@ -43133,7 +43137,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-4"
+    staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Продукт")]), _vm._v(" "), _c('multiselect', {
@@ -43141,7 +43145,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "options": _vm.options.products,
       "select-label": "",
       "selected-label": "Выбран",
-      "deselect-label": "Кликните, чтобы убрать",
+      "deselect-label": "",
       "placeholder": "Выберите продукт",
       "label": "name",
       "track-by": "id"
@@ -43164,7 +43168,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "options": _vm.options.paymentTypes,
       "select-label": "",
       "selected-label": "Выбран",
-      "deselect-label": "Кликните, чтобы убрать",
+      "deselect-label": "",
       "placeholder": "Выберите",
       "label": "name",
       "track-by": "id"
@@ -43185,7 +43189,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "options": _vm.options.paymentStates,
       "select-label": "",
       "selected-label": "Выбран",
-      "deselect-label": "Кликните, чтобы убрать",
+      "deselect-label": "",
       "placeholder": "Выберите",
       "label": "name",
       "track-by": "id"
@@ -43200,14 +43204,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', {
     slot: "noResult"
   }, [_vm._v("Статус оплаты не найден")])])], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
+    staticClass: "col-md-2"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Цена продукта / Фактическая цена заказа")]), _vm._v(" "), _c('div', {
+  }, [_c('label', [_vm._v("Цена")]), _vm._v(" "), _c('div', {
     staticClass: "input-group"
   }, [_c('div', {
     staticClass: "input-group-addon"
-  }, [_vm._v(_vm._s(_vm.params.product ? _vm.params.product.price : '-') + " ₽")]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.params.product ? _vm.params.product.price : '-'))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -43304,10 +43308,56 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.phone = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _c('div', {
+  })])])]), _vm._v(" "), (_vm.params.paymentType && _vm.params.paymentType.name == 'Счет') ? _c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-4"
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("ОПФ")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "options": _vm.options.opf,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "Кликните, чтобы убрать",
+      "placeholder": "Выберите",
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.opf),
+      callback: function($$v) {
+        _vm.params.opf = $$v
+      },
+      expression: "params.opf"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("ОПФ не найдена")])])], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-5"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Компания")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "options": _vm.options.companies,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "Кликните, чтобы убрать",
+      "placeholder": "Выберите",
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.company),
+      callback: function($$v) {
+        _vm.params.company = $$v
+      },
+      expression: "params.company"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Компания не найдена")])])], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-5"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Комментарий")]), _vm._v(" "), _c('textarea', {
@@ -43319,7 +43369,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
-      "rows": "3",
+      "rows": "1",
       "cols": "50"
     },
     domProps: {
@@ -43331,57 +43381,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.comment = $event.target.value
       }
     }
-  }, [_vm._v("Введите комментарий")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Комментарий")]), _vm._v(" "), _c('textarea', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.params.comment),
-      expression: "params.comment"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "rows": "3",
-      "cols": "50"
-    },
-    domProps: {
-      "value": (_vm.params.comment)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.params.comment = $event.target.value
-      }
-    }
-  }, [_vm._v("Введите комментарий")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Комментарий")]), _vm._v(" "), _c('textarea', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.params.comment),
-      expression: "params.comment"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "rows": "3",
-      "cols": "50"
-    },
-    domProps: {
-      "value": (_vm.params.comment)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.params.comment = $event.target.value
-      }
-    }
-  }, [_vm._v("Введите комментарий")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Введите комментарий")])])])]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"

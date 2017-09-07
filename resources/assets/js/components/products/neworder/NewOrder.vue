@@ -7,14 +7,14 @@
           <form action="#" @submit.prevent="saveOrder">
 
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="form-group">
                   <label>Продукт</label>
                   <multiselect v-model="params.product"
                   :options="options.products"
                   select-label=""
                   selected-label="Выбран"
-                  deselect-label="Кликните, чтобы убрать"
+                  deselect-label=""
                   placeholder="Выберите продукт"
                   label="name"
                   track-by="id">
@@ -29,7 +29,7 @@
                   :options="options.paymentTypes"
                   select-label=""
                   selected-label="Выбран"
-                  deselect-label="Кликните, чтобы убрать"
+                  deselect-label=""
                   placeholder="Выберите"
                   label="name"
                   track-by="id"></multiselect>
@@ -42,7 +42,7 @@
                   :options="options.paymentStates"
                   select-label=""
                   selected-label="Выбран"
-                  deselect-label="Кликните, чтобы убрать"
+                  deselect-label=""
                   placeholder="Выберите"
                   label="name"
                   track-by="id">
@@ -50,11 +50,11 @@
                   </multiselect>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-2">
                 <div class="form-group">
-                  <label>Цена продукта / Фактическая цена заказа</label>
+                  <label>Цена</label>
                   <div class="input-group">
-                    <div class="input-group-addon">{{ params.product ? params.product.price : '-' }}&nbsp;&#8381;</div>
+                    <div class="input-group-addon">{{ params.product ? params.product.price : '-' }}</div>
                     <input type="text" class="form-control" v-model="params.orderPrice">
                   </div>
                 </div>
@@ -82,23 +82,41 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-md-4">
+            <div class="row" v-if="params.paymentType && params.paymentType.name == 'Счет'">
+              <div class="col-md-2">
                 <div class="form-group">
-                  <label>Комментарий</label>
-                  <textarea class="form-control" v-model="params.comment" rows="3" cols="50">Введите комментарий</textarea>
+                  <label>ОПФ</label>
+                  <multiselect v-model="params.opf"
+                  :options="options.opf"
+                  select-label=""
+                  selected-label="Выбран"
+                  deselect-label="Кликните, чтобы убрать"
+                  placeholder="Выберите"
+                  label="name"
+                  track-by="id">
+                    <span slot="noResult">ОПФ не найдена</span>
+                  </multiselect>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <div class="form-group">
-                  <label>Комментарий</label>
-                  <textarea class="form-control" v-model="params.comment" rows="3" cols="50">Введите комментарий</textarea>
+                  <label>Компания</label>
+                  <multiselect v-model="params.company"
+                  :options="options.companies"
+                  select-label=""
+                  selected-label="Выбран"
+                  deselect-label="Кликните, чтобы убрать"
+                  placeholder="Выберите"
+                  label="name"
+                  track-by="id">
+                    <span slot="noResult">Компания не найдена</span>
+                  </multiselect>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-5">
                 <div class="form-group">
                   <label>Комментарий</label>
-                  <textarea class="form-control" v-model="params.comment" rows="3" cols="50">Введите комментарий</textarea>
+                  <textarea class="form-control" v-model="params.comment" rows="1" cols="50">Введите комментарий</textarea>
                 </div>
               </div>
             </div>
