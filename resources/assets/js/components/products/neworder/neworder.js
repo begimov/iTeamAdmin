@@ -45,6 +45,14 @@ export default {
     //
   },
   mounted() {
-    //
+    axios.get('/webapi/orders/create', {
+      params: {
+        //
+      }
+    }).then((response) => {
+      this.options.products = response.data
+      this.options.paymentTypes = response.data
+      this.options.paymentStates = response.data
+    })
   }
 }

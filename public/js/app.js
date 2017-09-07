@@ -43095,7 +43095,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //
   },
   mounted: function mounted() {
-    //
+    var _this = this;
+
+    axios.get('/webapi/orders/create', {
+      params: {
+        //
+      }
+    }).then(function (response) {
+      _this.options.products = response.data;
+      _this.options.paymentTypes = response.data;
+      _this.options.paymentStates = response.data;
+    });
   }
 });
 
