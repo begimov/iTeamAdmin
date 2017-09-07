@@ -43072,20 +43072,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: ['email'],
-        names: ['name'],
-        phones: ['9999999'],
+        emails: [],
+        names: [],
+        phones: [],
         opf: [{ id: 1, name: 'ООО' }, { id: 2, name: 'ОАО' }, { id: 3, name: 'ЗАО' }],
-        companies: [{ id: 1, name: 'Компания 1' }, { id: 2, name: 'Компания 2' }, { id: 3, name: 'Компания 3' }]
+        companies: []
       },
       params: {
         product: null,
         paymentType: null,
         paymentState: null,
+        orderPrice: null,
         email: null,
         name: null,
         phone: null,
-        orderPrice: null,
         opf: null,
         company: null,
         comment: null
@@ -43100,8 +43100,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     cancelOrder: function cancelOrder() {
       this.$emit('cancelOrder');
     },
-    updateAutocomplete: function updateAutocomplete() {
-      console.log('UPDATED');
+    updateEmails: function updateEmails(text) {
+      // if response data is empty?
+      // this.options.emails = []
+      // this.options.emails.push(text)
+    },
+    updateNames: function updateNames(text) {
+      //
+    },
+    updatePhones: function updatePhones(text) {
+      //
+    },
+    updateCompanies: function updateCompanies(text) {
+      //
     }
   },
   computed: {
@@ -43249,11 +43260,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('autocomplete', {
     attrs: {
       "items": _vm.options.emails,
+      "min-len": 1,
       "placeholder": "Введите email",
       "input-class": "form-control"
     },
     on: {
-      "update-items": _vm.updateAutocomplete
+      "update-items": _vm.updateEmails
     },
     model: {
       value: (_vm.params.email),
@@ -43269,11 +43281,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('autocomplete', {
     attrs: {
       "items": _vm.options.names,
+      "min-len": 1,
       "placeholder": "Введите имя",
       "input-class": "form-control"
     },
     on: {
-      "update-items": _vm.updateAutocomplete
+      "update-items": _vm.updateNames
     },
     model: {
       value: (_vm.params.name),
@@ -43289,11 +43302,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('autocomplete', {
     attrs: {
       "items": _vm.options.phones,
+      "min-len": 1,
       "placeholder": "Введите телефон",
       "input-class": "form-control"
     },
     on: {
-      "update-items": _vm.updateAutocomplete
+      "update-items": _vm.updatePhones
     },
     model: {
       value: (_vm.params.phone),
@@ -43331,15 +43345,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-5"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Компания")]), _vm._v(" "), _c('multiselect', {
+  }, [_c('label', [_vm._v("Компания")]), _vm._v(" "), _c('autocomplete', {
     attrs: {
-      "options": _vm.options.companies,
-      "select-label": "",
-      "selected-label": "Выбран",
-      "deselect-label": "",
-      "placeholder": "Выберите",
-      "label": "name",
-      "track-by": "id"
+      "items": _vm.options.companies,
+      "min-len": 1,
+      "placeholder": "Введите название компании",
+      "input-class": "form-control"
+    },
+    on: {
+      "update-items": _vm.updateCompanies
     },
     model: {
       value: (_vm.params.company),
@@ -43348,9 +43362,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "params.company"
     }
-  }, [_c('span', {
-    slot: "noResult"
-  }, [_vm._v("Компания не найдена")])])], 1)]), _vm._v(" "), _c('div', {
+  })], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-5"
   }, [_c('div', {
     staticClass: "form-group"

@@ -10,28 +10,24 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: ['email'],
-        names: ['name'],
-        phones: ['9999999'],
+        emails: [],
+        names: [],
+        phones: [],
         opf: [
           { id: 1, name: 'ООО'},
           { id: 2, name: 'ОАО'},
           { id: 3, name: 'ЗАО'},
         ],
-        companies: [
-          { id: 1, name: 'Компания 1'},
-          { id: 2, name: 'Компания 2'},
-          { id: 3, name: 'Компания 3'},
-        ],
+        companies: [],
       },
       params: {
         product: null,
         paymentType: null,
         paymentState: null,
+        orderPrice: null,
         email: null,
         name: null,
         phone: null,
-        orderPrice: null,
         opf: null,
         company: null,
         comment: null,
@@ -45,9 +41,20 @@ export default {
     cancelOrder () {
       this.$emit('cancelOrder')
     },
-    updateAutocomplete () {
-      console.log('UPDATED')
+    updateEmails (text) {
+      // if response data is empty?
+      // this.options.emails = []
+      // this.options.emails.push(text)
     },
+    updateNames (text) {
+      //
+    },
+    updatePhones (text) {
+      //
+    },
+    updateCompanies (text) {
+      //
+    }
   },
   computed: {
     //

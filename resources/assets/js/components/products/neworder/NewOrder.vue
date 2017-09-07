@@ -67,9 +67,10 @@
                   <label>Email</label>
                   <autocomplete :items="options.emails"
                   v-model="params.email"
+                  :min-len="1"
                   placeholder="Введите email"
                   input-class="form-control"
-                  @update-items="updateAutocomplete">
+                  @update-items="updateEmails">
                   </autocomplete>
                 </div>
               </div>
@@ -78,9 +79,10 @@
                   <label>Имя</label>
                   <autocomplete :items="options.names"
                   v-model="params.name"
+                  :min-len="1"
                   placeholder="Введите имя"
                   input-class="form-control"
-                  @update-items="updateAutocomplete">
+                  @update-items="updateNames">
                   </autocomplete>
                 </div>
               </div>
@@ -89,9 +91,10 @@
                   <label>Телефон</label>
                   <autocomplete :items="options.phones"
                   v-model="params.phone"
+                  :min-len="1"
                   placeholder="Введите телефон"
                   input-class="form-control"
-                  @update-items="updateAutocomplete">
+                  @update-items="updatePhones">
                   </autocomplete>
                 </div>
               </div>
@@ -116,16 +119,13 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label>Компания</label>
-                  <multiselect v-model="params.company"
-                  :options="options.companies"
-                  select-label=""
-                  selected-label="Выбран"
-                  deselect-label=""
-                  placeholder="Выберите"
-                  label="name"
-                  track-by="id">
-                    <span slot="noResult">Компания не найдена</span>
-                  </multiselect>
+                  <autocomplete :items="options.companies"
+                  v-model="params.company"
+                  :min-len="1"
+                  placeholder="Введите название компании"
+                  input-class="form-control"
+                  @update-items="updateCompanies">
+                  </autocomplete>
                 </div>
               </div>
               <div class="col-md-5">
