@@ -43072,7 +43072,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: [],
+        emails: ['email'],
+        names: ['name'],
+        phones: ['9999999'],
         opf: [{ id: 1, name: 'ООО' }, { id: 2, name: 'ОАО' }, { id: 3, name: 'ЗАО' }],
         companies: [{ id: 1, name: 'Компания 1' }, { id: 2, name: 'Компания 2' }, { id: 3, name: 'Компания 3' }]
       },
@@ -43098,7 +43100,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     cancelOrder: function cancelOrder() {
       this.$emit('cancelOrder');
     },
-    updateEmails: function updateEmails() {
+    updateAutocomplete: function updateAutocomplete() {
       console.log('UPDATED');
     }
   },
@@ -43251,7 +43253,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "input-class": "form-control"
     },
     on: {
-      "update-items": _vm.updateEmails
+      "update-items": _vm.updateAutocomplete
     },
     model: {
       value: (_vm.params.email),
@@ -43264,53 +43266,43 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.params.name),
-      expression: "params.name"
-    }],
-    staticClass: "form-control",
+  }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('autocomplete', {
     attrs: {
-      "type": "text",
-      "placeholder": "Введите имя"
-    },
-    domProps: {
-      "value": (_vm.params.name)
+      "items": _vm.options.names,
+      "placeholder": "Введите имя",
+      "input-class": "form-control"
     },
     on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.params.name = $event.target.value
-      }
+      "update-items": _vm.updateAutocomplete
+    },
+    model: {
+      value: (_vm.params.name),
+      callback: function($$v) {
+        _vm.params.name = $$v
+      },
+      expression: "params.name"
     }
-  })])]), _vm._v(" "), _c('div', {
+  })], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.params.phone),
-      expression: "params.phone"
-    }],
-    staticClass: "form-control",
+  }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('autocomplete', {
     attrs: {
-      "type": "text",
-      "placeholder": "Введите телефон"
-    },
-    domProps: {
-      "value": (_vm.params.phone)
+      "items": _vm.options.phones,
+      "placeholder": "Введите телефон",
+      "input-class": "form-control"
     },
     on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.params.phone = $event.target.value
-      }
+      "update-items": _vm.updateAutocomplete
+    },
+    model: {
+      value: (_vm.params.phone),
+      callback: function($$v) {
+        _vm.params.phone = $$v
+      },
+      expression: "params.phone"
     }
-  })])])]), _vm._v(" "), (_vm.params.paymentType && _vm.params.paymentType.name == 'Счет') ? _c('div', {
+  })], 1)])]), _vm._v(" "), (_vm.params.paymentType && _vm.params.paymentType.name == 'Счет') ? _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-2"

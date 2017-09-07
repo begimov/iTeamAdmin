@@ -69,20 +69,30 @@
                   v-model="params.email"
                   placeholder="Введите email"
                   input-class="form-control"
-                  @update-items="updateEmails">
+                  @update-items="updateAutocomplete">
                   </autocomplete>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Имя</label>
-                  <input type="text" class="form-control" v-model="params.name" placeholder="Введите имя">
+                  <autocomplete :items="options.names"
+                  v-model="params.name"
+                  placeholder="Введите имя"
+                  input-class="form-control"
+                  @update-items="updateAutocomplete">
+                  </autocomplete>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Телефон</label>
-                  <input type="text" class="form-control" v-model="params.phone" placeholder="Введите телефон">
+                  <autocomplete :items="options.phones"
+                  v-model="params.phone"
+                  placeholder="Введите телефон"
+                  input-class="form-control"
+                  @update-items="updateAutocomplete">
+                  </autocomplete>
                 </div>
               </div>
             </div>

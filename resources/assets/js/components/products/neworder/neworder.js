@@ -10,7 +10,9 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: [],
+        emails: ['email'],
+        names: ['name'],
+        phones: ['9999999'],
         opf: [
           { id: 1, name: 'ООО'},
           { id: 2, name: 'ОАО'},
@@ -43,7 +45,7 @@ export default {
     cancelOrder () {
       this.$emit('cancelOrder')
     },
-    updateEmails () {
+    updateAutocomplete () {
       console.log('UPDATED')
     },
   },
