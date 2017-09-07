@@ -43078,7 +43078,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: null,
         phone: null,
         orderPrice: null,
-        date: null,
         comment: null
       }
     };
@@ -43121,8 +43120,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_vm._v("Новый заказ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_c('div', {
-    staticClass: "row"
   }, [_c('form', {
     attrs: {
       "action": "#"
@@ -43133,6 +43130,105 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.saveOrder($event)
       }
     }
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Продукт")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "options": _vm.options.products,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "Кликните, чтобы убрать",
+      "placeholder": "Выберите продукт",
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.product),
+      callback: function($$v) {
+        _vm.params.product = $$v
+      },
+      expression: "params.product"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Продукт не найден")])])], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Тип оплаты")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "options": _vm.options.paymentTypes,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "Кликните, чтобы убрать",
+      "placeholder": "Выберите",
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.paymentType),
+      callback: function($$v) {
+        _vm.params.paymentType = $$v
+      },
+      expression: "params.paymentType"
+    }
+  })], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Статус оплаты")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "options": _vm.options.paymentStates,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "Кликните, чтобы убрать",
+      "placeholder": "Выберите",
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.paymentState),
+      callback: function($$v) {
+        _vm.params.paymentState = $$v
+      },
+      expression: "params.paymentState"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Статус оплаты не найден")])])], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Цена продукта / Фактическая цена заказа")]), _vm._v(" "), _c('div', {
+    staticClass: "input-group"
+  }, [_c('div', {
+    staticClass: "input-group-addon"
+  }, [_vm._v(_vm._s(_vm.params.product ? _vm.params.product.price : '-') + " ₽")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.params.orderPrice),
+      expression: "params.orderPrice"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.params.orderPrice)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.params.orderPrice = $event.target.value
+      }
+    }
+  })])])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
   }, [_c('div', {
@@ -43158,27 +43254,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.email = $event.target.value
       }
     }
-  })]), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Тип оплаты")]), _vm._v(" "), _c('multiselect', {
-    attrs: {
-      "options": _vm.options.paymentTypes,
-      "select-label": "",
-      "selected-label": "Выбран",
-      "deselect-label": "Кликните, чтобы убрать",
-      "placeholder": "Выберите тип оплаты",
-      "searchable": false,
-      "label": "name",
-      "track-by": "id"
-    },
-    model: {
-      value: (_vm.params.paymentType),
-      callback: function($$v) {
-        _vm.params.paymentType = $$v
-      },
-      expression: "params.paymentType"
-    }
-  })], 1), _vm._v(" "), _c('div', {
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('input', {
     directives: [{
@@ -43201,68 +43279,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.name = $event.target.value
       }
     }
-  })]), _vm._v(" "), _c('button', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
-    staticClass: "btn btn-default",
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.cancelOrder($event)
-      }
-    }
-  }, [_vm._v("Отменить")])]), _vm._v(" "), _c('div', {
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Продукт")]), _vm._v(" "), _c('multiselect', {
-    attrs: {
-      "options": _vm.options.products,
-      "select-label": "",
-      "selected-label": "Выбран",
-      "deselect-label": "Кликните, чтобы убрать",
-      "placeholder": "Выберите продукт",
-      "label": "name",
-      "track-by": "id"
-    },
-    model: {
-      value: (_vm.params.product),
-      callback: function($$v) {
-        _vm.params.product = $$v
-      },
-      expression: "params.product"
-    }
-  }, [_c('span', {
-    slot: "noResult"
-  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Статус оплаты")]), _vm._v(" "), _c('multiselect', {
-    attrs: {
-      "options": _vm.options.paymentStates,
-      "select-label": "",
-      "selected-label": "Выбран",
-      "deselect-label": "Кликните, чтобы убрать",
-      "placeholder": "Выберите статус оплаты",
-      "searchable": false,
-      "label": "name",
-      "track-by": "id"
-    },
-    model: {
-      value: (_vm.params.paymentState),
-      callback: function($$v) {
-        _vm.params.paymentState = $$v
-      },
-      expression: "params.paymentState"
-    }
-  }, [_c('span', {
-    slot: "noResult"
-  }, [_vm._v("Статус оплаты не найден")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('input', {
     directives: [{
@@ -43285,59 +43304,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.phone = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
-  }, [(_vm.params.product) ? _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Цена продукта / Фактическая цена заказа")]), _vm._v(" "), _c('div', {
-    staticClass: "input-group"
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
   }, [_c('div', {
-    staticClass: "input-group-addon"
-  }, [_vm._v(_vm._s(this.params.product.price) + " ₽")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.params.orderPrice),
-      expression: "params.orderPrice"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "value": "4000"
-    },
-    domProps: {
-      "value": (_vm.params.orderPrice)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.params.orderPrice = $event.target.value
-      }
-    }
-  })])]) : _vm._e(), _vm._v(" "), _c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Дата заказа")]), _vm._v(" "), _c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.params.date),
-      expression: "params.date"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Выберите дату заказа"
-    },
-    domProps: {
-      "value": (_vm.params.date)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.params.date = $event.target.value
-      }
-    }
-  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Комментарий")]), _vm._v(" "), _c('textarea', {
     directives: [{
@@ -43360,7 +43331,77 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.comment = $event.target.value
       }
     }
-  }, [_vm._v("Введите комментарий")])])])])])])])])])
+  }, [_vm._v("Введите комментарий")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Комментарий")]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.params.comment),
+      expression: "params.comment"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "rows": "3",
+      "cols": "50"
+    },
+    domProps: {
+      "value": (_vm.params.comment)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.params.comment = $event.target.value
+      }
+    }
+  }, [_vm._v("Введите комментарий")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Комментарий")]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.params.comment),
+      expression: "params.comment"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "rows": "3",
+      "cols": "50"
+    },
+    domProps: {
+      "value": (_vm.params.comment)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.params.comment = $event.target.value
+      }
+    }
+  }, [_vm._v("Введите комментарий")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.cancelOrder($event)
+      }
+    }
+  }, [_vm._v("Отменить")])])])])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

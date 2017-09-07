@@ -18,7 +18,6 @@ export default {
         name: null,
         phone: null,
         orderPrice: null,
-        date: null,
         comment: null,
       }
     }
