@@ -18,6 +18,7 @@ export default {
         name: '',
         phone: '',
         orderPrice: '',
+        date: '',
         comment: '',
       }
     }

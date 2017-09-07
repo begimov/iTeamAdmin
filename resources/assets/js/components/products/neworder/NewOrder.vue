@@ -89,8 +89,13 @@
                 </div>
 
                 <div class="form-group">
+                  <label>Дата заказа</label>
+                  <input type="text" class="form-control" v-model="params.date" placeholder="Выберите дату заказа">
+                </div>
+
+                <div class="form-group">
                   <label>Комментарий</label>
-                  <textarea class="form-control" v-model="params.comment" rows="4" cols="50">Введите комментарий</textarea>
+                  <textarea class="form-control" v-model="params.comment" rows="3" cols="50">Введите комментарий</textarea>
                 </div>
 
               </div>

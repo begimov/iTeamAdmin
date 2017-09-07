@@ -43078,6 +43078,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         name: '',
         phone: '',
         orderPrice: '',
+        date: '',
         comment: ''
       }
     };
@@ -43319,6 +43320,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
+  }, [_c('label', [_vm._v("Дата заказа")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.params.date),
+      expression: "params.date"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Выберите дату заказа"
+    },
+    domProps: {
+      "value": (_vm.params.date)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.params.date = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
   }, [_c('label', [_vm._v("Комментарий")]), _vm._v(" "), _c('textarea', {
     directives: [{
       name: "model",
@@ -43328,7 +43352,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
-      "rows": "4",
+      "rows": "3",
       "cols": "50"
     },
     domProps: {
