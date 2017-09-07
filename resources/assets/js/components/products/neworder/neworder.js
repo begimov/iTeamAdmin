@@ -22,10 +22,14 @@ export default {
         ],
       },
       params: {
-        product: '',
         email: '',
+        product: '',
         paymentType: '',
         paymentState: '',
+        name: '',
+        phone: '',
+        orderPrice: '',
+        comment: '',
       }
     }
   },

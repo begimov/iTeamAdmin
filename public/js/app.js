@@ -43071,10 +43071,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         paymentStates: [{ id: 1, name: 'Не оплачен' }, { id: 2, name: 'Оплачен' }, { id: 3, name: 'Удален' }]
       },
       params: {
-        product: '',
         email: '',
+        product: '',
         paymentType: '',
-        paymentState: ''
+        paymentState: '',
+        name: '',
+        phone: '',
+        orderPrice: '',
+        comment: ''
       }
     };
   },
