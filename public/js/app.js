@@ -43022,7 +43022,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this.options.products = response.data.products.data;
       _this.options.paymentTypes = response.data.paymentTypes.data;
       _this.options.paymentStates = response.data.paymentStates.data;
-      _this.options.users = response.data.users.data;
     });
   }
 });
@@ -43162,9 +43161,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('typeahead-search', {
-    attrs: {
-      "column": "email"
-    },
     model: {
       value: (_vm.params.email),
       callback: function($$v) {
@@ -43374,11 +43370,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Autocomplete: __WEBPACK_IMPORTED_MODULE_0_v_autocomplete___default.a },
-  props: ['column'],
+  props: [],
   data: function data() {
     return {
       query: null,
-      options: [],
+      options: [{ id: 1, value: 'dfgdfgdg' }],
       template: __WEBPACK_IMPORTED_MODULE_1__TypeaheadSearch_ItemTemplate_vue___default.a
     };
   },
@@ -43388,10 +43384,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$emit('input', data);
     },
     updateItems: function updateItems(text) {
-      this.options = [{ id: 1, email: 'begimov@gmail.com' }, { id: 2, email: 'begimov@aideus.com' }, { id: 2, email: 'begimov@begimov.com' }];
+      //
     },
     getLabel: function getLabel(item) {
-      return item[this.column];
+      return item.value;
     }
   },
   computed: {

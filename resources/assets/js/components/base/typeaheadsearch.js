@@ -3,11 +3,13 @@ import ItemTemplate from './TypeaheadSearch/ItemTemplate.vue'
 
 export default {
   components: { Autocomplete },
-  props: ['column'],
+  props: [],
   data () {
     return {
       query: null,
-      options: [],
+      options: [
+        { id: 1, value: 'dfgdfgdg'}
+      ],
       template: ItemTemplate
     }
   },
@@ -16,14 +18,10 @@ export default {
       this.$emit('input', data)
     },
     updateItems (text) {
-      this.options = [
-        { id:1, email:'begimov@gmail.com' },
-        { id:2, email:'begimov@aideus.com' },
-        { id:2, email:'begimov@begimov.com' },
-      ]
+      //
     },
     getLabel (item) {
-      return item[this.column]
+      return item.value
     },
   },
   computed: {

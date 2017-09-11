@@ -43,7 +43,6 @@ export default {
       this.options.products = response.data.products.data
       this.options.paymentTypes = response.data.paymentTypes.data
       this.options.paymentStates = response.data.paymentStates.data
-      this.options.users = response.data.users.data
     })
   }
 }

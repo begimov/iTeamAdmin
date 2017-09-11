@@ -65,7 +65,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email</label>
-                  <typeahead-search v-model="params.email" column="email"></typeahead-search>
+                  <typeahead-search v-model="params.email"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-4">

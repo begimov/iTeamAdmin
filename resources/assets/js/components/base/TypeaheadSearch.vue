@@ -8,7 +8,7 @@
   @input="change"
   @change="change"
   @update-items="updateItems">
-</autocomplete>
+  </autocomplete>
 </template>
 
 <script src="./typeaheadsearch.js"></script>
