@@ -1,8 +1,7 @@
 import Multiselect from 'vue-multiselect'
-import Autocomplete from 'v-autocomplete'
 
 export default {
-  components: { Multiselect, Autocomplete },
+  components: { Multiselect },
   props: [],
   data () {
     return {
@@ -10,15 +9,11 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: [],
-        names: [],
-        phones: [],
         opf: [
           { id: 1, name: 'ООО'},
           { id: 2, name: 'ОАО'},
           { id: 3, name: 'ЗАО'},
         ],
-        companies: [],
       },
       params: {
         product: null,
@@ -26,10 +21,7 @@ export default {
         paymentState: null,
         orderPrice: null,
         email: null,
-        name: null,
-        phone: null,
         opf: null,
-        company: null,
         comment: null,
       }
     }
@@ -40,20 +32,6 @@ export default {
     },
     cancelOrder () {
       this.$emit('cancelOrder')
-    },
-    updateEmails (text) {
-      // if response data is empty?
-      // this.options.emails = []
-      // this.options.emails.push(text)
-    },
-    updateNames (text) {
-      //
-    },
-    updatePhones (text) {
-      //
-    },
-    updateCompanies (text) {
-      //
     }
   },
   computed: {

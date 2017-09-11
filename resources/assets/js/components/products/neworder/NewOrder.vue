@@ -65,37 +65,19 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email</label>
-                  <autocomplete :items="options.emails"
-                  v-model="params.email"
-                  :min-len="1"
-                  placeholder="Введите email"
-                  input-class="form-control"
-                  @update-items="updateEmails">
-                  </autocomplete>
+                  <typeahead-search v-model="params.email"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Имя</label>
-                  <autocomplete :items="options.names"
-                  v-model="params.name"
-                  :min-len="1"
-                  placeholder="Введите имя"
-                  input-class="form-control"
-                  @update-items="updateNames">
-                  </autocomplete>
+                  //
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Телефон</label>
-                  <autocomplete :items="options.phones"
-                  v-model="params.phone"
-                  :min-len="1"
-                  placeholder="Введите телефон"
-                  input-class="form-control"
-                  @update-items="updatePhones">
-                  </autocomplete>
+                  //
                 </div>
               </div>
             </div>
@@ -119,13 +101,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label>Компания</label>
-                  <autocomplete :items="options.companies"
-                  v-model="params.company"
-                  :min-len="1"
-                  placeholder="Введите название компании"
-                  input-class="form-control"
-                  @update-items="updateCompanies">
-                  </autocomplete>
+                  //
                 </div>
               </div>
               <div class="col-md-5">
