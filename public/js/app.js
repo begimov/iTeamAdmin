@@ -42989,7 +42989,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        users: [],
         opf: [{ id: 1, name: 'ООО' }, { id: 2, name: 'ОАО' }, { id: 3, name: 'ЗАО' }]
       },
       params: {
@@ -42998,7 +42997,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         paymentState: null,
         orderPrice: null,
         email: null,
+        name: null,
+        phone: null,
         opf: null,
+        company: null,
         comment: null
       }
     };
@@ -43168,7 +43170,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "params.email"
     }
-  })], 1)]), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), (_vm.params.paymentType && _vm.params.paymentType.name == 'Счет') ? _c('div', {
+  })], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('typeahead-search', {
+    model: {
+      value: (_vm.params.name),
+      callback: function($$v) {
+        _vm.params.name = $$v
+      },
+      expression: "params.name"
+    }
+  })], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('typeahead-search', {
+    model: {
+      value: (_vm.params.phone),
+      callback: function($$v) {
+        _vm.params.phone = $$v
+      },
+      expression: "params.phone"
+    }
+  })], 1)])]), _vm._v(" "), (_vm.params.paymentType && _vm.params.paymentType.name == 'Счет') ? _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-2"
@@ -43193,7 +43219,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("ОПФ не найдена")])])], 1)]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
+  }, [_vm._v("ОПФ не найдена")])])], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-5"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Компания")]), _vm._v(" "), _c('typeahead-search', {
+    model: {
+      value: (_vm.params.company),
+      callback: function($$v) {
+        _vm.params.company = $$v
+      },
+      expression: "params.company"
+    }
+  })], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-5"
   }, [_c('div', {
     staticClass: "form-group"
@@ -43239,25 +43277,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("Отменить")])])])])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Имя")]), _vm._v("\n                //\n              ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Телефон")]), _vm._v("\n                //\n              ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-5"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Компания")]), _vm._v("\n                //\n              ")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

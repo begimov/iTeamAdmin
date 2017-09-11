@@ -9,7 +9,6 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        users: [],
         opf: [
           { id: 1, name: 'ООО'},
           { id: 2, name: 'ОАО'},
@@ -22,7 +21,10 @@ export default {
         paymentState: null,
         orderPrice: null,
         email: null,
+        name: null,
+        phone: null,
         opf: null,
+        company: null,
         comment: null,
       }
     }

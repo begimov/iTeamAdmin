@@ -71,13 +71,13 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Имя</label>
-                  //
+                  <typeahead-search v-model="params.name"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Телефон</label>
-                  //
+                  <typeahead-search v-model="params.phone"></typeahead-search>
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label>Компания</label>
-                  //
+                  <typeahead-search v-model="params.company"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-5">
