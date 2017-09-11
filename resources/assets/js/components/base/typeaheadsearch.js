@@ -3,7 +3,7 @@ import ItemTemplate from './TypeaheadSearch/ItemTemplate.vue'
 
 export default {
   components: { Autocomplete },
-  props: [],
+  props: ['column'],
   data () {
     return {
       query: null,
@@ -17,13 +17,13 @@ export default {
     },
     updateItems (text) {
       this.options = [
-        { id:1, value:'begimov@gmail.com' },
-        { id:2, value:'begimov@aideus.com' },
-        { id:2, value:'begimov@begimov.com' },
+        { id:1, email:'begimov@gmail.com' },
+        { id:2, email:'begimov@aideus.com' },
+        { id:2, email:'begimov@begimov.com' },
       ]
     },
     getLabel (item) {
-      return item.value
+      return item[this.column]
     },
   },
   computed: {

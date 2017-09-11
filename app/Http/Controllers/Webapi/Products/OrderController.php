@@ -8,10 +8,12 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 use App\Repositories\Contracts\Products\OrderRepository;
 
+use App\User;
 use App\Models\Products\Product;
 use App\Models\Payments\PaymentType;
 use App\Models\Payments\PaymentState;
 
+use App\Transformers\UserTransformer;
 use App\Transformers\Products\OrderTransformer;
 use App\Transformers\Products\ProductTransformer;
 use App\Transformers\Payments\PaymentTypeTransformer;
@@ -60,11 +62,13 @@ class OrderController extends Controller
         $products = fractal(Product::all(), new ProductTransformer)->toArray();
         $paymentTypes = fractal(PaymentType::all(), new PaymentTypeTransformer)->toArray();
         $paymentStates = fractal(PaymentState::all(), new PaymentStateTransformer)->toArray();
+        $users = fractal(User::all(), new UserTransformer)->toArray();
 
         return response()->json([
             'products' => $products,
             'paymentTypes' => $paymentTypes,
             'paymentStates' => $paymentStates,
+            'users' => $users,
         ]);
     }
 
