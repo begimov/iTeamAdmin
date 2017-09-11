@@ -4,6 +4,7 @@
   :min-len="1"
   :get-label="getLabel"
   input-class="form-control"
+  :component-item='template'
   @input="change"
   @change="change"
   @update-items="updateItems">
