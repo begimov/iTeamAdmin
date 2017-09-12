@@ -5,18 +5,23 @@ namespace App\Http\Controllers\Webapi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\UserRepository;
+use App\Repositories\Contracts\Users\UserProfileRepository;
 
 use App\User;
 
 use App\Transformers\Users\UserDataTransformer;
+use App\Transformers\Users\UserProfileDataTransformer;
 
 class UserController extends Controller
 {
     protected $user;
+    protected $userProfiles;
 
-    public function __construct(UserRepository $users)
+    public function __construct(UserRepository $users,
+        UserProfileRepository $userProfiles)
     {
         $this->users = $users;
+        $this->userProfiles = $userProfiles;
     }
 
     public function getUserData(Request $request, $data)
@@ -30,6 +35,10 @@ class UserController extends Controller
 
             case 'names':
                 return $this->getNames($query);
+                break;
+
+            case 'phones':
+                return $this->getPhones($query);
                 break;
 
             default:
@@ -48,5 +57,10 @@ class UserController extends Controller
     public function getNames($query)
     {
         return fractal($this->users->whereLike('name', $query), new UserDataTransformer('name'))->toArray();
+    }
+
+    public function getPhones($query)
+    {
+        return fractal($this->userProfiles->whereLike('phone', $query), new UserProfileDataTransformer('phone'))->toArray();
     }
 }
