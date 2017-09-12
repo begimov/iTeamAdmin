@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Webapi;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\UserRepository;
 
 use App\User;
 
@@ -11,6 +12,13 @@ use App\Transformers\Users\UserDataTransformer;
 
 class UserController extends Controller
 {
+    protected $user;
+
+    public function __construct(UserRepository $users)
+    {
+        $this->users = $users;
+    }
+
     public function getUserData($data)
     {
         switch ($data) {
