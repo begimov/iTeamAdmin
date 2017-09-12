@@ -3,7 +3,7 @@ import ItemTemplate from './TypeaheadSearch/ItemTemplate.vue'
 
 export default {
   components: { Autocomplete },
-  props: [],
+  props: ['data'],
   data () {
     return {
       query: null,
@@ -26,7 +26,7 @@ export default {
     //
   },
   mounted() {
-    axios.get('/webapi/users/emails').then((response) => {
+    axios.get(`/webapi/users/${this.data}`).then((response) => {
       // this.options.products = response.data.products.data
       console.log(response.data)
     })

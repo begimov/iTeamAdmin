@@ -42501,7 +42501,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Autocomplete: __WEBPACK_IMPORTED_MODULE_0_v_autocomplete___default.a },
-  props: [],
+  props: ['data'],
   data: function data() {
     return {
       query: null,
@@ -42525,7 +42525,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //
   },
   mounted: function mounted() {
-    axios.get('/webapi/users/emails').then(function (response) {
+    axios.get('/webapi/users/' + this.data).then(function (response) {
       // this.options.products = response.data.products.data
       console.log(response.data);
     });
@@ -43481,6 +43481,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('typeahead-search', {
+    attrs: {
+      "data": "emails"
+    },
     model: {
       value: (_vm.params.email),
       callback: function($$v) {
@@ -43493,6 +43496,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('typeahead-search', {
+    attrs: {
+      "data": "names"
+    },
     model: {
       value: (_vm.params.name),
       callback: function($$v) {
@@ -43505,6 +43511,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('typeahead-search', {
+    attrs: {
+      "data": "phones"
+    },
     model: {
       value: (_vm.params.phone),
       callback: function($$v) {
@@ -43542,6 +43551,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Компания")]), _vm._v(" "), _c('typeahead-search', {
+    attrs: {
+      "data": "companies"
+    },
     model: {
       value: (_vm.params.company),
       callback: function($$v) {

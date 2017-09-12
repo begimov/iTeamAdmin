@@ -65,19 +65,19 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email</label>
-                  <typeahead-search v-model="params.email"></typeahead-search>
+                  <typeahead-search v-model="params.email" data="emails"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Имя</label>
-                  <typeahead-search v-model="params.name"></typeahead-search>
+                  <typeahead-search v-model="params.name" data="names"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Телефон</label>
-                  <typeahead-search v-model="params.phone"></typeahead-search>
+                  <typeahead-search v-model="params.phone" data="phones"></typeahead-search>
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label>Компания</label>
-                  <typeahead-search v-model="params.company"></typeahead-search>
+                  <typeahead-search v-model="params.company" data="companies"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-5">

@@ -14,13 +14,15 @@ class UserController extends Controller
     public function getUserData($data)
     {
         switch ($data) {
-          case 'emails':
-            return $this->getEmails();
-            break;
+            case 'emails':
+                return $this->getEmails();
+                break;
 
-          default:
-            # code...
-            break;
+            default:
+                return response()->json([
+                    'error' => "Unknown data type: {$data}"
+                ]);
+                break;
         }
     }
 
