@@ -17,8 +17,7 @@ export default {
     },
     updateItems (text) {
       axios.get(`/webapi/users/${this.data}?query=${text}`).then((response) => {
-        // this.options.products = response.data.products.data
-        console.log(response.data)
+        this.options = response.data.data
       })
     },
     getLabel (item) {

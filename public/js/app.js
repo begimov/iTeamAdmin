@@ -42515,9 +42515,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$emit('input', data);
     },
     updateItems: function updateItems(text) {
+      var _this = this;
+
       axios.get('/webapi/users/' + this.data + '?query=' + text).then(function (response) {
-        // this.options.products = response.data.products.data
-        console.log(response.data);
+        _this.options = response.data.data;
       });
     },
     getLabel: function getLabel(item) {
