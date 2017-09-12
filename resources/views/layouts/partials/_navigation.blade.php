@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-              @if (Auth::check())
+                @role ('admin')
                   <li><a href="{{ route('home') }}">@lang('navigation.orders')</a></li>
                   <li><a href="#">@lang('navigation.landings')</a></li>
                   <li class="dropdown">
@@ -30,7 +30,7 @@
                           <li><a href="#">@lang('navigation.create')</a></li>
                       </ul>
                   </li>
-              @endif
+                @endrole
             </ul>
 
             <!-- Right Side Of Navbar -->
