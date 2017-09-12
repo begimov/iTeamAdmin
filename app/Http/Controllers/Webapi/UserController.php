@@ -13,6 +13,7 @@ use App\User;
 
 use App\Transformers\Users\UserDataTransformer;
 use App\Transformers\Users\UserProfileDataTransformer;
+use App\Transformers\Users\CompanyTransformer;
 
 class UserController extends Controller
 {
