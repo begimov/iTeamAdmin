@@ -29,7 +29,7 @@ class UserController extends Controller
                 break;
 
             case 'names':
-                return $this->getNames();
+                return $this->getNames($query);
                 break;
 
             default:
@@ -45,8 +45,8 @@ class UserController extends Controller
         return fractal($this->users->whereLike('email', $query), new UserDataTransformer('email'))->toArray();
     }
 
-    public function getNames()
+    public function getNames($query)
     {
-        return fractal(User::all(), new UserDataTransformer('name'))->toArray();
+        return fractal($this->users->whereLike('name', $query), new UserDataTransformer('name'))->toArray();
     }
 }
