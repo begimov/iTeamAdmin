@@ -86,8 +86,8 @@
               <div class="col-md-2">
                 <div class="form-group">
                   <label>ОПФ</label>
-                  <multiselect v-model="params.opf"
-                  :options="options.opf"
+                  <multiselect v-model="params.businessEntity"
+                  :options="options.businessEntities"
                   select-label=""
                   selected-label="Выбран"
                   deselect-label=""

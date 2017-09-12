@@ -9,11 +9,7 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        opf: [
-          { id: 1, name: 'ООО'},
-          { id: 2, name: 'ОАО'},
-          { id: 3, name: 'ЗАО'},
-        ],
+        businessEntities: [],
       },
       params: {
         product: null,
@@ -23,7 +19,7 @@ export default {
         email: null,
         name: null,
         phone: null,
-        opf: null,
+        businessEntity: null,
         company: null,
         comment: null,
       }
@@ -45,6 +41,7 @@ export default {
       this.options.products = response.data.products.data
       this.options.paymentTypes = response.data.paymentTypes.data
       this.options.paymentStates = response.data.paymentStates.data
+      this.options.businessEntities = response.data.businessEntities.data
     })
   }
 }

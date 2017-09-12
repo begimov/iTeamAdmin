@@ -43315,7 +43315,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        opf: [{ id: 1, name: 'ООО' }, { id: 2, name: 'ОАО' }, { id: 3, name: 'ЗАО' }]
+        businessEntities: []
       },
       params: {
         product: null,
@@ -43325,7 +43325,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         email: null,
         name: null,
         phone: null,
-        opf: null,
+        businessEntity: null,
         company: null,
         comment: null
       }
@@ -43350,6 +43350,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this.options.products = response.data.products.data;
       _this.options.paymentTypes = response.data.paymentTypes.data;
       _this.options.paymentStates = response.data.paymentStates.data;
+      _this.options.businessEntities = response.data.businessEntities.data;
     });
   }
 });
@@ -43531,7 +43532,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("ОПФ")]), _vm._v(" "), _c('multiselect', {
     attrs: {
-      "options": _vm.options.opf,
+      "options": _vm.options.businessEntities,
       "select-label": "",
       "selected-label": "Выбран",
       "deselect-label": "",
@@ -43540,11 +43541,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.opf),
+      value: (_vm.params.businessEntity),
       callback: function($$v) {
-        _vm.params.opf = $$v
+        _vm.params.businessEntity = $$v
       },
-      expression: "params.opf"
+      expression: "params.businessEntity"
     }
   }, [_c('span', {
     slot: "noResult"
