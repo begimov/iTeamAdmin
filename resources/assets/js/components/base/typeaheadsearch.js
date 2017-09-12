@@ -7,9 +7,7 @@ export default {
   data () {
     return {
       query: null,
-      options: [
-        { id: 1, value: 'dfgdfgdg'}
-      ],
+      options: [],
       template: ItemTemplate
     }
   },
@@ -28,6 +26,9 @@ export default {
     //
   },
   mounted() {
-    //
+    axios.get('/webapi/users/emails').then((response) => {
+      // this.options.products = response.data.products.data
+      console.log(response.data)
+    })
   }
 }
