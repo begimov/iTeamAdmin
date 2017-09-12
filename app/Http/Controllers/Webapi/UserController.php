@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\User;
 
-use App\Transformers\Users\UserEmailTransformer;
+use App\Transformers\Users\UserDataTransformer;
 
 class UserController extends Controller
 {
@@ -16,6 +16,10 @@ class UserController extends Controller
         switch ($data) {
             case 'emails':
                 return $this->getEmails();
+                break;
+
+            case 'names':
+                return $this->getNames();
                 break;
 
             default:
@@ -28,6 +32,11 @@ class UserController extends Controller
 
     public function getEmails()
     {
-        return fractal(User::all(), new UserEmailTransformer)->toArray();
+        return fractal(User::all(), new UserDataTransformer('email'))->toArray();
+    }
+
+    public function getNames()
+    {
+        return fractal(User::all(), new UserDataTransformer('name'))->toArray();
     }
 }
