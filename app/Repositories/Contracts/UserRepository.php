@@ -4,5 +4,5 @@ namespace App\Repositories\Contracts;
 
 interface UserRepository
 {
-    public function getAll();
+    public function whereLike($column, $query);
 }

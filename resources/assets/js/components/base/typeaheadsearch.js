@@ -16,7 +16,10 @@ export default {
       this.$emit('input', data)
     },
     updateItems (text) {
-      //
+      axios.get(`/webapi/users/${this.data}?query=${text}`).then((response) => {
+        // this.options.products = response.data.products.data
+        console.log(response.data)
+      })
     },
     getLabel (item) {
       return item.value
@@ -26,9 +29,6 @@ export default {
     //
   },
   mounted() {
-    axios.get(`/webapi/users/${this.data}`).then((response) => {
-      // this.options.products = response.data.products.data
-      console.log(response.data)
-    })
+    //
   }
 }

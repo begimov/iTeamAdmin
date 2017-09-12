@@ -19,11 +19,13 @@ class UserController extends Controller
         $this->users = $users;
     }
 
-    public function getUserData($data)
+    public function getUserData(Request $request, $data)
     {
+        $query = $request->input('query');
+
         switch ($data) {
             case 'emails':
-                return $this->getEmails();
+                return $this->getEmails($query);
                 break;
 
             case 'names':
@@ -38,9 +40,9 @@ class UserController extends Controller
         }
     }
 
-    public function getEmails()
+    public function getEmails($query)
     {
-        return fractal(User::all(), new UserDataTransformer('email'))->toArray();
+        return fractal($this->users->whereLike('email', $query), new UserDataTransformer('email'))->toArray();
     }
 
     public function getNames()

@@ -7,8 +7,8 @@ use App\User;
 
 class EloquentUserRepository implements UserRepository
 {
-    public function getAll()
+    public function whereLike($column, $query)
     {
-        return User::all();
+        return User::where($column, 'like', "%{$query}%")->take(3)->get();
     }
 }

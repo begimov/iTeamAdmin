@@ -42515,7 +42515,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$emit('input', data);
     },
     updateItems: function updateItems(text) {
-      //
+      axios.get('/webapi/users/' + this.data + '?query=' + text).then(function (response) {
+        // this.options.products = response.data.products.data
+        console.log(response.data);
+      });
     },
     getLabel: function getLabel(item) {
       return item.value;
@@ -42525,10 +42528,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //
   },
   mounted: function mounted() {
-    axios.get('/webapi/users/' + this.data).then(function (response) {
-      // this.options.products = response.data.products.data
-      console.log(response.data);
-    });
+    //
   }
 });
 
