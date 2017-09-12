@@ -10,7 +10,7 @@ class CompanyTransformer extends \League\Fractal\TransformerAbstract
     {
         return [
             'id' => $company->id,
-            'name' => $company->name,
+            'value' => $company->name,
         ];
     }
 }
