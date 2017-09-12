@@ -42698,6 +42698,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "items": _vm.options,
       "min-len": 1,
       "get-label": _vm.getLabel,
+      "auto-select-one-item": false,
       "input-class": "form-control",
       "component-item": _vm.template
     },
