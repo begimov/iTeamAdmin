@@ -42506,7 +42506,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       query: null,
       options: [],
-      template: __WEBPACK_IMPORTED_MODULE_1__TypeaheadSearch_ItemTemplate_vue___default.a
+      template: __WEBPACK_IMPORTED_MODULE_1__TypeaheadSearch_ItemTemplate_vue___default.a,
+      isLoading: false
     };
   },
 
@@ -42517,8 +42518,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     updateItems: function updateItems(text) {
       var _this = this;
 
+      this.isLoading = true;
       axios.get('/webapi/users/' + this.data + '?query=' + text).then(function (response) {
         _this.options = response.data.data;
+        _this.isLoading = false;
       });
     },
     getLabel: function getLabel(item) {
@@ -42693,7 +42696,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('autocomplete', {
+  return _c('div', [_c('autocomplete', {
     attrs: {
       "items": _vm.options,
       "min-len": 1,
@@ -42714,7 +42717,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "query"
     }
-  })
+  }), _vm._v(" "), (_vm.isLoading) ? _c('span', {
+    staticClass: "label label-default"
+  }, [_vm._v("загрузка...")]) : _vm._e()], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
