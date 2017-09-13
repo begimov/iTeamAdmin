@@ -9,6 +9,7 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
+        emails: [],
         businessEntities: [],
       },
       params: {

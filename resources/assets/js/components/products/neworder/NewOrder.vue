@@ -65,7 +65,16 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email</label>
-                  <typeahead-search v-model="params.email" data="emails"></typeahead-search>
+                  <multiselect v-model="params.email"
+                  :options="options.emails"
+                  select-label=""
+                  selected-label="Выбран"
+                  deselect-label=""
+                  placeholder="Выберите email"
+                  label="name"
+                  track-by="id">
+                    <span slot="noResult">Email не найден</span>
+                  </multiselect>
                 </div>
               </div>
               <div class="col-md-4">

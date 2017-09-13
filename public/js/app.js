@@ -43320,6 +43320,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         products: [],
         paymentTypes: [],
         paymentStates: [],
+        emails: [],
         businessEntities: []
       },
       params: {
@@ -43488,9 +43489,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('typeahead-search', {
+  }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('multiselect', {
     attrs: {
-      "data": "emails"
+      "options": _vm.options.emails,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите email",
+      "label": "name",
+      "track-by": "id"
     },
     model: {
       value: (_vm.params.email),
@@ -43499,7 +43506,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "params.email"
     }
-  })], 1)]), _vm._v(" "), _c('div', {
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Email не найден")])])], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "form-group"
