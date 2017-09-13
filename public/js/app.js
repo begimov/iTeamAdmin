@@ -43334,7 +43334,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         businessEntity: null,
         company: null,
         comment: null
-      }
+      },
+      isLoading: false
     };
   },
 
@@ -43344,6 +43345,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     cancelOrder: function cancelOrder() {
       this.$emit('cancelOrder');
+    },
+    getUsers: function getUsers(query) {
+      this.isLoading = true;
+      console.log('GETTING USERS');
     }
   },
   computed: {
@@ -43492,12 +43497,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('multiselect', {
     attrs: {
       "options": _vm.options.emails,
+      "loading": _vm.isLoading,
       "select-label": "",
       "selected-label": "Выбран",
       "deselect-label": "",
       "placeholder": "Выберите email",
       "label": "name",
       "track-by": "id"
+    },
+    on: {
+      "search-change": _vm.getUsers
     },
     model: {
       value: (_vm.params.email),

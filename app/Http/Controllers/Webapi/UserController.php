@@ -57,16 +57,16 @@ class UserController extends Controller
 
     public function getNames($query)
     {
-        return fractal($this->users->whereLike('name', $query), new UserDataTransformer('name'))->toArray();
+        return fractal($this->users->whereLike('name', $query, 3), new UserDataTransformer('name'))->toArray();
     }
 
     public function getPhones($query)
     {
-        return fractal($this->userProfiles->whereLike('phone', $query), new UserProfileDataTransformer('phone'))->toArray();
+        return fractal($this->userProfiles->whereLike('phone', $query, 3), new UserProfileDataTransformer('phone'))->toArray();
     }
 
     public function getCompanies($query)
     {
-        return fractal($this->companies->whereLike('name', $query), new CompanyTransformer('name'))->toArray();
+        return fractal($this->companies->whereLike('name', $query, 3), new CompanyTransformer('name'))->toArray();
     }
 }

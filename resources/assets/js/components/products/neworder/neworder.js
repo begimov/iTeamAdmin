@@ -23,7 +23,8 @@ export default {
         businessEntity: null,
         company: null,
         comment: null,
-      }
+      },
+      isLoading: false
     }
   },
   methods: {
@@ -32,6 +33,10 @@ export default {
     },
     cancelOrder () {
       this.$emit('cancelOrder')
+    },
+    getUsers (query) {
+      this.isLoading = true
+      console.log('GETTING USERS');
     }
   },
   computed: {

@@ -67,6 +67,8 @@
                   <label>Email</label>
                   <multiselect v-model="params.email"
                   :options="options.emails"
+                  @search-change="getUsers"
+                  :loading="isLoading"
                   select-label=""
                   selected-label="Выбран"
                   deselect-label=""

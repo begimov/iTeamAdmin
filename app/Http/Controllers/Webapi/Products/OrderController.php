@@ -22,6 +22,7 @@ use App\Transformers\Users\BusinessEntityTransformer;
 
 class OrderController extends Controller
 {
+    protected $orders;
     /**
      * Create a new controller instance.
      *
