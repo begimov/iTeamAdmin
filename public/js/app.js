@@ -42530,13 +42530,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   watch: {
     user: function user() {
-      // if (this.user) {
-      //   this.isLoading = true;
-      //   axios.get(`/webapi/user/${this.data}?id=${this.user.id}`).then((response) => {
-      //     this.query = response.data.data
-      //     this.isLoading = false;
-      //   })
-      // }
+      var _this2 = this;
+
+      if (this.user) {
+        this.isLoading = true;
+        axios.get('/webapi/user/' + this.user.id + '/' + this.data).then(function (response) {
+          _this2.query = response.data.data;
+          _this2.isLoading = false;
+        });
+      }
     }
   },
   computed: {
@@ -43361,7 +43363,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       this.isLoading = true;
-      axios.get('/webapi/users/emails?query=' + query).then(function (response) {
+      axios.get('/webapi/users/email?query=' + query).then(function (response) {
         _this.options.emails = response.data.data;
         _this.isLoading = false;
       });
@@ -43540,7 +43542,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('typeahead-search', {
     attrs: {
       "user": _vm.params.email,
-      "data": "names"
+      "data": "name"
     },
     model: {
       value: (_vm.params.name),
@@ -43555,7 +43557,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('typeahead-search', {
     attrs: {
-      "data": "phones"
+      "data": "phone"
     },
     model: {
       value: (_vm.params.phone),
@@ -43595,7 +43597,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Компания")]), _vm._v(" "), _c('typeahead-search', {
     attrs: {
-      "data": "companies"
+      "data": "company"
     },
     model: {
       value: (_vm.params.company),

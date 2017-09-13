@@ -36,7 +36,7 @@ export default {
     },
     getEmails (query) {
       this.isLoading = true
-      axios.get(`/webapi/users/emails?query=${query}`).then((response) => {
+      axios.get(`/webapi/users/email?query=${query}`).then((response) => {
         this.options.emails = response.data.data
         this.isLoading = false;
       })

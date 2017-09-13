@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         Route::resource('orders', 'Products\OrderController');
 
         Route::get('/users/{data}', 'UserController@getUsersDataByQuery');
-        Route::get('/user/{data}', 'UserController@getUserDataById');
+        Route::get('/user/{user}/{data}', 'UserController@getUserData');
     });
 
 });

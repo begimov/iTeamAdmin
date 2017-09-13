@@ -29,13 +29,13 @@ export default {
   },
   watch: {
     user: function () {
-      // if (this.user) {
-      //   this.isLoading = true;
-      //   axios.get(`/webapi/user/${this.data}?id=${this.user.id}`).then((response) => {
-      //     this.query = response.data.data
-      //     this.isLoading = false;
-      //   })
-      // }
+      if (this.user) {
+        this.isLoading = true;
+        axios.get(`/webapi/user/${this.user.id}/${this.data}`).then((response) => {
+          this.query = response.data.data
+          this.isLoading = false;
+        })
+      }
     }
   },
   computed: {
