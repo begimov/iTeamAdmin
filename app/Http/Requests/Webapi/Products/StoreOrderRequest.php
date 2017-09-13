@@ -24,7 +24,9 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'data.name' => 'required',
+            'data.product' => 'required|array',
+            // 'data.paymentType' => 'required',
+            'data.name' => 'sometimes|string',
         ];
     }
 }

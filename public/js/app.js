@@ -43357,9 +43357,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     saveOrder: function saveOrder() {
       axios.post('/webapi/orders', {
-        data: this.params
+        data: _.omitBy(this.params, function (param, key) {
+          return _.isNull(param);
+        })
       }).then(function (response) {
-        console.log(response.data);
+        //
       });
     },
     cancelOrder: function cancelOrder() {
