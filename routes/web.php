@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
         // Route for Orders.vue component
         Route::resource('orders', 'Products\OrderController');
+
+        Route::get('/users/{data}', 'UserController@getUserData')->name('get.users.data');
     });
 
 });

@@ -16,6 +16,7 @@ class PaymentTypesTableSeeder extends Seeder
           ['name' => 'Карта'],
           ['name' => 'Сбербанк'],
           ['name' => 'Перевод'],
+          ['name' => 'Счет'],
       ];
       foreach ($paymentTypes as $key => $value) {
           DB::table('payment_types')->insert($value);

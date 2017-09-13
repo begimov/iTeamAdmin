@@ -4,9 +4,21 @@ namespace App\Http\Controllers\Webapi\Products;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\Products\OrderRepository;
-use App\Transformers\Products\OrderTransformer;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+
+use App\Repositories\Contracts\Products\OrderRepository;
+
+use App\Models\Products\Product;
+use App\Models\Payments\PaymentType;
+use App\Models\Payments\PaymentState;
+use App\Models\Users\BusinessEntity;
+
+use App\Transformers\Products\OrderTransformer;
+use App\Transformers\Products\ProductTransformer;
+use App\Transformers\Payments\PaymentTypeTransformer;
+use App\Transformers\Payments\PaymentStateTransformer;
+use App\Transformers\Users\BusinessEntityTransformer;
+
 
 class OrderController extends Controller
 {
@@ -47,7 +59,17 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $products = fractal(Product::all(), new ProductTransformer)->toArray();
+        $paymentTypes = fractal(PaymentType::all(), new PaymentTypeTransformer)->toArray();
+        $paymentStates = fractal(PaymentState::all(), new PaymentStateTransformer)->toArray();
+        $businessEntities = fractal(BusinessEntity::all(), new BusinessEntityTransformer)->toArray();
+
+        return response()->json([
+            'products' => $products,
+            'paymentTypes' => $paymentTypes,
+            'paymentStates' => $paymentStates,
+            'businessEntities' => $businessEntities,
+        ]);
     }
 
     /**

@@ -3,6 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Contracts\UserRepository;
+use App\Repositories\Eloquent\EloquentUserRepository;
+use App\Repositories\Contracts\Users\UserProfileRepository;
+use App\Repositories\Eloquent\Users\EloquentUserProfileRepository;
+use App\Repositories\Contracts\Users\CompanyRepository;
+use App\Repositories\Eloquent\Users\EloquentCompanyRepository;
 use App\Repositories\Contracts\Products\OrderRepository;
 use App\Repositories\Eloquent\Products\EloquentOrderRepository;
 use App\Repositories\Contracts\Landings\LandingRepository;
@@ -17,6 +23,9 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->bind(UserRepository::class, EloquentUserRepository::class);
+        $this->app->bind(UserProfileRepository::class, EloquentUserProfileRepository::class);
+        $this->app->bind(CompanyRepository::class, EloquentCompanyRepository::class);
         $this->app->bind(OrderRepository::class, EloquentOrderRepository::class);
         $this->app->bind(LandingRepository::class, EloquentLandingRepository::class);
     }
