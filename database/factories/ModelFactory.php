@@ -55,9 +55,14 @@ $factory->define(App\Models\Products\Order::class, function (Faker\Generator $fa
     ];
 });
 
-
-
-
+$factory->define(App\Models\Users\Company::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->sentence,
+        'business_entity_id' => function () {
+            return App\Models\Users\BusinessEntity::inRandomOrder()->first()->id;
+        }
+    ];
+});
 
 $factory->define(App\Models\Landings\Landing::class, function (Faker\Generator $faker) {
     return [
