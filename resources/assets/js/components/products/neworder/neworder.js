@@ -29,7 +29,11 @@ export default {
   },
   methods: {
     saveOrder () {
-      console.log('SAVE');
+      axios.post(`/webapi/orders`, {
+        data: this.params
+      }).then((response) => {
+        console.log(response.data)
+      })
     },
     cancelOrder () {
       this.$emit('cancelOrder')
