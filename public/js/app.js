@@ -43320,7 +43320,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        users: [],
+        emails: [],
         businessEntities: []
       },
       params: {
@@ -43328,7 +43328,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         paymentType: null,
         paymentState: null,
         orderPrice: null,
-        user: null,
+        email: null,
         name: null,
         phone: null,
         businessEntity: null,
@@ -43346,12 +43346,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     cancelOrder: function cancelOrder() {
       this.$emit('cancelOrder');
     },
-    getUsers: function getUsers(query) {
+    getEmails: function getEmails(query) {
       var _this = this;
 
       this.isLoading = true;
-      axios.get('/webapi/users?query=' + query).then(function (response) {
-        _this.options.users = response.data.data;
+      axios.get('/webapi/users/emails?query=' + query).then(function (response) {
+        _this.options.emails = response.data.data;
         _this.isLoading = false;
       });
     }
@@ -43501,24 +43501,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('multiselect', {
     attrs: {
-      "options": _vm.options.users,
+      "options": _vm.options.emails,
       "loading": _vm.isLoading,
       "select-label": "",
       "selected-label": "Выбран",
       "deselect-label": "",
       "placeholder": "Выберите email",
-      "label": "name",
+      "label": "value",
       "track-by": "id"
     },
     on: {
-      "search-change": _vm.getUsers
+      "search-change": _vm.getEmails
     },
     model: {
-      value: (_vm.params.user),
+      value: (_vm.params.email),
       callback: function($$v) {
-        _vm.params.user = $$v
+        _vm.params.email = $$v
       },
-      expression: "params.user"
+      expression: "params.email"
     }
   }, [_c('span', {
     slot: "noResult"

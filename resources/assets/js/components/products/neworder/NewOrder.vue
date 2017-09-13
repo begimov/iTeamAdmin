@@ -65,15 +65,15 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email</label>
-                  <multiselect v-model="params.user"
-                  :options="options.users"
-                  @search-change="getUsers"
+                  <multiselect v-model="params.email"
+                  :options="options.emails"
+                  @search-change="getEmails"
                   :loading="isLoading"
                   select-label=""
                   selected-label="Выбран"
                   deselect-label=""
                   placeholder="Выберите email"
-                  label="name"
+                  label="value"
                   track-by="id">
                     <span slot="noResult">Email не найден</span>
                   </multiselect>

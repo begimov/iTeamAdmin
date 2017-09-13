@@ -9,7 +9,7 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        users: [],
+        emails: [],
         businessEntities: [],
       },
       params: {
@@ -17,7 +17,7 @@ export default {
         paymentType: null,
         paymentState: null,
         orderPrice: null,
-        user: null,
+        email: null,
         name: null,
         phone: null,
         businessEntity: null,
@@ -34,10 +34,10 @@ export default {
     cancelOrder () {
       this.$emit('cancelOrder')
     },
-    getUsers (query) {
+    getEmails (query) {
       this.isLoading = true
-      axios.get(`/webapi/users?query=${query}`).then((response) => {
-        this.options.users = response.data.data
+      axios.get(`/webapi/users/emails?query=${query}`).then((response) => {
+        this.options.emails = response.data.data
         this.isLoading = false;
       })
     }
