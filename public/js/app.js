@@ -43382,6 +43382,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this2.options.paymentTypes = response.data.paymentTypes.data;
       _this2.options.paymentStates = response.data.paymentStates.data;
       _this2.options.businessEntities = response.data.businessEntities.data;
+
+      _this2.params.businessEntity = _this2.options.businessEntities[0];
     });
   }
 });

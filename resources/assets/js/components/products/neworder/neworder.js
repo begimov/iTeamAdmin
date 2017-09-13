@@ -51,6 +51,8 @@ export default {
       this.options.paymentTypes = response.data.paymentTypes.data
       this.options.paymentStates = response.data.paymentStates.data
       this.options.businessEntities = response.data.businessEntities.data
+
+      this.params.businessEntity = this.options.businessEntities[0]
     })
   }
 }
