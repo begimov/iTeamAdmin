@@ -30,25 +30,36 @@ class UserController extends Controller
         $this->companies = $companies;
     }
 
-    public function getUserData(Request $request, $data)
+    public function getUserDataById(Request $request, $data)
+    {
+        $id = $request->input('id');
+
+        switch ($data) {
+            case 'names':
+                return $this->getNamesById($id);
+                break;
+        }
+    }
+
+    public function getUsersDataByQuery(Request $request, $data)
     {
         $query = $request->input('query');
 
         switch ($data) {
             case 'emails':
-                return $this->getEmails($query);
+                return $this->getEmailsByQuery($query);
                 break;
 
             case 'names':
-                return $this->getNames($query);
+                return $this->getNamesByQuery($query);
                 break;
 
             case 'phones':
-                return $this->getPhones($query);
+                return $this->getPhonesByQuery($query);
                 break;
 
             case 'companies':
-                return $this->getCompanies($query);
+                return $this->getCompaniesByQuery($query);
                 break;
 
             default:
@@ -59,22 +70,22 @@ class UserController extends Controller
         }
     }
 
-    public function getEmails($query)
+    protected function getEmailsByQuery($query)
     {
         return fractal($this->users->whereLike('email', $query, 3), new UserDataTransformer('email'))->toArray();
     }
 
-    public function getNames($query)
+    protected function getNamesByQuery($query)
     {
         return fractal($this->users->whereLike('name', $query, 3), new UserDataTransformer('name'))->toArray();
     }
 
-    public function getPhones($query)
+    protected function getPhonesByQuery($query)
     {
         return fractal($this->userProfiles->whereLike('phone', $query, 3), new UserProfileDataTransformer('phone'))->toArray();
     }
 
-    public function getCompanies($query)
+    protected function getCompaniesByQuery($query)
     {
         return fractal($this->companies->whereLike('name', $query, 3), new CompanyTransformer('name'))->toArray();
     }

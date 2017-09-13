@@ -6,7 +6,7 @@ export default {
   props: ['user','data'],
   data () {
     return {
-      query: null,
+      query: this.user,
       options: [],
       template: ItemTemplate,
       isLoading: false,
@@ -27,10 +27,19 @@ export default {
       return item.value
     },
   },
-  computed: {
-    selectedUser () {
-      return this.user
+  watch: {
+    user: function () {
+      // if (this.user) {
+      //   this.isLoading = true;
+      //   axios.get(`/webapi/user/${this.data}?id=${this.user.id}`).then((response) => {
+      //     this.query = response.data.data
+      //     this.isLoading = false;
+      //   })
+      // }
     }
+  },
+  computed: {
+    //
   },
   mounted() {
     //

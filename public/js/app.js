@@ -42504,7 +42504,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['user', 'data'],
   data: function data() {
     return {
-      query: null,
+      query: this.user,
       options: [],
       template: __WEBPACK_IMPORTED_MODULE_1__TypeaheadSearch_ItemTemplate_vue___default.a,
       isLoading: false
@@ -42528,10 +42528,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return item.value;
     }
   },
-  computed: {
-    selectedUser: function selectedUser() {
-      return this.user;
+  watch: {
+    user: function user() {
+      // if (this.user) {
+      //   this.isLoading = true;
+      //   axios.get(`/webapi/user/${this.data}?id=${this.user.id}`).then((response) => {
+      //     this.query = response.data.data
+      //     this.isLoading = false;
+      //   })
+      // }
     }
+  },
+  computed: {
+    //
   },
   mounted: function mounted() {
     //
@@ -42719,7 +42728,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "query"
     }
-  }), _vm._v("\n  " + _vm._s(_vm.selectedUser) + "\n  "), (_vm.isLoading) ? _c('span', {
+  }), _vm._v(" "), (_vm.isLoading) ? _c('span', {
     staticClass: "label label-default"
   }, [_vm._v("загрузка...")]) : _vm._e()], 1)
 },staticRenderFns: []}

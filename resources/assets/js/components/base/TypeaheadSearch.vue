@@ -11,7 +11,6 @@
     @change="change"
     @update-items="updateItems">
     </autocomplete>
-    {{ selectedUser }}
     <span class="label label-default" v-if="isLoading">загрузка...</span>
   </div>
 </template>
