@@ -34,8 +34,17 @@ class UserController extends Controller
     {
         switch ($data) {
             case 'name':
-                return $this->transformNames($user);
+                return $this->transformEmailsOrNames($user, $data);
                 break;
+
+            case 'phone':
+                return $this->transformPhones($user->userProfile);
+                break;
+
+            // TODO: for company, decide on relationship
+            // case 'company':
+            //     return $this->transformCompanies($user->company);
+            //     break;
 
             default:
                 return response()->json([
@@ -51,19 +60,23 @@ class UserController extends Controller
 
         switch ($data) {
             case 'email':
-                return $this->transformEmails($this->users->whereLike($data, $query, 3));
+                return $this->transformEmailsOrNames(
+                    $this->users->whereLike($data, $query, 3), $data);
                 break;
 
             case 'name':
-                return $this->transformNames($this->users->whereLike($data, $query, 3));
+                return $this->transformEmailsOrNames(
+                    $this->users->whereLike($data, $query, 3), $data);
                 break;
 
             case 'phone':
-                return $this->transformPhones($this->userProfiles->whereLike($data, $query, 3));
+                return $this->transformPhones(
+                    $this->userProfiles->whereLike($data, $query, 3));
                 break;
 
             case 'company':
-                return $this->transformCompanies($this->companies->whereLike('name', $query, 3));
+                return $this->transformCompanies(
+                    $this->companies->whereLike('name', $query, 3));
                 break;
 
             default:
@@ -74,14 +87,9 @@ class UserController extends Controller
         }
     }
 
-    protected function transformEmails($data)
+    protected function transformEmailsOrNames($data, $type)
     {
-        return fractal($data, new UserDataTransformer('email'))->toArray();
-    }
-
-    protected function transformNames($data)
-    {
-        return fractal($data, new UserDataTransformer('name'))->toArray();
+        return fractal($data, new UserDataTransformer($type))->toArray();
     }
 
     protected function transformPhones($data)

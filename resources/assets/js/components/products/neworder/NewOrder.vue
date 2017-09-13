@@ -88,7 +88,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Телефон</label>
-                  <typeahead-search v-model="params.phone" data="phone"></typeahead-search>
+                  <typeahead-search :user="params.email" v-model="params.phone" data="phone"></typeahead-search>
                 </div>
               </div>
             </div>

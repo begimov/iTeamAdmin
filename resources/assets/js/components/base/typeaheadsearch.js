@@ -6,7 +6,7 @@ export default {
   props: ['user','data'],
   data () {
     return {
-      query: this.user,
+      query: null,
       options: [],
       template: ItemTemplate,
       isLoading: false,
@@ -35,6 +35,8 @@ export default {
           this.query = response.data.data
           this.isLoading = false;
         })
+      } else {
+        this.query = null;
       }
     }
   },

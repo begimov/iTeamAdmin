@@ -42504,7 +42504,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['user', 'data'],
   data: function data() {
     return {
-      query: this.user,
+      query: null,
       options: [],
       template: __WEBPACK_IMPORTED_MODULE_1__TypeaheadSearch_ItemTemplate_vue___default.a,
       isLoading: false
@@ -42538,6 +42538,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this2.query = response.data.data;
           _this2.isLoading = false;
         });
+      } else {
+        this.query = null;
       }
     }
   },
@@ -43557,6 +43559,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('typeahead-search', {
     attrs: {
+      "user": _vm.params.email,
       "data": "phone"
     },
     model: {
