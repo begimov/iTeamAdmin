@@ -3,7 +3,7 @@ import ItemTemplate from './TypeaheadSearch/ItemTemplate.vue'
 
 export default {
   components: { Autocomplete },
-  props: ['data'],
+  props: ['user','data'],
   data () {
     return {
       query: null,
@@ -28,7 +28,9 @@ export default {
     },
   },
   computed: {
-    //
+    selectedUser () {
+      return this.user
+    }
   },
   mounted() {
     //

@@ -82,7 +82,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Имя</label>
-                  <typeahead-search v-model="params.name" data="names"></typeahead-search>
+                  <typeahead-search :user="params.email" v-model="params.name" data="names"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-4">

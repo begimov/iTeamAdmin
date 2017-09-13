@@ -42501,7 +42501,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Autocomplete: __WEBPACK_IMPORTED_MODULE_0_v_autocomplete___default.a },
-  props: ['data'],
+  props: ['user', 'data'],
   data: function data() {
     return {
       query: null,
@@ -42529,7 +42529,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   computed: {
-    //
+    selectedUser: function selectedUser() {
+      return this.user;
+    }
   },
   mounted: function mounted() {
     //
@@ -42717,7 +42719,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "query"
     }
-  }), _vm._v(" "), (_vm.isLoading) ? _c('span', {
+  }), _vm._v("\n  " + _vm._s(_vm.selectedUser) + "\n  "), (_vm.isLoading) ? _c('span', {
     staticClass: "label label-default"
   }, [_vm._v("загрузка...")]) : _vm._e()], 1)
 },staticRenderFns: []}
@@ -43528,6 +43530,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('typeahead-search', {
     attrs: {
+      "user": _vm.params.email,
       "data": "names"
     },
     model: {
