@@ -34,8 +34,8 @@ class EloquentOrderRepository implements OrderRepository
             ->paginate($paginateBy);
     }
 
-    public function store($data)
+    public function store(array $data)
     {
-        //
+        dd($data);
     }
 }
