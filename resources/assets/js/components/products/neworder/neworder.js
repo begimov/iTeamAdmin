@@ -9,7 +9,7 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: [],
+        users: [],
         businessEntities: [],
       },
       params: {
@@ -17,7 +17,7 @@ export default {
         paymentType: null,
         paymentState: null,
         orderPrice: null,
-        email: null,
+        user: null,
         name: null,
         phone: null,
         businessEntity: null,
@@ -36,7 +36,10 @@ export default {
     },
     getUsers (query) {
       this.isLoading = true
-      console.log('GETTING USERS');
+      axios.get(`/webapi/users?query=${query}`).then((response) => {
+        this.options.users = response.data.data
+        this.isLoading = false;
+      })
     }
   },
   computed: {

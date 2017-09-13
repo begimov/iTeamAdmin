@@ -43320,7 +43320,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: [],
+        users: [],
         businessEntities: []
       },
       params: {
@@ -43328,7 +43328,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         paymentType: null,
         paymentState: null,
         orderPrice: null,
-        email: null,
+        user: null,
         name: null,
         phone: null,
         businessEntity: null,
@@ -43347,21 +43347,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$emit('cancelOrder');
     },
     getUsers: function getUsers(query) {
+      var _this = this;
+
       this.isLoading = true;
-      console.log('GETTING USERS');
+      axios.get('/webapi/users?query=' + query).then(function (response) {
+        _this.options.users = response.data.data;
+        _this.isLoading = false;
+      });
     }
   },
   computed: {
     //
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('/webapi/orders/create').then(function (response) {
-      _this.options.products = response.data.products.data;
-      _this.options.paymentTypes = response.data.paymentTypes.data;
-      _this.options.paymentStates = response.data.paymentStates.data;
-      _this.options.businessEntities = response.data.businessEntities.data;
+      _this2.options.products = response.data.products.data;
+      _this2.options.paymentTypes = response.data.paymentTypes.data;
+      _this2.options.paymentStates = response.data.paymentStates.data;
+      _this2.options.businessEntities = response.data.businessEntities.data;
     });
   }
 });
@@ -43496,7 +43501,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('multiselect', {
     attrs: {
-      "options": _vm.options.emails,
+      "options": _vm.options.users,
       "loading": _vm.isLoading,
       "select-label": "",
       "selected-label": "Выбран",
@@ -43509,11 +43514,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "search-change": _vm.getUsers
     },
     model: {
-      value: (_vm.params.email),
+      value: (_vm.params.user),
       callback: function($$v) {
-        _vm.params.email = $$v
+        _vm.params.user = $$v
       },
-      expression: "params.email"
+      expression: "params.user"
     }
   }, [_c('span', {
     slot: "noResult"

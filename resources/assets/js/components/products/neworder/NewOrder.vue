@@ -65,8 +65,8 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email</label>
-                  <multiselect v-model="params.email"
-                  :options="options.emails"
+                  <multiselect v-model="params.user"
+                  :options="options.users"
                   @search-change="getUsers"
                   :loading="isLoading"
                   select-label=""

@@ -25,7 +25,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for Orders.vue component
         Route::resource('orders', 'Products\OrderController');
 
-        Route::get('/users/{data}', 'UserController@getUserData')->name('get.users.data');
+        Route::get('/users', 'UserController@getUsers');
+        Route::get('/users/{data}', 'UserController@getUserData');
     });
 
 });
