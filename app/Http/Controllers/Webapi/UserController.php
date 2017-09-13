@@ -35,10 +35,6 @@ class UserController extends Controller
         $query = $request->input('query');
 
         switch ($data) {
-            case 'emails':
-                return $this->getEmails($query);
-                break;
-
             case 'names':
                 return $this->getNames($query);
                 break;
@@ -57,11 +53,6 @@ class UserController extends Controller
                 ]);
                 break;
         }
-    }
-
-    public function getEmails($query)
-    {
-        return fractal($this->users->whereLike('email', $query), new UserDataTransformer('email'))->toArray();
     }
 
     public function getNames($query)
