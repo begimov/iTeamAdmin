@@ -43386,8 +43386,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   watch: {
-    'params.company': function paramsCompany(val) {
-      this.params.businessEntity = this.options.businessEntities[1];
+    'params.company': function paramsCompany(company) {
+      if (company) {
+        this.params.businessEntity = this.options.businessEntities[company.businessEntity - 1];
+      } else {
+        this.params.businessEntity = this.options.businessEntities[0];
+      }
     }
   },
   computed: {

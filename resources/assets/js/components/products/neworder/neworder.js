@@ -49,8 +49,12 @@ export default {
     }
   },
   watch: {
-    'params.company': function (val) {
-      this.params.businessEntity = this.options.businessEntities[1]
+    'params.company': function (company) {
+      if (company) {
+        this.params.businessEntity = this.options.businessEntities[company.businessEntity - 1]
+      } else {
+        this.params.businessEntity = this.options.businessEntities[0]
+      }
     }
   },
   computed: {
