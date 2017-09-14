@@ -42543,7 +42543,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       if (this.user) {
         this.isLoading = true;
         axios.get('/webapi/user/' + this.user.id + '/' + this.data).then(function (response) {
-          _this2.query = response.data.data;
+          _this2.query = _.isEmpty(response.data.data) ? null : response.data.data;
           _this2.isLoading = false;
         });
       } else {
@@ -43390,7 +43390,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (company && company.businessEntity) {
         this.params.businessEntity = this.options.businessEntities[company.businessEntity - 1];
       } else {
-        this.params.company = null;
+        // this.params.company = null
         this.params.businessEntity = this.options.businessEntities[0];
       }
     }

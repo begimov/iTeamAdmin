@@ -53,7 +53,7 @@ export default {
       if (company && company.businessEntity) {
         this.params.businessEntity = this.options.businessEntities[company.businessEntity - 1]
       } else {
-        this.params.company = null
+        // this.params.company = null
         this.params.businessEntity = this.options.businessEntities[0]
       }
     }

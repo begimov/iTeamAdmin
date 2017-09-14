@@ -38,7 +38,7 @@ export default {
       if (this.user) {
         this.isLoading = true;
         axios.get(`/webapi/user/${this.user.id}/${this.data}`).then((response) => {
-          this.query = response.data.data
+          this.query = _.isEmpty(response.data.data) ? null : response.data.data
           this.isLoading = false;
         })
       } else {
