@@ -14,7 +14,7 @@ class AddCompanyIdToUserProfilesTable extends Migration
     public function up()
     {
         Schema::table('user_profiles', function (Blueprint $table) {
-            $table->integer('company_id')->unsigned();
+            $table->integer('company_id')->unsigned()->nullable();
         });
     }
 
