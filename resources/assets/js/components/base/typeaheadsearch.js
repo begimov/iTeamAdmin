@@ -13,8 +13,14 @@ export default {
     }
   },
   methods: {
-    change (data) {
-      this.$emit('input', data)
+    changed (data) {
+      if (!data) {
+        this.$emit('input', null)
+      } else if (typeof(data) === 'string') {
+        this.$emit('input', { id: null, value: data })
+      } else if (typeof(data) === 'object') {
+        this.$emit('input', data)
+      }
     },
     updateItems (text) {
       this.isLoading = true;

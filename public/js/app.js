@@ -42496,6 +42496,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_v_autocomplete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_v_autocomplete__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TypeaheadSearch_ItemTemplate_vue__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TypeaheadSearch_ItemTemplate_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__TypeaheadSearch_ItemTemplate_vue__);
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 
 
 
@@ -42512,8 +42514,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    change: function change(data) {
-      this.$emit('input', data);
+    changed: function changed(data) {
+      if (!data) {
+        this.$emit('input', null);
+      } else if (typeof data === 'string') {
+        this.$emit('input', { id: null, value: data });
+      } else if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) === 'object') {
+        this.$emit('input', data);
+      }
     },
     updateItems: function updateItems(text) {
       var _this = this;
@@ -42721,8 +42729,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "component-item": _vm.template
     },
     on: {
-      "input": _vm.change,
-      "change": _vm.change,
+      "input": _vm.changed,
+      "change": _vm.changed,
       "update-items": _vm.updateItems
     },
     model: {

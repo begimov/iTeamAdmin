@@ -7,8 +7,8 @@
     :auto-select-one-item="false"
     input-class="form-control"
     :component-item='template'
-    @input="change"
-    @change="change"
+    @input="changed"
+    @change="changed"
     @update-items="updateItems">
     </autocomplete>
     <span class="label label-default" v-if="isLoading">загрузка...</span>
