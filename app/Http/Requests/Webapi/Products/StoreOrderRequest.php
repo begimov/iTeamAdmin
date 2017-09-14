@@ -25,8 +25,17 @@ class StoreOrderRequest extends FormRequest
     {
         return [
             'data.product' => 'required|array',
-            // 'data.paymentType' => 'required',
-            'data.name' => 'sometimes|string',
+            'data.paymentType' => 'array',
+            'data.paymentState' => 'required|array',
+            'data.orderPrice' => 'string',
+
+            'data.email' => 'required|array',
+            'data.name' => 'array',
+            'data.phone' => 'array',
+
+            'data.businessEntity' => 'array',
+            'data.company' => 'array',
+            'data.comment' => 'array',
         ];
     }
 }

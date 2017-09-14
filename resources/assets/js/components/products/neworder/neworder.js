@@ -58,6 +58,7 @@ export default {
       this.options.paymentStates = response.data.paymentStates.data
       this.options.businessEntities = response.data.businessEntities.data
 
+      this.params.paymentState = this.options.paymentStates[0]
       this.params.businessEntity = this.options.businessEntities[0]
     })
   }
