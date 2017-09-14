@@ -93,7 +93,7 @@
               </div>
             </div>
 
-            <div class="row" v-if="params.paymentType && params.paymentType.name == 'Счет'">
+            <div class="row" v-show="params.paymentType && params.paymentType.name == 'Счет'">
               <div class="col-md-2">
                 <div class="form-group">
                   <label>ОПФ</label>

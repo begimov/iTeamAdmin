@@ -43586,7 +43586,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "params.phone"
     }
-  })], 1)])]), _vm._v(" "), (_vm.params.paymentType && _vm.params.paymentType.name == 'Счет') ? _c('div', {
+  })], 1)])]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.params.paymentType && _vm.params.paymentType.name == 'Счет'),
+      expression: "params.paymentType && params.paymentType.name == 'Счет'"
+    }],
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-2"
@@ -43652,7 +43658,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.params.comment = $event.target.value
       }
     }
-  }, [_vm._v("Введите комментарий")])])])]) : _vm._e(), _vm._v(" "), _c('div', {
+  }, [_vm._v("Введите комментарий")])])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
