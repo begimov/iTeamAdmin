@@ -25,7 +25,7 @@ export default {
         comment: null,
       },
       isLoading: false,
-      errors: []
+      errors: {}
     }
   },
   methods: {
