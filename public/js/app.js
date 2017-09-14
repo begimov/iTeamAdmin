@@ -43385,6 +43385,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     }
   },
+  watch: {
+    'params.company': function paramsCompany(val) {
+      this.params.businessEntity = this.options.businessEntities[1];
+    }
+  },
   computed: {
     //
   },

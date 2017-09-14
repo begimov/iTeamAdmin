@@ -48,6 +48,11 @@ export default {
       })
     }
   },
+  watch: {
+    'params.company': function (val) {
+      this.params.businessEntity = this.options.businessEntities[1]
+    }
+  },
   computed: {
     //
   },
