@@ -43617,6 +43617,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Компания")]), _vm._v(" "), _c('typeahead-search', {
     attrs: {
+      "user": _vm.params.email,
       "data": "company"
     },
     model: {

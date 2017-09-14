@@ -112,7 +112,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label>Компания</label>
-                  <typeahead-search v-model="params.company" data="company"></typeahead-search>
+                  <typeahead-search :user="params.email" v-model="params.company" data="company"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-5">

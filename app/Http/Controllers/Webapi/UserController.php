@@ -41,10 +41,9 @@ class UserController extends Controller
                 return $this->transformPhones($user->userProfile);
                 break;
 
-            // TODO: for company, decide on relationship
-            // case 'company':
-            //     return $this->transformCompanies($user->company);
-            //     break;
+            case 'company':
+                return $this->transformCompanies($user->userProfile->company);
+                break;
 
             default:
                 return response()->json([
@@ -99,6 +98,6 @@ class UserController extends Controller
 
     protected function transformCompanies($data)
     {
-        return fractal($data, new CompanyTransformer('name'))->toArray();
+        return fractal($data, new CompanyTransformer())->toArray();
     }
 }
