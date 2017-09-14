@@ -43468,7 +43468,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])])], 1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Продукт не найден")])]), _vm._v(" "), (_vm.errors['data.product']) ? _c('div', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['data.product'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-2"
   }, [_c('div', {
     staticClass: "form-group"

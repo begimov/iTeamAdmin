@@ -20,6 +20,9 @@
                   track-by="id">
                     <span slot="noResult">Продукт не найден</span>
                   </multiselect>
+                  <div class="help-block alert-danger" v-if="errors['data.product']">
+                    {{ errors['data.product'][0] }}
+                  </div>
                 </div>
               </div>
               <div class="col-md-2">
