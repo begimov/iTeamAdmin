@@ -43358,30 +43358,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         company: null,
         comment: null
       },
-      isLoading: false
+      isLoading: false,
+      errors: []
     };
   },
 
   methods: {
     saveOrder: function saveOrder() {
+      var _this = this;
+
       axios.post('/webapi/orders', {
         data: _.omitBy(this.params, function (param, key) {
           return _.isNull(param);
         })
       }).then(function (response) {
         //
+      }).catch(function (error) {
+        _this.errors = error.response.data;
       });
     },
     cancelOrder: function cancelOrder() {
       this.$emit('cancelOrder');
     },
     getEmails: function getEmails(query) {
-      var _this = this;
+      var _this2 = this;
 
       this.isLoading = true;
       axios.get('/webapi/users/email?query=' + query).then(function (response) {
-        _this.options.emails = response.data.data;
-        _this.isLoading = false;
+        _this2.options.emails = response.data.data;
+        _this2.isLoading = false;
       });
     }
   },
@@ -43399,16 +43404,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     axios.get('/webapi/orders/create').then(function (response) {
-      _this2.options.products = response.data.products.data;
-      _this2.options.paymentTypes = response.data.paymentTypes.data;
-      _this2.options.paymentStates = response.data.paymentStates.data;
-      _this2.options.businessEntities = response.data.businessEntities.data;
+      _this3.options.products = response.data.products.data;
+      _this3.options.paymentTypes = response.data.paymentTypes.data;
+      _this3.options.paymentStates = response.data.paymentStates.data;
+      _this3.options.businessEntities = response.data.businessEntities.data;
 
-      _this2.params.paymentState = _this2.options.paymentStates[0];
-      _this2.params.businessEntity = _this2.options.businessEntities[0];
+      _this3.params.paymentState = _this3.options.paymentStates[0];
+      _this3.params.businessEntity = _this3.options.businessEntities[0];
     });
   }
 });

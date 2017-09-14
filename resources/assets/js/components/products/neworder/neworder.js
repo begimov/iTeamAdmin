@@ -24,7 +24,8 @@ export default {
         company: null,
         comment: null,
       },
-      isLoading: false
+      isLoading: false,
+      errors: []
     }
   },
   methods: {
@@ -35,6 +36,8 @@ export default {
         })
       }).then((response) => {
         //
+      }).catch((error) => {
+        this.errors = error.response.data
       })
     },
     cancelOrder () {
