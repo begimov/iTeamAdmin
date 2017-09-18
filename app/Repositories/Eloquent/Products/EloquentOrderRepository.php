@@ -103,7 +103,13 @@ class EloquentOrderRepository implements OrderRepository
 
     public function updateUserCompany($company, $data)
     {
-        // update existing company
+        if ($company->name !== $data['company']['value']) {
+            $company->name = $data['company']['value'];
+        }
+        if ($company->business_entity_id !== $data['businessEntity']['id']) {
+            $company->business_entity_id = $data['businessEntity']['id'];
+        }
+        $company->save();
     }
 
     public function buildUserCompany($data)
