@@ -7,6 +7,8 @@ use App\Repositories\Contracts\Products\OrderRepository;
 use App\User;
 use App\Models\Products\Order;
 use App\Models\Products\Product;
+use App\Models\Users\Company;
+use App\Models\Users\BusinessEntity;
 
 use App\Services\EloquentQueryBuilder;
 
@@ -85,12 +87,18 @@ class EloquentOrderRepository implements OrderRepository
             $profile->save();
         }
 
-        if ($profile->company) {
+        if ($profile->company && isset($data['company'])) {
             $this->updateUserCompany($profile->company, $data);
         }
 
-        // create new company if data.company is present
-        // do nothing if not
+        if (!$profile->company && isset($data['company'])) {
+            $businessEntity = BusinessEntity::find($data['businessEntity']['id']);
+            $company = new Company;
+            $company->name = $data['company']['value'];
+            $company->businessEntity()->associate($businessEntity);
+            $company->save();
+            // associate new company with userProfile
+        }
     }
 
     public function updateUserCompany($company, $data)
