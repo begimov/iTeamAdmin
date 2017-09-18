@@ -42,27 +42,19 @@ class EloquentOrderRepository implements OrderRepository
     {
         $user = User::find($data['email']['id']);
         $product = Product::find($data['product']['id']);
+        $order = $this->buildNewOrder($data);
 
-        $order = $this->buildNewOrder($user, $product, $data);
-
+        $order->user()->associate($user);
+        $order->product()->associate($product);
         // $order->save();
 
-        if ($user->name !== $data['name']['value']) {
-            $user->name = $data['name']['value'];
-            $user->save();
-        }
-
-        $this->updateUser($user);
-
-        dd($order, $data);
+        $this->updateUser($user, $data);
     }
 
-    protected function buildNewOrder($user, $product, $data)
+    protected function buildNewOrder($data)
     {
       $order = new Order;
 
-      $order->user()->associate($user);
-      $order->product()->associate($product);
       $order->payment_type_id = isset($data['paymentType'])
           ? $data['paymentType']['id'] : null;
       $order->payment_state_id = $data['paymentState']['id'];
@@ -74,9 +66,23 @@ class EloquentOrderRepository implements OrderRepository
       return $order;
     }
 
-    protected function updateUser($user)
+    protected function updateUser($user, $data)
     {
-        $profile = $user->userProfile;
-        dd($profile);
+        if ($user->name !== $data['name']['value']) {
+            $user->name = $data['name']['value'];
+            $user->save();
+        }
+
+        $this->updateUserProfile($user->userProfile, $data);
+
+        dd($user);
+    }
+
+    protected function updateUserProfile($profile, $data)
+    {
+        if ($profile->phone !== $data['phone']['value']) {
+            $profile->phone = $data['phone']['value'];
+            $profile->save();
+        }
     }
 }
