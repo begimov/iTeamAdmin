@@ -4,8 +4,9 @@ namespace App\Repositories\Eloquent\Products;
 
 use App\Repositories\Contracts\Products\OrderRepository;
 
-use App\Models\Products\Order;
 use App\User;
+use App\Models\Products\Order;
+use App\Models\Products\Product;
 
 use App\Services\EloquentQueryBuilder;
 
@@ -42,16 +43,19 @@ class EloquentOrderRepository implements OrderRepository
         $user = User::find($data['email']['id']);
         $product = Product::find($data['product']['id']);
         $order = new Order;
-        // $promotion->user()->associate($request->user());
+
         $order->user()->associate($user);
         $order->product()->associate($product);
-        $order->payment_type_id = $data['paymentType'] ? $data['paymentType']['id'] : null;
+        $order->payment_type_id = isset($data['paymentType'])
+            ? $data['paymentType']['id'] : null;
         $order->payment_state_id = $data['paymentState']['id'];
         // TODO: order alternative price
         // $order->price = $data['orderPrice'] ?: null;
-        $order->comment = $data['comment'];
+        $order->comment = isset($data['comment'])
+            ? $data['comment'] : null;
 
-        dd($order, $product, $user, $data);
-        // $order->
+        $order->save();
+
+        // dd($order, $data);
     }
 }
