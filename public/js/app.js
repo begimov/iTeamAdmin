@@ -43199,7 +43199,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    //
+    deleteOrder: function deleteOrder() {
+      console.log('DELETE');
+    }
   },
   computed: {
     //
@@ -43255,7 +43257,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "selected": _vm.order.payment_state_id == paymentState.id
       }
     }, [_vm._v(_vm._s(paymentState.name))])
-  }))]), _vm._v(" "), _vm._m(1)])])])
+  }))]), _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.deleteOrder($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-remove-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('a', {
     attrs: {
@@ -43267,17 +43284,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-hidden": "true"
     }
   }), _vm._v(" Редактировать")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-remove-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

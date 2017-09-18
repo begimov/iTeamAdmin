@@ -6,7 +6,9 @@ export default {
     }
   },
   methods: {
-    //
+    deleteOrder () {
+      console.log('DELETE');
+    },
   },
   computed: {
     //
