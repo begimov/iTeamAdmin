@@ -48,6 +48,7 @@ class EloquentOrderRepository implements OrderRepository
 
         $order->user()->associate($user);
         $order->product()->associate($product);
+        // TODO: UNCOMMENT
         // $order->save();
 
         $this->updateUser($user, $data);
@@ -82,7 +83,8 @@ class EloquentOrderRepository implements OrderRepository
 
     protected function updateUserProfile($profile, $data)
     {
-        if ($profile->phone !== $data['phone']['value']) {
+        if (isset($data['phone'])
+            && $profile->phone !== $data['phone']['value']) {
             $profile->phone = $data['phone']['value'];
             $profile->save();
         }
@@ -92,17 +94,24 @@ class EloquentOrderRepository implements OrderRepository
         }
 
         if (!$profile->company && isset($data['company'])) {
-            $businessEntity = BusinessEntity::find($data['businessEntity']['id']);
-            $company = new Company;
-            $company->name = $data['company']['value'];
-            $company->businessEntity()->associate($businessEntity);
+            $company = $this->buildUserCompany($data);
             $company->save();
-            // associate new company with userProfile
+            $profile->company()->associate($company);
+            $profile->save();
         }
     }
 
     public function updateUserCompany($company, $data)
     {
         // update existing company
+    }
+
+    public function buildUserCompany($data)
+    {
+        $businessEntity = BusinessEntity::find($data['businessEntity']['id']);
+        $company = new Company;
+        $company->name = $data['company']['value'];
+        $company->businessEntity()->associate($businessEntity);
+        return $company;
     }
 }
