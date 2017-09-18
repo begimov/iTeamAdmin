@@ -42,17 +42,8 @@ class EloquentOrderRepository implements OrderRepository
     {
         $user = User::find($data['email']['id']);
         $product = Product::find($data['product']['id']);
-        $order = new Order;
 
-        $order->user()->associate($user);
-        $order->product()->associate($product);
-        $order->payment_type_id = isset($data['paymentType'])
-            ? $data['paymentType']['id'] : null;
-        $order->payment_state_id = $data['paymentState']['id'];
-        // TODO: order alternative price
-        // $order->price = $data['orderPrice'] ?: null;
-        $order->comment = isset($data['comment'])
-            ? $data['comment'] : null;
+        $order = $this->buildNewOrder($user, $product, $data);
 
         // $order->save();
 
@@ -61,6 +52,31 @@ class EloquentOrderRepository implements OrderRepository
             $user->save();
         }
 
+        $this->updateUser($user);
+
         dd($order, $data);
+    }
+
+    protected function buildNewOrder($user, $product, $data)
+    {
+      $order = new Order;
+
+      $order->user()->associate($user);
+      $order->product()->associate($product);
+      $order->payment_type_id = isset($data['paymentType'])
+          ? $data['paymentType']['id'] : null;
+      $order->payment_state_id = $data['paymentState']['id'];
+      // TODO: order alternative price
+      // $order->price = $data['orderPrice'] ?: null;
+      $order->comment = isset($data['comment'])
+          ? $data['comment'] : null;
+
+      return $order;
+    }
+
+    protected function updateUser($user)
+    {
+        $profile = $user->userProfile;
+        dd($profile);
     }
 }
