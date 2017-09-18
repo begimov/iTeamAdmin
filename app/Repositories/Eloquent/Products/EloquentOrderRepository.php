@@ -54,8 +54,13 @@ class EloquentOrderRepository implements OrderRepository
         $order->comment = isset($data['comment'])
             ? $data['comment'] : null;
 
-        $order->save();
+        // $order->save();
 
-        // dd($order, $data);
+        if ($user->name !== $data['name']['value']) {
+            $user->name = $data['name']['value'];
+            $user->save();
+        }
+
+        dd($order, $data);
     }
 }
