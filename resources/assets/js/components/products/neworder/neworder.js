@@ -35,7 +35,7 @@ export default {
           return _.isNull(param)
         })
       }).then((response) => {
-        //
+        this.$emit('orderSaved')
       }).catch((error) => {
         this.errors = error.response.data
       })

@@ -42873,8 +42873,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    getOrders: function getOrders(page) {
+    getOrders: function getOrders() {
       var _this = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
       this.flags.isLoading = true;
       axios.get('/webapi/orders?page=' + page, {
@@ -42941,7 +42943,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "cancelOrder": function($event) {
         _vm.flags.neworder = false
-      }
+      },
+      "orderSaved": _vm.getOrders
     }
   }) : _c('a', {
     staticClass: "btn btn-primary",
@@ -43372,7 +43375,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           return _.isNull(param);
         })
       }).then(function (response) {
-        //
+        _this.$emit('orderSaved');
       }).catch(function (error) {
         _this.errors = error.response.data;
       });
