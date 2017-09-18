@@ -84,5 +84,17 @@ class EloquentOrderRepository implements OrderRepository
             $profile->phone = $data['phone']['value'];
             $profile->save();
         }
+
+        if ($profile->company) {
+            $this->updateUserCompany($profile->company, $data);
+        }
+
+        // create new company if data.company is present
+        // do nothing if not
+    }
+
+    public function updateUserCompany($company, $data)
+    {
+        // update existing company
     }
 }
