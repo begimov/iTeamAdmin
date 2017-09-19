@@ -56,7 +56,10 @@ class EloquentOrderRepository implements OrderRepository
 
     public function destroyById($id)
     {
-        Order::destroy($id);
+        $order = Order::find($id);
+        $order->payment_state_id = 3;
+        $order->save();
+        $order->delete();
     }
 
     protected function buildNewOrder($data)
