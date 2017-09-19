@@ -43099,6 +43099,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "order": order,
         "payment-states": _vm.paymentStates
+      },
+      on: {
+        "orderDeleted": _vm.getOrders
       }
     })
   })], 2), _vm._v(" "), _c('div', {
@@ -43200,8 +43203,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     deleteOrder: function deleteOrder() {
+      var _this = this;
+
       axios.delete('/webapi/orders/' + this.order.id).then(function (response) {
-        console.log(response);
+        _this.$emit('orderDeleted');
       });
     }
   },

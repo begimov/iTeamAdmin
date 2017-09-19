@@ -84,7 +84,8 @@
             <order v-for="order in orders"
             :order="order"
             :payment-states="paymentStates"
-            :key="order.id"></order>
+            :key="order.id"
+            v-on:orderDeleted="getOrders"></order>
 
           </div>
 

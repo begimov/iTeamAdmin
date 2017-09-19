@@ -57,7 +57,6 @@ class EloquentOrderRepository implements OrderRepository
     public function destroyById($id)
     {
         Order::destroy($id);
-        return true;
     }
 
     protected function buildNewOrder($data)

@@ -8,7 +8,7 @@ export default {
   methods: {
     deleteOrder () {
       axios.delete(`/webapi/orders/${this.order.id}`).then((response) => {
-        console.log(response)
+        this.$emit('orderDeleted')
       })
     },
   },
