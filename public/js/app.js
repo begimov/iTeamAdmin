@@ -43205,9 +43205,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     deleteOrder: function deleteOrder() {
       var _this = this;
 
-      axios.delete('/webapi/orders/' + this.order.id).then(function (response) {
-        _this.$emit('orderDeleted');
-      });
+      if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0437\u0430\u043A\u0430\u0437 \u2116 ' + this.order.id + '?')) {
+        axios.delete('/webapi/orders/' + this.order.id).then(function (response) {
+          _this.$emit('orderDeleted');
+        });
+      } else {
+        // Do nothing!
+      }
     }
   },
   computed: {
