@@ -43200,7 +43200,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     deleteOrder: function deleteOrder() {
-      console.log('DELETE');
+      axios.delete('/webapi/orders/' + this.order.id).then(function (response) {
+        console.log(response);
+      });
     }
   },
   computed: {
