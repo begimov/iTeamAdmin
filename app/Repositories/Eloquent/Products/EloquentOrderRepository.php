@@ -54,6 +54,12 @@ class EloquentOrderRepository implements OrderRepository
         $this->updateUser($user, $data);
     }
 
+    public function destroyById($id)
+    {
+        Order::destroy($id);
+        return true;
+    }
+
     protected function buildNewOrder($data)
     {
       $order = new Order;

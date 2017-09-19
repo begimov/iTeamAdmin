@@ -128,6 +128,6 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $this->orders->destroyById($id);
     }
 }
