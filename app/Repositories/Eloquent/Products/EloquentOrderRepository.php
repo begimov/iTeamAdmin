@@ -97,6 +97,9 @@ class EloquentOrderRepository implements OrderRepository
             $profile->save();
         }
 
+        // TODO: When to update company and when to create new one?
+        // Maybe with each change in company just to create new one?
+        // What will happen when exisitng company selected to connect to another user?
         if ($profile->company && isset($data['company'])) {
             $this->updateUserCompany($profile->company, $data);
         }
@@ -111,6 +114,7 @@ class EloquentOrderRepository implements OrderRepository
 
     public function updateUserCompany($company, $data)
     {
+        // TODO: Dont replace company name, but create new one and associate it???
         if ($company->name !== $data['company']['value']) {
             $company->name = $data['company']['value'];
         }
