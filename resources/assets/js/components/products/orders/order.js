@@ -18,6 +18,7 @@ export default {
   },
   computed: {
     //
+    // TODO: show order price if exists instead of product's one
   },
   mounted() {
     //

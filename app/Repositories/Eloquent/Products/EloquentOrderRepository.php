@@ -48,8 +48,8 @@ class EloquentOrderRepository implements OrderRepository
 
         $order->user()->associate($user);
         $order->product()->associate($product);
-        // TODO: UNCOMMENT
-        // $order->save();
+
+        $order->save();
 
         $this->updateUser($user, $data);
     }
@@ -58,6 +58,7 @@ class EloquentOrderRepository implements OrderRepository
     {
         $order = Order::find($id);
         $order->payment_state_id = 3;
+        dd($order);
         $order->save();
         $order->delete();
     }
@@ -68,9 +69,12 @@ class EloquentOrderRepository implements OrderRepository
 
       $order->payment_type_id = isset($data['paymentType'])
           ? $data['paymentType']['id'] : null;
+
       $order->payment_state_id = $data['paymentState']['id'];
-      // TODO: order alternative price
-      // $order->price = $data['orderPrice'] ?: null;
+
+      $order->price = isset($data['orderPrice'])
+          ? $data['orderPrice'] : null;
+
       $order->comment = isset($data['comment'])
           ? $data['comment'] : null;
 
@@ -85,8 +89,6 @@ class EloquentOrderRepository implements OrderRepository
         }
 
         $this->updateUserProfile($user->userProfile, $data);
-
-        dd($user);
     }
 
     protected function updateUserProfile($profile, $data)
