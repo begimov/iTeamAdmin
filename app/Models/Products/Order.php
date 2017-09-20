@@ -20,7 +20,7 @@ class Order extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -44,5 +44,10 @@ class Order extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function markAsDeleted()
+    {
+        $this->payment_state_id = 3;
     }
 }

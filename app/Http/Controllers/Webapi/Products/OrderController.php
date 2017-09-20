@@ -42,7 +42,6 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        // TODO: show all orders even softdeleted once with respective payment_type_id-status
         $orders = $this->orders
             ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
 
