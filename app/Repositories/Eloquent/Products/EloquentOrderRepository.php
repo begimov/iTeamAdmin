@@ -36,6 +36,7 @@ class EloquentOrderRepository implements OrderRepository
             ->orderBy($orderByParams)
             ->search($parameters['searchQuery'], 'user', ['email', 'name'])
             ->with(['user', 'paymentType', 'product', 'user.userProfile'])
+            ->withTrashed()
             ->build()
             ->paginate($paginateBy);
     }

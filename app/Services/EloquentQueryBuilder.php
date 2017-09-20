@@ -52,6 +52,12 @@ class EloquentQueryBuilder
         return $this;
     }
 
+    public function withTrashed()
+    {
+        $this->query->withTrashed();
+        return $this;
+    }
+
     public function build()
     {
         return $this->query;
