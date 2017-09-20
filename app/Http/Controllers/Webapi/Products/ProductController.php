@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        echo "string";
+        return view('products.index');
     }
 
     /**
