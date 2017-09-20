@@ -48,6 +48,6 @@ class Order extends Model
 
     public function markAsDeleted()
     {
-        $this->payment_state_id = 3;
+        $this->payment_state_id = config('orders.deleted_payment_state_id');
     }
 }
