@@ -9,15 +9,15 @@ export default {
     }
   },
   computed: {
-      ...mapGetters([
-          'products',
-          'isLoadingProducts'
-      ])
+      ...mapGetters('products', {
+          products: 'products',
+          isLoadingProducts: 'isLoadingProducts'
+      })
   },
   methods: {
-      ...mapActions([
-          'getProducts'
-      ])
+      ...mapActions('products', {
+          getProducts: 'getProducts'
+      })
   },
   mounted() {
     this.getProducts()

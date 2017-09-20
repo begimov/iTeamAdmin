@@ -43133,6 +43133,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
+  namespaced: true,
   state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
   getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
   actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
@@ -44860,8 +44861,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['products', 'isLoadingProducts'])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['getProducts'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', {
+    products: 'products',
+    isLoadingProducts: 'isLoadingProducts'
+  })),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', {
+    getProducts: 'getProducts'
+  })),
   mounted: function mounted() {
     this.getProducts();
   }
