@@ -2,8 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <!-- TODO: PRELOADER -->
-        <!-- <div v-bind:class="{ 'isActive': flags.isLoading, 'loader': true, 'loader-def': true }"></div> -->
+        <div v-bind:class="{ 'isActive': isLoadingProducts, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <a href="#" class="btn btn-primary">Создать продукт</a>

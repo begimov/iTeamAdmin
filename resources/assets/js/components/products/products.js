@@ -20,6 +20,6 @@ export default {
       ])
   },
   mounted() {
-    //
+    this.getProducts()
   }
 }

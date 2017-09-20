@@ -43172,16 +43172,17 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  getProducts: function getProducts(_ref, page) {
+  getProducts: function getProducts(_ref) {
     var dispatch = _ref.dispatch,
         commit = _ref.commit;
+    var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    // commit('setLoadingProducts', true)
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].products.getProducts(page).then(function (res) {
-      console.log(res);
-      // commit('setProducts', res.data)
-      // commit('setLoadingProducts', false)
-    });
+    commit('setLoadingProducts', true);
+    // api.products.getProducts(page).then(res => {
+    //   console.log(res)
+    //   // commit('setProducts', res.data)
+    //   // commit('setLoadingProducts', false)
+    // })
   }
 });
 
@@ -43193,7 +43194,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_products__ = __webpack_require__(47);
 
 
-/* harmony default export */ __webpack_exports__["a"] = ({
+/* unused harmony default export */ var _unused_webpack_default_export = ({
   products: __WEBPACK_IMPORTED_MODULE_0__products_products__["a" /* default */]
 });
 
@@ -43220,6 +43221,9 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   setProducts: function setProducts(state, products) {
     state.products = products;
+  },
+  setLoadingProducts: function setLoadingProducts(state, flag) {
+    state.isLoadingProducts = flag;
   }
 });
 
@@ -44859,7 +44863,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])(['products', 'isLoadingProducts'])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])(['getProducts'])),
   mounted: function mounted() {
-    //
+    this.getProducts();
   }
 });
 
@@ -44875,6 +44879,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoadingProducts, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
