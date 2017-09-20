@@ -43830,81 +43830,23 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
-  props: ['paymentTypes', 'paymentStates'],
+  components: {},
+  props: [],
   data: function data() {
     return {
-      orders: [],
-      meta: null,
-      timer: 0,
-      flags: {
-        neworder: false,
-        isLoading: false
-      },
-      params: {
-        orderBy: {
-          created_at: 'desc',
-          id: ''
-        },
-        filters: {
-          paymentType: [],
-          paymentState: []
-        },
-        searchQuery: ''
-      }
+      //
     };
   },
 
   methods: {
-    getOrders: function getOrders() {
-      var _this = this;
-
-      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
-
-      this.flags.isLoading = true;
-      axios.get('/webapi/orders?page=' + page, {
-        params: {
-          params: {
-            orderBy: this.params.orderBy,
-            filters: {
-              payment_type_id: _.map(this.params.filters.paymentType, 'id'),
-              payment_state_id: _.map(this.params.filters.paymentState, 'id')
-            },
-            searchQuery: this.params.searchQuery.trim()
-          }
-        }
-      }).then(function (response) {
-        _this.orders = response.data.data;
-        _this.meta = response.data.meta;
-        _this.flags.isLoading = false;
-      });
-    },
-    applyOrder: function applyOrder(orderBy) {
-      this.params.orderBy = _.mapValues(this.params.orderBy, function (value, flagName) {
-        if (flagName == orderBy) {
-          return value == 'desc' ? 'asc' : 'desc';
-        }
-        return '';
-      });
-      this.getOrders(this.meta.pagination.current_page);
-    },
-    textSearch: function textSearch() {
-      clearTimeout(this.timer);
-      this.timer = setTimeout(function () {
-        this.getOrders(1);
-      }.bind(this), 1000);
-    }
+    //
   },
   computed: {
     //
   },
   mounted: function mounted() {
-    this.getOrders(1);
+    //
   }
 });
 
@@ -43920,143 +43862,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
-    class: {
-      'isActive': _vm.flags.isLoading, 'loader': true, 'loader-def': true
-    }
-  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [(_vm.flags.neworder) ? _c('new-order', {
-    on: {
-      "cancelOrder": function($event) {
-        _vm.flags.neworder = false
-      },
-      "orderSaved": _vm.getOrders
-    }
-  }) : _c('a', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.flags.neworder = true
-      }
-    }
-  }, [_vm._v("Создать заказ")])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row panel-subheading"
   }, [_c('div', {
     staticClass: "col-md-4"
-  }, [_vm._m(0), _vm._v(" "), _c('search', {
-    on: {
-      "input": _vm.textSearch
-    },
-    model: {
-      value: (_vm.params.searchQuery),
-      callback: function($$v) {
-        _vm.params.searchQuery = $$v
-      },
-      expression: "params.searchQuery"
-    }
-  })], 1), _vm._v(" "), _c('div', {
+  }, [_c('h4', [_vm._v("\n                Продукты\n              ")]), _vm._v(" "), _c('search')], 1), _vm._v(" "), _c('div', {
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_c('multiselect', {
-    attrs: {
-      "select-label": "",
-      "track-by": "id",
-      "label": "name",
-      "options": _vm.paymentStates,
-      "multiple": true,
-      "close-on-select": false,
-      "hide-selected": true,
-      "searchable": false,
-      "placeholder": "Статус оплаты"
-    },
-    on: {
-      "input": function($event) {
-        _vm.getOrders(1)
-      }
-    },
-    scopedSlots: _vm._u([{
-      key: "tag",
-      fn: function(props) {
-        return [_c('span', {
-          staticClass: "custom__tag"
-        }, [_c('span', [_vm._v(_vm._s(props.option.name))]), _vm._v(" "), _c('span', {
-          staticClass: "custom__remove",
-          on: {
-            "click": function($event) {
-              props.remove(props.option)
-            }
-          }
-        }, [_c('span', {
-          staticClass: "glyphicon glyphicon-remove",
-          attrs: {
-            "aria-hidden": "true"
-          }
-        })])])]
-      }
-    }]),
-    model: {
-      value: (_vm.params.filters.paymentState),
-      callback: function($$v) {
-        _vm.params.filters.paymentState = $$v
-      },
-      expression: "params.filters.paymentState"
-    }
-  })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('multiselect', {
-    attrs: {
-      "select-label": "",
-      "track-by": "id",
-      "label": "name",
-      "options": _vm.paymentTypes,
-      "multiple": true,
-      "close-on-select": false,
-      "hide-selected": true,
-      "searchable": false,
-      "placeholder": "Тип платежа"
-    },
-    on: {
-      "input": function($event) {
-        _vm.getOrders(1)
-      }
-    },
-    scopedSlots: _vm._u([{
-      key: "tag",
-      fn: function(props) {
-        return [_c('span', {
-          staticClass: "custom__tag"
-        }, [_c('span', [_vm._v(_vm._s(props.option.name))]), _vm._v(" "), _c('span', {
-          staticClass: "custom__remove",
-          on: {
-            "click": function($event) {
-              props.remove(props.option)
-            }
-          }
-        }, [_c('span', {
-          staticClass: "glyphicon glyphicon-remove",
-          attrs: {
-            "aria-hidden": "true"
-          }
-        })])])]
-      }
-    }]),
-    model: {
-      value: (_vm.params.filters.paymentType),
-      callback: function($$v) {
-        _vm.params.filters.paymentType = $$v
-      },
-      expression: "params.filters.paymentType"
-    }
-  })], 1)]), _vm._v(" "), _c('li', {
+  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('li', {
     staticClass: "dropdown"
-  }, [_vm._m(1), _vm._v(" "), _c('ul', {
+  }, [_vm._m(3), _vm._v(" "), _c('ul', {
     staticClass: "dropdown-menu",
     attrs: {
       "role": "menu"
@@ -44081,34 +43900,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.applyOrder('id')
       }
     }
-  }, [_vm._v("По номеру")])])])])])])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {
-    return _c('order', {
-      key: order.id,
-      attrs: {
-        "order": order,
-        "payment-states": _vm.paymentStates
-      },
-      on: {
-        "orderDeleted": _vm.getOrders
-      }
-    })
-  })], 2), _vm._v(" "), _c('div', {
+  }, [_vm._v("По номеру")])])])])])])]), _vm._v("\n          PRODUCT COMPONENT\n          ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
-  }, [(_vm.meta && _vm.orders.length) ? _c('paginator', {
-    attrs: {
-      "for": "orders",
-      "pagination": _vm.meta.pagination
-    },
-    on: {
-      "orders_pageChanged": _vm.getOrders
-    }
-  }) : _vm._e()], 1)])])])])
+  })])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h4', [_c('span', {
-    staticClass: "label label-primary"
-  }, [_vm._v("Сумма:")]), _vm._v(" "), _c('small', [_vm._v("75751.5 ₽")]), _c('br'), _vm._v(" "), _c('span', {
-    staticClass: "label label-primary"
-  }, [_vm._v("Период поиска:")]), _vm._v(" "), _c('small', [_vm._v("29.08.14 - 29.08.17")])])
+  return _c('div', {
+    staticClass: "panel-heading"
+  }, [_c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Создать продукт")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('div', [_vm._v("\n                    //\n                  ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('div', [_vm._v("\n                    //\n                  ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('a', {
     staticClass: "dropdown-toggle",
