@@ -43249,7 +43249,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "badge"
   }, [_vm._v("Заказ № " + _vm._s(_vm.order.id) + ":")]), _vm._v(" "), _c('small', [_vm._v("«" + _vm._s(_vm.order.product.data.name) + "»")])]), _vm._v(" "), _c('p', [_c('span', {
     staticClass: "badge"
-  }, [_vm._v("\n        " + _vm._s(_vm.order.product.data.price) + " ₽\n      ")]), _vm._v(" "), _c('small', [_vm._v("\n        " + _vm._s(_vm.order.paymentType ? _vm.order.paymentType.data.name : '') + "\n        "), _c('span', {
+  }, [_vm._v("\n        " + _vm._s(_vm.order.price ? _vm.order.price : _vm.order.product.data.price) + " ₽\n      ")]), _vm._v(" "), _c('small', [_vm._v("\n        " + _vm._s(_vm.order.paymentType ? _vm.order.paymentType.data.name : '') + "\n        "), _c('span', {
     staticClass: "label label-warning"
   }, [_vm._v("\n          Оформлен " + _vm._s(_vm.order.created_at_human) + "\n        ")]), _vm._v(" "), (_vm.order.paymentType) ? _c('span', {
     staticClass: "label label-success"

@@ -16,7 +16,7 @@
       <p><span class="badge">Заказ № {{ order.id }}:</span> <small>&laquo;{{ order.product.data.name }}&raquo;</small></p>
       <p>
         <span class="badge">
-          {{ order.product.data.price }}&nbsp;&#8381;
+          {{ order.price ? order.price : order.product.data.price }}&nbsp;&#8381;
         </span>
         <small>
           {{ order.paymentType ? order.paymentType.data.name : '' }}
