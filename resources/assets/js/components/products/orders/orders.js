@@ -27,7 +27,7 @@ export default {
   },
   methods: {
 
-    getOrders (page) {
+    getOrders (page = 1) {
       this.flags.isLoading = true;
       axios.get('/webapi/orders?page=' + page, {
         params: {

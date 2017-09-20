@@ -11,6 +11,7 @@ class CompanyTransformer extends \League\Fractal\TransformerAbstract
         return [
             'id' => $company->id,
             'value' => $company->name,
+            'businessEntity' => $company->business_entity_id,
         ];
     }
 }

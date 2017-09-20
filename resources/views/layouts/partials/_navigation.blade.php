@@ -21,15 +21,15 @@
             <ul class="nav navbar-nav">
                 @role ('admin')
                   <li><a href="{{ route('home') }}">@lang('navigation.orders')</a></li>
-                  <li><a href="#">@lang('navigation.landings')</a></li>
-                  <li class="dropdown">
+                  <li><a href="{{ route('products.index') }}">@lang('navigation.products')</a></li>
+                  {{-- <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                           @lang('navigation.master_classes') <span class="caret"></span>
                       </a>
                       <ul class="dropdown-menu" role="menu">
                           <li><a href="#">@lang('navigation.create')</a></li>
                       </ul>
-                  </li>
+                  </li> --}}
                 @endrole
             </ul>
 

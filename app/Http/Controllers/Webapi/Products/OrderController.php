@@ -19,9 +19,12 @@ use App\Transformers\Payments\PaymentTypeTransformer;
 use App\Transformers\Payments\PaymentStateTransformer;
 use App\Transformers\Users\BusinessEntityTransformer;
 
+use App\Http\Requests\Webapi\Products\StoreOrderRequest;
+
 
 class OrderController extends Controller
 {
+    protected $orders;
     /**
      * Create a new controller instance.
      *
@@ -78,9 +81,9 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
-        //
+        $this->orders->store($request->data);
     }
 
     /**
@@ -125,6 +128,6 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->orders->destroyById($id);
     }
 }

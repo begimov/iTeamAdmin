@@ -4,5 +4,5 @@ namespace App\Repositories\Contracts\Users;
 
 interface CompanyRepository
 {
-    public function whereLike($column, $query);
+    public function whereLike($column, $query, $limit);
 }

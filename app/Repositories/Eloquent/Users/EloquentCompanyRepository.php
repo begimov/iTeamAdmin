@@ -7,8 +7,8 @@ use App\Models\Users\Company;
 
 class EloquentCompanyRepository implements CompanyRepository
 {
-    public function whereLike($column, $query)
+    public function whereLike($column, $query, $limit)
     {
-        return Company::where($column, 'like', "%{$query}%")->take(3)->get();
+        return Company::where($column, 'like', "%{$query}%")->take($limit)->get();
     }
 }

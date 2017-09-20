@@ -4,5 +4,5 @@ namespace App\Repositories\Contracts\Users;
 
 interface UserProfileRepository
 {
-    public function whereLike($column, $query);
+    public function whereLike($column, $query, $limit);
 }

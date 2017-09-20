@@ -7,8 +7,8 @@ use App\Models\Users\UserProfile;
 
 class EloquentUserProfileRepository implements UserProfileRepository
 {
-    public function whereLike($column, $query)
+    public function whereLike($column, $query, $limit)
     {
-        return UserProfile::where($column, 'like', "%{$query}%")->take(3)->get();
+        return UserProfile::where($column, 'like', "%{$query}%")->take($limit)->get();
     }
 }

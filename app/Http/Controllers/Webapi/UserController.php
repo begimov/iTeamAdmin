@@ -30,25 +30,19 @@ class UserController extends Controller
         $this->companies = $companies;
     }
 
-    public function getUserData(Request $request, $data)
+    public function getUserData(Request $request, User $user, $data)
     {
-        $query = $request->input('query');
-
         switch ($data) {
-            case 'emails':
-                return $this->getEmails($query);
+            case 'name':
+                return $this->transformEmailsOrNames($user, $data);
                 break;
 
-            case 'names':
-                return $this->getNames($query);
+            case 'phone':
+                return $this->transformPhones($user->userProfile);
                 break;
 
-            case 'phones':
-                return $this->getPhones($query);
-                break;
-
-            case 'companies':
-                return $this->getCompanies($query);
+            case 'company':
+                return $this->transformCompanies($user->userProfile->company);
                 break;
 
             default:
@@ -59,23 +53,51 @@ class UserController extends Controller
         }
     }
 
-    public function getEmails($query)
+    public function getUsersDataByQuery(Request $request, $data)
     {
-        return fractal($this->users->whereLike('email', $query), new UserDataTransformer('email'))->toArray();
+        $query = $request->input('query');
+
+        switch ($data) {
+            case 'email':
+                return $this->transformEmailsOrNames(
+                    $this->users->whereLike($data, $query, 3), $data);
+                break;
+
+            case 'name':
+                return $this->transformEmailsOrNames(
+                    $this->users->whereLike($data, $query, 3), $data);
+                break;
+
+            case 'phone':
+                return $this->transformPhones(
+                    $this->userProfiles->whereLike($data, $query, 3));
+                break;
+
+            case 'company':
+                return $this->transformCompanies(
+                    $this->companies->whereLike('name', $query, 3));
+                break;
+
+            default:
+                return response()->json([
+                    'error' => "Unknown data type: {$data}"
+                ]);
+                break;
+        }
     }
 
-    public function getNames($query)
+    protected function transformEmailsOrNames($data, $type)
     {
-        return fractal($this->users->whereLike('name', $query), new UserDataTransformer('name'))->toArray();
+        return fractal($data, new UserDataTransformer($type))->toArray();
     }
 
-    public function getPhones($query)
+    protected function transformPhones($data)
     {
-        return fractal($this->userProfiles->whereLike('phone', $query), new UserProfileDataTransformer('phone'))->toArray();
+        return fractal($data, new UserProfileDataTransformer('phone'))->toArray();
     }
 
-    public function getCompanies($query)
+    protected function transformCompanies($data)
     {
-        return fractal($this->companies->whereLike('name', $query), new CompanyTransformer('name'))->toArray();
+        return fractal($data, new CompanyTransformer())->toArray();
     }
 }

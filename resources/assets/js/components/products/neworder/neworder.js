@@ -9,6 +9,7 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
+        emails: [],
         businessEntities: [],
       },
       params: {
@@ -22,15 +23,42 @@ export default {
         businessEntity: null,
         company: null,
         comment: null,
-      }
+      },
+      isLoading: false,
+      errors: {}
     }
   },
   methods: {
     saveOrder () {
-      console.log('SAVE');
+      axios.post(`/webapi/orders`, {
+        data: _.omitBy(this.params, function(param, key) {
+          return _.isNull(param)
+        })
+      }).then((response) => {
+        this.$emit('orderSaved')
+      }).catch((error) => {
+        this.errors = error.response.data
+      })
     },
     cancelOrder () {
       this.$emit('cancelOrder')
+    },
+    getEmails (query) {
+      this.isLoading = true
+      axios.get(`/webapi/users/email?query=${query}`).then((response) => {
+        this.options.emails = response.data.data
+        this.isLoading = false;
+      })
+    }
+  },
+  watch: {
+    'params.company': function (company) {
+      if (company && company.businessEntity) {
+        this.params.businessEntity = this.options.businessEntities[company.businessEntity - 1]
+      } else {
+        // this.params.company = null
+        this.params.businessEntity = this.options.businessEntities[0]
+      }
     }
   },
   computed: {
@@ -42,6 +70,9 @@ export default {
       this.options.paymentTypes = response.data.paymentTypes.data
       this.options.paymentStates = response.data.paymentStates.data
       this.options.businessEntities = response.data.businessEntities.data
+
+      this.params.paymentState = this.options.paymentStates[0]
+      this.params.businessEntity = this.options.businessEntities[0]
     })
   }
 }

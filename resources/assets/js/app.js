@@ -23,6 +23,7 @@ Vue.component('typeahead-search', require('./components/base/TypeaheadSearch.vue
 Vue.component('orders', require('./components/products/orders/Orders.vue'));
 Vue.component('order', require('./components/products/orders/Order.vue'));
 Vue.component('new-order', require('./components/products/neworder/NewOrder.vue'));
+Vue.component('products', require('./components/products/Products.vue'));
 
 const app = new Vue({
     el: '#app'

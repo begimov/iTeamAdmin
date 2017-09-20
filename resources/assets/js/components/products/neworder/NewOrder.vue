@@ -20,6 +20,9 @@
                   track-by="id">
                     <span slot="noResult">Продукт не найден</span>
                   </multiselect>
+                  <div class="help-block alert-danger" v-if="errors['data.product']">
+                    {{ errors['data.product'][0] }}
+                  </div>
                 </div>
               </div>
               <div class="col-md-2">
@@ -65,24 +68,35 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email</label>
-                  <typeahead-search v-model="params.email" data="emails"></typeahead-search>
+                  <multiselect v-model="params.email"
+                  :options="options.emails"
+                  @search-change="getEmails"
+                  :loading="isLoading"
+                  select-label=""
+                  selected-label="Выбран"
+                  deselect-label=""
+                  placeholder="Выберите email"
+                  label="value"
+                  track-by="id">
+                    <span slot="noResult">Email не найден</span>
+                  </multiselect>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Имя</label>
-                  <typeahead-search v-model="params.name" data="names"></typeahead-search>
+                  <typeahead-search :user="params.email" v-model="params.name" data="name"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Телефон</label>
-                  <typeahead-search v-model="params.phone" data="phones"></typeahead-search>
+                  <typeahead-search :user="params.email" v-model="params.phone" data="phone"></typeahead-search>
                 </div>
               </div>
             </div>
 
-            <div class="row" v-if="params.paymentType && params.paymentType.name == 'Счет'">
+            <div class="row" v-show="params.paymentType && params.paymentType.name == 'Счет'">
               <div class="col-md-2">
                 <div class="form-group">
                   <label>ОПФ</label>
@@ -101,7 +115,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label>Компания</label>
-                  <typeahead-search v-model="params.company" data="companies"></typeahead-search>
+                  <typeahead-search :user="params.email" v-model="params.company" data="company"></typeahead-search>
                 </div>
               </div>
               <div class="col-md-5">
