@@ -43956,7 +43956,7 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_products__ = __webpack_require__(106);
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = ({
+/* harmony default export */ __webpack_exports__["a"] = ({
   products: __WEBPACK_IMPORTED_MODULE_0__products_products__["a" /* default */]
 });
 
@@ -44903,13 +44903,13 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // getThemes(page) {
-  //   return new Promise((resolve, reject) => {
-  //     axios.get(`/webapi/themes?page=${page}`).then(res => {
-  //       resolve(res)
-  //     })
-  //   })
-  // }
+  getProducts: function getProducts(page) {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/themes?page=" + page).then(function (res) {
+        resolve(res);
+      });
+    });
+  }
 });
 
 /***/ }),
@@ -44939,8 +44939,8 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  themes: []
-  // isLoadingThemes: false
+  products: [],
+  isLoadingProducts: false
 });
 
 /***/ }),
@@ -44949,12 +44949,12 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // themes (state) {
-  //   return state.themes
-  // },
-  // getIsLoadingThemes (state) {
-  //   return state.isLoadingThemes
-  // }
+  getProducts: function getProducts(state) {
+    return state.products;
+  },
+  getIsLoadingProducts: function getIsLoadingProducts(state) {
+    return state.isLoadingProducts;
+  }
 });
 
 /***/ }),
@@ -44966,13 +44966,17 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // getThemes ({dispatch, commit}, page) {
-  //   // commit('setLoadingConversations', true)
-  //   api.themes.getThemes(page).then(res => {
-  //     commit('setThemes', res.data)
-  //     // commit('setLoadingConversations', false)
-  //   })
-  // }
+  getProducts: function getProducts(_ref, page) {
+    var dispatch = _ref.dispatch,
+        commit = _ref.commit;
+
+    // commit('setLoadingProducts', true)
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].products.getProducts(page).then(function (res) {
+      console.log(res);
+      // commit('setProducts', res.data)
+      // commit('setLoadingProducts', false)
+    });
+  }
 });
 
 /***/ }),
@@ -44981,9 +44985,9 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // setThemes (state, themes) {
-  //   state.themes = themes
-  // }
+  setProducts: function setProducts(state, products) {
+    state.products = products;
+  }
 });
 
 /***/ })

@@ -1,5 +1,5 @@
 export default {
-  // setThemes (state, themes) {
-  //   state.themes = themes
-  // }
+  setProducts (state, products) {
+    state.products = products
+  }
 }

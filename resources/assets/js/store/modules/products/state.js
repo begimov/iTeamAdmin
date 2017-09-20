@@ -1,4 +1,4 @@
 export default {
-  themes: [],
-  // isLoadingThemes: false
+  products: [],
+  isLoadingProducts: false
 }

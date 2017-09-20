@@ -1,8 +1,8 @@
 export default {
-  // themes (state) {
-  //   return state.themes
-  // },
-  // getIsLoadingThemes (state) {
-  //   return state.isLoadingThemes
-  // }
+  getProducts (state) {
+    return state.products
+  },
+  getIsLoadingProducts (state) {
+    return state.isLoadingProducts
+  }
 }
