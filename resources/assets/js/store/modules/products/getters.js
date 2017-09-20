@@ -1,8 +1,8 @@
 export default {
-  getProducts (state) {
+  products (state) {
     return state.products
   },
-  getIsLoadingProducts (state) {
+  isLoadingProducts (state) {
     return state.isLoadingProducts
   }
 }
