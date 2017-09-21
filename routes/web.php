@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('products', 'Products\ProductController@index')->name('products');
 
     // Landings related routes
+    // TODO: make like products (separate non-webapi route for template and webapi for json-API)
     Route::resource('landings', 'Landings\LandingController');
 
     // WebAPI

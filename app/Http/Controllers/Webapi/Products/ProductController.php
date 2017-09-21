@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
+use App\Repositories\Contracts\Products\ProductRepository;
 
 class ProductController extends Controller
 {
@@ -14,9 +15,9 @@ class ProductController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ProductRepository $products)
     {
-        //
+        dd($products);
     }
 
     /**
@@ -26,7 +27,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        return 'fdfdf';
+        return '1111';
     }
 
     /**

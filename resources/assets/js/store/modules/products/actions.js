@@ -6,7 +6,7 @@ export default {
     api.products.getProducts(page).then(res => {
       console.log(res.data)
       // commit('setProducts', res.data)
-      // commit('setLoadingProducts', false)
+      commit('setLoadingProducts', false)
     })
   }
 }

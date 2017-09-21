@@ -43182,7 +43182,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].products.getProducts(page).then(function (res) {
       console.log(res.data);
       // commit('setProducts', res.data)
-      // commit('setLoadingProducts', false)
+      commit('setLoadingProducts', false);
     });
   }
 });
