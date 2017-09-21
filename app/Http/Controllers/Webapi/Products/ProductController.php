@@ -10,6 +10,7 @@ use App\Repositories\Contracts\Products\ProductRepository;
 
 class ProductController extends Controller
 {
+    protected $products;
     /**
      * Create a new controller instance.
      *
@@ -17,7 +18,7 @@ class ProductController extends Controller
      */
     public function __construct(ProductRepository $products)
     {
-        dd($products);
+        $this->products = $products;
     }
 
     /**
@@ -27,7 +28,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        return '1111';
+        $products = $this->products
+            ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
     }
 
     /**

@@ -19,6 +19,7 @@ class EloquentProductRepository implements ProductRepository
 
     public function sortedAndFilteredOrders(array $parameters, $paginateBy)
     {
+        dd($parameters, $paginateBy);
         // $filterParams = array_filter($parameters['filters'], function($value) {
         //     return !empty($value);
         // });
