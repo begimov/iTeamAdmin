@@ -30,6 +30,7 @@ class ProductController extends Controller
     {
         $products = $this->products
             ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
+        dd($products);
     }
 
     /**

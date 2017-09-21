@@ -14,12 +14,11 @@ class EloquentProductRepository implements ProductRepository
 
     public function __construct()
     {
-        // $this->queryBuilder = new EloquentQueryBuilder(Order::class);
+        $this->queryBuilder = new EloquentQueryBuilder(Product::class);
     }
 
     public function sortedAndFilteredOrders(array $parameters, $paginateBy)
     {
-        dd($parameters, $paginateBy);
         // $filterParams = array_filter($parameters['filters'], function($value) {
         //     return !empty($value);
         // });
@@ -28,6 +27,9 @@ class EloquentProductRepository implements ProductRepository
         //     return $value != '';
         // });
         //
+        return $this->queryBuilder
+            ->build()
+            ->paginate($paginateBy);
         // return $this->queryBuilder
         //     ->filterBy($filterParams)
         //     ->orderBy($orderByParams)
