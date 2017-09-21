@@ -50,8 +50,7 @@
           </div>
 
           <div class="panel-footer">
-            <!-- TODO: PAGINATOR -->
-            <!-- <paginator v-if="meta && orders.length" for="orders" :pagination="meta.pagination" v-on:orders_pageChanged="getOrders"></paginator> -->
+            <paginator v-if="meta && products.length" for="products" :pagination="meta.pagination" v-on:products_pageChanged="getProducts"></paginator>
           </div>
 
         </div>

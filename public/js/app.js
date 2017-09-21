@@ -43238,7 +43238,6 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   setProducts: function setProducts(state, products) {
-    console.log(products);
     state.products = products.data;
     state.meta = products.meta;
   },
@@ -44880,13 +44879,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', {
-    products: 'products',
-    isLoadingProducts: 'isLoadingProducts'
-  })),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', {
-    getProducts: 'getProducts'
-  })),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['products', 'meta', 'isLoadingProducts'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts'])),
   mounted: function mounted() {
     this.getProducts();
   }
@@ -44948,7 +44942,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("По номеру")])])])])])])]), _vm._v("\n          PRODUCT COMPONENT\n          ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
-  })])])])])
+  }, [(_vm.meta && _vm.products.length) ? _c('paginator', {
+    attrs: {
+      "for": "products",
+      "pagination": _vm.meta.pagination
+    },
+    on: {
+      "products_pageChanged": _vm.getProducts
+    }
+  }) : _vm._e()], 1)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "panel-heading"
