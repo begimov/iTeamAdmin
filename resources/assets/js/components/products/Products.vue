@@ -42,8 +42,7 @@
             </div>
             PRODUCT COMPONENT
             <product v-for="product in products"
-            :order="null"
-            :payment-states="null"
+            :product="product"
             :key="product.id"
             v-on:productDeleted="getProducts"></product>
 

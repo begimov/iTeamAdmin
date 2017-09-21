@@ -44945,8 +44945,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('product', {
       key: product.id,
       attrs: {
-        "order": null,
-        "payment-states": null
+        "product": product
       },
       on: {
         "productDeleted": _vm.getProducts
@@ -45062,8 +45061,11 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(12);
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['order', 'paymentStates'],
+  props: ['product'],
   data: function data() {
     return {
       //
@@ -45071,16 +45073,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    deleteOrder: function deleteOrder() {
-      var _this = this;
-
-      if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0437\u0430\u043A\u0430\u0437 \u2116 ' + this.order.id + '?')) {
-        axios.delete('/webapi/orders/' + this.order.id).then(function (response) {
-          _this.$emit('orderDeleted');
-        });
-      } else {
-        // Do nothing!
-      }
+    deleteProduct: function deleteProduct() {
+      // if (confirm(`Вы уверены, что хотите удалить заказ № ${this.order.id}?`)) {
+      //   axios.delete(`/webapi/orders/${this.order.id}`).then((response) => {
+      //     this.$emit('orderDeleted')
+      //   })
+      // } else {
+      //   // Do nothing!
+      // }
     }
   },
   computed: {
@@ -45098,18 +45098,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row panel-row"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('p'), _c('h4', [_vm._v("\n        " + _vm._s(_vm.product.name) + "\n        "), _vm._m(0)]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
+    staticClass: "badge"
+  }, [_vm._v("\n        " + _vm._s(_vm.product.price) + " ₽\n      ")]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._m(2), _vm._v(" "), _vm._m(3), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     },
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.deleteOrder($event)
+        _vm.deleteProduct($event)
       }
     }
   }, [_c('span', {
@@ -45119,17 +45123,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-6"
-  }, [_c('p'), _c('h4', [_c('small', [_c('a', {
+  return _c('small', [_c('a', {
     attrs: {
       "href": "mailto:"
     }
-  })])]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
-    staticClass: "badge"
-  }), _vm._v(" "), _c('small', [_c('span', {
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('small', [_c('span', {
     staticClass: "label label-warning"
-  })])])])
+  })])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('a', {
     attrs: {

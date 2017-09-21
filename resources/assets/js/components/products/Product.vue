@@ -4,7 +4,7 @@
     <div class="col-md-6">
       <p>
         <h4>
-          <!-- {{ order.user.data.name }} -->
+          {{ product.name }}
           <small>
             <a href="mailto:">
               <!-- <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ order.user.data.email }} -->
@@ -16,7 +16,7 @@
       <!-- <p><span class="badge">Заказ № {{ order.id }}:</span> <small>&laquo;{{ order.product.data.name }}&raquo;</small></p> -->
       <p>
         <span class="badge">
-          <!-- {{ order.price ? order.price : order.product.data.price }}&nbsp;&#8381; -->
+          {{ product.price }}&nbsp;&#8381;
         </span>
         <small>
           <!-- {{ order.paymentType ? order.paymentType.data.name : '' }} -->
@@ -38,7 +38,7 @@
             <!-- <option v-for="paymentState in paymentStates" :selected="order.payment_state_id == paymentState.id">{{ paymentState.name }}</option> -->
           </select>
         </li>
-        <li><a href="#" @click.prevent="deleteOrder"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
+        <li><a href="#" @click.prevent="deleteProduct"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
       </ul>
     </div>
 
