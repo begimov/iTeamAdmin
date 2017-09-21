@@ -43147,6 +43147,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   products: [],
+  meta: null,
   isLoadingProducts: false
 });
 
@@ -43158,6 +43159,12 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   products: function products(state) {
     return state.products;
+  },
+  meta: function meta(state) {
+    return state.meta;
+  },
+  pagination: function pagination(state) {
+    return state.meta ? state.meta.pagination : null;
   },
   isLoadingProducts: function isLoadingProducts(state) {
     return state.isLoadingProducts;
@@ -43180,8 +43187,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
     commit('setLoadingProducts', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].products.getProducts(page).then(function (res) {
-      console.log(res.data);
-      // commit('setProducts', res.data)
+      commit('setProducts', res.data);
       commit('setLoadingProducts', false);
     });
   }
@@ -43232,7 +43238,9 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   setProducts: function setProducts(state, products) {
-    state.products = products;
+    console.log(products);
+    state.products = products.data;
+    state.meta = products.meta;
   },
   setLoadingProducts: function setLoadingProducts(state, flag) {
     state.isLoadingProducts = flag;
