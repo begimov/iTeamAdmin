@@ -43179,11 +43179,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
     commit('setLoadingProducts', true);
-    // api.products.getProducts(page).then(res => {
-    //   console.log(res)
-    //   // commit('setProducts', res.data)
-    //   // commit('setLoadingProducts', false)
-    // })
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].products.getProducts(page).then(function (res) {
+      console.log(res.data);
+      // commit('setProducts', res.data)
+      // commit('setLoadingProducts', false)
+    });
   }
 });
 
@@ -43195,7 +43195,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_products__ = __webpack_require__(47);
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = ({
+/* harmony default export */ __webpack_exports__["a"] = ({
   products: __WEBPACK_IMPORTED_MODULE_0__products_products__["a" /* default */]
 });
 
@@ -43207,7 +43207,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   getProducts: function getProducts(page) {
     return new Promise(function (resolve, reject) {
-      axios.get("/webapi/themes?page=" + page).then(function (res) {
+      axios.get("/webapi/products?page=" + page).then(function (res) {
         resolve(res);
       });
     });
