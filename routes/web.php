@@ -14,8 +14,11 @@
 // Main admin panel group
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
-    // Dashboard
+    // Dashboard page
     Route::get('/', 'Home\HomeController@index')->name('home');
+
+    // Products page
+    Route::get('products', 'Products\ProductController@index')->name('products');
 
     // Landings related routes
     Route::resource('landings', 'Landings\LandingController');
