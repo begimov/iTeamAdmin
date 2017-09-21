@@ -26,6 +26,7 @@ Vue.component('orders', require('./components/products/orders/Orders.vue'));
 Vue.component('order', require('./components/products/orders/Order.vue'));
 Vue.component('new-order', require('./components/products/neworder/NewOrder.vue'));
 Vue.component('products', require('./components/products/Products.vue'));
+Vue.component('product', require('./components/products/Product.vue'));
 
 const app = new Vue({
     el: '#app',

@@ -41,11 +41,11 @@
               </div>
             </div>
             PRODUCT COMPONENT
-            <!-- <order v-for="order in orders"
-            :order="order"
-            :payment-states="paymentStates"
-            :key="order.id"
-            v-on:orderDeleted="getOrders"></order> -->
+            <product v-for="product in products"
+            :order="null"
+            :payment-states="null"
+            :key="product.id"
+            v-on:productDeleted="getProducts"></product>
 
           </div>
 
