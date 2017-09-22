@@ -5,7 +5,7 @@
         <div v-bind:class="{ 'isActive': isLoadingProducts, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <a href="#" class="btn btn-primary">Создать продукт</a>
+            <router-link :to="{name: 'products'}" class="btn btn-primary">Создать продукт</router-link>
           </div>
 
           <div class="panel-body">
@@ -40,7 +40,6 @@
                 </ul>
               </div>
             </div>
-            PRODUCT COMPONENT
             <product v-for="product in products"
             :product="product"
             :key="product.id"
