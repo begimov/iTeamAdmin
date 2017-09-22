@@ -24,8 +24,8 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Материалы</label>
-                    <multiselect v-model="products"
-                    :options="products"
+                    <multiselect v-model="materialParams"
+                    :options="materialOptions"
                     select-label=""
                     selected-label="Выбран"
                     deselect-label=""

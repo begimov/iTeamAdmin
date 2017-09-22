@@ -21,10 +21,9 @@ export default {
     },
   },
   computed: {
-      ...mapGetters('products', [
-          'products',
-          'meta',
-          'isLoadingProducts'
+      ...mapGetters('products/newproduct', [
+          'materialOptions',
+          'materialParams',
       ])
   },
   mounted() {

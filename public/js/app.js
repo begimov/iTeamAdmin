@@ -47774,7 +47774,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       // }
     }
   },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['products', 'meta', 'isLoadingProducts'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams'])),
   mounted: function mounted() {
     //
   }
@@ -47815,7 +47815,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Материалы")]), _vm._v(" "), _c('multiselect', {
     attrs: {
-      "options": _vm.products,
+      "options": _vm.materialOptions,
       "select-label": "",
       "selected-label": "Выбран",
       "deselect-label": "",
@@ -47824,11 +47824,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.products),
+      value: (_vm.materialParams),
       callback: function($$v) {
-        _vm.products = $$v
+        _vm.materialParams = $$v
       },
-      expression: "products"
+      expression: "materialParams"
     }
   }, [_c('span', {
     slot: "noResult"
@@ -47948,18 +47948,12 @@ if (false) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // products (state) {
-  //   return state.products
-  // },
-  // meta (state) {
-  //   return state.meta
-  // },
-  // pagination (state) {
-  //   return state.meta ? state.meta.pagination : null
-  // },
-  // isLoadingProducts (state) {
-  //   return state.isLoadingProducts
-  // }
+  materialOptions: function materialOptions(state) {
+    return state.options.materials;
+  },
+  materialParams: function materialParams(state) {
+    return state.params.materials;
+  }
 });
 
 /***/ }),

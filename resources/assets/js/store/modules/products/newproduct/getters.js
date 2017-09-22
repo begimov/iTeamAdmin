@@ -1,7 +1,10 @@
 export default {
-  // products (state) {
-  //   return state.products
-  // },
+  materialOptions (state) {
+    return state.options.materials
+  },
+  materialParams (state) {
+    return state.params.materials
+  },
   // meta (state) {
   //   return state.meta
   // },
