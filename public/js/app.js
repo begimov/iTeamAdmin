@@ -43202,7 +43202,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   products: [],
   meta: null,
-  isLoadingProducts: false
+  isLoading: false
 });
 
 /***/ }),
@@ -43220,8 +43220,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   pagination: function pagination(state) {
     return state.meta ? state.meta.pagination : null;
   },
-  isLoadingProducts: function isLoadingProducts(state) {
-    return state.isLoadingProducts;
+  isLoading: function isLoading(state) {
+    return state.isLoading;
   }
 });
 
@@ -43239,10 +43239,10 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         commit = _ref.commit;
     var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    commit('setLoadingProducts', true);
+    commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].products.getProducts(page).then(function (res) {
       commit('setProducts', res.data);
-      commit('setLoadingProducts', false);
+      commit('setIsLoading', false);
     });
   }
 });
@@ -43295,8 +43295,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     state.products = products.data;
     state.meta = products.meta;
   },
-  setLoadingProducts: function setLoadingProducts(state, flag) {
-    state.isLoadingProducts = flag;
+  setIsLoading: function setIsLoading(state, flag) {
+    state.isLoading = flag;
   }
 });
 
@@ -45926,7 +45926,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['products', 'meta', 'isLoadingProducts'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['products', 'meta', 'isLoading'])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts'])),
   mounted: function mounted() {
     this.getProducts();
@@ -45946,7 +45946,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('div', {
     class: {
-      'isActive': _vm.isLoadingProducts, 'loader': true, 'loader-def': true
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"

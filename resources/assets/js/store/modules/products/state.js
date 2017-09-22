@@ -1,5 +1,5 @@
 export default {
   products: [],
   meta: null,
-  isLoadingProducts: false,
+  isLoading: false,
 }

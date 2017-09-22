@@ -8,7 +8,7 @@ export default {
   pagination (state) {
     return state.meta ? state.meta.pagination : null
   },
-  isLoadingProducts (state) {
-    return state.isLoadingProducts
+  isLoading (state) {
+    return state.isLoading
   }
 }

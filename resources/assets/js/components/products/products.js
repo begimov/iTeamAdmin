@@ -12,7 +12,7 @@ export default {
       ...mapGetters('products', [
           'products',
           'meta',
-          'isLoadingProducts'
+          'isLoading'
       ])
   },
   methods: {

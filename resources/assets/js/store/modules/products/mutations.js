@@ -3,7 +3,7 @@ export default {
     state.products = products.data
     state.meta = products.meta
   },
-  setLoadingProducts (state, flag) {
-    state.isLoadingProducts = flag
+  setIsLoading (state, flag) {
+    state.isLoading = flag
   }
 }
