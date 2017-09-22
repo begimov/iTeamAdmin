@@ -15,7 +15,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Название</label>
-                    <input type="text" class="form-control" placeholder="...">
+                    <input type="text" class="form-control" placeholder="Введите название продукта">
                   </div>
                 </div>
               </div>
@@ -24,12 +24,16 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Материалы</label>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="...">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Добавить</button>
-                      </span>
-                    </div>
+                    <multiselect v-model="products"
+                    :options="products"
+                    select-label=""
+                    selected-label="Выбран"
+                    deselect-label=""
+                    placeholder="Выберите продукт"
+                    label="name"
+                    track-by="id">
+                      <span slot="noResult">Продукт не найден</span>
+                    </multiselect>
                   </div>
                 </div>
               </div>
@@ -39,7 +43,12 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Цена</label>
-                    <input type="text" class="form-control" placeholder="...">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">+</button>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>

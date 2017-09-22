@@ -1,6 +1,8 @@
 import { mapActions, mapGetters } from 'vuex'
+import Multiselect from 'vue-multiselect'
 
 export default {
+  components: { Multiselect },
   props: [],
   data () {
     return {
@@ -19,7 +21,11 @@ export default {
     },
   },
   computed: {
-    //
+      ...mapGetters('products', [
+          'products',
+          'meta',
+          'isLoadingProducts'
+      ])
   },
   mounted() {
     //

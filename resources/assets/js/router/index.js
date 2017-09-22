@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 
 //Global components
 Vue.component('products', require('./../components/products/Products.vue'));
-Vue.component('new-product', require('./../components/products/NewProduct.vue'));
+Vue.component('new-product', require('./../components/products/newproduct/NewProduct.vue'));
 
 Vue.use(VueRouter)
 
