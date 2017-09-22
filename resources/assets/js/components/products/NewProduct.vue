@@ -1,50 +1,65 @@
 <template>
-  <div class="row panel-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
 
-    <div class="col-md-6">
-      <p>
-        <h4>
-          НОВЫЙ ПРОДУКТ
-          <!-- {{ product.name }} -->
-          <small>
-            <a href="mailto:">
-              <!-- <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ order.user.data.email }} -->
-            </a>
-            <!-- <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> {{ order.user.data.userProfile.data.phone }} -->
-          </small>
-        </h4>
-      </p>
-      <!-- <p><span class="badge">Заказ № {{ order.id }}:</span> <small>&laquo;{{ order.product.data.name }}&raquo;</small></p> -->
-      <p>
-        <span class="badge">
-          <!-- {{ product.price }}&nbsp;&#8381; -->
-        </span>
-        <small>
-          <!-- {{ order.paymentType ? order.paymentType.data.name : '' }} -->
-          <span class="label label-warning">
-            <!-- Оформлен {{ order.created_at_human }} -->
-          </span>
-          <!-- <span class="label label-success" v-if="order.paymentType"> -->
-            <!-- <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Оплачен  {{ order.updated_at_human }} -->
-          </span>
-        </small>
-      </p>
+          <div class="panel-heading">
+            Новый продукт
+          </div>
+
+          <div class="panel-body">
+            <form action="#" @submit.prevent="saveProduct">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Название</label>
+                    <input type="text" class="form-control" placeholder="...">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Материалы</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Добавить</button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Цена</label>
+                    <input type="text" class="form-control" placeholder="...">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <ul class="list-inline">
+                    <li><button type="submit" class="btn btn-primary">Сохранить</button></li>
+                    <li><router-link :to="{name: 'products'}" class="btn btn-default">Отменить</router-link></li>
+                  </ul>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
     </div>
-
-    <div class="col-md-6 text-right orders-edit-block">
-      <ul class="list-inline">
-        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать</a></li>
-        <li>
-          <select>
-            <!-- <option v-for="paymentState in paymentStates" :selected="order.payment_state_id == paymentState.id">{{ paymentState.name }}</option> -->
-          </select>
-        </li>
-        <li><a href="#" @click.prevent="deleteProduct"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
-      </ul>
-    </div>
-
   </div>
-
 </template>
 
 <script src="./newproduct.js"></script>

@@ -46125,52 +46125,99 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "row panel-row"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6 text-right orders-edit-block"
-  }, [_c('ul', {
-    staticClass: "list-inline"
-  }, [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_vm._v("\n          Новый продукт\n        ")]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_c('form', {
     attrs: {
-      "href": "#"
+      "action": "#"
     },
     on: {
-      "click": function($event) {
+      "submit": function($event) {
         $event.preventDefault();
-        _vm.deleteProduct($event)
+        _vm.saveProduct($event)
       }
     }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-remove-circle",
+  }, [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('ul', {
+    staticClass: "list-inline"
+  }, [_vm._m(3), _vm._v(" "), _c('li', [_c('router-link', {
+    staticClass: "btn btn-default",
     attrs: {
-      "aria-hidden": "true"
+      "to": {
+        name: 'products'
+      }
     }
-  })])])])])])
+  }, [_vm._v("Отменить")])], 1)])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
     staticClass: "col-md-6"
-  }, [_c('p'), _c('h4', [_vm._v("\n        НОВЫЙ ПРОДУКТ\n        "), _vm._v(" "), _c('small', [_c('a', {
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Название")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
     attrs: {
-      "href": "mailto:"
+      "type": "text",
+      "placeholder": "..."
     }
-  })])]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
-    staticClass: "badge"
-  }), _vm._v(" "), _c('small', [_c('span', {
-    staticClass: "label label-warning"
   })])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Материалы")]), _vm._v(" "), _c('div', {
+    staticClass: "input-group"
+  }, [_c('input', {
+    staticClass: "form-control",
     attrs: {
-      "href": "#"
+      "type": "text",
+      "placeholder": "..."
     }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-edit",
+  }), _vm._v(" "), _c('span', {
+    staticClass: "input-group-btn"
+  }, [_c('button', {
+    staticClass: "btn btn-default",
     attrs: {
-      "aria-hidden": "true"
+      "type": "button"
     }
-  }), _vm._v(" Редактировать")])])
+  }, [_vm._v("Добавить")])])])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('select')])
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Цена")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "..."
+    }
+  })])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    }
+  }, [_vm._v("Сохранить")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
