@@ -3,13 +3,13 @@ import VueRouter from 'vue-router'
 
 //Global components
 Vue.component('products', require('./../components/products/Products.vue'));
+Vue.component('new-product', require('./../components/products/NewProduct.vue'));
 
 Vue.use(VueRouter)
 
-const routes = [
-  { path: '/', name: 'products', component: Vue.component('products')},
-]
-
 export default new VueRouter({
-  routes
+  routes: [
+    { path: '/', name: 'products', component: Vue.component('products')},
+    { path: '/newproduct', name: 'newproduct', component: Vue.component('new-product')},
+  ]
 })
