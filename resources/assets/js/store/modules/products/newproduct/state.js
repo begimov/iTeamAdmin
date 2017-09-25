@@ -9,6 +9,7 @@ export default {
     ],
   },
   params: {
+    name: null,
     materials: [],
     categories: [],
   },

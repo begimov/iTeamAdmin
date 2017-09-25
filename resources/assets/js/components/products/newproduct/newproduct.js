@@ -13,6 +13,7 @@ export default {
       ...mapActions('products/newproduct', [
           'updateMaterialParams',
           'updateCategoryParams',
+          'updateName',
       ])
   },
   computed: {
@@ -21,7 +22,15 @@ export default {
           'materialParams',
           'categoryOptions',
           'categoryParams',
-      ])
+      ]),
+      'name': {
+        get () {
+          return this.$store.state.products.newproduct.params.name
+        },
+        set (value) {
+          this.updateName(value)
+        }
+      }
   },
   mounted() {
     //

@@ -43285,6 +43285,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     categories: [{ id: 1, name: 'Category 1' }]
   },
   params: {
+    name: null,
     materials: [],
     categories: []
   },
@@ -43330,6 +43331,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     var commit = _ref2.commit;
 
     commit('updateCategoryParams', value);
+  },
+  updateName: function updateName(_ref3, value) {
+    var commit = _ref3.commit;
+
+    commit('updateName', value);
   }
 });
 
@@ -43370,6 +43376,9 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     },
     updateCategoryParams: function updateCategoryParams(state, value) {
         state.params.categories = value;
+    },
+    updateName: function updateName(state, value) {
+        state.params.name = value;
     }
 });
 
@@ -46203,19 +46212,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-    props: [],
-    data: function data() {
-        return {
-            //
-        };
-    },
+  components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
+  props: [],
+  data: function data() {
+    return {
+      //
+    };
+  },
 
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams'])),
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams'])),
-    mounted: function mounted() {
-        //
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams', 'updateName'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams']), {
+    'name': {
+      get: function get() {
+        return this.$store.state.products.newproduct.params.name;
+      },
+      set: function set(value) {
+        this.updateName(value);
+      }
     }
+  }),
+  mounted: function mounted() {
+    //
+  }
 });
 
 /***/ }),
@@ -46267,7 +46285,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Категория не найдена")])])], 1)]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Категория не найдена")])])], 1)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Название")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.name),
+      expression: "name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Введите название продукта"
+    },
+    domProps: {
+      "value": (_vm.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.name = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-6"
@@ -46312,13 +46355,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }])
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Материал не найден")])])], 2)]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
+  }, [_vm._v("Материал не найден")])])], 2)]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(3), _vm._v(" "), _c('li', [_c('router-link', {
+  }, [_vm._m(2), _vm._v(" "), _c('li', [_c('router-link', {
     staticClass: "btn btn-default",
     attrs: {
       "to": {
@@ -46327,18 +46370,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Отменить")])], 1)])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-6"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Название")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Введите название продукта"
-    }
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {

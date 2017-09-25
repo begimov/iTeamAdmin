@@ -4,5 +4,8 @@ export default {
   },
   updateCategoryParams (state, value) {
       state.params.categories = value
-  }
+  },
+  updateName (state, value) {
+      state.params.name = value
+  },
 }

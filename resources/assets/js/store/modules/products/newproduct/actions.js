@@ -6,5 +6,8 @@ export default {
   },
   updateCategoryParams ({ commit }, value) {
     commit('updateCategoryParams', value)
+  },
+  updateName ({ commit }, value) {
+    commit('updateName', value)
   }
 }

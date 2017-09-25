@@ -31,7 +31,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Название</label>
-                    <input type="text" class="form-control" placeholder="Введите название продукта">
+                    <input type="text" class="form-control" placeholder="Введите название продукта" v-model="name">
                   </div>
                 </div>
               </div>
