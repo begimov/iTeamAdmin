@@ -1,13 +1,13 @@
 export default {
+  props: ['initData'],
   data () {
     return {
-      query: '',
+      params: {
+        orderBy: this.initData
+      }
     }
   },
   methods: {
-    changed () {
-      this.$emit('input', this.query)
-    },
     applyOrder (orderBy) {
       this.params.orderBy = _.mapValues(this.params.orderBy, (value, flagName) => {
         if (flagName == orderBy) {
@@ -15,7 +15,7 @@ export default {
           }
         return ''
       })
-      this.getOrders(this.meta.pagination.current_page)
+      this.$emit('input', this.params.orderBy)
     },
   },
   computed: {

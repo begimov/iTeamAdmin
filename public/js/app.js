@@ -47000,20 +47000,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.flags.isLoading = false;
       });
     },
-    applyOrder: function applyOrder(orderBy) {
-      this.params.orderBy = _.mapValues(this.params.orderBy, function (value, flagName) {
-        if (flagName == orderBy) {
-          return value == 'desc' ? 'asc' : 'desc';
-        }
-        return '';
-      });
-      this.getOrders(this.meta.pagination.current_page);
-    },
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
         this.getOrders(1);
       }.bind(this), 1000);
+    }
+  },
+  watch: {
+    'params.orderBy': function paramsOrderBy() {
+      this.getOrders(this.meta.pagination.current_page);
     }
   },
   computed: {
@@ -47170,34 +47166,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "params.filters.paymentType"
     }
-  })], 1)]), _vm._v(" "), _c('li', {
-    staticClass: "dropdown"
-  }, [_vm._m(1), _vm._v(" "), _c('ul', {
-    staticClass: "dropdown-menu",
+  })], 1)]), _vm._v(" "), _c('orderby', {
     attrs: {
-      "role": "menu"
-    }
-  }, [_c('li', [_c('a', {
-    attrs: {
-      "href": "#"
+      "init-data": _vm.params.orderBy
     },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.applyOrder('created_at')
-      }
+    model: {
+      value: (_vm.params.orderBy),
+      callback: function($$v) {
+        _vm.params.orderBy = $$v
+      },
+      expression: "params.orderBy"
     }
-  }, [_vm._v("По дате")])]), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.applyOrder('id')
-      }
-    }
-  }, [_vm._v("По номеру")])])])])])])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {
+  })], 1)])]), _vm._v(" "), _vm._l((_vm.orders), function(order) {
     return _c('order', {
       key: order.id,
       attrs: {
@@ -47225,23 +47205,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Сумма:")]), _vm._v(" "), _c('small', [_vm._v("75751.5 ₽")]), _c('br'), _vm._v(" "), _c('span', {
     staticClass: "label label-primary"
   }, [_vm._v("Период поиска:")]), _vm._v(" "), _c('small', [_vm._v("29.08.14 - 29.08.17")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    staticClass: "dropdown-toggle",
-    attrs: {
-      "href": "#",
-      "data-toggle": "dropdown",
-      "role": "button",
-      "aria-expanded": "false"
-    }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-sort",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _c('span', {
-    staticClass: "caret"
-  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -48029,16 +47992,16 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['initData'],
   data: function data() {
     return {
-      query: ''
+      params: {
+        orderBy: this.initData
+      }
     };
   },
 
   methods: {
-    changed: function changed() {
-      this.$emit('input', this.query);
-    },
     applyOrder: function applyOrder(orderBy) {
       this.params.orderBy = _.mapValues(this.params.orderBy, function (value, flagName) {
         if (flagName == orderBy) {
@@ -48046,7 +48009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
         return '';
       });
-      this.getOrders(this.meta.pagination.current_page);
+      this.$emit('input', this.params.orderBy);
     }
   },
   computed: {
