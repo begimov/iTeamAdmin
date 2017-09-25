@@ -48013,7 +48013,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6"
   }, [_c('p'), _c('h4', [_vm._v("\n        " + _vm._s(_vm.product.name) + "\n      ")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_c('span', {
     staticClass: "badge"
-  }, [_vm._v("\n        " + _vm._s(_vm.product.price) + " ₽\n      ")])]), _vm._v(" "), _c('p', [_vm._v("\n      Категория: \n    ")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n        " + _vm._s(_vm.product.price) + " ₽\n      ")])]), _vm._v(" "), _c('p', [_vm._v("\n      Категория: " + _vm._s(_vm.product.category.data.name) + "\n    ")])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"

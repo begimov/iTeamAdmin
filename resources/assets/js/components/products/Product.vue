@@ -13,7 +13,7 @@
         </span>
       </p>
       <p>
-        Категория: 
+        Категория: {{ product.category.data.name }}
       </p>
     </div>
 
