@@ -46285,13 +46285,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Материал не найден")])])], 1)])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+  }, [_vm._v("Материал не найден")])])], 1)]), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(2), _vm._v(" "), _c('li', [_c('router-link', {
+  }, [_vm._m(3), _vm._v(" "), _c('li', [_c('router-link', {
     staticClass: "btn btn-default",
     attrs: {
       "to": {
@@ -46313,27 +46313,49 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Цена")]), _vm._v(" "), _c('div', {
-    staticClass: "input-group"
+  }, [_c('label', [_vm._v("Базовая цена,  ₽")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Введите цену по умолчанию"
+    }
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-5"
+  }, [_c('div', {
+    staticClass: "form-group"
   }, [_c('input', {
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "placeholder": ""
+      "placeholder": "Специальная цена, руб."
     }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "input-group-btn"
-  }, [_c('button', {
-    staticClass: "btn btn-default",
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-5"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    staticClass: "form-control",
     attrs: {
-      "type": "button"
+      "type": "text",
+      "placeholder": "Название, например, Участник..."
     }
-  }, [_vm._v("+")])])])])])])
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Добавить")])])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('button', {
     staticClass: "btn btn-primary",
