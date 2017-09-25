@@ -8,12 +8,20 @@
         </h4>
       </p>
       <p>
-        <span class="badge">
-          {{ product.price }}&nbsp;&#8381;
-        </span>
+        Базовая цена: <span class="badge">{{ product.price }}&nbsp;&#8381;</span>
       </p>
       <p>
         Категория: {{ product.category.data.name }}
+      </p>
+      <p>
+        <ul class="list-inline">
+          <li v-for="priceTag in product.priceTags.data">
+            <span class="label label-default">
+              {{ priceTag.name }}: {{ priceTag.price }}&nbsp;&#8381;
+            </span>
+          </li>
+        </ul>
+
       </p>
     </div>
 
