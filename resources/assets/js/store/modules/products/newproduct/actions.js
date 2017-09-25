@@ -12,5 +12,11 @@ export default {
   },
   updateBasePrice ({ commit }, value) {
     commit('updateBasePrice', value)
+  },
+  updatePriceTagPrice ({ commit }, value) {
+    commit('updatePriceTagPrice', value)
+  },
+  updatePriceTagName ({ commit }, value) {
+    commit('updatePriceTagName', value)
   }
 }

@@ -15,6 +15,8 @@ export default {
           'updateCategoryParams',
           'updateName',
           'updateBasePrice',
+          'updatePriceTagPrice',
+          'updatePriceTagName',
       ])
   },
   computed: {
@@ -38,6 +40,22 @@ export default {
         },
         set (value) {
           this.updateBasePrice(value)
+        }
+      },
+      'priceTagPrice': {
+        get () {
+          return this.$store.state.products.newproduct.options.priceTag.price
+        },
+        set (value) {
+          this.updatePriceTagPrice(value)
+        }
+      },
+      'priceTagName': {
+        get () {
+          return this.$store.state.products.newproduct.options.priceTag.name
+        },
+        set (value) {
+          this.updatePriceTagName(value)
         }
       }
   },

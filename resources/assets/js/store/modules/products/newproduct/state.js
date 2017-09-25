@@ -7,12 +7,14 @@ export default {
     categories: [
       {id: 1, name: 'Category 1'}
     ],
+    priceTag: { price: null, name: null }
   },
   params: {
     categories: [],
     name: null,
     materials: [],
     basePrice: null,
+    priceTags: [],
   },
   isLoading: false,
   errors: {}

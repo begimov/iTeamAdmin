@@ -74,16 +74,16 @@
                   </div>
                 </div>
               </div>
-
+<hr>
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Специальная доп. цена, руб.">
+                    <input type="text" class="form-control" placeholder="Специальная доп. цена, руб." v-model="priceTagPrice">
                   </div>
                 </div>
                 <div class="col-md-5">
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Название, например, Участник...">
+                    <input type="text" class="form-control" placeholder="Название, например, Участник..." v-model="priceTagName">
                   </div>
                 </div>
                 <div class="col-md-3">

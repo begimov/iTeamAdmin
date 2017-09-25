@@ -10,5 +10,11 @@ export default {
   },
   updateBasePrice (state, value) {
       state.params.basePrice = value
+  },
+  updatePriceTagPrice (state, value) {
+      state.options.priceTag.price = value
+  },
+  updatePriceTagName (state, value) {
+      state.options.priceTag.name = value
   }
 }

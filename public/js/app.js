@@ -43282,13 +43282,15 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   options: {
     materials: [{ id: 1, name: 'Material 1' }, { id: 2, name: 'Material 2' }],
-    categories: [{ id: 1, name: 'Category 1' }]
+    categories: [{ id: 1, name: 'Category 1' }],
+    priceTag: { price: null, name: null }
   },
   params: {
     categories: [],
     name: null,
     materials: [],
-    basePrice: null
+    basePrice: null,
+    priceTags: []
   },
   isLoading: false,
   errors: {}
@@ -43342,6 +43344,16 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     var commit = _ref4.commit;
 
     commit('updateBasePrice', value);
+  },
+  updatePriceTagPrice: function updatePriceTagPrice(_ref5, value) {
+    var commit = _ref5.commit;
+
+    commit('updatePriceTagPrice', value);
+  },
+  updatePriceTagName: function updatePriceTagName(_ref6, value) {
+    var commit = _ref6.commit;
+
+    commit('updatePriceTagName', value);
   }
 });
 
@@ -43388,6 +43400,12 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     },
     updateBasePrice: function updateBasePrice(state, value) {
         state.params.basePrice = value;
+    },
+    updatePriceTagPrice: function updatePriceTagPrice(state, value) {
+        state.options.priceTag.price = value;
+    },
+    updatePriceTagName: function updatePriceTagName(state, value) {
+        state.options.priceTag.name = value;
     }
 });
 
@@ -46229,7 +46247,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName'])),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams']), {
     'name': {
       get: function get() {
@@ -46245,6 +46263,22 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       },
       set: function set(value) {
         this.updateBasePrice(value);
+      }
+    },
+    'priceTagPrice': {
+      get: function get() {
+        return this.$store.state.products.newproduct.options.priceTag.price;
+      },
+      set: function set(value) {
+        this.updatePriceTagPrice(value);
+      }
+    },
+    'priceTagName': {
+      get: function get() {
+        return this.$store.state.products.newproduct.options.priceTag.name;
+      },
+      set: function set(value) {
+        this.updatePriceTagName(value);
       }
     }
   }),
@@ -46268,7 +46302,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [_vm._v("\n          Новый продукт\n        ")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n            Новый продукт\n          ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('form', {
     attrs: {
@@ -46367,7 +46401,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     scopedSlots: _vm._u([{
       key: "tag",
       fn: function(props) {
-        return [_vm._v("\n                       \n                    ")]
+        return [_vm._v("\n                         \n                      ")]
       }
     }])
   }, [_c('span', {
@@ -46397,7 +46431,59 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.basePrice = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  })])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.priceTagPrice),
+      expression: "priceTagPrice"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Специальная доп. цена, руб."
+    },
+    domProps: {
+      "value": (_vm.priceTagPrice)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.priceTagPrice = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-5"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.priceTagName),
+      expression: "priceTagName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Название, например, Участник..."
+    },
+    domProps: {
+      "value": (_vm.priceTagName)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.priceTagName = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
@@ -46413,28 +46499,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Отменить")])], 1)])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-4"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Специальная доп. цена, руб."
-    }
-  })])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-5"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Название, например, Участник..."
-    }
-  })])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-3"
   }, [_c('div', {
     staticClass: "form-group"
@@ -46443,7 +46507,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("Добавить цену")])])])])
+  }, [_vm._v("Добавить цену")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('button', {
     staticClass: "btn btn-primary",
