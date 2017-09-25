@@ -4,7 +4,7 @@ namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Price extends Model
+class PriceTag extends Model
 {
     //
 }
