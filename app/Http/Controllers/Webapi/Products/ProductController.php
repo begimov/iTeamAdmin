@@ -37,7 +37,7 @@ class ProductController extends Controller
 
         return fractal()
             ->collection($productsCollection)
-            ->parseIncludes(['category'])
+            ->parseIncludes(['category', 'priceTags'])
             ->transformWith(new ProductTransformer)
             ->paginateWith(new IlluminatePaginatorAdapter($products))
             ->toArray();
