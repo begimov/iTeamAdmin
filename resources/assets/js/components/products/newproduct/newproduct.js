@@ -12,12 +12,15 @@ export default {
   methods: {
       ...mapActions('products/newproduct', [
           'updateMaterialParams',
+          'updateCategoryParams',
       ])
   },
   computed: {
       ...mapGetters('products/newproduct', [
           'materialOptions',
           'materialParams',
+          'categoryOptions',
+          'categoryParams',
       ])
   },
   mounted() {

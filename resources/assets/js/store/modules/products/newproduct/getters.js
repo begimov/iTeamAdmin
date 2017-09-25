@@ -5,13 +5,10 @@ export default {
   materialParams (state) {
     return state.params.materials
   },
-  // meta (state) {
-  //   return state.meta
-  // },
-  // pagination (state) {
-  //   return state.meta ? state.meta.pagination : null
-  // },
-  // isLoadingProducts (state) {
-  //   return state.isLoadingProducts
-  // }
+  categoryOptions (state) {
+    return state.options.categories
+  },
+  categoryParams (state) {
+    return state.params.categories
+  },
 }

@@ -15,8 +15,9 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Категория</label>
-                    <multiselect v-model="materialParams"
-                    :options="materialOptions"
+                    <multiselect :value="categoryParams"
+                    :options="categoryOptions"
+                    v-on:input="updateCategoryParams"
                     select-label=""
                     selected-label="Выбран"
                     deselect-label=""

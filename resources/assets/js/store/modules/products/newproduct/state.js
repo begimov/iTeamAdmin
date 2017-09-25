@@ -3,9 +3,13 @@ export default {
     materials: [
       {id: 1, name: 'Material 1'}
     ],
+    categories: [
+      {id: 1, name: 'Category 1'}
+    ],
   },
   params: {
     materials: [],
+    categories: [],
   },
   isLoading: false,
   errors: {}

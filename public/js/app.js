@@ -43277,10 +43277,12 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   options: {
-    materials: [{ id: 1, name: 'Material 1' }]
+    materials: [{ id: 1, name: 'Material 1' }],
+    categories: [{ id: 1, name: 'Category 1' }]
   },
   params: {
-    materials: []
+    materials: [],
+    categories: []
   },
   isLoading: false,
   errors: {}
@@ -43297,6 +43299,12 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
   },
   materialParams: function materialParams(state) {
     return state.params.materials;
+  },
+  categoryOptions: function categoryOptions(state) {
+    return state.options.categories;
+  },
+  categoryParams: function categoryParams(state) {
+    return state.params.categories;
   }
 });
 
@@ -43313,6 +43321,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     var commit = _ref.commit;
 
     commit('updateMaterialParams', value);
+  },
+  updateCategoryParams: function updateCategoryParams(_ref2, value) {
+    var commit = _ref2.commit;
+
+    commit('updateCategoryParams', value);
   }
 });
 
@@ -43348,9 +43361,12 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  updateMaterialParams: function updateMaterialParams(state, value) {
-    state.params.materials = value;
-  }
+    updateMaterialParams: function updateMaterialParams(state, value) {
+        state.params.materials = value;
+    },
+    updateCategoryParams: function updateCategoryParams(state, value) {
+        state.params.categories = value;
+    }
 });
 
 /***/ }),
@@ -46183,19 +46199,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-  props: [],
-  data: function data() {
-    return {
-      //
-    };
-  },
+    components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
+    props: [],
+    data: function data() {
+        return {
+            //
+        };
+    },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams'])),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams'])),
-  mounted: function mounted() {
-    //
-  }
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams'])),
+    mounted: function mounted() {
+        //
+    }
 });
 
 /***/ }),
@@ -46233,7 +46249,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Категория")]), _vm._v(" "), _c('multiselect', {
     attrs: {
-      "options": _vm.materialOptions,
+      "value": _vm.categoryParams,
+      "options": _vm.categoryOptions,
       "select-label": "",
       "selected-label": "Выбран",
       "deselect-label": "",
@@ -46241,12 +46258,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": "name",
       "track-by": "id"
     },
-    model: {
-      value: (_vm.materialParams),
-      callback: function($$v) {
-        _vm.materialParams = $$v
-      },
-      expression: "materialParams"
+    on: {
+      "input": _vm.updateCategoryParams
     }
   }, [_c('span', {
     slot: "noResult"
