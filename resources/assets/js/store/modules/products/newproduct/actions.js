@@ -9,5 +9,8 @@ export default {
   },
   updateName ({ commit }, value) {
     commit('updateName', value)
+  },
+  updateBasePrice ({ commit }, value) {
+    commit('updateBasePrice', value)
   }
 }

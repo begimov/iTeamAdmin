@@ -9,9 +9,10 @@ export default {
     ],
   },
   params: {
+    categories: [],
     name: null,
     materials: [],
-    categories: [],
+    basePrice: null,
   },
   isLoading: false,
   errors: {}

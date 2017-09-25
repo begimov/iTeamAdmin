@@ -43285,9 +43285,10 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     categories: [{ id: 1, name: 'Category 1' }]
   },
   params: {
+    categories: [],
     name: null,
     materials: [],
-    categories: []
+    basePrice: null
   },
   isLoading: false,
   errors: {}
@@ -43336,6 +43337,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     var commit = _ref3.commit;
 
     commit('updateName', value);
+  },
+  updateBasePrice: function updateBasePrice(_ref4, value) {
+    var commit = _ref4.commit;
+
+    commit('updateBasePrice', value);
   }
 });
 
@@ -43379,6 +43385,9 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
     },
     updateName: function updateName(state, value) {
         state.params.name = value;
+    },
+    updateBasePrice: function updateBasePrice(state, value) {
+        state.params.basePrice = value;
     }
 });
 
@@ -46220,7 +46229,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams', 'updateName'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice'])),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams']), {
     'name': {
       get: function get() {
@@ -46228,6 +46237,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       },
       set: function set(value) {
         this.updateName(value);
+      }
+    },
+    'basePrice': {
+      get: function get() {
+        return this.$store.state.products.newproduct.params.basePrice;
+      },
+      set: function set(value) {
+        this.updateBasePrice(value);
       }
     }
   }),
@@ -46355,13 +46372,38 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }])
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Материал не найден")])])], 2)]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+  }, [_vm._v("Материал не найден")])])], 2)]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Базовая цена,  ₽")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.basePrice),
+      expression: "basePrice"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Введите цену по умолчанию"
+    },
+    domProps: {
+      "value": (_vm.basePrice)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.basePrice = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(2), _vm._v(" "), _c('li', [_c('router-link', {
+  }, [_vm._m(1), _vm._v(" "), _c('li', [_c('router-link', {
     staticClass: "btn btn-default",
     attrs: {
       "to": {
@@ -46370,18 +46412,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Отменить")])], 1)])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-6"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Базовая цена,  ₽")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Введите цену по умолчанию"
-    }
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
   }, [_c('div', {

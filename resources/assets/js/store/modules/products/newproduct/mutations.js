@@ -8,4 +8,7 @@ export default {
   updateName (state, value) {
       state.params.name = value
   },
+  updateBasePrice (state, value) {
+      state.params.basePrice = value
+  }
 }

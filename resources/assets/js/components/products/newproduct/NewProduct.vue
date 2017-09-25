@@ -70,7 +70,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Базовая цена, &nbsp;&#8381;</label>
-                    <input type="text" class="form-control" placeholder="Введите цену по умолчанию">
+                    <input type="text" class="form-control" placeholder="Введите цену по умолчанию" v-model="basePrice">
                   </div>
                 </div>
               </div>

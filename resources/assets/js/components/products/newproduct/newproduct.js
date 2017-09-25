@@ -14,6 +14,7 @@ export default {
           'updateMaterialParams',
           'updateCategoryParams',
           'updateName',
+          'updateBasePrice',
       ])
   },
   computed: {
@@ -29,6 +30,14 @@ export default {
         },
         set (value) {
           this.updateName(value)
+        }
+      },
+      'basePrice': {
+        get () {
+          return this.$store.state.products.newproduct.params.basePrice
+        },
+        set (value) {
+          this.updateBasePrice(value)
         }
       }
   },
