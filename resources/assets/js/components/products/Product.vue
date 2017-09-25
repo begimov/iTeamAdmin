@@ -4,7 +4,7 @@
     <div class="col-md-6">
       <p>
         <h4>
-          {{ product.name }}
+          <span class="badge">№ {{ product.id }}:</span> {{ product.name }}
         </h4>
       </p>
       <p>

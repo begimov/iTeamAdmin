@@ -46198,15 +46198,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   methods: {
-    deleteProduct: function deleteProduct() {
-      // if (confirm(`Вы уверены, что хотите удалить заказ № ${this.order.id}?`)) {
-      //   axios.delete(`/webapi/orders/${this.order.id}`).then((response) => {
-      //     this.$emit('orderDeleted')
-      //   })
-      // } else {
-      //   // Do nothing!
-      // }
-    }
+    //
   },
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams'])),
   mounted: function mounted() {
@@ -46241,19 +46233,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.saveProduct($event)
       }
     }
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
+  }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Материалы")]), _vm._v(" "), _c('multiselect', {
+  }, [_c('label', [_vm._v("Категория")]), _vm._v(" "), _c('multiselect', {
     attrs: {
       "options": _vm.materialOptions,
       "select-label": "",
       "selected-label": "Выбран",
       "deselect-label": "",
-      "placeholder": "Выберите продукт",
+      "placeholder": "Выберите категорию",
       "label": "name",
       "track-by": "id"
     },
@@ -46266,7 +46258,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])])], 1)])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+  }, [_vm._v("Категория не найдена")])])], 1)]), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Материалы")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "options": _vm.materialOptions,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите материал",
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.materialParams),
+      callback: function($$v) {
+        _vm.materialParams = $$v
+      },
+      expression: "materialParams"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Материал не найден")])])], 1)])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
@@ -46282,8 +46299,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Отменить")])], 1)])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
@@ -46293,7 +46308,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "type": "text",
       "placeholder": "Введите название продукта"
     }
-  })])])])
+  })])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
@@ -48011,7 +48026,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-row"
   }, [_c('div', {
     staticClass: "col-md-6"
-  }, [_c('p'), _c('h4', [_vm._v("\n        " + _vm._s(_vm.product.name) + "\n      ")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_vm._v("\n      Базовая цена: "), _c('span', {
+  }, [_c('p'), _c('h4', [_c('span', {
+    staticClass: "badge"
+  }, [_vm._v("№ " + _vm._s(_vm.product.id) + ":")]), _vm._v(" " + _vm._s(_vm.product.name) + "\n      ")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_vm._v("\n      Базовая цена: "), _c('span', {
     staticClass: "badge"
   }, [_vm._v(_vm._s(_vm.product.price) + " ₽")])]), _vm._v(" "), _c('p', [_vm._v("\n      Категория: " + _vm._s(_vm.product.category.data.name) + "\n    ")]), _vm._v(" "), _c('p', [_c('ul', {
     staticClass: "list-inline"

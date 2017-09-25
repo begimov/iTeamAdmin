@@ -14,6 +14,21 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
+                    <label>Категория</label>
+                    <multiselect v-model="materialParams"
+                    :options="materialOptions"
+                    select-label=""
+                    selected-label="Выбран"
+                    deselect-label=""
+                    placeholder="Выберите категорию"
+                    label="name"
+                    track-by="id">
+                      <span slot="noResult">Категория не найдена</span>
+                    </multiselect>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
                     <label>Название</label>
                     <input type="text" class="form-control" placeholder="Введите название продукта">
                   </div>
@@ -29,15 +44,14 @@
                     select-label=""
                     selected-label="Выбран"
                     deselect-label=""
-                    placeholder="Выберите продукт"
+                    placeholder="Выберите материал"
                     label="name"
                     track-by="id">
-                      <span slot="noResult">Продукт не найден</span>
+                      <span slot="noResult">Материал не найден</span>
                     </multiselect>
                   </div>
                 </div>
               </div>
-
 
               <div class="row">
                 <div class="col-md-6">
