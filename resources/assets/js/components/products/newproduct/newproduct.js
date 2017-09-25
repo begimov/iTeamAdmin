@@ -10,7 +10,9 @@ export default {
     }
   },
   methods: {
-    //
+      ...mapActions('products/newproduct', [
+          'updateMaterialParams',
+      ])
   },
   computed: {
       ...mapGetters('products/newproduct', [

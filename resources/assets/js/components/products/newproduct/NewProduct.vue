@@ -39,8 +39,9 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Материалы</label>
-                    <multiselect v-model="materialParams"
+                    <multiselect :value="materialParams"
                     :options="materialOptions"
+                    v-on:input="updateMaterialParams"
                     select-label=""
                     selected-label="Выбран"
                     deselect-label=""

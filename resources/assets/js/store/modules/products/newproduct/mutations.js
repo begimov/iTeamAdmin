@@ -1,9 +1,5 @@
 export default {
-  // setProducts (state, products) {
-  //   state.products = products.data
-  //   state.meta = products.meta
-  // },
-  // setLoadingProducts (state, flag) {
-  //   state.isLoadingProducts = flag
-  // }
+  updateMaterialParams (state, value) {
+      state.params.materials = value
+  }
 }

@@ -43309,13 +43309,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // getProducts ({dispatch, commit}, page = 1) {
-  //   commit('setLoadingProducts', true)
-  //   api.products.getProducts(page).then(res => {
-  //     commit('setProducts', res.data)
-  //     commit('setLoadingProducts', false)
-  //   })
-  // }
+  updateMaterialParams: function updateMaterialParams(_ref, value) {
+    var commit = _ref.commit;
+
+    commit('updateMaterialParams', value);
+  }
 });
 
 /***/ }),
@@ -43350,13 +43348,9 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // setProducts (state, products) {
-  //   state.products = products.data
-  //   state.meta = products.meta
-  // },
-  // setLoadingProducts (state, flag) {
-  //   state.isLoadingProducts = flag
-  // }
+  updateMaterialParams: function updateMaterialParams(state, value) {
+    state.params.materials = value;
+  }
 });
 
 /***/ }),
@@ -46197,9 +46191,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: {
-    //
-  },
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams'])),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams'])),
   mounted: function mounted() {
     //
@@ -46266,6 +46258,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Материалы")]), _vm._v(" "), _c('multiselect', {
     attrs: {
+      "value": _vm.materialParams,
       "options": _vm.materialOptions,
       "select-label": "",
       "selected-label": "Выбран",
@@ -46274,12 +46267,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "label": "name",
       "track-by": "id"
     },
-    model: {
-      value: (_vm.materialParams),
-      callback: function($$v) {
-        _vm.materialParams = $$v
-      },
-      expression: "materialParams"
+    on: {
+      "input": _vm.updateMaterialParams
     }
   }, [_c('span', {
     slot: "noResult"
