@@ -28,7 +28,7 @@ class EloquentProductRepository implements ProductRepository
         // });
         //
         return $this->queryBuilder
-            ->with(['category'])
+            ->with(['category','priceTags'])
             ->build()
             ->paginate($paginateBy);
         // return $this->queryBuilder
