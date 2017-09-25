@@ -12,6 +12,9 @@
           {{ product.price }}&nbsp;&#8381;
         </span>
       </p>
+      <p>
+        Категория: 
+      </p>
     </div>
 
     <div class="col-md-6 text-right orders-edit-block">
