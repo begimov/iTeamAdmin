@@ -1,0 +1,9 @@
+export default {
+  setProducts (state, products) {
+    state.products = products.data
+    state.meta = products.meta
+  },
+  setIsLoading (state, flag) {
+    state.isLoading = flag
+  }
+}

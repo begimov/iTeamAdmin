@@ -26,7 +26,6 @@ export default {
     }
   },
   methods: {
-
     getOrders (page = 1) {
       this.flags.isLoading = true;
       axios.get('/webapi/orders?page=' + page, {
@@ -47,23 +46,17 @@ export default {
       })
     },
 
-    applyOrder (orderBy) {
-      this.params.orderBy = _.mapValues(this.params.orderBy, (value, flagName) => {
-        if (flagName == orderBy) {
-          return (value == 'desc') ? 'asc' : 'desc'
-          }
-        return ''
-      })
-      this.getOrders(this.meta.pagination.current_page)
-    },
-
     textSearch () {
       clearTimeout(this.timer);
       this.timer = setTimeout(function(){
           this.getOrders(1)
       }.bind(this), 1000)
     },
-
+  },
+  watch: {
+    'params.orderBy': function () {
+      this.getOrders(this.meta.pagination.current_page)
+    }
   },
   computed: {
     //

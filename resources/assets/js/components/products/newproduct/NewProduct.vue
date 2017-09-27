@@ -1,0 +1,115 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            Новый продукт
+          </div>
+
+          <div class="panel-body">
+            <form action="#" @submit.prevent="saveProduct">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Категория</label>
+                    <multiselect :value="categoryParams"
+                    :options="categoryOptions"
+                    v-on:input="updateCategoryParams"
+                    select-label=""
+                    selected-label="Выбран"
+                    deselect-label=""
+                    placeholder="Выберите категорию"
+                    label="name"
+                    track-by="id">
+                      <span slot="noResult">Категория не найдена</span>
+                    </multiselect>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Название</label>
+                    <input type="text" class="form-control" placeholder="Введите название продукта" v-model="name">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Материалы</label>
+                    <p v-for="materialParam in materialParams">
+                      <span class="custom__tag">
+                        <span>{{ materialParam.name }}</span>
+                        <span class="custom__remove" @click="">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </span>
+                      </span>
+                    </p>
+                    <multiselect :value="materialParams"
+                    :options="materialOptions"
+                    v-on:input="updateMaterialParams"
+                    :multiple="true"
+                    :hide-selected="true"
+                    :close-on-select="false"
+                    select-label=""
+                    selected-label="Выбран"
+                    deselect-label=""
+                    placeholder="Выберите материал"
+                    label="name"
+                    track-by="id">
+                      <span slot="noResult">Материал не найден</span>
+                      <template slot="tag" scope="props">
+                        &nbsp;
+                      </template>
+                    </multiselect>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Базовая цена, &nbsp;&#8381;</label>
+                    <input type="text" class="form-control" placeholder="Введите цену по умолчанию" v-model="basePrice">
+                  </div>
+                </div>
+              </div>
+<hr>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Специальная доп. цена, руб." v-model="priceTagPrice">
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Название, например, Участник..." v-model="priceTagName">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                  <a href="#" class="btn btn-default">Добавить цену</a>
+                </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <ul class="list-inline">
+                    <li><button type="submit" class="btn btn-primary">Сохранить</button></li>
+                    <li><router-link :to="{name: 'products'}" class="btn btn-default">Отменить</router-link></li>
+                  </ul>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="./newproduct.js"></script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

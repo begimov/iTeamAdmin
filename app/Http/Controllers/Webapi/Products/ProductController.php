@@ -6,17 +6,21 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
+use App\Repositories\Contracts\Products\ProductRepository;
+
+use App\Transformers\Products\ProductTransformer;
 
 class ProductController extends Controller
 {
+    protected $products;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ProductRepository $products)
     {
-        //
+        $this->products = $products;
     }
 
     /**
@@ -26,7 +30,17 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        return view('products.index');
+        $products = $this->products
+            ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
+
+        $productsCollection = $products->getCollection();
+
+        return fractal()
+            ->collection($productsCollection)
+            ->parseIncludes(['category', 'priceTags'])
+            ->transformWith(new ProductTransformer)
+            ->paginateWith(new IlluminatePaginatorAdapter($products))
+            ->toArray();
     }
 
     /**

@@ -1,3 +1,5 @@
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
   components: {},
   props: [],
@@ -6,13 +8,19 @@ export default {
       //
     }
   },
-  methods: {
-    //
-  },
   computed: {
-    //
+      ...mapGetters('products', [
+          'products',
+          'meta',
+          'isLoading'
+      ])
+  },
+  methods: {
+      ...mapActions('products', [
+          'getProducts',
+      ])
   },
   mounted() {
-    //
+    this.getProducts()
   }
 }

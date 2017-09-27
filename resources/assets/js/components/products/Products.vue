@@ -2,11 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <!-- TODO: PRELOADER -->
-        <!-- <div v-bind:class="{ 'isActive': flags.isLoading, 'loader': true, 'loader-def': true }"></div> -->
+        <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <a href="#" class="btn btn-primary">Создать продукт</a>
+            <router-link :to="{name: 'newproduct'}" class="btn btn-primary">Создать продукт</router-link>
           </div>
 
           <div class="panel-body">
@@ -41,18 +40,15 @@
                 </ul>
               </div>
             </div>
-            PRODUCT COMPONENT
-            <!-- <order v-for="order in orders"
-            :order="order"
-            :payment-states="paymentStates"
-            :key="order.id"
-            v-on:orderDeleted="getOrders"></order> -->
+            <product v-for="product in products"
+            :product="product"
+            :key="product.id"
+            v-on:productDeleted="getProducts"></product>
 
           </div>
 
           <div class="panel-footer">
-            <!-- TODO: PAGINATOR -->
-            <!-- <paginator v-if="meta && orders.length" for="orders" :pagination="meta.pagination" v-on:orders_pageChanged="getOrders"></paginator> -->
+            <paginator v-if="meta && products.length" for="products" :pagination="meta.pagination" v-on:products_pageChanged="getProducts"></paginator>
           </div>
 
         </div>
