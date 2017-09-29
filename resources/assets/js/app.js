@@ -32,6 +32,8 @@ Vue.component('products', require('./components/products/Products.vue'));
 Vue.component('product', require('./components/products/Product.vue'));
 Vue.component('new-product', require('./components/products/newproduct/NewProduct.vue'));
 
+Vue.component('pages', require('./components/pages/Pages.vue'));
+
 const app = new Vue({
     el: '#app',
     store,
