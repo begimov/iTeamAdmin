@@ -46125,7 +46125,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   props: [],
   data: function data() {
     return {
-      //
+      timer: 0
     };
   },
 
@@ -46139,7 +46139,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery']), {
+    textSearch: function textSearch() {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function () {
+        this.getProducts();
+      }.bind(this), 1000);
+    }
+  }),
   mounted: function mounted() {
     this.getProducts();
   }

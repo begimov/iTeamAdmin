@@ -5,7 +5,7 @@ export default {
   props: [],
   data () {
     return {
-      //
+      timer: 0,
     }
   },
   computed: {
@@ -27,7 +27,13 @@ export default {
       ...mapActions('products', [
           'getProducts',
           'updateSearchQuery',
-      ])
+      ]),
+      textSearch () {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(function(){
+            this.getProducts()
+        }.bind(this), 1000)
+      },
   },
   mounted() {
     this.getProducts()
