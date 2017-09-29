@@ -48217,9 +48217,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     deleteProduct: function deleteProduct() {
+      var _this = this;
+
       if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0437\u0430\u043A\u0430\u0437 \u2116 ' + this.product.id + '?')) {
         axios.delete('/webapi/products/' + this.product.id).then(function (response) {
-          // this.$emit('orderDeleted')
+          _this.$emit('productDeleted');
         });
       } else {
         // Do nothing!
