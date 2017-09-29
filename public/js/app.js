@@ -43375,18 +43375,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  getProducts: function getProducts(page) {
+  getProducts: function getProducts(page, params) {
     return new Promise(function (resolve, reject) {
       axios.get("/webapi/products?page=" + page, {
         params: {
-          params: {
-            orderBy: 1,
-            filters: {
-              payment_type_id: 2,
-              payment_state_id: 3
-            },
-            searchQuery: 4
-          }
+          params: params
         }
       }).then(function (res) {
         resolve(res);
@@ -43469,11 +43462,12 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   getProducts: function getProducts(_ref) {
     var dispatch = _ref.dispatch,
-        commit = _ref.commit;
+        commit = _ref.commit,
+        state = _ref.state;
     var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
     commit('setIsLoading', true);
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].products.getProducts(page).then(function (res) {
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].products.getProducts(page, state.params).then(function (res) {
       commit('setProducts', res.data);
       commit('setIsLoading', false);
     });

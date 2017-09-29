@@ -37,10 +37,17 @@ class EloquentQueryBuilder
     {
         $firstColumn = array_shift($columns);
 
+        if (!$relation) {
+          $this->buildOrWhereQuery($columns,
+              $this->query->where($firstColumn, 'like', "%{$searchQuery}%"),
+              $searchQuery);
+          return $this;
+        }
+
         $this->query->whereHas($relation, function ($query) use ($searchQuery, $columns, $firstColumn) {
-          array_reduce($columns, function($newQuery, $column) use ($searchQuery) {
-              return $newQuery->orWhere($column, 'like', "%{$searchQuery}%");
-          }, $query->where($firstColumn, 'like', "%{$searchQuery}%"));
+          $this->buildOrWhereQuery($columns,
+              $query->where($firstColumn, 'like', "%{$searchQuery}%"),
+              $searchQuery);
         });
 
         return $this;
@@ -61,6 +68,13 @@ class EloquentQueryBuilder
     public function build()
     {
         return $this->query;
+    }
+
+    protected function buildOrWhereQuery(array $columns, $firstQuery, $searchQuery)
+    {
+        array_reduce($columns, function($newQuery, $column) use ($searchQuery) {
+            return $newQuery->orWhere($column, 'like', "%{$searchQuery}%");
+        }, $firstQuery);
     }
 
 }

@@ -1,9 +1,9 @@
 import api from '../../api'
 
 export default {
-  getProducts ({dispatch, commit}, page = 1) {
+  getProducts ({dispatch, commit, state}, page = 1) {
     commit('setIsLoading', true)
-    api.products.getProducts(page).then(res => {
+    api.products.getProducts(page, state.params).then(res => {
       commit('setProducts', res.data)
       commit('setIsLoading', false)
     })
