@@ -9,13 +9,13 @@ export default {
   },
   methods: {
     deleteProduct () {
-      // if (confirm(`Вы уверены, что хотите удалить заказ № ${this.order.id}?`)) {
-      //   axios.delete(`/webapi/orders/${this.order.id}`).then((response) => {
-      //     this.$emit('orderDeleted')
-      //   })
-      // } else {
-      //   // Do nothing!
-      // }
+      if (confirm(`Вы уверены, что хотите удалить заказ № ${this.product.id}?`)) {
+        axios.delete(`/webapi/products/${this.product.id}`).then((response) => {
+          // this.$emit('orderDeleted')
+        })
+      } else {
+        // Do nothing!
+      }
     },
   },
   computed: {
