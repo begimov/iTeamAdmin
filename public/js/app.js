@@ -48259,13 +48259,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('select', _vm._l((_vm.paymentStates), function(paymentState) {
-    return _c('option', {
-      domProps: {
-        "selected": _vm.order.payment_state_id == paymentState.id
-      }
-    }, [_vm._v(_vm._s(paymentState.name))])
-  }))]), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     },
