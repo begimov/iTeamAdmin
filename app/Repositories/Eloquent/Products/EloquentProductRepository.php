@@ -41,4 +41,9 @@ class EloquentProductRepository implements ProductRepository
         //     ->build()
         //     ->paginate($paginateBy);
     }
+
+    public function destroyById($id)
+    {
+        // TODO: Do we need to delete products? maybe only delete pages? so no one could see products
+    }
 }

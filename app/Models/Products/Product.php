@@ -3,6 +3,7 @@
 namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Models\Products\Category;
 use App\Models\Products\PriceTag;
