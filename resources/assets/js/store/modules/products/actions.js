@@ -7,5 +7,8 @@ export default {
       commit('setProducts', res.data)
       commit('setIsLoading', false)
     })
-  }
+  },
+  updateSearchQuery ({ commit }, value) {
+    commit('updateSearchQuery', value)
+  },
 }

@@ -43429,7 +43429,10 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   products: [],
   meta: null,
-  isLoading: false
+  isLoading: false,
+  params: {
+    searchQuery: ''
+  }
 });
 
 /***/ }),
@@ -43449,6 +43452,9 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
+  },
+  getSearchQuery: function getSearchQuery(state) {
+    return state.params.searchQuery;
   }
 });
 
@@ -43471,6 +43477,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
       commit('setProducts', res.data);
       commit('setIsLoading', false);
     });
+  },
+  updateSearchQuery: function updateSearchQuery(_ref2, value) {
+    var commit = _ref2.commit;
+
+    commit('updateSearchQuery', value);
   }
 });
 
@@ -43486,6 +43497,9 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
   },
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
+  },
+  updateSearchQuery: function updateSearchQuery(state, value) {
+    state.params.searchQuery = value;
   }
 });
 
@@ -46115,8 +46129,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['products', 'meta', 'isLoading'])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['products', 'meta', 'isLoading']), {
+    'searchQuery': {
+      get: function get() {
+        return this.getSearchQuery;
+      },
+      set: function set(value) {
+        this.updateSearchQuery(value);
+      }
+    }
+  }),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery'])),
   mounted: function mounted() {
     this.getProducts();
   }
@@ -46154,7 +46177,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-subheading"
   }, [_c('div', {
     staticClass: "col-md-4"
-  }, [_c('h4', [_vm._v("\n                Продукты\n              ")]), _vm._v(" "), _c('search')], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._l((_vm.products), function(product) {
+  }, [_c('h4', [_vm._v("\n                Продукты\n              ")]), _vm._v(" "), _c('search', {
+    on: {
+      "input": _vm.textSearch
+    },
+    model: {
+      value: (_vm.searchQuery),
+      callback: function($$v) {
+        _vm.searchQuery = $$v
+      },
+      expression: "searchQuery"
+    }
+  })], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._l((_vm.products), function(product) {
     return _c('product', {
       key: product.id,
       attrs: {

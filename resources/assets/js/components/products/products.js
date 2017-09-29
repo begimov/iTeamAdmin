@@ -13,11 +13,20 @@ export default {
           'products',
           'meta',
           'isLoading'
-      ])
+      ]),
+      'searchQuery': {
+        get () {
+          return this.getSearchQuery
+        },
+        set (value) {
+          this.updateSearchQuery(value)
+        }
+      },
   },
   methods: {
       ...mapActions('products', [
           'getProducts',
+          'updateSearchQuery',
       ])
   },
   mounted() {

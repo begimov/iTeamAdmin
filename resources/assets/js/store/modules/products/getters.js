@@ -10,5 +10,8 @@ export default {
   },
   isLoading (state) {
     return state.isLoading
-  }
+  },
+  getSearchQuery (state) {
+    return state.params.searchQuery
+  },
 }
