@@ -3,7 +3,7 @@
 return [
     'orders' => 'Заказы',
     'products' => 'Продукты',
-    'landings' => 'Лендинги',
+    'pages' => 'Страницы',
     'master_classes' => 'Мастер-классы',
     'create' => 'Создать',
 ];
