@@ -25,10 +25,14 @@ export default {
           'materialParams',
           'categoryOptions',
           'categoryParams',
+          'getName',
+          'getBasePrice',
+          'getPriceTagPrice',
+          'getPriceTagName',
       ]),
       'name': {
         get () {
-          return this.$store.state.products.newproduct.params.name
+          return this.getName
         },
         set (value) {
           this.updateName(value)
@@ -36,7 +40,7 @@ export default {
       },
       'basePrice': {
         get () {
-          return this.$store.state.products.newproduct.params.basePrice
+          return this.getBasePrice
         },
         set (value) {
           this.updateBasePrice(value)
@@ -44,7 +48,7 @@ export default {
       },
       'priceTagPrice': {
         get () {
-          return this.$store.state.products.newproduct.options.priceTag.price
+          return this.getPriceTagPrice
         },
         set (value) {
           this.updatePriceTagPrice(value)
@@ -52,7 +56,7 @@ export default {
       },
       'priceTagName': {
         get () {
-          return this.$store.state.products.newproduct.options.priceTag.name
+          return this.getPriceTagName
         },
         set (value) {
           this.updatePriceTagName(value)

@@ -43313,6 +43313,18 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex
   },
   categoryParams: function categoryParams(state) {
     return state.params.categories;
+  },
+  getName: function getName(state) {
+    return state.params.name;
+  },
+  getBasePrice: function getBasePrice(state) {
+    return state.params.basePrice;
+  },
+  getPriceTagPrice: function getPriceTagPrice(state) {
+    return state.options.priceTag.price;
+  },
+  getPriceTagName: function getPriceTagName(state) {
+    return state.options.priceTag.name;
   }
 });
 
@@ -46242,10 +46254,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName'])),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName']), {
     'name': {
       get: function get() {
-        return this.$store.state.products.newproduct.params.name;
+        return this.getName;
       },
       set: function set(value) {
         this.updateName(value);
@@ -46253,7 +46265,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     'basePrice': {
       get: function get() {
-        return this.$store.state.products.newproduct.params.basePrice;
+        return this.getBasePrice;
       },
       set: function set(value) {
         this.updateBasePrice(value);
@@ -46261,7 +46273,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     'priceTagPrice': {
       get: function get() {
-        return this.$store.state.products.newproduct.options.priceTag.price;
+        return this.getPriceTagPrice;
       },
       set: function set(value) {
         this.updatePriceTagPrice(value);
@@ -46269,7 +46281,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     'priceTagName': {
       get: function get() {
-        return this.$store.state.products.newproduct.options.priceTag.name;
+        return this.getPriceTagName;
       },
       set: function set(value) {
         this.updatePriceTagName(value);
