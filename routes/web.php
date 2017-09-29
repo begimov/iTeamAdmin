@@ -20,9 +20,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     // Products page
     Route::get('products', 'Products\ProductController@index')->name('products');
 
-    // Landings related routes
-    // TODO: make like products (separate non-webapi route for template and webapi for json-API)
-    Route::resource('landings', 'Landings\LandingController');
+    // Pages page
+    Route::get('pages', 'Pages\PageController@index')->name('pages');
 
     // WebAPI
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
@@ -35,6 +34,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
         // Route for Products.vue component
         Route::resource('products', 'Products\ProductController');
+        
+        // Route for Pages.vue component
+        Route::resource('pages', 'Pages\PageController');
     });
 
 });

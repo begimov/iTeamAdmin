@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Landings;
+namespace App\Models\Pages;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Landing extends Model
+class Page extends Model
 {
     //
 }

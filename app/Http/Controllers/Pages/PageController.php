@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Landings;
+namespace App\Http\Controllers\Pages;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\Landings\LandingRepository;
+use App\Repositories\Contracts\Pages\PageRepository;
 
-class LandingController extends Controller
+class PageController extends Controller
 {
-    protected $landings;
+    protected $pages;
 
-    public function __construct(LandingRepository $landings)
+    public function __construct(PageRepository $pages)
     {
-        $this->landings = $landings;
+        $this->pages = $pages;
     }
 
     /**

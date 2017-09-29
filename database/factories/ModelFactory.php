@@ -72,9 +72,3 @@ $factory->define(App\Models\Products\Material::class, function (Faker\Generator 
         'filename' => $faker->fileExtension,
     ];
 });
-
-$factory->define(App\Models\Landings\Landing::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->sentence,
-    ];
-});
