@@ -32,7 +32,7 @@ class PageController extends Controller
             ])
             ->first();
             // dd($page);
-        return view('pages.blocks.index', compact('page'));
+        return view('pages.page.container', compact('page'));
 
         return view('pages.index');
     }

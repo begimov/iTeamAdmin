@@ -16,6 +16,8 @@ class CreateBlocksTable extends Migration
         Schema::create('blocks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('view');
+            // TODO: CHECK IF timestamps needed in all migrations!!!
+            // The same goes for nullable.
             $table->timestamps();
         });
     }
