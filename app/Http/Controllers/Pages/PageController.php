@@ -24,6 +24,15 @@ class PageController extends Controller
      */
     public function index()
     {
+        // TODO: REMOVE TEST
+        $pages = \App\Models\Pages\Page::with([
+                'elements',
+                'elements.contents',
+                'elements.block',
+            ])
+            ->get();
+        dd($pages);
+
         return view('pages.index');
     }
 }

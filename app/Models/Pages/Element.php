@@ -9,5 +9,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Element extends Model
 {
-    //
+    public function block()
+    {
+        return $this->belongsTo(Block::class);
+    }
+
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
 }
