@@ -12268,7 +12268,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(18);
-module.exports = __webpack_require__(99);
+module.exports = __webpack_require__(104);
 
 
 /***/ }),
@@ -12313,7 +12313,7 @@ Vue.component('products', __webpack_require__(15));
 Vue.component('product', __webpack_require__(96));
 Vue.component('new-product', __webpack_require__(16));
 
-Vue.component('pages', __webpack_require__(108));
+Vue.component('pages', __webpack_require__(99));
 
 var app = new Vue({
   el: '#app',
@@ -48299,32 +48299,18 @@ if (false) {
 
 /***/ }),
 /* 99 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(109)
+  __webpack_require__(100)
 }
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(111),
+  __webpack_require__(102),
   /* template */
-  __webpack_require__(112),
+  __webpack_require__(103),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -48356,13 +48342,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 109 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(110);
+var content = __webpack_require__(101);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -48382,7 +48368,7 @@ if(false) {
 }
 
 /***/ }),
-/* 110 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(undefined);
@@ -48396,7 +48382,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 
 
 /***/ }),
-/* 111 */
+/* 102 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48411,7 +48397,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   props: [],
   data: function data() {
     return {
-      timer: 0
+      timer: 0,
+      page: "<div class=\"row\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-body\">\n        <strong>MAIN.BLADE<\/strong>\n          <p id=\"main_1\"><\/p>\n          <a id=\"main_2\" href=\"\">Link<\/a><\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n"
     };
   },
 
@@ -48439,12 +48426,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 112 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "container"
   }, [_c('div', {
@@ -48461,13 +48446,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-subheading"
   }, [_c('div', {
     staticClass: "col-md-4"
-  }, [_c('h4', [_vm._v("\n                Страницы\n              ")])]), _vm._v(" "), _c('div', {
+  }, [_c('h4', [_vm._v("\n                Страницы\n              ")]), _vm._v(" "), _c('div', {
+    domProps: {
+      "innerHTML": _vm._s(_vm.page)
+    }
+  })]), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-footer"
+  })])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_vm._v("\n                     \n                  ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                     \n                  ")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel-footer"
-  })])])])])
+  }, [_c('li', [_c('div', [_vm._v("\n                     \n                  ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                     \n                  ")])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -48476,6 +48467,12 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-b1d51328", module.exports)
   }
 }
+
+/***/ }),
+/* 104 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

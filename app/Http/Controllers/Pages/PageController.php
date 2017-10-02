@@ -25,14 +25,16 @@ class PageController extends Controller
     public function index()
     {
         // TODO: REMOVE TEST
-        $page = \App\Models\Pages\Page::find(1)->with([
-                'elements',
-                'elements.contents',
-                'elements.block',
-            ])
-            ->first();
-            // dd(view('pages.page.blocks.main')->render());
-        return view('pages.page.container', compact('page'));
+        // $page = \App\Models\Pages\Page::find(1)->with([
+        //         'elements',
+        //         'elements.contents',
+        //         'elements.block',
+        //     ])
+        //     ->first();
+        // return response()->json([
+        //     'data' => view('pages.page.blocks.main')->render()
+        // ]);
+        // return view('pages.page.container', compact('page'));
 
         return view('pages.index');
     }

@@ -14,6 +14,8 @@
                 <h4>
                   Страницы
                 </h4>
+                <!-- TODO REMOVE -->
+                <div v-html="page"></div>
                 <!-- <search v-model="searchQuery" v-on:input="textSearch"></search> -->
               </div>
               <div class="col-md-8 text-right">

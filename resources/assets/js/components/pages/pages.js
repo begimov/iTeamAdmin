@@ -6,6 +6,7 @@ export default {
   data () {
     return {
       timer: 0,
+      page: "<div class=\"row\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-body\">\n        <strong>MAIN.BLADE<\/strong>\n          <p id=\"main_1\"><\/p>\n          <a id=\"main_2\" href=\"\">Link<\/a><\/p>\n      <\/div>\n    <\/div>\n  <\/div>\n"
     }
   },
   computed: {
