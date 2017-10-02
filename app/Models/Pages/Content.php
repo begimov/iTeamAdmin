@@ -5,9 +5,9 @@ namespace App\Models\Pages;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Represents view of an Element of a Page
+ * Represents data fragment of an Element
  */
-class Block extends Model
+class Content extends Model
 {
     //
 }
