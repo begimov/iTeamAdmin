@@ -31,7 +31,7 @@ class PageController extends Controller
                 'elements.block',
             ])
             ->first();
-            // dd($page);
+            // dd(view('pages.page.blocks.main')->render());
         return view('pages.page.container', compact('page'));
 
         return view('pages.index');
