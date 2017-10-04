@@ -22,6 +22,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     // Pages page
     Route::get('pages', 'Pages\PageController@index')->name('pages');
+    Route::get('pages/{page}', 'Pages\PageController@show')->name('pages.show.preview');
 
     // WebAPI
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
@@ -34,7 +35,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
         // Route for Products.vue component
         Route::resource('products', 'Products\ProductController');
-        
+
         // Route for Pages.vue component
         Route::resource('pages', 'Pages\PageController');
     });

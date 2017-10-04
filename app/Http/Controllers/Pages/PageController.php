@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Pages;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Models\Pages\Page;
+
 class PageController extends Controller
 {
     /**
@@ -24,18 +26,17 @@ class PageController extends Controller
      */
     public function index()
     {
-        // TODO: REMOVE TEST
-        // $page = \App\Models\Pages\Page::find(1)->with([
-        //         'elements',
-        //         'elements.contents',
-        //         'elements.block',
-        //     ])
-        //     ->first();
-        // return response()->json([
-        //     'data' => view('pages.page.blocks.main')->render()
-        // ]);
-        // return view('pages.page.container', compact('page'));
-
         return view('pages.index');
+    }
+
+    public function show(Page $page)
+    {
+        $page = $page->with([
+                'elements',
+                'elements.contents',
+                'elements.block',
+            ])
+            ->first();
+        return view('pages.page.container', compact('page'));
     }
 }
