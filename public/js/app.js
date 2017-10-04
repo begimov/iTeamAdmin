@@ -12299,9 +12299,6 @@ window.Vue = __webpack_require__(6);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// TODO: REMOVE blocks
-Vue.component('main-block', __webpack_require__(113));
-
 // Base components
 Vue.component('paginator', __webpack_require__(67));
 Vue.component('search', __webpack_require__(70));
@@ -48468,74 +48465,8 @@ if (false) {
 /* 110 */,
 /* 111 */,
 /* 112 */,
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(114),
-  /* template */
-  null,
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/pages/blocks/Main.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4ab656ec", Component.options)
-  } else {
-    hotAPI.reload("data-v-4ab656ec", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 114 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  template: '<div class="row">\n    <div class="panel panel-default">\n      <div class="panel-body">\n        <strong>MAIN.BLADE</strong>\n          <p id="main_1"><input type="text" v-model="main_1"></p>\n          <a id="main_2" href="">Link</a></p>\n      </div>\n    </div>\n  </div>\n',
-  components: {},
-  props: [],
-  data: function data() {
-    return {
-      // TODO: REMOVE
-      main_1: ''
-    };
-  },
-
-  computed: {
-    //
-  },
-  methods: {
-    //
-  },
-  mounted: function mounted() {
-    //
-  }
-});
-
-/***/ }),
+/* 113 */,
+/* 114 */,
 /* 115 */,
 /* 116 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -48681,7 +48612,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   data: function data() {
     return {
       timer: 0,
-      // TODO: REMOVE
       blocks: [{ name: 'main-block' }, { name: 'async-example' }],
       layout: [0]
     };

@@ -18,9 +18,6 @@ import router from './router'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// TODO: REMOVE blocks
-Vue.component('main-block', require('./components/pages/blocks/Main.vue'));
-
 // Base components
 Vue.component('paginator', require('./components/base/Paginator.vue'));
 Vue.component('search', require('./components/base/Search.vue'));

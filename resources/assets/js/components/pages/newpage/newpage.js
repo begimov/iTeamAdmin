@@ -6,7 +6,6 @@ export default {
   data () {
     return {
       timer: 0,
-      // TODO: REMOVE
       blocks: [
         {name: 'main-block'},
         {name: 'async-example'},
