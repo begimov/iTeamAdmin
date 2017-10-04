@@ -14,8 +14,15 @@
                 <h4>
                   Страницы
                 </h4>
+
                 <!-- TODO REMOVE -->
-                <div v-html="page"></div>
+                <!-- <div v-html="blocks[block].template" v-for="block in layout"></div>
+                <main-block v-for="block in layout" :key="block.name"></main-block> -->
+                <template v-for="(block, index) in layout">
+                  <component :is="blocks[block].name" :key="index"></component>
+                </template>
+                <!-- END REMOVE -->
+
                 <!-- <search v-model="searchQuery" v-on:input="textSearch"></search> -->
               </div>
               <div class="col-md-8 text-right">

@@ -13,7 +13,7 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <strong>MAIN.BLADE</strong>
-          <p id="main_1"></p>
+          <p id="main_1"><input type="text" v-model="main_1"></p>
           <a id="main_2" href="">Link</a></p>
       </div>
     </div>
