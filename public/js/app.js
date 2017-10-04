@@ -48402,8 +48402,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return {
       timer: 0,
       // TODO: REMOVE
-      blocks: [{ name: 'main-block' }],
-      layout: [0, 0]
+      blocks: [{ name: 'main-block' }, { name: 'async-example' }],
+      layout: [0]
     };
   },
 
@@ -48426,7 +48426,27 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
   }),
   mounted: function mounted() {
-    this.getProducts();
+    var _this = this;
+
+    Vue.component('async-example', function (resolve, reject) {
+      var comp = {
+        template: '<div>Я — асинхронный!</div>',
+        data: {
+          par1: 'par1',
+          par2: 'par2'
+        }
+      };
+      resolve({
+        template: comp.template,
+        data: function data() {
+          return comp.data;
+        }
+      });
+    });
+
+    setTimeout(function () {
+      _this.layout.push(1);
+    }, 2000);
   }
 });
 

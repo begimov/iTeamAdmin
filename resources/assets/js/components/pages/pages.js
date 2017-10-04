@@ -9,8 +9,9 @@ export default {
       // TODO: REMOVE
       blocks: [
         {name: 'main-block'},
+        {name: 'async-example'},
       ],
-      layout: [0,0],
+      layout: [0],
     }
   },
   computed: {
@@ -41,6 +42,24 @@ export default {
       },
   },
   mounted() {
-    this.getProducts()
+    Vue.component('async-example', function (resolve, reject) {
+        let comp = {
+          template: '<div>Я — асинхронный!</div>',
+          data: {
+            par1: 'par1',
+            par2: 'par2',
+          }
+        }
+        resolve({
+          template: comp.template,
+          data () {
+            return comp.data
+          }
+        })
+    })
+
+    setTimeout(() => {
+      this.layout.push(1)
+    }, 2000)
   }
 }
