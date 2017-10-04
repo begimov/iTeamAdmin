@@ -12169,10 +12169,13 @@ module.exports = Cancel;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_products__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_pages__ = __webpack_require__(131);
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  products: __WEBPACK_IMPORTED_MODULE_0__products_products__["a" /* default */]
+  products: __WEBPACK_IMPORTED_MODULE_0__products_products__["a" /* default */],
+  pages: __WEBPACK_IMPORTED_MODULE_1__pages_pages__["a" /* default */]
 });
 
 /***/ }),
@@ -43213,18 +43216,21 @@ module.exports = function spread(callback) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_products__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vuex__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_pages__ = __webpack_require__(121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(4);
 
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */]);
 
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
+__WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */].Store({
   modules: {
-    products: __WEBPACK_IMPORTED_MODULE_0__modules_products__["a" /* default */]
+    products: __WEBPACK_IMPORTED_MODULE_0__modules_products__["a" /* default */],
+    pages: __WEBPACK_IMPORTED_MODULE_1__modules_pages__["a" /* default */]
   }
 }));
 
@@ -48662,6 +48668,264 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       _this.layout.push(1);
     }, 2000);
   }
+});
+
+/***/ }),
+/* 121 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__newpage__ = __webpack_require__(122);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__getters__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mutations__ = __webpack_require__(130);
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  namespaced: true,
+  state: __WEBPACK_IMPORTED_MODULE_1__state__["a" /* default */],
+  getters: __WEBPACK_IMPORTED_MODULE_2__getters__["a" /* default */],
+  actions: __WEBPACK_IMPORTED_MODULE_3__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_4__mutations__["a" /* default */],
+  modules: {
+    newpage: __WEBPACK_IMPORTED_MODULE_0__newpage__["a" /* default */]
+  }
+});
+
+/***/ }),
+/* 122 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getters__ = __webpack_require__(124);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations__ = __webpack_require__(126);
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  namespaced: true,
+  state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
+  getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
+  actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
+});
+
+/***/ }),
+/* 123 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // options: {
+  //   materials: [
+  //     {id: 1, name: 'Material 1'},
+  //     {id: 2, name: 'Material 2'}
+  //   ],
+  //   categories: [
+  //     {id: 1, name: 'Category 1'}
+  //   ],
+  //   priceTag: { price: null, name: null }
+  // },
+  // params: {
+  //   categories: [],
+  //   name: null,
+  //   materials: [],
+  //   basePrice: null,
+  //   priceTags: [],
+  // },
+  // isLoading: false,
+  // errors: {}
+});
+
+/***/ }),
+/* 124 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // materialOptions (state) {
+  //   return state.options.materials
+  // },
+  // materialParams (state) {
+  //   return state.params.materials
+  // },
+  // categoryOptions (state) {
+  //   return state.options.categories
+  // },
+  // categoryParams (state) {
+  //   return state.params.categories
+  // },
+  // getName(state) {
+  //   return state.params.name
+  // },
+  // getBasePrice(state) {
+  //   return state.params.basePrice
+  // },
+  // getPriceTagPrice(state) {
+  //   return state.options.priceTag.price
+  // },
+  // getPriceTagName(state) {
+  //   return state.options.priceTag.name
+  // },
+});
+
+/***/ }),
+/* 125 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(14);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // updateMaterialParams ({ commit }, value) {
+  //   commit('updateMaterialParams', value)
+  // },
+  // updateCategoryParams ({ commit }, value) {
+  //   commit('updateCategoryParams', value)
+  // },
+  // updateName ({ commit }, value) {
+  //   commit('updateName', value)
+  // },
+  // updateBasePrice ({ commit }, value) {
+  //   commit('updateBasePrice', value)
+  // },
+  // updatePriceTagPrice ({ commit }, value) {
+  //   commit('updatePriceTagPrice', value)
+  // },
+  // updatePriceTagName ({ commit }, value) {
+  //   commit('updatePriceTagName', value)
+  // }
+});
+
+/***/ }),
+/* 126 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // updateMaterialParams (state, value) {
+  //     state.params.materials = value
+  // },
+  // updateCategoryParams (state, value) {
+  //     state.params.categories = value
+  // },
+  // updateName (state, value) {
+  //     state.params.name = value
+  // },
+  // updateBasePrice (state, value) {
+  //     state.params.basePrice = value
+  // },
+  // updatePriceTagPrice (state, value) {
+  //     state.options.priceTag.price = value
+  // },
+  // updatePriceTagName (state, value) {
+  //     state.options.priceTag.name = value
+  // }
+});
+
+/***/ }),
+/* 127 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // products: [],
+  // meta: null,
+  // isLoading: false,
+  // params: {
+  //   searchQuery: '',
+  // }
+});
+
+/***/ }),
+/* 128 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // products (state) {
+  //   return state.products
+  // },
+  // meta (state) {
+  //   return state.meta
+  // },
+  // pagination (state) {
+  //   return state.meta ? state.meta.pagination : null
+  // },
+  // isLoading (state) {
+  //   return state.isLoading
+  // },
+  // getSearchQuery (state) {
+  //   return state.params.searchQuery
+  // },
+});
+
+/***/ }),
+/* 129 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(14);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // getProducts ({dispatch, commit, state}, page = 1) {
+  //   commit('setIsLoading', true)
+  //   api.products.getProducts(page, state.params).then(res => {
+  //     commit('setProducts', res.data)
+  //     commit('setIsLoading', false)
+  //   })
+  // },
+  // updateSearchQuery ({ commit }, value) {
+  //   commit('updateSearchQuery', value)
+  // },
+});
+
+/***/ }),
+/* 130 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // setProducts (state, products) {
+  //   state.products = products.data
+  //   state.meta = products.meta
+  // },
+  // setIsLoading (state, flag) {
+  //   state.isLoading = flag
+  // },
+  // updateSearchQuery (state, value) {
+  //     state.params.searchQuery = value
+  // },
+});
+
+/***/ }),
+/* 131 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // getProducts(page, params) {
+  //   return new Promise((resolve, reject) => {
+  //     axios.get(`/webapi/products?page=${page}`, {
+  //       params: {
+  //         params
+  //       }
+  //     }).then(res => {
+  //       resolve(res)
+  //     })
+  //   })
+  // }
 });
 
 /***/ })
