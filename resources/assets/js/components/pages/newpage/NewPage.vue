@@ -14,6 +14,13 @@
                 <h4>
                   Страницы
                 </h4>
+
+                <!-- TODO REMOVE -->
+                <template v-for="(block, index) in layout">
+                  <component :is="blocks[block].name" :key="index"></component>
+                </template>
+                <!-- END REMOVE -->
+
                 <!-- <search v-model="searchQuery" v-on:input="textSearch"></search> -->
               </div>
               <div class="col-md-8 text-right">
@@ -48,5 +55,5 @@
   </div>
 </template>
 
-<script src="./pages.js"></script>
+<script src="./newpage.js"></script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

@@ -17,7 +17,7 @@ import router from './router'
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
- 
+
 // TODO: REMOVE blocks
 Vue.component('main-block', require('./components/pages/blocks/Main.vue'));
 
@@ -36,6 +36,7 @@ Vue.component('product', require('./components/products/Product.vue'));
 Vue.component('new-product', require('./components/products/newproduct/NewProduct.vue'));
 
 Vue.component('pages', require('./components/pages/Pages.vue'));
+Vue.component('new-page', require('./components/pages/newpage/NewPage.vue'));
 
 const app = new Vue({
     el: '#app',
