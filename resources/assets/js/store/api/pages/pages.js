@@ -9,5 +9,12 @@ export default {
         resolve(res)
       })
     })
+  },
+  getAvailableBlocks() {
+    return new Promise((resolve, reject) => {
+      axios.get(`/webapi/pages/create`).then(res => {
+        resolve(res)
+      })
+    })
   }
 }

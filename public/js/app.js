@@ -43414,6 +43414,13 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         resolve(res);
       });
     });
+  },
+  getAvailableBlocks: function getAvailableBlocks() {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/pages/create").then(function (res) {
+        resolve(res);
+      });
+    });
   }
 });
 
@@ -43619,36 +43626,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('setIsLoading', true);
 
-    var comp = [{
-      id: 1,
-      name: 'async-example',
-      template: '\n          <div class="row">\n            <div class="col-md-12">\n              <input type="text" v-model="name" class="form-control"></input>\n            </div>\n          </div>',
-      data: {
-        name: ''
-      }
-    }, {
-      id: 2,
-      name: 'async-example2',
-      template: '<div><input type="text" v-model="name"></input><input type="text" v-model="title"></input></div>',
-      data: {
-        name: '',
-        title: ''
-      }
-    }];
-
-    _.forEach(comp, function (value, key) {
-      Vue.component(value.name, function (resolve, reject) {
-        resolve({
-          template: value.template,
-          data: function data() {
-            return _extends({}, value.data);
-          }
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.getAvailableBlocks().then(function (res) {
+      _.forEach(res.data, function (value, key) {
+        Vue.component(value.name, function (resolve, reject) {
+          resolve({
+            template: value.template,
+            data: function data() {
+              return _extends({}, value.data);
+            }
+          });
         });
       });
+      commit('setBlocks', res.data);
+      commit('setIsLoading', false);
     });
-
-    commit('setBlocks', comp);
-    commit('setIsLoading', false);
   },
   addBlockToLayout: function addBlockToLayout(_ref2, value) {
     var commit = _ref2.commit;
