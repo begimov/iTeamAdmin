@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <!-- <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div> -->
+        <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
             <a href="#" class="btn btn-primary">Создать страницу</a>
@@ -32,9 +32,9 @@
               </div>
             </div>
             <page v-for="page in pages"
-            :product="page"
+            :page="page"
             :key="page.id"
-            v-on:productDeleted="getPages"></page>
+            v-on:pageDeleted="getPages"></page>
 
           </div>
 

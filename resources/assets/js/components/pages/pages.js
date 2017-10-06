@@ -12,7 +12,8 @@ export default {
       ...mapGetters('pages', [
           'pages',
           'meta',
-          'isLoading'
+          'isLoading',
+          'getSearchQuery'
       ]),
       'searchQuery': {
         get () {
