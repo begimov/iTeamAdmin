@@ -6,7 +6,6 @@ export default {
   data () {
     return {
       isShowingBlocksPanel: false,
-      timer: 0,
     }
   },
   computed: {

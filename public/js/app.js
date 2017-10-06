@@ -48657,14 +48657,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {},
-  props: [],
-  data: function data() {
-    return {
-      //
-    };
-  },
-
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery']), {
     'searchQuery': {
       get: function get() {
@@ -48871,8 +48863,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   props: [],
   data: function data() {
     return {
-      isShowingBlocksPanel: false,
-      timer: 0
+      isShowingBlocksPanel: false
     };
   },
 
@@ -49047,12 +49038,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['page'],
-  data: function data() {
-    return {
-      //
-    };
-  },
-
   methods: {
     deletePage: function deletePage() {
       var _this = this;
@@ -49065,12 +49050,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // Do nothing!
       }
     }
-  },
-  computed: {
-    //
-  },
-  mounted: function mounted() {
-    //
   }
 });
 

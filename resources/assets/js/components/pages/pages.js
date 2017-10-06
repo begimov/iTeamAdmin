@@ -1,13 +1,6 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  components: {},
-  props: [],
-  data () {
-    return {
-      //
-    }
-  },
   computed: {
       ...mapGetters('pages', [
           'currentModule',

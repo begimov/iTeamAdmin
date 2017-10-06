@@ -6,8 +6,6 @@ use App\Models\Pages\Block;
 
 class BlockTransformer extends \League\Fractal\TransformerAbstract
 {
-    // protected $availableIncludes = ['category', 'priceTags'];
-
     public function transform(Block $block)
     {
       // TODO: add name column to blocks and figure out way to store data props
@@ -20,10 +18,4 @@ class BlockTransformer extends \League\Fractal\TransformerAbstract
             ]
         ];
     }
-
-    // public function includeCategory(Product $product)
-    // {
-    //     return $this->item($product->category, new CategoryTransformer);
-    // }
-
 }

@@ -2,11 +2,6 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
   props: ['page'],
-  data () {
-    return {
-      //
-    }
-  },
   methods: {
     deletePage () {
       if (confirm(`Вы уверены, что хотите удалить страницу № ${this.page.id}?`)) {
@@ -18,10 +13,4 @@ export default {
       }
     },
   },
-  computed: {
-    //
-  },
-  mounted() {
-    //
-  }
 }

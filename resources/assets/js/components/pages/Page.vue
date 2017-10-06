@@ -28,7 +28,6 @@
     <div class="col-md-6 text-right orders-edit-block">
       <ul class="list-inline">
         <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать</a></li>
-        <!-- TODO: do we need states for pages, maybe use them only on pages, cause nobody can reach page without related page -->
         <!-- <li>
           <select>
             <option v-for="paymentState in paymentStates" :selected="order.payment_state_id == paymentState.id">{{ paymentState.name }}</option>

@@ -53,29 +53,10 @@ class PageController extends Controller
      */
     public function create()
     {
-      $blocks = fractal(Block::all(), new BlockTransformer)->toArray();
+        $blocks = fractal(Block::all(), new BlockTransformer)->toArray();
 
-      return response()->json([
-          'blocks' => $blocks,
-      ]);
         return response()->json([
-          [
-            'id' => 1,
-            'name' => 'block-desc',
-            'template' => '<div class="row"><div class="col-md-12"><input type="text" v-model="name" class="form-control"></input></div></div>',
-            'data' => [
-              'name' => '',
-            ]
-          ],
-          [
-            'id' => 2,
-            'name' => 'block-form',
-            'template' => '<div><input type="text" v-model="name"></input><input type="text" v-model="title"></input></div>',
-            'data' => [
-              'name' => '',
-              'title' => '',
-            ]
-          ]
+            'blocks' => $blocks,
         ]);
     }
 
