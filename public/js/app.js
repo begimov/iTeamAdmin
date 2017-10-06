@@ -43581,25 +43581,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // options: {
-  //   materials: [
-  //     {id: 1, name: 'Material 1'},
-  //     {id: 2, name: 'Material 2'}
-  //   ],
-  //   categories: [
-  //     {id: 1, name: 'Category 1'}
-  //   ],
-  //   priceTag: { price: null, name: null }
-  // },
-  // params: {
-  //   categories: [],
-  //   name: null,
-  //   materials: [],
-  //   basePrice: null,
-  //   priceTags: [],
-  // },
-  // isLoading: false,
-  // errors: {}
+  isLoading: false,
+  blocks: [],
+  layout: []
 });
 
 /***/ }),
@@ -43608,30 +43592,15 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // materialOptions (state) {
-  //   return state.options.materials
-  // },
-  // materialParams (state) {
-  //   return state.params.materials
-  // },
-  // categoryOptions (state) {
-  //   return state.options.categories
-  // },
-  // categoryParams (state) {
-  //   return state.params.categories
-  // },
-  // getName(state) {
-  //   return state.params.name
-  // },
-  // getBasePrice(state) {
-  //   return state.params.basePrice
-  // },
-  // getPriceTagPrice(state) {
-  //   return state.options.priceTag.price
-  // },
-  // getPriceTagName(state) {
-  //   return state.options.priceTag.name
-  // },
+  blocks: function blocks(state) {
+    return state.blocks;
+  },
+  layout: function layout(state) {
+    return state.layout;
+  },
+  isLoading: function isLoading(state) {
+    return state.isLoading;
+  }
 });
 
 /***/ }),
@@ -43643,24 +43612,43 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // updateMaterialParams ({ commit }, value) {
-  //   commit('updateMaterialParams', value)
-  // },
-  // updateCategoryParams ({ commit }, value) {
-  //   commit('updateCategoryParams', value)
-  // },
-  // updateName ({ commit }, value) {
-  //   commit('updateName', value)
-  // },
-  // updateBasePrice ({ commit }, value) {
-  //   commit('updateBasePrice', value)
-  // },
-  // updatePriceTagPrice ({ commit }, value) {
-  //   commit('updatePriceTagPrice', value)
-  // },
-  // updatePriceTagName ({ commit }, value) {
-  //   commit('updatePriceTagName', value)
-  // }
+  getAvailableBlocks: function getAvailableBlocks(_ref, value) {
+    var commit = _ref.commit;
+
+    commit('setIsLoading', true);
+
+    var comp = [{
+      id: 1,
+      name: 'async-example',
+      template: '<div>Я — асинхронный!</div>',
+      data: {
+        par1: 'par1',
+        par2: 'par2'
+      }
+    }];
+    _.forEach(comp, function (value, key) {
+      Vue.component(value.name, function (resolve, reject) {
+        resolve({
+          template: value.template,
+          data: function data() {
+            return value.data;
+          }
+        });
+      });
+    });
+
+    commit('setBlocks', comp);
+
+    setTimeout(function () {
+      // this.layout.push(0)
+      commit('setIsLoading', false);
+    }, 2000);
+  },
+  addBlockToLayout: function addBlockToLayout(_ref2, value) {
+    var commit = _ref2.commit;
+
+    commit('addBlockToLayout', value);
+  }
 });
 
 /***/ }),
@@ -43669,24 +43657,15 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // updateMaterialParams (state, value) {
-  //     state.params.materials = value
-  // },
-  // updateCategoryParams (state, value) {
-  //     state.params.categories = value
-  // },
-  // updateName (state, value) {
-  //     state.params.name = value
-  // },
-  // updateBasePrice (state, value) {
-  //     state.params.basePrice = value
-  // },
-  // updatePriceTagPrice (state, value) {
-  //     state.options.priceTag.price = value
-  // },
-  // updatePriceTagName (state, value) {
-  //     state.options.priceTag.name = value
-  // }
+    setIsLoading: function setIsLoading(state, value) {
+        state.isLoading = value;
+    },
+    setBlocks: function setBlocks(state, value) {
+        state.blocks = value;
+    },
+    addBlockToLayout: function addBlockToLayout(state, value) {
+        state.layout.push(value);
+    }
 });
 
 /***/ }),
@@ -48893,56 +48872,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   data: function data() {
     return {
       isShowingBlocksPanel: false,
-      timer: 0,
-      blocks: [{ name: 'async-example' }],
-      layout: []
+      timer: 0
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['pages', 'meta', 'isLoading']), {
-    'searchQuery': {
-      get: function get() {
-        return this.getSearchQuery;
-      },
-      set: function set(value) {
-        this.updateSearchQuery(value);
-      }
-    }
-  }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery']), {
-    textSearch: function textSearch() {
-      clearTimeout(this.timer);
-      this.timer = setTimeout(function () {
-        this.getPages();
-      }.bind(this), 1000);
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['blocks', 'layout', 'isLoading'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getAvailableBlocks', 'addBlockToLayout']), {
+    findBlock: function findBlock(id) {
+      return _.find(this.blocks, ['id', id]);
     }
   }),
   mounted: function mounted() {
-    var _this = this;
-
-    var comp = {
-      'async-example': {
-        template: '<div>Я — асинхронный!</div>',
-        data: {
-          par1: 'par1',
-          par2: 'par2'
-        }
-      }
-    };
-    _.forEach(comp, function (value, key) {
-      Vue.component(key, function (resolve, reject) {
-        resolve({
-          template: value.template,
-          data: function data() {
-            return value.data;
-          }
-        });
-      });
-    });
-
-    setTimeout(function () {
-      _this.layout.push(0);
-    }, 2000);
+    this.getAvailableBlocks();
   }
 });
 
@@ -48970,7 +48911,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_vm._l((_vm.layout), function(block, index) {
-    return [_c(_vm.blocks[block].name, {
+    return [_c(_vm.findBlock(block).name, {
       key: index,
       tag: "component"
     })]
@@ -48993,7 +48934,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_vm._v("\n              BLOCKS\n            ")])]) : _vm._e()]), _vm._v(" "), _vm._m(1)])])])])
+  }, _vm._l((_vm.blocks), function(block) {
+    return _c('p', [_c('a', {
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.addBlockToLayout(block.id)
+        }
+      }
+    }, [_vm._v(_vm._s(block.name))])])
+  }))]) : _vm._e()]), _vm._v(" "), _vm._m(1)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "panel-heading"

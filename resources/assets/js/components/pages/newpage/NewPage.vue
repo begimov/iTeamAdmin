@@ -15,7 +15,7 @@
             <div class="row">
               <div class="col-md-12">
                 <template v-for="(block, index) in layout">
-                  <component :is="blocks[block].name" :key="index"></component>
+                  <component :is="findBlock(block).name" :key="index"></component>
                 </template>
               </div>
             </div>
@@ -26,7 +26,9 @@
             </div>
             <div class="row" v-if="isShowingBlocksPanel">
               <div class="col-md-12">
-                BLOCKS
+                <p v-for="block in blocks">
+                  <a href="#" @click.prevent="addBlockToLayout(block.id)">{{ block.name }}</a>
+                </p>
               </div>
             </div>
           </div>

@@ -7,62 +7,25 @@ export default {
     return {
       isShowingBlocksPanel: false,
       timer: 0,
-      blocks: [
-        {name: 'async-example'},
-      ],
-      layout: [],
     }
   },
   computed: {
-      ...mapGetters('pages', [
-          'pages',
-          'meta',
+      ...mapGetters('pages/newpage', [
+          'blocks',
+          'layout',
           'isLoading'
       ]),
-      'searchQuery': {
-        get () {
-          return this.getSearchQuery
-        },
-        set (value) {
-          this.updateSearchQuery(value)
-        }
-      },
   },
   methods: {
-      ...mapActions('pages', [
-          'getPages',
-          'updateSearchQuery',
+      ...mapActions('pages/newpage', [
+          'getAvailableBlocks',
+          'addBlockToLayout',
       ]),
-      textSearch () {
-        clearTimeout(this.timer);
-        this.timer = setTimeout(function(){
-            this.getPages()
-        }.bind(this), 1000)
-      },
+      findBlock (id) {
+        return _.find(this.blocks, ['id',id])
+      }
   },
   mounted() {
-    let comp = {
-      'async-example': {
-        template: '<div>Я — асинхронный!</div>',
-        data: {
-          par1: 'par1',
-          par2: 'par2',
-        }
-      }
-    }
-    _.forEach(comp, function(value, key) {
-      Vue.component(key, function (resolve, reject) {
-        resolve({
-          template: value.template,
-          data () {
-            return value.data
-          }
-        })
-      })
-    });
-
-    setTimeout(() => {
-      this.layout.push(0)
-    }, 2000)
+    this.getAvailableBlocks()
   }
 }
