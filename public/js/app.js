@@ -43609,6 +43609,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(5);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -43620,29 +43622,33 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     var comp = [{
       id: 1,
       name: 'async-example',
-      template: '<div>Я — асинхронный!</div>',
+      template: '\n          <div class="row">\n            <div class="col-md-12">\n              <input type="text" v-model="name" class="form-control"></input>\n            </div>\n          </div>',
       data: {
-        par1: 'par1',
-        par2: 'par2'
+        name: ''
+      }
+    }, {
+      id: 2,
+      name: 'async-example2',
+      template: '<div><input type="text" v-model="name"></input><input type="text" v-model="title"></input></div>',
+      data: {
+        name: '',
+        title: ''
       }
     }];
+
     _.forEach(comp, function (value, key) {
       Vue.component(value.name, function (resolve, reject) {
         resolve({
           template: value.template,
           data: function data() {
-            return value.data;
+            return _extends({}, value.data);
           }
         });
       });
     });
 
     commit('setBlocks', comp);
-
-    setTimeout(function () {
-      // this.layout.push(0)
-      commit('setIsLoading', false);
-    }, 2000);
+    commit('setIsLoading', false);
   },
   addBlockToLayout: function addBlockToLayout(_ref2, value) {
     var commit = _ref2.commit;
@@ -48910,9 +48916,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_vm._l((_vm.layout), function(block, index) {
+  }, [_vm._l((_vm.layout), function(block) {
     return [_c(_vm.findBlock(block).name, {
-      key: index,
+      key: _vm.findBlock(block).id,
       tag: "component"
     })]
   })], 2)]), _vm._v(" "), _c('div', {

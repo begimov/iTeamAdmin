@@ -14,8 +14,8 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <template v-for="(block, index) in layout">
-                  <component :is="findBlock(block).name" :key="index"></component>
+                <template v-for="block in layout">
+                  <component :is="findBlock(block).name" :key="findBlock(block).id"></component>
                 </template>
               </div>
             </div>
