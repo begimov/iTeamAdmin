@@ -5,6 +5,8 @@ namespace App\Repositories\Eloquent\Pages;
 use App\Repositories\Contracts\Pages\PageRepository;
 use App\Models\Pages\Page;
 
+use App\Services\EloquentQueryBuilder;
+
 class EloquentPageRepository implements PageRepository
 {
     protected $queryBuilder;

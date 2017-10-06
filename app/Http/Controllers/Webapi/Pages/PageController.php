@@ -8,6 +8,8 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 use App\Repositories\Contracts\Pages\PageRepository;
 
+use App\Transformers\Pages\PageTransformer;
+
 class PageController extends Controller
 {
     protected $pages;
@@ -28,18 +30,17 @@ class PageController extends Controller
      */
     public function index(Request $request)
     {
-      dd($request->all()['params']);
         $pages = $this->pages
             ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
-        //
-        // $productsCollection = $products->getCollection();
-        //
-        // return fractal()
-        //     ->collection($productsCollection)
-        //     ->parseIncludes(['category', 'priceTags'])
-        //     ->transformWith(new ProductTransformer)
-        //     ->paginateWith(new IlluminatePaginatorAdapter($products))
-        //     ->toArray();
+
+        $pagesCollection = $pages->getCollection();
+
+        return fractal()
+            ->collection($pagesCollection)
+            // ->parseIncludes(['category', 'priceTags'])
+            ->transformWith(new PageTransformer)
+            ->paginateWith(new IlluminatePaginatorAdapter($pages))
+            ->toArray();
     }
 
     /**
