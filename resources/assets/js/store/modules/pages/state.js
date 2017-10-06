@@ -1,8 +1,8 @@
 export default {
-  // products: [],
-  // meta: null,
-  // isLoading: false,
-  // params: {
-  //   searchQuery: '',
-  // }
+  pages: [],
+  meta: null,
+  isLoading: false,
+  params: {
+    searchQuery: '',
+  }
 }

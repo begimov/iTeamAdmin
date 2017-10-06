@@ -5,7 +5,7 @@
         <!-- <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div> -->
         <div class="panel panel-default">
           <div class="panel-heading">
-            <!-- <router-link :to="{name: 'newproduct'}" class="btn btn-primary">Создать продукт</router-link> -->
+            <a href="#" class="btn btn-primary">Создать страницу</a>
           </div>
 
           <div class="panel-body">
@@ -14,7 +14,7 @@
                 <h4>
                   Страницы
                 </h4>
-                <!-- <search v-model="searchQuery" v-on:input="textSearch"></search> -->
+                <search v-model="searchQuery" v-on:input="textSearch"></search>
               </div>
               <div class="col-md-8 text-right">
                 <ul class="list-inline">
@@ -31,15 +31,15 @@
                 </ul>
               </div>
             </div>
-            <!-- <product v-for="product in products"
-            :product="product"
-            :key="product.id"
-            v-on:productDeleted="getProducts"></product> -->
+            <page v-for="page in pages"
+            :product="page"
+            :key="page.id"
+            v-on:productDeleted="getPages"></page>
 
           </div>
 
           <div class="panel-footer">
-            <!-- <paginator v-if="meta && products.length" for="products" :pagination="meta.pagination" v-on:products_pageChanged="getProducts"></paginator> -->
+            <paginator v-if="meta && pages.length" for="pages" :pagination="meta.pagination" v-on:pages_pageChanged="getPages"></paginator>
           </div>
 
         </div>
