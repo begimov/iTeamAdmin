@@ -43627,17 +43627,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     commit('setIsLoading', true);
 
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.getAvailableBlocks().then(function (res) {
-      _.forEach(res.data, function (value, key) {
-        Vue.component(value.name, function (resolve, reject) {
+      var blocks = res.data.blocks.data;
+
+      _.forEach(blocks, function (block, key) {
+        Vue.component(block.name, function (resolve, reject) {
           resolve({
-            template: value.template,
+            template: block.template,
             data: function data() {
-              return _extends({}, value.data);
+              return _extends({}, block.data);
             }
           });
         });
       });
-      commit('setBlocks', res.data);
+
+      commit('setBlocks', blocks);
       commit('setIsLoading', false);
     });
   },

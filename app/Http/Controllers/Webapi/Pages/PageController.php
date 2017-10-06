@@ -9,6 +9,9 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use App\Repositories\Contracts\Pages\PageRepository;
 
 use App\Transformers\Pages\PageTransformer;
+use App\Transformers\Pages\BlockTransformer;
+
+use App\Models\Pages\Block;
 
 class PageController extends Controller
 {
@@ -50,6 +53,11 @@ class PageController extends Controller
      */
     public function create()
     {
+      $blocks = fractal(Block::all(), new BlockTransformer)->toArray();
+
+      return response()->json([
+          'blocks' => $blocks,
+      ]);
         return response()->json([
           [
             'id' => 1,
