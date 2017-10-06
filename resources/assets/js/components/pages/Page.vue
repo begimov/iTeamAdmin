@@ -34,7 +34,7 @@
             <option v-for="paymentState in paymentStates" :selected="order.payment_state_id == paymentState.id">{{ paymentState.name }}</option>
           </select>
         </li> -->
-        <li><a href="#" @click.prevent="deletepage"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
+        <li><a href="#" @click.prevent="deletePage"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
       </ul>
     </div>
 

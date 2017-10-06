@@ -49045,10 +49045,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    deleteProduct: function deleteProduct() {
+    deletePage: function deletePage() {
       var _this = this;
 
-      if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0437\u0430\u043A\u0430\u0437 \u2116 ' + this.page.id + '?')) {
+      if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u2116 ' + this.page.id + '?')) {
         axios.delete('/webapi/pages/' + this.page.id).then(function (response) {
           _this.$emit('pageDeleted');
         });
@@ -49087,7 +49087,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.deletepage($event)
+        _vm.deletePage($event)
       }
     }
   }, [_c('span', {

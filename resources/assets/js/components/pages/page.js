@@ -8,8 +8,8 @@ export default {
     }
   },
   methods: {
-    deleteProduct () {
-      if (confirm(`Вы уверены, что хотите удалить заказ № ${this.page.id}?`)) {
+    deletePage () {
+      if (confirm(`Вы уверены, что хотите удалить страницу № ${this.page.id}?`)) {
         axios.delete(`/webapi/pages/${this.page.id}`).then((response) => {
           this.$emit('pageDeleted')
         })
