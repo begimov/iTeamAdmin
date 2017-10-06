@@ -48892,13 +48892,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   props: [],
   data: function data() {
     return {
+      isShowingBlocksPanel: false,
       timer: 0,
       blocks: [{ name: 'async-example' }],
       layout: []
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['products', 'meta', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['pages', 'meta', 'isLoading']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -48908,11 +48909,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
-        this.getProducts();
+        this.getPages();
       }.bind(this), 1000);
     }
   }),
@@ -48957,29 +48958,68 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
   }), _vm._v(" "), _c('div', {
+    staticClass: "panel panel-default"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
-    staticClass: "row panel-subheading"
+    staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-4"
-  }, [_c('h4', [_vm._v("\n                Страницы\n              ")]), _vm._v(" "), _vm._l((_vm.layout), function(block, index) {
+    staticClass: "col-md-12"
+  }, [_vm._l((_vm.layout), function(block, index) {
     return [_c(_vm.blocks[block].name, {
       key: index,
       tag: "component"
     })]
-  })], 2), _vm._v(" "), _vm._m(0)])]), _vm._v(" "), _c('div', {
-    staticClass: "panel-footer"
-  })])])])])
+  })], 2)]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.isShowingBlocksPanel = !_vm.isShowingBlocksPanel
+      }
+    }
+  }, [_vm._v("Добавить блок")])])]), _vm._v(" "), (_vm.isShowingBlocksPanel) ? _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_vm._v("\n              BLOCKS\n            ")])]) : _vm._e()]), _vm._v(" "), _vm._m(1)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "col-md-8 text-right"
-  }, [_c('ul', {
-    staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_vm._v("\n                     \n                  ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                     \n                  ")])])])])
+    staticClass: "panel-heading"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v(" "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Введите название страницы"
+    }
+  })])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "panel-footer"
+  }, [_c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Отменить")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

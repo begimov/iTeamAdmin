@@ -2,49 +2,38 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <!-- <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div> -->
+        <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <!-- <router-link :to="{name: 'newproduct'}" class="btn btn-primary">Создать продукт</router-link> -->
+            <div class="form-group">
+              <h4>Новая страница</h4>
+              <input type="text" class="form-control" placeholder="Введите название страницы">
+            </div>
           </div>
 
           <div class="panel-body">
-            <div class="row panel-subheading">
-              <div class="col-md-4">
-                <h4>
-                  Страницы
-                </h4>
-
+            <div class="row">
+              <div class="col-md-12">
                 <template v-for="(block, index) in layout">
                   <component :is="blocks[block].name" :key="index"></component>
                 </template>
-
-                <!-- <search v-model="searchQuery" v-on:input="textSearch"></search> -->
-              </div>
-              <div class="col-md-8 text-right">
-                <ul class="list-inline">
-                  <li>
-                    <div>
-                      &nbsp;
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      &nbsp;
-                    </div>
-                  </li>
-                </ul>
               </div>
             </div>
-            <!-- <product v-for="product in products"
-            :product="product"
-            :key="product.id"
-            v-on:productDeleted="getProducts"></product> -->
-
+            <div class="row">
+              <div class="col-md-12">
+                <a href="#" class="btn btn-default" @click.prevent="isShowingBlocksPanel = !isShowingBlocksPanel">Добавить блок</a>
+              </div>
+            </div>
+            <div class="row" v-if="isShowingBlocksPanel">
+              <div class="col-md-12">
+                BLOCKS
+              </div>
+            </div>
           </div>
 
           <div class="panel-footer">
-            <!-- <paginator v-if="meta && products.length" for="products" :pagination="meta.pagination" v-on:products_pageChanged="getProducts"></paginator> -->
+            <a href="#" class="btn btn-primary">Сохранить</a>
+            <a href="#" class="btn btn-default">Отменить</a>
           </div>
 
         </div>

@@ -5,6 +5,7 @@ export default {
   props: [],
   data () {
     return {
+      isShowingBlocksPanel: false,
       timer: 0,
       blocks: [
         {name: 'async-example'},
@@ -13,8 +14,8 @@ export default {
     }
   },
   computed: {
-      ...mapGetters('products', [
-          'products',
+      ...mapGetters('pages', [
+          'pages',
           'meta',
           'isLoading'
       ]),
@@ -28,14 +29,14 @@ export default {
       },
   },
   methods: {
-      ...mapActions('products', [
-          'getProducts',
+      ...mapActions('pages', [
+          'getPages',
           'updateSearchQuery',
       ]),
       textSearch () {
         clearTimeout(this.timer);
         this.timer = setTimeout(function(){
-            this.getProducts()
+            this.getPages()
         }.bind(this), 1000)
       },
   },
