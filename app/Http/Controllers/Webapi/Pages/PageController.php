@@ -28,8 +28,9 @@ class PageController extends Controller
      */
     public function index(Request $request)
     {
-        // $products = $this->products
-        //     ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
+      dd($request->all()['params']);
+        $pages = $this->pages
+            ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
         //
         // $productsCollection = $products->getCollection();
         //
