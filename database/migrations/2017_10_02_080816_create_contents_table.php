@@ -17,7 +17,6 @@ class CreateContentsTable extends Migration
             $table->increments('id');
             $table->integer('element_id')->unsigned();
             $table->string('node_id');
-            $table->timestamps();
         });
     }
 

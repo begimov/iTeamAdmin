@@ -17,7 +17,6 @@ class CreateElementsTable extends Migration
             $table->increments('id');
             $table->integer('page_id')->unsigned();
             $table->integer('block_id')->unsigned();
-            $table->timestamps();
         });
     }
 
