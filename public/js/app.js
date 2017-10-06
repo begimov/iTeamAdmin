@@ -43695,6 +43695,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+  currentModule: 'pages',
   pages: [],
   meta: null,
   isLoading: false,
@@ -43709,6 +43710,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+  currentModule: function currentModule(state) {
+    return state.currentModule;
+  },
   pages: function pages(state) {
     return state.pages;
   },
@@ -43751,6 +43755,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     var commit = _ref2.commit;
 
     commit('updateSearchQuery', value);
+  },
+  setCurrentModule: function setCurrentModule(_ref3, value) {
+    var commit = _ref3.commit;
+
+    commit('setCurrentModule', value);
   }
 });
 
@@ -43769,6 +43778,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   updateSearchQuery: function updateSearchQuery(state, value) {
     state.params.searchQuery = value;
+  },
+  setCurrentModule: function setCurrentModule(state, value) {
+    state.currentModule = value;
   }
 });
 
@@ -48674,7 +48686,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['pages', 'meta', 'isLoading', 'getSearchQuery']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -48684,7 +48696,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery', 'setCurrentModule']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
@@ -48702,7 +48714,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('div', [(_vm.currentModule === 'newpage') ? _c('new-page') : _vm._e(), _vm._v(" "), (_vm.currentModule === 'pages') ? _c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
@@ -48714,13 +48726,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.setCurrentModule('newpage')
+      }
+    }
+  }, [_vm._v("Создать страницу")])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row panel-subheading"
   }, [_c('div', {
     staticClass: "col-md-4"
-  }, [_c('h4', [_vm._v("\n                Страницы\n              ")]), _vm._v(" "), _c('search', {
+  }, [_c('h4', [_vm._v("\n                  Страницы\n                ")]), _vm._v(" "), _c('search', {
     on: {
       "input": _vm.textSearch
     },
@@ -48731,7 +48756,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "searchQuery"
     }
-  })], 1), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _vm._l((_vm.pages), function(page) {
+  })], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._l((_vm.pages), function(page) {
     return _c('page', {
       key: page.id,
       attrs: {
@@ -48751,22 +48776,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "pages_pageChanged": _vm.getPages
     }
-  }) : _vm._e()], 1)])])])])
+  }) : _vm._e()], 1)])])])]) : _vm._e()], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('a', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("Создать страницу")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_vm._v("\n                     \n                  ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                     \n                  ")])])])])
+  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -48877,8 +48893,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   data: function data() {
     return {
       timer: 0,
-      blocks: [{ name: 'main-block' }, { name: 'async-example' }],
-      layout: [0]
+      blocks: [{ name: 'async-example' }],
+      layout: []
     };
   },
 
@@ -48924,7 +48940,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     });
 
     setTimeout(function () {
-      _this.layout.push(1);
+      _this.layout.push(0);
     }, 2000);
   }
 });

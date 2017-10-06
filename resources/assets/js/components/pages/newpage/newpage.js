@@ -7,10 +7,9 @@ export default {
     return {
       timer: 0,
       blocks: [
-        {name: 'main-block'},
         {name: 'async-example'},
       ],
-      layout: [0],
+      layout: [],
     }
   },
   computed: {
@@ -62,7 +61,7 @@ export default {
     });
 
     setTimeout(() => {
-      this.layout.push(1)
+      this.layout.push(0)
     }, 2000)
   }
 }

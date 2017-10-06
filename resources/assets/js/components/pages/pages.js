@@ -10,10 +10,11 @@ export default {
   },
   computed: {
       ...mapGetters('pages', [
+          'currentModule',
           'pages',
           'meta',
           'isLoading',
-          'getSearchQuery'
+          'getSearchQuery',
       ]),
       'searchQuery': {
         get () {
@@ -28,6 +29,7 @@ export default {
       ...mapActions('pages', [
           'getPages',
           'updateSearchQuery',
+          'setCurrentModule',
       ]),
       textSearch () {
         clearTimeout(this.timer);

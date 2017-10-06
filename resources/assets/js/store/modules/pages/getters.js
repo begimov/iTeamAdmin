@@ -1,4 +1,7 @@
 export default {
+  currentModule (state) {
+    return state.currentModule
+  },
   pages (state) {
     return state.pages
   },
