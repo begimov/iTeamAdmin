@@ -3,12 +3,12 @@ export default {
     return state.blocks
   },
   layout (state) {
-    return state.layout
+    return state.layout.blocks
   },
   isLoading (state) {
     return state.isLoading
   },
   components (state) {
-    return state.components
+    return state.layout.components
   },
 }

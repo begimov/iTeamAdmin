@@ -20,6 +20,7 @@ export default {
       ...mapActions('pages/newpage', [
           'getAvailableBlocks',
           'addBlockToLayout',
+          'deleteElement',
       ]),
       findBlock (id) {
         return _.find(this.blocks, ['id',id])

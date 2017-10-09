@@ -43591,8 +43591,10 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
   blocks: [],
-  layout: [],
-  components: []
+  layout: {
+    blocks: [],
+    components: []
+  }
 });
 
 /***/ }),
@@ -43605,13 +43607,13 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     return state.blocks;
   },
   layout: function layout(state) {
-    return state.layout;
+    return state.layout.blocks;
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
   },
   components: function components(state) {
-    return state.components;
+    return state.layout.components;
   }
 });
 
@@ -43637,14 +43639,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       _.forEach(blocks, function (block, key) {
         Vue.component(block.name, function (resolve, reject) {
           resolve({
-            template: block.template,
+            props: ['id'],
+            template: '<div>' + block.template + '<div class="row"><div class="col-md-12 text-right"><a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a></div></div></div>',
             data: function data() {
               return _extends({}, block.data);
             },
+
+            methods: {
+              deleteElement: function deleteElement(id) {
+                this.$emit('elementDeleted', id);
+              }
+            },
             mounted: function mounted() {
               commit('addComponentToComponents', {
-                block_id: block.id,
-                block_name: block.name,
+                id: this.id,
                 data: this.$data
               });
             }
@@ -43656,10 +43664,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('setIsLoading', false);
     });
   },
-  addBlockToLayout: function addBlockToLayout(_ref2, value) {
+  addBlockToLayout: function addBlockToLayout(_ref2, data) {
     var commit = _ref2.commit;
 
-    commit('addBlockToLayout', value);
+    commit('addBlockToLayout', data);
+  },
+  deleteElement: function deleteElement(_ref3, id) {
+    var commit = _ref3.commit;
+
+    commit('deleteElement', id);
   }
 });
 
@@ -43675,11 +43688,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setBlocks: function setBlocks(state, value) {
         state.blocks = value;
     },
-    addBlockToLayout: function addBlockToLayout(state, value) {
-        state.layout.push(value);
+    addBlockToLayout: function addBlockToLayout(state, data) {
+        state.layout.blocks.push(data);
     },
     addComponentToComponents: function addComponentToComponents(state, value) {
-        state.components.push(value);
+        state.layout.components.push(value);
+    },
+    deleteElement: function deleteElement(state, id) {
+        state.layout.blocks = _.filter(state.layout.blocks, function (o) {
+            return o.id != id;
+        });
+        state.layout.components = _.filter(state.layout.components, function (o) {
+            return o.id != id;
+        });
     }
 });
 
@@ -49161,7 +49182,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['blocks', 'layout', 'isLoading', 'components'])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getAvailableBlocks', 'addBlockToLayout']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getAvailableBlocks', 'addBlockToLayout', 'deleteElement']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
@@ -49192,7 +49213,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v("\n            " + _vm._s(_vm.components) + "\n            "), _c('input', {
+  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v("\n            " + _vm._s(_vm.layout)), _c('br'), _c('br'), _vm._v("\n            " + _vm._s(_vm.components) + "\n            "), _c('input', {
     staticClass: "form-control",
     attrs: {
       "type": "text",
@@ -49205,9 +49226,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_vm._l((_vm.layout), function(block) {
-    return [_c(block.name, {
+    return [_c(block.block.name, {
       key: block.id,
-      tag: "component"
+      tag: "component",
+      attrs: {
+        "id": block.id
+      },
+      on: {
+        "elementDeleted": _vm.deleteElement
+      }
     })]
   })], 2)]), _vm._v(" "), _c('div', {
     staticClass: "row"
@@ -49236,7 +49263,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": function($event) {
           $event.preventDefault();
-          _vm.addBlockToLayout(block)
+          _vm.addBlockToLayout({
+            block: block,
+            id: Date.now()
+          })
         }
       }
     }, [_vm._v(_vm._s(block.name))])])
