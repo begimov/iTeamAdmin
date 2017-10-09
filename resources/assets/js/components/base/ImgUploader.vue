@@ -5,7 +5,7 @@
     <label for="file">Choose a file</label>
     <div v-if="img.path">
       <input type="hidden" name="img_id" :value="img.id">
-      <img :src="img.path">
+      <img :src="img.path" class="img-responsive img-rounded">
     </div>
   </div>
 </template>

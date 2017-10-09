@@ -28,7 +28,7 @@ export default {
       //   }
       //   this.errors = 'Error occurred while processing your img, please try again'
       // })
-      this.img.path = 'test/path'
+      this.img.path = 'img/test.png'
       this.$emit('input', this.img.path)
     }
   }

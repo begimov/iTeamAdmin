@@ -12271,7 +12271,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(18);
-module.exports = __webpack_require__(126);
+module.exports = __webpack_require__(127);
 
 
 /***/ }),
@@ -12309,17 +12309,17 @@ Vue.component('typeahead-search', __webpack_require__(84));
 Vue.component('orderby', __webpack_require__(93));
 Vue.component('img-uploader', __webpack_require__(96));
 
-Vue.component('orders', __webpack_require__(99));
-Vue.component('order', __webpack_require__(104));
-Vue.component('new-order', __webpack_require__(107));
+Vue.component('orders', __webpack_require__(100));
+Vue.component('order', __webpack_require__(105));
+Vue.component('new-order', __webpack_require__(108));
 
 Vue.component('products', __webpack_require__(15));
-Vue.component('product', __webpack_require__(110));
+Vue.component('product', __webpack_require__(111));
 Vue.component('new-product', __webpack_require__(16));
 
-Vue.component('pages', __webpack_require__(113));
-Vue.component('page', __webpack_require__(118));
-Vue.component('new-page', __webpack_require__(121));
+Vue.component('pages', __webpack_require__(114));
+Vue.component('page', __webpack_require__(119));
+Vue.component('new-page', __webpack_require__(122));
 
 var app = new Vue({
   el: '#app',
@@ -47496,9 +47496,9 @@ if (false) {
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(135),
+  __webpack_require__(97),
   /* template */
-  __webpack_require__(98),
+  __webpack_require__(99),
   /* styles */
   null,
   /* scopeId */
@@ -47530,8 +47530,88 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 97 */,
+/* 97 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_upload__ = __webpack_require__(98);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['currentImg'],
+  data: function data() {
+    return {
+      errors: [],
+      img: {
+        id: null,
+        path: this.currentImg
+      }
+    };
+  },
+
+  mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_upload__["a" /* default */]],
+  methods: {
+    fileChange: function fileChange(e) {
+      this.upload(e);
+      // .then(res => {
+      //   this.img.path = res.data.data.path
+      //   this.img.id = res.data.data.id
+      // }).catch(err => {
+      //   if (err.response.status === 422) {
+      //     this.errors = err.response.data
+      //     return
+      //   }
+      //   this.errors = 'Error occurred while processing your img, please try again'
+      // })
+      this.img.path = 'img/test.png';
+      this.$emit('input', this.img.path);
+    }
+  }
+});
+
+/***/ }),
 /* 98 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  props: {
+    endpoint: {
+      type: String
+    },
+    sendAs: {
+      type: String,
+      default: 'file'
+    }
+  },
+  data: function data() {
+    return { uploading: false };
+  },
+
+  methods: {
+    upload: function upload(e) {
+      this.uploading = true;
+      this.packageUploads(e);
+      this.uploading = false;
+      // return axios.post(this.endpoint, this.packageUploads(e)).then(res => {
+      //   this.uploading = false
+      //   return Promise.resolve(res)
+      // }).catch(err => {
+      //   this.uploading = false
+      //   return Promise.reject(err)
+      // })
+    },
+    packageUploads: function packageUploads(e) {
+      var fileData = new FormData();
+      fileData.append(this.sendAs, e.target.files[0]);
+      console.log(e.target.files[0]);
+      return fileData;
+    }
+  }
+});
+
+/***/ }),
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47559,6 +47639,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": _vm.img.id
     }
   }), _vm._v(" "), _c('img', {
+    staticClass: "img-responsive img-rounded",
     attrs: {
       "src": _vm.img.path
     }
@@ -47573,19 +47654,19 @@ if (false) {
 }
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(100)
+  __webpack_require__(101)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(102),
-  /* template */
   __webpack_require__(103),
+  /* template */
+  __webpack_require__(104),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -47617,13 +47698,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(101);
+var content = __webpack_require__(102);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -47643,7 +47724,7 @@ if(false) {
 }
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(undefined);
@@ -47657,7 +47738,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47737,7 +47818,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -47931,15 +48012,15 @@ if (false) {
 }
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(105),
-  /* template */
   __webpack_require__(106),
+  /* template */
+  __webpack_require__(107),
   /* styles */
   null,
   /* scopeId */
@@ -47971,7 +48052,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48006,7 +48087,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48088,15 +48169,15 @@ if (false) {
 }
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(108),
-  /* template */
   __webpack_require__(109),
+  /* template */
+  __webpack_require__(110),
   /* styles */
   null,
   /* scopeId */
@@ -48128,7 +48209,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48222,7 +48303,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48509,15 +48590,15 @@ if (false) {
 }
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(111),
-  /* template */
   __webpack_require__(112),
+  /* template */
+  __webpack_require__(113),
   /* styles */
   null,
   /* scopeId */
@@ -48549,7 +48630,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48587,7 +48668,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48646,19 +48727,19 @@ if (false) {
 }
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(114)
+  __webpack_require__(115)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(116),
-  /* template */
   __webpack_require__(117),
+  /* template */
+  __webpack_require__(118),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -48690,13 +48771,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(115);
+var content = __webpack_require__(116);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -48716,7 +48797,7 @@ if(false) {
 }
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(undefined);
@@ -48730,7 +48811,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48765,7 +48846,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48848,15 +48929,15 @@ if (false) {
 }
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(119),
-  /* template */
   __webpack_require__(120),
+  /* template */
+  __webpack_require__(121),
   /* styles */
   null,
   /* scopeId */
@@ -48888,7 +48969,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48914,7 +48995,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -48965,19 +49046,19 @@ if (false) {
 }
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(122)
+  __webpack_require__(123)
 }
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(124),
-  /* template */
   __webpack_require__(125),
+  /* template */
+  __webpack_require__(126),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -49009,13 +49090,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(123);
+var content = __webpack_require__(124);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -49035,7 +49116,7 @@ if(false) {
 }
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)(undefined);
@@ -49049,7 +49130,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49080,7 +49161,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -49175,99 +49256,10 @@ if (false) {
 }
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 127 */,
-/* 128 */,
-/* 129 */,
-/* 130 */,
-/* 131 */,
-/* 132 */,
-/* 133 */,
-/* 134 */,
-/* 135 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_upload__ = __webpack_require__(136);
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['currentImg'],
-  data: function data() {
-    return {
-      errors: [],
-      img: {
-        id: null,
-        path: this.currentImg
-      }
-    };
-  },
-
-  mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_upload__["a" /* default */]],
-  methods: {
-    fileChange: function fileChange(e) {
-      this.upload(e);
-      // .then(res => {
-      //   this.img.path = res.data.data.path
-      //   this.img.id = res.data.data.id
-      // }).catch(err => {
-      //   if (err.response.status === 422) {
-      //     this.errors = err.response.data
-      //     return
-      //   }
-      //   this.errors = 'Error occurred while processing your img, please try again'
-      // })
-      this.img.path = 'test/path';
-      this.$emit('input', this.img.path);
-    }
-  }
-});
-
-/***/ }),
-/* 136 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-  props: {
-    endpoint: {
-      type: String
-    },
-    sendAs: {
-      type: String,
-      default: 'file'
-    }
-  },
-  data: function data() {
-    return { uploading: false };
-  },
-
-  methods: {
-    upload: function upload(e) {
-      this.uploading = true;
-      this.packageUploads(e);
-      this.uploading = false;
-      // return axios.post(this.endpoint, this.packageUploads(e)).then(res => {
-      //   this.uploading = false
-      //   return Promise.resolve(res)
-      // }).catch(err => {
-      //   this.uploading = false
-      //   return Promise.reject(err)
-      // })
-    },
-    packageUploads: function packageUploads(e) {
-      var fileData = new FormData();
-      fileData.append(this.sendAs, e.target.files[0]);
-      console.log(e.target.files[0]);
-      return fileData;
-    }
-  }
-});
 
 /***/ })
 /******/ ]);
