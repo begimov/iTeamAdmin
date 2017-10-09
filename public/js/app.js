@@ -47566,6 +47566,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.img.path = 'img/test.png';
       this.$emit('input', this.img.path);
     }
+  },
+  mounted: function mounted() {
+    console.log(this);
   }
 });
 
@@ -47615,22 +47618,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.uploading) ? _c('div', [_vm._v("Uploading...")]) : _c('input', {
+  return _c('div', [(_vm.uploading) ? _c('div', [_vm._v("Загрузка...")]) : _c('label', {
+    staticClass: "btn btn-primary btn-xs"
+  }, [_vm._v("Выбрать изображение\n    "), _c('input', {
     staticStyle: {
       "display": "none"
     },
     attrs: {
-      "id": "file",
       "type": "file"
     },
     on: {
       "change": _vm.fileChange
     }
-  }), _vm._v(" "), _c('label', {
-    attrs: {
-      "for": "file"
-    }
-  }, [_vm._v("Choose a file")]), _vm._v(" "), (_vm.img.path) ? _c('div', [_c('input', {
+  })]), _vm._v(" "), (_vm.img.path) ? _c('div', [_c('input', {
     attrs: {
       "type": "hidden",
       "name": "img_id"

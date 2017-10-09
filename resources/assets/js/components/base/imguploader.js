@@ -31,5 +31,8 @@ export default {
       this.img.path = 'img/test.png'
       this.$emit('input', this.img.path)
     }
+  },
+  mounted () {
+    console.log(this);
   }
 }
