@@ -43591,7 +43591,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
   blocks: [],
-  layout: []
+  layout: [],
+  components: []
 });
 
 /***/ }),
@@ -43608,6 +43609,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
+  },
+  components: function components(state) {
+    return state.components;
   }
 });
 
@@ -43636,6 +43640,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             template: block.template,
             data: function data() {
               return _extends({}, block.data);
+            },
+            mounted: function mounted() {
+              commit('addComponentToComponents', {
+                block_id: block.id,
+                block_name: block.name,
+                data: this.$data
+              });
             }
           });
         });
@@ -43666,6 +43677,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     addBlockToLayout: function addBlockToLayout(state, value) {
         state.layout.push(value);
+    },
+    addComponentToComponents: function addComponentToComponents(state, value) {
+        state.components.push(value);
     }
 });
 
@@ -47566,9 +47580,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.img.path = 'img/test.png';
       this.$emit('input', this.img.path);
     }
-  },
-  mounted: function mounted() {
-    console.log(this);
   }
 });
 
@@ -49149,7 +49160,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['blocks', 'layout', 'isLoading'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['blocks', 'layout', 'isLoading', 'components'])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getAvailableBlocks', 'addBlockToLayout']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
@@ -49177,15 +49188,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v("\n            " + _vm._s(_vm.components) + "\n            "), _c('input', {
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Введите название страницы"
+    }
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_vm._l((_vm.layout), function(block) {
-    return [_c(_vm.findBlock(block).name, {
-      key: _vm.findBlock(block).id,
+    return [_c(block.name, {
+      key: block.id,
       tag: "component"
     })]
   })], 2)]), _vm._v(" "), _c('div', {
@@ -49215,24 +49236,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "click": function($event) {
           $event.preventDefault();
-          _vm.addBlockToLayout(block.id)
+          _vm.addBlockToLayout(block)
         }
       }
     }, [_vm._v(_vm._s(block.name))])])
-  }))]) : _vm._e()]), _vm._v(" "), _vm._m(1)])])])])
+  }))]) : _vm._e()]), _vm._v(" "), _vm._m(0)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v(" "), _c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Введите название страницы"
-    }
-  })])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "panel-footer"
   }, [_c('a', {

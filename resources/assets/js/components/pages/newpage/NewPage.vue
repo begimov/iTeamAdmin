@@ -7,6 +7,7 @@
           <div class="panel-heading">
             <div class="form-group">
               <h4>Новая страница</h4>
+              {{ components }}
               <input type="text" class="form-control" placeholder="Введите название страницы">
             </div>
           </div>
@@ -15,7 +16,7 @@
             <div class="row">
               <div class="col-md-12">
                 <template v-for="block in layout">
-                  <component :is="findBlock(block).name" :key="findBlock(block).id"></component>
+                  <component :is="block.name" :key="block.id"></component>
                 </template>
               </div>
             </div>
@@ -27,7 +28,7 @@
             <div class="row" v-if="isShowingBlocksPanel">
               <div class="col-md-12">
                 <p v-for="block in blocks">
-                  <a href="#" @click.prevent="addBlockToLayout(block.id)">{{ block.name }}</a>
+                  <a href="#" @click.prevent="addBlockToLayout(block)">{{ block.name }}</a>
                 </p>
               </div>
             </div>

@@ -13,6 +13,13 @@ export default {
             template: block.template,
             data () {
               return {...block.data}
+            },
+            mounted () {
+              commit('addComponentToComponents', {
+                block_id: block.id,
+                block_name: block.name,
+                data: this.$data
+              })
             }
           })
         })

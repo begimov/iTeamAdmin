@@ -8,4 +8,7 @@ export default {
   addBlockToLayout (state, value) {
       state.layout.push(value)
   },
+  addComponentToComponents (state, value) {
+      state.components.push(value)
+  },
 }
