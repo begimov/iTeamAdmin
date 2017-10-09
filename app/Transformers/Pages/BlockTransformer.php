@@ -14,7 +14,9 @@ class BlockTransformer extends \League\Fractal\TransformerAbstract
             'name' => 'block-main',
             'template' => view('pages.page.blocks.' . $block->view)->render(),
             'data' => [
+              'path' => '',
               'name' => '',
+              'link' => '',
             ]
         ];
     }
