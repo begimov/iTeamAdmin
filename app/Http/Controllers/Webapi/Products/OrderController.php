@@ -42,7 +42,6 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        // dd($request->all());
         $orders = $this->orders->filter($request)->paginate(5);
 
         // $orders = $this->orders
