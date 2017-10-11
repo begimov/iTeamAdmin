@@ -7,6 +7,7 @@ use App\Filters\Products\Order\PaymentTypeFilter;
 use App\Filters\Products\Order\PaymentStateFilter;
 use App\Filters\Products\Order\CreatedAtOrderBy;
 use App\Filters\Products\Order\IdOrderBy;
+use App\Filters\Products\Order\SearchFilter;
 
 class OrderFilters extends FiltersAbstract
 {
@@ -15,5 +16,6 @@ class OrderFilters extends FiltersAbstract
         'paymentState' => PaymentStateFilter::class,
         'created_at' => CreatedAtOrderBy::class,
         'id' => IdOrderBy::class,
+        'searchQuery' => SearchFilter::class,
     ];
 }
