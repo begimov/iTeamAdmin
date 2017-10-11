@@ -6,6 +6,8 @@ class FiltersAbstract
 {
     protected $request;
 
+    protected $filters = [];
+
     public function __construct($request)
     {
         $this->request = $request;
@@ -13,6 +15,13 @@ class FiltersAbstract
 
     public function filter($builder)
     {
-        return $builder;
+        foreach ($this->filters as $filter => $class) {
+            $this->resolveFilter($class);
+        }
+    }
+
+    protected function resolveFilter($class)
+    {
+        return new $class;
     }
 }
