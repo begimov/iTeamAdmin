@@ -12,6 +12,8 @@ use App\Models\Users\BusinessEntity;
 
 use App\Services\EloquentQueryBuilder;
 
+use App\Filters\Products\Order\PaymentTypeFilter;
+
 class EloquentOrderRepository implements OrderRepository
 {
     protected $queryBuilder;
@@ -23,7 +25,7 @@ class EloquentOrderRepository implements OrderRepository
 
     public function filter($request)
     {
-        return Order::filter($request);
+        return Order::filter($request, $this->getFilters());
     }
 
     public function sortedAndFilteredOrders(array $parameters, $paginateBy)
@@ -66,6 +68,11 @@ class EloquentOrderRepository implements OrderRepository
         $order->markAsDeleted();
         $order->save();
         $order->delete();
+    }
+
+    protected function getFilters()
+    {
+        return [];
     }
 
     protected function buildNewOrder($data)
@@ -119,7 +126,7 @@ class EloquentOrderRepository implements OrderRepository
         }
     }
 
-    public function updateUserCompany($company, $data)
+    protected function updateUserCompany($company, $data)
     {
         // TODO: Dont replace company name, but create new one and associate it???
         if ($company->name !== $data['company']['value']) {
@@ -131,7 +138,7 @@ class EloquentOrderRepository implements OrderRepository
         $company->save();
     }
 
-    public function buildUserCompany($data)
+    protected function buildUserCompany($data)
     {
         $businessEntity = BusinessEntity::find($data['businessEntity']['id']);
         $company = new Company;

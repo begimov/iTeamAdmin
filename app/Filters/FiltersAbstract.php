@@ -21,6 +21,12 @@ class FiltersAbstract
         return $builder;
     }
 
+    public function add(array $filters)
+    {
+        $this->filters = array_merge($this->filters, $filters);
+        return $this;
+    }
+
     protected function resolveFilter($filter)
     {
         return new $this->filters[$filter];

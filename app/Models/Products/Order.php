@@ -53,8 +53,8 @@ class Order extends Model
         $this->payment_state_id = config('orders.deleted_payment_state_id');
     }
 
-    public function scopeFilter($builder, $request)
+    public function scopeFilter($builder, $request, array $filters = [])
     {
-        return (new OrderFilters($request))->filter($builder);
+        return (new OrderFilters($request))->add($filters)->filter($builder);
     }
 }

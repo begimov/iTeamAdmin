@@ -42,10 +42,10 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        return $this->orders->filter($request)->get();
+        $orders = $this->orders->filter($request)->paginate(5);
 
-        $orders = $this->orders
-            ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
+        // $orders = $this->orders
+        //     ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
 
         $ordersCollection = $orders->getCollection();
 
