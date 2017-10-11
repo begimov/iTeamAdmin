@@ -42,7 +42,10 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $orders = $this->orders->filter($request)->paginate(5);
+        $orders = $this->orders->filter($request)
+            ->with(['user', 'paymentType', 'product', 'user.userProfile'])
+            ->withTrashed()
+            ->paginate(5);
 
         // $orders = $this->orders
         //     ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
