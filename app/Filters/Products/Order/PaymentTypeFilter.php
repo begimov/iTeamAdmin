@@ -2,7 +2,12 @@
 
 namespace App\Filters\Products\Order;
 
-class PaymentTypeFilter
+use App\Filters\FilterAbstract;
+
+class PaymentTypeFilter extends FilterAbstract
 {
-    //
+    public function filter($builder, $value)
+    {
+        return $builder->where('payment_type_id', $value);
+    }
 }
