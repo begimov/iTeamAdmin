@@ -21,6 +21,11 @@ class EloquentOrderRepository implements OrderRepository
         $this->queryBuilder = new EloquentQueryBuilder(Order::class);
     }
 
+    public function filter()
+    {
+        return Order::filter();
+    }
+
     public function sortedAndFilteredOrders(array $parameters, $paginateBy)
     {
         $filterParams = array_filter($parameters['filters'], function($value) {

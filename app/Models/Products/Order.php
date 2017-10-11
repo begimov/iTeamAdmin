@@ -50,4 +50,9 @@ class Order extends Model
     {
         $this->payment_state_id = config('orders.deleted_payment_state_id');
     }
+
+    public function scopeFilter($builder)
+    {
+        return $builder;
+    }
 }
