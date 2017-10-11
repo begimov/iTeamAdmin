@@ -9,7 +9,7 @@ class PaymentTypeFilter extends FilterAbstract
     public function filter($builder, $values)
     {
         foreach ($values as $value) {
-            $builder->orWhere('payment_type_id', $value);
+            $builder->orWhere('payment_type_id', $this->resolveFilterValue($value));
         }
         return $builder;
     }
