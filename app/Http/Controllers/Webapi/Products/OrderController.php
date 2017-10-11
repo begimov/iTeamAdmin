@@ -47,9 +47,6 @@ class OrderController extends Controller
             ->withTrashed()
             ->paginate(5);
 
-        // $orders = $this->orders
-        //     ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
-
         $ordersCollection = $orders->getCollection();
 
         return fractal()
