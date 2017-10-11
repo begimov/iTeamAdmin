@@ -43388,11 +43388,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   getProducts: function getProducts(page, params) {
     return new Promise(function (resolve, reject) {
-      axios.get("/webapi/products?page=" + page, {
-        params: {
-          params: params
-        }
-      }).then(function (res) {
+      axios.get("/webapi/products?page=" + page, { params: params }).then(function (res) {
         resolve(res);
       });
     });

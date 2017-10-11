@@ -10,19 +10,10 @@ use App\Models\Products\Product;
 use App\Models\Users\Company;
 use App\Models\Users\BusinessEntity;
 
-use App\Services\EloquentQueryBuilder;
-
 use App\Filters\Products\Order\PaymentTypeFilter;
 
 class EloquentOrderRepository implements OrderRepository
 {
-    protected $queryBuilder;
-
-    public function __construct()
-    {
-        $this->queryBuilder = new EloquentQueryBuilder(Order::class);
-    }
-
     public function filter($request)
     {
         return Order::filter($request, $this->getFilters());

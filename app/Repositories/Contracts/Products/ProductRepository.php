@@ -4,7 +4,6 @@ namespace App\Repositories\Contracts\Products;
 
 interface ProductRepository
 {
-    public function sortedAndFilteredOrders(array $parameters, $paginateBy);
-
+    public function filter($request);
     public function destroyById($id);
 }
