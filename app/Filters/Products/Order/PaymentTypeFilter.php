@@ -6,8 +6,11 @@ use App\Filters\FilterAbstract;
 
 class PaymentTypeFilter extends FilterAbstract
 {
-    public function filter($builder, $value)
+    public function filter($builder, $values)
     {
-        return $builder->where('payment_type_id', $value);
+        foreach ($values as $value) {
+            $builder->orWhere('payment_type_id', $value);
+        }
+        return $builder;
     }
 }

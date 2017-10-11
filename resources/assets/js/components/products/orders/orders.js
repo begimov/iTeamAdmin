@@ -30,14 +30,10 @@ export default {
       this.flags.isLoading = true;
       axios.get('/webapi/orders?page=' + page, {
         params: {
-          params: {
-            orderBy: this.params.orderBy,
-            filters: {
-              payment_type_id: _.map(this.params.filters.paymentType, 'id'),
-              payment_state_id: _.map(this.params.filters.paymentState, 'id'),
-            },
-            searchQuery: this.params.searchQuery.trim()
-          }
+          ...this.params.orderBy,
+          paymentType: _.map(this.params.filters.paymentType, 'id'),
+          paymentState: _.map(this.params.filters.paymentState, 'id'),
+          searchQuery: this.params.searchQuery.trim()
         }
       }).then((response) => {
         this.orders = response.data.data
