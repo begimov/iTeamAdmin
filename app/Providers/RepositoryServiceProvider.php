@@ -7,17 +7,11 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\Eloquent\EloquentUserRepository;
 
-use App\Repositories\Contracts\Users\UserProfileRepository;
-use App\Repositories\Eloquent\Users\EloquentUserProfileRepository;
+use App\Repositories\Contracts\Users\{ UserProfileRepository, CompanyRepository };
+use App\Repositories\Eloquent\Users\{ EloquentUserProfileRepository, EloquentCompanyRepository };
 
-use App\Repositories\Contracts\Users\CompanyRepository;
-use App\Repositories\Eloquent\Users\EloquentCompanyRepository;
-
-use App\Repositories\Contracts\Products\OrderRepository;
-use App\Repositories\Eloquent\Products\EloquentOrderRepository;
-
-use App\Repositories\Contracts\Products\ProductRepository;
-use App\Repositories\Eloquent\Products\EloquentProductRepository;
+use App\Repositories\Contracts\Products\{ OrderRepository, ProductRepository };
+use App\Repositories\Eloquent\Products\{ EloquentOrderRepository, EloquentProductRepository };
 
 use App\Repositories\Contracts\Pages\PageRepository;
 use App\Repositories\Eloquent\Pages\EloquentPageRepository;
