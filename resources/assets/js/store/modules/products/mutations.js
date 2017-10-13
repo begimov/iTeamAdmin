@@ -5,5 +5,8 @@ export default {
   },
   setIsLoading (state, flag) {
     state.isLoading = flag
-  }
+  },
+  updateSearchQuery (state, value) {
+      state.params.searchQuery = value
+  },
 }

@@ -5,7 +5,7 @@ export default {
   props: [],
   data () {
     return {
-      //
+      timer: 0,
     }
   },
   computed: {
@@ -13,12 +13,27 @@ export default {
           'products',
           'meta',
           'isLoading'
-      ])
+      ]),
+      'searchQuery': {
+        get () {
+          return this.getSearchQuery
+        },
+        set (value) {
+          this.updateSearchQuery(value)
+        }
+      },
   },
   methods: {
       ...mapActions('products', [
           'getProducts',
-      ])
+          'updateSearchQuery',
+      ]),
+      textSearch () {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(function(){
+            this.getProducts()
+        }.bind(this), 1000)
+      },
   },
   mounted() {
     this.getProducts()

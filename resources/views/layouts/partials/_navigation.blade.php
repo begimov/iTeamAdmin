@@ -22,6 +22,7 @@
                 @role ('admin')
                   <li><a href="{{ route('home') }}">@lang('navigation.orders')</a></li>
                   <li><a href="{{ route('products') }}">@lang('navigation.products')</a></li>
+                  <li><a href="{{ route('pages') }}">@lang('navigation.pages')</a></li>
                   {{-- <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                           @lang('navigation.master_classes') <span class="caret"></span>

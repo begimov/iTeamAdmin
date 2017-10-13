@@ -30,6 +30,7 @@ $factory->define(App\Models\Products\Product::class, function (Faker\Generator $
     return [
         'name' => $faker->sentence,
         'price' => $faker->numberBetween($min = 400, $max = 4000),
+        'category_id' => $faker->numberBetween($min = 1, $max = 2),
     ];
 });
 
@@ -69,11 +70,5 @@ $factory->define(App\Models\Products\Material::class, function (Faker\Generator 
         'name' => $faker->sentence,
         'url' => $faker->url,
         'filename' => $faker->fileExtension,
-    ];
-});
-
-$factory->define(App\Models\Landings\Landing::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->sentence,
     ];
 });

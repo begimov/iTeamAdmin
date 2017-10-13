@@ -17,7 +17,7 @@ class CreatePriceTagsTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->string('name')->nullable();
-            $table->decimal('price', 13, 2);
+            $table->decimal('price', 13, 2)->nullable();
             $table->timestamps();
         });
     }

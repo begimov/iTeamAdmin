@@ -1,18 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\Landings;
+namespace App\Http\Controllers\Webapi\Pages;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\Landings\LandingRepository;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
-class LandingController extends Controller
+use App\Repositories\Contracts\Pages\PageRepository;
+
+use App\Transformers\Pages\PageTransformer;
+use App\Transformers\Pages\BlockTransformer;
+
+use App\Models\Pages\Block;
+
+class PageController extends Controller
 {
-    protected $landings;
-
-    public function __construct(LandingRepository $landings)
+    protected $pages;
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(PageRepository $pages)
     {
-        $this->landings = $landings;
+        $this->pages = $pages;
     }
 
     /**
@@ -20,9 +31,20 @@ class LandingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $pages = $this->pages->filter($request)
+            // ->with(['category','priceTags'])
+            ->paginate(5);
+
+        $pagesCollection = $pages->getCollection();
+
+        return fractal()
+            ->collection($pagesCollection)
+            // ->parseIncludes(['category', 'priceTags'])
+            ->transformWith(new PageTransformer)
+            ->paginateWith(new IlluminatePaginatorAdapter($pages))
+            ->toArray();
     }
 
     /**
@@ -32,7 +54,11 @@ class LandingController extends Controller
      */
     public function create()
     {
-        //
+        $blocks = fractal(Block::all(), new BlockTransformer)->toArray();
+
+        return response()->json([
+            'blocks' => $blocks,
+        ]);
     }
 
     /**
@@ -88,6 +114,6 @@ class LandingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // $this->products->destroyById($id);
     }
 }

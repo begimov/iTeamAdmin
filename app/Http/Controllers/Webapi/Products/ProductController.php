@@ -30,8 +30,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->products
-            ->sortedAndFilteredOrders(json_decode($request->all()['params'], true), 5);
+        $products = $this->products->filter($request)
+            ->with(['category','priceTags'])
+            ->paginate(5);
 
         $productsCollection = $products->getCollection();
 
@@ -106,6 +107,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->products->destroyById($id);
     }
 }

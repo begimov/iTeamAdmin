@@ -10,35 +10,13 @@ use App\Models\Products\Product;
 use App\Models\Users\Company;
 use App\Models\Users\BusinessEntity;
 
-use App\Services\EloquentQueryBuilder;
+use App\Filters\Products\Order\PaymentTypeFilter;
 
 class EloquentOrderRepository implements OrderRepository
 {
-    protected $queryBuilder;
-
-    public function __construct()
+    public function filter($request)
     {
-        $this->queryBuilder = new EloquentQueryBuilder(Order::class);
-    }
-
-    public function sortedAndFilteredOrders(array $parameters, $paginateBy)
-    {
-        $filterParams = array_filter($parameters['filters'], function($value) {
-            return !empty($value);
-        });
-
-        $orderByParams = array_filter($parameters['orderBy'], function($value) {
-            return $value != '';
-        });
-
-        return $this->queryBuilder
-            ->filterBy($filterParams)
-            ->orderBy($orderByParams)
-            ->search($parameters['searchQuery'], 'user', ['email', 'name'])
-            ->with(['user', 'paymentType', 'product', 'user.userProfile'])
-            ->withTrashed()
-            ->build()
-            ->paginate($paginateBy);
+        return Order::filter($request, $this->getFilters());
     }
 
     public function store(array $data)
@@ -61,6 +39,11 @@ class EloquentOrderRepository implements OrderRepository
         $order->markAsDeleted();
         $order->save();
         $order->delete();
+    }
+
+    protected function getFilters()
+    {
+        return [];
     }
 
     protected function buildNewOrder($data)
@@ -114,7 +97,7 @@ class EloquentOrderRepository implements OrderRepository
         }
     }
 
-    public function updateUserCompany($company, $data)
+    protected function updateUserCompany($company, $data)
     {
         // TODO: Dont replace company name, but create new one and associate it???
         if ($company->name !== $data['company']['value']) {
@@ -126,7 +109,7 @@ class EloquentOrderRepository implements OrderRepository
         $company->save();
     }
 
-    public function buildUserCompany($data)
+    protected function buildUserCompany($data)
     {
         $businessEntity = BusinessEntity::find($data['businessEntity']['id']);
         $company = new Company;

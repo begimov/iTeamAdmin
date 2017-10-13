@@ -19,7 +19,6 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug')->nullable()->unique();
             $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

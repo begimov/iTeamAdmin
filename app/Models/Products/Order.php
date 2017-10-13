@@ -10,6 +10,8 @@ use App\Models\Payments\PaymentType;
 use App\Models\Payments\PaymentState;
 use App\Models\Products\Product;
 
+use App\Filters\Products\OrderFilters;
+
 class Order extends Model
 {
     use SoftDeletes;
@@ -49,5 +51,10 @@ class Order extends Model
     public function markAsDeleted()
     {
         $this->payment_state_id = config('orders.deleted_payment_state_id');
+    }
+
+    public function scopeFilter($builder, $request, array $filters = [])
+    {
+        return (new OrderFilters($request))->add($filters)->filter($builder);
     }
 }
