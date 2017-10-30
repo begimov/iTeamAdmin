@@ -39,6 +39,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
         // Route for Pages.vue component
         Route::resource('pages', 'Pages\PageController');
+
+        // Route for FileUploader.vue component
+        Route::post('/{material}/files', 'Content\FileController@store');
     });
 
 });
