@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for Orders.vue component
         Route::resource('orders', 'Products\OrderController');
 
-        // Routes for getting user's info via Web API
+        // Routes to retrieve user's info
         Route::get('/users/{data}', 'UserController@getUsersDataByQuery');
         Route::get('/user/{user}/{data}', 'UserController@getUserData');
 
@@ -40,8 +40,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for Pages.vue component
         Route::resource('pages', 'Pages\PageController');
 
-        // Route for FileUploader.vue component
-        Route::post('/{material}/files', 'Content\FileController@store');
+        // Route for FileUploader.vue component, to store material's files
+        Route::post('/files/{material}/file', 'Content\FileController@store');
     });
 
 });
