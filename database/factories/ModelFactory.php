@@ -68,7 +68,7 @@ $factory->define(App\Models\Users\Company::class, function (Faker\Generator $fak
 $factory->define(App\Models\Products\Material::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->sentence,
-        'url' => $faker->url,
-        'filename' => $faker->fileExtension,
+        // 'url' => $faker->url,
+        // 'filename' => $faker->fileExtension,
     ];
 });
