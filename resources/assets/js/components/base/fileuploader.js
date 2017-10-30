@@ -5,10 +5,11 @@ export default {
   components: {
     vueDropzone: vue2Dropzone
   },
+  props: ['url'],
   data: function () {
     return {
       options: {
-          url: 'https://httpbin.org/post',
+          url: this.url,
           thumbnailWidth: 150,
           maxFilesize: 0.5,
           headers: { "My-Awesome-Header": "header value" },

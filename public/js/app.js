@@ -46496,7 +46496,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   }), _vm._v(" "), _c('div', {
     staticClass: "row"
-  }, [_c('file-uploader')], 1)], 2), _vm._v(" "), _c('div', {
+  }, [_c('file-uploader', {
+    attrs: {
+      "url": "https://httpbin.org/post"
+    }
+  })], 1)], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [(_vm.meta && _vm.products.length) ? _c('paginator', {
     attrs: {
@@ -47737,10 +47741,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   components: {
     vueDropzone: __WEBPACK_IMPORTED_MODULE_0_vue2_dropzone___default.a
   },
+  props: ['url'],
   data: function data() {
     return {
       options: {
-        url: 'https://httpbin.org/post',
+        url: this.url,
         thumbnailWidth: 150,
         maxFilesize: 0.5,
         headers: { "My-Awesome-Header": "header value" },
