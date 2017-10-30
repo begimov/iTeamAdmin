@@ -16,7 +16,17 @@ export default {
           'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
         },
         addRemoveLinks: true,
+        ...localizationRU,
       }
     }
   }
+}
+
+const localizationRU = {
+  dictDefaultMessage: 'Перенесите сюда файлы или кликните, чтобы их выбрать',
+  dictFileTooBig: 'Слишком большой размер файла',
+  dictResponseError: 'Ошибка, пожалуйста, повторите попытку позже',
+  dictCancelUpload: 'Отменить',
+  dictRemoveFile: 'Удалить',
+  dictRemoveFileConfirmation: 'Вы уверены, что хотите удалить этот файл?',
 }

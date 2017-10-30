@@ -47734,6 +47734,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue2_dropzone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue2_dropzone__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue2_dropzone_dist_vue2Dropzone_css__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue2_dropzone_dist_vue2Dropzone_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue2_dropzone_dist_vue2Dropzone_css__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 
 
 
@@ -47744,7 +47746,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['url'],
   data: function data() {
     return {
-      options: {
+      options: _extends({
         url: this.url,
         thumbnailWidth: 150,
         maxFilesize: 0.5,
@@ -47752,10 +47754,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
         },
         addRemoveLinks: true
-      }
+      }, localizationRU)
     };
   }
 });
+
+var localizationRU = {
+  dictDefaultMessage: 'Перенесите сюда файлы или кликните, чтобы их выбрать',
+  dictFileTooBig: 'Слишком большой размер файла',
+  dictResponseError: 'Ошибка, пожалуйста, повторите попытку позже',
+  dictCancelUpload: 'Отменить',
+  dictRemoveFile: 'Удалить',
+  dictRemoveFileConfirmation: 'Вы уверены, что хотите удалить этот файл?'
+};
 
 /***/ }),
 /* 102 */

@@ -10,6 +10,9 @@ class FileController extends Controller
 {
     public function store(Material $material, Request $request)
     {
-        var_dump($material->name, $request->all());
+        // var_dump($material->name, $request->all());
+        return response(402);
+        $upload = $request->file('file');
+        var_dump($upload);
     }
 }
