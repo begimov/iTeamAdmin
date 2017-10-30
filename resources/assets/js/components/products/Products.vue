@@ -38,7 +38,7 @@
 
             <!-- TODO: REMOVE TEST -->
             <div class="row">
-              <file-uploader url="https://httpbin.org/post"></file-uploader>
+              <file-uploader url="/"></file-uploader>
               </div>
             <!-- TODO: REMOVE TEST -->
 

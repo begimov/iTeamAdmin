@@ -9,11 +9,13 @@ export default {
   data: function () {
     return {
       options: {
-          url: this.url,
-          thumbnailWidth: 150,
-          maxFilesize: 0.5,
-          headers: { "My-Awesome-Header": "header value" },
-          addRemoveLinks: true,
+        url: this.url,
+        thumbnailWidth: 150,
+        maxFilesize: 0.5,
+        headers: {
+          'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')
+        },
+        addRemoveLinks: true,
       }
     }
   }

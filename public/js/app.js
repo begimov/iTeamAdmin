@@ -46498,7 +46498,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('file-uploader', {
     attrs: {
-      "url": "https://httpbin.org/post"
+      "url": "/"
     }
   })], 1)], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
@@ -47748,7 +47748,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         url: this.url,
         thumbnailWidth: 150,
         maxFilesize: 0.5,
-        headers: { "My-Awesome-Header": "header value" },
+        headers: {
+          'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')
+        },
         addRemoveLinks: true
       }
     };
