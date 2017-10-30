@@ -46498,7 +46498,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('file-uploader', {
     attrs: {
-      "url": "/"
+      "url": "/webapi/files/1/file"
     }
   })], 1)], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
@@ -47749,7 +47749,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         thumbnailWidth: 150,
         maxFilesize: 0.5,
         headers: {
-          'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')
+          'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
         },
         addRemoveLinks: true
       }

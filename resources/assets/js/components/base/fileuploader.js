@@ -13,7 +13,7 @@ export default {
         thumbnailWidth: 150,
         maxFilesize: 0.5,
         headers: {
-          'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]')
+          'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
         },
         addRemoveLinks: true,
       }
