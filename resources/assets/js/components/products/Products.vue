@@ -37,7 +37,9 @@
             v-on:productDeleted="getProducts"></product>
 
             <!-- TODO: REMOVE TEST -->
-            <div class="row"><file-uploader></file-uploader></div>
+            <div class="row">
+              <file-uploader></file-uploader>
+              </div>
             <!-- TODO: REMOVE TEST -->
 
           </div>

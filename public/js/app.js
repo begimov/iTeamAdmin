@@ -47739,11 +47739,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      dropzoneOptions: {
+      options: {
         url: 'https://httpbin.org/post',
         thumbnailWidth: 150,
         maxFilesize: 0.5,
-        headers: { "My-Awesome-Header": "header value" }
+        headers: { "My-Awesome-Header": "header value" },
+        addRemoveLinks: true
       }
     };
   }
@@ -51788,10 +51789,10 @@ module.exports = function (css) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('vue-dropzone', {
-    ref: "myVueDropzone",
+    ref: "fileUploader",
     attrs: {
-      "id": "dropzone",
-      "options": _vm.dropzoneOptions
+      "id": "fileUploader",
+      "options": _vm.options
     }
   })], 1)
 },staticRenderFns: []}

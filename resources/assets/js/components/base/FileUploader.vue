@@ -1,6 +1,9 @@
 <template>
   <div>
-    <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions" />
+    <vue-dropzone 
+      ref="fileUploader" 
+      id="fileUploader" 
+      :options="options" />
   </div>
 </template>
 
