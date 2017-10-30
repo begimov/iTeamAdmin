@@ -24,6 +24,7 @@ Vue.component('search', require('./components/base/Search.vue'));
 Vue.component('typeahead-search', require('./components/base/TypeaheadSearch.vue'));
 Vue.component('orderby', require('./components/base/OrderBy.vue'));
 Vue.component('img-uploader', require('./components/base/ImgUploader.vue'));
+Vue.component('file-uploader', require('./components/base/FileUploader.vue'));
 
 Vue.component('orders', require('./components/products/orders/Orders.vue'));
 Vue.component('order', require('./components/products/orders/Order.vue'));

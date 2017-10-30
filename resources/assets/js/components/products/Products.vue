@@ -36,6 +36,10 @@
             :key="product.id"
             v-on:productDeleted="getProducts"></product>
 
+            <!-- TODO: REMOVE TEST -->
+            <div class="row"><file-uploader></file-uploader></div>
+            <!-- TODO: REMOVE TEST -->
+
           </div>
 
           <div class="panel-footer">
@@ -45,6 +49,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 
