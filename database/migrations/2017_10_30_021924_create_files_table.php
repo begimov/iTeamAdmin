@@ -17,7 +17,6 @@ class CreateFilesTable extends Migration
             $table->increments('id');
             $table->integer('material_id')->unsigned()->index();
             $table->string('filename');
-            $table->string('filename');
             $table->bigInteger('size');
             $table->softDeletes();
             $table->timestamps();
