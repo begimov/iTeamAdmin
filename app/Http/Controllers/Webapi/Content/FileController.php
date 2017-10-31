@@ -24,7 +24,7 @@ class FileController extends Controller
         );
 
         return response()->json([
-            'id' => 1
+            'id' => $upload->id
         ]);
     }
 
