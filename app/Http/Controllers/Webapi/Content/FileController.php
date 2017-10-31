@@ -18,9 +18,9 @@ class FileController extends Controller
         $upload = $this->storeFile($material, $file);
 
         Storage::disk('local')->putFileAs(
-            'files/materials' . $material->id,
+            'files/materials/id_' . $material->id,
             $file,
-            'test.png'
+            $file->getClientOriginalName()
         );
 
         return response()->json([
@@ -31,7 +31,7 @@ class FileController extends Controller
     protected function storeFile(Material $material, UploadedFile $uploadedFile)
     {
         $file = new File;
-        $file->name = 'test.png';
+        $file->name = $uploadedFile->getClientOriginalName();
         $file->size = $uploadedFile->getSize();
         $file->material()->associate($material);
         $file->save();
