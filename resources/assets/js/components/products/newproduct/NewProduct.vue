@@ -109,7 +109,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" v-if="isNewMaterialOn">
       <new-material></new-material>
     </div>
 

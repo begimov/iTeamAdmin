@@ -17,5 +17,6 @@ export default {
     priceTags: [],
   },
   isLoading: false,
-  errors: {}
+  errors: {},
+  isNewMaterialOn: false
 }

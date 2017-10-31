@@ -29,6 +29,7 @@ export default {
           'getBasePrice',
           'getPriceTagPrice',
           'getPriceTagName',
+          'isNewMaterialOn',
       ]),
       'name': {
         get () {

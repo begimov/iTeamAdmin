@@ -43309,7 +43309,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     priceTags: []
   },
   isLoading: false,
-  errors: {}
+  errors: {},
+  isNewMaterialOn: false
 });
 
 /***/ }),
@@ -43341,6 +43342,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   getPriceTagName: function getPriceTagName(state) {
     return state.options.priceTag.name;
+  },
+  isNewMaterialOn: function isNewMaterialOn(state) {
+    return state.isNewMaterialOn;
   }
 });
 
@@ -46588,7 +46592,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName'])),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn']), {
     'name': {
       get: function get() {
         return this.getName;
@@ -46836,9 +46840,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         name: 'products'
       }
     }
-  }, [_vm._v("Отменить")])], 1)])])])])])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Отменить")])], 1)])])])])])])])]), _vm._v(" "), (_vm.isNewMaterialOn) ? _c('div', {
     staticClass: "row"
-  }, [_c('new-material')], 1)])
+  }, [_c('new-material')], 1) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-3"
