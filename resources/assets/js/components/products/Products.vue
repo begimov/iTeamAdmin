@@ -35,13 +35,7 @@
             :product="product"
             :key="product.id"
             v-on:productDeleted="getProducts"></product>
-
-            <!-- TODO: REMOVE TEST -->
-            <div class="row">
-              <file-uploader resource-id="1"></file-uploader>
-              </div>
-            <!-- TODO: REMOVE TEST -->
-
+            
           </div>
 
           <div class="panel-footer">
