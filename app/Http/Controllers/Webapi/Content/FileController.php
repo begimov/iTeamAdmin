@@ -28,6 +28,11 @@ class FileController extends Controller
         ]);
     }
 
+    public function destroy(Material $material, File $file)
+    {
+        $file->delete();
+    }
+
     protected function storeFile(Material $material, UploadedFile $uploadedFile)
     {
         $file = new File;
