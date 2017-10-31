@@ -19,6 +19,11 @@ export default {
         ...localizationRU,
       }
     }
+  },
+  methods: {
+    fileRemoved(file, error, xhr) {
+      console.log(file, error, xhr)
+    }
   }
 }
 

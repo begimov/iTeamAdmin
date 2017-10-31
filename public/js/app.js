@@ -47756,6 +47756,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         addRemoveLinks: true
       }, localizationRU)
     };
+  },
+  methods: {
+    fileRemoved: function fileRemoved(file, error, xhr) {
+      console.log(file, error, xhr);
+    }
   }
 });
 
@@ -51811,6 +51816,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "fileUploader",
       "options": _vm.options
+    },
+    on: {
+      "vdropzone-removed-file": _vm.fileRemoved
     }
   })], 1)
 },staticRenderFns: []}
