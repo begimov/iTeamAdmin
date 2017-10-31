@@ -65,6 +65,8 @@
                         &nbsp;
                       </template>
                     </multiselect>
+                    <br>
+                    <a href="#" @click.prevent="newMaterialOn" class="btn btn-default btn-sm">Создать материал</a>
                   </div>
                 </div>
                 <div class="col-md-6">

@@ -16,5 +16,8 @@ export default {
   },
   updatePriceTagName (state, value) {
       state.options.priceTag.name = value
+  },
+  newMaterialOn (state) {
+      state.isNewMaterialOn = true
   }
 }

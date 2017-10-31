@@ -43386,6 +43386,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     var commit = _ref6.commit;
 
     commit('updatePriceTagName', value);
+  },
+  newMaterialOn: function newMaterialOn(_ref7) {
+    var commit = _ref7.commit;
+
+    commit('newMaterialOn');
   }
 });
 
@@ -43449,6 +43454,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     },
     updatePriceTagName: function updatePriceTagName(state, value) {
         state.options.priceTag.name = value;
+    },
+    newMaterialOn: function newMaterialOn(state) {
+        state.isNewMaterialOn = true;
     }
 });
 
@@ -46591,7 +46599,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'newMaterialOn'])),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn']), {
     'name': {
       get: function get() {
@@ -46750,7 +46758,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }])
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Материал не найден")])])], 2)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Материал не найден")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('a', {
+    staticClass: "btn btn-default btn-sm",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.newMaterialOn($event)
+      }
+    }
+  }, [_vm._v("Создать материал")])], 2)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"

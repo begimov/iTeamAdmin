@@ -18,5 +18,8 @@ export default {
   },
   updatePriceTagName ({ commit }, value) {
     commit('updatePriceTagName', value)
+  },
+  newMaterialOn ({ commit }) {
+    commit('newMaterialOn')
   }
 }
