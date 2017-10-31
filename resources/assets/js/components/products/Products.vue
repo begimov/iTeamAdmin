@@ -38,7 +38,7 @@
 
             <!-- TODO: REMOVE TEST -->
             <div class="row">
-              <file-uploader url="/webapi/files/1/file"></file-uploader>
+              <file-uploader resource-id="1"></file-uploader>
               </div>
             <!-- TODO: REMOVE TEST -->
 

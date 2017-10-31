@@ -5,11 +5,11 @@ export default {
   components: {
     vueDropzone: vue2Dropzone
   },
-  props: ['url'],
+  props: ['resourceId'],
   data: function () {
     return {
       options: {
-        url: this.url,
+        url: `/webapi/files/${this.resourceId}/file`,
         thumbnailWidth: 150,
         maxFilesize: 0.5,
         headers: {
@@ -25,7 +25,7 @@ export default {
       file.id = response.id
     },
     fileRemoved(file, error, xhr) {
-      console.log(file, error, xhr)
+      axios.delete(`/webapi/files/${this.resourceId}/file/${file.id}`)
     },
   }
 }

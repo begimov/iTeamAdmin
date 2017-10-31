@@ -46498,7 +46498,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('file-uploader', {
     attrs: {
-      "url": "/webapi/files/1/file"
+      "resource-id": "1"
     }
   })], 1)], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
@@ -47743,11 +47743,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   components: {
     vueDropzone: __WEBPACK_IMPORTED_MODULE_0_vue2_dropzone___default.a
   },
-  props: ['url'],
+  props: ['resourceId'],
   data: function data() {
     return {
       options: _extends({
-        url: this.url,
+        url: '/webapi/files/' + this.resourceId + '/file',
         thumbnailWidth: 150,
         maxFilesize: 0.5,
         headers: {
@@ -47762,7 +47762,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       file.id = response.id;
     },
     fileRemoved: function fileRemoved(file, error, xhr) {
-      console.log(file, error, xhr);
+      axios.delete('/webapi/files/' + this.resourceId + '/file/' + file.id);
     }
   }
 });
