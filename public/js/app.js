@@ -47758,13 +47758,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
   methods: {
+    fileUploaded: function fileUploaded(file, response) {
+      file.id = response.id;
+    },
     fileRemoved: function fileRemoved(file, error, xhr) {
       console.log(file, error, xhr);
-    },
-    fileUploaded: function fileUploaded(file, response) {
-      console.log(file, response);
-      file.id = response.id;
-      console.log(file, response);
     }
   }
 });
@@ -51823,8 +51821,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "options": _vm.options
     },
     on: {
-      "vdropzone-removed-file": _vm.fileRemoved,
-      "vdropzone-success": _vm.fileUploaded
+      "vdropzone-success": _vm.fileUploaded,
+      "vdropzone-removed-file": _vm.fileRemoved
     }
   })], 1)
 },staticRenderFns: []}

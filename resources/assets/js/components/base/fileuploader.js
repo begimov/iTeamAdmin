@@ -21,14 +21,12 @@ export default {
     }
   },
   methods: {
+    fileUploaded(file, response) {
+      file.id = response.id
+    },
     fileRemoved(file, error, xhr) {
       console.log(file, error, xhr)
     },
-    fileUploaded(file, response) {
-      console.log(file, response)
-      file.id = response.id
-      console.log(file, response)
-    }
   }
 }
 

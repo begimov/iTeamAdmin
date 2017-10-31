@@ -4,8 +4,8 @@
       ref="fileUploader" 
       id="fileUploader" 
       :options="options"
-      @vdropzone-removed-file="fileRemoved"
-      @vdropzone-success="fileUploaded" />
+      @vdropzone-success="fileUploaded"
+      @vdropzone-removed-file="fileRemoved" />
   </div>
 </template>
 
