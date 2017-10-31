@@ -43244,10 +43244,12 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__newproduct__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__getters__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mutations__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__newmaterial__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__state__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__getters__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__mutations__ = __webpack_require__(56);
+
 
 
 
@@ -43256,12 +43258,13 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   namespaced: true,
-  state: __WEBPACK_IMPORTED_MODULE_1__state__["a" /* default */],
-  getters: __WEBPACK_IMPORTED_MODULE_2__getters__["a" /* default */],
-  actions: __WEBPACK_IMPORTED_MODULE_3__actions__["a" /* default */],
-  mutations: __WEBPACK_IMPORTED_MODULE_4__mutations__["a" /* default */],
+  state: __WEBPACK_IMPORTED_MODULE_2__state__["a" /* default */],
+  getters: __WEBPACK_IMPORTED_MODULE_3__getters__["a" /* default */],
+  actions: __WEBPACK_IMPORTED_MODULE_4__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_5__mutations__["a" /* default */],
   modules: {
-    newproduct: __WEBPACK_IMPORTED_MODULE_0__newproduct__["a" /* default */]
+    newproduct: __WEBPACK_IMPORTED_MODULE_0__newproduct__["a" /* default */],
+    newmaterial: __WEBPACK_IMPORTED_MODULE_1__newmaterial__["a" /* default */]
   }
 });
 
@@ -53589,6 +53592,148 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getters__ = __webpack_require__(149);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(150);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations__ = __webpack_require__(151);
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  namespaced: true,
+  state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
+  getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
+  actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
+});
+
+/***/ }),
+/* 148 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // options: {
+  //   materials: [
+  //     {id: 1, name: 'Material 1'},
+  //     {id: 2, name: 'Material 2'}
+  //   ],
+  //   categories: [
+  //     {id: 1, name: 'Category 1'}
+  //   ],
+  //   priceTag: { price: null, name: null }
+  // },
+  // params: {
+  //   categories: [],
+  //   name: null,
+  //   materials: [],
+  //   basePrice: null,
+  //   priceTags: [],
+  // },
+  isLoading: false
+  // errors: {}
+});
+
+/***/ }),
+/* 149 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // materialOptions (state) {
+  //   return state.options.materials
+  // },
+  // materialParams (state) {
+  //   return state.params.materials
+  // },
+  // categoryOptions (state) {
+  //   return state.options.categories
+  // },
+  // categoryParams (state) {
+  //   return state.params.categories
+  // },
+  // getName(state) {
+  //   return state.params.name
+  // },
+  // getBasePrice(state) {
+  //   return state.params.basePrice
+  // },
+  // getPriceTagPrice(state) {
+  //   return state.options.priceTag.price
+  // },
+  // getPriceTagName(state) {
+  //   return state.options.priceTag.name
+  // },
+});
+
+/***/ }),
+/* 150 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(5);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // updateMaterialParams ({ commit }, value) {
+  //   commit('updateMaterialParams', value)
+  // },
+  // updateCategoryParams ({ commit }, value) {
+  //   commit('updateCategoryParams', value)
+  // },
+  // updateName ({ commit }, value) {
+  //   commit('updateName', value)
+  // },
+  // updateBasePrice ({ commit }, value) {
+  //   commit('updateBasePrice', value)
+  // },
+  // updatePriceTagPrice ({ commit }, value) {
+  //   commit('updatePriceTagPrice', value)
+  // },
+  // updatePriceTagName ({ commit }, value) {
+  //   commit('updatePriceTagName', value)
+  // }
+});
+
+/***/ }),
+/* 151 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  //   updateMaterialParams (state, value) {
+  //       state.params.materials = value
+  //   },
+  //   updateCategoryParams (state, value) {
+  //       state.params.categories = value
+  //   },
+  //   updateName (state, value) {
+  //       state.params.name = value
+  //   },
+  //   updateBasePrice (state, value) {
+  //       state.params.basePrice = value
+  //   },
+  //   updatePriceTagPrice (state, value) {
+  //       state.options.priceTag.price = value
+  //   },
+  //   updatePriceTagName (state, value) {
+  //       state.options.priceTag.name = value
+  //   }
+});
 
 /***/ })
 /******/ ]);
