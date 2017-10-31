@@ -23,6 +23,11 @@ export default {
   methods: {
     fileRemoved(file, error, xhr) {
       console.log(file, error, xhr)
+    },
+    fileUploaded(file, response) {
+      console.log(file, response)
+      file.id = response.id
+      console.log(file, response)
     }
   }
 }
