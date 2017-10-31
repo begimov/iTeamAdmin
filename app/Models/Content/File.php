@@ -3,6 +3,7 @@
 namespace App\Models\Content;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Products\Material;
 
 class File extends Model
 {
@@ -14,4 +15,9 @@ class File extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    public function material()
+    {
+        return $this->belongsTo(Material::class);
+    }
 }
