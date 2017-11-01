@@ -18,9 +18,4 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
     {
         // TODO: Do we need to delete products? maybe only delete pages? so no one could see products
     }
-
-    protected function getFilters()
-    {
-        return [];
-    }
 }

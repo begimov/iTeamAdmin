@@ -26,4 +26,9 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface
         }
         return app()->make($this->entity());
     }
+
+    protected function getFilters()
+    {
+        return [];
+    }
 }

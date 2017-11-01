@@ -17,8 +17,4 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
     {
         //
     }
-    protected function getFilters()
-    {
-        return [];
-    }
 }

@@ -42,11 +42,6 @@ class EloquentOrderRepository extends EloquentRepositoryAbstract implements Orde
         $order->delete();
     }
 
-    protected function getFilters()
-    {
-        return [];
-    }
-
     protected function buildNewOrder($data)
     {
       $order = new Order;
