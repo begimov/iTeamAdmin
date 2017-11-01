@@ -2,7 +2,12 @@
 
 namespace App\Repositories;
 
-abstract class EloquentRepositoryAbstract
+use App\Repositories\Contracts\RepositoryInterface;
+
+abstract class EloquentRepositoryAbstract implements RepositoryInterface
 {
-    //
+    public function filter($request)
+    {
+        //return Order::filter($request, $this->getFilters());
+    }
 }
