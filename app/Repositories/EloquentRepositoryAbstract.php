@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use Exception;
+use App\Repositories\Exceptions\NoEntityDefined;
 use App\Repositories\Contracts\RepositoryInterface;
 
 abstract class EloquentRepositoryAbstract implements RepositoryInterface
@@ -22,7 +22,7 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface
     protected function resolveEntity()
     {
         if (!method_exists($this, 'entity')) {
-            throw new Exception();
+            throw new NoEntityDefined();
         }
         return app()->make($this->entity());
     }
