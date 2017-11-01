@@ -9,6 +9,11 @@ use App\Models\Products\Product;
 
 class EloquentProductRepository extends EloquentRepositoryAbstract implements ProductRepository
 {
+    public function entity()
+    {
+        return Product::class;
+    }
+    
     public function filter($request)
     {
         return Product::filter($request, $this->getFilters());
