@@ -13,11 +13,6 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
     {
         return Product::class;
     }
-    
-    public function filter($request)
-    {
-        return Product::filter($request, $this->getFilters());
-    }
 
     public function destroyById($id)
     {
