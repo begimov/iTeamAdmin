@@ -2,13 +2,14 @@
 
 namespace App\Repositories\Eloquent\Users;
 
+use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Users\CompanyRepository;
 use App\Models\Users\Company;
 
-class EloquentCompanyRepository implements CompanyRepository
+class EloquentCompanyRepository extends EloquentRepositoryAbstract implements CompanyRepository
 {
-    public function whereLike($column, $query, $limit)
+    public function entity()
     {
-        return Company::where($column, 'like', "%{$query}%")->take($limit)->get();
+        return Company::class;
     }
 }
