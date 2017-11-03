@@ -4,5 +4,5 @@ namespace App\Repositories\Contracts\Content;
 
 interface FileRepository
 {
-  public function store(array $data);
+  store(Material $material, UploadedFile $uploadedFile)
 }
