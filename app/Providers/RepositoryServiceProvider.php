@@ -16,6 +16,9 @@ use App\Repositories\Eloquent\Products\{ EloquentOrderRepository, EloquentProduc
 use App\Repositories\Contracts\Pages\PageRepository;
 use App\Repositories\Eloquent\Pages\EloquentPageRepository;
 
+use App\Repositories\Contracts\Content\FileRepository;
+use App\Repositories\Eloquent\Content\EloquentFileRepository;
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -31,6 +34,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(OrderRepository::class, EloquentOrderRepository::class);
         $this->app->bind(ProductRepository::class, EloquentProductRepository::class);
         $this->app->bind(PageRepository::class, EloquentPageRepository::class);
+        $this->app->bind(FileRepository::class, EloquentFileRepository::class);
     }
 
     /**
