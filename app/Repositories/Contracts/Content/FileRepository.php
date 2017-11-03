@@ -8,4 +8,5 @@ use App\Models\Products\Material;
 interface FileRepository
 {
   public function store(Material $material, UploadedFile $uploadedFile);
+  public function destroy(File $file);
 }
