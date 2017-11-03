@@ -2,7 +2,10 @@
 
 namespace App\Repositories\Contracts\Content;
 
+use Illuminate\Http\UploadedFile;
+use App\Models\Products\Material;
+
 interface FileRepository
 {
-  store(Material $material, UploadedFile $uploadedFile)
+  public function store(Material $material, UploadedFile $uploadedFile);
 }

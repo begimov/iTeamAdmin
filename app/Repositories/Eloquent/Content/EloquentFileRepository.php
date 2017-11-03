@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent\Pages;
+namespace App\Repositories\Eloquent\Content;
 
 use Illuminate\Http\UploadedFile;
 
@@ -27,8 +27,4 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
         return $file;
     }
 
-    public function destroyById($id)
-    {
-        //
-    }
 }

@@ -9,13 +9,26 @@ use App\Http\Controllers\Controller;
 use App\Models\Products\Material;
 use App\Models\Content\File;
 
+use App\Repositories\Contracts\Content\FileRepository;
+
 class FileController extends Controller
 {
+    protected $files;
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(FileRepository $files)
+    {
+        $this->files = $files;
+    }
+
     public function store(Material $material, Request $request)
     {
         $file = $request->file('file');
 
-        $upload = $this->storeFile($material, $file);
+        $upload = $this->files->store($material, $file);
 
         Storage::disk('local')->putFileAs(
             'files/materials/id_' . $material->id,
@@ -31,16 +44,5 @@ class FileController extends Controller
     public function destroy(Material $material, File $file)
     {
         $file->delete();
-    }
-
-    protected function storeFile(Material $material, UploadedFile $uploadedFile)
-    {
-        $file = new File;
-        $file->name = $uploadedFile->getClientOriginalName();
-        $file->size = $uploadedFile->getSize();
-        $file->material()->associate($material);
-        $file->save();
-
-        return $file;
     }
 }
