@@ -27,4 +27,8 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
         return $file;
     }
 
+    public function destroy(File $file)
+    {
+        $file->delete();
+    }
 }

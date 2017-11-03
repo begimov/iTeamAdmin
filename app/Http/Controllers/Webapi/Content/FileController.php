@@ -43,6 +43,6 @@ class FileController extends Controller
 
     public function destroy(Material $material, File $file)
     {
-        $file->delete();
+        $this->files->destroy($file);
     }
 }
