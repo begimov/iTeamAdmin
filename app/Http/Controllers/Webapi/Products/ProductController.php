@@ -8,6 +8,8 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 use App\Repositories\Contracts\Products\ProductRepository;
 
+use App\Repositories\Eloquent\Criteria\With;
+
 use App\Transformers\Products\ProductTransformer;
 
 class ProductController extends Controller
@@ -31,7 +33,9 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = $this->products->filter($request)
-            ->with(['category','priceTags'])
+            ->withCriteria([
+                new With(['category','priceTags'])
+            ])
             ->paginate(5);
 
         $productsCollection = $products->getCollection();
