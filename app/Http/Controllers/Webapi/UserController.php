@@ -15,7 +15,7 @@ use App\Transformers\Users\UserDataTransformer;
 use App\Transformers\Users\UserProfileDataTransformer;
 use App\Transformers\Users\CompanyTransformer;
 
-use App\Repositories\Eloquent\Criteria\WhereLike;
+use App\Repositories\Eloquent\Criteria\{ WhereLike, Take };
 
 class UserController extends Controller
 {
@@ -63,8 +63,9 @@ class UserController extends Controller
             case 'email':
                 return $this->transformEmailsOrNames(
                     $this->users->withCriteria([
-                        new WhereLike($data, $query)
-                    ])->take(3)->get(), $data);
+                        new WhereLike($data, $query),
+                        new Take(3),
+                    ])->get(), $data);
                 // return $this->transformEmailsOrNames(
                 //     $this->users->whereLike($data, $query, 3), $data);
                 break;
