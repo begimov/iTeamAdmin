@@ -4,8 +4,9 @@ namespace App\Repositories;
 
 use App\Repositories\Exceptions\NoEntityDefined;
 use App\Repositories\Contracts\RepositoryInterface;
+use App\Repositories\Criteria\CriteriaInterface;
 
-abstract class EloquentRepositoryAbstract implements RepositoryInterface
+abstract class EloquentRepositoryAbstract implements RepositoryInterface, CriteriaInterface
 {
     protected $entity;
 
@@ -22,6 +23,11 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface
     public function whereLike($column, $query, $limit)
     {
         return $this->entity->where($column, 'like', "%{$query}%")->take($limit)->get();
+    }
+
+    public function withCriteria(array $criteria)
+    {
+        //
     }
 
     protected function resolveEntity()
