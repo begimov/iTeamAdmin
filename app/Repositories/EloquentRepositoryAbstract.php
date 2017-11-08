@@ -25,6 +25,12 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface, Criter
         return $this->entity->paginate($by);
     }
 
+    public function withTrashed()
+    {
+        $this->entity = $this->entity->withTrashed();
+        return $this;
+    }
+
     public function filter($request)
     {
         $this->entity = $this->entity->filter($request, $this->getFilters());
