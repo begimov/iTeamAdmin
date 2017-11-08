@@ -19,6 +19,8 @@ use App\Transformers\Payments\PaymentTypeTransformer;
 use App\Transformers\Payments\PaymentStateTransformer;
 use App\Transformers\Users\BusinessEntityTransformer;
 
+use App\Repositories\Eloquent\Criteria\With;
+
 use App\Http\Requests\Webapi\Products\StoreOrderRequest;
 
 
@@ -43,8 +45,10 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $orders = $this->orders->filter($request)
-            ->with(['user', 'paymentType', 'product', 'user.userProfile'])
-            ->withTrashed()
+            ->withCriteria([
+                new With(['user', 'paymentType', 'product', 'user.userProfile'])
+            ])
+            // ->withTrashed()
             ->paginate(5);
 
         $ordersCollection = $orders->getCollection();
