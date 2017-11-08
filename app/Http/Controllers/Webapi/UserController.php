@@ -66,23 +66,30 @@ class UserController extends Controller
                         new WhereLike($data, $query),
                         new Take(3),
                     ])->get(), $data);
-                // return $this->transformEmailsOrNames(
-                //     $this->users->whereLike($data, $query, 3), $data);
                 break;
 
             case 'name':
                 return $this->transformEmailsOrNames(
-                    $this->users->whereLike($data, $query, 3), $data);
+                    $this->users->withCriteria([
+                        new WhereLike($data, $query),
+                        new Take(3),
+                    ])->get(), $data);
                 break;
 
             case 'phone':
                 return $this->transformPhones(
-                    $this->userProfiles->whereLike($data, $query, 3));
+                    $this->userProfiles->withCriteria([
+                        new WhereLike($data, $query),
+                        new Take(3),
+                    ])->get());
                 break;
 
             case 'company':
                 return $this->transformCompanies(
-                    $this->companies->whereLike('name', $query, 3));
+                    $this->companies->withCriteria([
+                        new WhereLike('name', $query),
+                        new Take(3),
+                    ])->get());;
                 break;
 
             default:

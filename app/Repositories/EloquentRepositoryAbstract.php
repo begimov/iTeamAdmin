@@ -15,14 +15,14 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface, Criter
         $this->entity = $this->resolveEntity();
     }
 
+    public function get()
+    {
+        return $this->entity->get();
+    }
+
     public function filter($request)
     {
         return $this->entity->filter($request, $this->getFilters());
-    }
-
-    public function whereLike($column, $query, $limit)
-    {
-        return $this->entity->where($column, 'like', "%{$query}%")->take($limit)->get();
     }
 
     public function withCriteria(array $criteria)
@@ -30,7 +30,7 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface, Criter
         foreach ($criteria as $criterion) {
             $this->entity = $criterion->apply($this->entity);
         }
-        return $this->entity;
+        return $this;
     }
 
     protected function resolveEntity()
