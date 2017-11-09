@@ -19,6 +19,9 @@ use App\Repositories\Eloquent\Pages\EloquentPageRepository;
 use App\Repositories\Contracts\Content\FileRepository;
 use App\Repositories\Eloquent\Content\EloquentFileRepository;
 
+use App\Repositories\Contracts\Payments\{ PaymentTypeRepository, PaymentStateRepository };
+use App\Repositories\Eloquent\Payments\{ EloquentPaymentTypeRepository, EloquentPaymentStateRepository };
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -35,6 +38,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProductRepository::class, EloquentProductRepository::class);
         $this->app->bind(PageRepository::class, EloquentPageRepository::class);
         $this->app->bind(FileRepository::class, EloquentFileRepository::class);
+        $this->app->bind(PaymentTypeRepository::class, EloquentPaymentTypeRepository::class);
+        $this->app->bind(PaymentStateRepository::class, EloquentPaymentStateRepository::class);
     }
 
     /**
