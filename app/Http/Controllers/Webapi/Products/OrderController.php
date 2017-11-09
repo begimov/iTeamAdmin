@@ -6,21 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
-use App\Repositories\Contracts\Products\OrderRepository;
-use App\Repositories\Contracts\Products\ProductRepository;
-use App\Repositories\Contracts\Payments\PaymentTypeRepository;
-use App\Repositories\Contracts\Payments\PaymentStateRepository;
+use App\Repositories\Contracts\Products\{ OrderRepository, ProductRepository };
+use App\Repositories\Contracts\Payments\{ PaymentTypeRepository, PaymentStateRepository };
 use App\Repositories\Contracts\Users\BusinessEntityRepository;
 
-use App\Models\Products\Product;
-use App\Models\Payments\PaymentType;
-use App\Models\Payments\PaymentState;
-use App\Models\Users\BusinessEntity;
-
-use App\Transformers\Products\OrderTransformer;
-use App\Transformers\Products\ProductTransformer;
-use App\Transformers\Payments\PaymentTypeTransformer;
-use App\Transformers\Payments\PaymentStateTransformer;
+use App\Transformers\Products\{ OrderTransformer, ProductTransformer };
+use App\Transformers\Payments\{ PaymentTypeTransformer, PaymentStateTransformer };
 use App\Transformers\Users\BusinessEntityTransformer;
 
 use App\Repositories\Eloquent\Criteria\With;
@@ -35,6 +26,7 @@ class OrderController extends Controller
     protected $paymentStates;
     protected $products;
     protected $businessEntities;
+    
     /**
      * Create a new controller instance.
      *
