@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Eloquent\Pages;
+namespace App\Repositories\Eloquent\Payments;
 
 use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Payments\PaymentTypeRepository;
