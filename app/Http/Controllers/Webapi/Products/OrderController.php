@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 use App\Repositories\Contracts\Products\OrderRepository;
+use App\Repositories\Contracts\Products\ProductRepository;
+use App\Repositories\Contracts\Payments\PaymentTypeRepository;
+use App\Repositories\Contracts\Payments\PaymentStateRepository;
 
 use App\Models\Products\Product;
 use App\Models\Payments\PaymentType;
@@ -27,14 +30,23 @@ use App\Http\Requests\Webapi\Products\StoreOrderRequest;
 class OrderController extends Controller
 {
     protected $orders;
+    protected $paymentTypes;
+    protected $paymentStates;
+    protected $products;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(OrderRepository $orders)
+    public function __construct(OrderRepository $orders,
+        PaymentTypeRepository $paymentTypes,
+        PaymentStateRepository $paymentStates,
+        ProductRepository $products)
     {
         $this->orders = $orders;
+        $this->paymentTypes = $paymentTypes;
+        $this->paymentStates = $paymentStates;
+        $this->products = $products;
     }
 
     /**
@@ -68,9 +80,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $products = fractal(Product::all(), new ProductTransformer)->toArray();
-        $paymentTypes = fractal(PaymentType::all(), new PaymentTypeTransformer)->toArray();
-        $paymentStates = fractal(PaymentState::all(), new PaymentStateTransformer)->toArray();
+        $products = fractal($this->products->get(), new ProductTransformer)->toArray();
+        $paymentTypes = fractal($this->paymentTypes->get(), new PaymentTypeTransformer)->toArray();
+        $paymentStates = fractal($this->paymentStates->get(), new PaymentStateTransformer)->toArray();
         $businessEntities = fractal(BusinessEntity::all(), new BusinessEntityTransformer)->toArray();
 
         return response()->json([
