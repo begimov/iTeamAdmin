@@ -10,6 +10,7 @@ use App\Repositories\Contracts\Products\OrderRepository;
 use App\Repositories\Contracts\Products\ProductRepository;
 use App\Repositories\Contracts\Payments\PaymentTypeRepository;
 use App\Repositories\Contracts\Payments\PaymentStateRepository;
+use App\Repositories\Contracts\Users\BusinessEntityRepository;
 
 use App\Models\Products\Product;
 use App\Models\Payments\PaymentType;
@@ -33,6 +34,7 @@ class OrderController extends Controller
     protected $paymentTypes;
     protected $paymentStates;
     protected $products;
+    protected $businessEntities;
     /**
      * Create a new controller instance.
      *
@@ -41,12 +43,14 @@ class OrderController extends Controller
     public function __construct(OrderRepository $orders,
         PaymentTypeRepository $paymentTypes,
         PaymentStateRepository $paymentStates,
-        ProductRepository $products)
+        ProductRepository $products,
+        BusinessEntityRepository $businessEntities)
     {
         $this->orders = $orders;
         $this->paymentTypes = $paymentTypes;
         $this->paymentStates = $paymentStates;
         $this->products = $products;
+        $this->businessEntities = $businessEntities;
     }
 
     /**
@@ -83,7 +87,7 @@ class OrderController extends Controller
         $products = fractal($this->products->get(), new ProductTransformer)->toArray();
         $paymentTypes = fractal($this->paymentTypes->get(), new PaymentTypeTransformer)->toArray();
         $paymentStates = fractal($this->paymentStates->get(), new PaymentStateTransformer)->toArray();
-        $businessEntities = fractal(BusinessEntity::all(), new BusinessEntityTransformer)->toArray();
+        $businessEntities = fractal($this->businessEntities->get(), new BusinessEntityTransformer)->toArray();
 
         return response()->json([
             'products' => $products,

@@ -7,8 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\Eloquent\EloquentUserRepository;
 
-use App\Repositories\Contracts\Users\{ UserProfileRepository, CompanyRepository };
-use App\Repositories\Eloquent\Users\{ EloquentUserProfileRepository, EloquentCompanyRepository };
+use App\Repositories\Contracts\Users\{ UserProfileRepository, CompanyRepository, BusinessEntityRepository };
+use App\Repositories\Eloquent\Users\{ EloquentUserProfileRepository, EloquentCompanyRepository, EloquentBusinessEntityRepository };
 
 use App\Repositories\Contracts\Products\{ OrderRepository, ProductRepository };
 use App\Repositories\Eloquent\Products\{ EloquentOrderRepository, EloquentProductRepository };
@@ -40,6 +40,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(FileRepository::class, EloquentFileRepository::class);
         $this->app->bind(PaymentTypeRepository::class, EloquentPaymentTypeRepository::class);
         $this->app->bind(PaymentStateRepository::class, EloquentPaymentStateRepository::class);
+        $this->app->bind(BusinessEntityRepository::class, EloquentBusinessEntityRepository::class);
     }
 
     /**
