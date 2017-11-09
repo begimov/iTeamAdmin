@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Payments\PaymentType;
-use App\Models\Payments\PaymentState;
 
 use App\Repositories\Contracts\Payments\PaymentTypeRepository;
 use App\Repositories\Contracts\Payments\PaymentStateRepository;
