@@ -14,6 +14,7 @@ class HomeController extends Controller
 {
     protected $paymentTypes;
     protected $paymentStates;
+
     /**
      * Create a new controller instance.
      *
@@ -35,8 +36,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $paymentTypes = PaymentType::all();
-        $paymentStates = PaymentState::all();
+        $paymentTypes = $this->paymentTypes->get();
+        $paymentStates = $this->paymentStates->get();
         return view('home.index', compact('paymentTypes', 'paymentStates'));
     }
 }

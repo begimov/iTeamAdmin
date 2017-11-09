@@ -10,6 +10,6 @@ class EloquentPaymentStateRepository extends EloquentRepositoryAbstract implemen
 {
     public function entity()
     {
-        return PaymentType::class;
+        return PaymentState::class;
     }
 }
