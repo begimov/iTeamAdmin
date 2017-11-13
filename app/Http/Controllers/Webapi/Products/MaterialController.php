@@ -5,17 +5,19 @@ namespace App\Http\Controllers\Webapi\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Products\Material;
+use App\Repositories\Contracts\Products\MaterialRepository;
 
 class MaterialController extends Controller
 {
+    protected $materials;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(MaterialRepository $materials)
     {
-        //
+        $this->materials = $materials;
     }
 
     /**
@@ -34,12 +36,9 @@ class MaterialController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $material = new Material;
-        $material->save();
-        
+    {   
         return response()->json([
-            'id' => $material->id,
+            'id' => $this->materials->create(),
         ]);
     }
 
