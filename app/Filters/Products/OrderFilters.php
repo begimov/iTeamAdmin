@@ -13,7 +13,7 @@ class OrderFilters extends FiltersAbstract
 {
     protected $filters = [
         // 'paymentType' => PaymentTypeFilter::class,
-        // 'paymentState' => PaymentStateFilter::class,
+        'paymentState' => PaymentStateFilter::class,
         'created_at' => CreatedAtOrderBy::class,
         'id' => IdOrderBy::class,
         // 'searchQuery' => SearchFilter::class,
