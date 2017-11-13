@@ -4,7 +4,7 @@ namespace App\Filters;
 
 abstract class FilterAbstract
 {
-    abstract public function filter($builder, $value, $repository);
+    abstract public function filter($repository, $value);
 
     public function mappings()
     {

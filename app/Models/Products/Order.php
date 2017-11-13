@@ -55,6 +55,6 @@ class Order extends Model
 
     public function scopeFilter($builder, $repository, $request, array $filters = [])
     {
-        return (new OrderFilters($request))->add($filters)->filter($builder, $repository);
+        return (new OrderFilters($request))->add($filters)->filter($repository);
     }
 }
