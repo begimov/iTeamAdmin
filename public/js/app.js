@@ -43521,30 +43521,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // materialOptions (state) {
-  //   return state.options.materials
-  // },
-  // materialParams (state) {
-  //   return state.params.materials
-  // },
-  // categoryOptions (state) {
-  //   return state.options.categories
-  // },
-  // categoryParams (state) {
-  //   return state.params.categories
-  // },
-  // getName(state) {
-  //   return state.params.name
-  // },
-  // getBasePrice(state) {
-  //   return state.params.basePrice
-  // },
-  // getPriceTagPrice(state) {
-  //   return state.options.priceTag.price
-  // },
-  // getPriceTagName(state) {
-  //   return state.options.priceTag.name
-  // },
+  id: function id(state) {
+    return state.params.id;
+  }
 });
 
 /***/ }),
