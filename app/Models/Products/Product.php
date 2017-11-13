@@ -31,8 +31,8 @@ class Product extends Model
         return $this->hasMany(PriceTag::class);
     }
 
-    public function scopeFilter($builder, $request, array $filters = [])
+    public function scopeFilter($builder, $repository, $request, array $filters = [])
     {
-        return (new ProductFilters($request))->add($filters)->filter($builder);
+        return (new ProductFilters($request))->add($filters)->filter($repository);
     }
 }

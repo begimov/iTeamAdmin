@@ -16,6 +16,6 @@ class OrderFilters extends FiltersAbstract
         'paymentState' => PaymentStateFilter::class,
         'created_at' => CreatedAtOrderBy::class,
         'id' => IdOrderBy::class,
-        // 'searchQuery' => SearchFilter::class,
+        'searchQuery' => SearchFilter::class,
     ];
 }
