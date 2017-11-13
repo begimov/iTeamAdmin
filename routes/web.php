@@ -37,6 +37,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for Products.vue component
         Route::resource('products', 'Products\ProductController');
 
+        // Route for Materials.vue & NewMaterial.vue components
+        Route::resource('materials', 'Products\MaterialController');
+
         // Route for Pages.vue component
         Route::resource('pages', 'Pages\PageController');
 
