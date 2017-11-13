@@ -33,7 +33,7 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface, Criter
 
     public function filter($request)
     {
-        $this->entity = $this->entity->filter($request, $this->getFilters());
+        $this->entity = $this->entity->filter($this, $request, $this->getFilters());
         return $this;
     }
 

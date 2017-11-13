@@ -6,7 +6,7 @@ use App\Filters\FilterAbstract;
 
 class CreatedAtOrderBy extends FilterAbstract
 {
-    public function filter($builder, $value)
+    public function filter($builder, $value, $repository)
     {
         return $builder->orderBy('created_at', $this->resolveFilterValue($value));
     }
