@@ -43563,7 +43563,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
     // commit('setIsLoading', true)
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.getMaterialId().then(function (res) {
-      commit('setMaterialId', res.data);
+      commit('setMaterialId', res.data.material.data.id);
       // commit('setIsLoading', false)
     });
   }
@@ -43575,8 +43575,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    setMaterialId: function setMaterialId(state, data) {
-        state.params.id = data.id;
+    setMaterialId: function setMaterialId(state, id) {
+        state.params.id = id;
     }
 });
 

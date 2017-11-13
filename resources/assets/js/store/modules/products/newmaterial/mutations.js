@@ -1,5 +1,5 @@
 export default {
-    setMaterialId (state, data) {
-        state.params.id = data.id
+    setMaterialId (state, id) {
+        state.params.id = id
     },
 }

@@ -4,8 +4,12 @@ namespace App\Http\Controllers\Webapi\Products;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 use App\Models\Products\Material;
+
 use App\Repositories\Contracts\Products\MaterialRepository;
+
+use App\Transformers\Products\MaterialTransformer;
 
 class MaterialController extends Controller
 {
@@ -37,8 +41,10 @@ class MaterialController extends Controller
      */
     public function create()
     {   
+        $material = fractal($this->materials->create(), new MaterialTransformer)->toArray();
+
         return response()->json([
-            'id' => $this->materials->create(),
+            'material' => $material,
         ]);
     }
 
