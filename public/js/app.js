@@ -53086,11 +53086,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId'])),
-  computed: {
-    //
-  },
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id'])),
   mounted: function mounted() {
-    this.getMaterialId();
+    // TODO: generate fresh id each time (safe) or use previous unsaved id?
+    if (!this.id) {
+      this.getMaterialId();
+    }
   }
 });
 

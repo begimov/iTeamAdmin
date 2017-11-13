@@ -13,9 +13,14 @@ export default {
     ]),
   },
   computed: {
-    //
+    ...mapGetters('products/newmaterial', [
+      'id',
+    ]),
   },
   mounted() {
-    this.getMaterialId()
+    // TODO: generate fresh id each time (safe) or use previous unsaved id?
+    if (!this.id) {
+      this.getMaterialId()
+    }
   }
 }
