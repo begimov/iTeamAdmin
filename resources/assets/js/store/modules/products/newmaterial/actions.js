@@ -1,22 +1,14 @@
 import api from '../../../api'
 
 export default {
+  getMaterialId ({dispatch, commit, state}) {
+    // commit('setIsLoading', true)
+    api.products.getMaterialId().then(res => {
+      // commit('setMaterialId', res.data)
+      // commit('setIsLoading', false)
+    })
+  },
   // updateMaterialParams ({ commit }, value) {
   //   commit('updateMaterialParams', value)
-  // },
-  // updateCategoryParams ({ commit }, value) {
-  //   commit('updateCategoryParams', value)
-  // },
-  // updateName ({ commit }, value) {
-  //   commit('updateName', value)
-  // },
-  // updateBasePrice ({ commit }, value) {
-  //   commit('updateBasePrice', value)
-  // },
-  // updatePriceTagPrice ({ commit }, value) {
-  //   commit('updatePriceTagPrice', value)
-  // },
-  // updatePriceTagName ({ commit }, value) {
-  //   commit('updatePriceTagName', value)
   // }
 }
