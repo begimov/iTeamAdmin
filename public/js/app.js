@@ -43506,23 +43506,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // options: {
-  //   materials: [
-  //     {id: 1, name: 'Material 1'},
-  //     {id: 2, name: 'Material 2'}
-  //   ],
-  //   categories: [
-  //     {id: 1, name: 'Category 1'}
-  //   ],
-  //   priceTag: { price: null, name: null }
-  // },
-  // params: {
-  //   categories: [],
-  //   name: null,
-  //   materials: [],
-  //   basePrice: null,
-  //   priceTags: [],
-  // },
+  params: {
+    id: null,
+    name: null,
+    files: []
+  },
   isLoading: false
   // errors: {}
 });
@@ -43575,8 +43563,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
     // commit('setIsLoading', true)
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.getMaterialId().then(function (res) {
-      console.log(res.data.id);
-      // commit('setMaterialId', res.data)
+      commit('setMaterialId', res.data);
       // commit('setIsLoading', false)
     });
   }
@@ -43588,24 +43575,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  //   updateMaterialParams (state, value) {
-  //       state.params.materials = value
-  //   },
-  //   updateCategoryParams (state, value) {
-  //       state.params.categories = value
-  //   },
-  //   updateName (state, value) {
-  //       state.params.name = value
-  //   },
-  //   updateBasePrice (state, value) {
-  //       state.params.basePrice = value
-  //   },
-  //   updatePriceTagPrice (state, value) {
-  //       state.options.priceTag.price = value
-  //   },
-  //   updatePriceTagName (state, value) {
-  //       state.options.priceTag.name = value
-  //   }
+    setMaterialId: function setMaterialId(state, data) {
+        state.params.id = data.id;
+    }
 });
 
 /***/ }),
