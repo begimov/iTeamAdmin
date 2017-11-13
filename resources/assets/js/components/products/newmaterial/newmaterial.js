@@ -8,12 +8,14 @@ export default {
     }
   },
   methods: {
-    //
+    ...mapActions('products/newmaterial', [
+      'getMaterialId',
+    ]),
   },
   computed: {
     //
   },
   mounted() {
-    //
+    this.getMaterialId()
   }
 }
