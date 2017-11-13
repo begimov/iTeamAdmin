@@ -13,4 +13,13 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
     {
         return Material::class;
     }
+
+    public function store($data = null)
+    {
+        if (!$data) {
+            $material = new Material;
+            $material->save();
+            return $material;
+        }
+    }
 }
