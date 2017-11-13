@@ -12,6 +12,5 @@ class CreatedAtOrderBy extends FilterAbstract
         return $repository->withCriteria([
             new OrderBy('created_at', $this->resolveFilterValue($value))
         ]);
-        // return $builder->orderBy('created_at', $this->resolveFilterValue($value));
     }
 }
