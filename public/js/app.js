@@ -53128,7 +53128,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('file-uploader', {
     attrs: {
-      "resource-id": "1"
+      "resource-id": _vm.id
     }
   })], 1)]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "row"
