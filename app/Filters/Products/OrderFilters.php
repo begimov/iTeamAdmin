@@ -12,7 +12,7 @@ use App\Filters\Products\Order\SearchFilter;
 class OrderFilters extends FiltersAbstract
 {
     protected $filters = [
-        // 'paymentType' => PaymentTypeFilter::class,
+        'paymentType' => PaymentTypeFilter::class,
         'paymentState' => PaymentStateFilter::class,
         'created_at' => CreatedAtOrderBy::class,
         'id' => IdOrderBy::class,
