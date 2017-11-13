@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Webapi\Products;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Products\Material;
 
 class MaterialController extends Controller
 {
@@ -34,8 +35,11 @@ class MaterialController extends Controller
      */
     public function create()
     {
+        $material = new Material;
+        $material->save();
+        
         return response()->json([
-            'id' => 1,
+            'id' => $material->id,
         ]);
     }
 
