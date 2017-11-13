@@ -2,7 +2,7 @@
   <div>
     <vue-dropzone 
       ref="fileUploader" 
-      id="fileUploader" 
+      id="fileUploader"
       :options="options"
       @vdropzone-success="fileUploaded"
       @vdropzone-removed-file="fileRemoved" />

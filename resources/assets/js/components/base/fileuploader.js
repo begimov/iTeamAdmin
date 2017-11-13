@@ -26,7 +26,12 @@ export default {
     },
     fileRemoved(file, error, xhr) {
       axios.delete(`/webapi/files/${this.resourceId}/file/${file.id}`)
-    },
+    }
+  },
+  watch: {
+    resourceId: function() {
+      this.$refs.fileUploader.setOption('url', `/webapi/files/${this.resourceId}/file`)
+    }
   }
 }
 

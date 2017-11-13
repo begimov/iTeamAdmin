@@ -47886,6 +47886,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     fileRemoved: function fileRemoved(file, error, xhr) {
       axios.delete('/webapi/files/' + this.resourceId + '/file/' + file.id);
     }
+  },
+  watch: {
+    resourceId: function resourceId() {
+      this.$refs.fileUploader.setOption('url', '/webapi/files/' + this.resourceId + '/file');
+    }
   }
 });
 
