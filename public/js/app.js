@@ -43545,6 +43545,17 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
       commit('setMaterialId', res.data.material.data.id);
       // commit('setIsLoading', false)
     });
+  },
+  saveMaterial: function saveMaterial(_ref2) {
+    var dispatch = _ref2.dispatch,
+        commit = _ref2.commit,
+        state = _ref2.state;
+
+    // commit('setIsLoading', true)
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.saveMaterial(state.params).then(function (res) {
+      // commit('setMaterialId', res.data.material.data.id)
+      // commit('setIsLoading', false)
+    });
   }
 });
 
@@ -53090,7 +53101,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial'])),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id'])),
   mounted: function mounted() {
     // TODO: generate fresh id each time (safe) or use previous unsaved id?
@@ -53124,7 +53135,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "submit": function($event) {
         $event.preventDefault();
-        _vm.saveProduct($event)
+        _vm.saveMaterial($event)
       }
     }
   }, [_vm._m(0), _vm._v(" "), _c('div', {

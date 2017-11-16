@@ -8,7 +8,11 @@ export default {
       // commit('setIsLoading', false)
     })
   },
-  // updateMaterialParams ({ commit }, value) {
-  //   commit('updateMaterialParams', value)
-  // }
+  saveMaterial ({dispatch, commit, state}) {
+    // commit('setIsLoading', true)
+    api.newmaterial.saveMaterial(state.params).then(res => {
+      // commit('setMaterialId', res.data.material.data.id)
+      // commit('setIsLoading', false)
+    })
+  }
 }

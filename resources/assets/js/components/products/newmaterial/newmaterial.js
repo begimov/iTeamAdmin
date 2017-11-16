@@ -10,6 +10,7 @@ export default {
   methods: {
     ...mapActions('products/newmaterial', [
       'getMaterialId',
+      'saveMaterial',
     ]),
   },
   computed: {
