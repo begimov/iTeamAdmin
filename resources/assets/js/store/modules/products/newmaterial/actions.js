@@ -14,5 +14,8 @@ export default {
       // commit('setMaterialId', res.data.material.data.id)
       // commit('setIsLoading', false)
     })
-  }
+  },
+  updateName ({ commit }, value) {
+    commit('updateName', value)
+  },
 }

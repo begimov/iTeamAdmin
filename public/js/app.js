@@ -43449,7 +43449,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   saveMaterial: function saveMaterial(data) {
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/materials").then(function (res) {
+      axios.post("/webapi/materials", {
+        data: data
+      }).then(function (res) {
         console.log(res);
         // resolve(res)
       });
@@ -43531,6 +43533,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   id: function id(state) {
     return state.params.id;
+  },
+  getName: function getName(state) {
+    return state.params.name;
   }
 });
 
@@ -43564,6 +43569,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
       // commit('setMaterialId', res.data.material.data.id)
       // commit('setIsLoading', false)
     });
+  },
+  updateName: function updateName(_ref3, value) {
+    var commit = _ref3.commit;
+
+    commit('updateName', value);
   }
 });
 
@@ -43575,6 +43585,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
     setMaterialId: function setMaterialId(state, id) {
         state.params.id = id;
+    },
+    updateName: function updateName(state, value) {
+        state.params.name = value;
     }
 });
 
@@ -53109,8 +53122,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial'])),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName']), {
     'name': {
       get: function get() {
         return this.getName;

@@ -11,11 +11,13 @@ export default {
     ...mapActions('products/newmaterial', [
       'getMaterialId',
       'saveMaterial',
+      'updateName',
     ]),
   },
   computed: {
     ...mapGetters('products/newmaterial', [
       'id',
+      'getName',
     ]),
     'name': {
       get () {

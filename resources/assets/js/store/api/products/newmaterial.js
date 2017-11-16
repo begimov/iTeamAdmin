@@ -8,7 +8,9 @@ export default {
   },
   saveMaterial(data) {
     return new Promise((resolve, reject) => {
-      axios.post(`/webapi/materials`).then(res => {
+      axios.post(`/webapi/materials`, {
+        data
+      }).then(res => {
         console.log(res)
         // resolve(res)
       })
