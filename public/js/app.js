@@ -43446,6 +43446,14 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         resolve(res);
       });
     });
+  },
+  saveMaterial: function saveMaterial(data) {
+    return new Promise(function (resolve, reject) {
+      axios.post("/webapi/materials").then(function (res) {
+        console.log(res);
+        // resolve(res)
+      });
+    });
   }
 });
 
