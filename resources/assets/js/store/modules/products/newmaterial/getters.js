@@ -5,4 +5,7 @@ export default {
   getName (state) {
     return state.params.name
   },
+  isLoading (state) {
+    return state.isLoading
+  },
 }

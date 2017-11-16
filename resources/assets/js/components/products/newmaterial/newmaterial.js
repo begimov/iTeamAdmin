@@ -18,6 +18,7 @@ export default {
     ...mapGetters('products/newmaterial', [
       'id',
       'getName',
+      'isLoading',
     ]),
     'name': {
       get () {

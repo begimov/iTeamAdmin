@@ -43535,6 +43535,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   getName: function getName(state) {
     return state.params.name;
+  },
+  isLoading: function isLoading(state) {
+    return state.isLoading;
   }
 });
 
@@ -53122,7 +53125,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName'])),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'isLoading']), {
     'name': {
       get: function get() {
         return this.getName;
