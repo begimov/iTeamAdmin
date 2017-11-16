@@ -56,7 +56,7 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json(['name' => $request->all()]);
+        $this->materials->store($request->data);
     }
 
     /**
