@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Webapi\Products;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\Webapi\Products\StoreMaterialRequest;
 use App\Http\Controllers\Controller;
 
 use App\Models\Products\Material;
@@ -54,7 +55,7 @@ class MaterialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMaterialRequest $request)
     {
         $this->materials->store($request->data);
     }
