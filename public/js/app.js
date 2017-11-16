@@ -43453,7 +43453,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         data: data
       }).then(function (res) {
         console.log(res);
-        // resolve(res)
+        resolve(res);
       });
     });
   }
@@ -43555,10 +43555,10 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         commit = _ref.commit,
         state = _ref.state;
 
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.getMaterialId().then(function (res) {
       commit('setMaterialId', res.data.material.data.id);
-      // commit('setIsLoading', false)
+      commit('setIsLoading', false);
     });
   },
   saveMaterial: function saveMaterial(_ref2) {
@@ -43566,10 +43566,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         commit = _ref2.commit,
         state = _ref2.state;
 
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.saveMaterial(state.params).then(function (res) {
-      // commit('setMaterialId', res.data.material.data.id)
-      // commit('setIsLoading', false)
+      commit('setIsLoading', false);
     });
   },
   updateName: function updateName(_ref3, value) {
@@ -43590,6 +43589,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     },
     updateName: function updateName(state, value) {
         state.params.name = value;
+    },
+    setIsLoading: function setIsLoading(state, value) {
+        state.isLoading = value;
     }
 });
 

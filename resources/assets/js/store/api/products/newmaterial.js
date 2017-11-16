@@ -12,7 +12,7 @@ export default {
         data
       }).then(res => {
         console.log(res)
-        // resolve(res)
+        resolve(res)
       })
     })
   },

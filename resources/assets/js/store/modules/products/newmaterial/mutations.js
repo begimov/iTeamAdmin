@@ -5,4 +5,7 @@ export default {
     updateName (state, value) {
         state.params.name = value
     },
+    setIsLoading (state, value) {
+        state.isLoading = value
+    },
 }
