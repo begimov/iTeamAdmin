@@ -23,6 +23,8 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
 
     public function store(array $data)
     {
-        var_dump($data);
+        $material = Material::find($data['id']);
+        $material->name = $data['name'];
+        $material->save();
     }
 }

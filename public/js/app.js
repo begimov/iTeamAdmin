@@ -43452,7 +43452,6 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
       axios.post("/webapi/materials", {
         data: data
       }).then(function (res) {
-        console.log(res);
         resolve(res);
       });
     });

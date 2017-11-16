@@ -11,7 +11,6 @@ export default {
       axios.post(`/webapi/materials`, {
         data
       }).then(res => {
-        console.log(res)
         resolve(res)
       })
     })
