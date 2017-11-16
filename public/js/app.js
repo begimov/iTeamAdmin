@@ -43518,8 +43518,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 /* harmony default export */ __webpack_exports__["a"] = ({
   params: {
     id: null,
-    name: null,
-    files: []
+    name: null
   },
   isLoading: false
   // errors: {}
@@ -53153,6 +53152,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
