@@ -17,6 +17,14 @@ export default {
     ...mapGetters('products/newmaterial', [
       'id',
     ]),
+    'name': {
+      get () {
+        return this.getName
+      },
+      set (value) {
+        this.updateName(value)
+      }
+    },
   },
   mounted() {
     // TODO: generate fresh id each time (safe) or use previous unsaved id?

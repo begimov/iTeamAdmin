@@ -15,7 +15,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label>Название</label>
-                    <input type="text" class="form-control" placeholder="Введите название материала">
+                    <input type="text" class="form-control" placeholder="Введите название материала" v-model="name">
                   </div>
                 </div>
               </div>
