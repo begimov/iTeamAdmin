@@ -10,8 +10,18 @@ use App\Repositories\Eloquent\EloquentUserRepository;
 use App\Repositories\Contracts\Users\{ UserProfileRepository, CompanyRepository, BusinessEntityRepository };
 use App\Repositories\Eloquent\Users\{ EloquentUserProfileRepository, EloquentCompanyRepository, EloquentBusinessEntityRepository };
 
-use App\Repositories\Contracts\Products\{ OrderRepository, ProductRepository, MaterialRepository };
-use App\Repositories\Eloquent\Products\{ EloquentOrderRepository, EloquentProductRepository, EloquentMaterialRepository };
+use App\Repositories\Contracts\Products\{ 
+    OrderRepository, 
+    ProductRepository, 
+    MaterialRepository, 
+    CategoryRepository 
+};
+use App\Repositories\Eloquent\Products\{ 
+    EloquentOrderRepository, 
+    EloquentProductRepository, 
+    EloquentMaterialRepository,
+    EloquentCategoryRepository 
+};
 
 use App\Repositories\Contracts\Pages\PageRepository;
 use App\Repositories\Eloquent\Pages\EloquentPageRepository;
@@ -42,6 +52,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PaymentStateRepository::class, EloquentPaymentStateRepository::class);
         $this->app->bind(BusinessEntityRepository::class, EloquentBusinessEntityRepository::class);
         $this->app->bind(MaterialRepository::class, EloquentMaterialRepository::class);
+        $this->app->bind(CategoryRepository::class, EloquentCategoryRepository::class);
     }
 
     /**
