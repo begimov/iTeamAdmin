@@ -43369,6 +43369,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     // commit('setIsLoading', true)
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.getInitialData().then(function (res) {
       console.log(res);
+      commit('setCategories', res.data.categories.data);
       // this.options.products = response.data.products.data
       // this.params.paymentState = this.options.paymentStates[0]
       // commit('setMaterialId', res.data.material.data.id)
@@ -43494,6 +43495,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+    setCategories: function setCategories(state, value) {
+        state.params.categories = value;
+    },
     updateMaterialParams: function updateMaterialParams(state, value) {
         state.params.materials = value;
     },
