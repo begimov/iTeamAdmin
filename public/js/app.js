@@ -47008,8 +47008,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('li', {
       key: index
     }, [_c('h4', [_c('span', {
-      staticClass: "label label-default"
-    }, [_vm._v("\n                        " + _vm._s(index) + " " + _vm._s(priceTag.name) + ": " + _vm._s(priceTag.price) + "\n                        "), _c('a', {
+      staticClass: "label label-primary"
+    }, [_vm._v("\n                        " + _vm._s(priceTag.name) + ": " + _vm._s(priceTag.price) + "\n                        "), _c('a', {
       attrs: {
         "href": "#"
       },
@@ -47031,7 +47031,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Дополнительная цена,  ₽")]), _vm._v(" "), _c('input', {
+  }, [_c('label', [_vm._v("Дополнительная цена")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
