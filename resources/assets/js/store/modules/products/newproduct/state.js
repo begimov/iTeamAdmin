@@ -1,16 +1,11 @@
 export default {
   options: {
-    materials: [
-      {id: 1, name: 'Material 1'},
-      {id: 2, name: 'Material 2'}
-    ],
-    categories: [
-      {id: 1, name: 'Category 1'}
-    ],
+    materials: [],
+    categories: [],
     priceTag: { price: null, name: null }
   },
   params: {
-    categories: [],
+    categories: null,
     name: null,
     materials: [],
     basePrice: null,

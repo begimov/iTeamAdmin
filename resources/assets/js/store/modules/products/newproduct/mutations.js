@@ -1,6 +1,9 @@
 export default {
     setCategories(state, value) {
-        state.params.categories = value
+        state.options.categories = value
+    },
+    setMaterials(state, value) {
+        state.options.materials = value
     },
     updateMaterialParams(state, value) {
         state.params.materials = value

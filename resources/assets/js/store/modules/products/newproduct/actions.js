@@ -4,8 +4,8 @@ export default {
   getInitialData ({ commit }) {
     // commit('setIsLoading', true)
     api.newproduct.getInitialData().then(res => {
-      console.log(res)
       commit('setCategories', res.data.categories.data)
+      commit('setMaterials', res.data.materials.data)
       // this.options.products = response.data.products.data
       // this.params.paymentState = this.options.paymentStates[0]
       // commit('setMaterialId', res.data.material.data.id)

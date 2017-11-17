@@ -43303,12 +43303,12 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   options: {
-    materials: [{ id: 1, name: 'Material 1' }, { id: 2, name: 'Material 2' }],
-    categories: [{ id: 1, name: 'Category 1' }],
+    materials: [],
+    categories: [],
     priceTag: { price: null, name: null }
   },
   params: {
-    categories: [],
+    categories: null,
     name: null,
     materials: [],
     basePrice: null,
@@ -43368,8 +43368,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
     // commit('setIsLoading', true)
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.getInitialData().then(function (res) {
-      console.log(res);
       commit('setCategories', res.data.categories.data);
+      commit('setMaterials', res.data.materials.data);
       // this.options.products = response.data.products.data
       // this.params.paymentState = this.options.paymentStates[0]
       // commit('setMaterialId', res.data.material.data.id)
@@ -43496,7 +43496,10 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
     setCategories: function setCategories(state, value) {
-        state.params.categories = value;
+        state.options.categories = value;
+    },
+    setMaterials: function setMaterials(state, value) {
+        state.options.materials = value;
     },
     updateMaterialParams: function updateMaterialParams(state, value) {
         state.params.materials = value;
