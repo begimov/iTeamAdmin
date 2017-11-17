@@ -22,6 +22,7 @@ export default {
   },
   computed: {
       ...mapGetters('products/newproduct', [
+          'getInitialData',
           'materialOptions',
           'materialParams',
           'categoryOptions',
@@ -66,6 +67,6 @@ export default {
       }
   },
   mounted() {
-    //
+    this.getInitialData()
   }
 }
