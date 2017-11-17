@@ -77,15 +77,26 @@
                   </div>
                 </div>
               </div>
-              <hr>
               <div class="row">
                 <div class="col-md-12">
-                  {{ priceTags }}
+                  <ul class="list-inline" v-if="priceTags.length">
+                    <li v-for="(priceTag, index) in priceTags" :key="index">
+                      <h4>
+                        <span class="label label-default">
+                          {{ index }} {{ priceTag.name }}: {{ priceTag.price }}
+                          <a href="#" @click.prevent="removePriceTag(index)">
+                            <span class="glyphicon glyphicon-remove label--remove-icon" aria-hidden="true"></span>
+                          </a>
+                        </span> 
+                      </h4>
+                    </li>
+                  </ul>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
+                    <label>Дополнительная цена, &nbsp;&#8381;</label>
                     <input type="text" class="form-control" placeholder="Специальная доп. цена, руб." v-model="priceTagPrice">
                   </div>
                 </div>

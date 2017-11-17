@@ -46791,7 +46791,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'newMaterialOn', 'addPrice'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'newMaterialOn', 'addPrice']), {
+    removePriceTag: function removePriceTag(index) {
+      console.log(index);
+    }
+  }),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn', 'isLoading', 'priceTags']), {
     'name': {
       get: function get() {
@@ -46990,17 +46994,40 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.basePrice = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  })])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_vm._v("\n                " + _vm._s(_vm.priceTags) + "\n              ")])]), _vm._v(" "), _c('div', {
+  }, [(_vm.priceTags.length) ? _c('ul', {
+    staticClass: "list-inline"
+  }, _vm._l((_vm.priceTags), function(priceTag, index) {
+    return _c('li', {
+      key: index
+    }, [_c('h4', [_c('span', {
+      staticClass: "label label-default"
+    }, [_vm._v("\n                        " + _vm._s(index) + " " + _vm._s(priceTag.name) + ": " + _vm._s(priceTag.price) + "\n                        "), _c('a', {
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removePriceTag(index)
+        }
+      }
+    }, [_c('span', {
+      staticClass: "glyphicon glyphicon-remove label--remove-icon",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })])])])])
+  })) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('input', {
+  }, [_c('label', [_vm._v("Дополнительная цена,  ₽")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
