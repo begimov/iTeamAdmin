@@ -79,6 +79,11 @@
               </div>
               <hr>
               <div class="row">
+                <div class="col-md-12">
+                  {{ priceTags }}
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
                     <input type="text" class="form-control" placeholder="Специальная доп. цена, руб." v-model="priceTagPrice">

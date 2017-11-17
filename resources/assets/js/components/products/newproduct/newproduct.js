@@ -34,6 +34,7 @@ export default {
           'getPriceTagName',
           'isNewMaterialOn',
           'isLoading',
+          'priceTags',
       ]),
       'name': {
         get () {

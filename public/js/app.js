@@ -43354,6 +43354,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
+  },
+  priceTags: function priceTags(state) {
+    return state.params.priceTags;
   }
 });
 
@@ -46789,7 +46792,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'newMaterialOn', 'addPrice'])),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn', 'isLoading', 'priceTags']), {
     'name': {
       get: function get() {
         return this.getName;
@@ -46988,6 +46991,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_vm._v("\n                " + _vm._s(_vm.priceTags) + "\n              ")])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
