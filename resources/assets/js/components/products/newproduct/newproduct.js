@@ -11,6 +11,7 @@ export default {
   },
   methods: {
       ...mapActions('products/newproduct', [
+          'getInitialData',
           'updateMaterialParams',
           'updateCategoryParams',
           'updateName',
@@ -22,7 +23,6 @@ export default {
   },
   computed: {
       ...mapGetters('products/newproduct', [
-          'getInitialData',
           'materialOptions',
           'materialParams',
           'categoryOptions',
