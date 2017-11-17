@@ -91,6 +91,7 @@
                       </h4>
                     </li>
                   </ul>
+                  {{ priceTags }}
                 </div>
               </div>
               <div class="row">
@@ -107,7 +108,7 @@
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
-                  <a href="#" class="btn btn-default" @click.prevent="addPrice">Добавить цену</a>
+                  <a href="#" class="btn btn-default" @click.prevent="addPriceTag">Добавить цену</a>
                 </div>
                 </div>
               </div>

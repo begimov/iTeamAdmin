@@ -43414,10 +43414,15 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
     commit('newMaterialOn');
   },
-  addPrice: function addPrice(_ref9) {
+  addPriceTag: function addPriceTag(_ref9) {
     var commit = _ref9.commit;
 
-    commit('addPrice');
+    commit('addPriceTag');
+  },
+  removePriceTag: function removePriceTag(_ref10, index) {
+    var commit = _ref10.commit;
+
+    commit('removePriceTag', index);
   }
 });
 
@@ -43532,13 +43537,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     newMaterialOn: function newMaterialOn(state) {
         state.isNewMaterialOn = true;
     },
-    addPrice: function addPrice(state) {
+    addPriceTag: function addPriceTag(state) {
         var priceTag = state.options.priceTag;
         if (priceTag.price && priceTag.name) {
             state.params.priceTags.push(_extends({}, priceTag));
             priceTag.price = null;
             priceTag.name = null;
         }
+    },
+    removePriceTag: function removePriceTag(state, index) {
+        state.params.priceTags.splice(index, 1);
     },
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
@@ -46791,11 +46799,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'newMaterialOn', 'addPrice']), {
-    removePriceTag: function removePriceTag(index) {
-      console.log(index);
-    }
-  }),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'newMaterialOn', 'addPriceTag', 'removePriceTag'])),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn', 'isLoading', 'priceTags']), {
     'name': {
       get: function get() {
@@ -47021,7 +47025,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "aria-hidden": "true"
       }
     })])])])])
-  })) : _vm._e()])]), _vm._v(" "), _c('div', {
+  })) : _vm._e(), _vm._v("\n                " + _vm._s(_vm.priceTags) + "\n              ")])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
@@ -47085,7 +47089,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.addPrice($event)
+        _vm.addPriceTag($event)
       }
     }
   }, [_vm._v("Добавить цену")])])])]), _vm._v(" "), _c('div', {

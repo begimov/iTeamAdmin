@@ -19,11 +19,9 @@ export default {
           'updatePriceTagPrice',
           'updatePriceTagName',
           'newMaterialOn',
-          'addPrice',
-      ]),
-      removePriceTag(index) {
-        console.log(index)
-      }
+          'addPriceTag',
+          'removePriceTag',
+      ])
   },
   computed: {
       ...mapGetters('products/newproduct', [

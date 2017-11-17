@@ -30,7 +30,10 @@ export default {
   newMaterialOn ({ commit }) {
     commit('newMaterialOn')
   },
-  addPrice ({ commit }) {
-    commit('addPrice')
+  addPriceTag ({ commit }) {
+    commit('addPriceTag')
+  },
+  removePriceTag ({ commit }, index) {
+    commit('removePriceTag', index)
   },
 }
