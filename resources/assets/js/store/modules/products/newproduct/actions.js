@@ -2,11 +2,11 @@ import api from '../../../api'
 
 export default {
   getInitialData ({ commit }) {
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true)
     api.newproduct.getInitialData().then(res => {
       commit('setCategories', res.data.categories.data)
       commit('setMaterials', res.data.materials.data)
-      // commit('setIsLoading', false)
+      commit('setIsLoading', false)
     })
   },
   updateMaterialParams ({ commit }, value) {

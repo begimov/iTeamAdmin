@@ -43369,11 +43369,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   getInitialData: function getInitialData(_ref) {
     var commit = _ref.commit;
 
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.getInitialData().then(function (res) {
       commit('setCategories', res.data.categories.data);
       commit('setMaterials', res.data.materials.data);
-      // commit('setIsLoading', false)
+      commit('setIsLoading', false);
     });
   },
   updateMaterialParams: function updateMaterialParams(_ref2, value) {
@@ -43529,6 +43529,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     },
     addPrice: function addPrice(state) {
         state.params.priceTags.push(state.options.priceTag);
+    },
+    setIsLoading: function setIsLoading(state, value) {
+        state.isLoading = value;
     }
 });
 

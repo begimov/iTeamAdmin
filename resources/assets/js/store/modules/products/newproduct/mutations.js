@@ -29,4 +29,7 @@ export default {
     addPrice(state) {
         state.params.priceTags.push(state.options.priceTag)
     },
+    setIsLoading(state, value) {
+        state.isLoading = value
+    },
 }
