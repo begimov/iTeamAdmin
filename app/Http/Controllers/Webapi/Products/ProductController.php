@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 use App\Repositories\Contracts\Products\ProductRepository;
+use App\Repositories\Contracts\Products\CategoryRepository;
 
 use App\Repositories\Eloquent\Criteria\With;
 
@@ -15,14 +16,17 @@ use App\Transformers\Products\ProductTransformer;
 class ProductController extends Controller
 {
     protected $products;
+    protected $categories;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(ProductRepository $products)
+    public function __construct(ProductRepository $products,
+        CategoryRepository $categories)
     {
         $this->products = $products;
+        $this->categories = $categories;
     }
 
     /**
@@ -55,7 +59,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // $categories = fractal($this->products->get(), new ProductTransformer)->toArray();
+
+        // return response()->json([
+        //     'categories' => $products,
+        // ]);
     }
 
     /**
