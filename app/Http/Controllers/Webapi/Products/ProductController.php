@@ -12,6 +12,7 @@ use App\Repositories\Contracts\Products\CategoryRepository;
 use App\Repositories\Eloquent\Criteria\With;
 
 use App\Transformers\Products\ProductTransformer;
+use App\Transformers\Products\CategoryTransformer;
 
 class ProductController extends Controller
 {
@@ -59,11 +60,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // $categories = fractal($this->products->get(), new ProductTransformer)->toArray();
+        $categories = fractal($this->categories->get(), new CategoryTransformer)->toArray();
 
-        // return response()->json([
-        //     'categories' => $products,
-        // ]);
+        return response()->json([
+            'categories' => $categories,
+        ]);
     }
 
     /**
