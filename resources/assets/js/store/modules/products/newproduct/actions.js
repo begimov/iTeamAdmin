@@ -1,6 +1,16 @@
 import api from '../../../api'
 
 export default {
+  getInitialData ({ commit }) {
+    // commit('setIsLoading', true)
+    api.newproduct.getInitialData().then(res => {
+      console.log(res)
+      // this.options.products = response.data.products.data
+      // this.params.paymentState = this.options.paymentStates[0]
+      // commit('setMaterialId', res.data.material.data.id)
+      // commit('setIsLoading', false)
+    })
+  },
   updateMaterialParams ({ commit }, value) {
     commit('updateMaterialParams', value)
   },
