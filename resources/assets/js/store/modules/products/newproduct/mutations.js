@@ -25,5 +25,8 @@ export default {
     },
     newMaterialOn(state) {
         state.isNewMaterialOn = true
-    }
+    },
+    addPrice(state) {
+        state.params.priceTags.push(state.options.priceTag)
+    },
 }

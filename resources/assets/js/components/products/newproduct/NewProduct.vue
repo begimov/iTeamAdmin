@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
-                  <a href="#" class="btn btn-default">Добавить цену</a>
+                  <a href="#" class="btn btn-default" @click.prevent="addPrice">Добавить цену</a>
                 </div>
                 </div>
               </div>

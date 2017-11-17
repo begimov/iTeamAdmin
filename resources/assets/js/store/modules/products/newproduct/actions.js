@@ -32,5 +32,8 @@ export default {
   },
   newMaterialOn ({ commit }) {
     commit('newMaterialOn')
-  }
+  },
+  addPrice ({ commit }) {
+    commit('addPrice')
+  },
 }
