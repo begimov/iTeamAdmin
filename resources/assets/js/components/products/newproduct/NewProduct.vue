@@ -91,7 +91,6 @@
                       </h4>
                     </li>
                   </ul>
-                  {{ priceTags }}
                 </div>
               </div>
               <div class="row">
