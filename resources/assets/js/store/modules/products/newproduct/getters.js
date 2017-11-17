@@ -26,4 +26,7 @@ export default {
   isNewMaterialOn(state) {
     return state.isNewMaterialOn
   },
+  isLoading(state) {
+    return state.isLoading
+  },
 }

@@ -33,6 +33,7 @@ export default {
           'getPriceTagPrice',
           'getPriceTagName',
           'isNewMaterialOn',
+          'isLoading',
       ]),
       'name': {
         get () {

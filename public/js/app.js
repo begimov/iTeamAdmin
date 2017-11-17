@@ -43351,6 +43351,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   isNewMaterialOn: function isNewMaterialOn(state) {
     return state.isNewMaterialOn;
+  },
+  isLoading: function isLoading(state) {
+    return state.isLoading;
   }
 });
 
@@ -43370,9 +43373,6 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.getInitialData().then(function (res) {
       commit('setCategories', res.data.categories.data);
       commit('setMaterials', res.data.materials.data);
-      // this.options.products = response.data.products.data
-      // this.params.paymentState = this.options.paymentStates[0]
-      // commit('setMaterialId', res.data.material.data.id)
       // commit('setIsLoading', false)
     });
   },
@@ -46779,7 +46779,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'newMaterialOn', 'addPrice'])),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn', 'isLoading']), {
     'name': {
       get: function get() {
         return this.getName;
@@ -46830,6 +46830,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
