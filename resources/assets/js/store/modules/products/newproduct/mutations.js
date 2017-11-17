@@ -27,7 +27,12 @@ export default {
         state.isNewMaterialOn = true
     },
     addPrice(state) {
-        state.params.priceTags.push(state.options.priceTag)
+        const priceTag = state.options.priceTag
+        if (priceTag.price && priceTag.name) {
+            state.params.priceTags.push({ ...priceTag })
+            priceTag.price = null
+            priceTag.name = null
+        }
     },
     setIsLoading(state, value) {
         state.isLoading = value
