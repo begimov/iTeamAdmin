@@ -29,18 +29,23 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         $product->save();
 
         if (isset($data['priceTags'])) {
-            foreach ($data['priceTags'] as $priceTag) {
-                $pt = new PriceTag;
-                $pt->name = $priceTag['name'];
-                $pt->price = $priceTag['price'];
-                $pt->product()->associate($product);
-                $pt->save();
-            }
+            $this->storePriceTags($data['priceTags'], $product);
         } 
     }
 
     public function destroyById($id)
     {
         // TODO: Do we need to delete products? maybe only delete pages? so no one could see products
+    }
+
+    protected function storePriceTags(array $priceTags, Product $product)
+    {
+        foreach ($priceTags as $priceTag) {
+            $pt = new PriceTag;
+            $pt->name = $priceTag['name'];
+            $pt->price = $priceTag['price'];
+            $pt->product()->associate($product);
+            $pt->save();
+        }
     }
 }
