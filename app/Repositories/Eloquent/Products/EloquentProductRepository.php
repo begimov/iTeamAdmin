@@ -28,6 +28,12 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
 
         $product->save();
 
+        if (isset($data['materials'])) {
+            foreach ($data['materials'] as $material) {
+                $product->materials()->attach($material['id']);
+            }
+        }
+
         if (isset($data['priceTags'])) {
             $this->storePriceTags($data['priceTags'], $product);
         } 

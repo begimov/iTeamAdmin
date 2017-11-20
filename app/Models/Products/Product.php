@@ -5,9 +5,6 @@ namespace App\Models\Products;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use App\Models\Products\Category;
-use App\Models\Products\PriceTag;
-
 use App\Filters\Products\ProductFilters;
 
 class Product extends Model
@@ -29,6 +26,11 @@ class Product extends Model
     public function priceTags()
     {
         return $this->hasMany(PriceTag::class);
+    }
+
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'products_materials');
     }
 
     public function scopeFilter($builder, $repository, $request, array $filters = [])
