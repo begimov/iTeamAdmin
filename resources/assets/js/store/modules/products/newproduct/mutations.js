@@ -40,4 +40,10 @@ export default {
     setIsLoading(state, value) {
         state.isLoading = value
     },
+    resetParams(state) {
+        state.params.name = null
+        state.params.basePrice = null
+        state.params.materials = []
+        state.params.priceTags = []
+    },
 }

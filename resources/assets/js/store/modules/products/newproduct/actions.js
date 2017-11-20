@@ -39,9 +39,7 @@ export default {
   saveProduct ({ commit, state }) {
     commit('setIsLoading', true)
     api.newproduct.saveProduct(state.params).then(res => {
-      console.log(res)
-      // commit('setCategories', res.data.categories.data)
-      // commit('setMaterials', res.data.materials.data)
+      commit('resetParams')
       commit('setIsLoading', false)
     })
   },

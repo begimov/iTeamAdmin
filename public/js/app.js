@@ -43430,9 +43430,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.saveProduct(state.params).then(function (res) {
-      console.log(res);
-      // commit('setCategories', res.data.categories.data)
-      // commit('setMaterials', res.data.materials.data)
+      commit('resetParams');
       commit('setIsLoading', false);
     });
   }
@@ -43573,6 +43571,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
+    },
+    resetParams: function resetParams(state) {
+        state.params.name = null;
+        state.params.basePrice = null;
+        state.params.materials = [];
+        state.params.priceTags = [];
     }
 });
 

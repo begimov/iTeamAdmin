@@ -21,7 +21,6 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         $product = new Product;
         $category = Category::find($data['category']['id']);
         
-
         $product->name = $data['name'];
         $product->price = $data['basePrice'];
         $product->category()->associate($category);
