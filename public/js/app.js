@@ -43425,10 +43425,16 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     commit('removePriceTag', index);
   },
   saveProduct: function saveProduct(_ref11) {
-    var commit = _ref11.commit;
+    var commit = _ref11.commit,
+        state = _ref11.state;
 
-    console.log(commit);
-    // commit('saveProduct', index)
+    commit('setIsLoading', true);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.saveProduct(state.params).then(function (res) {
+      console.log(res);
+      // commit('setCategories', res.data.categories.data)
+      // commit('setMaterials', res.data.materials.data)
+      commit('setIsLoading', false);
+    });
   }
 });
 
@@ -43502,6 +43508,13 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   getInitialData: function getInitialData() {
     return new Promise(function (resolve, reject) {
       axios.get("/webapi/products/create").then(function (res) {
+        resolve(res);
+      });
+    });
+  },
+  saveProduct: function saveProduct(data) {
+    return new Promise(function (resolve, reject) {
+      axios.post("/webapi/products").then(function (res) {
         resolve(res);
       });
     });
