@@ -29,9 +29,7 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         $product->save();
 
         if (isset($data['materials'])) {
-            foreach ($data['materials'] as $material) {
-                $product->materials()->attach($material['id']);
-            }
+            $this->storeMaterialRelations($data['materials'], $product);
         }
 
         if (isset($data['priceTags'])) {
@@ -42,6 +40,13 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
     public function destroyById($id)
     {
         // TODO: Do we need to delete products? maybe only delete pages? so no one could see products
+    }
+
+    protected function storeMaterialRelations(array $materials, Product $product)
+    {
+        foreach ($materials as $material) {
+            $product->materials()->attach($material['id']);
+        }
     }
 
     protected function storePriceTags(array $priceTags, Product $product)
