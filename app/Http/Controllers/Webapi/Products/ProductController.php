@@ -86,6 +86,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        //TODO: create form request validation
         $this->products->store($request->data);
     }
 
