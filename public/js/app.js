@@ -43514,7 +43514,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   saveProduct: function saveProduct(data) {
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/products").then(function (res) {
+      axios.post("/webapi/products", {
+        data: console.log(_.omitBy(data, function (param, key) {
+          return _.isNull(param) || param.length === 0;
+        }))
+      }).then(function (res) {
         resolve(res);
       });
     });
