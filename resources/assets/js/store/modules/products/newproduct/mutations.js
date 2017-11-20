@@ -9,7 +9,7 @@ export default {
         state.params.materials = value
     },
     updateCategoryParams(state, value) {
-        state.params.categories = value
+        state.params.category = value
     },
     updateName(state, value) {
         state.params.name = value

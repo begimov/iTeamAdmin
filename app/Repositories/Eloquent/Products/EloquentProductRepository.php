@@ -6,6 +6,7 @@ use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Products\ProductRepository;
 
 use App\Models\Products\Product;
+use App\Models\Products\Category;
 
 class EloquentProductRepository extends EloquentRepositoryAbstract implements ProductRepository
 {
@@ -16,7 +17,12 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
 
     public function store($data)
     {
-        var_dump($data);
+        $product = new Product;
+        $category = Category::find($data['category']['id']);
+        $product->name = $data['name'];
+        $product->price = $data['basePrice'];
+        $product->category()->associate($category);
+        $product->save();
     }
 
     public function destroyById($id)

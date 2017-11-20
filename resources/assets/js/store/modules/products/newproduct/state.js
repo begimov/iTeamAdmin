@@ -5,7 +5,7 @@ export default {
     priceTag: { price: null, name: null }
   },
   params: {
-    categories: null,
+    category: null,
     name: null,
     materials: [],
     basePrice: null,

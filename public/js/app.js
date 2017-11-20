@@ -43308,7 +43308,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     priceTag: { price: null, name: null }
   },
   params: {
-    categories: null,
+    category: null,
     name: null,
     materials: [],
     basePrice: null,
@@ -43543,7 +43543,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.params.materials = value;
     },
     updateCategoryParams: function updateCategoryParams(state, value) {
-        state.params.categories = value;
+        state.params.category = value;
     },
     updateName: function updateName(state, value) {
         state.params.name = value;
