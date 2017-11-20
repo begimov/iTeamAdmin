@@ -94,9 +94,13 @@
                 </div>
               </div>
               <div class="row">
+                <div class="col-md-12">
+                  <label>Дополнительная цена</label>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
-                    <label>Дополнительная цена</label>
                     <input type="text" class="form-control" placeholder="Специальная доп. цена, руб." v-model="priceTagPrice">
                   </div>
                 </div>

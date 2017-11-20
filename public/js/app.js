@@ -47025,13 +47025,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "aria-hidden": "true"
       }
     })])])])])
-  })) : _vm._e()])]), _vm._v(" "), _c('div', {
+  })) : _vm._e()])]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Дополнительная цена")]), _vm._v(" "), _c('input', {
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -47098,7 +47098,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('router-link', {
+  }, [_vm._m(1), _vm._v(" "), _c('li', [_c('router-link', {
     staticClass: "btn btn-default",
     attrs: {
       "to": {
@@ -47109,6 +47109,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('new-material')], 1) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('label', [_vm._v("Дополнительная цена")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('button', {
     staticClass: "btn btn-primary",
     attrs: {
