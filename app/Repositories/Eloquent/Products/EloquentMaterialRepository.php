@@ -14,6 +14,11 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
         return Material::class;
     }
 
+    public function get()
+    {
+        return $this->entity->whereNotNull('name')->get();
+    }
+
     public function create()
     {
         $material = new Material;
