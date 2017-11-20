@@ -36,4 +36,8 @@ export default {
   removePriceTag ({ commit }, index) {
     commit('removePriceTag', index)
   },
+  saveProduct ({ commit }) {
+    console.log(commit)
+    // commit('saveProduct', index)
+  },
 }
