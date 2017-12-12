@@ -6,18 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
-use App\Repositories\Contracts\Products\OrderRepository;
+use App\Repositories\Contracts\Products\{ OrderRepository, ProductRepository };
+use App\Repositories\Contracts\Payments\{ PaymentTypeRepository, PaymentStateRepository };
+use App\Repositories\Contracts\Users\BusinessEntityRepository;
 
-use App\Models\Products\Product;
-use App\Models\Payments\PaymentType;
-use App\Models\Payments\PaymentState;
-use App\Models\Users\BusinessEntity;
-
-use App\Transformers\Products\OrderTransformer;
-use App\Transformers\Products\ProductTransformer;
-use App\Transformers\Payments\PaymentTypeTransformer;
-use App\Transformers\Payments\PaymentStateTransformer;
+use App\Transformers\Products\{ OrderTransformer, ProductTransformer };
+use App\Transformers\Payments\{ PaymentTypeTransformer, PaymentStateTransformer };
 use App\Transformers\Users\BusinessEntityTransformer;
+
+use App\Repositories\Eloquent\Criteria\With;
 
 use App\Http\Requests\Webapi\Products\StoreOrderRequest;
 
@@ -25,14 +22,27 @@ use App\Http\Requests\Webapi\Products\StoreOrderRequest;
 class OrderController extends Controller
 {
     protected $orders;
+    protected $paymentTypes;
+    protected $paymentStates;
+    protected $products;
+    protected $businessEntities;
+    
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(OrderRepository $orders)
+    public function __construct(OrderRepository $orders,
+        PaymentTypeRepository $paymentTypes,
+        PaymentStateRepository $paymentStates,
+        ProductRepository $products,
+        BusinessEntityRepository $businessEntities)
     {
         $this->orders = $orders;
+        $this->paymentTypes = $paymentTypes;
+        $this->paymentStates = $paymentStates;
+        $this->products = $products;
+        $this->businessEntities = $businessEntities;
     }
 
     /**
@@ -43,7 +53,9 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $orders = $this->orders->filter($request)
-            ->with(['user', 'paymentType', 'product', 'user.userProfile'])
+            ->withCriteria([
+                new With(['user', 'paymentType', 'product', 'user.userProfile'])
+            ])
             ->withTrashed()
             ->paginate(5);
 
@@ -64,10 +76,10 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $products = fractal(Product::all(), new ProductTransformer)->toArray();
-        $paymentTypes = fractal(PaymentType::all(), new PaymentTypeTransformer)->toArray();
-        $paymentStates = fractal(PaymentState::all(), new PaymentStateTransformer)->toArray();
-        $businessEntities = fractal(BusinessEntity::all(), new BusinessEntityTransformer)->toArray();
+        $products = fractal($this->products->get(), new ProductTransformer)->toArray();
+        $paymentTypes = fractal($this->paymentTypes->get(), new PaymentTypeTransformer)->toArray();
+        $paymentStates = fractal($this->paymentStates->get(), new PaymentStateTransformer)->toArray();
+        $businessEntities = fractal($this->businessEntities->get(), new BusinessEntityTransformer)->toArray();
 
         return response()->json([
             'products' => $products,

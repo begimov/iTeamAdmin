@@ -3,14 +3,17 @@
 namespace App\Filters\Products\Order;
 
 use App\Filters\FilterAbstract;
+use App\Repositories\Eloquent\Criteria\OrWhere;
 
 class PaymentStateFilter extends FilterAbstract
 {
-    public function filter($builder, $values)
+    public function filter($repository, $values)
     {
         foreach ($values as $value) {
-            $builder->orWhere('payment_state_id', $this->resolveFilterValue($value));
+            $repository->withCriteria([
+                new OrWhere('payment_state_id', $this->resolveFilterValue($value))
+            ]);
         }
-        return $builder;
+        return $repository;
     }
 }

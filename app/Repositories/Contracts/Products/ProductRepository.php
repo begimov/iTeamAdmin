@@ -4,6 +4,6 @@ namespace App\Repositories\Contracts\Products;
 
 interface ProductRepository
 {
-    public function filter($request);
+    public function store($data);
     public function destroyById($id);
 }

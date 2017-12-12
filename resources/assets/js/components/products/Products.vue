@@ -35,7 +35,7 @@
             :product="product"
             :key="product.id"
             v-on:productDeleted="getProducts"></product>
-
+            
           </div>
 
           <div class="panel-footer">
@@ -45,6 +45,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 

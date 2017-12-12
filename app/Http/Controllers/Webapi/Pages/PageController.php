@@ -34,7 +34,6 @@ class PageController extends Controller
     public function index(Request $request)
     {
         $pages = $this->pages->filter($request)
-            // ->with(['category','priceTags'])
             ->paginate(5);
 
         $pagesCollection = $pages->getCollection();

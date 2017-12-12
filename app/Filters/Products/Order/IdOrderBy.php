@@ -3,11 +3,14 @@
 namespace App\Filters\Products\Order;
 
 use App\Filters\FilterAbstract;
+use App\Repositories\Eloquent\Criteria\OrderBy;
 
 class IdOrderBy extends FilterAbstract
 {
-    public function filter($builder, $value)
+    public function filter($repository, $value)
     {
-        return $builder->orderBy('id', $this->resolveFilterValue($value));
+        return $repository->withCriteria([
+            new OrderBy('id', $this->resolveFilterValue($value))
+        ]);
     }
 }

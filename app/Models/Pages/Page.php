@@ -13,8 +13,8 @@ class Page extends Model
         return $this->hasMany(Element::class);
     }
 
-    public function scopeFilter($builder, $request, array $filters = [])
+    public function scopeFilter($builder, $repository, $request, array $filters = [])
     {
-        return (new PageFilters($request))->add($filters)->filter($builder);
+        return (new PageFilters($request))->add($filters)->filter($repository);
     }
 }

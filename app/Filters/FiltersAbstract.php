@@ -13,12 +13,12 @@ class FiltersAbstract
         $this->request = $request;
     }
 
-    public function filter($builder)
+    public function filter($repository)
     {
         foreach ($this->getFilters() as $filter => $value) {
-            $this->resolveFilter($filter)->filter($builder, $value);
+            $this->resolveFilter($filter)->filter($repository, $value);
         }
-        return $builder;
+        return $repository;
     }
 
     public function add(array $filters)

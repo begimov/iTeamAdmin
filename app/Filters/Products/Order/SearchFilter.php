@@ -4,14 +4,14 @@ namespace App\Filters\Products\Order;
 
 use App\Filters\FilterAbstract;
 
-use App\Traits\SearchFilterTrait;
+use App\Repositories\Eloquent\Criteria\Search;
 
 class SearchFilter extends FilterAbstract
 {
-    use SearchFilterTrait;
-
-    public function filter($builder, $value)
+    public function filter($repository, $value)
     {
-        return $this->search($builder, $value,  'user', ['email', 'name']);
+        return $repository->withCriteria([
+            new Search($value, 'user', ['email', 'name'])
+        ]);
     } 
 }

@@ -3,11 +3,14 @@
 namespace App\Filters\Products\Order;
 
 use App\Filters\FilterAbstract;
+use App\Repositories\Eloquent\Criteria\OrderBy;
 
 class CreatedAtOrderBy extends FilterAbstract
 {
-    public function filter($builder, $value)
+    public function filter($repository, $value)
     {
-        return $builder->orderBy('created_at', $this->resolveFilterValue($value));;
+        return $repository->withCriteria([
+            new OrderBy('created_at', $this->resolveFilterValue($value))
+        ]);
     }
 }

@@ -2,22 +2,19 @@
 
 namespace App\Repositories\Eloquent\Pages;
 
+use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Pages\PageRepository;
 use App\Models\Pages\Page;
 
-class EloquentPageRepository implements PageRepository
+class EloquentPageRepository extends EloquentRepositoryAbstract implements PageRepository
 {
-    public function filter($request)
+    public function entity()
     {
-        return Page::filter($request, $this->getFilters());
+        return Page::class;
     }
 
     public function destroyById($id)
     {
         //
-    }
-    protected function getFilters()
-    {
-        return [];
     }
 }

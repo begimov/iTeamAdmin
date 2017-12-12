@@ -11,12 +11,17 @@ export default {
   },
   methods: {
       ...mapActions('products/newproduct', [
+          'getInitialData',
           'updateMaterialParams',
           'updateCategoryParams',
           'updateName',
           'updateBasePrice',
           'updatePriceTagPrice',
           'updatePriceTagName',
+          'newMaterialOn',
+          'addPriceTag',
+          'removePriceTag',
+          'saveProduct',
       ])
   },
   computed: {
@@ -29,6 +34,9 @@ export default {
           'getBasePrice',
           'getPriceTagPrice',
           'getPriceTagName',
+          'isNewMaterialOn',
+          'isLoading',
+          'priceTags',
       ]),
       'name': {
         get () {
@@ -64,6 +72,6 @@ export default {
       }
   },
   mounted() {
-    //
+    this.getInitialData()
   }
 }

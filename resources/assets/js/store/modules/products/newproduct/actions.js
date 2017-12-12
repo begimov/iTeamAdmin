@@ -1,6 +1,14 @@
 import api from '../../../api'
 
 export default {
+  getInitialData ({ commit }) {
+    commit('setIsLoading', true)
+    api.newproduct.getInitialData().then(res => {
+      commit('setCategories', res.data.categories.data)
+      commit('setMaterials', res.data.materials.data)
+      commit('setIsLoading', false)
+    })
+  },
   updateMaterialParams ({ commit }, value) {
     commit('updateMaterialParams', value)
   },
@@ -18,5 +26,21 @@ export default {
   },
   updatePriceTagName ({ commit }, value) {
     commit('updatePriceTagName', value)
-  }
+  },
+  newMaterialOn ({ commit }) {
+    commit('newMaterialOn')
+  },
+  addPriceTag ({ commit }) {
+    commit('addPriceTag')
+  },
+  removePriceTag ({ commit }, index) {
+    commit('removePriceTag', index)
+  },
+  saveProduct ({ commit, state }) {
+    commit('setIsLoading', true)
+    api.newproduct.saveProduct(state.params).then(res => {
+      commit('resetParams')
+      commit('setIsLoading', false)
+    })
+  },
 }

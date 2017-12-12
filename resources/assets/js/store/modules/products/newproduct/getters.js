@@ -23,4 +23,13 @@ export default {
   getPriceTagName(state) {
     return state.options.priceTag.name
   },
+  isNewMaterialOn(state) {
+    return state.isNewMaterialOn
+  },
+  isLoading(state) {
+    return state.isLoading
+  },
+  priceTags(state) {
+    return state.params.priceTags
+  },
 }

@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
 
           <div class="panel-heading">
@@ -65,6 +66,8 @@
                         &nbsp;
                       </template>
                     </multiselect>
+                    <br>
+                    <a href="#" @click.prevent="newMaterialOn" class="btn btn-default btn-sm">Создать материал</a>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -74,7 +77,27 @@
                   </div>
                 </div>
               </div>
-<hr>
+              <div class="row">
+                <div class="col-md-12">
+                  <ul class="list-inline" v-if="priceTags.length">
+                    <li v-for="(priceTag, index) in priceTags" :key="index">
+                      <h4>
+                        <span class="label label-primary">
+                          {{ priceTag.name }}: {{ priceTag.price }}
+                          <a href="#" @click.prevent="removePriceTag(index)">
+                            <span class="glyphicon glyphicon-remove label--remove-icon" aria-hidden="true"></span>
+                          </a>
+                        </span> 
+                      </h4>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Дополнительная цена</label>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
@@ -88,7 +111,7 @@
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
-                  <a href="#" class="btn btn-default">Добавить цену</a>
+                  <a href="#" class="btn btn-default" @click.prevent="addPriceTag">Добавить цену</a>
                 </div>
                 </div>
               </div>
@@ -108,6 +131,11 @@
         </div>
       </div>
     </div>
+
+    <div class="row" v-if="isNewMaterialOn">
+      <new-material></new-material>
+    </div>
+
   </div>
 </template>
 

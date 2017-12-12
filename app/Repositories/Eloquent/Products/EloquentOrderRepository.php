@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent\Products;
 
+use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Products\OrderRepository;
 
 use App\User;
@@ -12,11 +13,11 @@ use App\Models\Users\BusinessEntity;
 
 use App\Filters\Products\Order\PaymentTypeFilter;
 
-class EloquentOrderRepository implements OrderRepository
+class EloquentOrderRepository extends EloquentRepositoryAbstract implements OrderRepository
 {
-    public function filter($request)
+    public function entity()
     {
-        return Order::filter($request, $this->getFilters());
+        return Order::class;
     }
 
     public function store(array $data)
@@ -39,11 +40,6 @@ class EloquentOrderRepository implements OrderRepository
         $order->markAsDeleted();
         $order->save();
         $order->delete();
-    }
-
-    protected function getFilters()
-    {
-        return [];
     }
 
     protected function buildNewOrder($data)

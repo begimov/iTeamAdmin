@@ -2,13 +2,14 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\UserRepository;
 use App\User;
 
-class EloquentUserRepository implements UserRepository
+class EloquentUserRepository extends EloquentRepositoryAbstract implements UserRepository
 {
-    public function whereLike($column, $query, $limit)
+    public function entity()
     {
-        return User::where($column, 'like', "%{$query}%")->take($limit)->get();
+        return User::class;
     }
 }

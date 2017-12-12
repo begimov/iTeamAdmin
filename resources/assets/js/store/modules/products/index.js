@@ -1,4 +1,5 @@
 import newproduct from './newproduct'
+import newmaterial from './newmaterial'
 import state from './state'
 import getters from './getters'
 import actions from './actions'
@@ -11,6 +12,7 @@ export default {
   actions,
   mutations,
   modules: {
-    newproduct
+    newproduct,
+    newmaterial
   }
 }

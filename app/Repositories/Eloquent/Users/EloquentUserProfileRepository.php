@@ -2,13 +2,14 @@
 
 namespace App\Repositories\Eloquent\Users;
 
+use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Users\UserProfileRepository;
 use App\Models\Users\UserProfile;
 
-class EloquentUserProfileRepository implements UserProfileRepository
+class EloquentUserProfileRepository extends EloquentRepositoryAbstract implements UserProfileRepository
 {
-    public function whereLike($column, $query, $limit)
+    public function entity()
     {
-        return UserProfile::where($column, 'like', "%{$query}%")->take($limit)->get();
+        return UserProfile::class;
     }
 }

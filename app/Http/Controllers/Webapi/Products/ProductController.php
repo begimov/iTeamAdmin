@@ -6,21 +6,37 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
-use App\Repositories\Contracts\Products\ProductRepository;
+use App\Repositories\Contracts\Products\{
+    ProductRepository,
+    CategoryRepository,
+    MaterialRepository
+};
 
-use App\Transformers\Products\ProductTransformer;
+use App\Repositories\Eloquent\Criteria\With;
+
+use App\Transformers\Products\{
+    ProductTransformer,
+    CategoryTransformer,
+    MaterialTransformer
+};
 
 class ProductController extends Controller
 {
     protected $products;
+    protected $categories;
+    protected $materials;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(ProductRepository $products)
+    public function __construct(ProductRepository $products,
+        CategoryRepository $categories,
+        MaterialRepository $materials)
     {
         $this->products = $products;
+        $this->categories = $categories;
+        $this->materials = $materials;
     }
 
     /**
@@ -31,7 +47,9 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = $this->products->filter($request)
-            ->with(['category','priceTags'])
+            ->withCriteria([
+                new With(['category','priceTags'])
+            ])
             ->paginate(5);
 
         $productsCollection = $products->getCollection();
@@ -51,7 +69,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = fractal($this->categories->get(), new CategoryTransformer)->toArray();
+        $materials = fractal($this->materials->get(), new MaterialTransformer)->toArray();
+
+        return response()->json([
+            'categories' => $categories,
+            'materials' => $materials,
+        ]);
     }
 
     /**
@@ -62,7 +86,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //TODO: create form request validation
+        $this->products->store($request->data);
     }
 
     /**

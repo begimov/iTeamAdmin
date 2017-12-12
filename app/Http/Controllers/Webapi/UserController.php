@@ -15,6 +15,8 @@ use App\Transformers\Users\UserDataTransformer;
 use App\Transformers\Users\UserProfileDataTransformer;
 use App\Transformers\Users\CompanyTransformer;
 
+use App\Repositories\Eloquent\Criteria\{ WhereLike, Take };
+
 class UserController extends Controller
 {
     protected $user;
@@ -60,22 +62,34 @@ class UserController extends Controller
         switch ($data) {
             case 'email':
                 return $this->transformEmailsOrNames(
-                    $this->users->whereLike($data, $query, 3), $data);
+                    $this->users->withCriteria([
+                        new WhereLike($data, $query),
+                        new Take(3),
+                    ])->get(), $data);
                 break;
 
             case 'name':
                 return $this->transformEmailsOrNames(
-                    $this->users->whereLike($data, $query, 3), $data);
+                    $this->users->withCriteria([
+                        new WhereLike($data, $query),
+                        new Take(3),
+                    ])->get(), $data);
                 break;
 
             case 'phone':
                 return $this->transformPhones(
-                    $this->userProfiles->whereLike($data, $query, 3));
+                    $this->userProfiles->withCriteria([
+                        new WhereLike($data, $query),
+                        new Take(3),
+                    ])->get());
                 break;
 
             case 'company':
                 return $this->transformCompanies(
-                    $this->companies->whereLike('name', $query, 3));
+                    $this->companies->withCriteria([
+                        new WhereLike('name', $query),
+                        new Take(3),
+                    ])->get());;
                 break;
 
             default:

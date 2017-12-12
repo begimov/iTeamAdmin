@@ -2,15 +2,38 @@
 
 namespace App\Repositories\Eloquent\Products;
 
+use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Products\ProductRepository;
 
 use App\Models\Products\Product;
+use App\Models\Products\Category;
+use App\Models\Products\PriceTag;
 
-class EloquentProductRepository implements ProductRepository
+class EloquentProductRepository extends EloquentRepositoryAbstract implements ProductRepository
 {
-    public function filter($request)
+    public function entity()
     {
-        return Product::filter($request, $this->getFilters());
+        return Product::class;
+    }
+
+    public function store($data)
+    {
+        $product = new Product;
+        $category = Category::find($data['category']['id']);
+        
+        $product->name = $data['name'];
+        $product->price = $data['basePrice'];
+        $product->category()->associate($category);
+
+        $product->save();
+
+        if (isset($data['materials'])) {
+            $this->storeMaterialRelations($data['materials'], $product);
+        }
+
+        if (isset($data['priceTags'])) {
+            $this->storePriceTags($data['priceTags'], $product);
+        } 
     }
 
     public function destroyById($id)
@@ -18,8 +41,21 @@ class EloquentProductRepository implements ProductRepository
         // TODO: Do we need to delete products? maybe only delete pages? so no one could see products
     }
 
-    protected function getFilters()
+    protected function storeMaterialRelations(array $materials, Product $product)
     {
-        return [];
+        foreach ($materials as $material) {
+            $product->materials()->attach($material['id']);
+        }
+    }
+
+    protected function storePriceTags(array $priceTags, Product $product)
+    {
+        foreach ($priceTags as $priceTag) {
+            $pt = new PriceTag;
+            $pt->name = $priceTag['name'];
+            $pt->price = $priceTag['price'];
+            $pt->product()->associate($product);
+            $pt->save();
+        }
     }
 }

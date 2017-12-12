@@ -30,15 +30,22 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for Orders.vue component
         Route::resource('orders', 'Products\OrderController');
 
-        // Routes for getting user's info via Web API
+        // Routes to retrieve user's info
         Route::get('/users/{data}', 'UserController@getUsersDataByQuery');
         Route::get('/user/{user}/{data}', 'UserController@getUserData');
 
         // Route for Products.vue component
         Route::resource('products', 'Products\ProductController');
 
+        // Route for Materials.vue & NewMaterial.vue components
+        Route::resource('materials', 'Products\MaterialController');
+
         // Route for Pages.vue component
         Route::resource('pages', 'Pages\PageController');
+
+        // Route for FileUploader.vue component, to store material's files & delete them
+        Route::post('/files/{material}/file', 'Content\FileController@store');
+        Route::delete('/files/{material}/file/{file}', 'Content\FileController@destroy');
     });
 
 });
