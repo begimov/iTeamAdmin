@@ -13,11 +13,7 @@ class BlockTransformer extends \League\Fractal\TransformerAbstract
             'id' => $block->id,
             'name' => 'block-' . $block->view,
             'template' => view('pages.page.blocks.' . $block->view)->render(),
-            'data' => [
-              'path' => '',
-              'name' => '',
-              'link' => '',
-            ]
+            'data' => $block->data
         ];
     }
 }
