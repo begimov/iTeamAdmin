@@ -28,7 +28,7 @@
             </div>
             <div class="row" v-if="isShowingBlocksPanel">
               <div class="col-md-12">
-                <p v-for="block in blocks">
+                <p v-for="block in blocks" :key="block.id">
                   <a href="#" @click.prevent="addBlockToLayout({block: block, id: Date.now()})">{{ block.name }}</a>
                 </p>
               </div>

@@ -53872,7 +53872,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, _vm._l((_vm.blocks), function(block) {
-    return _c('p', [_c('a', {
+    return _c('p', {
+      key: block.id
+    }, [_c('a', {
       attrs: {
         "href": "#"
       },

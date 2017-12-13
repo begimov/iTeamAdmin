@@ -2,17 +2,17 @@
 @if (isset($page))
 <div class="row">
   <div class="col-md-12">
-    <blockquote>
+    <p class="lead">
       {{ getElementContentData($element, 'text') }}
-    </blockquote>
+    </p>
   </div>
 </div>
 @else
   <div class="row">
     <div class="col-md-12">
-      <blockquote>
+      <p>
         <textarea cols="30" rows="4" class="form-control" v-model="text"></textarea>
-      </blockquote>  
+      </p>  
     </div>
   </div>
 @endif
