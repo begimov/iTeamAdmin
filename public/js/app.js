@@ -43873,7 +43873,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       var blocks = res.data.blocks.data;
 
       _.forEach(blocks, function (block, key) {
-        Vue.component(block.name, function (resolve, reject) {
+        Vue.component(block.tag, function (resolve, reject) {
           resolve({
             props: ['id'],
             template: '<div>' + block.template + '<div class="row"><div class="col-md-12 text-right"><a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a></div></div></div>',
@@ -53842,7 +53842,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_vm._l((_vm.layout), function(block) {
-    return [_c(block.block.name, {
+    return [_c(block.block.tag, {
       key: block.id,
       tag: "component",
       attrs: {

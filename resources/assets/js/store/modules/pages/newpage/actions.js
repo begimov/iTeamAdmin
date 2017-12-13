@@ -6,9 +6,9 @@ export default {
 
     api.pages.getAvailableBlocks().then(res => {
       const blocks = res.data.blocks.data
-
+      
       _.forEach(blocks, function(block, key) {
-        Vue.component(block.name, function (resolve, reject) {
+        Vue.component(block.tag, function (resolve, reject) {
           resolve({
             props:['id'],
             template: `<div>`

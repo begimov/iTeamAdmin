@@ -17,7 +17,7 @@
             <div class="row">
               <div class="col-md-12">
                 <template v-for="block in layout">
-                  <component :is="block.block.name" :key="block.id" :id="block.id" v-on:elementDeleted="deleteElement"></component>
+                  <component :is="block.block.tag" :key="block.id" :id="block.id" v-on:elementDeleted="deleteElement"></component>
                 </template>
               </div>
             </div>

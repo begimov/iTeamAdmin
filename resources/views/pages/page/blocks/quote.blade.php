@@ -1,7 +1,7 @@
 <?php // TODO: how to store and show pages / elements /blocks ?>
 @if (isset($page))
 <div class="row">
-  <div class="col">
+  <div class="col-md-12">
     <blockquote>
       {{ getElementContentData($element, 'quote') }}
     </blockquote>

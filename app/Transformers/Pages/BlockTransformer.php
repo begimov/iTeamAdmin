@@ -11,7 +11,8 @@ class BlockTransformer extends \League\Fractal\TransformerAbstract
       // TODO: add name column to blocks and figure out way to store data props
         return [
             'id' => $block->id,
-            'name' => 'block-' . $block->view,
+            'tag' => 'block-' . $block->view,
+            'name' => $block->view,
             'template' => view('pages.page.blocks.' . $block->view)->render(),
             'data' => $block->data
         ];
