@@ -43843,13 +43843,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return state.blocks;
   },
   layout: function layout(state) {
-    return state.layout.blocks;
+    return state.layout;
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
-  },
-  components: function components(state) {
-    return state.layout.components;
   }
 });
 
@@ -53797,7 +53794,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['blocks', 'layout', 'isLoading', 'components'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['blocks', 'layout', 'isLoading'])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getAvailableBlocks', 'addBlockToLayout', 'deleteElement']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
@@ -53829,7 +53826,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v("\n            " + _vm._s(_vm.layout)), _c('br'), _c('br'), _vm._v("\n            " + _vm._s(_vm.components) + "\n            "), _c('input', {
+  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v("\n            " + _vm._s(_vm.layout)), _c('br'), _vm._v(" "), _c('input', {
     staticClass: "form-control",
     attrs: {
       "type": "text",
@@ -53841,8 +53838,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_vm._l((_vm.layout), function(block) {
-    return [_c(block.block.tag, {
+  }, [_vm._l((_vm.layout.blocks), function(block) {
+    return [_c(block.tag, {
       key: block.id,
       tag: "component",
       attrs: {
@@ -53882,7 +53879,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "click": function($event) {
           $event.preventDefault();
           _vm.addBlockToLayout({
-            block: block,
+            tag: block.tag,
             id: Date.now()
           })
         }

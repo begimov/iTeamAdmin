@@ -12,8 +12,7 @@ export default {
       ...mapGetters('pages/newpage', [
           'blocks',
           'layout',
-          'isLoading',
-          'components'
+          'isLoading'
       ]),
   },
   methods: {
