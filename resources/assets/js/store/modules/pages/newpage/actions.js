@@ -15,7 +15,7 @@ export default {
                 + block.template
                 + `<div class="row"><div class="col-md-12 text-right"><a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a></div></div></div>`,
             data () {
-              return {...block.data}
+              return {...block.data, blockId: block.id}
             },
             methods: {
               deleteElement (id) {

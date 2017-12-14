@@ -43878,7 +43878,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             props: ['id'],
             template: '<div>' + block.template + '<div class="row"><div class="col-md-12 text-right"><a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a></div></div></div>',
             data: function data() {
-              return _extends({}, block.data);
+              return _extends({}, block.data, { blockId: block.id });
             },
 
             methods: {
