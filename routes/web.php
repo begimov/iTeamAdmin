@@ -22,8 +22,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     // Pages page
     Route::get('pages', 'Pages\PageController@index')->name('pages');
-    // TODO: use separate route to preview page in admin panel or use users path with slug?
-    Route::get('pages/{page}', 'Pages\PageController@show')->name('pages.show.preview');
 
     // WebAPI
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
