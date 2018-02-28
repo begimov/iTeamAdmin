@@ -9,6 +9,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Element extends Model
 {
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'data' => 'array',
+    ];
+    
     public function block()
     {
         return $this->belongsTo(Block::class);

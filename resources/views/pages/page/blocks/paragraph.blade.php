@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-md-12">
     <p class="lead">
-      {{ getElementContentData($element, 'text') }}
+      {{ $element->data['text'] }}
     </p>
   </div>
 </div>
