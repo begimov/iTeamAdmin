@@ -13,9 +13,4 @@ class Element extends Model
     {
         return $this->belongsTo(Block::class);
     }
-
-    public function contents()
-    {
-        return $this->hasMany(Content::class);
-    }
 }

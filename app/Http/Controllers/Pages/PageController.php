@@ -33,7 +33,6 @@ class PageController extends Controller
     {
         $page = $page->with([
                 'elements',
-                'elements.contents',
                 'elements.block',
             ])
             ->first();
