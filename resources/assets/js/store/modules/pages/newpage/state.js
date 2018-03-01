@@ -1,7 +1,7 @@
 export default {
   isLoading: false,
   page: {
-    name: 'NON DYNAMIC'
+    name: ''
   },
   blocks: [],
   layout: {

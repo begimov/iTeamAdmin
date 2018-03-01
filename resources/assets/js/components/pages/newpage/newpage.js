@@ -15,9 +15,18 @@ export default {
           'layout',
           'isLoading'
       ]),
+      'pageName': {
+        get () {
+          return this.pagename
+        },
+        set (value) {
+          this.updatePageName(value)
+        }
+      },
   },
   methods: {
       ...mapActions('pages/newpage', [
+          'updatePageName',
           'getAvailableBlocks',
           'addBlockToLayout',
           'deleteElement',

@@ -5,6 +5,9 @@ export default {
   setBlocks (state, value) {
       state.blocks = value
   },
+  updatePageName (state, name) {
+      state.page.name = name
+  },
   addBlockToLayout (state, data) {
       state.layout.blocks.push(data)
   },

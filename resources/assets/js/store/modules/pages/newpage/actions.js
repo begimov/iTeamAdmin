@@ -39,6 +39,9 @@ export default {
       commit('setIsLoading', false)
     })
   },
+  updatePageName ({ commit }, name) {
+    commit('updatePageName', name)
+  },
   addBlockToLayout ({ commit }, data) {
     commit('addBlockToLayout', data)
   },

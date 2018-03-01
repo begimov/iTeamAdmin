@@ -43834,7 +43834,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
   page: {
-    name: 'NON DYNAMIC'
+    name: ''
   },
   blocks: [],
   layout: {
@@ -43913,19 +43913,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('setIsLoading', false);
     });
   },
-  addBlockToLayout: function addBlockToLayout(_ref2, data) {
+  updatePageName: function updatePageName(_ref2, name) {
     var commit = _ref2.commit;
+
+    commit('updatePageName', name);
+  },
+  addBlockToLayout: function addBlockToLayout(_ref3, data) {
+    var commit = _ref3.commit;
 
     commit('addBlockToLayout', data);
   },
-  deleteElement: function deleteElement(_ref3, id) {
-    var commit = _ref3.commit;
+  deleteElement: function deleteElement(_ref4, id) {
+    var commit = _ref4.commit;
 
     commit('deleteElement', id);
   },
-  save: function save(_ref4) {
-    var commit = _ref4.commit,
-        state = _ref4.state;
+  save: function save(_ref5) {
+    var commit = _ref5.commit,
+        state = _ref5.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -43954,6 +43959,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     setBlocks: function setBlocks(state, value) {
         state.blocks = value;
+    },
+    updatePageName: function updatePageName(state, name) {
+        state.page.name = name;
     },
     addBlockToLayout: function addBlockToLayout(state, data) {
         state.layout.blocks.push(data);
@@ -53828,8 +53836,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'blocks', 'layout', 'isLoading'])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'blocks', 'layout', 'isLoading']), {
+    'pageName': {
+      get: function get() {
+        return this.pagename;
+      },
+      set: function set(value) {
+        this.updatePageName(value);
+      }
+    }
+  }),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['updatePageName', 'getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
@@ -53864,8 +53881,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.pagename),
-      expression: "pagename"
+      value: (_vm.pageName),
+      expression: "pageName"
     }],
     staticClass: "form-control",
     attrs: {
@@ -53873,12 +53890,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "placeholder": "Введите название страницы"
     },
     domProps: {
-      "value": (_vm.pagename)
+      "value": (_vm.pageName)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.pagename = $event.target.value
+        _vm.pageName = $event.target.value
       }
     }
   })])]), _vm._v(" "), _c('div', {
