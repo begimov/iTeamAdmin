@@ -16,16 +16,14 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
 
     public function store(array $data)
     {
-        dd($data);
-        
-        foreach ($elements as $element) {
-            $block = Block::find($element['meta']['blockId']);
+        // foreach ($elements as $element) {
+        //     $block = Block::find($element['meta']['blockId']);
 
-            $e = new Element;
+        //     $e = new Element;
 
-            $e->data = $element->data;
-            $block->element->associate($e);
-        }
+        //     $e->data = $element->data;
+        //     $block->element->associate($e);
+        // }
     }
 
     public function destroyById($id)

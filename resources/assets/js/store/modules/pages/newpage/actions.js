@@ -51,7 +51,10 @@ export default {
       return { data: element.data.data, meta: element.data.meta }
     })
     api.pages.savePage({
-      elements
+      page: {
+        data: state.page,
+        elements
+      }
     }).then(res => {
       console.log(res)
       commit('setIsLoading', false)

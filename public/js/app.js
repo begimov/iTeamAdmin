@@ -43932,7 +43932,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       return { data: element.data.data, meta: element.data.meta };
     });
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.savePage({
-      elements: elements
+      page: {
+        data: state.page,
+        elements: elements
+      }
     }).then(function (res) {
       console.log(res);
       commit('setIsLoading', false);

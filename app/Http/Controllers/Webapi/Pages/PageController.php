@@ -70,6 +70,7 @@ class PageController extends Controller
     {
         $page = $this->pages->store($request->all());
         // return $request->all(); response with transformed newly created page
+        return $request->all();
     }
 
     /**
