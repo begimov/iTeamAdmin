@@ -43473,7 +43473,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   savePage: function savePage(payload) {
     return new Promise(function (resolve, reject) {
-      axios.get("/webapi/pages/store", { payload: payload }).then(function (res) {
+      axios.post("/webapi/pages", { payload: payload }).then(function (res) {
         resolve(res);
       });
     });

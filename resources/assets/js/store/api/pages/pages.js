@@ -15,7 +15,7 @@ export default {
   },
   savePage(payload) {
     return new Promise((resolve, reject) => {
-      axios.get(`/webapi/pages/store`, { payload }).then(res => {
+      axios.post(`/webapi/pages`, { payload }).then(res => {
         resolve(res)
       })
     })
