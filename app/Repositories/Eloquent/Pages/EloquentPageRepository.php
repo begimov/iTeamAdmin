@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent\Pages;
 use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Pages\PageRepository;
 use App\Models\Pages\Page;
+use App\Models\Pages\Block;
 use App\Models\Pages\Element;
 
 class EloquentPageRepository extends EloquentRepositoryAbstract implements PageRepository
@@ -19,14 +20,21 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
         $page = new Page;
         $page->name = $data['data']['name'];
         $page->save();
-        // foreach ($elements as $element) {
-        //     $block = Block::find($element['meta']['blockId']);
 
-        //     $e = new Element;
+        $elements = $data['elements'];
 
-        //     $e->data = $element->data;
-        //     $block->element->associate($e);
-        // }
+        foreach ($elements as $element) {
+            $block = Block::find($element['meta']['blockId']);
+
+            $e = new Element;
+
+            $e->data = $element['data'];
+            $e->block()->associate($block);
+            $e->page()->associate($page);
+            $e->save();
+        }
+
+        return $page;
     }
 
     public function destroyById($id)
