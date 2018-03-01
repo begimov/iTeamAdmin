@@ -16,6 +16,9 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
 
     public function store(array $data)
     {
+        $page = new Page;
+        $page->name = $data['data']['name'];
+        $page->save();
         // foreach ($elements as $element) {
         //     $block = Block::find($element['meta']['blockId']);
 
