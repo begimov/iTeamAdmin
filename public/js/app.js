@@ -43906,6 +43906,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref3.commit;
 
     commit('deleteElement', id);
+  },
+  save: function save(_ref4) {
+    var commit = _ref4.commit,
+        state = _ref4.state;
+
+    console.log(state.layout.components);
   }
 });
 
@@ -53795,7 +53801,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
 
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['blocks', 'layout', 'isLoading'])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getAvailableBlocks', 'addBlockToLayout', 'deleteElement']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
@@ -53885,22 +53891,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v(_vm._s(block.name))])])
-  }))]) : _vm._e()]), _vm._v(" "), _vm._m(0)])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }))]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [_c('a', {
     staticClass: "btn btn-primary",
     attrs: {
       "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.save($event)
+      }
     }
   }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
     staticClass: "btn btn-default",
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("Отменить")])])
-}]}
+  }, [_vm._v("Отменить")])])])])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

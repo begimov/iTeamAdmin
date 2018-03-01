@@ -20,6 +20,7 @@ export default {
           'getAvailableBlocks',
           'addBlockToLayout',
           'deleteElement',
+          'save',
       ]),
       findBlock (id) {
         return _.find(this.blocks, ['id',id])

@@ -42,4 +42,7 @@ export default {
   deleteElement ({ commit }, id) {
     commit('deleteElement', id)
   },
+  save ({ commit, state }) {
+    console.log(state.layout.components)
+  },
 }

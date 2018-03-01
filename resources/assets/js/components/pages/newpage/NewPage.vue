@@ -35,7 +35,7 @@
           </div>
 
           <div class="panel-footer">
-            <a href="#" class="btn btn-primary">Сохранить</a>
+            <a href="#" class="btn btn-primary" @click.prevent="save">Сохранить</a>
             <a href="#" class="btn btn-default">Отменить</a>
           </div>
 
