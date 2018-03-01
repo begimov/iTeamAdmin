@@ -43473,7 +43473,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   savePage: function savePage(payload) {
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/pages", { payload: payload }).then(function (res) {
+      axios.post("/webapi/pages", payload).then(function (res) {
         resolve(res);
       });
     });
@@ -43921,11 +43921,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref4.commit,
         state = _ref4.state;
 
-    // commit('setIsLoading', true)
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.savePage(state.layout.elements).then(function (res) {
-      console.log(res);
+    commit('setIsLoading', true);
+    var payload = _.map(state.layout.elements, function (element) {
+      return { data: element.data.data, meta: element.data.meta };
     });
-    console.log(state.layout.elements);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.savePage(payload).then(function (res) {
+      console.log(res);
+      commit('setIsLoading', false);
+    });
   }
 });
 
