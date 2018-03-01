@@ -3,6 +3,6 @@ export default {
   blocks: [],
   layout: {
     blocks: [],
-    components: []
+    elements: []
   },
 }

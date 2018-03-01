@@ -43829,7 +43829,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   blocks: [],
   layout: {
     blocks: [],
-    components: []
+    elements: []
   }
 });
 
@@ -43884,7 +43884,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               }
             },
             mounted: function mounted() {
-              commit('addComponentToComponents', {
+              commit('addElementToElements', {
                 id: this.id,
                 data: this.$data
               });
@@ -43911,7 +43911,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref4.commit,
         state = _ref4.state;
 
-    console.log(state.layout.components);
+    console.log(state.layout.elements);
   }
 });
 
@@ -43930,14 +43930,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     addBlockToLayout: function addBlockToLayout(state, data) {
         state.layout.blocks.push(data);
     },
-    addComponentToComponents: function addComponentToComponents(state, value) {
-        state.layout.components.push(value);
+    addElementToElements: function addElementToElements(state, value) {
+        state.layout.elements.push(value);
     },
     deleteElement: function deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) {
             return o.id != id;
         });
-        state.layout.components = _.filter(state.layout.components, function (o) {
+        state.layout.elements = _.filter(state.layout.elements, function (o) {
             return o.id != id;
         });
     }
