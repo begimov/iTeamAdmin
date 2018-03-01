@@ -18,6 +18,11 @@ class Element extends Model
         'data' => 'array',
     ];
     
+    public function page()
+    {
+        return $this->belongsTo(Page::class);
+    }
+
     public function block()
     {
         return $this->belongsTo(Block::class);
