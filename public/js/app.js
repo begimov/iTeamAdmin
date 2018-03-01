@@ -43470,6 +43470,13 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         resolve(res);
       });
     });
+  },
+  savePage: function savePage(payload) {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/pages/store", { payload: payload }).then(function (res) {
+        resolve(res);
+      });
+    });
   }
 });
 
@@ -43914,6 +43921,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref4.commit,
         state = _ref4.state;
 
+    // commit('setIsLoading', true)
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.savePage(state.layout.elements).then(function (res) {
+      console.log(res);
+    });
     console.log(state.layout.elements);
   }
 });

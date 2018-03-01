@@ -46,6 +46,10 @@ export default {
     commit('deleteElement', id)
   },
   save ({ commit, state }) {
+    // commit('setIsLoading', true)
+    api.pages.savePage(state.layout.elements).then(res => {
+      console.log(res)
+    })
     console.log(state.layout.elements)
   },
 }
