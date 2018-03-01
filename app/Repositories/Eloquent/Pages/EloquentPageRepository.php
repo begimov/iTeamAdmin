@@ -13,6 +13,11 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
         return Page::class;
     }
 
+    public function store(array $elements)
+    {
+        //
+    }
+
     public function destroyById($id)
     {
         //
