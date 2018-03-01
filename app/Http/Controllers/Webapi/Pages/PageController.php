@@ -70,7 +70,6 @@ class PageController extends Controller
     {
         $page = $this->pages->store($request->all()['page']);
         return response()->json([
-            'status' => 'OK',
             'page' => fractal($page, new PageTransformer)->toArray(),
         ]);
     }
