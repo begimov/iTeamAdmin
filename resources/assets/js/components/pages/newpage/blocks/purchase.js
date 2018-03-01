@@ -1,5 +1,8 @@
 export default {
     mounted() {
-        console.log('BUY MOUNTED')
+        this.$emit('input', {
+            productId: 1,
+            pricetagId: 2
+        })
     }
 }
