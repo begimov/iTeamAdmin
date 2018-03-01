@@ -10,6 +10,7 @@ export default {
   },
   computed: {
       ...mapGetters('pages/newpage', [
+          'pagename',
           'blocks',
           'layout',
           'isLoading'

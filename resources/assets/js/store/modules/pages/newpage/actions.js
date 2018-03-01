@@ -47,10 +47,12 @@ export default {
   },
   save ({ commit, state }) {
     commit('setIsLoading', true)
-    const payload = _.map(state.layout.elements, (element) => {
+    const elements = _.map(state.layout.elements, (element) => {
       return { data: element.data.data, meta: element.data.meta }
     })
-    api.pages.savePage(payload).then(res => {
+    api.pages.savePage({
+      elements
+    }).then(res => {
       console.log(res)
       commit('setIsLoading', false)
     })

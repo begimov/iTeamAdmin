@@ -1,4 +1,7 @@
 export default {
+  pagename (state) {
+    return state.page.name
+  },
   blocks (state) {
     return state.blocks
   },

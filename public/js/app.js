@@ -43833,6 +43833,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
+  page: {
+    name: 'NON DYNAMIC'
+  },
   blocks: [],
   layout: {
     blocks: [],
@@ -43846,6 +43849,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+  pagename: function pagename(state) {
+    return state.page.name;
+  },
   blocks: function blocks(state) {
     return state.blocks;
   },
@@ -43922,10 +43928,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state = _ref4.state;
 
     commit('setIsLoading', true);
-    var payload = _.map(state.layout.elements, function (element) {
+    var elements = _.map(state.layout.elements, function (element) {
       return { data: element.data.data, meta: element.data.meta };
     });
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.savePage(payload).then(function (res) {
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.savePage({
+      elements: elements
+    }).then(function (res) {
       console.log(res);
       commit('setIsLoading', false);
     });
@@ -53817,7 +53825,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['blocks', 'layout', 'isLoading'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'blocks', 'layout', 'isLoading'])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
@@ -53850,10 +53858,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('h4', [_vm._v("Новая страница")]), _vm._v("\n            " + _vm._s(_vm.layout)), _c('br'), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.pagename),
+      expression: "pagename"
+    }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
       "placeholder": "Введите название страницы"
+    },
+    domProps: {
+      "value": (_vm.pagename)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.pagename = $event.target.value
+      }
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"

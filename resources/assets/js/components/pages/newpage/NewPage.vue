@@ -8,7 +8,7 @@
             <div class="form-group">
               <h4>Новая страница</h4>
               {{ layout }}<br>
-              <input type="text" class="form-control" placeholder="Введите название страницы">
+              <input type="text" class="form-control" placeholder="Введите название страницы" v-model="pagename">
             </div>
           </div>
 
