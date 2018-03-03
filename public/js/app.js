@@ -12305,7 +12305,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(19);
-module.exports = __webpack_require__(147);
+module.exports = __webpack_require__(150);
 
 
 /***/ }),
@@ -12360,7 +12360,7 @@ Vue.component('pages', __webpack_require__(134));
 Vue.component('page', __webpack_require__(139));
 Vue.component('new-page', __webpack_require__(142));
 // Special blocks
-Vue.component('purchase', __webpack_require__(154));
+Vue.component('purchase', __webpack_require__(147));
 
 var app = new Vue({
   el: '#app',
@@ -53986,26 +53986,14 @@ if (false) {
 
 /***/ }),
 /* 147 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 148 */,
-/* 149 */,
-/* 150 */,
-/* 151 */,
-/* 152 */,
-/* 153 */,
-/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var Component = __webpack_require__(0)(
   /* script */
-  __webpack_require__(155),
+  __webpack_require__(148),
   /* template */
-  __webpack_require__(156),
+  __webpack_require__(149),
   /* styles */
   null,
   /* scopeId */
@@ -54037,26 +54025,67 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 155 */
+/* 148 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+    components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
+    data: function data() {
+        return {
+            options: {
+                products: [{ id: 1, name: 'Product 1' }, { id: 2, name: 'Product 2' }]
+            },
+            params: {
+                product: null
+            }
+        };
+    },
+
+    watch: {
+        'params.product': function paramsProduct(product) {
+            console.log(product);
+            this.$emit('input', {
+                productId: product.id
+                // pricetagId: 2
+            });
+        }
+    },
     mounted: function mounted() {
-        this.$emit('input', {
-            productId: 1,
-            pricetagId: 2
-        });
+        //
     }
 });
 
 /***/ }),
-/* 156 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('p', [_vm._v("BUYBTN")])
+  return _c('multiselect', {
+    attrs: {
+      "options": _vm.options.products,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите продукт",
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.product),
+      callback: function($$v) {
+        _vm.params.product = $$v
+      },
+      expression: "params.product"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Продукт не найден")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -54065,6 +54094,12 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-791d351c", module.exports)
   }
 }
+
+/***/ }),
+/* 150 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
