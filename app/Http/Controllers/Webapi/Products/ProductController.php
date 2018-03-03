@@ -62,6 +62,17 @@ class ProductController extends Controller
             ->toArray();
     }
 
+    public function all(Request $request)
+    {
+        $products = $this->products->get();
+
+        return fractal()
+            ->collection($products)
+            ->parseIncludes(['priceTags'])
+            ->transformWith(new ProductTransformer)
+            ->toArray();
+    }
+
     /**
      * Show the form for creating a new resource.
      *

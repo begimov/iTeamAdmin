@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         Route::get('/user/{user}/{data}', 'UserController@getUserData');
 
         // Route for Products.vue component
+        Route::get('/products/all', 'Products\ProductController@all');
         Route::resource('products', 'Products\ProductController');
 
         // Route for Materials.vue & NewMaterial.vue components

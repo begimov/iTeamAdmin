@@ -41,7 +41,14 @@ export default {
             })
         }
     },
+    methods: {
+        getProducts() {
+            axios.get('/webapi/products/all').then((res) => {
+                console.log(res)
+            })
+        }
+    },
     mounted() {
-        //
+        this.getProducts();
     }
 }

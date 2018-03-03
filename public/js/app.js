@@ -54065,8 +54065,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         }
     },
+    methods: {
+        getProducts: function getProducts() {
+            axios.get('/webapi/products/all').then(function (res) {
+                console.log(res);
+            });
+        }
+    },
     mounted: function mounted() {
-        //
+        this.getProducts();
     }
 });
 
