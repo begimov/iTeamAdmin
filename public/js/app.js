@@ -54044,7 +54044,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }]
             },
             params: {
-                product: null
+                product: null,
+                priceTag: null
             }
         };
     },
@@ -54068,7 +54069,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('multiselect', {
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('multiselect', {
     attrs: {
       "options": _vm.options.products,
       "select-label": "",
@@ -54087,7 +54092,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])]), _vm._v("\n    " + _vm._s(_vm.params.product ? _vm.params.product.priceTags : '') + "\n")], 1)
+  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [(_vm.params.product) ? [_c('multiselect', {
+    attrs: {
+      "options": _vm.params.product.priceTags,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите ценник",
+      "label": "price",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.priceTag),
+      callback: function($$v) {
+        _vm.params.priceTag = $$v
+      },
+      expression: "params.priceTag"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Ценник не найден")])])] : _vm._e()], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
