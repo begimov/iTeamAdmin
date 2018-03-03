@@ -28,10 +28,16 @@ export default {
     },
     watch: {
         'params.product': function (product) {
-            console.log(product)
             this.$emit('input', {
-                productId: product.id
-                // pricetagId: 2
+                productId: product ? product.id : null,
+                pricetagId: null
+            })
+            this.params.priceTag = null;
+        },
+        'params.priceTag': function (priceTag) {
+            this.$emit('input', {
+                productId: this.params.product.id,
+                pricetagId: priceTag ? priceTag.id : null
             })
         }
     },

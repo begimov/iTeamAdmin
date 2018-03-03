@@ -54052,10 +54052,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     watch: {
         'params.product': function paramsProduct(product) {
-            console.log(product);
             this.$emit('input', {
-                productId: product.id
-                // pricetagId: 2
+                productId: product ? product.id : null,
+                pricetagId: null
+            });
+            this.params.priceTag = null;
+        },
+        'params.priceTag': function paramsPriceTag(priceTag) {
+            this.$emit('input', {
+                productId: this.params.product.id,
+                pricetagId: priceTag ? priceTag.id : null
             });
         }
     },
