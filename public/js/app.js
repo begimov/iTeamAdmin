@@ -54039,7 +54039,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             options: {
-                products: [{ id: 1, name: 'Product 1' }, { id: 2, name: 'Product 2' }]
+                products: [{ id: 1, name: 'Product 1', priceTags: [{ id: 1, price: 100 }, { id: 2, price: 200 }]
+                }, { id: 2, name: 'Product 2', priceTags: [{ id: 3, price: 300 }, { id: 4, price: 400 }]
+                }]
             },
             params: {
                 product: null
@@ -54066,7 +54068,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('multiselect', {
+  return _c('div', [_c('multiselect', {
     attrs: {
       "options": _vm.options.products,
       "select-label": "",
@@ -54085,7 +54087,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])])
+  }, [_vm._v("Продукт не найден")])]), _vm._v("\n    " + _vm._s(_vm.params.product ? _vm.params.product.priceTags : '') + "\n")], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
