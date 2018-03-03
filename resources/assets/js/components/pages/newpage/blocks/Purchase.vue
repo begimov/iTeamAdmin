@@ -15,7 +15,7 @@
         <div class="col-md-6">
             <template v-if="params.product">
                 <multiselect v-model="params.priceTag"
-                    :options="params.product.priceTags"
+                    :options="params.product.priceTags.data"
                     select-label=""
                     selected-label="Выбран"
                     deselect-label=""

@@ -5,20 +5,7 @@ export default {
     data () {
         return {
             options: {
-                products: [
-                    { id: 1, name: 'Product 1', priceTags: 
-                        [
-                            { id: 1, price: 100 },
-                            { id: 2, price: 200 }
-                        ]
-                    },
-                    { id: 2, name: 'Product 2', priceTags: 
-                        [
-                            { id: 3, price: 300 },
-                            { id: 4, price: 400 }
-                        ]
-                    },
-                ],
+                products: [],
               },
               params: {
                 product: null,
@@ -44,7 +31,7 @@ export default {
     methods: {
         getProducts() {
             axios.get('/webapi/products/all').then((res) => {
-                console.log(res)
+                this.options.products = res.data.data
             })
         }
     },

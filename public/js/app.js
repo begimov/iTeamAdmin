@@ -54039,9 +54039,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             options: {
-                products: [{ id: 1, name: 'Product 1', priceTags: [{ id: 1, price: 100 }, { id: 2, price: 200 }]
-                }, { id: 2, name: 'Product 2', priceTags: [{ id: 3, price: 300 }, { id: 4, price: 400 }]
-                }]
+                products: []
             },
             params: {
                 product: null,
@@ -54067,8 +54065,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         getProducts: function getProducts() {
+            var _this = this;
+
             axios.get('/webapi/products/all').then(function (res) {
-                console.log(res);
+                _this.options.products = res.data.data;
             });
         }
     },
@@ -54109,7 +54109,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6"
   }, [(_vm.params.product) ? [_c('multiselect', {
     attrs: {
-      "options": _vm.params.product.priceTags,
+      "options": _vm.params.product.priceTags.data,
       "select-label": "",
       "selected-label": "Выбран",
       "deselect-label": "",
