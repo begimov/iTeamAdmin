@@ -60,21 +60,21 @@ class FileController extends Controller
 
     protected function storeElementFile(Request $request, $file)
     {        
-        // $upload = $this->files->store($material, $file);
+        $upload = $this->files->storeElementFile($file);
 
-        // $this->storeFileOnDisk();
+        Storage::disk('public')->putFileAs(
+            'files/elements/id_',
+            $file,
+            $file->getClientOriginalName()
+        );
 
-        // return response()->json([
-        //     'id' => $upload->id
-        // ]);
+        return response()->json([
+            'id' => $upload->id
+        ]);
     }
 
     protected function storeFileOnDisk()
     {
-        Storage::disk('local')->putFileAs(
-            'files/materials/id_' . $material->id,
-            $file,
-            $file->getClientOriginalName()
-        );
+        //
     }
 }
