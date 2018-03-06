@@ -23,7 +23,10 @@
 
               <div class="row">
                 <div class="col-md-12">
-                  <file-uploader :resource-id="id" parent-resource-type="material"></file-uploader>
+                  <file-uploader 
+                    :resource-id="id" 
+                    parent-resource-type="material">
+                  </file-uploader>
                 </div>
               </div>
               <hr>

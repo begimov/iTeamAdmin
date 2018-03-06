@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-md-4 col-sm-4">
-    <img-uploader v-model="data.path"></img-uploader>
+    <file-uploader 
+      v-model="data.imgId" 
+      parent-resource-type="element"
+      maxFiles="1">
+    </file-uploader>
   </div>
   <div class="col-md-4 col-sm-4">
     <h2>Название</h2>

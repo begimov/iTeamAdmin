@@ -5,13 +5,14 @@ export default {
   components: {
     vueDropzone: vue2Dropzone
   },
-  props: ['resourceId', 'parentResourceType'],
+  props: ['resourceId', 'parentResourceType', 'maxFiles'],
   data: function () {
     return {
       options: {
         url: `/webapi/files`,
         thumbnailWidth: 150,
         maxFilesize: 0.5,
+        maxFiles: this.maxFiles,
         headers: {
           'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
         },

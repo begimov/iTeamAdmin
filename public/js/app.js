@@ -12341,7 +12341,6 @@ Vue.component('paginator', __webpack_require__(85));
 Vue.component('search', __webpack_require__(88));
 Vue.component('typeahead-search', __webpack_require__(91));
 Vue.component('orderby', __webpack_require__(100));
-Vue.component('img-uploader', __webpack_require__(103));
 Vue.component('file-uploader', __webpack_require__(107));
 
 // Orders
@@ -47859,167 +47858,10 @@ if (false) {
 }
 
 /***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(104),
-  /* template */
-  __webpack_require__(106),
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/base/ImgUploader.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] ImgUploader.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-51371830", Component.options)
-  } else {
-    hotAPI.reload("data-v-51371830", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 104 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_upload__ = __webpack_require__(105);
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['currentImg'],
-  data: function data() {
-    return {
-      errors: [],
-      img: {
-        id: null,
-        path: this.currentImg
-      }
-    };
-  },
-
-  mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_upload__["a" /* default */]],
-  methods: {
-    fileChange: function fileChange(e) {
-      this.upload(e);
-      // .then(res => {
-      //   this.img.path = res.data.data.path
-      //   this.img.id = res.data.data.id
-      // }).catch(err => {
-      //   if (err.response.status === 422) {
-      //     this.errors = err.response.data
-      //     return
-      //   }
-      //   this.errors = 'Error occurred while processing your img, please try again'
-      // })
-      this.img.path = 'img/test.png';
-      this.$emit('input', this.img.path);
-    }
-  }
-});
-
-/***/ }),
-/* 105 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-  props: {
-    endpoint: {
-      type: String
-    },
-    sendAs: {
-      type: String,
-      default: 'file'
-    }
-  },
-  data: function data() {
-    return { uploading: false };
-  },
-
-  methods: {
-    upload: function upload(e) {
-      this.uploading = true;
-      this.packageUploads(e);
-      this.uploading = false;
-      // return axios.post(this.endpoint, this.packageUploads(e)).then(res => {
-      //   this.uploading = false
-      //   return Promise.resolve(res)
-      // }).catch(err => {
-      //   this.uploading = false
-      //   return Promise.reject(err)
-      // })
-    },
-    packageUploads: function packageUploads(e) {
-      var fileData = new FormData();
-      fileData.append(this.sendAs, e.target.files[0]);
-      console.log(e.target.files[0]);
-      return fileData;
-    }
-  }
-});
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.uploading) ? _c('div', [_vm._v("Загрузка...")]) : _c('label', {
-    staticClass: "btn btn-primary btn-xs"
-  }, [_vm._v("Выбрать изображение\n    "), _c('input', {
-    staticStyle: {
-      "display": "none"
-    },
-    attrs: {
-      "type": "file"
-    },
-    on: {
-      "change": _vm.fileChange
-    }
-  })]), _vm._v(" "), (_vm.img.path) ? _c('div', [_c('input', {
-    attrs: {
-      "type": "hidden",
-      "name": "img_id"
-    },
-    domProps: {
-      "value": _vm.img.id
-    }
-  }), _vm._v(" "), _c('img', {
-    staticClass: "img-responsive img-rounded",
-    attrs: {
-      "src": _vm.img.path
-    }
-  })]) : _vm._e()])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-51371830", module.exports)
-  }
-}
-
-/***/ }),
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
 /* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -48078,13 +47920,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   components: {
     vueDropzone: __WEBPACK_IMPORTED_MODULE_0_vue2_dropzone___default.a
   },
-  props: ['resourceId', 'parentResourceType'],
+  props: ['resourceId', 'parentResourceType', 'maxFiles'],
   data: function data() {
     return {
       options: _extends({
         url: '/webapi/files',
         thumbnailWidth: 150,
         maxFilesize: 0.5,
+        maxFiles: this.maxFiles,
         headers: {
           'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
         },
