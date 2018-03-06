@@ -21,7 +21,7 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
         $file = $this->entity;
         $file->name = $uploadedFile->getClientOriginalName();
         $file->size = $uploadedFile->getSize();
-        $file->material()->associate($material);
+        // $file->material()->associate($material);
         $file->save();
 
         return $file;
