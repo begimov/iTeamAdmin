@@ -48078,11 +48078,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   components: {
     vueDropzone: __WEBPACK_IMPORTED_MODULE_0_vue2_dropzone___default.a
   },
-  props: ['resourceId', 'resourceType', 'url'],
+  props: ['resourceId', 'parentResourceType'],
   data: function data() {
     return {
       options: _extends({
-        url: '/webapi/files/' + this.resourceId + '/file',
+        url: '/webapi/files',
         thumbnailWidth: 150,
         maxFilesize: 0.5,
         headers: {
@@ -48097,12 +48097,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       file.id = response.id;
     },
     fileRemoved: function fileRemoved(file, error, xhr) {
-      axios.delete('/webapi/files/' + this.resourceId + '/file/' + file.id);
+      axios.delete('/webapi/files/' + file.id);
     }
   },
   watch: {
     resourceId: function resourceId() {
-      this.$refs.fileUploader.setOption('url', '/webapi/files/' + this.resourceId + '/file');
+      this.$refs.fileUploader.setOption('params', {
+        parentResourceId: this.resourceId,
+        parentResourceType: this.parentResourceType
+      });
     }
   }
 });
@@ -53386,7 +53389,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('file-uploader', {
     attrs: {
-      "resource-id": _vm.id
+      "resource-id": _vm.id,
+      "parent-resource-type": "material"
     }
   })], 1)]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "row"

@@ -24,9 +24,26 @@ class FileController extends Controller
         $this->files = $files;
     }
 
-    public function store(Material $material, Request $request)
+    public function store(Request $request)
     {
+        switch ($request->parentResourceType) {
+            case 'material':
+                return $this->storeMaterialFile($request);
+                break;
+        }
+
+       
+    }
+
+    public function destroy(Material $material, File $file)
+    {
+        $this->files->destroy($file);
+    }
+
+    protected function storeMaterialFile(Request $request)
+    {        
         $file = $request->file('file');
+        $material = Material::find($request->parentResourceId);
 
         $upload = $this->files->store($material, $file);
 
@@ -39,10 +56,5 @@ class FileController extends Controller
         return response()->json([
             'id' => $upload->id
         ]);
-    }
-
-    public function destroy(Material $material, File $file)
-    {
-        $this->files->destroy($file);
     }
 }
