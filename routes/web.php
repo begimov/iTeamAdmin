@@ -42,9 +42,12 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for Pages.vue component
         Route::resource('pages', 'Pages\PageController');
 
+        // Route for FileUploader.vue component
+        Route::resource('files', 'Content\FileController');
+
         // Route for FileUploader.vue component, to store material's files & delete them
-        Route::post('/files/{material}/file', 'Content\FileController@store');
-        Route::delete('/files/{material}/file/{file}', 'Content\FileController@destroy');
+        // Route::post('/files/{material}/file', 'Content\FileController@store');
+        // Route::delete('/files/{material}/file/{file}', 'Content\FileController@destroy');
     });
 
 });
