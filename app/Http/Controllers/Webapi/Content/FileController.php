@@ -62,14 +62,19 @@ class FileController extends Controller
     {        
         // $upload = $this->files->store($material, $file);
 
-        // Storage::disk('local')->putFileAs(
-        //     'files/materials/id_' . $material->id,
-        //     $file,
-        //     $file->getClientOriginalName()
-        // );
+        // $this->storeFileOnDisk();
 
         // return response()->json([
         //     'id' => $upload->id
         // ]);
+    }
+
+    protected function storeFileOnDisk()
+    {
+        Storage::disk('local')->putFileAs(
+            'files/materials/id_' . $material->id,
+            $file,
+            $file->getClientOriginalName()
+        );
     }
 }
