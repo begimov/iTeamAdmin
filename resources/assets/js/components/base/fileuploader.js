@@ -5,11 +5,14 @@ export default {
   components: {
     vueDropzone: vue2Dropzone
   },
-  props: ['resourceId'],
+  props: ['resourceId', 'resourceType'],
   data: function () {
     return {
       options: {
-        url: `/webapi/files/${this.resourceId}/file`,
+        url: `/webapi/files`,
+        params: {
+          resourceType: this.resourceType
+        },
         thumbnailWidth: 150,
         maxFilesize: 0.5,
         headers: {
@@ -25,14 +28,14 @@ export default {
       file.id = response.id
     },
     fileRemoved(file, error, xhr) {
-      axios.delete(`/webapi/files/${this.resourceId}/file/${file.id}`)
+      axios.delete(`/webapi/files/${file.id}`)
     }
   },
-  watch: {
-    resourceId: function() {
-      this.$refs.fileUploader.setOption('url', `/webapi/files/${this.resourceId}/file`)
-    }
-  }
+  // watch: {
+  //   resourceId: function() {
+  //     this.$refs.fileUploader.setOption('url', `/webapi/files/${this.resourceId}/file`)
+  //   }
+  // }
 }
 
 const localizationRU = {
