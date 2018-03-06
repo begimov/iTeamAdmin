@@ -5,7 +5,8 @@
       id="fileUploader"
       :options="options"
       @vdropzone-success="fileUploaded"
-      @vdropzone-removed-file="fileRemoved" />
+      @vdropzone-removed-file="fileRemoved"
+      @vdropzone-sending="fileSending" />
   </div>
 </template>
 

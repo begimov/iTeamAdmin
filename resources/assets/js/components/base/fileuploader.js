@@ -5,7 +5,7 @@ export default {
   components: {
     vueDropzone: vue2Dropzone
   },
-  props: ['resourceId', 'parentResourceType', 'maxFiles'],
+  props: ['parentResourceId', 'parentResourceType', 'maxFiles'],
   data: function () {
     return {
       options: {
@@ -27,16 +27,10 @@ export default {
     },
     fileRemoved(file, error, xhr) {
       axios.delete(`/webapi/files/${file.id}`)
-    }
-  },
-  watch: {
-    resourceId: function() {
-      this.$refs.fileUploader.setOption('params', 
-        {
-          parentResourceId: this.resourceId,
-          parentResourceType: this.parentResourceType
-        }
-      )
+    },
+    fileSending(file, xhr, formData) {
+      formData.set('parentResourceId', this.parentResourceId)
+      formData.set('parentResourceType', this.parentResourceType)
     }
   }
 }

@@ -28,11 +28,12 @@ class FileController extends Controller
     {
         switch ($request->parentResourceType) {
             case 'material':
-                return $this->storeMaterialFile($request);
+                return $this->storeMaterialFile($request, $request->file('file'));
+                break;
+            case 'element':
+                return $this->storeElementFile($request, $request->file('file'));
                 break;
         }
-
-       
     }
 
     public function destroy(Material $material, File $file)
@@ -40,9 +41,8 @@ class FileController extends Controller
         $this->files->destroy($file);
     }
 
-    protected function storeMaterialFile(Request $request)
+    protected function storeMaterialFile(Request $request, $file)
     {        
-        $file = $request->file('file');
         $material = Material::find($request->parentResourceId);
 
         $upload = $this->files->store($material, $file);
@@ -56,5 +56,20 @@ class FileController extends Controller
         return response()->json([
             'id' => $upload->id
         ]);
+    }
+
+    protected function storeElementFile(Request $request, $file)
+    {        
+        // $upload = $this->files->store($material, $file);
+
+        // Storage::disk('local')->putFileAs(
+        //     'files/materials/id_' . $material->id,
+        //     $file,
+        //     $file->getClientOriginalName()
+        // );
+
+        // return response()->json([
+        //     'id' => $upload->id
+        // ]);
     }
 }
