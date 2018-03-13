@@ -63,7 +63,7 @@ class FileController extends Controller
         $upload = $this->files->storeElementFile($file);
 
         Storage::disk('public')->putFileAs(
-            'files/elements/id_',
+            'files/elements/' . $upload->created_at->toDateString(),
             $file,
             $file->getClientOriginalName()
         );
