@@ -32,6 +32,10 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
             $e->block()->associate($block);
             $e->page()->associate($page);
             $e->save();
+
+            if (isset($element['data']['files'])) {
+                $this->associateElementFiles($element['data']['files'], $e);
+            }
         }
 
         return $page;
@@ -40,5 +44,14 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
     public function destroyById($id)
     {
         //
+    }
+
+    protected function associateElementFiles($files, $element)
+    {
+        foreach ($files as $fileId) {
+            $file = File::find($fileId);
+            $file->element()->associate($element);
+            $file->save();
+        }
     }
 }
