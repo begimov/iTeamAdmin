@@ -47934,9 +47934,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   methods: {
     fileUploaded: function fileUploaded(file, response) {
       file.id = response.id;
+      this.$emit('input', response.id);
     },
     fileRemoved: function fileRemoved(file, error, xhr) {
       axios.delete('/webapi/files/' + file.id);
+      this.$emit('input', null);
     },
     fileSending: function fileSending(file, xhr, formData) {
       formData.set('parentResourceId', this.parentResourceId);

@@ -24,9 +24,11 @@ export default {
   methods: {
     fileUploaded(file, response) {
       file.id = response.id
+      this.$emit('input', response.id)
     },
     fileRemoved(file, error, xhr) {
       axios.delete(`/webapi/files/${file.id}`)
+      this.$emit('input', null)
     },
     fileSending(file, xhr, formData) {
       formData.set('parentResourceId', this.parentResourceId)
