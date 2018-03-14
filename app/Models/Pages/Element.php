@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Element extends Model
 {
+    public $timestamps = false;
     /**
      * The attributes that should be cast to native types.
      *
