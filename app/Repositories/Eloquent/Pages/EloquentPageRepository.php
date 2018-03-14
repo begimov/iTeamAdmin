@@ -7,6 +7,7 @@ use App\Repositories\Contracts\Pages\PageRepository;
 use App\Models\Pages\Page;
 use App\Models\Pages\Block;
 use App\Models\Pages\Element;
+use App\Models\Content\File;
 
 class EloquentPageRepository extends EloquentRepositoryAbstract implements PageRepository
 {

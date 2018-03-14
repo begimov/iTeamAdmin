@@ -4,6 +4,7 @@ namespace App\Models\Content;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Products\Material;
+use App\Models\Pages\Element;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class File extends Model
@@ -20,5 +21,10 @@ class File extends Model
     public function material()
     {
         return $this->belongsTo(Material::class);
+    }
+
+    public function element()
+    {
+        return $this->belongsTo(Element::class);
     }
 }
