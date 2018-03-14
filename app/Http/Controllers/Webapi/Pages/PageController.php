@@ -68,7 +68,10 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $page = $this->pages->store($request->all()['page']);
+        return response()->json([
+            'page' => fractal($page, new PageTransformer)->toArray(),
+        ]);
     }
 
     /**

@@ -15,7 +15,7 @@ class CreateFilesTable extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('material_id')->unsigned()->index();
+            $table->integer('material_id')->nullable()->unsigned()->index();
             $table->string('name');
             $table->bigInteger('size');
             $table->softDeletes();

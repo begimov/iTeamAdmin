@@ -5,13 +5,14 @@ export default {
   components: {
     vueDropzone: vue2Dropzone
   },
-  props: ['resourceId'],
+  props: ['parentResourceId', 'parentResourceType', 'maxFiles'],
   data: function () {
     return {
       options: {
-        url: `/webapi/files/${this.resourceId}/file`,
+        url: `/webapi/files`,
         thumbnailWidth: 150,
         maxFilesize: 0.5,
+        maxFiles: this.maxFiles,
         headers: {
           'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
         },
@@ -23,14 +24,15 @@ export default {
   methods: {
     fileUploaded(file, response) {
       file.id = response.id
+      this.$emit('input', response.id)
     },
     fileRemoved(file, error, xhr) {
-      axios.delete(`/webapi/files/${this.resourceId}/file/${file.id}`)
-    }
-  },
-  watch: {
-    resourceId: function() {
-      this.$refs.fileUploader.setOption('url', `/webapi/files/${this.resourceId}/file`)
+      axios.delete(`/webapi/files/${file.id}`)
+      this.$emit('input', null)
+    },
+    fileSending(file, xhr, formData) {
+      formData.set('parentResourceId', this.parentResourceId)
+      formData.set('parentResourceType', this.parentResourceType)
     }
   }
 }

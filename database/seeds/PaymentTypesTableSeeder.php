@@ -12,11 +12,8 @@ class PaymentTypesTableSeeder extends Seeder
     public function run()
     {
       $paymentTypes = [
-          ['name' => 'Я.Касса'],
-          ['name' => 'Карта'],
-          ['name' => 'Сбербанк'],
-          ['name' => 'Перевод'],
-          ['name' => 'Счет'],
+          ['name' => 'Яндекс.Касса'],
+          ['name' => 'Единый кошелек'],
       ];
       foreach ($paymentTypes as $key => $value) {
           DB::table('payment_types')->insert($value);

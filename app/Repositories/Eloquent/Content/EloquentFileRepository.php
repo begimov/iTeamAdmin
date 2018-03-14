@@ -27,6 +27,16 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
         return $file;
     }
 
+    public function storeElementFile(UploadedFile $uploadedFile)
+    {
+        $file = $this->entity;
+        $file->name = $uploadedFile->getClientOriginalName();
+        $file->size = $uploadedFile->getSize();
+        $file->save();
+
+        return $file;
+    }
+
     public function destroy(File $file)
     {
         $file->delete();

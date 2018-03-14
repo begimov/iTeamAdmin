@@ -5,14 +5,17 @@ export default {
   setBlocks (state, value) {
       state.blocks = value
   },
+  updatePageName (state, name) {
+      state.page.name = name
+  },
   addBlockToLayout (state, data) {
       state.layout.blocks.push(data)
   },
-  addComponentToComponents (state, value) {
-      state.layout.components.push(value)
+  addElementToElements (state, value) {
+      state.layout.elements.push(value)
   },
   deleteElement (state, id) {
       state.layout.blocks = _.filter(state.layout.blocks, function(o) { return o.id != id; })
-      state.layout.components = _.filter(state.layout.components, function(o) { return o.id != id; })
+      state.layout.elements = _.filter(state.layout.elements, function(o) { return o.id != id; })
   },
 }

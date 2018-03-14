@@ -23,21 +23,25 @@ Vue.component('paginator', require('./components/base/Paginator.vue'));
 Vue.component('search', require('./components/base/Search.vue'));
 Vue.component('typeahead-search', require('./components/base/TypeaheadSearch.vue'));
 Vue.component('orderby', require('./components/base/OrderBy.vue'));
-Vue.component('img-uploader', require('./components/base/ImgUploader.vue'));
 Vue.component('file-uploader', require('./components/base/FileUploader.vue'));
 
+// Orders
 Vue.component('orders', require('./components/products/orders/Orders.vue'));
 Vue.component('order', require('./components/products/orders/Order.vue'));
 Vue.component('new-order', require('./components/products/neworder/NewOrder.vue'));
 
+// Products
 Vue.component('products', require('./components/products/Products.vue'));
 Vue.component('product', require('./components/products/Product.vue'));
 Vue.component('new-product', require('./components/products/newproduct/NewProduct.vue'));
 Vue.component('new-material', require('./components/products/newmaterial/NewMaterial.vue'));
 
+// Pages
 Vue.component('pages', require('./components/pages/Pages.vue'));
 Vue.component('page', require('./components/pages/Page.vue'));
 Vue.component('new-page', require('./components/pages/newpage/NewPage.vue'));
+// Special blocks
+Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vue'));
 
 const app = new Vue({
     el: '#app',

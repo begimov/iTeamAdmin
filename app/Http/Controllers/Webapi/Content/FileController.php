@@ -24,18 +24,16 @@ class FileController extends Controller
         $this->files = $files;
     }
 
-    public function store(Material $material, Request $request)
+    public function store(Request $request)
     {
-        $file = $request->file('file');
-
-        $upload = $this->files->store($material, $file);
-
-        Storage::disk('local')->putFileAs(
-            'files/materials/id_' . $material->id,
-            $file,
-            $file->getClientOriginalName()
-        );
-
+        switch ($request->parentResourceType) {
+            case 'material':
+                $upload = $this->storeMaterialFile($request, $request->file('file'));
+                break;
+            case 'element':
+                $upload = $this->storeElementFile($request, $request->file('file'));
+                break;
+        }
         return response()->json([
             'id' => $upload->id
         ]);
@@ -44,5 +42,30 @@ class FileController extends Controller
     public function destroy(Material $material, File $file)
     {
         $this->files->destroy($file);
+    }
+
+    protected function storeMaterialFile(Request $request, $file)
+    {        
+        $material = Material::find($request->parentResourceId);
+
+        $upload = $this->files->store($material, $file);
+
+        $this->storeFileOnDisk('local', 'files/materials/id_' . $material->id, $file);
+
+        return $upload;
+    }
+
+    protected function storeElementFile(Request $request, $file)
+    {        
+        $upload = $this->files->storeElementFile($file);
+
+        $this->storeFileOnDisk('public', 'files/elements/' . $upload->created_at->toDateString(), $file);
+
+        return $upload;
+    }
+
+    protected function storeFileOnDisk($disk, $path, $file)
+    {
+        Storage::disk($disk)->putFileAs($path, $file, $file->getClientOriginalName());
     }
 }

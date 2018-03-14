@@ -22,8 +22,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
     // Pages page
     Route::get('pages', 'Pages\PageController@index')->name('pages');
-    // TODO: use separate route to preview page in admin panel or use users path with slug?
-    Route::get('pages/{page}', 'Pages\PageController@show')->name('pages.show.preview');
 
     // WebAPI
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
@@ -35,6 +33,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         Route::get('/user/{user}/{data}', 'UserController@getUserData');
 
         // Route for Products.vue component
+        Route::get('/products/all', 'Products\ProductController@all');
         Route::resource('products', 'Products\ProductController');
 
         // Route for Materials.vue & NewMaterial.vue components
@@ -43,9 +42,12 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for Pages.vue component
         Route::resource('pages', 'Pages\PageController');
 
+        // Route for FileUploader.vue component
+        Route::resource('files', 'Content\FileController');
+
         // Route for FileUploader.vue component, to store material's files & delete them
-        Route::post('/files/{material}/file', 'Content\FileController@store');
-        Route::delete('/files/{material}/file/{file}', 'Content\FileController@destroy');
+        // Route::post('/files/{material}/file', 'Content\FileController@store');
+        // Route::delete('/files/{material}/file/{file}', 'Content\FileController@destroy');
     });
 
 });
