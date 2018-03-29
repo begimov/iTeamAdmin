@@ -43915,6 +43915,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         });
       });
       commit('setBlocks', blocks);
+      commit('setCategoriesOptions', res.data.categories.data);
       commit('setIsLoading', false);
     });
   },

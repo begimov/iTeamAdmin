@@ -34,6 +34,7 @@ export default {
         })
       });
       commit('setBlocks', blocks)
+      commit('setCategoriesOptions', res.data.categories.data)
       commit('setIsLoading', false)
     })
   },
