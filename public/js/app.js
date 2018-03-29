@@ -43882,20 +43882,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   getInitialData: function getInitialData(_ref) {
-    var commit = _ref.commit,
-        dispatch = _ref.dispatch;
+    var commit = _ref.commit;
 
     commit('setIsLoading', true);
-    // api.newpage.getInitialData().then(res => {
-    //   commit('setCategories', res.data.categories.data)
-    //   commit('setIsLoading', false)
-    // })
-    dispatch('getAvailableBlocks');
-  },
-  getAvailableBlocks: function getAvailableBlocks(_ref2) {
-    var commit = _ref2.commit;
-
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getAvailableBlocks().then(function (res) {
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getInitialData().then(function (res) {
       var blocks = res.data.blocks.data;
 
       _.forEach(blocks, function (block, key) {
@@ -43928,34 +43918,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('setIsLoading', false);
     });
   },
-  updateCategoryParams: function updateCategoryParams(_ref3, value) {
-    var commit = _ref3.commit;
+  updateCategoryParams: function updateCategoryParams(_ref2, value) {
+    var commit = _ref2.commit;
 
     commit('updateCategoryParams', value);
   },
-  updatePageName: function updatePageName(_ref4, name) {
-    var commit = _ref4.commit;
+  updatePageName: function updatePageName(_ref3, name) {
+    var commit = _ref3.commit;
 
     commit('updatePageName', name);
   },
-  updatePageDesc: function updatePageDesc(_ref5, desc) {
-    var commit = _ref5.commit;
+  updatePageDesc: function updatePageDesc(_ref4, desc) {
+    var commit = _ref4.commit;
 
     commit('updatePageDesc', desc);
   },
-  addBlockToLayout: function addBlockToLayout(_ref6, data) {
-    var commit = _ref6.commit;
+  addBlockToLayout: function addBlockToLayout(_ref5, data) {
+    var commit = _ref5.commit;
 
     commit('addBlockToLayout', data);
   },
-  deleteElement: function deleteElement(_ref7, id) {
-    var commit = _ref7.commit;
+  deleteElement: function deleteElement(_ref6, id) {
+    var commit = _ref6.commit;
 
     commit('deleteElement', id);
   },
-  save: function save(_ref8) {
-    var commit = _ref8.commit,
-        state = _ref8.state;
+  save: function save(_ref7) {
+    var commit = _ref7.commit,
+        state = _ref7.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -53731,7 +53721,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
@@ -54076,7 +54066,7 @@ if (false) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  getAvailableBlocks: function getAvailableBlocks() {
+  getInitialData: function getInitialData() {
     return new Promise(function (resolve, reject) {
       axios.get("/webapi/pages/create").then(function (res) {
         resolve(res);

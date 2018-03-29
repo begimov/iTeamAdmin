@@ -1,16 +1,9 @@
 import api from '../../../api'
 
 export default {
-  getInitialData ({ commit, dispatch }) {
+  getInitialData ({ commit }) {
     commit('setIsLoading', true)
-    // api.newpage.getInitialData().then(res => {
-    //   commit('setCategories', res.data.categories.data)
-    //   commit('setIsLoading', false)
-    // })
-    dispatch('getAvailableBlocks')
-  },
-  getAvailableBlocks ({ commit }) {
-    api.newpage.getAvailableBlocks().then(res => {
+    api.newpage.getInitialData().then(res => {
       const blocks = res.data.blocks.data
       
       _.forEach(blocks, function(block, key) {

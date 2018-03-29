@@ -42,7 +42,6 @@ export default {
           'updatePageName',
           'updatePageDesc',
           'updateCategoryParams',
-          'getAvailableBlocks',
           'addBlockToLayout',
           'deleteElement',
           'save',

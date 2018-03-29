@@ -1,5 +1,5 @@
 export default {
-  getAvailableBlocks() {
+  getInitialData() {
     return new Promise((resolve, reject) => {
       axios.get(`/webapi/pages/create`).then(res => {
         resolve(res)
