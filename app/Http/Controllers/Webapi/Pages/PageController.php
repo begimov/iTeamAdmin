@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 use App\Repositories\Contracts\Pages\PageRepository;
+use App\Repositories\Contracts\Pages\BlockRepository;
 use App\Repositories\Contracts\Products\CategoryRepository;
 
 use App\Transformers\Pages\PageTransformer;
@@ -19,15 +20,21 @@ class PageController extends Controller
 {
     protected $pages;
     protected $categories;
+    protected $blocks;
+    
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(PageRepository $pages, CategoryRepository $categories)
+    public function __construct(
+        PageRepository $pages, 
+        CategoryRepository $categories,
+        BlockRepository $blocks)
     {
         $this->pages = $pages;
         $this->categories = $categories;
+        $this->blocks = $blocks;
     }
 
     /**
@@ -57,7 +64,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        $blocks = fractal(Block::all(), new BlockTransformer)->toArray();
+        $blocks = fractal($this->blocks->get(), new BlockTransformer)->toArray();
         $categories = fractal($this->categories->get(), new CategoryTransformer)->toArray();
 
         return response()->json([
