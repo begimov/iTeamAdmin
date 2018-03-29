@@ -1674,8 +1674,10 @@ function applyToTag (styleElement, obj) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_products__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_pages__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__products_newmaterial__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__products_newproduct__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_newpage__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__products_newmaterial__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__products_newproduct__ = __webpack_require__(53);
+
 
 
 
@@ -1684,8 +1686,9 @@ function applyToTag (styleElement, obj) {
 /* harmony default export */ __webpack_exports__["a"] = ({
   products: __WEBPACK_IMPORTED_MODULE_0__products_products__["a" /* default */],
   pages: __WEBPACK_IMPORTED_MODULE_1__pages_pages__["a" /* default */],
-  newmaterial: __WEBPACK_IMPORTED_MODULE_2__products_newmaterial__["a" /* default */],
-  newproduct: __WEBPACK_IMPORTED_MODULE_3__products_newproduct__["a" /* default */]
+  newpage: __WEBPACK_IMPORTED_MODULE_2__pages_newpage__["a" /* default */],
+  newmaterial: __WEBPACK_IMPORTED_MODULE_3__products_newmaterial__["a" /* default */],
+  newproduct: __WEBPACK_IMPORTED_MODULE_4__products_newproduct__["a" /* default */]
 });
 
 /***/ }),
@@ -54060,6 +54063,34 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  getAvailableBlocks: function getAvailableBlocks() {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/pages/create").then(function (res) {
+        resolve(res);
+      });
+    });
+  },
+  savePage: function savePage(payload) {
+    return new Promise(function (resolve, reject) {
+      axios.post("/webapi/pages", payload).then(function (res) {
+        resolve(res);
+      });
+    });
+  }
+});
 
 /***/ })
 /******/ ]);
