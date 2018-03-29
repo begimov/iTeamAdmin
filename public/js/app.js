@@ -43838,7 +43838,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
   options: {
-    categories: [{ id: 1, name: 'Cat1' }, { id: 2, name: 'Cat2' }]
+    categories: []
   },
   page: {
     categoryId: null,
@@ -43892,8 +43892,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  getAvailableBlocks: function getAvailableBlocks(_ref, value) {
+  getInitialData: function getInitialData(_ref) {
     var commit = _ref.commit;
+
+    console.log('GET DATA');
+  },
+  getAvailableBlocks: function getAvailableBlocks(_ref2, value) {
+    var commit = _ref2.commit;
 
     commit('setIsLoading', true);
 
@@ -43931,34 +43936,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('setIsLoading', false);
     });
   },
-  updateCategoryParams: function updateCategoryParams(_ref2, value) {
-    var commit = _ref2.commit;
+  updateCategoryParams: function updateCategoryParams(_ref3, value) {
+    var commit = _ref3.commit;
 
     commit('updateCategoryParams', value);
   },
-  updatePageName: function updatePageName(_ref3, name) {
-    var commit = _ref3.commit;
+  updatePageName: function updatePageName(_ref4, name) {
+    var commit = _ref4.commit;
 
     commit('updatePageName', name);
   },
-  updatePageDesc: function updatePageDesc(_ref4, desc) {
-    var commit = _ref4.commit;
+  updatePageDesc: function updatePageDesc(_ref5, desc) {
+    var commit = _ref5.commit;
 
     commit('updatePageDesc', desc);
   },
-  addBlockToLayout: function addBlockToLayout(_ref5, data) {
-    var commit = _ref5.commit;
+  addBlockToLayout: function addBlockToLayout(_ref6, data) {
+    var commit = _ref6.commit;
 
     commit('addBlockToLayout', data);
   },
-  deleteElement: function deleteElement(_ref6, id) {
-    var commit = _ref6.commit;
+  deleteElement: function deleteElement(_ref7, id) {
+    var commit = _ref7.commit;
 
     commit('deleteElement', id);
   },
-  save: function save(_ref7) {
-    var commit = _ref7.commit,
-        state = _ref7.state;
+  save: function save(_ref8) {
+    var commit = _ref8.commit,
+        state = _ref8.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -53734,12 +53739,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['updatePageName', 'updatePageDesc', 'updateCategoryParams', 'getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
   }),
   mounted: function mounted() {
+    this.getInitialData();
     this.getAvailableBlocks();
   }
 });

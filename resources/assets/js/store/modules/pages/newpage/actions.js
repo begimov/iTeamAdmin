@@ -1,6 +1,9 @@
 import api from '../../../api'
 
 export default {
+  getInitialData ({ commit }) {
+    console.log('GET DATA')
+  },
   getAvailableBlocks ({ commit }, value) {
     commit('setIsLoading', true)
 

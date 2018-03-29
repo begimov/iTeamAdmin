@@ -1,10 +1,7 @@
 export default {
   isLoading: false,
   options: {
-    categories:[
-      { id:1, name: 'Cat1'},
-      { id:2, name: 'Cat2'},
-    ],
+    categories:[],
   },
   page: {
     categoryId: null,

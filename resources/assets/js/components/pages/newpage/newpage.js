@@ -38,6 +38,7 @@ export default {
   },
   methods: {
       ...mapActions('pages/newpage', [
+          'getInitialData',
           'updatePageName',
           'updatePageDesc',
           'updateCategoryParams',
@@ -51,6 +52,7 @@ export default {
       }
   },
   mounted() {
+    this.getInitialData()
     this.getAvailableBlocks()
   }
 }
