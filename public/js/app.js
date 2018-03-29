@@ -43925,19 +43925,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('updatePageName', name);
   },
-  addBlockToLayout: function addBlockToLayout(_ref3, data) {
+  updatePageDesc: function updatePageDesc(_ref3, desc) {
     var commit = _ref3.commit;
+
+    commit('updatePageDesc', desc);
+  },
+  addBlockToLayout: function addBlockToLayout(_ref4, data) {
+    var commit = _ref4.commit;
 
     commit('addBlockToLayout', data);
   },
-  deleteElement: function deleteElement(_ref4, id) {
-    var commit = _ref4.commit;
+  deleteElement: function deleteElement(_ref5, id) {
+    var commit = _ref5.commit;
 
     commit('deleteElement', id);
   },
-  save: function save(_ref5) {
-    var commit = _ref5.commit,
-        state = _ref5.state;
+  save: function save(_ref6) {
+    var commit = _ref6.commit,
+        state = _ref6.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -43969,6 +43974,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     updatePageName: function updatePageName(state, name) {
         state.page.name = name;
+    },
+    updatePageDesc: function updatePageDesc(state, desc) {
+        state.page.desc = desc;
     },
     addBlockToLayout: function addBlockToLayout(state, data) {
         state.layout.blocks.push(data);

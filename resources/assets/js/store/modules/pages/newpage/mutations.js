@@ -8,6 +8,9 @@ export default {
   updatePageName (state, name) {
       state.page.name = name
   },
+  updatePageDesc (state, desc) {
+      state.page.desc = desc
+  },
   addBlockToLayout (state, data) {
       state.layout.blocks.push(data)
   },

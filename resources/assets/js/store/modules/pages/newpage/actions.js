@@ -42,6 +42,9 @@ export default {
   updatePageName ({ commit }, name) {
     commit('updatePageName', name)
   },
+  updatePageDesc ({ commit }, desc) {
+    commit('updatePageDesc', desc)
+  },
   addBlockToLayout ({ commit }, data) {
     commit('addBlockToLayout', data)
   },
