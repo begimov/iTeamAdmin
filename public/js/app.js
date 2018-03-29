@@ -43856,6 +43856,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   pagename: function pagename(state) {
     return state.page.name;
   },
+  pagedesc: function pagedesc(state) {
+    return state.page.desc;
+  },
   blocks: function blocks(state) {
     return state.blocks;
   },
