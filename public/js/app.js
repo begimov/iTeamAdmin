@@ -43467,20 +43467,6 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         resolve(res);
       });
     });
-  },
-  getAvailableBlocks: function getAvailableBlocks() {
-    return new Promise(function (resolve, reject) {
-      axios.get("/webapi/pages/create").then(function (res) {
-        resolve(res);
-      });
-    });
-  },
-  savePage: function savePage(payload) {
-    return new Promise(function (resolve, reject) {
-      axios.post("/webapi/pages", payload).then(function (res) {
-        resolve(res);
-      });
-    });
   }
 });
 
@@ -43896,12 +43882,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref.commit,
         dispatch = _ref.dispatch;
 
+    commit('setIsLoading', true);
+    // api.newpage.getInitialData().then(res => {
+    //   commit('setCategories', res.data.categories.data)
+    //   commit('setIsLoading', false)
+    // })
     dispatch('getAvailableBlocks');
   },
   getAvailableBlocks: function getAvailableBlocks(_ref2) {
     var commit = _ref2.commit;
-
-    commit('setIsLoading', true);
 
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.getAvailableBlocks().then(function (res) {
       var blocks = res.data.blocks.data;
@@ -43932,7 +43921,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           });
         });
       });
-
       commit('setBlocks', blocks);
       commit('setIsLoading', false);
     });

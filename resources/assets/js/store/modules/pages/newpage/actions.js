@@ -2,11 +2,14 @@ import api from '../../../api'
 
 export default {
   getInitialData ({ commit, dispatch }) {
+    commit('setIsLoading', true)
+    // api.newpage.getInitialData().then(res => {
+    //   commit('setCategories', res.data.categories.data)
+    //   commit('setIsLoading', false)
+    // })
     dispatch('getAvailableBlocks')
   },
   getAvailableBlocks ({ commit }) {
-    commit('setIsLoading', true)
-
     api.pages.getAvailableBlocks().then(res => {
       const blocks = res.data.blocks.data
       
@@ -37,7 +40,6 @@ export default {
           })
         })
       });
-
       commit('setBlocks', blocks)
       commit('setIsLoading', false)
     })

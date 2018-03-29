@@ -5,19 +5,5 @@ export default {
         resolve(res)
       })
     })
-  },
-  getAvailableBlocks() {
-    return new Promise((resolve, reject) => {
-      axios.get(`/webapi/pages/create`).then(res => {
-        resolve(res)
-      })
-    })
-  },
-  savePage(payload) {
-    return new Promise((resolve, reject) => {
-      axios.post(`/webapi/pages`, payload).then(res => {
-        resolve(res)
-      })
-    })
   }
 }
