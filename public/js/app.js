@@ -43838,10 +43838,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
   options: {
-    categories: []
+    categories: [{ id: 1, name: 'Cat1' }, { id: 2, name: 'Cat2' }]
   },
   page: {
-    category: null,
+    categoryId: null,
     name: '',
     desc: ''
   },
@@ -43874,7 +43874,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return state.options.categories;
   },
   categoryParams: function categoryParams(state) {
-    return state.page.category;
+    return state.page.categoryId;
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
@@ -43989,7 +43989,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.blocks = value;
     },
     updateCategoryParams: function updateCategoryParams(state, value) {
-        state.page.category = value;
+        state.page.categoryId = value.id;
     },
     updatePageName: function updatePageName(state, name) {
         state.page.name = name;

@@ -1,10 +1,13 @@
 export default {
   isLoading: false,
   options: {
-    categories:[],
+    categories:[
+      { id:1, name: 'Cat1'},
+      { id:2, name: 'Cat2'},
+    ],
   },
   page: {
-    category: null,
+    categoryId: null,
     name: '',
     desc: ''
   },

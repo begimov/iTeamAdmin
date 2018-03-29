@@ -6,7 +6,7 @@ export default {
       state.blocks = value
   },
   updateCategoryParams(state, value) {
-    state.page.category = value
+    state.page.categoryId = value.id
   },
   updatePageName (state, name) {
       state.page.name = name
