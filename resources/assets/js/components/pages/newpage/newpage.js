@@ -53,6 +53,5 @@ export default {
   },
   mounted() {
     this.getInitialData()
-    this.getAvailableBlocks()
   }
 }

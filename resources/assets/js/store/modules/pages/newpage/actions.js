@@ -1,10 +1,10 @@
 import api from '../../../api'
 
 export default {
-  getInitialData ({ commit }) {
-    console.log('GET DATA')
+  getInitialData ({ commit, dispatch }) {
+    dispatch('getAvailableBlocks')
   },
-  getAvailableBlocks ({ commit }, value) {
+  getAvailableBlocks ({ commit }) {
     commit('setIsLoading', true)
 
     api.pages.getAvailableBlocks().then(res => {

@@ -43893,11 +43893,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   getInitialData: function getInitialData(_ref) {
-    var commit = _ref.commit;
+    var commit = _ref.commit,
+        dispatch = _ref.dispatch;
 
-    console.log('GET DATA');
+    dispatch('getAvailableBlocks');
   },
-  getAvailableBlocks: function getAvailableBlocks(_ref2, value) {
+  getAvailableBlocks: function getAvailableBlocks(_ref2) {
     var commit = _ref2.commit;
 
     commit('setIsLoading', true);
@@ -53746,7 +53747,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   }),
   mounted: function mounted() {
     this.getInitialData();
-    this.getAvailableBlocks();
   }
 });
 
