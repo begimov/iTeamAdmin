@@ -53683,7 +53683,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'blocks', 'layout', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'pagedesc', 'blocks', 'layout', 'isLoading']), {
     'pageName': {
       get: function get() {
         return this.pagename;
@@ -53691,9 +53691,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       set: function set(value) {
         this.updatePageName(value);
       }
+    },
+    'pageDesc': {
+      get: function get() {
+        return this.pagedesc;
+      },
+      set: function set(value) {
+        this.updatePageDesc(value);
+      }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['updatePageName', 'getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['updatePageName', 'updatePageDesc', 'getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
@@ -53758,7 +53766,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "placeholder": "Введите описание продукта...",
       "cols": "30",
-      "rows": "10"
+      "rows": "4"
     },
     domProps: {
       "value": (_vm.pageDesc)

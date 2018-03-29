@@ -10,7 +10,7 @@
               <input type="text" class="form-control" placeholder="Введите название страницы..." v-model="pageName">
             </div>
             <div class="form-group">
-              <textarea class="form-control" placeholder="Введите описание продукта..." v-model="pageDesc" cols="30" rows="10"></textarea>
+              <textarea class="form-control" placeholder="Введите описание продукта..." v-model="pageDesc" cols="30" rows="4"></textarea>
             </div>
           </div>
 

@@ -11,6 +11,7 @@ export default {
   computed: {
       ...mapGetters('pages/newpage', [
           'pagename',
+          'pagedesc',
           'blocks',
           'layout',
           'isLoading'
@@ -23,10 +24,19 @@ export default {
           this.updatePageName(value)
         }
       },
+      'pageDesc': {
+        get () {
+          return this.pagedesc
+        },
+        set (value) {
+          this.updatePageDesc(value)
+        }
+      },
   },
   methods: {
       ...mapActions('pages/newpage', [
           'updatePageName',
+          'updatePageDesc',
           'getAvailableBlocks',
           'addBlockToLayout',
           'deleteElement',
