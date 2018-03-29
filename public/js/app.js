@@ -53724,7 +53724,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v("\n            " + _vm._s(_vm.layout)), _c('br'), _vm._v(" "), _c('input', {
+  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
