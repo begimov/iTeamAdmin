@@ -20,6 +20,7 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
     {
         $page = new Page;
         $page->name = $data['data']['name'];
+        $page->description = $data['data']['desc'];
         $page->save();
 
         $elements = $data['elements'];
