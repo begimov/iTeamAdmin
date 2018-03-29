@@ -11,6 +11,12 @@ export default {
   layout (state) {
     return state.layout
   },
+  categoryOptions (state) {
+    return state.options.categories
+  },
+  categoryParams (state) {
+    return state.page.category
+  },
   isLoading (state) {
     return state.isLoading
   },

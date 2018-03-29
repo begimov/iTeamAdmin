@@ -43870,6 +43870,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   layout: function layout(state) {
     return state.layout;
   },
+  categoryOptions: function categoryOptions(state) {
+    return state.options.categories;
+  },
+  categoryParams: function categoryParams(state) {
+    return state.page.category;
+  },
   isLoading: function isLoading(state) {
     return state.isLoading;
   }
