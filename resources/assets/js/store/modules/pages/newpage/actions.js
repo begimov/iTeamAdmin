@@ -39,6 +39,9 @@ export default {
       commit('setIsLoading', false)
     })
   },
+  updateCategoryParams ({ commit }, value) {
+    commit('updateCategoryParams', value)
+  },
   updatePageName ({ commit }, name) {
     commit('updatePageName', name)
   },

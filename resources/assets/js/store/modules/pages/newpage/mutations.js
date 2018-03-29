@@ -5,6 +5,9 @@ export default {
   setBlocks (state, value) {
       state.blocks = value
   },
+  updateCategoryParams(state, value) {
+    state.page.category = value
+  },
   updatePageName (state, name) {
       state.page.name = name
   },

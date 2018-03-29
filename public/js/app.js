@@ -43931,29 +43931,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('setIsLoading', false);
     });
   },
-  updatePageName: function updatePageName(_ref2, name) {
+  updateCategoryParams: function updateCategoryParams(_ref2, value) {
     var commit = _ref2.commit;
+
+    commit('updateCategoryParams', value);
+  },
+  updatePageName: function updatePageName(_ref3, name) {
+    var commit = _ref3.commit;
 
     commit('updatePageName', name);
   },
-  updatePageDesc: function updatePageDesc(_ref3, desc) {
-    var commit = _ref3.commit;
+  updatePageDesc: function updatePageDesc(_ref4, desc) {
+    var commit = _ref4.commit;
 
     commit('updatePageDesc', desc);
   },
-  addBlockToLayout: function addBlockToLayout(_ref4, data) {
-    var commit = _ref4.commit;
+  addBlockToLayout: function addBlockToLayout(_ref5, data) {
+    var commit = _ref5.commit;
 
     commit('addBlockToLayout', data);
   },
-  deleteElement: function deleteElement(_ref5, id) {
-    var commit = _ref5.commit;
+  deleteElement: function deleteElement(_ref6, id) {
+    var commit = _ref6.commit;
 
     commit('deleteElement', id);
   },
-  save: function save(_ref6) {
-    var commit = _ref6.commit,
-        state = _ref6.state;
+  save: function save(_ref7) {
+    var commit = _ref7.commit,
+        state = _ref7.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -43982,6 +43987,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     setBlocks: function setBlocks(state, value) {
         state.blocks = value;
+    },
+    updateCategoryParams: function updateCategoryParams(state, value) {
+        state.page.category = value;
     },
     updatePageName: function updatePageName(state, name) {
         state.page.name = name;
