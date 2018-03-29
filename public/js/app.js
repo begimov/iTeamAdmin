@@ -43976,6 +43976,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setBlocks: function setBlocks(state, value) {
         state.blocks = value;
     },
+    setCategoriesOptions: function setCategoriesOptions(state, payload) {
+        state.options.categories = payload;
+    },
     updateCategoryParams: function updateCategoryParams(state, value) {
         state.page.categoryId = value.id;
     },
