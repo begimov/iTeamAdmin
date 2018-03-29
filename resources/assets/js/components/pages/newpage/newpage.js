@@ -1,7 +1,8 @@
 import { mapActions, mapGetters } from 'vuex'
+import Multiselect from 'vue-multiselect'
 
 export default {
-  components: {},
+  components: { Multiselect },
   props: [],
   data () {
     return {
@@ -14,6 +15,8 @@ export default {
           'pagedesc',
           'blocks',
           'layout',
+          'categoryOptions',
+          'categoryParams',
           'isLoading'
       ]),
       'pageName': {
@@ -37,6 +40,7 @@ export default {
       ...mapActions('pages/newpage', [
           'updatePageName',
           'updatePageDesc',
+          'updateCategoryParams',
           'getAvailableBlocks',
           'addBlockToLayout',
           'deleteElement',

@@ -53682,12 +53682,15 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_multiselect__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {},
+  components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   props: [],
   data: function data() {
     return {
@@ -53695,7 +53698,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'pagedesc', 'blocks', 'layout', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'pagedesc', 'blocks', 'layout', 'categoryOptions', 'categoryParams', 'isLoading']), {
     'pageName': {
       get: function get() {
         return this.pagename;
@@ -53713,7 +53716,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['updatePageName', 'updatePageDesc', 'getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['updatePageName', 'updatePageDesc', 'updateCategoryParams', 'getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
@@ -53743,6 +53746,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "panel-heading"
   }, [_c('h4', [_vm._v("Новая страница")]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Категория")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "value": _vm.categoryParams,
+      "options": _vm.categoryOptions,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите категорию",
+      "label": "name",
+      "track-by": "id"
+    },
+    on: {
+      "input": _vm.updateCategoryParams
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Категория не найдена")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('input', {
     directives: [{

@@ -7,6 +7,20 @@
           <div class="panel-heading">
             <h4>Новая страница</h4>
             <div class="form-group">
+              <label>Категория</label>
+              <multiselect :value="categoryParams"
+                :options="categoryOptions"
+                v-on:input="updateCategoryParams"
+                select-label=""
+                selected-label="Выбран"
+                deselect-label=""
+                placeholder="Выберите категорию"
+                label="name"
+                track-by="id">
+                <span slot="noResult">Категория не найдена</span>
+              </multiselect>
+              </div>
+            <div class="form-group">
               <input type="text" class="form-control" placeholder="Введите название страницы..." v-model="pageName">
             </div>
             <div class="form-group">
