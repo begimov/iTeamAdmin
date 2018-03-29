@@ -1,7 +1,8 @@
 export default {
   isLoading: false,
   page: {
-    name: ''
+    name: '',
+    desc: ''
   },
   blocks: [],
   layout: {

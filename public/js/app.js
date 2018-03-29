@@ -43838,7 +43838,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
   page: {
-    name: ''
+    name: '',
+    desc: ''
   },
   blocks: [],
   layout: {
