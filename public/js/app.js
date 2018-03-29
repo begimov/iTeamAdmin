@@ -53722,9 +53722,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [_c('div', {
+  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
-  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v(" "), _c('input', {
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -53734,7 +53734,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "placeholder": "Введите название страницы"
+      "placeholder": "Введите название страницы..."
     },
     domProps: {
       "value": (_vm.pageName)
@@ -53743,6 +53743,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.pageName = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.pageDesc),
+      expression: "pageDesc"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "placeholder": "Введите описание продукта...",
+      "cols": "30",
+      "rows": "10"
+    },
+    domProps: {
+      "value": (_vm.pageDesc)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.pageDesc = $event.target.value
       }
     }
   })])]), _vm._v(" "), _c('div', {
