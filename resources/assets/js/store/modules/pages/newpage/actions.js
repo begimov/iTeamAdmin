@@ -10,7 +10,7 @@ export default {
     dispatch('getAvailableBlocks')
   },
   getAvailableBlocks ({ commit }) {
-    api.pages.getAvailableBlocks().then(res => {
+    api.newpage.getAvailableBlocks().then(res => {
       const blocks = res.data.blocks.data
       
       _.forEach(blocks, function(block, key) {
@@ -64,7 +64,7 @@ export default {
     const elements = _.map(state.layout.elements, (element) => {
       return { data: element.data.data, meta: element.data.meta }
     })
-    api.pages.savePage({
+    api.newpage.savePage({
       page: {
         data: state.page,
         elements
