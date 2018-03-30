@@ -1,7 +1,8 @@
 import { mapActions, mapGetters } from 'vuex'
+import Multiselect from 'vue-multiselect'
 
 export default {
-  components: {},
+  components: { Multiselect },
   props: [],
   data () {
     return {
@@ -11,8 +12,11 @@ export default {
   computed: {
       ...mapGetters('pages/newpage', [
           'pagename',
+          'pagedesc',
           'blocks',
           'layout',
+          'categoryOptions',
+          'categoryParams',
           'isLoading'
       ]),
       'pageName': {
@@ -23,11 +27,21 @@ export default {
           this.updatePageName(value)
         }
       },
+      'pageDesc': {
+        get () {
+          return this.pagedesc
+        },
+        set (value) {
+          this.updatePageDesc(value)
+        }
+      },
   },
   methods: {
       ...mapActions('pages/newpage', [
+          'getInitialData',
           'updatePageName',
-          'getAvailableBlocks',
+          'updatePageDesc',
+          'updateCategoryParams',
           'addBlockToLayout',
           'deleteElement',
           'save',
@@ -37,6 +51,6 @@ export default {
       }
   },
   mounted() {
-    this.getAvailableBlocks()
+    this.getInitialData()
   }
 }

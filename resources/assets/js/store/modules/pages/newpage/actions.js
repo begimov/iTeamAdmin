@@ -1,10 +1,9 @@
 import api from '../../../api'
 
 export default {
-  getAvailableBlocks ({ commit }, value) {
+  getInitialData ({ commit }) {
     commit('setIsLoading', true)
-
-    api.pages.getAvailableBlocks().then(res => {
+    api.newpage.getInitialData().then(res => {
       const blocks = res.data.blocks.data
       
       _.forEach(blocks, function(block, key) {
@@ -34,13 +33,19 @@ export default {
           })
         })
       });
-
       commit('setBlocks', blocks)
+      commit('setCategoriesOptions', res.data.categories.data)
       commit('setIsLoading', false)
     })
   },
+  updateCategoryParams ({ commit }, value) {
+    commit('updateCategoryParams', value)
+  },
   updatePageName ({ commit }, name) {
     commit('updatePageName', name)
+  },
+  updatePageDesc ({ commit }, desc) {
+    commit('updatePageDesc', desc)
   },
   addBlockToLayout ({ commit }, data) {
     commit('addBlockToLayout', data)
@@ -53,7 +58,7 @@ export default {
     const elements = _.map(state.layout.elements, (element) => {
       return { data: element.data.data, meta: element.data.meta }
     })
-    api.pages.savePage({
+    api.newpage.savePage({
       page: {
         data: state.page,
         elements

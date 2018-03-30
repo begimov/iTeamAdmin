@@ -23,8 +23,8 @@ use App\Repositories\Eloquent\Products\{
     EloquentCategoryRepository 
 };
 
-use App\Repositories\Contracts\Pages\PageRepository;
-use App\Repositories\Eloquent\Pages\EloquentPageRepository;
+use App\Repositories\Contracts\Pages\{ PageRepository, BlockRepository };
+use App\Repositories\Eloquent\Pages\{ EloquentPageRepository, EloquentBlockRepository};
 
 use App\Repositories\Contracts\Content\FileRepository;
 use App\Repositories\Eloquent\Content\EloquentFileRepository;
@@ -53,6 +53,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(BusinessEntityRepository::class, EloquentBusinessEntityRepository::class);
         $this->app->bind(MaterialRepository::class, EloquentMaterialRepository::class);
         $this->app->bind(CategoryRepository::class, EloquentCategoryRepository::class);
+        $this->app->bind(BlockRepository::class, EloquentBlockRepository::class);
     }
 
     /**

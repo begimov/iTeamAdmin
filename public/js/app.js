@@ -1674,8 +1674,10 @@ function applyToTag (styleElement, obj) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_products__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_pages__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__products_newmaterial__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__products_newproduct__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_newpage__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__products_newmaterial__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__products_newproduct__ = __webpack_require__(53);
+
 
 
 
@@ -1684,8 +1686,9 @@ function applyToTag (styleElement, obj) {
 /* harmony default export */ __webpack_exports__["a"] = ({
   products: __WEBPACK_IMPORTED_MODULE_0__products_products__["a" /* default */],
   pages: __WEBPACK_IMPORTED_MODULE_1__pages_pages__["a" /* default */],
-  newmaterial: __WEBPACK_IMPORTED_MODULE_2__products_newmaterial__["a" /* default */],
-  newproduct: __WEBPACK_IMPORTED_MODULE_3__products_newproduct__["a" /* default */]
+  newpage: __WEBPACK_IMPORTED_MODULE_2__pages_newpage__["a" /* default */],
+  newmaterial: __WEBPACK_IMPORTED_MODULE_3__products_newmaterial__["a" /* default */],
+  newproduct: __WEBPACK_IMPORTED_MODULE_4__products_newproduct__["a" /* default */]
 });
 
 /***/ }),
@@ -43467,20 +43470,6 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         resolve(res);
       });
     });
-  },
-  getAvailableBlocks: function getAvailableBlocks() {
-    return new Promise(function (resolve, reject) {
-      axios.get("/webapi/pages/create").then(function (res) {
-        resolve(res);
-      });
-    });
-  },
-  savePage: function savePage(payload) {
-    return new Promise(function (resolve, reject) {
-      axios.post("/webapi/pages", payload).then(function (res) {
-        resolve(res);
-      });
-    });
   }
 });
 
@@ -43837,8 +43826,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
+  options: {
+    categories: []
+  },
   page: {
-    name: ''
+    categoryId: null,
+    name: '',
+    desc: ''
   },
   blocks: [],
   layout: {
@@ -43856,11 +43850,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   pagename: function pagename(state) {
     return state.page.name;
   },
+  pagedesc: function pagedesc(state) {
+    return state.page.desc;
+  },
   blocks: function blocks(state) {
     return state.blocks;
   },
   layout: function layout(state) {
     return state.layout;
+  },
+  categoryOptions: function categoryOptions(state) {
+    return state.options.categories;
+  },
+  categoryParams: function categoryParams(state) {
+    return state.page.categoryId;
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
@@ -43878,12 +43881,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  getAvailableBlocks: function getAvailableBlocks(_ref, value) {
+  getInitialData: function getInitialData(_ref) {
     var commit = _ref.commit;
 
     commit('setIsLoading', true);
-
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.getAvailableBlocks().then(function (res) {
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getInitialData().then(function (res) {
       var blocks = res.data.blocks.data;
 
       _.forEach(blocks, function (block, key) {
@@ -43912,35 +43914,45 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           });
         });
       });
-
       commit('setBlocks', blocks);
+      commit('setCategoriesOptions', res.data.categories.data);
       commit('setIsLoading', false);
     });
   },
-  updatePageName: function updatePageName(_ref2, name) {
+  updateCategoryParams: function updateCategoryParams(_ref2, value) {
     var commit = _ref2.commit;
+
+    commit('updateCategoryParams', value);
+  },
+  updatePageName: function updatePageName(_ref3, name) {
+    var commit = _ref3.commit;
 
     commit('updatePageName', name);
   },
-  addBlockToLayout: function addBlockToLayout(_ref3, data) {
-    var commit = _ref3.commit;
+  updatePageDesc: function updatePageDesc(_ref4, desc) {
+    var commit = _ref4.commit;
+
+    commit('updatePageDesc', desc);
+  },
+  addBlockToLayout: function addBlockToLayout(_ref5, data) {
+    var commit = _ref5.commit;
 
     commit('addBlockToLayout', data);
   },
-  deleteElement: function deleteElement(_ref4, id) {
-    var commit = _ref4.commit;
+  deleteElement: function deleteElement(_ref6, id) {
+    var commit = _ref6.commit;
 
     commit('deleteElement', id);
   },
-  save: function save(_ref5) {
-    var commit = _ref5.commit,
-        state = _ref5.state;
+  save: function save(_ref7) {
+    var commit = _ref7.commit,
+        state = _ref7.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
       return { data: element.data.data, meta: element.data.meta };
     });
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].pages.savePage({
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.savePage({
       page: {
         data: state.page,
         elements: elements
@@ -43964,8 +43976,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setBlocks: function setBlocks(state, value) {
         state.blocks = value;
     },
+    setCategoriesOptions: function setCategoriesOptions(state, payload) {
+        state.options.categories = payload;
+    },
+    updateCategoryParams: function updateCategoryParams(state, value) {
+        state.page.categoryId = value.id;
+    },
     updatePageName: function updatePageName(state, name) {
         state.page.name = name;
+    },
+    updatePageDesc: function updatePageDesc(state, desc) {
+        state.page.desc = desc;
     },
     addBlockToLayout: function addBlockToLayout(state, data) {
         state.layout.blocks.push(data);
@@ -53670,12 +53691,15 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_multiselect__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {},
+  components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   props: [],
   data: function data() {
     return {
@@ -53683,7 +53707,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'blocks', 'layout', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'pagedesc', 'blocks', 'layout', 'categoryOptions', 'categoryParams', 'isLoading']), {
     'pageName': {
       get: function get() {
         return this.pagename;
@@ -53691,15 +53715,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       set: function set(value) {
         this.updatePageName(value);
       }
+    },
+    'pageDesc': {
+      get: function get() {
+        return this.pagedesc;
+      },
+      set: function set(value) {
+        this.updatePageDesc(value);
+      }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['updatePageName', 'getAvailableBlocks', 'addBlockToLayout', 'deleteElement', 'save']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
   }),
   mounted: function mounted() {
-    this.getAvailableBlocks();
+    this.getInitialData();
   }
 });
 
@@ -53722,9 +53754,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [_c('div', {
+  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
-  }, [_c('h4', [_vm._v("Новая страница")]), _vm._v("\n            " + _vm._s(_vm.layout)), _c('br'), _vm._v(" "), _c('input', {
+  }, [_c('label', [_vm._v("Категория")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "value": _vm.categoryParams,
+      "options": _vm.categoryOptions,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите категорию",
+      "label": "name",
+      "track-by": "id"
+    },
+    on: {
+      "input": _vm.updateCategoryParams
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Категория не найдена")])])], 1), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -53734,7 +53784,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "placeholder": "Введите название страницы"
+      "placeholder": "Введите название страницы..."
     },
     domProps: {
       "value": (_vm.pageName)
@@ -53743,6 +53793,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "input": function($event) {
         if ($event.target.composing) { return; }
         _vm.pageName = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.pageDesc),
+      expression: "pageDesc"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "placeholder": "Введите описание продукта...",
+      "cols": "30",
+      "rows": "4"
+    },
+    domProps: {
+      "value": (_vm.pageDesc)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.pageDesc = $event.target.value
       }
     }
   })])]), _vm._v(" "), _c('div', {
@@ -53983,6 +54057,34 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  getInitialData: function getInitialData() {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/pages/create").then(function (res) {
+        resolve(res);
+      });
+    });
+  },
+  savePage: function savePage(payload) {
+    return new Promise(function (resolve, reject) {
+      axios.post("/webapi/pages", payload).then(function (res) {
+        resolve(res);
+      });
+    });
+  }
+});
 
 /***/ })
 /******/ ]);

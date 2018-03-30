@@ -1,7 +1,12 @@
 export default {
   isLoading: false,
+  options: {
+    categories:[],
+  },
   page: {
-    name: ''
+    categoryId: null,
+    name: '',
+    desc: ''
   },
   blocks: [],
   layout: {
