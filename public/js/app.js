@@ -53508,10 +53508,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['page'],
   methods: {
-    deletePage: function deletePage() {
+    updatePageStatus: function updatePageStatus(status) {
       var _this = this;
 
-      if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0441\u043D\u044F\u0442\u044C \u0441 \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u0438 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u2116 ' + this.page.id + '?')) {
+      if (status === 'unpublish') if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0441\u043D\u044F\u0442\u044C \u0441 \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u0438 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u2116 ' + this.page.id + '?')) {
         axios.delete('/webapi/pages/' + this.page.id).then(function (response) {
           _this.$emit('pageDeleted');
         });
@@ -53542,14 +53542,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('a', {
+  }, [(_vm.page.status) ? [_vm._m(0), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     },
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.deletePage($event)
+        _vm.updatePageStatus(0)
       }
     }
   }, [_c('span', {
@@ -53557,8 +53557,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  })])])])])])
-},staticRenderFns: []}
+  })])])] : [_vm._m(1), _vm._v(" "), _c('li', [_c('a', {
+    staticClass: "text-success",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.updatePageStatus(1)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-ok-circle",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  })])])]], 2)])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('span', {
+    staticClass: "label label-success"
+  }, [_vm._v("Опубликована")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('li', [_c('span', {
+    staticClass: "label label-default"
+  }, [_vm._v("Не опубликована")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

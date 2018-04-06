@@ -15,8 +15,15 @@
 
     <div class="col-md-6 text-right orders-edit-block">
       <ul class="list-inline">
+        <template v-if="page.status">
+          <li><span class="label label-success">Опубликована</span></li>
+          <li><a href="#" @click.prevent="updatePageStatus(0)"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
+        </template>
+        <template v-else>
+          <li><span class="label label-default">Не опубликована</span></li>
+          <li><a href="#" @click.prevent="updatePageStatus(1)" class="text-success"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></li>
+        </template>
         <!-- <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать</a></li> -->
-        <li><a href="#" @click.prevent="deletePage"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
       </ul>
     </div>
 
