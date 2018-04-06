@@ -51,7 +51,7 @@ class PageController extends Controller
 
         return fractal()
             ->collection($pagesCollection)
-            // ->parseIncludes(['category', 'priceTags'])
+            ->parseIncludes(['category'])
             ->transformWith(new PageTransformer)
             ->paginateWith(new IlluminatePaginatorAdapter($pages))
             ->toArray();
