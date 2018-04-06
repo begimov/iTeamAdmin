@@ -52499,7 +52499,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6"
   }, [_c('h4', [_vm._v("\n      " + _vm._s(_vm.order.user.data.name) + "\n      "), _c('small', [_c('a', {
     attrs: {
-      "href": "mailto:"
+      "href": 'mailto:' + _vm.order.user.data.email
     }
   }, [_c('span', {
     staticClass: "glyphicon glyphicon-envelope",

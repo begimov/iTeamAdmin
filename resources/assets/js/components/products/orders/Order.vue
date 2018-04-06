@@ -5,7 +5,7 @@
       <h4>
         {{ order.user.data.name }}
         <small>
-          <a href="mailto:">
+          <a :href="'mailto:' + order.user.data.email">
             <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ order.user.data.email }}
           </a>
           <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span> {{ order.user.data.userProfile.data.phone }}
