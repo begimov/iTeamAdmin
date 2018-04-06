@@ -2,11 +2,9 @@
   <div class="row panel-row">
 
     <div class="col-md-6">
-      <p>
-        <h4>
-          <span class="badge">№ {{ page.id }}:</span> {{ page.name }}
-        </h4>
-      </p>
+      <h4>
+        <span class="badge">№ {{ page.id }}:</span> {{ page.name }}
+      </h4>
       <p>
         <!-- Базовая цена: <span class="badge">{{ page.price }}&nbsp;&#8381;</span> -->
       </p>
@@ -21,7 +19,6 @@
             </span>
           </li>
         </ul> -->
-
       </p>
     </div>
 

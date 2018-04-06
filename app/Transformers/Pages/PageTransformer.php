@@ -11,6 +11,7 @@ class PageTransformer extends \League\Fractal\TransformerAbstract
         return [
             'id' => $page->id,
             'name' => $page->name,
+            'description' => $page->description,
         ];
     }
 }

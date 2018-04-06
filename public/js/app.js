@@ -53519,6 +53519,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // Do nothing!
       }
     }
+  },
+  mounted: function mounted() {
+    console.log(this.page);
   }
 });
 
@@ -53531,9 +53534,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-row"
   }, [_c('div', {
     staticClass: "col-md-6"
-  }, [_c('p'), _c('h4', [_c('span', {
+  }, [_c('h4', [_c('span', {
     staticClass: "badge"
-  }, [_vm._v("№ " + _vm._s(_vm.page.id) + ":")]), _vm._v(" " + _vm._s(_vm.page.name) + "\n      ")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p'), _vm._v(" "), _c('p'), _vm._v(" "), _c('p')]), _vm._v(" "), _c('div', {
+  }, [_vm._v("№ " + _vm._s(_vm.page.id) + ":")]), _vm._v(" " + _vm._s(_vm.page.name) + "\n    ")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p'), _vm._v(" "), _c('p')]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
