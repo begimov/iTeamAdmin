@@ -36,7 +36,7 @@
               <page v-for="page in pages"
               :page="page"
               :key="page.id"
-              v-on:pageDeleted="getPages"></page>
+              v-on:pageStatusChanged="getPages"></page>
 
             </div>
 

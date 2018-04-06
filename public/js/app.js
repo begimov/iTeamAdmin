@@ -53427,7 +53427,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "page": page
       },
       on: {
-        "pageDeleted": _vm.getPages
+        "pageStatusChanged": _vm.getPages
       }
     })
   })], 2), _vm._v(" "), _c('div', {
@@ -53509,26 +53509,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['page'],
   methods: {
     updatePageStatus: function updatePageStatus(status) {
+      var _this = this;
+
       switch (status) {
         case 'unpublish':
-          console.log('unpublish');
+          if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0441\u043D\u044F\u0442\u044C \u0441 \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u0438 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u2116 ' + this.page.id + '?')) {
+            axios.patch('/webapi/pages/' + this.page.id).then(function (response) {
+              _this.$emit('pageStatusChanged');
+            });
+          } else {
+            // Do nothing!
+          }
           break;
 
         case 'publish':
-          console.log('publish');
+          axios.patch('/webapi/pages/' + this.page.id).then(function (response) {
+            _this.$emit('pageStatusChanged');
+          });
           break;
 
         default:
           break;
       }
-
-      // if (confirm(`Вы уверены, что хотите снять с публикации страницу № ${this.page.id}?`)) {
-      //   axios.delete(`/webapi/pages/${this.page.id}`).then((response) => {
-      //     this.$emit('pageDeleted')
-      //   })
-      // } else {
-      //   // Do nothing!
-      // }
     }
   },
   mounted: function mounted() {

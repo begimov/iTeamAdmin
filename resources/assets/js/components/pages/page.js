@@ -6,24 +6,24 @@ export default {
     updatePageStatus (status) {
       switch (status) {
         case 'unpublish':
-          console.log('unpublish')
+          if (confirm(`Вы уверены, что хотите снять с публикации страницу № ${this.page.id}?`)) {
+            axios.patch(`/webapi/pages/${this.page.id}`).then((response) => {
+              this.$emit('pageStatusChanged')
+            })
+          } else {
+            // Do nothing!
+          }
           break;
 
         case 'publish':
-          console.log('publish')
+          axios.patch(`/webapi/pages/${this.page.id}`).then((response) => {
+            this.$emit('pageStatusChanged')
+          })
           break;
 
         default:
           break;
       }
-
-      // if (confirm(`Вы уверены, что хотите снять с публикации страницу № ${this.page.id}?`)) {
-      //   axios.delete(`/webapi/pages/${this.page.id}`).then((response) => {
-      //     this.$emit('pageDeleted')
-      //   })
-      // } else {
-      //   // Do nothing!
-      // }
     },
   },
   mounted() {
