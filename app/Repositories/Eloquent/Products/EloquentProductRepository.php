@@ -19,6 +19,7 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
     public function store($data)
     {
         $product = new Product;
+
         $category = Category::find($data['category']['id']);
         
         $product->name = $data['name'];
@@ -27,9 +28,7 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
 
         $product->save();
 
-        if (isset($data['materials'])) {
-            $this->storeMaterialRelations($data['materials'], $product);
-        }
+        $this->storeMaterialRelations($data['materials'], $product);
 
         if (isset($data['priceTags'])) {
             $this->storePriceTags($data['priceTags'], $product);

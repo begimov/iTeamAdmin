@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
+use App\Http\Requests\Webapi\Products\StoreProductRequest;
+
 use App\Repositories\Contracts\Products\{
     ProductRepository,
     CategoryRepository,
@@ -95,9 +97,8 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //TODO: create form request validation
         $this->products->store($request->data);
     }
 
