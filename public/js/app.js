@@ -53032,17 +53032,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    deleteProduct: function deleteProduct() {
-      var _this = this;
-
-      if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0437\u0430\u043A\u0430\u0437 \u2116 ' + this.product.id + '?')) {
-        axios.delete('/webapi/products/' + this.product.id).then(function (response) {
-          _this.$emit('productDeleted');
-        });
-      } else {
-        // Do nothing!
-      }
-    }
+    //
   },
   computed: {
     //
@@ -53061,47 +53051,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-row"
   }, [_c('div', {
     staticClass: "col-md-6"
-  }, [_c('p'), _c('h4', [_c('span', {
+  }, [_c('h4', [_c('span', {
     staticClass: "badge"
-  }, [_vm._v("№ " + _vm._s(_vm.product.id) + ":")]), _vm._v(" " + _vm._s(_vm.product.name) + "\n      ")]), _vm._v(" "), _c('p'), _vm._v(" "), _c('p', [_vm._v("\n      Базовая цена: "), _c('span', {
+  }, [_vm._v("№ " + _vm._s(_vm.product.id) + ":")]), _vm._v(" " + _vm._s(_vm.product.name) + "\n    ")]), _vm._v(" "), _c('p', [_vm._v("\n      Базовая цена: "), _c('span', {
     staticClass: "badge"
   }, [_vm._v(_vm._s(_vm.product.price) + " ₽")])]), _vm._v(" "), _c('p', [_vm._v("\n      Категория: " + _vm._s(_vm.product.category.data.name) + "\n    ")]), _vm._v(" "), _c('p', [_c('ul', {
     staticClass: "list-inline"
   }, _vm._l((_vm.product.priceTags.data), function(priceTag) {
-    return _c('li', [_c('span', {
+    return _c('li', {
+      key: priceTag.id
+    }, [_c('span', {
       staticClass: "label label-default"
     }, [_vm._v("\n            " + _vm._s(priceTag.name) + ": " + _vm._s(priceTag.price) + " ₽\n          ")])])
-  }))])]), _vm._v(" "), _c('div', {
+  }))])]), _vm._v(" "), _vm._m(0)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.deleteProduct($event)
-      }
-    }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-remove-circle",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  })])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-edit",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Редактировать")])])
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
