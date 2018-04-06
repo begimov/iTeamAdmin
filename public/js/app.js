@@ -53511,7 +53511,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     deletePage: function deletePage() {
       var _this = this;
 
-      if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043B\u0438\u0442\u044C \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u2116 ' + this.page.id + '?')) {
+      if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0441\u043D\u044F\u0442\u044C \u0441 \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u0438 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u2116 ' + this.page.id + '?')) {
         axios.delete('/webapi/pages/' + this.page.id).then(function (response) {
           _this.$emit('pageDeleted');
         });
@@ -53521,7 +53521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   mounted: function mounted() {
-    console.log(this.page);
+    //
   }
 });
 
@@ -53538,11 +53538,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "badge"
   }, [_vm._v("№ " + _vm._s(_vm.page.id) + ":")]), _vm._v(" " + _vm._s(_vm.page.name) + "\n    ")]), _vm._v(" "), _c('p', [_vm._v("\n      Категория: "), _c('span', {
     staticClass: "badge"
-  }, [_vm._v(_vm._s(_vm.page.name))])]), _vm._v(" "), _c('p', [_vm._v("\n      Описание: " + _vm._s(_vm.page.description) + "\n    ")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.page.category.data.name))])]), _vm._v(" "), _c('p', [_vm._v("\n      Описание: " + _vm._s(_vm.page.description) + "\n    ")])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('li', [_c('a', {
     attrs: {
       "href": "#"
     },
@@ -53558,18 +53558,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "aria-hidden": "true"
     }
   })])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('a', {
-    attrs: {
-      "href": "#"
-    }
-  }, [_c('span', {
-    staticClass: "glyphicon glyphicon-edit",
-    attrs: {
-      "aria-hidden": "true"
-    }
-  }), _vm._v(" Редактировать")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

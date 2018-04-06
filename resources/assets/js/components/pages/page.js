@@ -4,7 +4,7 @@ export default {
   props: ['page'],
   methods: {
     deletePage () {
-      if (confirm(`Вы уверены, что хотите удалить страницу № ${this.page.id}?`)) {
+      if (confirm(`Вы уверены, что хотите снять с публикации страницу № ${this.page.id}?`)) {
         axios.delete(`/webapi/pages/${this.page.id}`).then((response) => {
           this.$emit('pageDeleted')
         })
@@ -14,6 +14,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.page)
+    //
   }
 }
