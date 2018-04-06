@@ -21,7 +21,7 @@
           <span class="label label-warning">
             Оформлен {{ order.created_at_human }}
           </span>
-          <span class="label label-success" v-if="order.paymentType">
+          <span class="label label-success" v-if="order.payment_state_id === 2">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Оплачен  {{ order.updated_at_human }}
           </span>
         </small>

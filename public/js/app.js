@@ -52484,7 +52484,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //
   },
   mounted: function mounted() {
-    //
+    console.log(this.order);
   }
 });
 
@@ -52517,7 +52517,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "badge"
   }, [_vm._v("\n        " + _vm._s(_vm.order.price ? _vm.order.price : _vm.order.product.data.price) + " ₽\n      ")]), _vm._v(" "), _c('small', [_vm._v("\n        " + _vm._s(_vm.order.paymentType ? _vm.order.paymentType.data.name : '') + "\n        "), _c('span', {
     staticClass: "label label-warning"
-  }, [_vm._v("\n          Оформлен " + _vm._s(_vm.order.created_at_human) + "\n        ")]), _vm._v(" "), (_vm.order.paymentType) ? _c('span', {
+  }, [_vm._v("\n          Оформлен " + _vm._s(_vm.order.created_at_human) + "\n        ")]), _vm._v(" "), (_vm.order.payment_state_id === 2) ? _c('span', {
     staticClass: "label label-success"
   }, [_c('span', {
     staticClass: "glyphicon glyphicon-ok",
