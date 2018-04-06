@@ -118,7 +118,11 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($id);
+        $page = $this->pages->findById($id);
+
+        $page->update($request->all());
+
+        $page->save();
     }
 
     /**

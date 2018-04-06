@@ -10,6 +10,8 @@ use App\Models\Products\Category;
 
 class Page extends Model
 {
+    protected $fillable = ['status'];
+    
     public function elements()
     {
         return $this->hasMany(Element::class);

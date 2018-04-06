@@ -7,7 +7,9 @@ export default {
       switch (status) {
         case 'unpublish':
           if (confirm(`Вы уверены, что хотите снять с публикации страницу № ${this.page.id}?`)) {
-            axios.patch(`/webapi/pages/${this.page.id}`).then((response) => {
+            axios.patch(`/webapi/pages/${this.page.id}`, {
+              status: 0
+            }).then((response) => {
               this.$emit('pageStatusChanged')
             })
           } else {
@@ -16,7 +18,9 @@ export default {
           break;
 
         case 'publish':
-          axios.patch(`/webapi/pages/${this.page.id}`).then((response) => {
+          axios.patch(`/webapi/pages/${this.page.id}`, {
+            status: 1
+          }).then((response) => {
             this.$emit('pageStatusChanged')
           })
           break;
