@@ -55,7 +55,11 @@ export default {
     }
   },
   computed: {
-    //
+    totalOrdersCost() {
+      return _.reduce(this.orders, function(acc, order) {
+        return acc + parseInt(order.price)
+      }, 0);
+    }
   },
   mounted() {
     this.getOrders(1)

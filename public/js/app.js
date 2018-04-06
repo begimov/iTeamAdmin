@@ -52212,7 +52212,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
   },
   computed: {
-    //
+    totalOrdersCost: function totalOrdersCost() {
+      return _.reduce(this.orders, function (acc, order) {
+        return acc + parseInt(order.price);
+      }, 0);
+    }
   },
   mounted: function mounted() {
     this.getOrders(1);
@@ -52262,7 +52266,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-subheading"
   }, [_c('div', {
     staticClass: "col-md-4"
-  }, [_vm._m(0), _vm._v(" "), _c('search', {
+  }, [_c('h4', [_c('span', {
+    staticClass: "label label-primary"
+  }, [_vm._v("Сумма:")]), _vm._v(" "), _c('small', [_vm._v(_vm._s(_vm.totalOrdersCost) + " ₽")]), _c('br')]), _vm._v(" "), _c('search', {
     on: {
       "input": _vm.textSearch
     },
@@ -52398,13 +52404,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "orders_pageChanged": _vm.getOrders
     }
   }) : _vm._e()], 1)])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('h4', [_c('span', {
-    staticClass: "label label-primary"
-  }, [_vm._v("Сумма:")]), _vm._v(" "), _c('small', [_vm._v("75751.5 ₽")]), _c('br'), _vm._v(" "), _c('span', {
-    staticClass: "label label-primary"
-  }, [_vm._v("Период поиска:")]), _vm._v(" "), _c('small', [_vm._v("29.08.14 - 29.08.17")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -52484,7 +52484,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //
   },
   mounted: function mounted() {
-    console.log(this.order);
+    //
   }
 });
 
