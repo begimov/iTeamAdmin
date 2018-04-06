@@ -6,19 +6,10 @@
         <span class="badge">№ {{ page.id }}:</span> {{ page.name }}
       </h4>
       <p>
-        <!-- Базовая цена: <span class="badge">{{ page.price }}&nbsp;&#8381;</span> -->
+        Категория: <span class="badge">{{ page.name }}</span>
       </p>
       <p>
-        <!-- Категория: {{ page.category.data.name }} -->
-      </p>
-      <p>
-        <!-- <ul class="list-inline">
-          <li v-for="priceTag in page.priceTags.data">
-            <span class="label label-default">
-              {{ priceTag.name }}: {{ priceTag.price }}&nbsp;&#8381;
-            </span>
-          </li>
-        </ul> -->
+        Описание: {{ page.description }}
       </p>
     </div>
 
