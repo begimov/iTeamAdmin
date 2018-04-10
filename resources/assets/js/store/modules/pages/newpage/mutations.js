@@ -29,13 +29,7 @@ export default {
         })
         if (index === 0) return
 
-        const head = _.slice(state.layout[type], 0, index - 1)
-        const tail = _.slice(state.layout[type], index - 1)
-        const filteredTail = _.filter(tail, function(elem) {
-            return elem.id !== id
-        })
-
-        state.layout[type] = [ ...head, state.layout[type][index], ...filteredTail ]
+        state.layout[type].splice(index - 1, 0, state.layout[type].splice(index, 1)[0])
     },
     moveElementDown(state, { id, type }) {
         const index = _.findIndex(state.layout[type], function(elem) {
@@ -43,13 +37,7 @@ export default {
         })
         if (index === state.layout[type].length - 1) return
 
-        const head = _.slice(state.layout[type], 0, index + 2)
-        const tail = _.slice(state.layout[type], index + 2)
-        const filteredHead = _.filter(head, function(element) {
-            return element.id !== id
-        })
-
-        state.layout[type] = [ ...filteredHead, state.layout[type][index], ...tail ]
+        state.layout[type].splice(index + 1, 0, state.layout[type].splice(index, 1)[0])
     },
     deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) { return o.id != id; })

@@ -44009,8 +44009,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 /* harmony default export */ __webpack_exports__["a"] = ({
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
@@ -44045,13 +44043,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
         if (index === 0) return;
 
-        var head = _.slice(state.layout[type], 0, index - 1);
-        var tail = _.slice(state.layout[type], index - 1);
-        var filteredTail = _.filter(tail, function (elem) {
-            return elem.id !== id;
-        });
-
-        state.layout[type] = [].concat(_toConsumableArray(head), [state.layout[type][index]], _toConsumableArray(filteredTail));
+        state.layout[type].splice(index - 1, 0, state.layout[type].splice(index, 1)[0]);
     },
     moveElementDown: function moveElementDown(state, _ref2) {
         var id = _ref2.id,
@@ -44062,13 +44054,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
         if (index === state.layout[type].length - 1) return;
 
-        var head = _.slice(state.layout[type], 0, index + 2);
-        var tail = _.slice(state.layout[type], index + 2);
-        var filteredHead = _.filter(head, function (element) {
-            return element.id !== id;
-        });
-
-        state.layout[type] = [].concat(_toConsumableArray(filteredHead), [state.layout[type][index]], _toConsumableArray(tail));
+        state.layout[type].splice(index + 1, 0, state.layout[type].splice(index, 1)[0]);
     },
     deleteElement: function deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) {
