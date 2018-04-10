@@ -44,6 +44,8 @@ export default {
           'updateCategoryParams',
           'addBlockToLayout',
           'deleteElement',
+          'moveElementUp',
+          'moveElementDown',
           'save',
       ]),
       findBlock (id) {

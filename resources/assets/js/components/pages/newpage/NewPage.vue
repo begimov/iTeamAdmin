@@ -32,7 +32,14 @@
             <div class="row">
               <div class="col-md-12">
                 <template v-for="block in layout.blocks">
-                  <component :is="block.tag" :key="block.id" :id="block.id" v-on:elementDeleted="deleteElement"></component>
+                  <component 
+                    :is="block.tag" 
+                    :key="block.id" 
+                    :id="block.id" 
+                    v-on:elementMovedUp="moveElementUp"
+                    v-on:elementMovedDown="moveElementDown"
+                    v-on:elementDeleted="deleteElement"
+                    ></component>
                 </template>
               </div>
             </div>

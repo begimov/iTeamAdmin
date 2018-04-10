@@ -43923,6 +43923,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             },
 
             methods: {
+              moveUp: function moveUp(id) {
+                this.$emit('elementMovedUp', id);
+              },
+              moveDown: function moveDown(id) {
+                this.$emit('elementMovedDown', id);
+              },
               deleteElement: function deleteElement(id) {
                 this.$emit('elementDeleted', id);
               }
@@ -43966,9 +43972,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('deleteElement', id);
   },
-  save: function save(_ref7) {
-    var commit = _ref7.commit,
-        state = _ref7.state;
+  moveElementUp: function moveElementUp(_ref7, id) {
+    var commit = _ref7.commit;
+
+    console.log('UP', id);
+  },
+  moveElementDown: function moveElementDown(_ref8, id) {
+    var commit = _ref8.commit;
+
+    console.log('DOWN', id);
+  },
+  save: function save(_ref9) {
+    var commit = _ref9.commit,
+        state = _ref9.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -53733,7 +53749,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'deleteElement', 'save']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'deleteElement', 'moveElementUp', 'moveElementDown', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
@@ -53841,6 +53857,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "id": block.id
       },
       on: {
+        "elementMovedUp": _vm.moveElementUp,
+        "elementMovedDown": _vm.moveElementDown,
         "elementDeleted": _vm.deleteElement
       }
     })]

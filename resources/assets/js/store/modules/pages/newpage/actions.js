@@ -27,9 +27,15 @@ export default {
               }
             },
             methods: {
+              moveUp (id) {
+                this.$emit('elementMovedUp', id)
+              },
+              moveDown (id) {
+                this.$emit('elementMovedDown', id)
+              },
               deleteElement (id) {
                 this.$emit('elementDeleted', id)
-              }
+              },
             },
             mounted () {
               commit('addElementToElements', {
@@ -59,6 +65,12 @@ export default {
   },
   deleteElement ({ commit }, id) {
     commit('deleteElement', id)
+  },
+  moveElementUp ({ commit }, id) {
+    console.log('UP', id)
+  },
+  moveElementDown ({ commit }, id) {
+    console.log('DOWN', id)
   },
   save ({ commit, state }) {
     commit('setIsLoading', true)
