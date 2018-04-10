@@ -44007,6 +44007,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
@@ -44033,7 +44035,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.layout.elements.push(value);
     },
     moveElementUp: function moveElementUp(state, id) {
-        console.log(id);
+        var blockIndex = _.findIndex(state.layout.blocks, function (block) {
+            return block.id === id;
+        });
+        if (blockIndex === 0) return;
+
+        var head = _.slice(state.layout.blocks, 0, blockIndex - 1);
+        var tail = _.slice(state.layout.blocks, blockIndex - 1);
+        var filteredTail = _.filter(tail, function (block) {
+            return block.id !== id;
+        });
+
+        state.layout.blocks = [].concat(_toConsumableArray(head), [state.layout.blocks[blockIndex]], _toConsumableArray(filteredTail));
     },
     moveElementDown: function moveElementDown(state, id) {
         console.log(id);
