@@ -51,7 +51,7 @@ class PageController extends Controller
 
         return fractal()
             ->collection($pagesCollection)
-            // ->parseIncludes(['category', 'priceTags'])
+            ->parseIncludes(['category'])
             ->transformWith(new PageTransformer)
             ->paginateWith(new IlluminatePaginatorAdapter($pages))
             ->toArray();
@@ -118,7 +118,11 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $page = $this->pages->findById($id);
+
+        $page->update($request->all());
+
+        $page->save();
     }
 
     /**

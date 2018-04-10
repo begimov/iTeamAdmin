@@ -3,14 +3,34 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   props: ['page'],
   methods: {
-    deletePage () {
-      if (confirm(`Вы уверены, что хотите удалить страницу № ${this.page.id}?`)) {
-        axios.delete(`/webapi/pages/${this.page.id}`).then((response) => {
-          this.$emit('pageDeleted')
-        })
-      } else {
-        // Do nothing!
+    updatePageStatus (status) {
+      switch (status) {
+        case 'unpublish':
+          if (confirm(`Вы уверены, что хотите снять с публикации страницу № ${this.page.id}?`)) {
+            axios.patch(`/webapi/pages/${this.page.id}`, {
+              status: 0
+            }).then((response) => {
+              this.$emit('pageStatusChanged')
+            })
+          } else {
+            // Do nothing!
+          }
+          break;
+
+        case 'publish':
+          axios.patch(`/webapi/pages/${this.page.id}`, {
+            status: 1
+          }).then((response) => {
+            this.$emit('pageStatusChanged')
+          })
+          break;
+
+        default:
+          break;
       }
     },
   },
+  mounted() {
+    //
+  }
 }
