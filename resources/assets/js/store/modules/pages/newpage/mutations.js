@@ -23,39 +23,33 @@ export default {
     addElementToElements(state, value) {
         state.layout.elements.push(value)
     },
-    moveUpInBlocks(state, id) {
-        const blockIndex = _.findIndex(state.layout.blocks, function(block) {
-            return block.id === id
+    moveElementUp(state, { id, type }) {
+        const index = _.findIndex(state.layout[type], function(elem) {
+            return elem.id === id
         })
-        if (blockIndex === 0) return
+        if (index === 0) return
 
-        const head = _.slice(state.layout.blocks, 0, blockIndex - 1)
-        const tail = _.slice(state.layout.blocks, blockIndex - 1)
-        const filteredTail = _.filter(tail, function(block) {
-            return block.id !== id
+        const head = _.slice(state.layout[type], 0, index - 1)
+        const tail = _.slice(state.layout[type], index - 1)
+        const filteredTail = _.filter(tail, function(elem) {
+            return elem.id !== id
         })
 
-        state.layout.blocks = [...head, state.layout.blocks[blockIndex], ...filteredTail]
+        state.layout[type] = [ ...head, state.layout[type][index], ...filteredTail ]
     },
-    moveUpInElements(state, id) {
-        const elementIndex = _.findIndex(state.layout.elements, function(element) {
-            return element.id === id
+    moveElementDown(state, { id, type }) {
+        const index = _.findIndex(state.layout[type], function(elem) {
+            return elem.id === id
         })
-        if (elementIndex === 0) return
+        if (index === state.layout[type].length - 1) return
 
-        const head = _.slice(state.layout.elements, 0, elementIndex - 1)
-        const tail = _.slice(state.layout.elements, elementIndex - 1)
-        const filteredTail = _.filter(tail, function(element) {
+        const head = _.slice(state.layout[type], 0, index + 2)
+        const tail = _.slice(state.layout[type], index + 2)
+        const filteredHead = _.filter(head, function(element) {
             return element.id !== id
         })
 
-        state.layout.elements = [...head, state.layout.elements[elementIndex], ...filteredTail]
-    },
-    moveDownInBlocks(state, id) {
-        //
-    },
-    moveDownInElements(state, id) {
-        //
+        state.layout[type] = [ ...filteredHead, state.layout[type][index], ...tail ]
     },
     deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) { return o.id != id; })

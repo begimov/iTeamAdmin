@@ -43970,14 +43970,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   moveElementUp: function moveElementUp(_ref6, id) {
     var commit = _ref6.commit;
 
-    commit('moveUpInBlocks', id);
-    commit('moveUpInElements', id);
+    commit('moveElementUp', { id: id, type: 'blocks' });
+    commit('moveElementUp', { id: id, type: 'elements' });
   },
   moveElementDown: function moveElementDown(_ref7, id) {
     var commit = _ref7.commit;
 
-    commit('moveDownInBlocks', id);
-    commit('moveDownInElements', id);
+    commit('moveElementDown', { id: id, type: 'blocks' });
+    commit('moveElementDown', { id: id, type: 'elements' });
   },
   deleteElement: function deleteElement(_ref8, id) {
     var commit = _ref8.commit;
@@ -44036,39 +44036,39 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     addElementToElements: function addElementToElements(state, value) {
         state.layout.elements.push(value);
     },
-    moveUpInBlocks: function moveUpInBlocks(state, id) {
-        var blockIndex = _.findIndex(state.layout.blocks, function (block) {
-            return block.id === id;
-        });
-        if (blockIndex === 0) return;
+    moveElementUp: function moveElementUp(state, _ref) {
+        var id = _ref.id,
+            type = _ref.type;
 
-        var head = _.slice(state.layout.blocks, 0, blockIndex - 1);
-        var tail = _.slice(state.layout.blocks, blockIndex - 1);
-        var filteredTail = _.filter(tail, function (block) {
-            return block.id !== id;
+        var index = _.findIndex(state.layout[type], function (elem) {
+            return elem.id === id;
+        });
+        if (index === 0) return;
+
+        var head = _.slice(state.layout[type], 0, index - 1);
+        var tail = _.slice(state.layout[type], index - 1);
+        var filteredTail = _.filter(tail, function (elem) {
+            return elem.id !== id;
         });
 
-        state.layout.blocks = [].concat(_toConsumableArray(head), [state.layout.blocks[blockIndex]], _toConsumableArray(filteredTail));
+        state.layout[type] = [].concat(_toConsumableArray(head), [state.layout[type][index]], _toConsumableArray(filteredTail));
     },
-    moveUpInElements: function moveUpInElements(state, id) {
-        var elementIndex = _.findIndex(state.layout.elements, function (element) {
-            return element.id === id;
-        });
-        if (elementIndex === 0) return;
+    moveElementDown: function moveElementDown(state, _ref2) {
+        var id = _ref2.id,
+            type = _ref2.type;
 
-        var head = _.slice(state.layout.elements, 0, elementIndex - 1);
-        var tail = _.slice(state.layout.elements, elementIndex - 1);
-        var filteredTail = _.filter(tail, function (element) {
+        var index = _.findIndex(state.layout[type], function (elem) {
+            return elem.id === id;
+        });
+        if (index === state.layout[type].length - 1) return;
+
+        var head = _.slice(state.layout[type], 0, index + 2);
+        var tail = _.slice(state.layout[type], index + 2);
+        var filteredHead = _.filter(head, function (element) {
             return element.id !== id;
         });
 
-        state.layout.elements = [].concat(_toConsumableArray(head), [state.layout.elements[elementIndex]], _toConsumableArray(filteredTail));
-    },
-    moveDownInBlocks: function moveDownInBlocks(state, id) {
-        //
-    },
-    moveDownInElements: function moveDownInElements(state, id) {
-        //
+        state.layout[type] = [].concat(_toConsumableArray(filteredHead), [state.layout[type][index]], _toConsumableArray(tail));
     },
     deleteElement: function deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) {
