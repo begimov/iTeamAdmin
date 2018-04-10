@@ -12,7 +12,14 @@ export default {
             props:['id'],
             template: `<div>`
                 + block.template
-                + `<div class="row"><div class="col-md-12 text-right"><a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a></div></div></div>`,
+                + `<div class="row">
+                    <div class="col-md-12 text-right">
+                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">вверх</a>
+                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">вниз</a>
+                      <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a>
+                    </div>
+                  </div>
+                  </div>`,
             data () {
               return {
                 data: { ...block.data }, 
