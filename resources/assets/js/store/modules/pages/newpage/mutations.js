@@ -23,7 +23,7 @@ export default {
     addElementToElements(state, value) {
         state.layout.elements.push(value)
     },
-    moveElementUp(state, id) {
+    moveUpInBlocks(state, id) {
         const blockIndex = _.findIndex(state.layout.blocks, function(block) {
             return block.id === id
         })
@@ -37,8 +37,25 @@ export default {
 
         state.layout.blocks = [...head, state.layout.blocks[blockIndex], ...filteredTail]
     },
-    moveElementDown(state, id) {
-        console.log(id)
+    moveUpInElements(state, id) {
+        const elementIndex = _.findIndex(state.layout.elements, function(element) {
+            return element.id === id
+        })
+        if (elementIndex === 0) return
+
+        const head = _.slice(state.layout.elements, 0, elementIndex - 1)
+        const tail = _.slice(state.layout.elements, elementIndex - 1)
+        const filteredTail = _.filter(tail, function(element) {
+            return element.id !== id
+        })
+
+        state.layout.elements = [...head, state.layout.elements[elementIndex], ...filteredTail]
+    },
+    moveDownInBlocks(state, id) {
+        //
+    },
+    moveDownInElements(state, id) {
+        //
     },
     deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) { return o.id != id; })

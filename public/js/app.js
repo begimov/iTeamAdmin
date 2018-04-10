@@ -43970,12 +43970,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   moveElementUp: function moveElementUp(_ref6, id) {
     var commit = _ref6.commit;
 
-    commit('moveElementUp', id);
+    commit('moveUpInBlocks', id);
+    commit('moveUpInElements', id);
   },
   moveElementDown: function moveElementDown(_ref7, id) {
     var commit = _ref7.commit;
 
-    commit('moveElementDown', id);
+    commit('moveDownInBlocks', id);
+    commit('moveDownInElements', id);
   },
   deleteElement: function deleteElement(_ref8, id) {
     var commit = _ref8.commit;
@@ -44034,7 +44036,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     addElementToElements: function addElementToElements(state, value) {
         state.layout.elements.push(value);
     },
-    moveElementUp: function moveElementUp(state, id) {
+    moveUpInBlocks: function moveUpInBlocks(state, id) {
         var blockIndex = _.findIndex(state.layout.blocks, function (block) {
             return block.id === id;
         });
@@ -44048,8 +44050,25 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         state.layout.blocks = [].concat(_toConsumableArray(head), [state.layout.blocks[blockIndex]], _toConsumableArray(filteredTail));
     },
-    moveElementDown: function moveElementDown(state, id) {
-        console.log(id);
+    moveUpInElements: function moveUpInElements(state, id) {
+        var elementIndex = _.findIndex(state.layout.elements, function (element) {
+            return element.id === id;
+        });
+        if (elementIndex === 0) return;
+
+        var head = _.slice(state.layout.elements, 0, elementIndex - 1);
+        var tail = _.slice(state.layout.elements, elementIndex - 1);
+        var filteredTail = _.filter(tail, function (element) {
+            return element.id !== id;
+        });
+
+        state.layout.elements = [].concat(_toConsumableArray(head), [state.layout.elements[elementIndex]], _toConsumableArray(filteredTail));
+    },
+    moveDownInBlocks: function moveDownInBlocks(state, id) {
+        //
+    },
+    moveDownInElements: function moveDownInElements(state, id) {
+        //
     },
     deleteElement: function deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) {

@@ -64,10 +64,12 @@ export default {
     commit('addBlockToLayout', data)
   },
   moveElementUp ({ commit }, id) {
-    commit('moveElementUp', id)
+    commit('moveUpInBlocks', id)
+    commit('moveUpInElements', id)
   },
   moveElementDown ({ commit }, id) {
-    commit('moveElementDown', id)
+    commit('moveDownInBlocks', id)
+    commit('moveDownInElements', id)
   },
   deleteElement ({ commit }, id) {
     commit('deleteElement', id)
