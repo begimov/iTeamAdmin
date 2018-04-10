@@ -43,9 +43,9 @@ export default {
           'updatePageDesc',
           'updateCategoryParams',
           'addBlockToLayout',
-          'deleteElement',
           'moveElementUp',
           'moveElementDown',
+          'deleteElement',
           'save',
       ]),
       findBlock (id) {

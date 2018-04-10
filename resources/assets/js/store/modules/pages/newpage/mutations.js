@@ -23,6 +23,12 @@ export default {
     addElementToElements(state, value) {
         state.layout.elements.push(value)
     },
+    moveElementUp(state, id) {
+        console.log(id)
+    },
+    moveElementDown(state, id) {
+        console.log(id)
+    },
     deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) { return o.id != id; })
         state.layout.elements = _.filter(state.layout.elements, function (o) { return o.id != id; })

@@ -43967,20 +43967,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('addBlockToLayout', data);
   },
-  deleteElement: function deleteElement(_ref6, id) {
+  moveElementUp: function moveElementUp(_ref6, id) {
     var commit = _ref6.commit;
 
-    commit('deleteElement', id);
+    commit('moveElementUp', id);
   },
-  moveElementUp: function moveElementUp(_ref7, id) {
+  moveElementDown: function moveElementDown(_ref7, id) {
     var commit = _ref7.commit;
 
-    console.log('UP', id);
+    commit('moveElementDown', id);
   },
-  moveElementDown: function moveElementDown(_ref8, id) {
+  deleteElement: function deleteElement(_ref8, id) {
     var commit = _ref8.commit;
 
-    console.log('DOWN', id);
+    commit('deleteElement', id);
   },
   save: function save(_ref9) {
     var commit = _ref9.commit,
@@ -44031,6 +44031,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     addElementToElements: function addElementToElements(state, value) {
         state.layout.elements.push(value);
+    },
+    moveElementUp: function moveElementUp(state, id) {
+        console.log(id);
+    },
+    moveElementDown: function moveElementDown(state, id) {
+        console.log(id);
     },
     deleteElement: function deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) {
@@ -53749,7 +53755,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'deleteElement', 'moveElementUp', 'moveElementDown', 'save']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }

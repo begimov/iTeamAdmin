@@ -63,14 +63,14 @@ export default {
   addBlockToLayout ({ commit }, data) {
     commit('addBlockToLayout', data)
   },
-  deleteElement ({ commit }, id) {
-    commit('deleteElement', id)
-  },
   moveElementUp ({ commit }, id) {
-    console.log('UP', id)
+    commit('moveElementUp', id)
   },
   moveElementDown ({ commit }, id) {
-    console.log('DOWN', id)
+    commit('moveElementDown', id)
+  },
+  deleteElement ({ commit }, id) {
+    commit('deleteElement', id)
   },
   save ({ commit, state }) {
     commit('setIsLoading', true)
