@@ -43998,7 +43998,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         elements: elements
       }
     }).then(function (res) {
-      console.log(res);
       commit('setIsLoading', false);
     });
   }

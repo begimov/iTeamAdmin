@@ -85,7 +85,6 @@ export default {
         elements
       }
     }).then(res => {
-      console.log(res)
       commit('setIsLoading', false)
     })
   },

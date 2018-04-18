@@ -26,11 +26,12 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
 
         $elements = $data['elements'];
 
-        foreach ($elements as $element) {
+        foreach ($elements as $key => $element) {
             $block = Block::find($element['meta']['blockId']);
 
             $e = new Element;
 
+            $e->sort_order = $key;
             $e->data = $element['data'];
             $e->block()->associate($block);
             $e->page()->associate($page);
