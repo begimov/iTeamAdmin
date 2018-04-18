@@ -24,8 +24,18 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
         $page->category()->associate($data['data']['categoryId']);
         $page->save();
 
-        $elements = $data['elements'];
+        $this->storePageElements($data['elements'], $page);
 
+        return $page;
+    }
+
+    public function destroyById($id)
+    {
+        //
+    }
+
+    protected function storePageElements($elements, $page)
+    {
         foreach ($elements as $key => $element) {
             $block = Block::find($element['meta']['blockId']);
 
@@ -41,13 +51,6 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
                 $this->associateElementFiles($element['data']['files'], $e);
             }
         }
-
-        return $page;
-    }
-
-    public function destroyById($id)
-    {
-        //
     }
 
     protected function associateElementFiles($files, $element)
