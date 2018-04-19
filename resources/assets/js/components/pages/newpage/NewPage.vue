@@ -71,7 +71,7 @@
 
           <div class="panel-footer">
             <a href="#" class="btn btn-primary" @click.prevent="save">Сохранить</a>
-            <a href="#" class="btn btn-default">Отменить</a>
+            <a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a>
           </div>
 
         </div>

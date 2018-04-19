@@ -50,6 +50,9 @@ export default {
       ]),
       findBlock (id) {
         return _.find(this.blocks, ['id',id])
+      },
+      cancel () {
+        this.$emit('cancelNewPage')
       }
   },
   mounted() {

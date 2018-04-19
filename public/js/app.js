@@ -67093,7 +67093,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.currentModule === 'newpage') ? _c('new-page') : _vm._e(), _vm._v(" "), (_vm.currentModule === 'pages') ? _c('div', {
+  return _c('div', [(_vm.currentModule === 'newpage') ? _c('new-page', {
+    on: {
+      "cancelNewPage": function($event) {
+        _vm.setCurrentModule('pages')
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'pages') ? _c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
@@ -67451,6 +67457,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
+    },
+    cancel: function cancel() {
+      this.$emit('cancelNewPage');
     }
   }),
   mounted: function mounted() {
@@ -67626,6 +67635,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "btn btn-default",
     attrs: {
       "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.cancel($event)
+      }
     }
   }, [_vm._v("Отменить")])])])])])])
 },staticRenderFns: []}
