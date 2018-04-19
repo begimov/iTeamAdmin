@@ -43,6 +43,8 @@ export default {
           'updatePageDesc',
           'updateCategoryParams',
           'addBlockToLayout',
+          'moveElementUp',
+          'moveElementDown',
           'deleteElement',
           'save',
       ]),

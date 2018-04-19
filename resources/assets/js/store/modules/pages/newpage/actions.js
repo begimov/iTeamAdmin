@@ -12,7 +12,14 @@ export default {
             props:['id'],
             template: `<div>`
                 + block.template
-                + `<div class="row"><div class="col-md-12 text-right"><a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a></div></div></div>`,
+                + `<div class="row">
+                    <div class="col-md-12 text-right">
+                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">вверх</a>
+                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">вниз</a>
+                      <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a>
+                    </div>
+                  </div>
+                  </div>`,
             data () {
               return {
                 data: { ...block.data }, 
@@ -20,9 +27,15 @@ export default {
               }
             },
             methods: {
+              moveUp (id) {
+                this.$emit('elementMovedUp', id)
+              },
+              moveDown (id) {
+                this.$emit('elementMovedDown', id)
+              },
               deleteElement (id) {
                 this.$emit('elementDeleted', id)
-              }
+              },
             },
             mounted () {
               commit('addElementToElements', {
@@ -50,6 +63,14 @@ export default {
   addBlockToLayout ({ commit }, data) {
     commit('addBlockToLayout', data)
   },
+  moveElementUp ({ commit }, id) {
+    commit('moveElementUp', {id, type:'blocks'})
+    commit('moveElementUp', {id, type:'elements'})
+  },
+  moveElementDown ({ commit }, id) {
+    commit('moveElementDown', { id, type:'blocks' })
+    commit('moveElementDown', { id, type:'elements' })
+  },
   deleteElement ({ commit }, id) {
     commit('deleteElement', id)
   },
@@ -64,7 +85,6 @@ export default {
         elements
       }
     }).then(res => {
-      console.log(res)
       commit('setIsLoading', false)
     })
   },

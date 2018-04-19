@@ -23,6 +23,22 @@ export default {
     addElementToElements(state, value) {
         state.layout.elements.push(value)
     },
+    moveElementUp(state, { id, type }) {
+        const index = _.findIndex(state.layout[type], function(elem) {
+            return elem.id === id
+        })
+        if (index === 0) return
+
+        state.layout[type].splice(index - 1, 0, state.layout[type].splice(index, 1)[0])
+    },
+    moveElementDown(state, { id, type }) {
+        const index = _.findIndex(state.layout[type], function(elem) {
+            return elem.id === id
+        })
+        if (index === state.layout[type].length - 1) return
+
+        state.layout[type].splice(index + 1, 0, state.layout[type].splice(index, 1)[0])
+    },
     deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) { return o.id != id; })
         state.layout.elements = _.filter(state.layout.elements, function (o) { return o.id != id; })

@@ -43914,7 +43914,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         Vue.component(block.tag, function (resolve, reject) {
           resolve({
             props: ['id'],
-            template: '<div>' + block.template + '<div class="row"><div class="col-md-12 text-right"><a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a></div></div></div>',
+            template: '<div>' + block.template + '<div class="row">\n                    <div class="col-md-12 text-right">\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">\u0432\u0432\u0435\u0440\u0445</a>\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">\u0432\u043D\u0438\u0437</a>\n                      <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a>\n                    </div>\n                  </div>\n                  </div>',
             data: function data() {
               return {
                 data: _extends({}, block.data),
@@ -43923,6 +43923,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             },
 
             methods: {
+              moveUp: function moveUp(id) {
+                this.$emit('elementMovedUp', id);
+              },
+              moveDown: function moveDown(id) {
+                this.$emit('elementMovedDown', id);
+              },
               deleteElement: function deleteElement(id) {
                 this.$emit('elementDeleted', id);
               }
@@ -43961,14 +43967,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('addBlockToLayout', data);
   },
-  deleteElement: function deleteElement(_ref6, id) {
+  moveElementUp: function moveElementUp(_ref6, id) {
     var commit = _ref6.commit;
+
+    commit('moveElementUp', { id: id, type: 'blocks' });
+    commit('moveElementUp', { id: id, type: 'elements' });
+  },
+  moveElementDown: function moveElementDown(_ref7, id) {
+    var commit = _ref7.commit;
+
+    commit('moveElementDown', { id: id, type: 'blocks' });
+    commit('moveElementDown', { id: id, type: 'elements' });
+  },
+  deleteElement: function deleteElement(_ref8, id) {
+    var commit = _ref8.commit;
 
     commit('deleteElement', id);
   },
-  save: function save(_ref7) {
-    var commit = _ref7.commit,
-        state = _ref7.state;
+  save: function save(_ref9) {
+    var commit = _ref9.commit,
+        state = _ref9.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -43980,7 +43998,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         elements: elements
       }
     }).then(function (res) {
-      console.log(res);
       commit('setIsLoading', false);
     });
   }
@@ -44015,6 +44032,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     addElementToElements: function addElementToElements(state, value) {
         state.layout.elements.push(value);
+    },
+    moveElementUp: function moveElementUp(state, _ref) {
+        var id = _ref.id,
+            type = _ref.type;
+
+        var index = _.findIndex(state.layout[type], function (elem) {
+            return elem.id === id;
+        });
+        if (index === 0) return;
+
+        state.layout[type].splice(index - 1, 0, state.layout[type].splice(index, 1)[0]);
+    },
+    moveElementDown: function moveElementDown(state, _ref2) {
+        var id = _ref2.id,
+            type = _ref2.type;
+
+        var index = _.findIndex(state.layout[type], function (elem) {
+            return elem.id === id;
+        });
+        if (index === state.layout[type].length - 1) return;
+
+        state.layout[type].splice(index + 1, 0, state.layout[type].splice(index, 1)[0]);
     },
     deleteElement: function deleteElement(state, id) {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) {
@@ -53733,7 +53772,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'deleteElement', 'save']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     }
@@ -53841,6 +53880,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "id": block.id
       },
       on: {
+        "elementMovedUp": _vm.moveElementUp,
+        "elementMovedDown": _vm.moveElementDown,
         "elementDeleted": _vm.deleteElement
       }
     })]
