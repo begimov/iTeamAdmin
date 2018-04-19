@@ -12706,10 +12706,10 @@ window.Vue = __webpack_require__(10);
 
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_quill_editor___default.a, {
-  modules: {
-    toolbar: [['bold', 'italic'], [{ 'list': 'ordered' }, { 'list': 'bullet' }]]
-  },
-  placeholder: 'Compose an epic...1'
+    modules: {
+        toolbar: [['bold', 'italic'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'align': [] }]]
+    },
+    placeholder: '...'
 });
 
 /**
@@ -12745,9 +12745,9 @@ Vue.component('new-page', __webpack_require__(151));
 Vue.component('purchase', __webpack_require__(156));
 
 var app = new Vue({
-  el: '#app',
-  store: __WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */],
-  router: __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */]
+    el: '#app',
+    store: __WEBPACK_IMPORTED_MODULE_0__store__["a" /* default */],
+    router: __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */]
 });
 
 /***/ }),

@@ -19,9 +19,13 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor, {
     modules: {
-      toolbar: [['bold', 'italic'], [{ 'list': 'ordered'}, { 'list': 'bullet' }]]
+        toolbar: [
+            ['bold', 'italic'], 
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }], 
+            [{ 'align': [] }]
+        ]
     },
-    placeholder: 'Compose an epic...1'
+    placeholder: '...'
 })
 
 /**
