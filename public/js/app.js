@@ -67560,6 +67560,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "elementMovedDown": _vm.moveElementDown,
         "elementDeleted": _vm.deleteElement
       }
+    }), _vm._v(" "), _c('hr', {
+      key: block.id
     })]
   })], 2)]), _vm._v(" "), _c('div', {
     staticClass: "row"
