@@ -3,29 +3,36 @@
     <div class="row">
       <div class="col-md-12">
         <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
           <div class="panel-heading">
             <h4>Новая страница</h4>
-            <div class="form-group">
-              <label>Категория</label>
-              <multiselect :value="categoryParams"
-                :options="categoryOptions"
-                v-on:input="updateCategoryParams"
-                select-label=""
-                selected-label="Выбран"
-                deselect-label=""
-                placeholder="Выберите категорию"
-                label="name"
-                track-by="id">
-                <span slot="noResult">Категория не найдена</span>
-              </multiselect>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <multiselect :value="categoryParams"
+                    :options="categoryOptions"
+                    v-on:input="updateCategoryParams"
+                    select-label=""
+                    selected-label="Выбран"
+                    deselect-label=""
+                    placeholder="Выберите категорию"
+                    label="name"
+                    track-by="id">
+                    <span slot="noResult">Категория не найдена</span>
+                  </multiselect>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Введите название страницы..." v-model="pageName">
+                </div>
               </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Введите название страницы..." v-model="pageName">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <textarea class="form-control" placeholder="Введите описание продукта..." v-model="pageDesc" cols="30" rows="4"></textarea>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <textarea class="form-control" placeholder="Введите описание продукта..." v-model="pageDesc" cols="30" rows="4"></textarea>
-            </div>
+
           </div>
 
           <div class="panel-body">

@@ -67474,12 +67474,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
     }
   }), _vm._v(" "), _c('div', {
-    staticClass: "panel panel-default"
+    staticClass: "panel panel-primary"
   }, [_c('div', {
     staticClass: "panel-heading"
   }, [_c('h4', [_vm._v("Новая страница")]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Категория")]), _vm._v(" "), _c('multiselect', {
+  }, [_c('multiselect', {
     attrs: {
       "value": _vm.categoryParams,
       "options": _vm.categoryOptions,
@@ -67518,7 +67522,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.pageName = $event.target.value
       }
     }
-  })]), _vm._v(" "), _c('div', {
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
     staticClass: "form-group"
   }, [_c('textarea', {
     directives: [{
@@ -67542,7 +67548,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.pageDesc = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  })])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row"
