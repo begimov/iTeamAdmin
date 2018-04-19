@@ -46,14 +46,18 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <a href="#" class="btn btn-default" @click.prevent="isShowingBlocksPanel = !isShowingBlocksPanel">Добавить блок</a>
+                <p><a href="#" class="btn btn-default" @click.prevent="isShowingBlocksPanel = !isShowingBlocksPanel">Добавить блок</a></p>
               </div>
             </div>
             <div class="row" v-if="isShowingBlocksPanel">
               <div class="col-md-12">
-                <p v-for="block in blocks" :key="block.id">
-                  <a href="#" @click.prevent="addBlockToLayout({tag: block.tag, id: Date.now()})">{{ block.name }}</a>
-                </p>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <p v-for="block in blocks" :key="block.id">
+                      <a href="#" @click.prevent="addBlockToLayout({tag: block.tag, id: Date.now()})">{{ block.name }}</a>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

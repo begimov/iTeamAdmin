@@ -67567,7 +67567,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_c('a', {
+  }, [_c('p', [_c('a', {
     staticClass: "btn btn-default",
     attrs: {
       "href": "#"
@@ -67578,10 +67578,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.isShowingBlocksPanel = !_vm.isShowingBlocksPanel
       }
     }
-  }, [_vm._v("Добавить блок")])])]), _vm._v(" "), (_vm.isShowingBlocksPanel) ? _c('div', {
+  }, [_vm._v("Добавить блок")])])])]), _vm._v(" "), (_vm.isShowingBlocksPanel) ? _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-body"
   }, _vm._l((_vm.blocks), function(block) {
     return _c('p', {
       key: block.id
@@ -67599,7 +67603,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v(_vm._s(block.name))])])
-  }))]) : _vm._e()]), _vm._v(" "), _c('div', {
+  }))])])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [_c('a', {
     staticClass: "btn btn-primary",
