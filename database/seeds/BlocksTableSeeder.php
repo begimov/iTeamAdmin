@@ -14,7 +14,7 @@ class BlocksTableSeeder extends Seeder
       $blocks = [
             [
                 'view' => 'imgandtext',
-                'data' => '{"files":{"img1":""},"name":"","link":""}'
+                'data' => '{"files":{"img1":""},"text":""}'
             ],
             [
                 'view' => 'paragraph',
