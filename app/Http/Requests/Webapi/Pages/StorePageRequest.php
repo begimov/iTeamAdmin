@@ -30,4 +30,19 @@ class StorePageRequest extends FormRequest
             'elements' => 'required|array',
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required' => trans('validation.store-page-request.name.required'),
+            'desc.required' => trans('validation.store-page-request.desc.required'),
+            'categoryId.required' => trans('validation.store-page-request.categoryId.required'),
+            'elements.required' => trans('validation.store-page-request.elements.required'),
+        ];
+    }
 }
