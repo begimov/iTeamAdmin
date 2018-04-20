@@ -86,6 +86,7 @@ export default {
         elements
       }
     }).then(res => {
+      commit('resetState')
       commit('setIsLoading', false)
     })
   },
