@@ -23,8 +23,8 @@ export default {
     updatePriceTagName(state, value) {
         state.options.priceTag.name = value
     },
-    newMaterialOn(state) {
-        state.isNewMaterialOn = true
+    switchNewMaterial(state, value) {
+        state.isNewMaterialOn = value
     },
     addPriceTag(state) {
         const priceTag = state.options.priceTag

@@ -43795,10 +43795,10 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
     commit('updatePriceTagName', value);
   },
-  newMaterialOn: function newMaterialOn(_ref8) {
+  switchNewMaterial: function switchNewMaterial(_ref8, value) {
     var commit = _ref8.commit;
 
-    commit('newMaterialOn');
+    commit('switchNewMaterial', value);
   },
   addPriceTag: function addPriceTag(_ref9) {
     var commit = _ref9.commit;
@@ -43963,8 +43963,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     updatePriceTagName: function updatePriceTagName(state, value) {
         state.options.priceTag.name = value;
     },
-    newMaterialOn: function newMaterialOn(state) {
-        state.isNewMaterialOn = true;
+    switchNewMaterial: function switchNewMaterial(state, value) {
+        state.isNewMaterialOn = value;
     },
     addPriceTag: function addPriceTag(state) {
         var priceTag = state.options.priceTag;
@@ -44877,7 +44877,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'newMaterialOn', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState']), {
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewProduct');
@@ -45053,7 +45053,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.newMaterialOn($event)
+        _vm.switchNewMaterial(true)
       }
     }
   }, [_vm._v("Создать материал")])], 2)]), _vm._v(" "), _c('div', {
@@ -45194,7 +45194,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Отменить")])])])])])])])])])]), _vm._v(" "), (_vm.isNewMaterialOn) ? _c('div', {
     staticClass: "row"
-  }, [_c('new-material')], 1) : _vm._e()])
+  }, [_c('new-material', {
+    on: {
+      "cancelNewMaterial": function($event) {
+        _vm.switchNewMaterial(false)
+      }
+    }
+  })], 1) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
@@ -64408,7 +64414,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName']), {
+    cancel: function cancel() {
+      // this.resetState()
+      this.$emit('cancelNewMaterial');
+    }
+  }),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'isLoading']), {
     'name': {
       get: function get() {
@@ -64500,14 +64511,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('router-link', {
+  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "btn btn-default",
     attrs: {
-      "to": {
-        name: 'products'
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.cancel($event)
       }
     }
-  }, [_vm._v("Отменить")])], 1)])])])])])])])])])
+  }, [_vm._v("Отменить")])])])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('button', {
     staticClass: "btn btn-primary",

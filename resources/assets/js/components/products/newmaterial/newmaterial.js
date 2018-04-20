@@ -13,6 +13,10 @@ export default {
       'saveMaterial',
       'updateName',
     ]),
+    cancel () {
+      // this.resetState()
+      this.$emit('cancelNewMaterial')
+    }
   },
   computed: {
     ...mapGetters('products/newmaterial', [

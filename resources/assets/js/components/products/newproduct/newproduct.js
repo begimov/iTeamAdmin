@@ -18,7 +18,7 @@ export default {
           'updateBasePrice',
           'updatePriceTagPrice',
           'updatePriceTagName',
-          'newMaterialOn',
+          'switchNewMaterial',
           'addPriceTag',
           'removePriceTag',
           'saveProduct',

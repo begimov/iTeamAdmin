@@ -27,8 +27,8 @@ export default {
   updatePriceTagName ({ commit }, value) {
     commit('updatePriceTagName', value)
   },
-  newMaterialOn ({ commit }) {
-    commit('newMaterialOn')
+  switchNewMaterial ({ commit }, value) {
+    commit('switchNewMaterial', value)
   },
   addPriceTag ({ commit }) {
     commit('addPriceTag')
