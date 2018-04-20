@@ -41,6 +41,8 @@ export default {
     api.newproduct.saveProduct(state.params).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
+    }).catch(err => {
+      console.log(err.response.data)
     })
   },
   resetState ({ commit }) {

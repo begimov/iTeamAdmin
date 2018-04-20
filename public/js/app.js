@@ -43818,6 +43818,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.saveProduct(state.params).then(function (res) {
       commit('resetState');
       commit('setIsLoading', false);
+    }).catch(function (err) {
+      console.log(err.response.data);
     });
   },
   resetState: function resetState(_ref12) {
@@ -43926,6 +43928,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         })
       }).then(function (res) {
         resolve(res);
+      }).catch(function (err) {
+        reject(err);
       });
     });
   }
