@@ -5,7 +5,7 @@
         <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <router-link :to="{name: 'newproduct'}" class="btn btn-primary">Создать продукт</router-link>
+            <!-- <router-link :to="{name: 'newproduct'}" class="btn btn-primary">Создать продукт</router-link> -->
           </div>
 
           <div class="panel-body">

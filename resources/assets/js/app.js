@@ -10,7 +10,7 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import store from './store'
-import router from './router'
+// import router from './router'
 
 // vue-quil-editor
 import VueQuillEditor from 'vue-quill-editor'
@@ -63,5 +63,5 @@ Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vu
 const app = new Vue({
     el: '#app',
     store,
-    router
+    // router
 });
