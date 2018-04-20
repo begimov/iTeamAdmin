@@ -8,6 +8,9 @@ export default {
     setCategoriesOptions(state, payload) {
         state.options.categories = payload
     },
+    setErrors(state, errors) {
+        state.errors = errors
+    },
     updateCategoryParams(state, value) {
         state.page.categoryId = value.id
     },
@@ -59,6 +62,7 @@ export default {
               blocks: [],
               elements: []
             },
+            errors: {}
         }
         Object.keys(initialState).forEach(key => {
             state[key] = initialState[key]

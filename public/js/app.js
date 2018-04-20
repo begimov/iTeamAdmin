@@ -44242,7 +44242,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   layout: {
     blocks: [],
     elements: []
-  }
+  },
+  errors: {}
 });
 
 /***/ }),
@@ -44378,7 +44379,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('resetState');
       commit('setIsLoading', false);
     }).catch(function (err) {
-      console.log(err.response.data);
+      commit('setErrors', err.response.data);
       commit('setIsLoading', false);
     });
   },
@@ -44403,6 +44404,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     setCategoriesOptions: function setCategoriesOptions(state, payload) {
         state.options.categories = payload;
+    },
+    setErrors: function setErrors(state, errors) {
+        state.errors = errors;
     },
     updateCategoryParams: function updateCategoryParams(state, value) {
         state.page.categoryId = value.id;
@@ -44464,7 +44468,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             layout: {
                 blocks: [],
                 elements: []
-            }
+            },
+            errors: {}
         };
         Object.keys(initialState).forEach(function (key) {
             state[key] = initialState[key];
