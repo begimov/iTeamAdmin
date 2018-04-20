@@ -41,10 +41,10 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Материалы</label>
-                    <p v-for="materialParam in materialParams">
+                    <p v-for="materialParam in materialParams" :key="materialParam.id">
                       <span class="custom__tag">
                         <span>{{ materialParam.name }}</span>
-                        <span class="custom__remove" @click="">
+                        <span class="custom__remove" @click="console.log('removeMaterial')">
                           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         </span>
                       </span>
@@ -62,7 +62,7 @@
                     label="name"
                     track-by="id">
                       <span slot="noResult">Материал не найден</span>
-                      <template slot="tag" scope="props">
+                      <template slot="tag">
                         &nbsp;
                       </template>
                     </multiselect>

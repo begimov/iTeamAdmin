@@ -44986,12 +44986,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Материалы")]), _vm._v(" "), _vm._l((_vm.materialParams), function(materialParam) {
-    return _c('p', [_c('span', {
+    return _c('p', {
+      key: materialParam.id
+    }, [_c('span', {
       staticClass: "custom__tag"
     }, [_c('span', [_vm._v(_vm._s(materialParam.name))]), _vm._v(" "), _c('span', {
       staticClass: "custom__remove",
       on: {
-        "click": function($event) {}
+        "click": function($event) {
+          _vm.console.log('removeMaterial')
+        }
       }
     }, [_c('span', {
       staticClass: "glyphicon glyphicon-remove",
@@ -45015,16 +45019,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     },
     on: {
       "input": _vm.updateMaterialParams
-    },
-    scopedSlots: _vm._u([{
-      key: "tag",
-      fn: function(props) {
-        return [_vm._v("\n                       \n                    ")]
-      }
-    }])
+    }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Материал не найден")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('a', {
+  }, [_vm._v("Материал не найден")]), _vm._v(" "), _c('template', {
+    slot: "tag"
+  }, [_vm._v("\n                       \n                    ")])], 2), _vm._v(" "), _c('br'), _vm._v(" "), _c('a', {
     staticClass: "btn btn-default btn-sm",
     attrs: {
       "href": "#"
