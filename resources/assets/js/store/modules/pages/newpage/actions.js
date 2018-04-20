@@ -88,6 +88,9 @@ export default {
     }).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
+    }).catch(err => {
+      console.log(err.response.data)
+      commit('setIsLoading', false)
     })
   },
   resetState ({ commit }) {

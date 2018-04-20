@@ -43870,6 +43870,8 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     return new Promise(function (resolve, reject) {
       axios.post("/webapi/pages", payload).then(function (res) {
         resolve(res);
+      }).catch(function (err) {
+        reject(err);
       });
     });
   }
@@ -44379,6 +44381,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }).then(function (res) {
       commit('resetState');
+      commit('setIsLoading', false);
+    }).catch(function (err) {
+      console.log(err.response.data);
       commit('setIsLoading', false);
     });
   },
