@@ -21,17 +21,17 @@
                     track-by="id">
                     <span slot="noResult">Категория не найдена</span>
                   </multiselect>
-                  <span class="help-block" v-if="errors.categoryId">{{ errors.categoryId[0] }}</span>
+                  <span class="help-block alert-danger" v-if="errors.categoryId">{{ errors.categoryId[0] }}</span>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Введите название страницы..." v-model="pageName">
-                  <span class="help-block" v-if="errors.name">{{ errors.name[0] }}</span>
+                  <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
-                  <textarea class="form-control" placeholder="Введите описание продукта..." v-model="pageDesc" cols="30" rows="4"></textarea>
-                  <span class="help-block" v-if="errors.desc">{{ errors.desc[0] }}</span>
+                  <textarea class="form-control" placeholder="Введите описание страницы..." v-model="pageDesc" cols="30" rows="4"></textarea>
+                  <span class="help-block alert-danger" v-if="errors.desc">{{ errors.desc[0] }}</span>
                 </div>
               </div>
             </div>
@@ -55,6 +55,7 @@
             </div>
             <div class="row">
               <div class="col-md-12">
+                <span class="help-block alert-danger" v-if="errors.elements">{{ errors.elements[0] }}</span>
                 <p><a href="#" class="btn btn-default" @click.prevent="isShowingBlocksPanel = !isShowingBlocksPanel">Добавить блок</a></p>
               </div>
             </div>
