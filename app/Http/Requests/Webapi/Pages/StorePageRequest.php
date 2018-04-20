@@ -24,10 +24,10 @@ class StorePageRequest extends FormRequest
     public function rules()
     {
         return [
-            'data.page.name' => 'required|string',
-            'data.page.desc' => 'required|string',
-            'data.categoryId' => 'required|numeric|exists:categories,id',
-            'data.elements' => 'required|array',
+            'page.data.name' => 'required|string',
+            'page.data.desc' => 'required|string',
+            'page.data.categoryId' => 'required|numeric|exists:categories,id',
+            'page.elements' => 'required|array',
         ];
     }
 }
