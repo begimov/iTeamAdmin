@@ -1,6 +1,6 @@
 <template>
   <div>
-    <new-product v-if="currentModule === 'newproduct'"></new-product>
+    <new-product v-if="currentModule === 'newproduct'" v-on:cancelNewProduct="setCurrentModule('products')"></new-product>
     <div class="container" v-if="currentModule === 'products'">
       <div class="row">
         <div class="col-md-12">

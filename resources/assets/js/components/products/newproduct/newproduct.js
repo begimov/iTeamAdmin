@@ -22,7 +22,11 @@ export default {
           'addPriceTag',
           'removePriceTag',
           'saveProduct',
-      ])
+      ]),
+      cancel () {
+        // this.resetState()
+        this.$emit('cancelNewProduct')
+      }
   },
   computed: {
       ...mapGetters('products/newproduct', [

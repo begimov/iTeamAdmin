@@ -120,7 +120,7 @@
                 <div class="col-md-12">
                   <ul class="list-inline">
                     <li><button type="submit" class="btn btn-primary">Сохранить</button></li>
-                    <li><router-link :to="{name: 'products'}" class="btn btn-default">Отменить</router-link></li>
+                    <li><a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a></li>
                   </ul>
                 </div>
               </div>
