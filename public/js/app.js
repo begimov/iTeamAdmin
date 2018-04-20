@@ -44380,6 +44380,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }).then(function (res) {
       commit('setIsLoading', false);
     });
+  },
+  resetState: function resetState(_ref10) {
+    var commit = _ref10.commit;
+
+    commit('resetState');
   }
 });
 
@@ -44441,6 +44446,27 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         });
         state.layout.elements = _.filter(state.layout.elements, function (o) {
             return o.id != id;
+        });
+    },
+    resetState: function resetState(state) {
+        var initialState = {
+            isLoading: false,
+            options: {
+                categories: []
+            },
+            page: {
+                categoryId: null,
+                name: '',
+                desc: ''
+            },
+            blocks: [],
+            layout: {
+                blocks: [],
+                elements: []
+            }
+        };
+        Object.keys(initialState).forEach(function (key) {
+            state[key] = initialState[key];
         });
     }
 });
@@ -67454,11 +67480,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     },
     cancel: function cancel() {
+      this.resetState();
       this.$emit('cancelNewPage');
     }
   }),

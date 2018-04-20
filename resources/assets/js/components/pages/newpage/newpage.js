@@ -47,11 +47,13 @@ export default {
           'moveElementDown',
           'deleteElement',
           'save',
+          'resetState',
       ]),
       findBlock (id) {
         return _.find(this.blocks, ['id',id])
       },
       cancel () {
+        this.resetState()
         this.$emit('cancelNewPage')
       }
   },
