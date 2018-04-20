@@ -44272,6 +44272,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
+  },
+  errors: function errors(state) {
+    return state.errors;
   }
 });
 
@@ -67468,7 +67471,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'pagedesc', 'blocks', 'layout', 'categoryOptions', 'categoryParams', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'pagedesc', 'blocks', 'layout', 'categoryOptions', 'categoryParams', 'isLoading', 'errors']), {
     'pageName': {
       get: function get() {
         return this.pagename;
@@ -67541,7 +67544,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Категория не найдена")])])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors.categoryId) ? _c('span', {
+    staticClass: "help-block"
+  }, [_vm._v(_vm._s(_vm.errors.categoryId[0]))]) : _vm._e()], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('input', {
     directives: [{
@@ -67564,7 +67569,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.pageName = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.name) ? _c('span', {
+    staticClass: "help-block"
+  }, [_vm._v(_vm._s(_vm.errors.name[0]))]) : _vm._e()])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
@@ -67590,7 +67597,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.pageDesc = $event.target.value
       }
     }
-  })])])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.desc) ? _c('span', {
+    staticClass: "help-block"
+  }, [_vm._v(_vm._s(_vm.errors.desc[0]))]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row"

@@ -17,7 +17,8 @@ export default {
           'layout',
           'categoryOptions',
           'categoryParams',
-          'isLoading'
+          'isLoading',
+          'errors'
       ]),
       'pageName': {
         get () {
