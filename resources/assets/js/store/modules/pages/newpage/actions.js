@@ -17,6 +17,7 @@ export default {
                       <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">вверх</a>
                       <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">вниз</a>
                       <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a>
+                      <hr>
                     </div>
                   </div>
                   </div>`,

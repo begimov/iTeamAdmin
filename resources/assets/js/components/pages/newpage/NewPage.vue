@@ -47,7 +47,6 @@
                     v-on:elementMovedDown="moveElementDown"
                     v-on:elementDeleted="deleteElement"
                     ></component>
-                    <hr :key="block.id">
                 </template>
               </div>
             </div>

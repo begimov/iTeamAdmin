@@ -44294,7 +44294,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         Vue.component(block.tag, function (resolve, reject) {
           resolve({
             props: ['id'],
-            template: '<div>' + block.template + '<div class="row">\n                    <div class="col-md-12 text-right">\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">\u0432\u0432\u0435\u0440\u0445</a>\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">\u0432\u043D\u0438\u0437</a>\n                      <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a>\n                    </div>\n                  </div>\n                  </div>',
+            template: '<div>' + block.template + '<div class="row">\n                    <div class="col-md-12 text-right">\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">\u0432\u0432\u0435\u0440\u0445</a>\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">\u0432\u043D\u0438\u0437</a>\n                      <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a>\n                      <hr>\n                    </div>\n                  </div>\n                  </div>',
             data: function data() {
               return {
                 data: _extends({}, block.data),
@@ -67575,8 +67575,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "elementMovedDown": _vm.moveElementDown,
         "elementDeleted": _vm.deleteElement
       }
-    }), _vm._v(" "), _c('hr', {
-      key: block.id
     })]
   })], 2)]), _vm._v(" "), _c('div', {
     staticClass: "row"
