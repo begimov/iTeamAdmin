@@ -22,9 +22,10 @@ export default {
           'addPriceTag',
           'removePriceTag',
           'saveProduct',
+          'resetState',
       ]),
       cancel () {
-        // this.resetState()
+        this.resetState()
         this.$emit('cancelNewProduct')
       }
   },

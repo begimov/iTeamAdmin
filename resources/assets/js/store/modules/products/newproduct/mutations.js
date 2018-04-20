@@ -40,10 +40,26 @@ export default {
     setIsLoading(state, value) {
         state.isLoading = value
     },
-    resetParams(state) {
-        state.params.name = null
-        state.params.basePrice = null
-        state.params.materials = []
-        state.params.priceTags = []
-    },
+    resetState(state) {
+        const initialState = {
+            options: {
+                materials: [],
+                categories: [],
+                priceTag: { price: null, name: null }
+            },
+            params: {
+                category: null,
+                name: null,
+                materials: [],
+                basePrice: null,
+                priceTags: [],
+            },
+            isLoading: false,
+            errors: {},
+            isNewMaterialOn: false
+        }
+        Object.keys(initialState).forEach(key => {
+            state[key] = initialState[key]
+        })
+    }
 }

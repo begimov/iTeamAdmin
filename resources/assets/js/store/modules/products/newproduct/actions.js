@@ -43,4 +43,7 @@ export default {
       commit('setIsLoading', false)
     })
   },
+  resetState ({ commit }) {
+    commit('resetState')
+  }
 }
