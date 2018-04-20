@@ -39,7 +39,7 @@ export default {
   saveProduct ({ commit, state }) {
     commit('setIsLoading', true)
     api.newproduct.saveProduct(state.params).then(res => {
-      commit('resetParams')
+      commit('resetState')
       commit('setIsLoading', false)
     })
   },
