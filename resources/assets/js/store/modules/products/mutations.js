@@ -9,4 +9,7 @@ export default {
   updateSearchQuery (state, value) {
       state.params.searchQuery = value
   },
+  setCurrentModule (state, value) {
+    state.currentModule = value
+},
 }

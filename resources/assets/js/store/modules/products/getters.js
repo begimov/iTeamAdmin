@@ -1,4 +1,7 @@
 export default {
+  currentModule (state) {
+    return state.currentModule
+  },
   products (state) {
     return state.products
   },

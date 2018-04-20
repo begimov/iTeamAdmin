@@ -10,6 +10,7 @@ export default {
   },
   computed: {
       ...mapGetters('products', [
+          'currentModule',
           'products',
           'meta',
           'isLoading'
@@ -27,6 +28,7 @@ export default {
       ...mapActions('products', [
           'getProducts',
           'updateSearchQuery',
+          'setCurrentModule',
       ]),
       textSearch () {
         clearTimeout(this.timer);
