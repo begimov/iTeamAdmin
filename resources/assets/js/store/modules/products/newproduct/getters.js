@@ -32,4 +32,7 @@ export default {
   priceTags(state) {
     return state.params.priceTags
   },
+  errors (state) {
+    return state.errors
+  },
 }

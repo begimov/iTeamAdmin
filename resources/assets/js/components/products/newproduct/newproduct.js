@@ -42,6 +42,7 @@ export default {
           'isNewMaterialOn',
           'isLoading',
           'priceTags',
+          'errors'
       ]),
       'name': {
         get () {

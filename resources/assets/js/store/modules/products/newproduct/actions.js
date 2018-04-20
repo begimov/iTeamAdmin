@@ -42,7 +42,7 @@ export default {
       commit('resetState')
       commit('setIsLoading', false)
     }).catch(err => {
-      console.log(err.response.data)
+      commit('setErrors', err.response.data)
       commit('setIsLoading', false)
     })
   },

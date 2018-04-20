@@ -5,6 +5,9 @@ export default {
     setMaterials(state, value) {
         state.options.materials = value
     },
+    setErrors(state, errors) {
+        state.errors = errors
+    },
     updateMaterialParams(state, value) {
         state.params.materials = value
     },

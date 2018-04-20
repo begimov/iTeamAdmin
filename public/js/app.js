@@ -43743,6 +43743,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   priceTags: function priceTags(state) {
     return state.params.priceTags;
+  },
+  errors: function errors(state) {
+    return state.errors;
   }
 });
 
@@ -43819,7 +43822,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
       commit('resetState');
       commit('setIsLoading', false);
     }).catch(function (err) {
-      console.log(err.response.data);
+      commit('setErrors', err.response.data);
       commit('setIsLoading', false);
     });
   },
@@ -43949,6 +43952,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     setMaterials: function setMaterials(state, value) {
         state.options.materials = value;
+    },
+    setErrors: function setErrors(state, errors) {
+        state.errors = errors;
     },
     updateMaterialParams: function updateMaterialParams(state, value) {
         state.params.materials = value;
@@ -44888,7 +44894,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.$emit('cancelNewProduct');
     }
   }),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn', 'isLoading', 'priceTags']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn', 'isLoading', 'priceTags', 'errors']), {
     'name': {
       get: function get() {
         return this.getName;
@@ -44980,7 +44986,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Категория не найдена")])])], 1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors['category.id']) ? _c('span', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v(_vm._s(_vm.errors['category.id'][0]))]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
@@ -45005,7 +45013,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.name = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.name) ? _c('span', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v(_vm._s(_vm.errors.name[0]))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-6"
@@ -45050,7 +45060,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     slot: "noResult"
   }, [_vm._v("Материал не найден")]), _vm._v(" "), _c('template', {
     slot: "tag"
-  }, [_vm._v("\n                       \n                    ")])], 2), _vm._v(" "), _c('br'), _vm._v(" "), _c('a', {
+  }, [_vm._v("\n                       \n                    ")])], 2), _vm._v(" "), (_vm.errors.materials) ? _c('span', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v(_vm._s(_vm.errors.materials[0]))]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v(" "), _c('a', {
     staticClass: "btn btn-default btn-sm",
     attrs: {
       "href": "#"
@@ -45086,7 +45098,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.basePrice = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors.basePrice) ? _c('span', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v(_vm._s(_vm.errors.basePrice[0]))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"

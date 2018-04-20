@@ -27,12 +27,14 @@
                     track-by="id">
                       <span slot="noResult">Категория не найдена</span>
                     </multiselect>
+                    <span class="help-block alert-danger" v-if="errors['category.id']">{{ errors['category.id'][0] }}</span>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Название</label>
                     <input type="text" class="form-control" placeholder="Введите название продукта" v-model="name">
+                    <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span>
                   </div>
                 </div>
               </div>
@@ -66,6 +68,7 @@
                         &nbsp;
                       </template>
                     </multiselect>
+                    <span class="help-block alert-danger" v-if="errors.materials">{{ errors.materials[0] }}</span>
                     <br>
                     <a href="#" @click.prevent="switchNewMaterial(true)" class="btn btn-default btn-sm">Создать материал</a>
                   </div>
@@ -74,6 +77,7 @@
                   <div class="form-group">
                     <label>Базовая цена, &nbsp;&#8381;</label>
                     <input type="text" class="form-control" placeholder="Введите цену по умолчанию" v-model="basePrice">
+                    <span class="help-block alert-danger" v-if="errors.basePrice">{{ errors.basePrice[0] }}</span>
                   </div>
                 </div>
               </div>
