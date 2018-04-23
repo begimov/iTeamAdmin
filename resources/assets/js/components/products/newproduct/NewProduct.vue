@@ -137,7 +137,7 @@
     </div>
 
     <div class="row" v-if="isNewMaterialOn">
-      <new-material @cancelNewMaterial="switchNewMaterial(false)"></new-material>
+      <new-material></new-material>
     </div>
 
   </div>

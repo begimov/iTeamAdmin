@@ -44021,35 +44021,41 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.saveMaterial(state.params).then(function (res) {
       commit('resetState');
-      dispatch('getMaterialId');
       commit('setIsLoading', false);
+      commit('products/newproduct/switchNewMaterial', false, { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);
     });
   },
-  updateName: function updateName(_ref3, value) {
+  cancel: function cancel(_ref3) {
     var commit = _ref3.commit;
+
+    commit('resetState');
+    commit('products/newproduct/switchNewMaterial', false, { root: true });
+  },
+  updateName: function updateName(_ref4, value) {
+    var commit = _ref4.commit;
 
     commit('updateName', value);
   },
-  updateVideoId: function updateVideoId(_ref4, value) {
-    var commit = _ref4.commit;
+  updateVideoId: function updateVideoId(_ref5, value) {
+    var commit = _ref5.commit;
 
     commit('updateVideoId', value);
   },
-  addVideo: function addVideo(_ref5) {
-    var commit = _ref5.commit;
+  addVideo: function addVideo(_ref6) {
+    var commit = _ref6.commit;
 
     commit('addVideo');
   },
-  removeVideo: function removeVideo(_ref6) {
-    var commit = _ref6.commit;
+  removeVideo: function removeVideo(_ref7) {
+    var commit = _ref7.commit;
 
     commit('removeVideo');
   },
-  resetState: function resetState(_ref7) {
-    var commit = _ref7.commit;
+  resetState: function resetState(_ref8) {
+    var commit = _ref8.commit;
 
     commit('resetState');
   }
@@ -64416,13 +64422,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Отменить")])])])])])])])])])]), _vm._v(" "), (_vm.isNewMaterialOn) ? _c('div', {
     staticClass: "row"
-  }, [_c('new-material', {
-    on: {
-      "cancelNewMaterial": function($event) {
-        _vm.switchNewMaterial(false)
-      }
-    }
-  })], 1) : _vm._e()])
+  }, [_c('new-material')], 1) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
@@ -64504,12 +64504,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState']), {
-    cancel: function cancel() {
-      this.resetState();
-      this.$emit('cancelNewMaterial');
-    }
-  }),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState', 'cancel'])),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos', 'errors']), {
     'name': {
       get: function get() {
