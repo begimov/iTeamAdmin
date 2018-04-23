@@ -21,6 +21,19 @@
                 </div>
               </div>
 
+              <hr>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" placeholder="id youtube видео...">
+                  </div>
+                  <p><a href="#" class="btn btn-default" @click.prevent="addVideo">Добавить видео</a></p>
+                </div>
+              </div>
+
+              <hr>
+              
               <div class="row">
                 <div class="col-md-12">
                   <file-uploader 
