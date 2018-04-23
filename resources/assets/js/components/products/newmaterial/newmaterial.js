@@ -15,11 +15,12 @@ export default {
       'updateVideoId',
       'addVideo',
       'removeVideo',
+      'resetState',
     ]),
     cancel () {
-      // this.resetState()
+      this.resetState()
       this.$emit('cancelNewMaterial')
-    }
+    },
   },
   computed: {
     ...mapGetters('products/newmaterial', [

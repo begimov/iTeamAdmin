@@ -44020,6 +44020,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.saveMaterial(state.params).then(function (res) {
+      commit('resetState');
+      dispatch('getMaterialId');
       commit('setIsLoading', false);
     }).catch(function (err) {
       commit('setErrors', err.response.data);
@@ -44045,6 +44047,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref6.commit;
 
     commit('removeVideo');
+  },
+  resetState: function resetState(_ref7) {
+    var commit = _ref7.commit;
+
+    commit('resetState');
   }
 });
 
@@ -44080,6 +44087,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     setErrors: function setErrors(state, errors) {
         state.errors = errors;
+    },
+    resetState: function resetState(state) {
+        var initialState = {
+            options: {
+                video: { id: null }
+            },
+            params: {
+                id: null,
+                name: null,
+                videos: []
+            },
+            isLoading: false,
+            errors: {}
+        };
+        Object.keys(initialState).forEach(function (key) {
+            state[key] = initialState[key];
+        });
     }
 });
 
@@ -64480,9 +64504,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState']), {
     cancel: function cancel() {
-      // this.resetState()
+      this.resetState();
       this.$emit('cancelNewMaterial');
     }
   }),

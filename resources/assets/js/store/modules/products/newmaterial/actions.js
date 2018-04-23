@@ -11,6 +11,8 @@ export default {
   saveMaterial ({dispatch, commit, state}) {
     commit('setIsLoading', true)
     api.newmaterial.saveMaterial(state.params).then(res => {
+      commit('resetState')
+      dispatch('getMaterialId')
       commit('setIsLoading', false)
     }).catch((err) => {
       commit('setErrors', err.response.data)
@@ -29,4 +31,7 @@ export default {
   removeVideo ({ commit }) {
     commit('removeVideo')
   },
+  resetState ({ commit }) {
+    commit('resetState')
+  }
 }

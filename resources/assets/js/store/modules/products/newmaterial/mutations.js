@@ -24,4 +24,21 @@ export default {
     setErrors(state, errors) {
         state.errors = errors
     },
+    resetState(state) {
+        const initialState = {
+            options: {
+                video: { id: null },
+              },
+              params: {
+                id: null,
+                name: null,
+                videos: []
+              },
+              isLoading: false,
+              errors: {}
+        }
+        Object.keys(initialState).forEach(key => {
+            state[key] = initialState[key]
+        })
+    }
 }
