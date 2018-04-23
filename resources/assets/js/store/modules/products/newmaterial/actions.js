@@ -20,4 +20,7 @@ export default {
   updateVideoId ({ commit }, value) {
     commit('updateVideoId', value)
   },
+  addVideo ({ commit }) {
+    commit('addVideo')
+  },
 }

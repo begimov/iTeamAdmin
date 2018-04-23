@@ -13,6 +13,7 @@ export default {
       'saveMaterial',
       'updateName',
       'updateVideoId',
+      'addVideo',
     ]),
     cancel () {
       // this.resetState()

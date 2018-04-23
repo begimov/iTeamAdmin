@@ -43960,7 +43960,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   params: {
     id: null,
-    name: null
+    name: null,
+    videos: []
   },
   isLoading: false
   // errors: {}
@@ -44025,6 +44026,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref4.commit;
 
     commit('updateVideoId', value);
+  },
+  addVideo: function addVideo(_ref5) {
+    var commit = _ref5.commit;
+
+    commit('addVideo');
   }
 });
 
@@ -44033,6 +44039,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     setMaterialId: function setMaterialId(state, id) {
         state.params.id = id;
@@ -44042,6 +44050,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     updateVideoId: function updateVideoId(state, value) {
         state.options.video.id = value;
+    },
+    addVideo: function addVideo(state) {
+        var video = state.options.video;
+        if (video.id) {
+            state.params.videos.push(_extends({}, video));
+            video.id = null;
+        }
     },
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
@@ -64445,7 +64460,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo']), {
     cancel: function cancel() {
       // this.resetState()
       this.$emit('cancelNewMaterial');
