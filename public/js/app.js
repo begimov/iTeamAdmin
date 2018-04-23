@@ -64431,19 +64431,27 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId']), {
     cancel: function cancel() {
       // this.resetState()
       this.$emit('cancelNewMaterial');
     }
   }),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading']), {
     'name': {
       get: function get() {
         return this.getName;
       },
       set: function set(value) {
         this.updateName(value);
+      }
+    },
+    'videoId': {
+      get: function get() {
+        return this.getVideoId;
+      },
+      set: function set(value) {
+        this.updateVideoId(value);
       }
     }
   }),
@@ -64517,7 +64525,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_vm._m(0), _vm._v(" "), _c('p', [_c('a', {
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.videoId),
+      expression: "videoId"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "id youtube видео..."
+    },
+    domProps: {
+      "value": (_vm.videoId)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.videoId = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('p', [_c('a', {
     staticClass: "btn btn-default",
     attrs: {
       "href": "#"
@@ -64543,7 +64574,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(1), _vm._v(" "), _c('li', [_c('a', {
+  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "btn btn-default",
     attrs: {
       "href": "#"
@@ -64556,16 +64587,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Отменить")])])])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "form-group"
-  }, [_c('input', {
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "id youtube видео..."
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('button', {
     staticClass: "btn btn-primary",
     attrs: {

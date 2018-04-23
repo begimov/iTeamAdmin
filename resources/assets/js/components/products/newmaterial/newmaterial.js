@@ -12,6 +12,7 @@ export default {
       'getMaterialId',
       'saveMaterial',
       'updateName',
+      'updateVideoId',
     ]),
     cancel () {
       // this.resetState()
@@ -22,6 +23,7 @@ export default {
     ...mapGetters('products/newmaterial', [
       'id',
       'getName',
+      'getVideoId',
       'isLoading',
     ]),
     'name': {
@@ -32,6 +34,14 @@ export default {
         this.updateName(value)
       }
     },
+    'videoId': {
+      get () {
+        return this.getVideoId
+      },
+      set (value) {
+        this.updateVideoId(value)
+      }
+    }
   },
   mounted() {
     // TODO: generate fresh id each time (safe) or use previous unsaved id?
