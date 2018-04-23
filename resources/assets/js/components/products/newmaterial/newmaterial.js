@@ -26,6 +26,7 @@ export default {
       'getName',
       'getVideoId',
       'isLoading',
+      'videos',
     ]),
     'name': {
       get () {

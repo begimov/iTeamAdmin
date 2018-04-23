@@ -43984,6 +43984,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
+  },
+  videos: function videos(state) {
+    return state.params.videos;
   }
 });
 
@@ -64466,7 +64469,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.$emit('cancelNewMaterial');
     }
   }),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos']), {
     'name': {
       get: function get() {
         return this.getName;
@@ -64550,7 +64553,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.name = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  })])])]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.videos.length) ? _c('div', {
+    staticClass: "row"
+  }, _vm._l((_vm.videos), function(video, index) {
+    return _c('div', {
+      key: index,
+      staticClass: "col-md-4"
+    }, [_c('div', {
+      staticClass: "panel panel-default"
+    }, [_c('div', {
+      staticClass: "panel-body"
+    }, [_c('div', {
+      staticClass: "embed-responsive embed-responsive-16by9"
+    }, [_c('iframe', {
+      staticClass: "embed-responsive-item",
+      attrs: {
+        "src": 'https://www.youtube.com/embed/' + video.id,
+        "frameborder": "0",
+        "allow": "autoplay; encrypted-media",
+        "allowfullscreen": ""
+      }
+    })])]), _vm._v(" "), _c('div', {
+      staticClass: "panel-footer"
+    }, [_c('a', {
+      staticClass: "btn btn-primary btn-sm",
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeVideo(index)
+        }
+      }
+    }, [_vm._v("Удалить")])])])])
+  })) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"

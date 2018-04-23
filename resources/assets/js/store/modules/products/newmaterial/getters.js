@@ -11,4 +11,7 @@ export default {
   isLoading (state) {
     return state.isLoading
   },
+  videos (state) {
+    return state.params.videos
+  },
 }
