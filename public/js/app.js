@@ -43987,6 +43987,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   videos: function videos(state) {
     return state.params.videos;
+  },
+  errors: function errors(state) {
+    return state.errors;
   }
 });
 
@@ -64483,7 +64486,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.$emit('cancelNewMaterial');
     }
   }),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos', 'errors']), {
     'name': {
       get: function get() {
         return this.getName;
@@ -64567,7 +64570,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.name = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.videos.length) ? _c('div', {
+  }), _vm._v(" "), (_vm.errors['name']) ? _c('span', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v(_vm._s(_vm.errors['name'][0]))]) : _vm._e()])])]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.videos.length) ? _c('div', {
     staticClass: "row"
   }, _vm._l((_vm.videos), function(video, index) {
     return _c('div', {

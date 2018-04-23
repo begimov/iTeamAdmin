@@ -14,4 +14,7 @@ export default {
   videos (state) {
     return state.params.videos
   },
+  errors (state) {
+    return state.errors
+  },
 }

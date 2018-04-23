@@ -28,6 +28,7 @@ export default {
       'getVideoId',
       'isLoading',
       'videos',
+      'errors',
     ]),
     'name': {
       get () {

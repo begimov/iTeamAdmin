@@ -17,6 +17,7 @@
                   <div class="form-group">
                     <label>Название</label>
                     <input type="text" class="form-control" placeholder="Введите название материала" v-model="name">
+                    <span class="help-block alert-danger" v-if="errors['name']">{{ errors['name'][0] }}</span>
                   </div>
                 </div>
               </div>
