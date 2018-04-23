@@ -43814,10 +43814,10 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   saveMaterial: function saveMaterial(data) {
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/materials", {
-        data: data
-      }).then(function (res) {
+      axios.post("/webapi/materials", data).then(function (res) {
         resolve(res);
+      }).catch(function (err) {
+        return console.log(err.response);
       });
     });
   }
