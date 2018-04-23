@@ -43817,7 +43817,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
       axios.post("/webapi/materials", data).then(function (res) {
         resolve(res);
       }).catch(function (err) {
-        resolve(err);
+        reject(err);
       });
     });
   }
@@ -44019,7 +44019,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.saveMaterial(state.params).then(function (res) {
       commit('setIsLoading', false);
     }).catch(function (err) {
-      console.log(err.response);
+      commit('setErrors', err.response.data);
       commit('setIsLoading', false);
     });
   },
@@ -44074,6 +44074,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
+    },
+    setErrors: function setErrors(state, errors) {
+        state.errors = errors;
     }
 });
 

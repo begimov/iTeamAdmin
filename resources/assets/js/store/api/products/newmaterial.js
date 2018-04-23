@@ -11,7 +11,7 @@ export default {
       axios.post(`/webapi/materials`, data).then(res => {
         resolve(res)
       }).catch((err) => {
-        resolve(err)
+        reject(err)
       })
     })
   },

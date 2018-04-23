@@ -21,4 +21,7 @@ export default {
     setIsLoading (state, value) {
         state.isLoading = value
     },
+    setErrors(state, errors) {
+        state.errors = errors
+    },
 }
