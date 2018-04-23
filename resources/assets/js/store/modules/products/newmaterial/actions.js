@@ -17,4 +17,7 @@ export default {
   updateName ({ commit }, value) {
     commit('updateName', value)
   },
+  updateVideoId ({ commit }, value) {
+    commit('updateVideoId', value)
+  },
 }

@@ -43955,6 +43955,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+  options: {
+    video: { id: null }
+  },
   params: {
     id: null,
     name: null
@@ -43974,6 +43977,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   getName: function getName(state) {
     return state.params.name;
+  },
+  getVideoId: function getVideoId(state) {
+    return state.options.video.id;
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
@@ -44014,6 +44020,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref3.commit;
 
     commit('updateName', value);
+  },
+  updateVideoId: function updateVideoId(_ref4, value) {
+    var commit = _ref4.commit;
+
+    commit('updateVideoId', value);
   }
 });
 
@@ -44028,6 +44039,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     updateName: function updateName(state, value) {
         state.params.name = value;
+    },
+    updateVideoId: function updateVideoId(state, value) {
+        state.options.video.id = value;
     },
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
