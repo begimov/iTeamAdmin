@@ -15,6 +15,9 @@ export default {
             video.id = null
         }
     },
+    removeVideo (state, index) {
+        state.params.videos.splice(index, 1)
+    },
     setIsLoading (state, value) {
         state.isLoading = value
     },

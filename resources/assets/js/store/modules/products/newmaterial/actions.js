@@ -23,4 +23,7 @@ export default {
   addVideo ({ commit }) {
     commit('addVideo')
   },
+  removeVideo ({ commit }) {
+    commit('removeVideo')
+  },
 }

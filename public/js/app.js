@@ -44034,6 +44034,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref5.commit;
 
     commit('addVideo');
+  },
+  removeVideo: function removeVideo(_ref6) {
+    var commit = _ref6.commit;
+
+    commit('removeVideo');
   }
 });
 
@@ -44060,6 +44065,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             state.params.videos.push(_extends({}, video));
             video.id = null;
         }
+    },
+    removeVideo: function removeVideo(state, index) {
+        state.params.videos.splice(index, 1);
     },
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
@@ -64463,7 +64471,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo']), {
     cancel: function cancel() {
       // this.resetState()
       this.$emit('cancelNewMaterial');

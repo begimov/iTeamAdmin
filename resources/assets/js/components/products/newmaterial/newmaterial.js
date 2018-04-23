@@ -14,6 +14,7 @@ export default {
       'updateName',
       'updateVideoId',
       'addVideo',
+      'removeVideo',
     ]),
     cancel () {
       // this.resetState()
