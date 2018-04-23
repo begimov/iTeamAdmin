@@ -10,7 +10,9 @@ export default {
     return new Promise((resolve, reject) => {
       axios.post(`/webapi/materials`, data).then(res => {
         resolve(res)
-      }).catch((err) => console.log(err.response))
+      }).catch((err) => {
+        resolve(err)
+      })
     })
   },
 }

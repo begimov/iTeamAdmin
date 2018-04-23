@@ -12,6 +12,9 @@ export default {
     commit('setIsLoading', true)
     api.newmaterial.saveMaterial(state.params).then(res => {
       commit('setIsLoading', false)
+    }).catch((err) => {
+      console.log(err.response)
+      commit('setIsLoading', false)
     })
   },
   updateName ({ commit }, value) {

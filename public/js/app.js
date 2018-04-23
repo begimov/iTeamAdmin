@@ -43817,7 +43817,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
       axios.post("/webapi/materials", data).then(function (res) {
         resolve(res);
       }).catch(function (err) {
-        return console.log(err.response);
+        resolve(err);
       });
     });
   }
@@ -43963,8 +43963,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     name: null,
     videos: []
   },
-  isLoading: false
-  // errors: {}
+  isLoading: false,
+  errors: {}
 });
 
 /***/ }),
@@ -44017,6 +44017,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.saveMaterial(state.params).then(function (res) {
+      commit('setIsLoading', false);
+    }).catch(function (err) {
+      console.log(err.response);
       commit('setIsLoading', false);
     });
   },

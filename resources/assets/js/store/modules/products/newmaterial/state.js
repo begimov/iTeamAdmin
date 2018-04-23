@@ -8,5 +8,5 @@ export default {
     videos: []
   },
   isLoading: false,
-  // errors: {}
+  errors: {}
 }
