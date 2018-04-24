@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class RelationsServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,9 @@ class RelationsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Relation::morphMap([
+            'materials' => 'App\Models\Products\Material',
+        ]);
     }
 
     /**
