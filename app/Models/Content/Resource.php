@@ -15,4 +15,9 @@ class Resource extends Model
     {
         return $this->resourceType->id === config('resources.youtubevideo_type_id');
     }
+
+    public function resourceable()
+    {
+        return $this->morphTo();
+    }
 }
