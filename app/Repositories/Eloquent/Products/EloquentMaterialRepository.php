@@ -6,6 +6,8 @@ use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Products\MaterialRepository;
 
 use App\Models\Products\Material;
+use App\Models\Content\Resource;
+use App\Models\Content\ResourceType;
 
 class EloquentMaterialRepository extends EloquentRepositoryAbstract implements MaterialRepository
 {
@@ -30,11 +32,24 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
     {
         $material = Material::find($data['id']);
         $material->name = $data['name'];
+        $material->save();
 
         if (isset($data['videos']) && !empty($data['videos'])) {
-            // $this->storeVideoIds;
+            $this->storeVideoResources($data['videos'], $material);
         }
+    }
 
-        $material->save();
+    protected function storeVideoResources($videos, $material)
+    {
+        foreach ($videos as $video) {
+            $resource = new Resource;
+
+            $resource->identifier = $video['id'];
+
+            $resource->resourceType()
+                ->associate(ResourceType::find(config('resources.youtubevideo_type_id')));
+
+            $material->resources()->save($resource);
+        }
     }
 }
