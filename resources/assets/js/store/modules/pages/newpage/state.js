@@ -13,4 +13,5 @@ export default {
     blocks: [],
     elements: []
   },
+  errors: {}
 }

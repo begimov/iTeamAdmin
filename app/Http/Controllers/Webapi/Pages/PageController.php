@@ -16,6 +16,8 @@ use App\Transformers\Products\CategoryTransformer;
 
 use App\Models\Pages\Block;
 
+use App\Http\Requests\Webapi\Pages\StorePageRequest;
+
 class PageController extends Controller
 {
     protected $pages;
@@ -79,9 +81,9 @@ class PageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePageRequest $request)
     {
-        $page = $this->pages->store($request->all()['page']);
+        $page = $this->pages->store($request->all());
         return response()->json([
             'page' => fractal($page, new PageTransformer)->toArray(),
         ]);

@@ -18,11 +18,16 @@ export default {
           'updateBasePrice',
           'updatePriceTagPrice',
           'updatePriceTagName',
-          'newMaterialOn',
+          'switchNewMaterial',
           'addPriceTag',
           'removePriceTag',
           'saveProduct',
-      ])
+          'resetState',
+      ]),
+      cancel () {
+        this.resetState()
+        this.$emit('cancelNewProduct')
+      }
   },
   computed: {
       ...mapGetters('products/newproduct', [
@@ -37,6 +42,7 @@ export default {
           'isNewMaterialOn',
           'isLoading',
           'priceTags',
+          'errors'
       ]),
       'name': {
         get () {

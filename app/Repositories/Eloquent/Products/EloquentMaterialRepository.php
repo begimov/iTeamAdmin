@@ -30,6 +30,11 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
     {
         $material = Material::find($data['id']);
         $material->name = $data['name'];
+
+        if (isset($data['videos']) && !empty($data['videos'])) {
+            // $this->storeVideoIds;
+        }
+
         $material->save();
     }
 }

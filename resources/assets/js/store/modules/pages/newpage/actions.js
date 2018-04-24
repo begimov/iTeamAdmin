@@ -17,6 +17,7 @@ export default {
                       <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">вверх</a>
                       <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">вниз</a>
                       <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a>
+                      <hr>
                     </div>
                   </div>
                   </div>`,
@@ -79,13 +80,15 @@ export default {
     const elements = _.map(state.layout.elements, (element) => {
       return { data: element.data.data, meta: element.data.meta }
     })
-    api.newpage.savePage({
-      page: {
-        data: state.page,
-        elements
-      }
-    }).then(res => {
+    api.newpage.savePage({ ...state.page, elements }).then(res => {
+      commit('resetState')
+      commit('setIsLoading', false)
+    }).catch(err => {
+      commit('setErrors', err.response.data)
       commit('setIsLoading', false)
     })
   },
+  resetState ({ commit }) {
+    commit('resetState')
+  }
 }

@@ -13,8 +13,8 @@ class BlocksTableSeeder extends Seeder
     {
       $blocks = [
             [
-                'view' => 'imgandtext',
-                'data' => '{"files":{"img1":""},"name":"","link":""}'
+                'view' => 'imgparagraph',
+                'data' => '{"files":{"img1":""},"text":""}'
             ],
             [
                 'view' => 'paragraph',
@@ -23,6 +23,10 @@ class BlocksTableSeeder extends Seeder
             [
                 'view' => 'purchase',
                 'data' => '{"product":""}'
+            ],
+            [
+                'view' => 'threecards',
+                'data' => '{"title1":"","text1":"","title2":"","text2":"","title3":"","text3":""}'
             ],
       ];
       foreach ($blocks as $key => $value) {

@@ -27,12 +27,14 @@
                     track-by="id">
                       <span slot="noResult">Категория не найдена</span>
                     </multiselect>
+                    <span class="help-block alert-danger" v-if="errors['category.id']">{{ errors['category.id'][0] }}</span>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Название</label>
                     <input type="text" class="form-control" placeholder="Введите название продукта" v-model="name">
+                    <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span>
                   </div>
                 </div>
               </div>
@@ -41,10 +43,10 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Материалы</label>
-                    <p v-for="materialParam in materialParams">
+                    <p v-for="materialParam in materialParams" :key="materialParam.id">
                       <span class="custom__tag">
                         <span>{{ materialParam.name }}</span>
-                        <span class="custom__remove" @click="">
+                        <span class="custom__remove" @click="console.log('removeMaterial')">
                           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         </span>
                       </span>
@@ -62,18 +64,20 @@
                     label="name"
                     track-by="id">
                       <span slot="noResult">Материал не найден</span>
-                      <template slot="tag" scope="props">
+                      <template slot="tag">
                         &nbsp;
                       </template>
                     </multiselect>
+                    <span class="help-block alert-danger" v-if="errors.materials">{{ errors.materials[0] }}</span>
                     <br>
-                    <a href="#" @click.prevent="newMaterialOn" class="btn btn-default btn-sm">Создать материал</a>
+                    <a href="#" @click.prevent="switchNewMaterial(true)" class="btn btn-default btn-sm">Создать материал</a>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Базовая цена, &nbsp;&#8381;</label>
                     <input type="text" class="form-control" placeholder="Введите цену по умолчанию" v-model="basePrice">
+                    <span class="help-block alert-danger" v-if="errors.basePrice">{{ errors.basePrice[0] }}</span>
                   </div>
                 </div>
               </div>
@@ -120,7 +124,7 @@
                 <div class="col-md-12">
                   <ul class="list-inline">
                     <li><button type="submit" class="btn btn-primary">Сохранить</button></li>
-                    <li><router-link :to="{name: 'products'}" class="btn btn-default">Отменить</router-link></li>
+                    <li><a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a></li>
                   </ul>
                 </div>
               </div>

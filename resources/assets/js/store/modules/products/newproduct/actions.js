@@ -27,8 +27,8 @@ export default {
   updatePriceTagName ({ commit }, value) {
     commit('updatePriceTagName', value)
   },
-  newMaterialOn ({ commit }) {
-    commit('newMaterialOn')
+  switchNewMaterial ({ commit }, value) {
+    commit('switchNewMaterial', value)
   },
   addPriceTag ({ commit }) {
     commit('addPriceTag')
@@ -39,8 +39,14 @@ export default {
   saveProduct ({ commit, state }) {
     commit('setIsLoading', true)
     api.newproduct.saveProduct(state.params).then(res => {
-      commit('resetParams')
+      commit('resetState')
+      commit('setIsLoading', false)
+    }).catch(err => {
+      commit('setErrors', err.response.data)
       commit('setIsLoading', false)
     })
   },
+  resetState ({ commit }) {
+    commit('resetState')
+  }
 }

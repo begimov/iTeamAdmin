@@ -20,4 +20,7 @@ export default {
   isLoading (state) {
     return state.isLoading
   },
+  errors (state) {
+    return state.errors
+  },
 }

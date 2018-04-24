@@ -10,7 +10,23 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import store from './store'
-import router from './router'
+// import router from './router'
+
+// vue-quil-editor
+import VueQuillEditor from 'vue-quill-editor'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+Vue.use(VueQuillEditor, {
+    modules: {
+        toolbar: [
+            ['bold', 'italic'], 
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }], 
+            [{ 'align': [] }]
+        ]
+    },
+    placeholder: '...'
+})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -40,11 +56,12 @@ Vue.component('new-material', require('./components/products/newmaterial/NewMate
 Vue.component('pages', require('./components/pages/Pages.vue'));
 Vue.component('page', require('./components/pages/Page.vue'));
 Vue.component('new-page', require('./components/pages/newpage/NewPage.vue'));
+
 // Special blocks
 Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vue'));
 
 const app = new Vue({
     el: '#app',
     store,
-    router
+    // router
 });
