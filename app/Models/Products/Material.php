@@ -12,4 +12,9 @@ class Material extends Model
     {
         return $this->hasMany(File::class);
     }
+
+    public function resources()
+    {
+        return $this->morphMany('App\Models\Content\Resource', 'resourceable');
+    }
 }
