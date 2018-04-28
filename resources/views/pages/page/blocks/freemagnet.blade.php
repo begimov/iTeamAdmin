@@ -8,19 +8,19 @@
   </div>
   <div class="col-md-8 col-sm-8">
     <div class="form-group">
-      <label>Токен GetResponse кампании:</label>
+      <label>{{ trans('blocks.freemagnet.token') }}</label>
       <input type="text" v-model="data.campaignToken" class="form-control">
     </div>
     <div class="form-group">
-      <label>Заголовок:</label>
+      <label>{{ trans('blocks.freemagnet.title') }}</label>
       <input type="text" v-model="data.title" class="form-control">
     </div>
     <div class="form-group">
-      <label>Описание:</label>
+      <label>{{ trans('blocks.freemagnet.description') }}</label>
       <input type="text" v-model="data.description" class="form-control">
     </div>
     <div class="form-group">
-      <label>Надпись на кнопке:</label>
+      <label>{{ trans('blocks.freemagnet.buttonText') }}</label>
       <input type="text" v-model="data.buttonText" class="form-control">
     </div>
   </div>
