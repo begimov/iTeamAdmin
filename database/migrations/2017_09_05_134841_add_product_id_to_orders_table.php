@@ -15,6 +15,8 @@ class AddProductIdToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->integer('product_id')->unsigned();
+
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
