@@ -19,6 +19,8 @@ class CreatePriceTagsTable extends Migration
             $table->string('name')->nullable();
             $table->decimal('price', 13, 2)->nullable();
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
