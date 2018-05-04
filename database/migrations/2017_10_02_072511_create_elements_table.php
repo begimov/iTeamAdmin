@@ -17,6 +17,9 @@ class CreateElementsTable extends Migration
             $table->increments('id');
             $table->integer('page_id')->unsigned();
             $table->integer('block_id')->unsigned();
+
+            $table->foreign('page_id')->references('id')->on('pages')->onDelete('cascade');
+            $table->foreign('block_id')->references('id')->on('blocks')->onDelete('cascade');
         });
     }
 
