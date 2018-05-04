@@ -62736,7 +62736,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     ref: "fileUploader",
     attrs: {
       "id": "fileUploader",
-      "options": _vm.options
+      "options": _vm.options,
+      "destroyDropzone": false
     },
     on: {
       "vdropzone-success": _vm.fileUploaded,

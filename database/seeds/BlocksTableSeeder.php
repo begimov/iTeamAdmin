@@ -28,6 +28,10 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'threecards',
                 'data' => '{"title1":"","text1":"","title2":"","text2":"","title3":"","text3":""}'
             ],
+            [
+                'view' => 'freemagnet',
+                'data' => '{"files":{"doc1":""},"campaignToken":"","title":"","description":"","buttonText":""}'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);
