@@ -18,8 +18,6 @@ class CreateResourcesTable extends Migration
             $table->string('identifier');
             $table->integer('resource_type_id')->nullable()->unsigned();
             $table->timestamps();
-
-            $table->foreign('resource_type_id')->references('id')->on('resource_types')->onDelete('set null');
         });
     }
 

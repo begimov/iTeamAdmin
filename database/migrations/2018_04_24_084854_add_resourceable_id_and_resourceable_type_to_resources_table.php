@@ -16,6 +16,8 @@ class AddResourceableIdAndResourceableTypeToResourcesTable extends Migration
         Schema::table('resources', function (Blueprint $table) {
             $table->integer('resourceable_id')->unsigned();
             $table->string('resourceable_type');
+
+            $table->foreign('resource_type_id')->references('id')->on('resource_types')->onDelete('set null');
         });
     }
 
