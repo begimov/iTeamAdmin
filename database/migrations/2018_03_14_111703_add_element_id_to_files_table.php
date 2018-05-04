@@ -15,6 +15,8 @@ class AddElementIdToFilesTable extends Migration
     {
         Schema::table('files', function (Blueprint $table) {
             $table->integer('element_id')->nullable()->unsigned()->index();
+
+            $table->foreign('element_id')->references('id')->on('elements')->onDelete('set null');
         });
     }
 
