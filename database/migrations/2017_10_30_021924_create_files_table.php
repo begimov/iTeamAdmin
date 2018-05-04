@@ -20,6 +20,8 @@ class CreateFilesTable extends Migration
             $table->bigInteger('size');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('material_id')->references('id')->on('materials')->onDelete('set null');
         });
     }
 
