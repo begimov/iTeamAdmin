@@ -2,27 +2,24 @@ export default {
     data() {
         return {
             params: {
-                stages: [
-                    {
-                        name: 'Name 1',
-                        description: 'Desc 1'
-                    },
-                    {
-                        name: 'Name 2',
-                        description: 'Desc 2'
-                    },
-                ],
+                stages: [],
             },
         }
     },
     watch: {
-        'params.stages': function (stages) {
-            this.$emit('input', stages)
+        'params.stages': {
+            handler: function (stages) {
+                this.$emit('input', stages);
+            },
+            deep: true
         }
     },
     methods: {
         addStage() {
-            console.log('Added');
+            this.params.stages.push({
+                name: '',
+                description: ''
+            });
         },
         removeStage() {
             console.log('Removed');

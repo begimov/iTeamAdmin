@@ -65600,25 +65600,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             params: {
-                stages: [{
-                    name: 'Name 1',
-                    description: 'Desc 1'
-                }, {
-                    name: 'Name 2',
-                    description: 'Desc 2'
-                }]
+                stages: []
             }
         };
     },
 
     watch: {
-        'params.stages': function paramsStages(stages) {
-            this.$emit('input', stages);
+        'params.stages': {
+            handler: function handler(stages) {
+                this.$emit('input', stages);
+            },
+            deep: true
         }
     },
     methods: {
         addStage: function addStage() {
-            console.log('Added');
+            this.params.stages.push({
+                name: '',
+                description: ''
+            });
         },
         removeStage: function removeStage() {
             console.log('Removed');
@@ -65684,7 +65684,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "form-control",
       attrs: {
         "cols": "30",
-        "rows": "10"
+        "rows": "7"
       },
       domProps: {
         "value": (stage.description)
