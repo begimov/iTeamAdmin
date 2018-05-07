@@ -12,7 +12,9 @@ export default {
         }
     },
     methods: {
-        //
+        addStage() {
+            console.log('Added');
+        }
     },
     mounted() {
         //
