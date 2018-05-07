@@ -12,7 +12,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Описание этапа / МК</label>
-                                <textarea cols="30" rows="7" v-model="stage.description" class="form-control"></textarea>
+                                <quill-editor v-model="stage.description"></quill-editor>
                             </div>
                         </div>
                         <div class="panel-footer"><a href="#" class="btn btn-default" @click.prevent="removeStage">Удалить этап</a></div>

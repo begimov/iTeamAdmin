@@ -65674,28 +65674,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     })]), _vm._v(" "), _c('div', {
       staticClass: "form-group"
-    }, [_c('label', [_vm._v("Описание этапа / МК")]), _vm._v(" "), _c('textarea', {
-      directives: [{
-        name: "model",
-        rawName: "v-model",
+    }, [_c('label', [_vm._v("Описание этапа / МК")]), _vm._v(" "), _c('quill-editor', {
+      model: {
         value: (stage.description),
+        callback: function($$v) {
+          stage.description = $$v
+        },
         expression: "stage.description"
-      }],
-      staticClass: "form-control",
-      attrs: {
-        "cols": "30",
-        "rows": "7"
-      },
-      domProps: {
-        "value": (stage.description)
-      },
-      on: {
-        "input": function($event) {
-          if ($event.target.composing) { return; }
-          stage.description = $event.target.value
-        }
       }
-    })])]), _vm._v(" "), _c('div', {
+    })], 1)]), _vm._v(" "), _c('div', {
       staticClass: "panel-footer"
     }, [_c('a', {
       staticClass: "btn btn-default",
