@@ -15,6 +15,8 @@ class AddCategoryIdToPagesTable extends Migration
     {
         Schema::table('pages', function (Blueprint $table) {
             $table->integer('category_id')->nullable()->unsigned();
+
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
         });
     }
 

@@ -20,6 +20,10 @@ class CategoriesTableSeeder extends Seeder
           'name' => 'Мастер-проекты',
           'slug' => 'master-proekty',
         ],
+        [
+          'name' => 'Лендинги',
+          'slug' => 'lendingi',
+        ],
         // ['parent_id' => 1, 'name' => '', 'slug' => ''],
       ];
       foreach ($categories as $key => $value) {

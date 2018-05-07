@@ -15,6 +15,8 @@ class AddPaymentStateIdToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->integer('payment_state_id')->unsigned()->default(1);
+
+            $table->foreign('payment_state_id')->references('id')->on('payment_states');
         });
     }
 

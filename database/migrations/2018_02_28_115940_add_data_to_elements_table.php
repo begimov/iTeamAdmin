@@ -15,6 +15,8 @@ class AddDataToElementsTable extends Migration
     {
         Schema::table('elements', function (Blueprint $table) {
             $table->text('data');
+
+            $table->foreign('block_id')->references('id')->on('blocks')->onDelete('cascade');
         });
     }
 

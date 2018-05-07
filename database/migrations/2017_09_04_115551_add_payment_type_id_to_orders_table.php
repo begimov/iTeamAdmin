@@ -15,6 +15,8 @@ class AddPaymentTypeIdToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->integer('payment_type_id')->unsigned()->nullable();
+
+            $table->foreign('payment_type_id')->references('id')->on('payment_types')->onDelete('set null');
         });
     }
 

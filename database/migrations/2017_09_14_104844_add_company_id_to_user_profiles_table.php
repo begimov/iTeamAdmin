@@ -15,6 +15,8 @@ class AddCompanyIdToUserProfilesTable extends Migration
     {
         Schema::table('user_profiles', function (Blueprint $table) {
             $table->integer('company_id')->unsigned()->nullable();
+
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('set null');
         });
     }
 
