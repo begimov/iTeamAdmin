@@ -23,7 +23,10 @@ export default {
     methods: {
         addStage() {
             console.log('Added');
-        }
+        },
+        removeStage() {
+            console.log('Removed');
+        },
     },
     mounted() {
         //

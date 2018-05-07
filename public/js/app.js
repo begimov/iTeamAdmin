@@ -65619,6 +65619,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         addStage: function addStage() {
             console.log('Added');
+        },
+        removeStage: function removeStage() {
+            console.log('Removed');
         }
     },
     mounted: function mounted() {
@@ -65641,6 +65644,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "row"
     }, [_c('div', {
       staticClass: "col-md-12"
+    }, [_c('div', {
+      staticClass: "panel panel-primary"
+    }, [_c('div', {
+      staticClass: "panel-heading"
+    }, [_vm._v(_vm._s('Этап ' + (index + 1)))]), _vm._v(" "), _c('div', {
+      staticClass: "panel-body"
     }, [_c('div', {
       staticClass: "form-group"
     }, [_c('label', [_vm._v("Название этапа / МК")]), _vm._v(" "), _c('input', {
@@ -65686,7 +65695,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           stage.description = $event.target.value
         }
       }
-    })])])])
+    })])]), _vm._v(" "), _c('div', {
+      staticClass: "panel-footer"
+    }, [_c('a', {
+      staticClass: "btn btn-default",
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeStage($event)
+        }
+      }
+    }, [_vm._v("Удалить этап")])])])])])
   }), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
@@ -65697,7 +65719,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "href": "#"
     },
     on: {
-      "click": _vm.addStage
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.addStage($event)
+      }
     }
   }, [_vm._v("Добавить этап")])])])], 2)])
 },staticRenderFns: []}
