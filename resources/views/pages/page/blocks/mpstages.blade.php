@@ -1,5 +1,5 @@
 <div class="row">
   <div class="col-md-12">
-    <purchase v-model="data.stages" />
+    <mp-stages v-model="data.stages" />
   </div>
 </div>
