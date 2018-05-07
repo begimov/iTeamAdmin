@@ -32,6 +32,10 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'freemagnet',
                 'data' => '{"files":{"doc1":""},"campaignToken":"","title":"","description":"","buttonText":""}'
             ],
+            [
+                'view' => 'mpstages',
+                'data' => '{"stages":""}'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);
