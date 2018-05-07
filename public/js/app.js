@@ -65600,7 +65600,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             params: {
-                stages: []
+                stages: [{
+                    name: 'Name 1',
+                    description: 'Desc 1'
+                }, {
+                    name: 'Name 2',
+                    description: 'Desc 2'
+                }]
             }
         };
     },
@@ -65629,6 +65635,62 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
+  }, [_vm._l((_vm.params.stages), function(stage, index) {
+    return _c('div', {
+      key: index,
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-12"
+    }, [_c('div', {
+      staticClass: "form-group"
+    }, [_c('label', [_vm._v("Название этапа / МК")]), _vm._v(" "), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (stage.name),
+        expression: "stage.name"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (stage.name)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          stage.name = $event.target.value
+        }
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "form-group"
+    }, [_c('label', [_vm._v("Описание этапа / МК")]), _vm._v(" "), _c('textarea', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (stage.description),
+        expression: "stage.description"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        "cols": "30",
+        "rows": "10"
+      },
+      domProps: {
+        "value": (stage.description)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          stage.description = $event.target.value
+        }
+      }
+    })])])])
+  }), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
   }, [_c('a', {
     staticClass: "btn btn-default",
     attrs: {
@@ -65637,7 +65699,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.addStage
     }
-  }, [_vm._v("Добавить этап")])])])
+  }, [_vm._v("Добавить этап")])])])], 2)])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

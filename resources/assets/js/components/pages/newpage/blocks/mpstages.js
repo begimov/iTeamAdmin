@@ -2,7 +2,16 @@ export default {
     data() {
         return {
             params: {
-                stages: [],
+                stages: [
+                    {
+                        name: 'Name 1',
+                        description: 'Desc 1'
+                    },
+                    {
+                        name: 'Name 2',
+                        description: 'Desc 2'
+                    },
+                ],
             },
         }
     },
