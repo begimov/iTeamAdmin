@@ -43634,7 +43634,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     return state.options.categories;
   },
   categoryParams: function categoryParams(state) {
-    return state.params.categories;
+    return state.params.category;
   },
   getName: function getName(state) {
     return state.params.name;
@@ -43743,6 +43743,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     var commit = _ref12.commit;
 
     commit('resetState');
+  },
+  setProductToEdit: function setProductToEdit(_ref13, payload) {
+    var commit = _ref13.commit;
+
+    commit('setProductToEdit', payload);
   }
 });
 
@@ -43925,6 +43930,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         Object.keys(initialState).forEach(function (key) {
             state[key] = initialState[key];
         });
+    },
+    setProductToEdit: function setProductToEdit(state, payload) {
+        state.params = payload;
     }
 });
 
@@ -44126,7 +44134,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   isLoading: false,
   params: {
     searchQuery: ''
-  }
+  },
+  editProduct: null
 });
 
 /***/ }),
@@ -44152,6 +44161,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   getSearchQuery: function getSearchQuery(state) {
     return state.params.searchQuery;
+  },
+  editProduct: function editProduct(state) {
+    return state.editProduct;
   }
 });
 
@@ -44185,6 +44197,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref3.commit;
 
     commit('setCurrentModule', value);
+  },
+  getProductToEdit: function getProductToEdit(_ref4, value) {
+    var commit = _ref4.commit;
+
+    // TODO: getting product from server
+    commit('setProductToEdit', value);
+    commit('setCurrentModule', 'newproduct');
   }
 });
 
@@ -44193,6 +44212,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   setProducts: function setProducts(state, products) {
     state.products = products.data;
@@ -44206,6 +44227,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   setCurrentModule: function setCurrentModule(state, value) {
     state.currentModule = value;
+  },
+  setProductToEdit: function setProductToEdit(state, payload) {
+    state.editProduct = {
+      name: 'MK to edit',
+      basePrice: "1000",
+      category: {
+        id: 1,
+        name: "Мастер-классы",
+        parent_id: null,
+        slug: "master-klassy"
+      },
+      materials: [_defineProperty({
+        id: 1,
+        name: "МК 1 Материал 1"
+      }, "name", "Name")],
+      priceTags: [{
+        name: "Pricetag",
+        price: "2000"
+      }]
+    };
   }
 });
 
@@ -63775,7 +63816,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading', 'editProduct']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -63785,7 +63826,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule', 'getProductToEdit']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
@@ -63804,6 +63845,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [(_vm.currentModule === 'newproduct') ? _c('new-product', {
+    attrs: {
+      "editProduct": _vm.editProduct
+    },
     on: {
       "cancelNewProduct": function($event) {
         _vm.setCurrentModule('products')
@@ -63858,7 +63902,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "product": product
       },
       on: {
-        "productDeleted": _vm.getProducts
+        "productDeleted": _vm.getProducts,
+        "editProduct": _vm.getProductToEdit
       }
     })
   })], 2), _vm._v(" "), _c('div', {
@@ -64107,14 +64152,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-  props: [],
+  props: ['editProduct'],
   data: function data() {
     return {
       //
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit']), {
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewProduct');
@@ -64156,6 +64201,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   }),
   mounted: function mounted() {
     this.getInitialData();
+    if (this.editProduct) {
+      this.setProductToEdit(this.editProduct);
+    }
   }
 });
 

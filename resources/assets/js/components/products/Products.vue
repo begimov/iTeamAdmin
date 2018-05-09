@@ -1,6 +1,6 @@
 <template>
   <div>
-    <new-product v-if="currentModule === 'newproduct'" v-on:cancelNewProduct="setCurrentModule('products')"></new-product>
+    <new-product v-if="currentModule === 'newproduct'" v-on:cancelNewProduct="setCurrentModule('products')" :editProduct="editProduct"></new-product>
     <div class="container" v-if="currentModule === 'products'">
       <div class="row">
         <div class="col-md-12">
@@ -37,7 +37,8 @@
               <product v-for="product in products"
               :product="product"
               :key="product.id"
-              v-on:productDeleted="getProducts"></product>
+              v-on:productDeleted="getProducts"
+              v-on:editProduct="getProductToEdit"></product>
               
             </div>
 

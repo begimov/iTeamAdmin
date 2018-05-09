@@ -13,7 +13,8 @@ export default {
           'currentModule',
           'products',
           'meta',
-          'isLoading'
+          'isLoading',
+          'editProduct'
       ]),
       'searchQuery': {
         get () {
@@ -29,6 +30,7 @@ export default {
           'getProducts',
           'updateSearchQuery',
           'setCurrentModule',
+          'getProductToEdit'
       ]),
       textSearch () {
         clearTimeout(this.timer);

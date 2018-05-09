@@ -5,5 +5,6 @@ export default {
   isLoading: false,
   params: {
     searchQuery: '',
-  }
+  },
+  editProduct: null
 }

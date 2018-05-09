@@ -14,4 +14,9 @@ export default {
   setCurrentModule ({ commit }, value) {
     commit('setCurrentModule', value)
   },
+  getProductToEdit ({ commit }, value) {
+    // TODO: getting product from server
+    commit('setProductToEdit', value)
+    commit('setCurrentModule', 'newproduct')
+  },
 }

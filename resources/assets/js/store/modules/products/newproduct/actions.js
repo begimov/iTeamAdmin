@@ -48,5 +48,8 @@ export default {
   },
   resetState ({ commit }) {
     commit('resetState')
+  },
+  setProductToEdit ({ commit }, payload) {
+    commit('setProductToEdit', payload)
   }
 }

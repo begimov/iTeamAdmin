@@ -3,7 +3,7 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   components: { Multiselect },
-  props: [],
+  props: ['editProduct'],
   data () {
     return {
       //
@@ -23,6 +23,7 @@ export default {
           'removePriceTag',
           'saveProduct',
           'resetState',
+          'setProductToEdit'
       ]),
       cancel () {
         this.resetState()
@@ -79,5 +80,8 @@ export default {
   },
   mounted() {
     this.getInitialData()
+    if (this.editProduct) {
+      this.setProductToEdit(this.editProduct)
+    }
   }
 }

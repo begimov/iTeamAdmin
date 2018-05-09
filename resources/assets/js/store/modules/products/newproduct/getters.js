@@ -9,7 +9,7 @@ export default {
     return state.options.categories
   },
   categoryParams (state) {
-    return state.params.categories
+    return state.params.category
   },
   getName(state) {
     return state.params.name

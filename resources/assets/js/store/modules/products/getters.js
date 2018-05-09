@@ -17,4 +17,7 @@ export default {
   getSearchQuery (state) {
     return state.params.searchQuery
   },
+  editProduct (state) {
+    return state.editProduct
+  },
 }

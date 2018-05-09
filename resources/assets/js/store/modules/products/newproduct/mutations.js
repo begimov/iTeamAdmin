@@ -64,5 +64,8 @@ export default {
         Object.keys(initialState).forEach(key => {
             state[key] = initialState[key]
         })
-    }
+    },
+    setProductToEdit(state, payload) {
+        state.params = payload
+    },
 }
