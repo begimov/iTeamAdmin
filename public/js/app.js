@@ -44602,6 +44602,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   getSearchQuery: function getSearchQuery(state) {
     return state.params.searchQuery;
+  },
+  editedPageId: function editedPageId(state) {
+    return state.editedPageId;
   }
 });
 
@@ -64884,7 +64887,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery', 'editedPageId']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -64913,6 +64916,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [(_vm.currentModule === 'newpage') ? _c('new-page', {
+    attrs: {
+      "editedPageId": _vm.editedPageId
+    },
     on: {
       "cancelNewPage": function($event) {
         _vm.setCurrentModule('pages')
@@ -65267,7 +65273,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-  props: [],
+  props: ['editedPageId'],
   data: function data() {
     return {
       isShowingBlocksPanel: false

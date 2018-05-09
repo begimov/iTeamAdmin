@@ -8,6 +8,7 @@ export default {
           'meta',
           'isLoading',
           'getSearchQuery',
+          'editedPageId'
       ]),
       'searchQuery': {
         get () {

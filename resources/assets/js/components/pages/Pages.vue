@@ -1,6 +1,6 @@
 <template>
   <div>
-    <new-page v-if="currentModule === 'newpage'" v-on:cancelNewPage="setCurrentModule('pages')"></new-page>
+    <new-page v-if="currentModule === 'newpage'" v-on:cancelNewPage="setCurrentModule('pages')" :editedPageId="editedPageId"></new-page>
     <div class="container" v-if="currentModule === 'pages'">
       <div class="row">
         <div class="col-md-12">
