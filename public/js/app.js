@@ -43607,6 +43607,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     priceTag: { price: null, name: null }
   },
   params: {
+    id: null,
     category: null,
     name: null,
     materials: [],
@@ -43749,8 +43750,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.getProduct(id).then(function (res) {
-      // mutate state
-      // commit('setProductToEdit', res.data)
+      commit('setProductToEdit', res.data.data);
       commit('setIsLoading', false);
     });
   }
@@ -43863,8 +43863,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   getProduct: function getProduct(id) {
     return new Promise(function (resolve, reject) {
       axios.get("/webapi/products/" + id + "/edit").then(function (res) {
-        console.log(res);
-        // resolve(res)
+        resolve(res);
       });
     });
   }
@@ -43945,23 +43944,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         });
     },
     setProductToEdit: function setProductToEdit(state, payload) {
+        var id = payload.id,
+            name = payload.name,
+            price = payload.price,
+            category = payload.category,
+            materials = payload.materials,
+            priceTags = payload.priceTags;
+
+
         state.params = {
-            name: 'MK to edit',
-            price: "1000",
-            category: {
-                id: 1,
-                name: "Мастер-классы",
-                parent_id: null,
-                slug: "master-klassy"
-            },
-            materials: [{
-                id: 1,
-                name: "МК 1 Материал 1"
-            }],
-            priceTags: [{
-                name: "Pricetag",
-                price: "2000"
-            }]
+            id: id,
+            name: name,
+            price: price,
+            category: category.data,
+            materials: materials.data,
+            priceTags: priceTags.data
         };
     }
 });

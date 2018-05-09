@@ -22,8 +22,7 @@ export default {
   getProduct(id) {
     return new Promise((resolve, reject) => {
       axios.get(`/webapi/products/${id}/edit`).then(res => {
-        console.log(res)
-        // resolve(res)
+        resolve(res)
       })
     })
   }

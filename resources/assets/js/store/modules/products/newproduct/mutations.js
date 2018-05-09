@@ -66,27 +66,15 @@ export default {
         })
     },
     setProductToEdit(state, payload) {
+        const {id, name, price, category, materials, priceTags} = payload
+
         state.params = {
-            name: 'MK to edit',
-            price: "1000",
-            category: {
-              id:1,
-              name: "Мастер-классы",
-              parent_id: null,
-              slug: "master-klassy"
-            },
-            materials: [
-              {
-                id:1,
-                name: "МК 1 Материал 1"
-              }
-            ],
-            priceTags: [
-              {
-                name: "Pricetag",
-                price: "2000"
-              }
-            ]
+            id,
+            name,
+            price,
+            category: category.data,
+            materials: materials.data,
+            priceTags: priceTags.data
         }
     },
 }

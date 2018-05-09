@@ -52,8 +52,7 @@ export default {
   setProductToEdit ({ commit }, id) {
     commit('setIsLoading', true)
     api.newproduct.getProduct(id).then(res => {
-      // mutate state
-      // commit('setProductToEdit', res.data)
+      commit('setProductToEdit', res.data.data)
       commit('setIsLoading', false)
     })
     
