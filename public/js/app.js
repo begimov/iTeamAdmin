@@ -63922,6 +63922,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.timer = setTimeout(function () {
         this.getProducts();
       }.bind(this), 1000);
+    },
+    cancelNewProduct: function cancelNewProduct() {
+      this.setEditedProductId(null);
+      this.setCurrentModule('products');
     }
   }),
   mounted: function mounted() {
@@ -63939,9 +63943,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "editedProductId": _vm.editedProductId
     },
     on: {
-      "cancelNewProduct": function($event) {
-        _vm.setCurrentModule('products')
-      }
+      "cancelNewProduct": _vm.cancelNewProduct
     }
   }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'products') ? _c('div', {
     staticClass: "container"

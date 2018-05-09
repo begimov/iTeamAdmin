@@ -38,6 +38,10 @@ export default {
             this.getProducts()
         }.bind(this), 1000)
       },
+      cancelNewProduct() {
+        this.setEditedProductId(null)
+        this.setCurrentModule('products')
+      }
   },
   mounted() {
     this.getProducts()
