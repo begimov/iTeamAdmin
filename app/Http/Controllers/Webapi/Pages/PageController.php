@@ -108,7 +108,13 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        dd($id);
+        $page = $this->pages->findById($id);
+
+        return fractal()
+            ->item($page)
+            ->parseIncludes(['category', 'elements'])
+            ->transformWith(new PageTransformer)
+            ->toArray();
     }
 
     /**
