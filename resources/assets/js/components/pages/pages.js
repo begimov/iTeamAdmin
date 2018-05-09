@@ -32,6 +32,10 @@ export default {
             this.getProducts()
         }.bind(this), 1000)
       },
+      cancelNewPage() {
+        this.setEditedPageId(null)
+        this.setCurrentModule('pages')
+      }
   },
   mounted() {
     this.getPages()

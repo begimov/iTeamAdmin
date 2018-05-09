@@ -64973,6 +64973,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.timer = setTimeout(function () {
         this.getProducts();
       }.bind(this), 1000);
+    },
+    cancelNewPage: function cancelNewPage() {
+      this.setEditedPageId(null);
+      this.setCurrentModule('pages');
     }
   }),
   mounted: function mounted() {
@@ -64990,9 +64994,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "editedPageId": _vm.editedPageId
     },
     on: {
-      "cancelNewPage": function($event) {
-        _vm.setCurrentModule('pages')
-      }
+      "cancelNewPage": _vm.cancelNewPage
     }
   }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'pages') ? _c('div', {
     staticClass: "container"
