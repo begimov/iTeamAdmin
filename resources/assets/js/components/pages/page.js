@@ -29,6 +29,9 @@ export default {
           break;
       }
     },
+    editPage() {
+      this.$emit('editPage', this.page.id)
+    }
   },
   mounted() {
     //

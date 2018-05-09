@@ -65065,6 +65065,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         default:
           break;
       }
+    },
+    editPage: function editPage() {
+      this.$emit('editPage', this.page.id);
     }
   },
   mounted: function mounted() {
@@ -65120,7 +65123,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  })])])]], 2)])])
+  })])])], _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.editPage($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-edit",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Редактировать")])])], 2)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('span', {
     staticClass: "label label-success"
