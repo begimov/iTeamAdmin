@@ -53,6 +53,7 @@ export default {
               categories:[],
             },
             page: {
+              id: null,
               categoryId: null,
               name: '',
               desc: ''
@@ -67,5 +68,37 @@ export default {
         Object.keys(initialState).forEach(key => {
             state[key] = initialState[key]
         })
+    },
+    setPageToEdit(state, payload) {
+        const { id, name, description, category, elements } = payload
+
+        state.page = {
+            id,
+            name,
+            desc: description,
+            categoryId: category.data.id
+        }
+
+        // const parsedElements = _.map(elements.data, (element) => {
+        //     return {
+        //         id: Date.now(),
+        //         data: {
+        //             data: {
+        //                 ...element.data
+        //             },
+        //             meta: {
+        //                 blockId: element.block_id
+        //             }
+        //         }
+        //     }
+        // })
+        // state.layout.elements = parsedElements
+
+        elements.data.forEach(element => {
+            state.layout.blocks.push({
+                id: Date.now(),
+                tag: element.block.data.tag
+            })
+        });
     }
 }

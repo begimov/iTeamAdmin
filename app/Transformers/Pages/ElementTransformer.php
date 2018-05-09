@@ -6,6 +6,8 @@ use App\Models\Pages\Element;
 
 class ElementTransformer extends \League\Fractal\TransformerAbstract
 {
+    protected $availableIncludes = ['block'];
+
     public function transform(Element $element)
     {
         return [
@@ -14,5 +16,10 @@ class ElementTransformer extends \League\Fractal\TransformerAbstract
             'block_id' => $element->block_id,
             'data' => $element->data,
         ];
+    }
+
+    public function includeBlock(Element $element)
+    {
+        return $this->item($element->block, new BlockTransformer);
     }
 }

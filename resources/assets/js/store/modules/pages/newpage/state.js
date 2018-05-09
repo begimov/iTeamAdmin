@@ -4,6 +4,7 @@ export default {
     categories:[],
   },
   page: {
+    id: null,
     categoryId: null,
     name: '',
     desc: ''

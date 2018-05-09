@@ -43936,6 +43936,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 priceTag: { price: null, name: null }
             },
             params: {
+                id: null,
                 category: null,
                 name: null,
                 materials: [],
@@ -44324,6 +44325,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     categories: []
   },
   page: {
+    id: null,
     categoryId: null,
     name: '',
     desc: ''
@@ -44562,6 +44564,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 categories: []
             },
             page: {
+                id: null,
                 categoryId: null,
                 name: '',
                 desc: ''
@@ -44575,6 +44578,42 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         };
         Object.keys(initialState).forEach(function (key) {
             state[key] = initialState[key];
+        });
+    },
+    setPageToEdit: function setPageToEdit(state, payload) {
+        var id = payload.id,
+            name = payload.name,
+            description = payload.description,
+            category = payload.category,
+            elements = payload.elements;
+
+
+        state.page = {
+            id: id,
+            name: name,
+            desc: description,
+            categoryId: category.data.id
+
+            // const parsedElements = _.map(elements.data, (element) => {
+            //     return {
+            //         id: Date.now(),
+            //         data: {
+            //             data: {
+            //                 ...element.data
+            //             },
+            //             meta: {
+            //                 blockId: element.block_id
+            //             }
+            //         }
+            //     }
+            // })
+            // state.layout.elements = parsedElements
+
+        };elements.data.forEach(function (element) {
+            state.layout.blocks.push({
+                id: Date.now(),
+                tag: element.block.data.tag
+            });
         });
     }
 });

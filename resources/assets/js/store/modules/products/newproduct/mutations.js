@@ -51,6 +51,7 @@ export default {
                 priceTag: { price: null, name: null }
             },
             params: {
+                id: null,
                 category: null,
                 name: null,
                 materials: [],
