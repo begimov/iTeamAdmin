@@ -8,7 +8,7 @@ export default {
     category: null,
     name: null,
     materials: [],
-    basePrice: null,
+    price: null,
     priceTags: [],
   },
   isLoading: false,

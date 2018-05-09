@@ -15,7 +15,7 @@ export default {
     return state.params.name
   },
   getBasePrice(state) {
-    return state.params.basePrice
+    return state.params.price
   },
   getPriceTagPrice(state) {
     return state.options.priceTag.price

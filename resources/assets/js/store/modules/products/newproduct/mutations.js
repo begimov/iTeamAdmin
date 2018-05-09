@@ -18,7 +18,7 @@ export default {
         state.params.name = value
     },
     updateBasePrice(state, value) {
-        state.params.basePrice = value
+        state.params.price = value
     },
     updatePriceTagPrice(state, value) {
         state.options.priceTag.price = value
@@ -68,7 +68,7 @@ export default {
     setProductToEdit(state, payload) {
         state.params = {
             name: 'MK to edit',
-            basePrice: "1000",
+            price: "1000",
             category: {
               id:1,
               name: "Мастер-классы",

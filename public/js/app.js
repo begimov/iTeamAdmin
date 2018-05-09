@@ -43610,7 +43610,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     category: null,
     name: null,
     materials: [],
-    basePrice: null,
+    price: null,
     priceTags: []
   },
   isLoading: false,
@@ -43640,7 +43640,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     return state.params.name;
   },
   getBasePrice: function getBasePrice(state) {
-    return state.params.basePrice;
+    return state.params.price;
   },
   getPriceTagPrice: function getPriceTagPrice(state) {
     return state.options.priceTag.price;
@@ -43897,7 +43897,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.params.name = value;
     },
     updateBasePrice: function updateBasePrice(state, value) {
-        state.params.basePrice = value;
+        state.params.price = value;
     },
     updatePriceTagPrice: function updatePriceTagPrice(state, value) {
         state.options.priceTag.price = value;
@@ -43947,7 +43947,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setProductToEdit: function setProductToEdit(state, payload) {
         state.params = {
             name: 'MK to edit',
-            basePrice: "1000",
+            price: "1000",
             category: {
                 id: 1,
                 name: "Мастер-классы",
@@ -64382,9 +64382,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.basePrice = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.errors.basePrice) ? _c('span', {
+  }), _vm._v(" "), (_vm.errors.price) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors.basePrice[0]))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors.price[0]))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
