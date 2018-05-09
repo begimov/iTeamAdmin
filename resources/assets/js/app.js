@@ -59,6 +59,7 @@ Vue.component('new-page', require('./components/pages/newpage/NewPage.vue'));
 
 // Special blocks
 Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vue'));
+Vue.component('mp-stages', require('./components/pages/newpage/blocks/MpStages.vue'));
 
 const app = new Vue({
     el: '#app',
