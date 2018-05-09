@@ -44575,7 +44575,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   isLoading: false,
   params: {
     searchQuery: ''
-  }
+  },
+  editedPageId: null
 });
 
 /***/ }),
@@ -44634,6 +44635,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref3.commit;
 
     commit('setCurrentModule', value);
+  },
+  setEditedPageId: function setEditedPageId(_ref4, id) {
+    var commit = _ref4.commit;
+
+    commit('setEditedPageId', id);
+    commit('setCurrentModule', 'newpage');
   }
 });
 
@@ -44655,6 +44662,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   setCurrentModule: function setCurrentModule(state, value) {
     state.currentModule = value;
+  },
+  setEditedPageId: function setEditedPageId(state, id) {
+    state.editedPageId = id;
   }
 });
 
@@ -64884,7 +64894,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery', 'setCurrentModule']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery', 'setCurrentModule', 'setEditedPageId']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
@@ -64957,7 +64967,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "page": page
       },
       on: {
-        "pageStatusChanged": _vm.getPages
+        "pageStatusChanged": _vm.getPages,
+        "editPage": _vm.setEditedPageId
       }
     })
   })], 2), _vm._v(" "), _c('div', {

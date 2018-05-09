@@ -23,6 +23,7 @@ export default {
           'getPages',
           'updateSearchQuery',
           'setCurrentModule',
+          'setEditedPageId'
       ]),
       textSearch () {
         clearTimeout(this.timer);
