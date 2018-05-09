@@ -49,6 +49,7 @@ export default {
           'deleteElement',
           'save',
           'resetState',
+          'setPageToEdit'
       ]),
       findBlock (id) {
         return _.find(this.blocks, ['id',id])
@@ -60,5 +61,8 @@ export default {
   },
   mounted() {
     this.getInitialData()
+    if (this.editedPageId) {
+      this.setPageToEdit(this.editedPageId)
+    }
   }
 }

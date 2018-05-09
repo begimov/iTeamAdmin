@@ -90,5 +90,13 @@ export default {
   },
   resetState ({ commit }) {
     commit('resetState')
+  },
+  setPageToEdit ({ commit }, id) {
+    commit('setIsLoading', true)
+    api.newpage.getPage(id).then(res => {
+      commit('setPageToEdit', res.data.data)
+      commit('setIsLoading', false)
+    })
+    
   }
 }

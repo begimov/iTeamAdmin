@@ -14,5 +14,12 @@ export default {
         reject(err)
       })
     })
+  },
+  getPage(id) {
+    return new Promise((resolve, reject) => {
+      axios.get(`/webapi/pages/${id}/edit`).then(res => {
+        resolve(res)
+      })
+    })
   }
 }

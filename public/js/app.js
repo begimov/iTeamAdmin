@@ -43807,6 +43807,13 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         reject(err);
       });
     });
+  },
+  getPage: function getPage(id) {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/pages/" + id + "/edit").then(function (res) {
+        resolve(res);
+      });
+    });
   }
 });
 
@@ -44473,6 +44480,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref10.commit;
 
     commit('resetState');
+  },
+  setPageToEdit: function setPageToEdit(_ref11, id) {
+    var commit = _ref11.commit;
+
+    commit('setIsLoading', true);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getPage(id).then(function (res) {
+      commit('setPageToEdit', res.data.data);
+      commit('setIsLoading', false);
+    });
   }
 });
 
@@ -65298,7 +65314,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState', 'setPageToEdit']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     },
@@ -65309,6 +65325,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   }),
   mounted: function mounted() {
     this.getInitialData();
+    if (this.editedPageId) {
+      this.setPageToEdit(this.editedPageId);
+    }
   }
 });
 
