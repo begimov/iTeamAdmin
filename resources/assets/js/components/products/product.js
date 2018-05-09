@@ -8,7 +8,10 @@ export default {
     }
   },
   methods: {
-    //
+    editProduct() {
+      this.$emit('editProduct', this.product.id)
+    }
+    
   },
   computed: {
     //
