@@ -121,7 +121,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        dd('EDIT');
+        $product = $this->products->findById($id);
+
+        return fractal()
+            ->item($product)
+            ->parseIncludes(['category', 'priceTags'])
+            ->transformWith(new ProductTransformer)
+            ->toArray();
     }
 
     /**

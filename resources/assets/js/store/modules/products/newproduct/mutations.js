@@ -78,8 +78,7 @@ export default {
             materials: [
               {
                 id:1,
-                name: "МК 1 Материал 1",
-                name: "Name"
+                name: "МК 1 Материал 1"
               }
             ],
             priceTags: [

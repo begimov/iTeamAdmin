@@ -43877,8 +43877,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /* harmony default export */ __webpack_exports__["a"] = ({
     setCategories: function setCategories(state, value) {
         state.options.categories = value;
@@ -43956,10 +43954,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 parent_id: null,
                 slug: "master-klassy"
             },
-            materials: [_defineProperty({
+            materials: [{
                 id: 1,
                 name: "МК 1 Материал 1"
-            }, "name", "Name")],
+            }],
             priceTags: [{
                 name: "Pricetag",
                 price: "2000"
