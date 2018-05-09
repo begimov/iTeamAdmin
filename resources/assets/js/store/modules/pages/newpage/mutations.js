@@ -96,13 +96,20 @@ export default {
 
         elements.data.forEach(element => {
             state.layout.blocks.push({
-                id: Date.now(),
+                id: uuidv4(),
                 tag: element.block.data.tag
             })
         });
 
-        state.layout.elements.forEach((element, index) => {
-            console.log(index)
-        });
+        function uuidv4() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+              var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+              return v.toString(16);
+            });
+         }
+
+        // state.layout.elements.forEach((element, index) => {
+        //     console.log(index)
+        // });
     }
 }
