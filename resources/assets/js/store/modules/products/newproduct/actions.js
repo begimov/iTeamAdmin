@@ -50,7 +50,12 @@ export default {
     commit('resetState')
   },
   setProductToEdit ({ commit }, id) {
-    //TODO: get product from server
-    commit('setProductToEdit', id)
+    commit('setIsLoading', true)
+    api.newproduct.getProduct(id).then(res => {
+      // mutate state
+      // commit('setProductToEdit', res.data)
+      commit('setIsLoading', false)
+    })
+    
   }
 }

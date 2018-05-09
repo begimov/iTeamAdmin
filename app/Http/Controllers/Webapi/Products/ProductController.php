@@ -121,7 +121,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        dd('EDIT');
     }
 
     /**
