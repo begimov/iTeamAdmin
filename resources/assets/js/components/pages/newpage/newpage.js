@@ -60,9 +60,10 @@ export default {
       }
   },
   mounted() {
-    this.getInitialData()
-    if (this.editedPageId) {
-      this.setPageToEdit(this.editedPageId)
-    }
+    this.getInitialData().then(res => {
+      if (this.editedPageId) {
+        this.setPageToEdit(this.editedPageId)
+      }
+    })
   }
 }

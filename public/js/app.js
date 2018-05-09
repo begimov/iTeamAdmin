@@ -44384,45 +44384,48 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   getInitialData: function getInitialData(_ref) {
     var commit = _ref.commit;
 
-    commit('setIsLoading', true);
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getInitialData().then(function (res) {
-      var blocks = res.data.blocks.data;
+    return new Promise(function (resolve, reject) {
+      commit('setIsLoading', true);
+      __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getInitialData().then(function (res) {
+        var blocks = res.data.blocks.data;
 
-      _.forEach(blocks, function (block, key) {
-        Vue.component(block.tag, function (resolve, reject) {
-          resolve({
-            props: ['id'],
-            template: '<div>' + block.template + '<div class="row">\n                    <div class="col-md-12 text-right">\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">\u0432\u0432\u0435\u0440\u0445</a>\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">\u0432\u043D\u0438\u0437</a>\n                      <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a>\n                      <hr>\n                    </div>\n                  </div>\n                  </div>',
-            data: function data() {
-              return {
-                data: _extends({}, block.data),
-                meta: { blockId: block.id }
-              };
-            },
+        _.forEach(blocks, function (block, key) {
+          Vue.component(block.tag, function (resolve, reject) {
+            resolve({
+              props: ['id'],
+              template: '<div>' + block.template + '<div class="row">\n                      <div class="col-md-12 text-right">\n                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">\u0432\u0432\u0435\u0440\u0445</a>\n                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">\u0432\u043D\u0438\u0437</a>\n                        <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a>\n                        <hr>\n                      </div>\n                    </div>\n                    </div>',
+              data: function data() {
+                return {
+                  data: _extends({}, block.data),
+                  meta: { blockId: block.id }
+                };
+              },
 
-            methods: {
-              moveUp: function moveUp(id) {
-                this.$emit('elementMovedUp', id);
+              methods: {
+                moveUp: function moveUp(id) {
+                  this.$emit('elementMovedUp', id);
+                },
+                moveDown: function moveDown(id) {
+                  this.$emit('elementMovedDown', id);
+                },
+                deleteElement: function deleteElement(id) {
+                  this.$emit('elementDeleted', id);
+                }
               },
-              moveDown: function moveDown(id) {
-                this.$emit('elementMovedDown', id);
-              },
-              deleteElement: function deleteElement(id) {
-                this.$emit('elementDeleted', id);
+              mounted: function mounted() {
+                commit('addElementToElements', {
+                  id: this.id,
+                  data: this.$data
+                });
               }
-            },
-            mounted: function mounted() {
-              commit('addElementToElements', {
-                id: this.id,
-                data: this.$data
-              });
-            }
+            });
           });
         });
+        commit('setBlocks', blocks);
+        commit('setCategoriesOptions', res.data.categories.data);
+        commit('setIsLoading', false);
+        resolve(res);
       });
-      commit('setBlocks', blocks);
-      commit('setCategoriesOptions', res.data.categories.data);
-      commit('setIsLoading', false);
     });
   },
   updateCategoryParams: function updateCategoryParams(_ref2, value) {
@@ -44614,6 +44617,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 id: Date.now(),
                 tag: element.block.data.tag
             });
+        });
+
+        state.layout.elements.forEach(function (element, index) {
+            console.log(index);
         });
     }
 });
@@ -65363,10 +65370,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
   }),
   mounted: function mounted() {
-    this.getInitialData();
-    if (this.editedPageId) {
-      this.setPageToEdit(this.editedPageId);
-    }
+    var _this = this;
+
+    this.getInitialData().then(function (res) {
+      if (_this.editedPageId) {
+        _this.setPageToEdit(_this.editedPageId);
+      }
+    });
   }
 });
 

@@ -100,5 +100,9 @@ export default {
                 tag: element.block.data.tag
             })
         });
+
+        state.layout.elements.forEach((element, index) => {
+            console.log(index)
+        });
     }
 }
