@@ -6,5 +6,5 @@ export default {
   params: {
     searchQuery: '',
   },
-  editProduct: null
+  editedProductId: null
 }

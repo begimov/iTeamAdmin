@@ -14,7 +14,7 @@ export default {
           'products',
           'meta',
           'isLoading',
-          'editProduct'
+          'editedProductId'
       ]),
       'searchQuery': {
         get () {
@@ -30,7 +30,7 @@ export default {
           'getProducts',
           'updateSearchQuery',
           'setCurrentModule',
-          'getProductToEdit'
+          'setEditedProductId'
       ]),
       textSearch () {
         clearTimeout(this.timer);

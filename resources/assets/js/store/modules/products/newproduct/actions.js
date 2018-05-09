@@ -49,7 +49,8 @@ export default {
   resetState ({ commit }) {
     commit('resetState')
   },
-  setProductToEdit ({ commit }, payload) {
-    commit('setProductToEdit', payload)
+  setProductToEdit ({ commit }, id) {
+    //TODO: get product from server
+    commit('setProductToEdit', id)
   }
 }

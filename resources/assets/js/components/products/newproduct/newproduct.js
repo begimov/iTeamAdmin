@@ -3,7 +3,7 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   components: { Multiselect },
-  props: ['editProduct'],
+  props: ['editedProductId'],
   data () {
     return {
       //
@@ -80,8 +80,8 @@ export default {
   },
   mounted() {
     this.getInitialData()
-    if (this.editProduct) {
-      this.setProductToEdit(this.editProduct)
+    if (this.editedProductId) {
+      this.setProductToEdit(this.editedProductId)
     }
   }
 }

@@ -43744,10 +43744,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 
     commit('resetState');
   },
-  setProductToEdit: function setProductToEdit(_ref13, payload) {
+  setProductToEdit: function setProductToEdit(_ref13, id) {
     var commit = _ref13.commit;
 
-    commit('setProductToEdit', payload);
+    //TODO: get product from server
+    commit('setProductToEdit', id);
   }
 });
 
@@ -43864,6 +43865,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     setCategories: function setCategories(state, value) {
         state.options.categories = value;
@@ -43932,7 +43935,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         });
     },
     setProductToEdit: function setProductToEdit(state, payload) {
-        state.params = payload;
+        state.params = {
+            name: 'MK to edit',
+            basePrice: "1000",
+            category: {
+                id: 1,
+                name: "Мастер-классы",
+                parent_id: null,
+                slug: "master-klassy"
+            },
+            materials: [_defineProperty({
+                id: 1,
+                name: "МК 1 Материал 1"
+            }, "name", "Name")],
+            priceTags: [{
+                name: "Pricetag",
+                price: "2000"
+            }]
+        };
     }
 });
 
@@ -44135,7 +44155,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   params: {
     searchQuery: ''
   },
-  editProduct: null
+  editedProductId: null
 });
 
 /***/ }),
@@ -44162,8 +44182,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   getSearchQuery: function getSearchQuery(state) {
     return state.params.searchQuery;
   },
-  editProduct: function editProduct(state) {
-    return state.editProduct;
+  editedProductId: function editedProductId(state) {
+    return state.editedProductId;
   }
 });
 
@@ -44198,11 +44218,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('setCurrentModule', value);
   },
-  getProductToEdit: function getProductToEdit(_ref4, value) {
+  setEditedProductId: function setEditedProductId(_ref4, id) {
     var commit = _ref4.commit;
 
-    // TODO: getting product from server
-    commit('setProductToEdit', value);
+    commit('setEditedProductId', id);
     commit('setCurrentModule', 'newproduct');
   }
 });
@@ -44212,8 +44231,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /* harmony default export */ __webpack_exports__["a"] = ({
   setProducts: function setProducts(state, products) {
     state.products = products.data;
@@ -44228,25 +44245,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   setCurrentModule: function setCurrentModule(state, value) {
     state.currentModule = value;
   },
-  setProductToEdit: function setProductToEdit(state, payload) {
-    state.editProduct = {
-      name: 'MK to edit',
-      basePrice: "1000",
-      category: {
-        id: 1,
-        name: "Мастер-классы",
-        parent_id: null,
-        slug: "master-klassy"
-      },
-      materials: [_defineProperty({
-        id: 1,
-        name: "МК 1 Материал 1"
-      }, "name", "Name")],
-      priceTags: [{
-        name: "Pricetag",
-        price: "2000"
-      }]
-    };
+  setEditedProductId: function setEditedProductId(state, id) {
+    state.editedProductId = id;
   }
 });
 
@@ -63816,7 +63816,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading', 'editProduct']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading', 'editedProductId']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -63826,7 +63826,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule', 'getProductToEdit']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule', 'setEditedProductId']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
@@ -63846,7 +63846,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [(_vm.currentModule === 'newproduct') ? _c('new-product', {
     attrs: {
-      "editProduct": _vm.editProduct
+      "editedProductId": _vm.editedProductId
     },
     on: {
       "cancelNewProduct": function($event) {
@@ -63903,7 +63903,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       on: {
         "productDeleted": _vm.getProducts,
-        "editProduct": _vm.getProductToEdit
+        "editProduct": _vm.setEditedProductId
       }
     })
   })], 2), _vm._v(" "), _c('div', {
@@ -64152,7 +64152,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-  props: ['editProduct'],
+  props: ['editedProductId'],
   data: function data() {
     return {
       //
@@ -64201,8 +64201,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   }),
   mounted: function mounted() {
     this.getInitialData();
-    if (this.editProduct) {
-      this.setProductToEdit(this.editProduct);
+    if (this.editedProductId) {
+      this.setProductToEdit(this.editedProductId);
     }
   }
 });
