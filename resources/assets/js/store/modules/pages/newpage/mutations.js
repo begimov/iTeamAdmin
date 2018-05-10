@@ -79,27 +79,19 @@ export default {
             categoryId: category.data
         }
 
-        // const parsedElements = _.map(elements.data, (element) => {
-        //     return {
-        //         id: Date.now(),
-        //         data: {
-        //             data: {
-        //                 ...element.data
-        //             },
-        //             meta: {
-        //                 blockId: element.block_id
-        //             }
-        //         }
-        //     }
-        // })
-        // state.layout.elements = parsedElements
-
-        elements.data.forEach(element => {
-            state.layout.blocks.push({
-                id: uuidv4(),
-                tag: element.block.data.tag
+        new Promise ((resolve, reject) => { 
+            elements.data.forEach(element => {
+                state.layout.blocks.push({
+                    id: uuidv4(),
+                    tag: element.block.data.tag
+                })
             })
-        });
+            resolve()
+        }).then(res => {
+            state.layout.elements.forEach((element, index) => {
+                element.data.data = {...elements.data[index].data}
+            });
+        })
 
         function uuidv4() {
             return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -107,9 +99,5 @@ export default {
               return v.toString(16);
             });
          }
-
-        // state.layout.elements.forEach((element, index) => {
-        //     console.log(index)
-        // });
     }
 }

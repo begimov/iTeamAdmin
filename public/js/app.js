@@ -44502,6 +44502,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
@@ -44596,26 +44598,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             name: name,
             desc: description,
             categoryId: category.data
+        };
 
-            // const parsedElements = _.map(elements.data, (element) => {
-            //     return {
-            //         id: Date.now(),
-            //         data: {
-            //             data: {
-            //                 ...element.data
-            //             },
-            //             meta: {
-            //                 blockId: element.block_id
-            //             }
-            //         }
-            //     }
-            // })
-            // state.layout.elements = parsedElements
-
-        };elements.data.forEach(function (element) {
-            state.layout.blocks.push({
-                id: uuidv4(),
-                tag: element.block.data.tag
+        new Promise(function (resolve, reject) {
+            elements.data.forEach(function (element) {
+                state.layout.blocks.push({
+                    id: uuidv4(),
+                    tag: element.block.data.tag
+                });
+            });
+            resolve();
+        }).then(function (res) {
+            state.layout.elements.forEach(function (element, index) {
+                element.data.data = _extends({}, elements.data[index].data);
             });
         });
 
@@ -44626,10 +44621,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 return v.toString(16);
             });
         }
-
-        // state.layout.elements.forEach((element, index) => {
-        //     console.log(index)
-        // });
     }
 });
 
