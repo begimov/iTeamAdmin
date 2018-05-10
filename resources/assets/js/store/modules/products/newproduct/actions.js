@@ -55,6 +55,8 @@ export default {
       commit('setProductToEdit', res.data.data)
       commit('setIsLoading', false)
     })
-    
+  },
+  removeMaterial ({ commit }, id) {
+    commit('removeMaterial', id)
   }
 }

@@ -23,7 +23,8 @@ export default {
           'removePriceTag',
           'saveProduct',
           'resetState',
-          'setProductToEdit'
+          'setProductToEdit',
+          'removeMaterial'
       ]),
       cancel () {
         this.resetState()

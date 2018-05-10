@@ -43753,6 +43753,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
       commit('setProductToEdit', res.data.data);
       commit('setIsLoading', false);
     });
+  },
+  removeMaterial: function removeMaterial(_ref14, id) {
+    var commit = _ref14.commit;
+
+    commit('removeMaterial', id);
   }
 });
 
@@ -43968,6 +43973,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             materials: materials.data,
             priceTags: priceTags.data
         };
+    },
+    removeMaterial: function removeMaterial(state, id) {
+        state.params.materials.splice(_.findIndex(state.params.materials, ['id', id]), 1);
     }
 });
 
@@ -64248,7 +64256,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit', 'removeMaterial']), {
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewProduct');
@@ -64393,7 +64401,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "custom__remove",
       on: {
         "click": function($event) {
-          _vm.console.log('removeMaterial')
+          $event.preventDefault();
+          _vm.removeMaterial(materialParam.id)
         }
       }
     }, [_c('span', {

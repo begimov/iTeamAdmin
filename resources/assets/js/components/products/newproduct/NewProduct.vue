@@ -46,7 +46,7 @@
                     <p v-for="materialParam in materialParams" :key="materialParam.id">
                       <span class="custom__tag">
                         <span>{{ materialParam.name }}</span>
-                        <span class="custom__remove" @click="console.log('removeMaterial')">
+                        <span class="custom__remove" @click.prevent="removeMaterial(materialParam.id)">
                           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         </span>
                       </span>

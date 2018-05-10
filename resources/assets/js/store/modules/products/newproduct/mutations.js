@@ -78,4 +78,7 @@ export default {
             priceTags: priceTags.data
         }
     },
+    removeMaterial(state, id) {
+        state.params.materials.splice(_.findIndex(state.params.materials, ['id', id]), 1)
+    }
 }
