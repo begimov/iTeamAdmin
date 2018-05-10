@@ -5,7 +5,7 @@ export default {
   },
   page: {
     id: null,
-    categoryId: null,
+    category: null,
     name: '',
     desc: ''
   },

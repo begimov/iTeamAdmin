@@ -44326,7 +44326,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   page: {
     id: null,
-    categoryId: null,
+    category: null,
     name: '',
     desc: ''
   },
@@ -44360,7 +44360,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return state.options.categories;
   },
   categoryParams: function categoryParams(state) {
-    return state.page.categoryId;
+    return state.page.category;
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
@@ -44516,7 +44516,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.errors = errors;
     },
     updateCategoryParams: function updateCategoryParams(state, value) {
-        state.page.categoryId = value.id;
+        state.page.category = value;
     },
     updatePageName: function updatePageName(state, name) {
         state.page.name = name;
@@ -44595,7 +44595,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             id: id,
             name: name,
             desc: description,
-            categoryId: category.data.id
+            categoryId: category.data
 
             // const parsedElements = _.map(elements.data, (element) => {
             //     return {

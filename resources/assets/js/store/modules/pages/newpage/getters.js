@@ -15,7 +15,7 @@ export default {
     return state.options.categories
   },
   categoryParams (state) {
-    return state.page.categoryId
+    return state.page.category
   },
   isLoading (state) {
     return state.isLoading

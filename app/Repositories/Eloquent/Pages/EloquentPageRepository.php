@@ -21,7 +21,7 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
         $page = new Page;
         $page->name = $data['name'];
         $page->description = $data['desc'];
-        $page->category()->associate($data['categoryId']);
+        $page->category()->associate($data['category']['id']);
         $page->save();
 
         $this->storePageElements($data['elements'], $page);

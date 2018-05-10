@@ -12,7 +12,7 @@ export default {
         state.errors = errors
     },
     updateCategoryParams(state, value) {
-        state.page.categoryId = value.id
+        state.page.category = value
     },
     updatePageName(state, name) {
         state.page.name = name
@@ -76,7 +76,7 @@ export default {
             id,
             name,
             desc: description,
-            categoryId: category.data.id
+            categoryId: category.data
         }
 
         // const parsedElements = _.map(elements.data, (element) => {
