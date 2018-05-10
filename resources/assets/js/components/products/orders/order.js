@@ -2,7 +2,7 @@ export default {
   props: ['order', 'paymentStates'],
   data () {
     return {
-      //
+      selectedPaymentStateId: this.order.payment_state_id
     }
   },
   methods: {
@@ -15,6 +15,13 @@ export default {
         // Do nothing!
       }
     },
+  },
+  watch: {
+    selectedPaymentStateId: {
+      handler: function(id) {
+        console.log(id)
+      }
+    }
   },
   computed: {
     //

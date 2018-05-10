@@ -63290,7 +63290,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['order', 'paymentStates'],
   data: function data() {
     return {
-      //
+      selectedPaymentStateId: this.order.payment_state_id
     };
   },
 
@@ -63304,6 +63304,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       } else {
         // Do nothing!
+      }
+    }
+  },
+  watch: {
+    selectedPaymentStateId: {
+      handler: function handler(id) {
+        console.log(id);
       }
     }
   },
@@ -63355,7 +63362,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('a', {
+  }, [_c('li', [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.selectedPaymentStateId),
+      expression: "selectedPaymentStateId"
+    }],
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.selectedPaymentStateId = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, _vm._l((_vm.paymentStates), function(paymentState) {
+    return _c('option', {
+      key: paymentState.id,
+      domProps: {
+        "value": paymentState.id
+      }
+    }, [_vm._v("\n              " + _vm._s(paymentState.name) + "\n          ")])
+  }))]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     },

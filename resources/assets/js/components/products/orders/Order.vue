@@ -31,11 +31,15 @@
     <div class="col-md-6 text-right orders-edit-block">
       <ul class="list-inline">
         <!-- <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать</a></li> -->
-        <!-- <li>
-          <select>
-            <option v-for="paymentState in paymentStates" :selected="order.payment_state_id == paymentState.id" :key="paymentState.id">{{ paymentState.name }}</option>
+        <li>
+          <select v-model="selectedPaymentStateId">
+            <option v-for="paymentState in paymentStates" 
+              :key="paymentState.id"
+              :value="paymentState.id">
+                {{ paymentState.name }}
+            </option>
           </select>
-        </li> -->
+        </li>
         <li><a href="#" @click.prevent="deleteOrder"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a></li>
       </ul>
     </div>
