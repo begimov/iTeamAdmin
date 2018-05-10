@@ -20,8 +20,8 @@
                   track-by="id">
                     <span slot="noResult">Продукт не найден</span>
                   </multiselect>
-                  <div class="help-block alert-danger" v-if="errors['data.product']">
-                    {{ errors['data.product'][0] }}
+                  <div class="help-block alert-danger" v-if="errors['product']">
+                    {{ errors['product'][0] }}
                   </div>
                 </div>
               </div>
@@ -51,6 +51,9 @@
                   track-by="id">
                     <span slot="noResult">Статус оплаты не найден</span>
                   </multiselect>
+                  <div class="help-block alert-danger" v-if="errors['paymentState']">
+                    {{ errors['paymentState'][0] }}
+                  </div>
                 </div>
               </div>
               <div class="col-md-2">
@@ -59,6 +62,9 @@
                   <div class="input-group">
                     <div class="input-group-addon">{{ params.product ? Math.round(params.product.price) : '-' }}</div>
                     <input type="text" class="form-control" v-model="params.orderPrice">
+                  </div>
+                  <div class="help-block alert-danger" v-if="errors['orderPrice']">
+                    {{ errors['orderPrice'][0] }}
                   </div>
                 </div>
               </div>
@@ -80,12 +86,18 @@
                   track-by="id">
                     <span slot="noResult">Email не найден</span>
                   </multiselect>
+                  <div class="help-block alert-danger" v-if="errors['email']">
+                    {{ errors['email'][0] }}
+                  </div>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Имя</label>
                   <typeahead-search :user="params.email" v-model="params.name" data="name"></typeahead-search>
+                  <div class="help-block alert-danger" v-if="errors['name']">
+                    {{ errors['name'][0] }}
+                  </div>
                 </div>
               </div>
               <div class="col-md-4">
