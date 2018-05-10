@@ -57,8 +57,11 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
     {
         foreach ($files as $fileId) {
             $file = File::find($fileId);
-            $file->element()->associate($element);
-            $file->save();
+            if ($file) {
+                $file->element()->associate($element);
+                $file->save();
+            }
+            
         }
     }
 }

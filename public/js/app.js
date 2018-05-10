@@ -65622,9 +65622,12 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['product'],
     components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
     data: function data() {
         return {
@@ -65644,7 +65647,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 productId: product ? product.id : null,
                 pricetagId: null
             });
-            this.params.priceTag = null;
+            // this.params.priceTag = null;
         },
         'params.priceTag': function paramsPriceTag(priceTag) {
             this.$emit('input', {
@@ -65659,6 +65662,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/webapi/products/all').then(function (res) {
                 _this.options.products = res.data.data;
+
+                if (!_this.params.product && !_this.params.priceTag && _this.product) {
+                    var selectedProduct = _.find(_this.options.products, ['id', _this.product.productId]);
+                    _this.params.product = _extends({}, selectedProduct);
+
+                    _this.params.priceTag = _extends({}, _.find(selectedProduct.priceTags.data, ['id', _this.product.pricetagId]));
+                }
             });
         }
     },

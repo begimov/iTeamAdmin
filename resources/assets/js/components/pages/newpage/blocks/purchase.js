@@ -1,16 +1,17 @@
 import Multiselect from 'vue-multiselect'
 
 export default {
+    props: ['product'],
     components: { Multiselect },
     data () {
         return {
             options: {
                 products: [],
               },
-              params: {
+            params: {
                 product: null,
                 priceTag: null
-              },
+            },
         }
     },
     watch: {
@@ -19,7 +20,7 @@ export default {
                 productId: product ? product.id : null,
                 pricetagId: null
             })
-            this.params.priceTag = null;
+            // this.params.priceTag = null;
         },
         'params.priceTag': function (priceTag) {
             this.$emit('input', {
@@ -32,6 +33,15 @@ export default {
         getProducts() {
             axios.get('/webapi/products/all').then((res) => {
                 this.options.products = res.data.data
+
+                if (!this.params.product && !this.params.priceTag && this.product) {
+                    const selectedProduct = _.find(this.options.products, ['id', this.product.productId])
+                    this.params.product = { ...selectedProduct }
+
+                    this.params.priceTag = {
+                        ..._.find(selectedProduct.priceTags.data, ['id', this.product.pricetagId])
+                    }
+                }
             })
         }
     },
