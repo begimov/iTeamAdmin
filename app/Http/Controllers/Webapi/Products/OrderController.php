@@ -97,7 +97,7 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        $this->orders->store($request->data);
+        $this->orders->store($request->all());
     }
 
     /**

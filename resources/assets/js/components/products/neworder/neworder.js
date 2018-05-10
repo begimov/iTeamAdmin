@@ -30,11 +30,11 @@ export default {
   },
   methods: {
     saveOrder () {
-      axios.post(`/webapi/orders`, {
-        data: _.omitBy(this.params, function(param, key) {
+      axios.post(`/webapi/orders`, 
+        _.omitBy(this.params, function(param, key) {
           return _.isNull(param)
         })
-      }).then((response) => {
+      ).then((response) => {
         this.$emit('orderSaved')
       }).catch((error) => {
         this.errors = error.response.data

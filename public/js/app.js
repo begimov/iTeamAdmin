@@ -63455,11 +63455,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     saveOrder: function saveOrder() {
       var _this = this;
 
-      axios.post('/webapi/orders', {
-        data: _.omitBy(this.params, function (param, key) {
-          return _.isNull(param);
-        })
-      }).then(function (response) {
+      axios.post('/webapi/orders', _.omitBy(this.params, function (param, key) {
+        return _.isNull(param);
+      })).then(function (response) {
         _this.$emit('orderSaved');
       }).catch(function (error) {
         _this.errors = error.response.data;
