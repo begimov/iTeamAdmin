@@ -27,7 +27,7 @@ class StoreOrderRequest extends FormRequest
             'data.product' => 'required|array',
             'data.paymentType' => 'array',
             'data.paymentState' => 'required|array',
-            'data.orderPrice' => 'numeric',
+            'data.orderPrice' => 'required|numeric',
 
             'data.email' => 'required|array',
             'data.name' => 'required|array',
