@@ -19,7 +19,11 @@ export default {
   watch: {
     selectedPaymentStateId: {
       handler: function(id) {
-        console.log(id)
+        axios.patch(`/webapi/orders/${this.order.id}`, {
+          payment_state_id: id
+        }).then((response) => {
+          console.log(response)
+        })
       }
     }
   },

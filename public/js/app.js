@@ -63310,7 +63310,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   watch: {
     selectedPaymentStateId: {
       handler: function handler(id) {
-        console.log(id);
+        axios.patch('/webapi/orders/' + this.order.id, {
+          payment_state_id: id
+        }).then(function (response) {
+          console.log(response);
+        });
       }
     }
   },

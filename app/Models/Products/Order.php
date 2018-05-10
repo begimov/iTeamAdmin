@@ -23,6 +23,8 @@ class Order extends Model
      */
     protected $dates = ['deleted_at'];
 
+    protected $fillable = ['payment_state_id'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

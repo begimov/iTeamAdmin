@@ -42,6 +42,12 @@ class EloquentOrderRepository extends EloquentRepositoryAbstract implements Orde
         $order->delete();
     }
 
+    public function update(array $data, $id)
+    {
+        $order = $this->entity->withTrashed()->find($id);
+        $order->update($data);
+    }
+
     protected function buildNewOrder($data)
     {
       $order = new Order;
