@@ -44597,7 +44597,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             id: id,
             name: name,
             desc: description,
-            categoryId: category.data
+            category: category.data
         };
 
         new Promise(function (resolve, reject) {
@@ -65773,6 +65773,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['stages'],
     data: function data() {
         return {
             params: {
@@ -65787,6 +65788,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.$emit('input', stages);
             },
             deep: true
+        },
+        stages: {
+            handler: function handler(stages) {
+                if (!this.params.stages.length) {
+                    this.params.stages = stages;
+                }
+            }
         }
     },
     methods: {

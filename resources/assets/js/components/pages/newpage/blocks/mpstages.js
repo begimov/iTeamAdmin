@@ -1,4 +1,5 @@
 export default {
+    props: ['stages'],
     data() {
         return {
             params: {
@@ -12,6 +13,13 @@ export default {
                 this.$emit('input', stages);
             },
             deep: true
+        },
+        stages: {
+            handler: function(stages) {
+                if (!this.params.stages.length) {
+                    this.params.stages = stages
+                }
+            }
         }
     },
     methods: {

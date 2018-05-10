@@ -76,7 +76,7 @@ export default {
             id,
             name,
             desc: description,
-            categoryId: category.data
+            category: category.data
         }
 
         new Promise ((resolve, reject) => { 
