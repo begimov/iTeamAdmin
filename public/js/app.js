@@ -63305,6 +63305,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       } else {
         // Do nothing!
       }
+    },
+    editOrder: function editOrder() {
+      this.$emit('editOrder', this.order.id);
     }
   },
   watch: {
@@ -63366,7 +63369,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('select', {
+  }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.editOrder($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-edit",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Редактировать")])]), _vm._v(" "), _c('li', [_c('select', {
     directives: [{
       name: "model",
       rawName: "v-model",

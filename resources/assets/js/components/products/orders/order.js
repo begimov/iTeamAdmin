@@ -15,6 +15,9 @@ export default {
         // Do nothing!
       }
     },
+    editOrder() {
+      this.$emit('editOrder', this.order.id)
+    }
   },
   watch: {
     selectedPaymentStateId: {

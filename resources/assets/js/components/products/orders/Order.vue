@@ -30,7 +30,7 @@
 
     <div class="col-md-6 text-right orders-edit-block">
       <ul class="list-inline">
-        <!-- <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать</a></li> -->
+        <li><a href="#" @click.prevent="editOrder"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать</a></li>
         <li>
           <select v-model="selectedPaymentStateId">
             <option v-for="paymentState in paymentStates" 
