@@ -63475,20 +63475,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: [],
-        businessEntities: []
+        emails: []
       },
       params: {
-        product: null,
-        paymentType: null,
-        paymentState: null,
-        orderPrice: null,
-        email: null,
-        name: null,
-        phone: null,
-        businessEntity: null,
-        company: null,
-        comment: null
+        product_id: null,
+        payment_type_id: null,
+        payment_state_id: null,
+        price: null,
+        user_id: null
       },
       isLoading: false,
       errors: {}
@@ -63499,8 +63493,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     saveOrder: function saveOrder() {
       var _this = this;
 
-      axios.post('/webapi/orders', _.omitBy(this.params, function (param, key) {
-        return _.isNull(param);
+      axios.post('/webapi/orders', _.mapValues(this.params, function (param, key) {
+        return key !== 'price' ? param.id : param;
       })).then(function (response) {
         _this.$emit('orderSaved');
       }).catch(function (error) {
@@ -63521,14 +63515,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   watch: {
-    'params.company': function paramsCompany(company) {
-      if (company && company.businessEntity) {
-        this.params.businessEntity = this.options.businessEntities[company.businessEntity - 1];
-      } else {
-        // this.params.company = null
-        this.params.businessEntity = this.options.businessEntities[0];
-      }
-    }
+    //
   },
   computed: {
     //
@@ -63540,10 +63527,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this3.options.products = response.data.products.data;
       _this3.options.paymentTypes = response.data.paymentTypes.data;
       _this3.options.paymentStates = response.data.paymentStates.data;
-      _this3.options.businessEntities = response.data.businessEntities.data;
-
-      _this3.params.paymentState = _this3.options.paymentStates[0];
-      _this3.params.businessEntity = _this3.options.businessEntities[0];
     });
   }
 });
@@ -63590,11 +63573,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.product),
+      value: (_vm.params.product_id),
       callback: function($$v) {
-        _vm.params.product = $$v
+        _vm.params.product_id = $$v
       },
-      expression: "params.product"
+      expression: "params.product_id"
     }
   }, [_c('span', {
     slot: "noResult"
@@ -63615,11 +63598,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.paymentType),
+      value: (_vm.params.payment_type_id),
       callback: function($$v) {
-        _vm.params.paymentType = $$v
+        _vm.params.payment_type_id = $$v
       },
-      expression: "params.paymentType"
+      expression: "params.payment_type_id"
     }
   })], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-2"
@@ -63636,11 +63619,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.paymentState),
+      value: (_vm.params.payment_state_id),
       callback: function($$v) {
-        _vm.params.paymentState = $$v
+        _vm.params.payment_state_id = $$v
       },
-      expression: "params.paymentState"
+      expression: "params.payment_state_id"
     }
   }, [_c('span', {
     slot: "noResult"
@@ -63658,20 +63641,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.params.orderPrice),
-      expression: "params.orderPrice"
+      value: (_vm.params.price),
+      expression: "params.price"
     }],
     staticClass: "form-control",
     attrs: {
       "type": "text"
     },
     domProps: {
-      "value": (_vm.params.orderPrice)
+      "value": (_vm.params.price)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.params.orderPrice = $event.target.value
+        _vm.params.price = $event.target.value
       }
     }
   })]), _vm._v(" "), (_vm.errors['orderPrice']) ? _c('div', {
@@ -63697,123 +63680,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "search-change": _vm.getEmails
     },
     model: {
-      value: (_vm.params.email),
+      value: (_vm.params.user_id),
       callback: function($$v) {
-        _vm.params.email = $$v
+        _vm.params.user_id = $$v
       },
-      expression: "params.email"
+      expression: "params.user_id"
     }
   }, [_c('span', {
     slot: "noResult"
   }, [_vm._v("Email не найден")])]), _vm._v(" "), (_vm.errors['email']) ? _c('div', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v("\n                  " + _vm._s(_vm.errors['email'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('typeahead-search', {
-    attrs: {
-      "user": _vm.params.email,
-      "data": "name"
-    },
-    model: {
-      value: (_vm.params.name),
-      callback: function($$v) {
-        _vm.params.name = $$v
-      },
-      expression: "params.name"
-    }
-  }), _vm._v(" "), (_vm.errors['name']) ? _c('div', {
-    staticClass: "help-block alert-danger"
-  }, [_vm._v("\n                  " + _vm._s(_vm.errors['name'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('typeahead-search', {
-    attrs: {
-      "user": _vm.params.email,
-      "data": "phone"
-    },
-    model: {
-      value: (_vm.params.phone),
-      callback: function($$v) {
-        _vm.params.phone = $$v
-      },
-      expression: "params.phone"
-    }
-  })], 1)])]), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.params.paymentType && _vm.params.paymentType.name == 'Счет'),
-      expression: "params.paymentType && params.paymentType.name == 'Счет'"
-    }],
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-2"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("ОПФ")]), _vm._v(" "), _c('multiselect', {
-    attrs: {
-      "options": _vm.options.businessEntities,
-      "select-label": "",
-      "selected-label": "Выбран",
-      "deselect-label": "",
-      "placeholder": "Выберите",
-      "label": "name",
-      "track-by": "id"
-    },
-    model: {
-      value: (_vm.params.businessEntity),
-      callback: function($$v) {
-        _vm.params.businessEntity = $$v
-      },
-      expression: "params.businessEntity"
-    }
-  }, [_c('span', {
-    slot: "noResult"
-  }, [_vm._v("ОПФ не найдена")])])], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-5"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Компания")]), _vm._v(" "), _c('typeahead-search', {
-    attrs: {
-      "user": _vm.params.email,
-      "data": "company"
-    },
-    model: {
-      value: (_vm.params.company),
-      callback: function($$v) {
-        _vm.params.company = $$v
-      },
-      expression: "params.company"
-    }
-  })], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-5"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Комментарий")]), _vm._v(" "), _c('textarea', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.params.comment),
-      expression: "params.comment"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "rows": "1",
-      "cols": "50"
-    },
-    domProps: {
-      "value": (_vm.params.comment)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.params.comment = $event.target.value
-      }
-    }
-  }, [_vm._v("Введите комментарий")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['email'][0]) + "\n                ")]) : _vm._e()], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"

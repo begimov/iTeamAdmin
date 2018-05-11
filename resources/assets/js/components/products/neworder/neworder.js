@@ -9,20 +9,14 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: [],
-        businessEntities: [],
+        emails: []
       },
       params: {
-        product: null,
-        paymentType: null,
-        paymentState: null,
-        orderPrice: null,
-        email: null,
-        name: null,
-        phone: null,
-        businessEntity: null,
-        company: null,
-        comment: null,
+        product_id: null,
+        payment_type_id: null,
+        payment_state_id: null,
+        price: null,
+        user_id: null
       },
       isLoading: false,
       errors: {}
@@ -30,11 +24,9 @@ export default {
   },
   methods: {
     saveOrder () {
-      axios.post(`/webapi/orders`, 
-        _.omitBy(this.params, function(param, key) {
-          return _.isNull(param)
-        })
-      ).then((response) => {
+      axios.post(`/webapi/orders`, _.mapValues(this.params, (param, key) => {
+        return (key !== 'price') ? param.id : param
+      })).then((response) => {
         this.$emit('orderSaved')
       }).catch((error) => {
         this.errors = error.response.data
@@ -52,14 +44,7 @@ export default {
     }
   },
   watch: {
-    'params.company': function (company) {
-      if (company && company.businessEntity) {
-        this.params.businessEntity = this.options.businessEntities[company.businessEntity - 1]
-      } else {
-        // this.params.company = null
-        this.params.businessEntity = this.options.businessEntities[0]
-      }
-    }
+    //
   },
   computed: {
     //
@@ -69,10 +54,6 @@ export default {
       this.options.products = response.data.products.data
       this.options.paymentTypes = response.data.paymentTypes.data
       this.options.paymentStates = response.data.paymentStates.data
-      this.options.businessEntities = response.data.businessEntities.data
-
-      this.params.paymentState = this.options.paymentStates[0]
-      this.params.businessEntity = this.options.businessEntities[0]
     })
   }
 }

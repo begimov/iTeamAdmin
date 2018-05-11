@@ -23,7 +23,13 @@ class Order extends Model
      */
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['payment_state_id'];
+    protected $fillable = [
+        'product_id',
+        'payment_type_id',
+        'payment_state_id',
+        'price',
+        'user_id'
+    ];
 
     public function user()
     {

@@ -10,7 +10,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Продукт</label>
-                  <multiselect v-model="params.product"
+                  <multiselect v-model="params.product_id"
                   :options="options.products"
                   select-label=""
                   selected-label="Выбран"
@@ -28,7 +28,7 @@
               <div class="col-md-2">
                 <div class="form-group">
                   <label>Тип оплаты</label>
-                  <multiselect v-model="params.paymentType"
+                  <multiselect v-model="params.payment_type_id"
                   :options="options.paymentTypes"
                   select-label=""
                   selected-label="Выбран"
@@ -41,7 +41,7 @@
               <div class="col-md-2">
                 <div class="form-group">
                   <label>Статус оплаты</label>
-                  <multiselect v-model="params.paymentState"
+                  <multiselect v-model="params.payment_state_id"
                   :options="options.paymentStates"
                   select-label=""
                   selected-label="Выбран"
@@ -61,7 +61,7 @@
                   <label>Цена</label>
                   <div class="input-group">
                     <div class="input-group-addon">{{ params.product ? Math.round(params.product.price) : '-' }}</div>
-                    <input type="text" class="form-control" v-model="params.orderPrice">
+                    <input type="text" class="form-control" v-model="params.price">
                   </div>
                   <div class="help-block alert-danger" v-if="errors['orderPrice']">
                     {{ errors['orderPrice'][0] }}
@@ -74,7 +74,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Email</label>
-                  <multiselect v-model="params.email"
+                  <multiselect v-model="params.user_id"
                   :options="options.emails"
                   @search-change="getEmails"
                   :loading="isLoading"
@@ -89,51 +89,6 @@
                   <div class="help-block alert-danger" v-if="errors['email']">
                     {{ errors['email'][0] }}
                   </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Имя</label>
-                  <typeahead-search :user="params.email" v-model="params.name" data="name"></typeahead-search>
-                  <div class="help-block alert-danger" v-if="errors['name']">
-                    {{ errors['name'][0] }}
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Телефон</label>
-                  <typeahead-search :user="params.email" v-model="params.phone" data="phone"></typeahead-search>
-                </div>
-              </div>
-            </div>
-
-            <div class="row" v-show="params.paymentType && params.paymentType.name == 'Счет'">
-              <div class="col-md-2">
-                <div class="form-group">
-                  <label>ОПФ</label>
-                  <multiselect v-model="params.businessEntity"
-                  :options="options.businessEntities"
-                  select-label=""
-                  selected-label="Выбран"
-                  deselect-label=""
-                  placeholder="Выберите"
-                  label="name"
-                  track-by="id">
-                    <span slot="noResult">ОПФ не найдена</span>
-                  </multiselect>
-                </div>
-              </div>
-              <div class="col-md-5">
-                <div class="form-group">
-                  <label>Компания</label>
-                  <typeahead-search :user="params.email" v-model="params.company" data="company"></typeahead-search>
-                </div>
-              </div>
-              <div class="col-md-5">
-                <div class="form-group">
-                  <label>Комментарий</label>
-                  <textarea class="form-control" v-model="params.comment" rows="1" cols="50">Введите комментарий</textarea>
                 </div>
               </div>
             </div>

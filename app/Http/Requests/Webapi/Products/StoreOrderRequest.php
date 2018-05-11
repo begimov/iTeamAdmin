@@ -24,18 +24,11 @@ class StoreOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'product' => 'required|array',
-            'paymentType' => 'array',
-            'paymentState' => 'required|array',
-            'orderPrice' => 'required|numeric',
-
-            'email' => 'required|array',
-            'name' => 'required|array',
-            'phone' => 'array',
-
-            'businessEntity' => 'required|array',
-            'company' => 'array',
-            'comment' => 'array',
+            'product_id' => 'required|numeric|exists:products,id',
+            'payment_type_id' => 'required|numeric|exists:payment_types,id',
+            'payment_state_id' => 'required|numeric|exists:payment_states,id',
+            'price' => 'required|numeric',
+            'user_id' => 'required|numeric|exists:users,id',
         ];
     }
 }
