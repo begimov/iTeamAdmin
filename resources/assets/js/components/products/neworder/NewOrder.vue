@@ -60,7 +60,7 @@
                 <div class="form-group">
                   <label>Цена</label>
                   <div class="input-group">
-                    <div class="input-group-addon">{{ params.product ? Math.round(params.product.price) : '-' }}</div>
+                    <div class="input-group-addon">{{ params.product_id ? Math.round(params.product_id.price) : '-' }}</div>
                     <input type="text" class="form-control" v-model="params.price">
                   </div>
                   <div class="help-block alert-danger" v-if="errors['orderPrice']">

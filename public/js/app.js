@@ -63497,6 +63497,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return key !== 'price' ? param.id : param;
       })).then(function (response) {
         _this.$emit('orderSaved');
+        _this.$emit('cancelOrder');
       }).catch(function (error) {
         _this.errors = error.response.data;
       });
@@ -63637,7 +63638,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "input-group"
   }, [_c('div', {
     staticClass: "input-group-addon"
-  }, [_vm._v(_vm._s(_vm.params.product ? Math.round(_vm.params.product.price) : '-'))]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.params.product_id ? Math.round(_vm.params.product_id.price) : '-'))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",

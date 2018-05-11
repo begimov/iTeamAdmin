@@ -56,11 +56,6 @@ class Order extends Model
         return $this->belongsTo(Product::class);
     }
 
-    public function markAsDeleted()
-    {
-        $this->payment_state_id = config('orders.deleted_payment_state_id');
-    }
-
     public function scopeFilter($builder, $repository, $request, array $filters = [])
     {
         return (new OrderFilters($request))->add($filters)->filter($repository);

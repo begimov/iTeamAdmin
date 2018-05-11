@@ -28,6 +28,7 @@ export default {
         return (key !== 'price') ? param.id : param
       })).then((response) => {
         this.$emit('orderSaved')
+        this.$emit('cancelOrder')
       }).catch((error) => {
         this.errors = error.response.data
       })

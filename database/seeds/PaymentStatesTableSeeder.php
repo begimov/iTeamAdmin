@@ -14,7 +14,6 @@ class PaymentStatesTableSeeder extends Seeder
         $paymentStates = [
             ['name' => 'Не оплачен'],
             ['name' => 'Оплачен'],
-            ['name' => 'Удален'],
         ];
         foreach ($paymentStates as $key => $value) {
             DB::table('payment_states')->insert($value);

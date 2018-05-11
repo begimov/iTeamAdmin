@@ -28,14 +28,12 @@ class EloquentOrderRepository extends EloquentRepositoryAbstract implements Orde
     public function destroyById($id)
     {
         $order = Order::find($id);
-        $order->markAsDeleted();
-        $order->save();
         $order->delete();
     }
 
     public function update(array $data, $id)
     {
-        $order = $this->entity->withTrashed()->find($id);
+        $order = $this->entity->find($id);
         $order->update($data);
     }
 

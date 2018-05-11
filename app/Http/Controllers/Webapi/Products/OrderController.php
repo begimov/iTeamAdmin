@@ -56,7 +56,6 @@ class OrderController extends Controller
             ->withCriteria([
                 new With(['user', 'paymentType', 'product', 'user.userProfile'])
             ])
-            ->withTrashed()
             ->paginate(5);
 
         $ordersCollection = $orders->getCollection();
