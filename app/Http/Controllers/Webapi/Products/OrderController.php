@@ -122,7 +122,7 @@ class OrderController extends Controller
 
         return fractal()
             ->item($order)
-            // ->parseIncludes(['category', 'priceTags', 'materials'])
+            ->parseIncludes(['user', 'paymentType', 'product', 'paymentState'])
             ->transformWith(new OrderTransformer)
             ->toArray();
     }

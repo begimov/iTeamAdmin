@@ -30,7 +30,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 
         // Routes to retrieve user's info
         Route::get('/users/{data}', 'UserController@getUsersDataByQuery');
-        Route::get('/user/{user}/{data}', 'UserController@getUserData');
 
         // Route for Products.vue component
         Route::get('/products/all', 'Products\ProductController@all');
@@ -45,9 +44,6 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for FileUploader.vue component
         Route::resource('files', 'Content\FileController');
 
-        // Route for FileUploader.vue component, to store material's files & delete them
-        // Route::post('/files/{material}/file', 'Content\FileController@store');
-        // Route::delete('/files/{material}/file/{file}', 'Content\FileController@destroy');
     });
 
 });

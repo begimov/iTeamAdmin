@@ -63014,6 +63014,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
+      this.editedOrderId = null;
       this.flags.isLoading = true;
       axios.get('/webapi/orders?page=' + page, {
         params: _extends({}, this.params.orderBy, {
@@ -63026,6 +63027,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         _this.meta = response.data.meta;
         _this.flags.isLoading = false;
       });
+    },
+    cancelOrder: function cancelOrder() {
+      this.flags.neworder = false;
+      this.editedOrderId = null;
     },
     textSearch: function textSearch() {
       clearTimeout(this.timer);
@@ -63079,9 +63084,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "editedOrderId": _vm.editedOrderId
     },
     on: {
-      "cancelOrder": function($event) {
-        _vm.flags.neworder = false
-      },
+      "cancelOrder": _vm.cancelOrder,
       "orderSaved": _vm.getOrders
     }
   }) : _c('a', {
@@ -63502,14 +63505,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: []
+        users: []
       },
-      params: {
-        product_id: null,
-        payment_type_id: null,
-        payment_state_id: null,
+      order: {
+        product: null,
+        paymentType: null,
+        paymentState: null,
         price: null,
-        user_id: null
+        user: null
       },
       isLoading: false,
       errors: {}
@@ -63520,14 +63523,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     saveOrder: function saveOrder() {
       var _this = this;
 
-      axios.post('/webapi/orders', _.mapValues(this.params, function (param, key) {
-        return key !== 'price' ? param.id : param;
-      })).then(function (response) {
+      axios.post('/webapi/orders', this.processData()).then(function (response) {
         _this.$emit('orderSaved');
-        _this.$emit('cancelOrder');
+        _this.cancelOrder();
       }).catch(function (error) {
         _this.errors = error.response.data;
       });
+    },
+    processData: function processData() {
+      return {
+        product_id: this.order.product ? this.order.product.id : null,
+        payment_type_id: this.order.paymentType ? this.order.paymentType.id : null,
+        payment_state_id: this.order.paymentState ? this.order.paymentState.id : null,
+        price: this.order.price,
+        user_id: this.order.user ? this.order.user.id : null
+      };
     },
     cancelOrder: function cancelOrder() {
       this.$emit('cancelOrder');
@@ -63536,8 +63546,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this2 = this;
 
       this.isLoading = true;
+
       axios.get('/webapi/users/email?query=' + query).then(function (response) {
-        _this2.options.emails = response.data.data;
+        _this2.options.users = response.data.data;
         _this2.isLoading = false;
       });
     },
@@ -63546,7 +63557,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.isLoading = true;
       axios.get('/webapi/orders/' + this.editedOrderId + '/edit').then(function (response) {
-        console.log(response.data.data);
+        var responseData = response.data.data;
+
+        _this3.order = {
+          product: responseData.product.data,
+          paymentType: responseData.paymentType.data,
+          paymentState: responseData.paymentState.data,
+          price: responseData.price,
+          user: responseData.user.data
+        };
+
         _this3.isLoading = false;
       });
     }
@@ -63556,14 +63576,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     this.isLoading = true;
     axios.get('/webapi/orders/create').then(function (response) {
+
       _this4.options.products = response.data.products.data;
       _this4.options.paymentTypes = response.data.paymentTypes.data;
       _this4.options.paymentStates = response.data.paymentStates.data;
+
       _this4.isLoading = false;
+
+      if (_this4.editedOrderId) {
+        _this4.setOrderToEdit();
+      }
     });
-    if (this.editedOrderId) {
-      this.setOrderToEdit();
-    }
   }
 });
 
@@ -63577,6 +63600,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-danger"
   }, [_c('div', {
     staticClass: "panel-heading"
@@ -63609,17 +63636,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.product_id),
+      value: (_vm.order.product),
       callback: function($$v) {
-        _vm.params.product_id = $$v
+        _vm.order.product = $$v
       },
-      expression: "params.product_id"
+      expression: "order.product"
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])]), _vm._v(" "), (_vm.errors['product']) ? _c('div', {
+  }, [_vm._v("Продукт не найден")])]), _vm._v(" "), (_vm.errors['product_id']) ? _c('div', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v("\n                  " + _vm._s(_vm.errors['product'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['product_id'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-2"
   }, [_c('div', {
     staticClass: "form-group"
@@ -63634,11 +63661,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.payment_type_id),
+      value: (_vm.order.paymentType),
       callback: function($$v) {
-        _vm.params.payment_type_id = $$v
+        _vm.order.paymentType = $$v
       },
-      expression: "params.payment_type_id"
+      expression: "order.paymentType"
     }
   })], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-2"
@@ -63655,17 +63682,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.payment_state_id),
+      value: (_vm.order.paymentState),
       callback: function($$v) {
-        _vm.params.payment_state_id = $$v
+        _vm.order.paymentState = $$v
       },
-      expression: "params.payment_state_id"
+      expression: "order.paymentState"
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Статус оплаты не найден")])]), _vm._v(" "), (_vm.errors['paymentState']) ? _c('div', {
+  }, [_vm._v("Статус оплаты не найден")])]), _vm._v(" "), (_vm.errors['payment_state_id']) ? _c('div', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v("\n                  " + _vm._s(_vm.errors['paymentState'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['payment_state_id'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-2"
   }, [_c('div', {
     staticClass: "form-group"
@@ -63673,29 +63700,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "input-group"
   }, [_c('div', {
     staticClass: "input-group-addon"
-  }, [_vm._v(_vm._s(_vm.params.product_id ? Math.round(_vm.params.product_id.price) : '-'))]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.order.product ? Math.round(_vm.order.product.price) : '-'))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.params.price),
-      expression: "params.price"
+      value: (_vm.order.price),
+      expression: "order.price"
     }],
     staticClass: "form-control",
     attrs: {
       "type": "text"
     },
     domProps: {
-      "value": (_vm.params.price)
+      "value": (_vm.order.price)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.params.price = $event.target.value
+        _vm.order.price = $event.target.value
       }
     }
-  })]), _vm._v(" "), (_vm.errors['orderPrice']) ? _c('div', {
+  })]), _vm._v(" "), (_vm.errors['price']) ? _c('div', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v("\n                  " + _vm._s(_vm.errors['orderPrice'][0]) + "\n                ")]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['price'][0]) + "\n                ")]) : _vm._e()])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
@@ -63703,30 +63730,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('multiselect', {
     attrs: {
-      "options": _vm.options.emails,
+      "options": _vm.options.users,
       "loading": _vm.isLoading,
       "select-label": "",
       "selected-label": "Выбран",
       "deselect-label": "",
       "placeholder": "Выберите email",
-      "label": "value",
+      "label": "email",
       "track-by": "id"
     },
     on: {
       "search-change": _vm.getEmails
     },
     model: {
-      value: (_vm.params.user_id),
+      value: (_vm.order.user),
       callback: function($$v) {
-        _vm.params.user_id = $$v
+        _vm.order.user = $$v
       },
-      expression: "params.user_id"
+      expression: "order.user"
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Email не найден")])]), _vm._v(" "), (_vm.errors['email']) ? _c('div', {
+  }, [_vm._v("Email не найден")])]), _vm._v(" "), (_vm.errors['user_id']) ? _c('div', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v("\n                  " + _vm._s(_vm.errors['email'][0]) + "\n                ")]) : _vm._e()], 1)])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['user_id'][0]) + "\n                ")]) : _vm._e()], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"

@@ -5,7 +5,7 @@
         <div v-bind:class="{ 'isActive': flags.isLoading, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <new-order v-if="flags.neworder" v-on:cancelOrder="flags.neworder = false" v-on:orderSaved="getOrders" :editedOrderId="editedOrderId"></new-order>
+            <new-order v-if="flags.neworder" v-on:cancelOrder="cancelOrder" v-on:orderSaved="getOrders" :editedOrderId="editedOrderId"></new-order>
             <a href="#" class="btn btn-primary" v-else @click.prevent="flags.neworder = true">Создать заказ</a>
           </div>
 

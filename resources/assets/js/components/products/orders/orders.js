@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     getOrders (page = 1) {
+      this.editedOrderId = null
       this.flags.isLoading = true;
       axios.get('/webapi/orders?page=' + page, {
         params: {
@@ -41,6 +42,11 @@ export default {
         this.meta = response.data.meta
         this.flags.isLoading = false;
       })
+    },
+
+    cancelOrder() {
+      this.flags.neworder = false
+      this.editedOrderId = null
     },
 
     textSearch () {

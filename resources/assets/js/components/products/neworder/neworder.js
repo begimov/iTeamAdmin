@@ -9,14 +9,14 @@ export default {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: []
+        users: []
       },
-      params: {
-        product_id: null,
-        payment_type_id: null,
-        payment_state_id: null,
+      order: {
+        product: null,
+        paymentType: null,
+        paymentState: null,
         price: null,
-        user_id: null
+        user: null
       },
       isLoading: false,
       errors: {}
@@ -24,29 +24,49 @@ export default {
   },
   methods: {
     saveOrder () {
-      axios.post(`/webapi/orders`, _.mapValues(this.params, (param, key) => {
-        return (key !== 'price') ? param.id : param
-      })).then((response) => {
+      axios.post(`/webapi/orders`, this.processData()).then((response) => {
         this.$emit('orderSaved')
-        this.$emit('cancelOrder')
+        this.cancelOrder()
       }).catch((error) => {
         this.errors = error.response.data
       })
     },
+    processData() {
+      return {
+        product_id: this.order.product ? this.order.product.id : null,
+        payment_type_id: this.order.paymentType ? this.order.paymentType.id : null,
+        payment_state_id: this.order.paymentState ? this.order.paymentState.id : null,
+        price: this.order.price,
+        user_id: this.order.user ? this.order.user.id : null
+      }
+    },
+
     cancelOrder () {
       this.$emit('cancelOrder')
     },
+
     getEmails (query) {
       this.isLoading = true
+
       axios.get(`/webapi/users/email?query=${query}`).then((response) => {
-        this.options.emails = response.data.data
+        this.options.users = response.data.data
         this.isLoading = false;
       })
     },
+
     setOrderToEdit() {
       this.isLoading = true
       axios.get(`/webapi/orders/${this.editedOrderId}/edit`).then((response) => {
-        console.log(response.data.data)
+        const responseData = response.data.data
+
+        this.order = {
+          product: responseData.product.data,
+          paymentType: responseData.paymentType.data,
+          paymentState: responseData.paymentState.data,
+          price: responseData.price,
+          user: responseData.user.data
+        }
+
         this.isLoading = false;
       })
     }
@@ -54,13 +74,16 @@ export default {
   mounted() {
     this.isLoading = true
     axios.get('/webapi/orders/create').then((response) => {
+
       this.options.products = response.data.products.data
       this.options.paymentTypes = response.data.paymentTypes.data
       this.options.paymentStates = response.data.paymentStates.data
+
       this.isLoading = false;
+
+      if (this.editedOrderId) {
+        this.setOrderToEdit()
+      }
     })
-    if (this.editedOrderId) {
-      this.setOrderToEdit()
-    }
   }
 }
