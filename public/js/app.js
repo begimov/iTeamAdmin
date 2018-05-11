@@ -63003,7 +63003,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           paymentState: []
         },
         searchQuery: ''
-      }
+      },
+      editedOrderId: null
     };
   },
 
@@ -63031,6 +63032,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.timer = setTimeout(function () {
         this.getOrders(1);
       }.bind(this), 1000);
+    },
+    setEditedOrderId: function setEditedOrderId(id) {
+      this.editedOrderId = id;
     }
   },
   watch: {
@@ -63217,7 +63221,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "payment-states": _vm.paymentStates
       },
       on: {
-        "orderDeleted": _vm.getOrders
+        "orderDeleted": _vm.getOrders,
+        "editOrder": _vm.setEditedOrderId
       }
     })
   })], 2), _vm._v(" "), _c('div', {

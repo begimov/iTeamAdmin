@@ -22,7 +22,8 @@ export default {
           paymentState: [],
         },
         searchQuery: '',
-      }
+      },
+      editedOrderId: null
     }
   },
   methods: {
@@ -47,6 +48,10 @@ export default {
       this.timer = setTimeout(function(){
           this.getOrders(1)
       }.bind(this), 1000)
+    },
+
+    setEditedOrderId (id) {
+      this.editedOrderId = id
     },
   },
   watch: {

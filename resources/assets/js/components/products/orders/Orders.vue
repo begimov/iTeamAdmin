@@ -77,7 +77,8 @@
             :order="order"
             :payment-states="paymentStates"
             :key="order.id"
-            v-on:orderDeleted="getOrders"></order>
+            v-on:orderDeleted="getOrders"
+            v-on:editOrder="setEditedOrderId"></order>
 
           </div>
 
