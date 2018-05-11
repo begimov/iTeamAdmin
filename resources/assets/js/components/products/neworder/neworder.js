@@ -2,7 +2,7 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   components: { Multiselect },
-  props: [],
+  props: ['editedOrderId'],
   data () {
     return {
       options: {
@@ -42,19 +42,25 @@ export default {
         this.options.emails = response.data.data
         this.isLoading = false;
       })
+    },
+    setOrderToEdit() {
+      this.isLoading = true
+      axios.get(`/webapi/orders/${this.editedOrderId}/edit`).then((response) => {
+        console.log(response.data.data)
+        this.isLoading = false;
+      })
     }
   },
-  watch: {
-    //
-  },
-  computed: {
-    //
-  },
   mounted() {
+    this.isLoading = true
     axios.get('/webapi/orders/create').then((response) => {
       this.options.products = response.data.products.data
       this.options.paymentTypes = response.data.paymentTypes.data
       this.options.paymentStates = response.data.paymentStates.data
+      this.isLoading = false;
     })
+    if (this.editedOrderId) {
+      this.setOrderToEdit()
+    }
   }
 }

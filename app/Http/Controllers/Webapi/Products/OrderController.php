@@ -118,7 +118,13 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = $this->orders->findById($id);
+
+        return fractal()
+            ->item($order)
+            // ->parseIncludes(['category', 'priceTags', 'materials'])
+            ->transformWith(new OrderTransformer)
+            ->toArray();
     }
 
     /**

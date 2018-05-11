@@ -63035,6 +63035,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     setEditedOrderId: function setEditedOrderId(id) {
       this.editedOrderId = id;
+      this.flags.neworder = true;
     }
   },
   watch: {
@@ -63074,6 +63075,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "panel-heading"
   }, [(_vm.flags.neworder) ? _c('new-order', {
+    attrs: {
+      "editedOrderId": _vm.editedOrderId
+    },
     on: {
       "cancelOrder": function($event) {
         _vm.flags.neworder = false
@@ -63491,7 +63495,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
-  props: [],
+  props: ['editedOrderId'],
   data: function data() {
     return {
       options: {
@@ -63536,22 +63540,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this2.options.emails = response.data.data;
         _this2.isLoading = false;
       });
+    },
+    setOrderToEdit: function setOrderToEdit() {
+      var _this3 = this;
+
+      this.isLoading = true;
+      axios.get('/webapi/orders/' + this.editedOrderId + '/edit').then(function (response) {
+        console.log(response.data.data);
+        _this3.isLoading = false;
+      });
     }
   },
-  watch: {
-    //
-  },
-  computed: {
-    //
-  },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
 
+    this.isLoading = true;
     axios.get('/webapi/orders/create').then(function (response) {
-      _this3.options.products = response.data.products.data;
-      _this3.options.paymentTypes = response.data.paymentTypes.data;
-      _this3.options.paymentStates = response.data.paymentStates.data;
+      _this4.options.products = response.data.products.data;
+      _this4.options.paymentTypes = response.data.paymentTypes.data;
+      _this4.options.paymentStates = response.data.paymentStates.data;
+      _this4.isLoading = false;
     });
+    if (this.editedOrderId) {
+      this.setOrderToEdit();
+    }
   }
 });
 

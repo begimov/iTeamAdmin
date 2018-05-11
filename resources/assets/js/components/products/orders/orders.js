@@ -52,6 +52,7 @@ export default {
 
     setEditedOrderId (id) {
       this.editedOrderId = id
+      this.flags.neworder = true
     },
   },
   watch: {
