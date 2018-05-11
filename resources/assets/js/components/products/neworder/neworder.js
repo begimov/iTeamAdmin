@@ -23,6 +23,7 @@ export default {
     }
   },
   methods: {
+    // New order creation
     saveOrder () {
       axios.post(`/webapi/orders`, this.processData()).then((response) => {
         this.$emit('orderSaved')
@@ -40,11 +41,6 @@ export default {
         user_id: this.order.user ? this.order.user.id : null
       }
     },
-
-    cancelOrder () {
-      this.$emit('cancelOrder')
-    },
-
     getEmails (query) {
       this.isLoading = true
 
@@ -54,6 +50,7 @@ export default {
       })
     },
 
+    // Existing order editing
     setOrderToEdit() {
       this.isLoading = true
       axios.get(`/webapi/orders/${this.editedOrderId}/edit`).then((response) => {
@@ -69,7 +66,12 @@ export default {
 
         this.isLoading = false;
       })
-    }
+    },
+
+    // Misc
+    cancelOrder () {
+      this.$emit('cancelOrder')
+    },
   },
   mounted() {
     this.isLoading = true

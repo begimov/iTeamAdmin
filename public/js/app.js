@@ -63328,7 +63328,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         axios.patch('/webapi/orders/' + this.order.id, {
           payment_state_id: id
         }).then(function (response) {
-          console.log(response);
+          //
         });
       }
     }
@@ -63520,6 +63520,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    // New order creation
     saveOrder: function saveOrder() {
       var _this = this;
 
@@ -63539,9 +63540,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         user_id: this.order.user ? this.order.user.id : null
       };
     },
-    cancelOrder: function cancelOrder() {
-      this.$emit('cancelOrder');
-    },
     getEmails: function getEmails(query) {
       var _this2 = this;
 
@@ -63552,6 +63550,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this2.isLoading = false;
       });
     },
+
+
+    // Existing order editing
     setOrderToEdit: function setOrderToEdit() {
       var _this3 = this;
 
@@ -63569,6 +63570,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         _this3.isLoading = false;
       });
+    },
+
+
+    // Misc
+    cancelOrder: function cancelOrder() {
+      this.$emit('cancelOrder');
     }
   },
   mounted: function mounted() {
