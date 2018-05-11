@@ -136,6 +136,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd($request->all(), $id);
         $this->orders->update($request->all(), $id);
     }
 

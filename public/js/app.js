@@ -63571,6 +63571,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this3.isLoading = false;
       });
     },
+    updateOrder: function updateOrder() {
+      var _this4 = this;
+
+      axios.patch('/webapi/orders/' + this.editedOrderId, this.processData()).then(function (response) {
+        _this4.$emit('orderSaved');
+        _this4.cancelOrder();
+      }).catch(function (error) {
+        _this4.errors = error.response.data;
+      });
+    },
 
 
     // Misc
@@ -63579,19 +63589,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this5 = this;
 
     this.isLoading = true;
     axios.get('/webapi/orders/create').then(function (response) {
 
-      _this4.options.products = response.data.products.data;
-      _this4.options.paymentTypes = response.data.paymentTypes.data;
-      _this4.options.paymentStates = response.data.paymentStates.data;
+      _this5.options.products = response.data.products.data;
+      _this5.options.paymentTypes = response.data.paymentTypes.data;
+      _this5.options.paymentStates = response.data.paymentStates.data;
 
-      _this4.isLoading = false;
+      _this5.isLoading = false;
 
-      if (_this4.editedOrderId) {
-        _this4.setOrderToEdit();
+      if (_this5.editedOrderId) {
+        _this5.setOrderToEdit();
       }
     });
   }

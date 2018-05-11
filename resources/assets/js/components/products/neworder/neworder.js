@@ -67,6 +67,14 @@ export default {
         this.isLoading = false;
       })
     },
+    updateOrder() {
+      axios.patch(`/webapi/orders/${this.editedOrderId}`, this.processData()).then((response) => {
+        this.$emit('orderSaved')
+        this.cancelOrder()
+      }).catch((error) => {
+        this.errors = error.response.data
+      })
+    },
 
     // Misc
     cancelOrder () {
