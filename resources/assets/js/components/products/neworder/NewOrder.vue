@@ -5,7 +5,6 @@
       <div class="panel panel-danger">
         <div class="panel-heading">Новый заказ</div>
         <div class="panel-body">
-          <form action="#" @submit.prevent="saveOrder">
 
             <div class="row">
               <div class="col-md-6">
@@ -96,12 +95,11 @@
 
             <div class="row">
               <div class="col-md-12">
-                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <button type="submit" class="btn btn-primary" v-if="!editedOrderId" @click.prevent="saveOrder">Создать</button>
+                <button type="submit" class="btn btn-primary" v-else @click.prevent="updateOrder">Сохранить</button>
                 <a href="#" class="btn btn-default" @click.prevent="cancelOrder">Отменить</a>
               </div>
             </div>
-
-          </form>
 
         </div>
       </div>

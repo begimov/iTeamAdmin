@@ -63616,16 +63616,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_vm._v("Новый заказ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_c('form', {
-    attrs: {
-      "action": "#"
-    },
-    on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.saveOrder($event)
-      }
-    }
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
@@ -63764,10 +63754,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_c('button', {
+  }, [(!_vm.editedOrderId) ? _c('button', {
     staticClass: "btn btn-primary",
     attrs: {
       "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.saveOrder($event)
+      }
+    }
+  }, [_vm._v("Создать")]) : _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.updateOrder($event)
+      }
     }
   }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
     staticClass: "btn btn-default",
@@ -63780,7 +63787,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.cancelOrder($event)
       }
     }
-  }, [_vm._v("Отменить")])])])])])])])])
+  }, [_vm._v("Отменить")])])])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
