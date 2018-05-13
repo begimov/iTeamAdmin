@@ -10,7 +10,6 @@
           </div>
 
           <div class="panel-body">
-            <form action="#" @submit.prevent="saveProduct">
 
               <div class="row">
                 <div class="col-md-6">
@@ -123,13 +122,15 @@
               <div class="row">
                 <div class="col-md-12">
                   <ul class="list-inline">
-                    <li><button type="submit" class="btn btn-primary">Сохранить</button></li>
+                    <li>
+                      <button type="submit" class="btn btn-primary" v-if="!editedProductId" @click.prevent="saveProduct">Cоздать</button>
+                      <button type="submit" class="btn btn-primary" v-else @click.prevent="updateProduct">Сохранить</button>
+                    </li>
                     <li><a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a></li>
                   </ul>
                 </div>
               </div>
 
-            </form>
           </div>
 
         </div>

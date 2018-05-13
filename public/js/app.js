@@ -64329,16 +64329,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_vm._v("\n          Новый продукт\n        ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_c('form', {
-    attrs: {
-      "action": "#"
-    },
-    on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.saveProduct($event)
-      }
-    }
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
@@ -64576,7 +64566,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(1), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('li', [(!_vm.editedProductId) ? _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.saveProduct($event)
+      }
+    }
+  }, [_vm._v("Cоздать")]) : _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.updateProduct($event)
+      }
+    }
+  }, [_vm._v("Сохранить")])]), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "btn btn-default",
     attrs: {
       "href": "#"
@@ -64587,7 +64599,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.cancel($event)
       }
     }
-  }, [_vm._v("Отменить")])])])])])])])])])]), _vm._v(" "), (_vm.isNewMaterialOn) ? _c('div', {
+  }, [_vm._v("Отменить")])])])])])])])])]), _vm._v(" "), (_vm.isNewMaterialOn) ? _c('div', {
     staticClass: "row"
   }, [_c('new-material')], 1) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -64596,13 +64608,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('label', [_vm._v("Дополнительная цена")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('button', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Сохранить")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
