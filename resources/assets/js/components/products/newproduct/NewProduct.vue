@@ -63,9 +63,9 @@
                     label="name"
                     track-by="id">
                       <span slot="noResult">Материал не найден</span>
-                      <template slot="tag">
+                      <!-- <template slot="tag">
                         &nbsp;
-                      </template>
+                      </template> -->
                     </multiselect>
                     <span class="help-block alert-danger" v-if="errors.materials">{{ errors.materials[0] }}</span>
                     <br>

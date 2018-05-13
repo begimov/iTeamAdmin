@@ -32,6 +32,17 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         $product = $this->entity->find($id);
 
         $product->update($request->only($this->getEntityFields()));
+
+        $this->updateMaterialRelations($request->materials, $product);
+    }
+
+    protected function updateMaterialRelations(array $materials, Product $product)
+    {
+        $product->materials()->detach();
+
+        foreach ($materials as $material) {
+            $product->materials()->attach($material['id']);
+        }
     }
 
     protected function storeMaterialRelations(array $materials, Product $product)

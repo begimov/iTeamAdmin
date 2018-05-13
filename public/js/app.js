@@ -64444,9 +64444,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Материал не найден")]), _vm._v(" "), _c('template', {
-    slot: "tag"
-  }, [_vm._v("\n                       \n                    ")])], 2), _vm._v(" "), (_vm.errors.materials) ? _c('span', {
+  }, [_vm._v("Материал не найден")])]), _vm._v(" "), (_vm.errors.materials) ? _c('span', {
     staticClass: "help-block alert-danger"
   }, [_vm._v(_vm._s(_vm.errors.materials[0]))]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v(" "), _c('a', {
     staticClass: "btn btn-default btn-sm",
