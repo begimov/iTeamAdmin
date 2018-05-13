@@ -8,18 +8,21 @@ export default {
   },
   saveProduct(data) {
     return new Promise((resolve, reject) => {
-      axios.post(`/webapi/products`, {
-        name: data.name,
-        price: data.price,
-        category_id: data.category.id,
-        materials: data.materials,
-        priceTags: data.priceTags
-      }).then(res => {
+      axios.post(`/webapi/products`, this.processData(data)).then(res => {
         resolve(res)
       }).catch(err => {
         reject(err)
       })
     })
+  },
+  processData(data) {
+    return {
+      name: data.name,
+      price: data.price,
+      category_id: data.category ? data.category.id : null,
+      materials: data.materials,
+      priceTags: data.priceTags
+    }
   },
   getProduct(id) {
     return new Promise((resolve, reject) => {

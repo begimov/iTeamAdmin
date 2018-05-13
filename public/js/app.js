@@ -43860,19 +43860,24 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     });
   },
   saveProduct: function saveProduct(data) {
+    var _this = this;
+
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/products", {
-        name: data.name,
-        price: data.price,
-        category_id: data.category.id,
-        materials: data.materials,
-        priceTags: data.priceTags
-      }).then(function (res) {
+      axios.post("/webapi/products", _this.processData(data)).then(function (res) {
         resolve(res);
       }).catch(function (err) {
         reject(err);
       });
     });
+  },
+  processData: function processData(data) {
+    return {
+      name: data.name,
+      price: data.price,
+      category_id: data.category ? data.category.id : null,
+      materials: data.materials,
+      priceTags: data.priceTags
+    };
   },
   getProduct: function getProduct(id) {
     return new Promise(function (resolve, reject) {

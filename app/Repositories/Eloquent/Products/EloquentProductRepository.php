@@ -22,20 +22,10 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
             'name', 'price', 'category_id'
         ]));
 
-        // $product = new Product;
-
-        // $category = Category::find($data['category']['id']);
-        
-        // $product->name = $data['name'];
-        // $product->price = $data['price'];
-        // $product->category()->associate($category);
-
-        // $product->save();
-
         $this->storeMaterialRelations($request->materials, $product);
 
         if ($request->priceTags) {
-            $this->storePriceTags($request->priceTags, $product);
+            $this->storePriceTags($request->priceTags, $product->id);
         } 
     }
 
@@ -46,14 +36,12 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         }
     }
 
-    protected function storePriceTags(array $priceTags, Product $product)
+    protected function storePriceTags(array $priceTags, $product_id)
     {
         foreach ($priceTags as $priceTag) {
-            $pt = new PriceTag;
-            $pt->name = $priceTag['name'];
-            $pt->price = $priceTag['price'];
-            $pt->product()->associate($product);
-            $pt->save();
+            PriceTag::create(array_merge($priceTag, [
+                'product_id' => $product_id
+            ]));
         }
     }
 }
