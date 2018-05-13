@@ -16,15 +16,13 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
         return Page::class;
     }
 
-    public function store(array $data)
+    public function store($request)
     {
-        $page = new Page;
-        $page->name = $data['name'];
-        $page->description = $data['desc'];
-        $page->category()->associate($data['category']['id']);
-        $page->save();
+        $page = $this->entity->create($request->only([
+            'name', 'description', 'category_id'
+        ]));
 
-        $this->storePageElements($data['elements'], $page);
+        $this->storePageElements($request->elements, $page);
 
         return $page;
     }
