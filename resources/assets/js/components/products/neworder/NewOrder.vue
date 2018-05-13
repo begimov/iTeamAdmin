@@ -36,6 +36,9 @@
                   placeholder="Выберите"
                   label="name"
                   track-by="id"></multiselect>
+                  <div class="help-block alert-danger" v-if="errors['payment_type_id']">
+                    {{ errors['payment_type_id'][0] }}
+                  </div>
                 </div>
               </div>
               <div class="col-md-2">
