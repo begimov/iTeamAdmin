@@ -43816,14 +43816,24 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
       });
     });
   },
-  savePage: function savePage(payload) {
+  savePage: function savePage(page, elements) {
+    var _this = this;
+
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/pages", payload).then(function (res) {
+      axios.post("/webapi/pages", _this.processData(page, elements)).then(function (res) {
         resolve(res);
       }).catch(function (err) {
         reject(err);
       });
     });
+  },
+  processData: function processData(page, elements) {
+    return {
+      name: page.name,
+      description: page.desc,
+      category_id: page.category ? page.category.id : null,
+      elements: elements
+    };
   },
   getPage: function getPage(id) {
     return new Promise(function (resolve, reject) {
@@ -44360,7 +44370,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     categories: []
   },
   page: {
-    id: null,
     category: null,
     name: '',
     desc: ''
@@ -44508,7 +44517,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var elements = _.map(state.layout.elements, function (element) {
       return { data: element.data.data, meta: element.data.meta };
     });
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.savePage(_extends({}, state.page, { elements: elements })).then(function (res) {
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.savePage(state.page, elements).then(function (res) {
       commit('resetState');
       commit('setIsLoading', false);
     }).catch(function (err) {
@@ -44604,7 +44613,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 categories: []
             },
             page: {
-                id: null,
                 categoryId: null,
                 name: '',
                 desc: ''
@@ -44621,15 +44629,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         });
     },
     setPageToEdit: function setPageToEdit(state, payload) {
-        var id = payload.id,
-            name = payload.name,
+        var name = payload.name,
             description = payload.description,
             category = payload.category,
             elements = payload.elements;
 
 
         state.page = {
-            id: id,
             name: name,
             desc: description,
             category: category.data
@@ -64376,9 +64382,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors['category.id']) ? _c('span', {
+  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors['category_id']) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors['category.id'][0]))]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors['category_id'][0]))]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
@@ -65471,9 +65477,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors.categoryId) ? _c('span', {
+  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors.category_id) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors.categoryId[0]))]) : _vm._e()], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors.category_id[0]))]) : _vm._e()], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('input', {
     directives: [{
@@ -65524,9 +65530,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.pageDesc = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.errors.desc) ? _c('span', {
+  }), _vm._v(" "), (_vm.errors.description) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors.desc[0]))]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors.description[0]))]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row"

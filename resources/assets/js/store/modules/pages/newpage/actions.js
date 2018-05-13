@@ -83,7 +83,7 @@ export default {
     const elements = _.map(state.layout.elements, (element) => {
       return { data: element.data.data, meta: element.data.meta }
     })
-    api.newpage.savePage({ ...state.page, elements }).then(res => {
+    api.newpage.savePage(state.page, elements).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
     }).catch(err => {

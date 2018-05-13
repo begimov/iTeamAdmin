@@ -26,7 +26,7 @@
                     track-by="id">
                       <span slot="noResult">Категория не найдена</span>
                     </multiselect>
-                    <span class="help-block alert-danger" v-if="errors['category.id']">{{ errors['category.id'][0] }}</span>
+                    <span class="help-block alert-danger" v-if="errors['category_id']">{{ errors['category_id'][0] }}</span>
                   </div>
                 </div>
                 <div class="col-md-6">

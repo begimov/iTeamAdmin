@@ -53,7 +53,6 @@ export default {
               categories:[],
             },
             page: {
-              id: null,
               categoryId: null,
               name: '',
               desc: ''
@@ -70,10 +69,9 @@ export default {
         })
     },
     setPageToEdit(state, payload) {
-        const { id, name, description, category, elements } = payload
+        const { name, description, category, elements } = payload
 
         state.page = {
-            id,
             name,
             desc: description,
             category: category.data

@@ -25,8 +25,8 @@ class StorePageRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'desc' => 'required|string',
-            'category.id' => 'required|numeric|exists:categories,id',
+            'description' => 'required|string',
+            'category_id' => 'required|numeric|exists:categories,id',
             'elements' => 'required|array',
         ];
     }
