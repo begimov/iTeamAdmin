@@ -99,8 +99,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        dd($request->all());
-        $this->products->store($request->all());
+        $this->products->store($request);
     }
 
     /**

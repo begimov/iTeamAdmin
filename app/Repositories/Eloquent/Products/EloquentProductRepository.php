@@ -16,22 +16,26 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         return Product::class;
     }
 
-    public function store($data)
+    public function store($request)
     {
-        $product = new Product;
+        $product = $this->entity->create($request->only([
+            'name', 'price', 'category_id'
+        ]));
 
-        $category = Category::find($data['category']['id']);
+        // $product = new Product;
+
+        // $category = Category::find($data['category']['id']);
         
-        $product->name = $data['name'];
-        $product->price = $data['price'];
-        $product->category()->associate($category);
+        // $product->name = $data['name'];
+        // $product->price = $data['price'];
+        // $product->category()->associate($category);
 
-        $product->save();
+        // $product->save();
 
-        $this->storeMaterialRelations($data['materials'], $product);
+        $this->storeMaterialRelations($request->materials, $product);
 
-        if (isset($data['priceTags'])) {
-            $this->storePriceTags($data['priceTags'], $product);
+        if ($request->priceTags) {
+            $this->storePriceTags($request->priceTags, $product);
         } 
     }
 
