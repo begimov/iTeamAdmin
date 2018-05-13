@@ -43766,6 +43766,9 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.updateProduct(state.params, id).then(function (res) {
       commit('setIsLoading', false);
+    }).catch(function (err) {
+      commit('setErrors', err.response.data);
+      commit('setIsLoading', false);
     });
   }
 });

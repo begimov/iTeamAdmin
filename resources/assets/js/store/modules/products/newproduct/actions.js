@@ -63,6 +63,9 @@ export default {
     commit('setIsLoading', true)
     api.newproduct.updateProduct(state.params, id).then(res => {
       commit('setIsLoading', false)
+    }).catch(err => {
+      commit('setErrors', err.response.data)
+      commit('setIsLoading', false)
     })
   }
 }
