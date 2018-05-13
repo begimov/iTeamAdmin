@@ -29,6 +29,7 @@ class StoreProductRequest extends FormRequest
             'price' => 'required|numeric',
             'materials' => 'required|array',
             'priceTags' => 'array',
+            'priceTags.*.price' => 'numeric',
         ];
     }
 
