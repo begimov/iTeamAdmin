@@ -22,9 +22,7 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
 
         $this->storeMaterialRelations($request->materials, $product);
 
-        if ($request->priceTags) {
-            $this->storePriceTags($request->priceTags, $product->id);
-        } 
+        $this->storePriceTags($request->priceTags, $product->id);
     }
 
     public function update($request, $id)
@@ -34,15 +32,8 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         $product->update($request->only($this->getEntityFields()));
 
         $this->updateMaterialRelations($request->materials, $product);
-    }
 
-    protected function updateMaterialRelations(array $materials, Product $product)
-    {
-        $product->materials()->detach();
-
-        foreach ($materials as $material) {
-            $product->materials()->attach($material['id']);
-        }
+        $this->updatePriceTags($request->priceTags, $product);
     }
 
     protected function storeMaterialRelations(array $materials, Product $product)
@@ -59,6 +50,20 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
                 'product_id' => $product_id
             ]));
         }
+    }
+
+    protected function updateMaterialRelations(array $materials, Product $product)
+    {
+        $product->materials()->detach();
+
+        $this->storeMaterialRelations($materials, $product);
+    }
+
+    protected function updatePriceTags(array $priceTags, Product $product)
+    {
+        $product->priceTags()->delete();
+
+        $this->storePriceTags($priceTags, $product->id);
     }
 
     protected function getEntityFields()
