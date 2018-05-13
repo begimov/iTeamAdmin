@@ -18,15 +18,20 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
 
     public function store($request)
     {
-        $product = $this->entity->create($request->only([
-            'name', 'price', 'category_id'
-        ]));
+        $product = $this->entity->create($request->only($this->getEntityFields()));
 
         $this->storeMaterialRelations($request->materials, $product);
 
         if ($request->priceTags) {
             $this->storePriceTags($request->priceTags, $product->id);
         } 
+    }
+
+    public function update($request, $id)
+    {
+        $product = $this->entity->find($id);
+
+        $product->update($request->only($this->getEntityFields()));
     }
 
     protected function storeMaterialRelations(array $materials, Product $product)
@@ -43,5 +48,12 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
                 'product_id' => $product_id
             ]));
         }
+    }
+
+    protected function getEntityFields()
+    {
+        return [
+            'name', 'price', 'category_id'
+        ];
     }
 }

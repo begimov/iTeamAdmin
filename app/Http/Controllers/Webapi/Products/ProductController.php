@@ -139,7 +139,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all(), $id);
+        $this->products->update($request, $id);
     }
 
     /**
