@@ -27,7 +27,17 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
 
     public function update($request, $id) {
         $page = $this->entity->find($id);
+
         $page->update($request->only($this->getEntityFields()));
+
+        $this->updatePageElements($request->elements, $page);
+    }
+
+    protected function updatePageElements($elements, $page)
+    {
+        $page->elements()->delete();
+
+        $this->storePageElements($elements, $page);
     }
 
     protected function storePageElements($elements, $page)
