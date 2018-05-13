@@ -24,7 +24,8 @@ export default {
           'saveProduct',
           'resetState',
           'setProductToEdit',
-          'removeMaterial'
+          'removeMaterial',
+          'updateProduct'
       ]),
       cancel () {
         this.resetState()

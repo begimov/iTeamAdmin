@@ -124,7 +124,7 @@
                   <ul class="list-inline">
                     <li>
                       <button type="submit" class="btn btn-primary" v-if="!editedProductId" @click.prevent="saveProduct">Cоздать</button>
-                      <button type="submit" class="btn btn-primary" v-else @click.prevent="updateProduct">Сохранить</button>
+                      <button type="submit" class="btn btn-primary" v-else @click.prevent="updateProduct(editedProductId)">Сохранить</button>
                     </li>
                     <li><a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a></li>
                   </ul>

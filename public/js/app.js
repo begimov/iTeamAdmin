@@ -43758,6 +43758,15 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     var commit = _ref14.commit;
 
     commit('removeMaterial', id);
+  },
+  updateProduct: function updateProduct(_ref15, id) {
+    var commit = _ref15.commit,
+        state = _ref15.state;
+
+    commit('setIsLoading', true);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.updateProduct(state.params, id).then(function (res) {
+      commit('setIsLoading', false);
+    });
   }
 });
 
@@ -43883,6 +43892,17 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     return new Promise(function (resolve, reject) {
       axios.get("/webapi/products/" + id + "/edit").then(function (res) {
         resolve(res);
+      });
+    });
+  },
+  updateProduct: function updateProduct(data, id) {
+    var _this2 = this;
+
+    return new Promise(function (resolve, reject) {
+      axios.patch("/webapi/products/" + id, _this2.processData(data)).then(function (res) {
+        resolve(res);
+      }).catch(function (err) {
+        reject(err);
       });
     });
   }
@@ -64260,7 +64280,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit', 'removeMaterial']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit', 'removeMaterial', 'updateProduct']), {
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewProduct');
@@ -64585,7 +64605,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.updateProduct($event)
+        _vm.updateProduct(_vm.editedProductId)
       }
     }
   }, [_vm._v("Сохранить")])]), _vm._v(" "), _c('li', [_c('a', {

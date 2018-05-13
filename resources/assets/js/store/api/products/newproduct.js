@@ -30,5 +30,14 @@ export default {
         resolve(res)
       })
     })
+  },
+  updateProduct(data, id) {
+    return new Promise((resolve, reject) => {
+      axios.patch(`/webapi/products/${id}`, this.processData(data)).then((res) => {
+        resolve(res)
+      }).catch((err) => {
+        reject(err)
+      })
+    })
   }
 }
