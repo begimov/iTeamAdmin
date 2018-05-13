@@ -51,11 +51,10 @@ export default {
                 priceTag: { price: null, name: null }
             },
             params: {
-                id: null,
                 category: null,
                 name: null,
                 materials: [],
-                basePrice: null,
+                price: null,
                 priceTags: [],
             },
             isLoading: false,
@@ -67,10 +66,9 @@ export default {
         })
     },
     setProductToEdit(state, payload) {
-        const {id, name, price, category, materials, priceTags} = payload
+        const {name, price, category, materials, priceTags} = payload
 
         state.params = {
-            id,
             name,
             price,
             category: category.data,

@@ -43851,8 +43851,6 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 /* harmony default export */ __webpack_exports__["a"] = ({
   getInitialData: function getInitialData() {
     return new Promise(function (resolve, reject) {
@@ -43863,9 +43861,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   saveProduct: function saveProduct(data) {
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/products", _extends({}, _.omitBy(data, function (param, key) {
-        return _.isNull(param) || param.length === 0;
-      }))).then(function (res) {
+      axios.post("/webapi/products", {
+        name: data.name,
+        price: data.price,
+        category_id: data.category.id,
+        materials: data.materials,
+        priceTags: data.priceTags
+      }).then(function (res) {
         resolve(res);
       }).catch(function (err) {
         reject(err);
@@ -43941,11 +43943,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 priceTag: { price: null, name: null }
             },
             params: {
-                id: null,
                 category: null,
                 name: null,
                 materials: [],
-                basePrice: null,
+                price: null,
                 priceTags: []
             },
             isLoading: false,
@@ -43957,8 +43958,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         });
     },
     setProductToEdit: function setProductToEdit(state, payload) {
-        var id = payload.id,
-            name = payload.name,
+        var name = payload.name,
             price = payload.price,
             category = payload.category,
             materials = payload.materials,
@@ -43966,7 +43966,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
         state.params = {
-            id: id,
             name: name,
             price: price,
             category: category.data,

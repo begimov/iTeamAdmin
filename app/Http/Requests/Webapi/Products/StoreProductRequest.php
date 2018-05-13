@@ -25,9 +25,10 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'category.id' => 'required|numeric|exists:categories,id',
+            'category_id' => 'required|numeric|exists:categories,id',
             'price' => 'required|numeric',
             'materials' => 'required|array',
+            'priceTags' => 'array',
         ];
     }
 
@@ -40,7 +41,7 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name.required' => trans('validation.store-product-request.name.required'),
-            'category.id.required' => trans('validation.store-product-request.category-id.required'),
+            'category_id.required' => trans('validation.store-product-request.category-id.required'),
             'price.required' => trans('validation.store-product-request.base-price.required'),
             'price.numeric' => trans('validation.store-product-request.base-price.numeric'),
             'materials.required' => trans('validation.store-product-request.materials.required'),

@@ -9,9 +9,11 @@ export default {
   saveProduct(data) {
     return new Promise((resolve, reject) => {
       axios.post(`/webapi/products`, {
-        ..._.omitBy(data, function(param, key) {
-          return _.isNull(param) || param.length === 0
-        })
+        name: data.name,
+        price: data.price,
+        category_id: data.category.id,
+        materials: data.materials,
+        priceTags: data.priceTags
       }).then(res => {
         resolve(res)
       }).catch(err => {
