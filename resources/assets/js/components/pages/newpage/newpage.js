@@ -49,7 +49,8 @@ export default {
           'deleteElement',
           'save',
           'resetState',
-          'setPageToEdit'
+          'setPageToEdit',
+          'update'
       ]),
       findBlock (id) {
         return _.find(this.blocks, ['id',id])

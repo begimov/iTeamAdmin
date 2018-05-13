@@ -101,5 +101,17 @@ export default {
       commit('setIsLoading', false)
     })
     
+  },
+  update ({ commit, state }, id) {
+    commit('setIsLoading', true)
+    const elements = _.map(state.layout.elements, (element) => {
+      return { data: element.data.data, meta: element.data.meta }
+    })
+    api.newpage.updatePage(id, state.page, elements).then(res => {
+      commit('setIsLoading', false)
+    }).catch(err => {
+      commit('setErrors', err.response.data)
+      commit('setIsLoading', false)
+    })
   }
 }

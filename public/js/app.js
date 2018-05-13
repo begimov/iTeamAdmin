@@ -43841,6 +43841,17 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
         resolve(res);
       });
     });
+  },
+  updatePage: function updatePage(id, page, elements) {
+    var _this2 = this;
+
+    return new Promise(function (resolve, reject) {
+      axios.patch("/webapi/pages/" + id, _this2.processData(page, elements)).then(function (res) {
+        resolve(res);
+      }).catch(function (err) {
+        reject(err);
+      });
+    });
   }
 });
 
@@ -44536,6 +44547,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getPage(id).then(function (res) {
       commit('setPageToEdit', res.data.data);
+      commit('setIsLoading', false);
+    });
+  },
+  update: function update(_ref12, id) {
+    var commit = _ref12.commit,
+        state = _ref12.state;
+
+    commit('setIsLoading', true);
+    var elements = _.map(state.layout.elements, function (element) {
+      return { data: element.data.data, meta: element.data.meta };
+    });
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.updatePage(id, state.page, elements).then(function (res) {
+      commit('setIsLoading', false);
+    }).catch(function (err) {
+      commit('setErrors', err.response.data);
       commit('setIsLoading', false);
     });
   }
@@ -65416,7 +65442,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState', 'setPageToEdit']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState', 'setPageToEdit', 'update']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     },
@@ -65595,7 +65621,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(block.name))])])
   }))])])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
-  }, [_c('a', {
+  }, [(!_vm.editedPageId) ? _c('a', {
     staticClass: "btn btn-primary",
     attrs: {
       "href": "#"
@@ -65604,6 +65630,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": function($event) {
         $event.preventDefault();
         _vm.save($event)
+      }
+    }
+  }, [_vm._v("Создать")]) : _c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.update(_vm.editedPageId)
       }
     }
   }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {

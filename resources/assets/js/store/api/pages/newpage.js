@@ -29,5 +29,14 @@ export default {
         resolve(res)
       })
     })
+  },
+  updatePage(id, page, elements) {
+    return new Promise((resolve, reject) => {
+      axios.patch(`/webapi/pages/${id}`, this.processData(page, elements)).then(res => {
+        resolve(res)
+      }).catch(err => {
+        reject(err)
+      })
+    })
   }
 }

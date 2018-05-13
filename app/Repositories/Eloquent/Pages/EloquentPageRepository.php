@@ -18,18 +18,16 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
 
     public function store($request)
     {
-        $page = $this->entity->create($request->only([
-            'name', 'description', 'category_id'
-        ]));
+        $page = $this->entity->create($request->only($this->getEntityFields()));
 
         $this->storePageElements($request->elements, $page);
 
         return $page;
     }
 
-    public function destroyById($id)
-    {
-        //
+    public function update($request, $id) {
+        $page = $this->entity->find($id);
+        $page->update($request->only($this->getEntityFields()));
     }
 
     protected function storePageElements($elements, $page)
@@ -61,5 +59,12 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
             }
             
         }
+    }
+
+    protected function getEntityFields()
+    {
+        return [
+            'name', 'description', 'category_id'
+        ];
     }
 }
