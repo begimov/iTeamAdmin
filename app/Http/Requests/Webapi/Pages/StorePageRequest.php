@@ -25,8 +25,8 @@ class StorePageRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'desc' => 'required|string',
-            'categoryId' => 'required|numeric|exists:categories,id',
+            'description' => 'required|string',
+            'category_id' => 'required|numeric|exists:categories,id',
             'elements' => 'required|array',
         ];
     }
@@ -41,7 +41,7 @@ class StorePageRequest extends FormRequest
         return [
             'name.required' => trans('validation.store-page-request.name.required'),
             'desc.required' => trans('validation.store-page-request.desc.required'),
-            'categoryId.required' => trans('validation.store-page-request.categoryId.required'),
+            'category.required' => trans('validation.store-page-request.categoryId.required'),
             'elements.required' => trans('validation.store-page-request.elements.required'),
         ];
     }

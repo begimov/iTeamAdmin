@@ -3,7 +3,7 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   components: { Multiselect },
-  props: [],
+  props: ['editedPageId'],
   data () {
     return {
       isShowingBlocksPanel: false,
@@ -49,6 +49,8 @@ export default {
           'deleteElement',
           'save',
           'resetState',
+          'setPageToEdit',
+          'update'
       ]),
       findBlock (id) {
         return _.find(this.blocks, ['id',id])
@@ -59,6 +61,10 @@ export default {
       }
   },
   mounted() {
-    this.getInitialData()
+    this.getInitialData().then(res => {
+      if (this.editedPageId) {
+        this.setPageToEdit(this.editedPageId)
+      }
+    })
   }
 }

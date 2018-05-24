@@ -54,7 +54,8 @@
                 <div class="col-md-12">
                   <file-uploader 
                     :parent-resource-id="id" 
-                    parent-resource-type="material">
+                    parent-resource-type="material"
+                    max-filesize=20>
                   </file-uploader>
                 </div>
               </div>

@@ -16,23 +16,24 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         return Product::class;
     }
 
-    public function store($data)
+    public function store($request)
     {
-        $product = new Product;
+        $product = $this->entity->create($request->only($this->getEntityFields()));
 
-        $category = Category::find($data['category']['id']);
-        
-        $product->name = $data['name'];
-        $product->price = $data['basePrice'];
-        $product->category()->associate($category);
+        $this->storeMaterialRelations($request->materials, $product);
 
-        $product->save();
+        $this->storePriceTags($request->priceTags, $product->id);
+    }
 
-        $this->storeMaterialRelations($data['materials'], $product);
+    public function update($request, $id)
+    {
+        $product = $this->entity->find($id);
 
-        if (isset($data['priceTags'])) {
-            $this->storePriceTags($data['priceTags'], $product);
-        } 
+        $product->update($request->only($this->getEntityFields()));
+
+        $this->updateMaterialRelations($request->materials, $product);
+
+        $this->updatePriceTags($request->priceTags, $product);
     }
 
     protected function storeMaterialRelations(array $materials, Product $product)
@@ -42,14 +43,41 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         }
     }
 
-    protected function storePriceTags(array $priceTags, Product $product)
+    protected function storePriceTags(array $priceTags, $product_id)
     {
         foreach ($priceTags as $priceTag) {
-            $pt = new PriceTag;
-            $pt->name = $priceTag['name'];
-            $pt->price = $priceTag['price'];
-            $pt->product()->associate($product);
-            $pt->save();
+            PriceTag::create(array_merge($priceTag, [
+                'product_id' => $product_id
+            ]));
         }
+    }
+
+    protected function updateMaterialRelations(array $materials, Product $product)
+    {
+        $product->materials()->detach();
+
+        $this->storeMaterialRelations($materials, $product);
+    }
+
+    protected function updatePriceTags(array $priceTags, Product $product)
+    {
+        list($withId, $withoutId) = collect($priceTags)->partition(function ($pt) {
+            return !empty($pt['id']);
+        });
+
+        $priceTagsIds = $withId->map(function ($pt) {
+            return $pt['id'];
+        })->all();
+
+        $product->priceTags()->whereNotIn('id', $priceTagsIds)->delete();
+
+        $this->storePriceTags($withoutId->all(), $product->id);
+    }
+
+    protected function getEntityFields()
+    {
+        return [
+            'name', 'price', 'category_id'
+        ];
     }
 }

@@ -14,4 +14,8 @@ export default {
   setCurrentModule ({ commit }, value) {
     commit('setCurrentModule', value)
   },
+  setEditedProductId ({ commit }, id) {
+    commit('setEditedProductId', id)
+    commit('setCurrentModule', 'newproduct')
+  },
 }

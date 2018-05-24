@@ -16,22 +16,28 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
         return Page::class;
     }
 
-    public function store(array $data)
+    public function store($request)
     {
-        $page = new Page;
-        $page->name = $data['name'];
-        $page->description = $data['desc'];
-        $page->category()->associate($data['categoryId']);
-        $page->save();
+        $page = $this->entity->create($request->only($this->getEntityFields()));
 
-        $this->storePageElements($data['elements'], $page);
+        $this->storePageElements($request->elements, $page);
 
         return $page;
     }
 
-    public function destroyById($id)
+    public function update($request, $id) {
+        $page = $this->entity->find($id);
+
+        $page->update($request->only($this->getEntityFields()));
+
+        $this->updatePageElements($request->elements, $page);
+    }
+
+    protected function updatePageElements($elements, $page)
     {
-        //
+        $page->elements()->delete();
+
+        $this->storePageElements($elements, $page);
     }
 
     protected function storePageElements($elements, $page)
@@ -57,8 +63,18 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
     {
         foreach ($files as $fileId) {
             $file = File::find($fileId);
-            $file->element()->associate($element);
-            $file->save();
+            if ($file) {
+                $file->element()->associate($element);
+                $file->save();
+            }
+            
         }
+    }
+
+    protected function getEntityFields()
+    {
+        return [
+            'name', 'description', 'category_id'
+        ];
     }
 }

@@ -12,7 +12,6 @@ class PaymentTypesTableSeeder extends Seeder
     public function run()
     {
       $paymentTypes = [
-          ['name' => 'Яндекс.Касса'],
           ['name' => 'Единый кошелек'],
       ];
       foreach ($paymentTypes as $key => $value) {

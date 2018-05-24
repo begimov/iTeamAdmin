@@ -10,7 +10,6 @@
           </div>
 
           <div class="panel-body">
-            <form action="#" @submit.prevent="saveProduct">
 
               <div class="row">
                 <div class="col-md-6">
@@ -27,7 +26,7 @@
                     track-by="id">
                       <span slot="noResult">Категория не найдена</span>
                     </multiselect>
-                    <span class="help-block alert-danger" v-if="errors['category.id']">{{ errors['category.id'][0] }}</span>
+                    <span class="help-block alert-danger" v-if="errors['category_id']">{{ errors['category_id'][0] }}</span>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -46,7 +45,7 @@
                     <p v-for="materialParam in materialParams" :key="materialParam.id">
                       <span class="custom__tag">
                         <span>{{ materialParam.name }}</span>
-                        <span class="custom__remove" @click="console.log('removeMaterial')">
+                        <span class="custom__remove" @click.prevent="removeMaterial(materialParam.id)">
                           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         </span>
                       </span>
@@ -64,9 +63,9 @@
                     label="name"
                     track-by="id">
                       <span slot="noResult">Материал не найден</span>
-                      <template slot="tag">
+                      <!-- <template slot="tag">
                         &nbsp;
-                      </template>
+                      </template> -->
                     </multiselect>
                     <span class="help-block alert-danger" v-if="errors.materials">{{ errors.materials[0] }}</span>
                     <br>
@@ -77,7 +76,7 @@
                   <div class="form-group">
                     <label>Базовая цена, &nbsp;&#8381;</label>
                     <input type="text" class="form-control" placeholder="Введите цену по умолчанию" v-model="basePrice">
-                    <span class="help-block alert-danger" v-if="errors.basePrice">{{ errors.basePrice[0] }}</span>
+                    <span class="help-block alert-danger" v-if="errors.price">{{ errors.price[0] }}</span>
                   </div>
                 </div>
               </div>
@@ -123,13 +122,15 @@
               <div class="row">
                 <div class="col-md-12">
                   <ul class="list-inline">
-                    <li><button type="submit" class="btn btn-primary">Сохранить</button></li>
+                    <li>
+                      <button type="submit" class="btn btn-primary" v-if="!editedProductId" @click.prevent="saveProduct">Cоздать</button>
+                      <button type="submit" class="btn btn-primary" v-else @click.prevent="updateProduct(editedProductId)">Сохранить</button>
+                    </li>
                     <li><a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a></li>
                   </ul>
                 </div>
               </div>
 
-            </form>
           </div>
 
         </div>

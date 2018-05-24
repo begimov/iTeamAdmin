@@ -43607,10 +43607,11 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     priceTag: { price: null, name: null }
   },
   params: {
+    id: null,
     category: null,
     name: null,
     materials: [],
-    basePrice: null,
+    price: null,
     priceTags: []
   },
   isLoading: false,
@@ -43634,13 +43635,13 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     return state.options.categories;
   },
   categoryParams: function categoryParams(state) {
-    return state.params.categories;
+    return state.params.category;
   },
   getName: function getName(state) {
     return state.params.name;
   },
   getBasePrice: function getBasePrice(state) {
-    return state.params.basePrice;
+    return state.params.price;
   },
   getPriceTagPrice: function getPriceTagPrice(state) {
     return state.options.priceTag.price;
@@ -43743,6 +43744,33 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     var commit = _ref12.commit;
 
     commit('resetState');
+  },
+  setProductToEdit: function setProductToEdit(_ref13, id) {
+    var commit = _ref13.commit;
+
+    commit('setIsLoading', true);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.getProduct(id).then(function (res) {
+      commit('setProductToEdit', res.data.data);
+      commit('setIsLoading', false);
+    });
+  },
+  removeMaterial: function removeMaterial(_ref14, id) {
+    var commit = _ref14.commit;
+
+    commit('removeMaterial', id);
+  },
+  updateProduct: function updateProduct(_ref15, id) {
+    var commit = _ref15.commit,
+        dispatch = _ref15.dispatch,
+        state = _ref15.state;
+
+    commit('setIsLoading', true);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.updateProduct(state.params, id).then(function (res) {
+      dispatch('setProductToEdit', id);
+    }).catch(function (err) {
+      commit('setErrors', err.response.data);
+      commit('setIsLoading', false);
+    });
   }
 });
 
@@ -43789,9 +43817,37 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
       });
     });
   },
-  savePage: function savePage(payload) {
+  savePage: function savePage(page, elements) {
+    var _this = this;
+
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/pages", payload).then(function (res) {
+      axios.post("/webapi/pages", _this.processData(page, elements)).then(function (res) {
+        resolve(res);
+      }).catch(function (err) {
+        reject(err);
+      });
+    });
+  },
+  processData: function processData(page, elements) {
+    return {
+      name: page.name,
+      description: page.desc,
+      category_id: page.category ? page.category.id : null,
+      elements: elements
+    };
+  },
+  getPage: function getPage(id) {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/pages/" + id + "/edit").then(function (res) {
+        resolve(res);
+      });
+    });
+  },
+  updatePage: function updatePage(id, page, elements) {
+    var _this2 = this;
+
+    return new Promise(function (resolve, reject) {
+      axios.patch("/webapi/pages/" + id, _this2.processData(page, elements)).then(function (res) {
         resolve(res);
       }).catch(function (err) {
         reject(err);
@@ -43829,8 +43885,6 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 /* harmony default export */ __webpack_exports__["a"] = ({
   getInitialData: function getInitialData() {
     return new Promise(function (resolve, reject) {
@@ -43840,10 +43894,37 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     });
   },
   saveProduct: function saveProduct(data) {
+    var _this = this;
+
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/products", _extends({}, _.omitBy(data, function (param, key) {
-        return _.isNull(param) || param.length === 0;
-      }))).then(function (res) {
+      axios.post("/webapi/products", _this.processData(data)).then(function (res) {
+        resolve(res);
+      }).catch(function (err) {
+        reject(err);
+      });
+    });
+  },
+  processData: function processData(data) {
+    return {
+      name: data.name,
+      price: data.price,
+      category_id: data.category ? data.category.id : null,
+      materials: data.materials,
+      priceTags: data.priceTags
+    };
+  },
+  getProduct: function getProduct(id) {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/products/" + id + "/edit").then(function (res) {
+        resolve(res);
+      });
+    });
+  },
+  updateProduct: function updateProduct(data, id) {
+    var _this2 = this;
+
+    return new Promise(function (resolve, reject) {
+      axios.patch("/webapi/products/" + id, _this2.processData(data)).then(function (res) {
         resolve(res);
       }).catch(function (err) {
         reject(err);
@@ -43879,7 +43960,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.params.name = value;
     },
     updateBasePrice: function updateBasePrice(state, value) {
-        state.params.basePrice = value;
+        state.params.price = value;
     },
     updatePriceTagPrice: function updatePriceTagPrice(state, value) {
         state.options.priceTag.price = value;
@@ -43915,7 +43996,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 category: null,
                 name: null,
                 materials: [],
-                basePrice: null,
+                price: null,
                 priceTags: []
             },
             isLoading: false,
@@ -43925,6 +44006,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         Object.keys(initialState).forEach(function (key) {
             state[key] = initialState[key];
         });
+    },
+    setProductToEdit: function setProductToEdit(state, payload) {
+        var name = payload.name,
+            price = payload.price,
+            category = payload.category,
+            materials = payload.materials,
+            priceTags = payload.priceTags;
+
+
+        state.params = {
+            name: name,
+            price: price,
+            category: category.data,
+            materials: materials.data,
+            priceTags: priceTags.data
+        };
+    },
+    removeMaterial: function removeMaterial(state, id) {
+        state.params.materials.splice(_.findIndex(state.params.materials, ['id', id]), 1);
     }
 });
 
@@ -44126,7 +44226,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   isLoading: false,
   params: {
     searchQuery: ''
-  }
+  },
+  editedProductId: null
 });
 
 /***/ }),
@@ -44152,6 +44253,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   getSearchQuery: function getSearchQuery(state) {
     return state.params.searchQuery;
+  },
+  editedProductId: function editedProductId(state) {
+    return state.editedProductId;
   }
 });
 
@@ -44185,6 +44289,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref3.commit;
 
     commit('setCurrentModule', value);
+  },
+  setEditedProductId: function setEditedProductId(_ref4, id) {
+    var commit = _ref4.commit;
+
+    commit('setEditedProductId', id);
+    commit('setCurrentModule', 'newproduct');
   }
 });
 
@@ -44206,6 +44316,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   setCurrentModule: function setCurrentModule(state, value) {
     state.currentModule = value;
+  },
+  setEditedProductId: function setEditedProductId(state, id) {
+    state.editedProductId = id;
   }
 });
 
@@ -44269,7 +44382,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     categories: []
   },
   page: {
-    categoryId: null,
+    category: null,
     name: '',
     desc: ''
   },
@@ -44303,7 +44416,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return state.options.categories;
   },
   categoryParams: function categoryParams(state) {
-    return state.page.categoryId;
+    return state.page.category;
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
@@ -44327,45 +44440,48 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   getInitialData: function getInitialData(_ref) {
     var commit = _ref.commit;
 
-    commit('setIsLoading', true);
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getInitialData().then(function (res) {
-      var blocks = res.data.blocks.data;
+    return new Promise(function (resolve, reject) {
+      commit('setIsLoading', true);
+      __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getInitialData().then(function (res) {
+        var blocks = res.data.blocks.data;
 
-      _.forEach(blocks, function (block, key) {
-        Vue.component(block.tag, function (resolve, reject) {
-          resolve({
-            props: ['id'],
-            template: '<div>' + block.template + '<div class="row">\n                    <div class="col-md-12 text-right">\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">\u0432\u0432\u0435\u0440\u0445</a>\n                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">\u0432\u043D\u0438\u0437</a>\n                      <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a>\n                      <hr>\n                    </div>\n                  </div>\n                  </div>',
-            data: function data() {
-              return {
-                data: _extends({}, block.data),
-                meta: { blockId: block.id }
-              };
-            },
+        _.forEach(blocks, function (block, key) {
+          Vue.component(block.tag, function (resolve, reject) {
+            resolve({
+              props: ['id'],
+              template: '<div>' + block.template + '<div class="row">\n                      <div class="col-md-12 text-right">\n                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">\u0432\u0432\u0435\u0440\u0445</a>\n                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">\u0432\u043D\u0438\u0437</a>\n                        <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a>\n                        <hr>\n                      </div>\n                    </div>\n                    </div>',
+              data: function data() {
+                return {
+                  data: _extends({}, block.data),
+                  meta: { blockId: block.id }
+                };
+              },
 
-            methods: {
-              moveUp: function moveUp(id) {
-                this.$emit('elementMovedUp', id);
+              methods: {
+                moveUp: function moveUp(id) {
+                  this.$emit('elementMovedUp', id);
+                },
+                moveDown: function moveDown(id) {
+                  this.$emit('elementMovedDown', id);
+                },
+                deleteElement: function deleteElement(id) {
+                  this.$emit('elementDeleted', id);
+                }
               },
-              moveDown: function moveDown(id) {
-                this.$emit('elementMovedDown', id);
-              },
-              deleteElement: function deleteElement(id) {
-                this.$emit('elementDeleted', id);
+              mounted: function mounted() {
+                commit('addElementToElements', {
+                  id: this.id,
+                  data: this.$data
+                });
               }
-            },
-            mounted: function mounted() {
-              commit('addElementToElements', {
-                id: this.id,
-                data: this.$data
-              });
-            }
+            });
           });
         });
+        commit('setBlocks', blocks);
+        commit('setCategoriesOptions', res.data.categories.data);
+        commit('setIsLoading', false);
+        resolve(res);
       });
-      commit('setBlocks', blocks);
-      commit('setCategoriesOptions', res.data.categories.data);
-      commit('setIsLoading', false);
     });
   },
   updateCategoryParams: function updateCategoryParams(_ref2, value) {
@@ -44413,7 +44529,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var elements = _.map(state.layout.elements, function (element) {
       return { data: element.data.data, meta: element.data.meta };
     });
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.savePage(_extends({}, state.page, { elements: elements })).then(function (res) {
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.savePage(state.page, elements).then(function (res) {
       commit('resetState');
       commit('setIsLoading', false);
     }).catch(function (err) {
@@ -44425,6 +44541,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref10.commit;
 
     commit('resetState');
+  },
+  setPageToEdit: function setPageToEdit(_ref11, id) {
+    var commit = _ref11.commit;
+
+    commit('setIsLoading', true);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getPage(id).then(function (res) {
+      commit('setPageToEdit', res.data.data);
+      commit('setIsLoading', false);
+    });
+  },
+  update: function update(_ref12, id) {
+    var commit = _ref12.commit,
+        state = _ref12.state;
+
+    commit('setIsLoading', true);
+    var elements = _.map(state.layout.elements, function (element) {
+      return { data: element.data.data, meta: element.data.meta };
+    });
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.updatePage(id, state.page, elements).then(function (res) {
+      commit('setIsLoading', false);
+    }).catch(function (err) {
+      commit('setErrors', err.response.data);
+      commit('setIsLoading', false);
+    });
   }
 });
 
@@ -44433,6 +44573,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 /* harmony default export */ __webpack_exports__["a"] = ({
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
@@ -44447,7 +44589,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.errors = errors;
     },
     updateCategoryParams: function updateCategoryParams(state, value) {
-        state.page.categoryId = value.id;
+        state.page.category = value;
     },
     updatePageName: function updatePageName(state, name) {
         state.page.name = name;
@@ -44512,6 +44654,41 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         Object.keys(initialState).forEach(function (key) {
             state[key] = initialState[key];
         });
+    },
+    setPageToEdit: function setPageToEdit(state, payload) {
+        var name = payload.name,
+            description = payload.description,
+            category = payload.category,
+            elements = payload.elements;
+
+
+        state.page = {
+            name: name,
+            desc: description,
+            category: category.data
+        };
+
+        new Promise(function (resolve, reject) {
+            elements.data.forEach(function (element) {
+                state.layout.blocks.push({
+                    id: uuidv4(),
+                    tag: element.block.data.tag
+                });
+            });
+            resolve();
+        }).then(function (res) {
+            state.layout.elements.forEach(function (element, index) {
+                element.data.data = _extends({}, elements.data[index].data);
+            });
+        });
+
+        function uuidv4() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0,
+                    v = c == 'x' ? r : r & 0x3 | 0x8;
+                return v.toString(16);
+            });
+        }
     }
 });
 
@@ -44527,7 +44704,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   isLoading: false,
   params: {
     searchQuery: ''
-  }
+  },
+  editedPageId: null
 });
 
 /***/ }),
@@ -44553,6 +44731,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   getSearchQuery: function getSearchQuery(state) {
     return state.params.searchQuery;
+  },
+  editedPageId: function editedPageId(state) {
+    return state.editedPageId;
   }
 });
 
@@ -44586,6 +44767,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref3.commit;
 
     commit('setCurrentModule', value);
+  },
+  setEditedPageId: function setEditedPageId(_ref4, id) {
+    var commit = _ref4.commit;
+
+    commit('setEditedPageId', id);
+    commit('setCurrentModule', 'newpage');
   }
 });
 
@@ -44607,6 +44794,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   setCurrentModule: function setCurrentModule(state, value) {
     state.currentModule = value;
+  },
+  setEditedPageId: function setEditedPageId(state, id) {
+    state.editedPageId = id;
   }
 });
 
@@ -59109,13 +59299,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   components: {
     vueDropzone: __WEBPACK_IMPORTED_MODULE_0_vue2_dropzone___default.a
   },
-  props: ['parentResourceId', 'parentResourceType', 'maxFiles'],
+  props: ['parentResourceId', 'parentResourceType', 'maxFiles', 'maxFilesize'],
   data: function data() {
     return {
       options: _extends({
         url: '/webapi/files',
         thumbnailWidth: 150,
-        maxFilesize: 0.5,
+        maxFilesize: this.maxFilesize,
         maxFiles: this.maxFiles,
         headers: {
           'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
@@ -62873,7 +63063,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           paymentState: []
         },
         searchQuery: ''
-      }
+      },
+      editedOrderId: null
     };
   },
 
@@ -62883,6 +63074,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
+      this.editedOrderId = null;
       this.flags.isLoading = true;
       axios.get('/webapi/orders?page=' + page, {
         params: _extends({}, this.params.orderBy, {
@@ -62896,11 +63088,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         _this.flags.isLoading = false;
       });
     },
+    cancelOrder: function cancelOrder() {
+      this.flags.neworder = false;
+      this.editedOrderId = null;
+    },
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
         this.getOrders(1);
       }.bind(this), 1000);
+    },
+    setEditedOrderId: function setEditedOrderId(id) {
+      this.editedOrderId = id;
+      this.flags.neworder = true;
     }
   },
   watch: {
@@ -62940,10 +63140,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "panel-heading"
   }, [(_vm.flags.neworder) ? _c('new-order', {
+    attrs: {
+      "editedOrderId": _vm.editedOrderId
+    },
     on: {
-      "cancelOrder": function($event) {
-        _vm.flags.neworder = false
-      },
+      "cancelOrder": _vm.cancelOrder,
       "orderSaved": _vm.getOrders
     }
   }) : _c('a', {
@@ -63087,7 +63288,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "payment-states": _vm.paymentStates
       },
       on: {
-        "orderDeleted": _vm.getOrders
+        "orderDeleted": _vm.getOrders,
+        "editOrder": _vm.setEditedOrderId
       }
     })
   })], 2), _vm._v(" "), _c('div', {
@@ -63160,7 +63362,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: ['order', 'paymentStates'],
   data: function data() {
     return {
-      //
+      selectedPaymentStateId: this.order.payment_state_id
     };
   },
 
@@ -63174,6 +63376,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       } else {
         // Do nothing!
+      }
+    },
+    editOrder: function editOrder() {
+      this.$emit('editOrder', this.order.id);
+    }
+  },
+  watch: {
+    selectedPaymentStateId: {
+      handler: function handler(id) {
+        axios.patch('/webapi/orders/' + this.order.id, {
+          payment_state_id: id
+        }).then(function (response) {
+          //
+        });
       }
     }
   },
@@ -63226,6 +63442,46 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('ul', {
     staticClass: "list-inline"
   }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.editOrder($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-edit",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Редактировать")])]), _vm._v(" "), _c('li', [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.selectedPaymentStateId),
+      expression: "selectedPaymentStateId"
+    }],
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.selectedPaymentStateId = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, _vm._l((_vm.paymentStates), function(paymentState) {
+    return _c('option', {
+      key: paymentState.id,
+      domProps: {
+        "value": paymentState.id
+      }
+    }, [_vm._v("\n              " + _vm._s(paymentState.name) + "\n          ")])
+  }))]), _vm._v(" "), _c('li', [_c('a', {
     attrs: {
       "href": "#"
     },
@@ -63302,27 +63558,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
-  props: [],
+  props: ['editedOrderId'],
   data: function data() {
     return {
       options: {
         products: [],
         paymentTypes: [],
         paymentStates: [],
-        emails: [],
-        businessEntities: []
+        users: []
       },
-      params: {
+      order: {
         product: null,
         paymentType: null,
         paymentState: null,
-        orderPrice: null,
-        email: null,
-        name: null,
-        phone: null,
-        businessEntity: null,
-        company: null,
-        comment: null
+        price: null,
+        user: null
       },
       isLoading: false,
       errors: {}
@@ -63330,56 +63580,89 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
+    // New order creation
     saveOrder: function saveOrder() {
       var _this = this;
 
-      axios.post('/webapi/orders', {
-        data: _.omitBy(this.params, function (param, key) {
-          return _.isNull(param);
-        })
-      }).then(function (response) {
+      axios.post('/webapi/orders', this.processData()).then(function (response) {
         _this.$emit('orderSaved');
+        _this.cancelOrder();
       }).catch(function (error) {
         _this.errors = error.response.data;
       });
     },
-    cancelOrder: function cancelOrder() {
-      this.$emit('cancelOrder');
+    processData: function processData() {
+      return {
+        product_id: this.order.product ? this.order.product.id : null,
+        payment_type_id: this.order.paymentType ? this.order.paymentType.id : null,
+        payment_state_id: this.order.paymentState ? this.order.paymentState.id : null,
+        price: this.order.price,
+        user_id: this.order.user ? this.order.user.id : null
+      };
     },
     getEmails: function getEmails(query) {
       var _this2 = this;
 
       this.isLoading = true;
+
       axios.get('/webapi/users/email?query=' + query).then(function (response) {
-        _this2.options.emails = response.data.data;
+        _this2.options.users = response.data.data;
         _this2.isLoading = false;
       });
+    },
+
+
+    // Existing order editing
+    setOrderToEdit: function setOrderToEdit() {
+      var _this3 = this;
+
+      this.isLoading = true;
+      axios.get('/webapi/orders/' + this.editedOrderId + '/edit').then(function (response) {
+        var responseData = response.data.data;
+
+        _this3.order = {
+          product: responseData.product.data,
+          paymentType: responseData.paymentType.data,
+          paymentState: responseData.paymentState.data,
+          price: responseData.price,
+          user: responseData.user.data
+        };
+
+        _this3.isLoading = false;
+      });
+    },
+    updateOrder: function updateOrder() {
+      var _this4 = this;
+
+      axios.patch('/webapi/orders/' + this.editedOrderId, this.processData()).then(function (response) {
+        _this4.$emit('orderSaved');
+        _this4.cancelOrder();
+      }).catch(function (error) {
+        _this4.errors = error.response.data;
+      });
+    },
+
+
+    // Misc
+    cancelOrder: function cancelOrder() {
+      this.$emit('cancelOrder');
     }
-  },
-  watch: {
-    'params.company': function paramsCompany(company) {
-      if (company && company.businessEntity) {
-        this.params.businessEntity = this.options.businessEntities[company.businessEntity - 1];
-      } else {
-        // this.params.company = null
-        this.params.businessEntity = this.options.businessEntities[0];
-      }
-    }
-  },
-  computed: {
-    //
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this5 = this;
 
+    this.isLoading = true;
     axios.get('/webapi/orders/create').then(function (response) {
-      _this3.options.products = response.data.products.data;
-      _this3.options.paymentTypes = response.data.paymentTypes.data;
-      _this3.options.paymentStates = response.data.paymentStates.data;
-      _this3.options.businessEntities = response.data.businessEntities.data;
 
-      _this3.params.paymentState = _this3.options.paymentStates[0];
-      _this3.params.businessEntity = _this3.options.businessEntities[0];
+      _this5.options.products = response.data.products.data;
+      _this5.options.paymentTypes = response.data.paymentTypes.data;
+      _this5.options.paymentStates = response.data.paymentStates.data;
+
+      _this5.isLoading = false;
+
+      if (_this5.editedOrderId) {
+        _this5.setOrderToEdit();
+      }
     });
   }
 });
@@ -63394,21 +63677,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-danger"
   }, [_c('div', {
     staticClass: "panel-heading"
   }, [_vm._v("Новый заказ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_c('form', {
-    attrs: {
-      "action": "#"
-    },
-    on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.saveOrder($event)
-      }
-    }
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
@@ -63426,17 +63703,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.product),
+      value: (_vm.order.product),
       callback: function($$v) {
-        _vm.params.product = $$v
+        _vm.order.product = $$v
       },
-      expression: "params.product"
+      expression: "order.product"
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])]), _vm._v(" "), (_vm.errors['data.product']) ? _c('div', {
+  }, [_vm._v("Продукт не найден")])]), _vm._v(" "), (_vm.errors['product_id']) ? _c('div', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v("\n                  " + _vm._s(_vm.errors['data.product'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['product_id'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-2"
   }, [_c('div', {
     staticClass: "form-group"
@@ -63451,13 +63728,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.paymentType),
+      value: (_vm.order.paymentType),
       callback: function($$v) {
-        _vm.params.paymentType = $$v
+        _vm.order.paymentType = $$v
       },
-      expression: "params.paymentType"
+      expression: "order.paymentType"
     }
-  })], 1)]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), (_vm.errors['payment_type_id']) ? _c('div', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['payment_type_id'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-2"
   }, [_c('div', {
     staticClass: "form-group"
@@ -63472,15 +63751,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "track-by": "id"
     },
     model: {
-      value: (_vm.params.paymentState),
+      value: (_vm.order.paymentState),
       callback: function($$v) {
-        _vm.params.paymentState = $$v
+        _vm.order.paymentState = $$v
       },
-      expression: "params.paymentState"
+      expression: "order.paymentState"
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Статус оплаты не найден")])])], 1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Статус оплаты не найден")])]), _vm._v(" "), (_vm.errors['payment_state_id']) ? _c('div', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['payment_state_id'][0]) + "\n                ")]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-2"
   }, [_c('div', {
     staticClass: "form-group"
@@ -63488,27 +63769,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "input-group"
   }, [_c('div', {
     staticClass: "input-group-addon"
-  }, [_vm._v(_vm._s(_vm.params.product ? Math.round(_vm.params.product.price) : '-'))]), _vm._v(" "), _c('input', {
+  }, [_vm._v(_vm._s(_vm.order.product ? Math.round(_vm.order.product.price) : '-'))]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
-      value: (_vm.params.orderPrice),
-      expression: "params.orderPrice"
+      value: (_vm.order.price),
+      expression: "order.price"
     }],
     staticClass: "form-control",
     attrs: {
       "type": "text"
     },
     domProps: {
-      "value": (_vm.params.orderPrice)
+      "value": (_vm.order.price)
     },
     on: {
       "input": function($event) {
         if ($event.target.composing) { return; }
-        _vm.params.orderPrice = $event.target.value
+        _vm.order.price = $event.target.value
       }
     }
-  })])])])]), _vm._v(" "), _c('div', {
+  })]), _vm._v(" "), (_vm.errors['price']) ? _c('div', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['price'][0]) + "\n                ")]) : _vm._e()])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
@@ -63516,139 +63799,54 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Email")]), _vm._v(" "), _c('multiselect', {
     attrs: {
-      "options": _vm.options.emails,
+      "options": _vm.options.users,
       "loading": _vm.isLoading,
       "select-label": "",
       "selected-label": "Выбран",
       "deselect-label": "",
       "placeholder": "Выберите email",
-      "label": "value",
+      "label": "email",
       "track-by": "id"
     },
     on: {
       "search-change": _vm.getEmails
     },
     model: {
-      value: (_vm.params.email),
+      value: (_vm.order.user),
       callback: function($$v) {
-        _vm.params.email = $$v
+        _vm.order.user = $$v
       },
-      expression: "params.email"
+      expression: "order.user"
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Email не найден")])])], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('typeahead-search', {
-    attrs: {
-      "user": _vm.params.email,
-      "data": "name"
-    },
-    model: {
-      value: (_vm.params.name),
-      callback: function($$v) {
-        _vm.params.name = $$v
-      },
-      expression: "params.name"
-    }
-  })], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-4"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Телефон")]), _vm._v(" "), _c('typeahead-search', {
-    attrs: {
-      "user": _vm.params.email,
-      "data": "phone"
-    },
-    model: {
-      value: (_vm.params.phone),
-      callback: function($$v) {
-        _vm.params.phone = $$v
-      },
-      expression: "params.phone"
-    }
-  })], 1)])]), _vm._v(" "), _c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.params.paymentType && _vm.params.paymentType.name == 'Счет'),
-      expression: "params.paymentType && params.paymentType.name == 'Счет'"
-    }],
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-2"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("ОПФ")]), _vm._v(" "), _c('multiselect', {
-    attrs: {
-      "options": _vm.options.businessEntities,
-      "select-label": "",
-      "selected-label": "Выбран",
-      "deselect-label": "",
-      "placeholder": "Выберите",
-      "label": "name",
-      "track-by": "id"
-    },
-    model: {
-      value: (_vm.params.businessEntity),
-      callback: function($$v) {
-        _vm.params.businessEntity = $$v
-      },
-      expression: "params.businessEntity"
-    }
-  }, [_c('span', {
-    slot: "noResult"
-  }, [_vm._v("ОПФ не найдена")])])], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-5"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Компания")]), _vm._v(" "), _c('typeahead-search', {
-    attrs: {
-      "user": _vm.params.email,
-      "data": "company"
-    },
-    model: {
-      value: (_vm.params.company),
-      callback: function($$v) {
-        _vm.params.company = $$v
-      },
-      expression: "params.company"
-    }
-  })], 1)]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-5"
-  }, [_c('div', {
-    staticClass: "form-group"
-  }, [_c('label', [_vm._v("Комментарий")]), _vm._v(" "), _c('textarea', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.params.comment),
-      expression: "params.comment"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "rows": "1",
-      "cols": "50"
-    },
-    domProps: {
-      "value": (_vm.params.comment)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.params.comment = $event.target.value
-      }
-    }
-  }, [_vm._v("Введите комментарий")])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Email не найден")])]), _vm._v(" "), (_vm.errors['user_id']) ? _c('div', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v("\n                  " + _vm._s(_vm.errors['user_id'][0]) + "\n                ")]) : _vm._e()], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_c('button', {
+  }, [(!_vm.editedOrderId) ? _c('button', {
     staticClass: "btn btn-primary",
     attrs: {
       "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.saveOrder($event)
+      }
+    }
+  }, [_vm._v("Создать")]) : _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.updateOrder($event)
+      }
     }
   }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
     staticClass: "btn btn-default",
@@ -63661,7 +63859,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.cancelOrder($event)
       }
     }
-  }, [_vm._v("Отменить")])])])])])])])])
+  }, [_vm._v("Отменить")])])])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -63775,7 +63973,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading', 'editedProductId']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -63785,12 +63983,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule', 'setEditedProductId']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
         this.getProducts();
       }.bind(this), 1000);
+    },
+    cancelNewProduct: function cancelNewProduct() {
+      this.setEditedProductId(null);
+      this.setCurrentModule('products');
     }
   }),
   mounted: function mounted() {
@@ -63804,10 +64006,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [(_vm.currentModule === 'newproduct') ? _c('new-product', {
+    attrs: {
+      "editedProductId": _vm.editedProductId
+    },
     on: {
-      "cancelNewProduct": function($event) {
-        _vm.setCurrentModule('products')
-      }
+      "cancelNewProduct": _vm.cancelNewProduct
     }
   }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'products') ? _c('div', {
     staticClass: "container"
@@ -63858,7 +64061,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "product": product
       },
       on: {
-        "productDeleted": _vm.getProducts
+        "productDeleted": _vm.getProducts,
+        "editProduct": _vm.setEditedProductId
       }
     })
   })], 2), _vm._v(" "), _c('div', {
@@ -63945,7 +64149,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    //
+    editProduct: function editProduct() {
+      this.$emit('editProduct', this.product.id);
+    }
   },
   computed: {
     //
@@ -63976,14 +64182,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('span', {
       staticClass: "label label-default"
     }, [_vm._v("\n            " + _vm._s(priceTag.name) + ": " + _vm._s(priceTag.price) + " ₽\n          ")])])
-  }))])]), _vm._v(" "), _vm._m(0)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }))])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6 text-right orders-edit-block"
   }, [_c('ul', {
     staticClass: "list-inline"
-  })])
-}]}
+  }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.editProduct($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-edit",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Редактировать")])])])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -64092,14 +64311,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-  props: [],
+  props: ['editedProductId'],
   data: function data() {
     return {
       //
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit', 'removeMaterial', 'updateProduct']), {
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewProduct');
@@ -64141,6 +64360,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   }),
   mounted: function mounted() {
     this.getInitialData();
+    if (this.editedProductId) {
+      this.setProductToEdit(this.editedProductId);
+    }
   }
 });
 
@@ -64165,16 +64387,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_vm._v("\n          Новый продукт\n        ")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_c('form', {
-    attrs: {
-      "action": "#"
-    },
-    on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.saveProduct($event)
-      }
-    }
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
@@ -64197,9 +64409,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors['category.id']) ? _c('span', {
+  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors['category_id']) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors['category.id'][0]))]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors['category_id'][0]))]) : _vm._e()], 1)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
@@ -64241,7 +64453,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "custom__remove",
       on: {
         "click": function($event) {
-          _vm.console.log('removeMaterial')
+          $event.preventDefault();
+          _vm.removeMaterial(materialParam.id)
         }
       }
     }, [_c('span', {
@@ -64269,9 +64482,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Материал не найден")]), _vm._v(" "), _c('template', {
-    slot: "tag"
-  }, [_vm._v("\n                       \n                    ")])], 2), _vm._v(" "), (_vm.errors.materials) ? _c('span', {
+  }, [_vm._v("Материал не найден")])]), _vm._v(" "), (_vm.errors.materials) ? _c('span', {
     staticClass: "help-block alert-danger"
   }, [_vm._v(_vm._s(_vm.errors.materials[0]))]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v(" "), _c('a', {
     staticClass: "btn btn-default btn-sm",
@@ -64309,9 +64520,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.basePrice = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.errors.basePrice) ? _c('span', {
+  }), _vm._v(" "), (_vm.errors.price) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors.basePrice[0]))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors.price[0]))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
@@ -64411,7 +64622,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(1), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('li', [(!_vm.editedProductId) ? _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.saveProduct($event)
+      }
+    }
+  }, [_vm._v("Cоздать")]) : _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "submit"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.updateProduct(_vm.editedProductId)
+      }
+    }
+  }, [_vm._v("Сохранить")])]), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "btn btn-default",
     attrs: {
       "href": "#"
@@ -64422,7 +64655,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.cancel($event)
       }
     }
-  }, [_vm._v("Отменить")])])])])])])])])])]), _vm._v(" "), (_vm.isNewMaterialOn) ? _c('div', {
+  }, [_vm._v("Отменить")])])])])])])])])]), _vm._v(" "), (_vm.isNewMaterialOn) ? _c('div', {
     staticClass: "row"
   }, [_c('new-material')], 1) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -64431,13 +64664,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('label', [_vm._v("Дополнительная цена")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('button', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Сохранить")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -64526,7 +64752,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
   }),
   mounted: function mounted() {
-    // TODO: generate fresh id each time (safe) or use previous unsaved id?
     if (!this.id) {
       this.getMaterialId();
     }
@@ -64672,7 +64897,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('file-uploader', {
     attrs: {
       "parent-resource-id": _vm.id,
-      "parent-resource-type": "material"
+      "parent-resource-type": "material",
+      "max-filesize": "20"
     }
   })], 1)]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "row"
@@ -64804,7 +65030,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery', 'editedPageId']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -64814,12 +65040,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery', 'setCurrentModule']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery', 'setCurrentModule', 'setEditedPageId']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
         this.getProducts();
       }.bind(this), 1000);
+    },
+    cancelNewPage: function cancelNewPage() {
+      this.setEditedPageId(null);
+      this.setCurrentModule('pages');
     }
   }),
   mounted: function mounted() {
@@ -64833,10 +65063,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [(_vm.currentModule === 'newpage') ? _c('new-page', {
+    attrs: {
+      "editedPageId": _vm.editedPageId
+    },
     on: {
-      "cancelNewPage": function($event) {
-        _vm.setCurrentModule('pages')
-      }
+      "cancelNewPage": _vm.cancelNewPage
     }
   }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'pages') ? _c('div', {
     staticClass: "container"
@@ -64887,7 +65118,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "page": page
       },
       on: {
-        "pageStatusChanged": _vm.getPages
+        "pageStatusChanged": _vm.getPages,
+        "editPage": _vm.setEditedPageId
       }
     })
   })], 2), _vm._v(" "), _c('div', {
@@ -64995,6 +65227,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         default:
           break;
       }
+    },
+    editPage: function editPage() {
+      this.$emit('editPage', this.page.id);
     }
   },
   mounted: function mounted() {
@@ -65050,7 +65285,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "aria-hidden": "true"
     }
-  })])])]], 2)])])
+  })])])], _vm._v(" "), _c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.editPage($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-edit",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Редактировать")])])], 2)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('li', [_c('span', {
     staticClass: "label label-success"
@@ -65168,7 +65418,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-  props: [],
+  props: ['editedPageId'],
   data: function data() {
     return {
       isShowingBlocksPanel: false
@@ -65193,7 +65443,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState', 'setPageToEdit', 'update']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     },
@@ -65203,7 +65453,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
   }),
   mounted: function mounted() {
-    this.getInitialData();
+    var _this = this;
+
+    this.getInitialData().then(function (res) {
+      if (_this.editedPageId) {
+        _this.setPageToEdit(_this.editedPageId);
+      }
+    });
   }
 });
 
@@ -65248,9 +65504,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors.categoryId) ? _c('span', {
+  }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors.category_id) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors.categoryId[0]))]) : _vm._e()], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors.category_id[0]))]) : _vm._e()], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('input', {
     directives: [{
@@ -65301,9 +65557,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.pageDesc = $event.target.value
       }
     }
-  }), _vm._v(" "), (_vm.errors.desc) ? _c('span', {
+  }), _vm._v(" "), (_vm.errors.description) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors.desc[0]))]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors.description[0]))]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row"
@@ -65366,7 +65622,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_vm._v(_vm._s(block.name))])])
   }))])])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
-  }, [_c('a', {
+  }, [(!_vm.editedPageId) ? _c('a', {
     staticClass: "btn btn-primary",
     attrs: {
       "href": "#"
@@ -65375,6 +65631,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "click": function($event) {
         $event.preventDefault();
         _vm.save($event)
+      }
+    }
+  }, [_vm._v("Создать")]) : _c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.update(_vm.editedPageId)
       }
     }
   }, [_vm._v("Сохранить")]), _vm._v(" "), _c('a', {
@@ -65446,9 +65713,12 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['product'],
     components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
     data: function data() {
         return {
@@ -65468,7 +65738,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 productId: product ? product.id : null,
                 pricetagId: null
             });
-            this.params.priceTag = null;
+            // this.params.priceTag = null;
         },
         'params.priceTag': function paramsPriceTag(priceTag) {
             this.$emit('input', {
@@ -65483,6 +65753,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/webapi/products/all').then(function (res) {
                 _this.options.products = res.data.data;
+
+                if (!_this.params.product && !_this.params.priceTag && _this.product) {
+                    var selectedProduct = _.find(_this.options.products, ['id', _this.product.productId]);
+                    _this.params.product = _extends({}, selectedProduct);
+
+                    _this.params.priceTag = _extends({}, _.find(selectedProduct.priceTags.data, ['id', _this.product.pricetagId]));
+                }
             });
         }
     },
@@ -65597,6 +65874,7 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['stages'],
     data: function data() {
         return {
             params: {
@@ -65611,6 +65889,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.$emit('input', stages);
             },
             deep: true
+        },
+        stages: {
+            handler: function handler(stages) {
+                if (!this.params.stages.length) {
+                    this.params.stages = stages;
+                }
+            }
         }
     },
     methods: {

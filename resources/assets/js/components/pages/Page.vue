@@ -23,7 +23,7 @@
           <li><span class="label label-default">Не опубликована</span></li>
           <li><a href="#" @click.prevent="updatePageStatus('publish')" class="text-success"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></li>
         </template>
-        <!-- <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать</a></li> -->
+        <li><a href="#" @click.prevent="editPage"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Редактировать</a></li>
       </ul>
     </div>
 

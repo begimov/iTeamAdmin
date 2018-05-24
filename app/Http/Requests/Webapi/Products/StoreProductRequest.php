@@ -25,9 +25,11 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'category.id' => 'required|numeric|exists:categories,id',
-            'basePrice' => 'required|numeric',
+            'category_id' => 'required|numeric|exists:categories,id',
+            'price' => 'required|numeric',
             'materials' => 'required|array',
+            'priceTags' => 'array',
+            'priceTags.*.price' => 'numeric',
         ];
     }
 
@@ -40,9 +42,9 @@ class StoreProductRequest extends FormRequest
     {
         return [
             'name.required' => trans('validation.store-product-request.name.required'),
-            'category.id.required' => trans('validation.store-product-request.category-id.required'),
-            'basePrice.required' => trans('validation.store-product-request.base-price.required'),
-            'basePrice.numeric' => trans('validation.store-product-request.base-price.numeric'),
+            'category_id.required' => trans('validation.store-product-request.category-id.required'),
+            'price.required' => trans('validation.store-product-request.base-price.required'),
+            'price.numeric' => trans('validation.store-product-request.base-price.numeric'),
             'materials.required' => trans('validation.store-product-request.materials.required'),
         ];
     }

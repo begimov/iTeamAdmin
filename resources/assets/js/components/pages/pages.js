@@ -8,6 +8,7 @@ export default {
           'meta',
           'isLoading',
           'getSearchQuery',
+          'editedPageId'
       ]),
       'searchQuery': {
         get () {
@@ -23,6 +24,7 @@ export default {
           'getPages',
           'updateSearchQuery',
           'setCurrentModule',
+          'setEditedPageId'
       ]),
       textSearch () {
         clearTimeout(this.timer);
@@ -30,6 +32,10 @@ export default {
             this.getProducts()
         }.bind(this), 1000)
       },
+      cancelNewPage() {
+        this.setEditedPageId(null)
+        this.setCurrentModule('pages')
+      }
   },
   mounted() {
     this.getPages()

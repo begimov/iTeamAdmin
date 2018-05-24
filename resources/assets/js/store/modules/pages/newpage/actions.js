@@ -2,54 +2,57 @@ import api from '../../../api'
 
 export default {
   getInitialData ({ commit }) {
-    commit('setIsLoading', true)
-    api.newpage.getInitialData().then(res => {
-      const blocks = res.data.blocks.data
-      
-      _.forEach(blocks, function(block, key) {
-        Vue.component(block.tag, function (resolve, reject) {
-          resolve({
-            props:['id'],
-            template: `<div>`
-                + block.template
-                + `<div class="row">
-                    <div class="col-md-12 text-right">
-                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">вверх</a>
-                      <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">вниз</a>
-                      <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a>
-                      <hr>
+    return new Promise((resolve, reject) => {
+      commit('setIsLoading', true)
+      api.newpage.getInitialData().then(res => {
+        const blocks = res.data.blocks.data
+        
+        _.forEach(blocks, function(block, key) {
+          Vue.component(block.tag, function (resolve, reject) {
+            resolve({
+              props:['id'],
+              template: `<div>`
+                  + block.template
+                  + `<div class="row">
+                      <div class="col-md-12 text-right">
+                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">вверх</a>
+                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">вниз</a>
+                        <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a>
+                        <hr>
+                      </div>
                     </div>
-                  </div>
-                  </div>`,
-            data () {
-              return {
-                data: { ...block.data }, 
-                meta: { blockId: block.id }
+                    </div>`,
+              data () {
+                return {
+                  data: { ...block.data }, 
+                  meta: { blockId: block.id }
+                }
+              },
+              methods: {
+                moveUp (id) {
+                  this.$emit('elementMovedUp', id)
+                },
+                moveDown (id) {
+                  this.$emit('elementMovedDown', id)
+                },
+                deleteElement (id) {
+                  this.$emit('elementDeleted', id)
+                },
+              },
+              mounted () {
+                commit('addElementToElements', {
+                  id: this.id,
+                  data: this.$data
+                })
               }
-            },
-            methods: {
-              moveUp (id) {
-                this.$emit('elementMovedUp', id)
-              },
-              moveDown (id) {
-                this.$emit('elementMovedDown', id)
-              },
-              deleteElement (id) {
-                this.$emit('elementDeleted', id)
-              },
-            },
-            mounted () {
-              commit('addElementToElements', {
-                id: this.id,
-                data: this.$data
-              })
-            }
+            })
           })
-        })
-      });
-      commit('setBlocks', blocks)
-      commit('setCategoriesOptions', res.data.categories.data)
-      commit('setIsLoading', false)
+        });
+        commit('setBlocks', blocks)
+        commit('setCategoriesOptions', res.data.categories.data)
+        commit('setIsLoading', false)
+        resolve(res)
+      })
     })
   },
   updateCategoryParams ({ commit }, value) {
@@ -80,7 +83,7 @@ export default {
     const elements = _.map(state.layout.elements, (element) => {
       return { data: element.data.data, meta: element.data.meta }
     })
-    api.newpage.savePage({ ...state.page, elements }).then(res => {
+    api.newpage.savePage(state.page, elements).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
     }).catch(err => {
@@ -90,5 +93,25 @@ export default {
   },
   resetState ({ commit }) {
     commit('resetState')
+  },
+  setPageToEdit ({ commit }, id) {
+    commit('setIsLoading', true)
+    api.newpage.getPage(id).then(res => {
+      commit('setPageToEdit', res.data.data)
+      commit('setIsLoading', false)
+    })
+    
+  },
+  update ({ commit, state }, id) {
+    commit('setIsLoading', true)
+    const elements = _.map(state.layout.elements, (element) => {
+      return { data: element.data.data, meta: element.data.meta }
+    })
+    api.newpage.updatePage(id, state.page, elements).then(res => {
+      commit('setIsLoading', false)
+    }).catch(err => {
+      commit('setErrors', err.response.data)
+      commit('setIsLoading', false)
+    })
   }
 }

@@ -9,13 +9,13 @@ export default {
     return state.options.categories
   },
   categoryParams (state) {
-    return state.params.categories
+    return state.params.category
   },
   getName(state) {
     return state.params.name
   },
   getBasePrice(state) {
-    return state.params.basePrice
+    return state.params.price
   },
   getPriceTagPrice(state) {
     return state.options.priceTag.price

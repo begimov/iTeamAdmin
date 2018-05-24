@@ -48,5 +48,24 @@ export default {
   },
   resetState ({ commit }) {
     commit('resetState')
+  },
+  setProductToEdit ({ commit }, id) {
+    commit('setIsLoading', true)
+    api.newproduct.getProduct(id).then(res => {
+      commit('setProductToEdit', res.data.data)
+      commit('setIsLoading', false)
+    })
+  },
+  removeMaterial ({ commit }, id) {
+    commit('removeMaterial', id)
+  },
+  updateProduct ({ commit, dispatch, state }, id) {
+    commit('setIsLoading', true)
+    api.newproduct.updateProduct(state.params, id).then(res => {
+      dispatch('setProductToEdit', id)
+    }).catch(err => {
+      commit('setErrors', err.response.data)
+      commit('setIsLoading', false)
+    })
   }
 }

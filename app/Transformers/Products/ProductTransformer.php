@@ -9,7 +9,7 @@ use App\Transformers\Products\PriceTagTransformer;
 
 class ProductTransformer extends \League\Fractal\TransformerAbstract
 {
-    protected $availableIncludes = ['category', 'priceTags'];
+    protected $availableIncludes = ['category', 'priceTags', 'materials'];
 
     public function transform(Product $product)
     {
@@ -28,5 +28,10 @@ class ProductTransformer extends \League\Fractal\TransformerAbstract
     public function includePriceTags(Product $product)
     {
         return $this->collection($product->priceTags, new PriceTagTransformer);
+    }
+
+    public function includeMaterials(Product $product)
+    {
+        return $this->collection($product->materials, new MaterialTransformer);
     }
 }

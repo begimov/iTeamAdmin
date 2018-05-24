@@ -99,7 +99,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $this->products->store($request->all());
+        $this->products->store($request);
     }
 
     /**
@@ -121,7 +121,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->products->findById($id);
+
+        return fractal()
+            ->item($product)
+            ->parseIncludes(['category', 'priceTags', 'materials'])
+            ->transformWith(new ProductTransformer)
+            ->toArray();
     }
 
     /**
@@ -131,9 +137,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProductRequest $request, $id)
     {
-        //
+        $this->products->update($request, $id);
     }
 
     /**

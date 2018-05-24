@@ -21,7 +21,7 @@
                     track-by="id">
                     <span slot="noResult">Категория не найдена</span>
                   </multiselect>
-                  <span class="help-block alert-danger" v-if="errors.categoryId">{{ errors.categoryId[0] }}</span>
+                  <span class="help-block alert-danger" v-if="errors.category_id">{{ errors.category_id[0] }}</span>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Введите название страницы..." v-model="pageName">
@@ -31,7 +31,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <textarea class="form-control" placeholder="Введите описание страницы..." v-model="pageDesc" cols="30" rows="4"></textarea>
-                  <span class="help-block alert-danger" v-if="errors.desc">{{ errors.desc[0] }}</span>
+                  <span class="help-block alert-danger" v-if="errors.description">{{ errors.description[0] }}</span>
                 </div>
               </div>
             </div>
@@ -73,7 +73,8 @@
           </div>
 
           <div class="panel-footer">
-            <a href="#" class="btn btn-primary" @click.prevent="save">Сохранить</a>
+            <a href="#" class="btn btn-primary" @click.prevent="save" v-if="!editedPageId">Создать</a>
+            <a href="#" class="btn btn-primary" @click.prevent="update(editedPageId)" v-else>Сохранить</a>
             <a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a>
           </div>
 

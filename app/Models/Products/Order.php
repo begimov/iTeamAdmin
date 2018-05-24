@@ -23,6 +23,14 @@ class Order extends Model
      */
     protected $dates = ['deleted_at'];
 
+    protected $fillable = [
+        'product_id',
+        'payment_type_id',
+        'payment_state_id',
+        'price',
+        'user_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -46,11 +54,6 @@ class Order extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
-    }
-
-    public function markAsDeleted()
-    {
-        $this->payment_state_id = config('orders.deleted_payment_state_id');
     }
 
     public function scopeFilter($builder, $repository, $request, array $filters = [])

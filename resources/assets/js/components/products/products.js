@@ -13,7 +13,8 @@ export default {
           'currentModule',
           'products',
           'meta',
-          'isLoading'
+          'isLoading',
+          'editedProductId'
       ]),
       'searchQuery': {
         get () {
@@ -29,6 +30,7 @@ export default {
           'getProducts',
           'updateSearchQuery',
           'setCurrentModule',
+          'setEditedProductId'
       ]),
       textSearch () {
         clearTimeout(this.timer);
@@ -36,6 +38,10 @@ export default {
             this.getProducts()
         }.bind(this), 1000)
       },
+      cancelNewProduct() {
+        this.setEditedProductId(null)
+        this.setCurrentModule('products')
+      }
   },
   mounted() {
     this.getProducts()

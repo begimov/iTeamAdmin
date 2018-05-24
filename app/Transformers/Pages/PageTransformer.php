@@ -8,7 +8,7 @@ use App\Transformers\Products\CategoryTransformer;
 
 class PageTransformer extends \League\Fractal\TransformerAbstract
 {
-    protected $availableIncludes = ['category'];
+    protected $availableIncludes = ['category', 'elements'];
 
     public function transform(Page $page)
     {
@@ -23,5 +23,10 @@ class PageTransformer extends \League\Fractal\TransformerAbstract
     public function includeCategory(Page $page)
     {
         return $this->item($page->category, new CategoryTransformer);
+    }
+
+    public function includeElements(Page $page)
+    {
+        return $this->collection($page->elements, new ElementTransformer);
     }
 }

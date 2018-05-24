@@ -2,7 +2,7 @@ export default {
   props: ['order', 'paymentStates'],
   data () {
     return {
-      //
+      selectedPaymentStateId: this.order.payment_state_id
     }
   },
   methods: {
@@ -15,6 +15,20 @@ export default {
         // Do nothing!
       }
     },
+    editOrder() {
+      this.$emit('editOrder', this.order.id)
+    }
+  },
+  watch: {
+    selectedPaymentStateId: {
+      handler: function(id) {
+        axios.patch(`/webapi/orders/${this.order.id}`, {
+          payment_state_id: id
+        }).then((response) => {
+          //
+        })
+      }
+    }
   },
   computed: {
     //

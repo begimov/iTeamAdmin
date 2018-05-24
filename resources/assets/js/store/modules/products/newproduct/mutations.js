@@ -18,7 +18,7 @@ export default {
         state.params.name = value
     },
     updateBasePrice(state, value) {
-        state.params.basePrice = value
+        state.params.price = value
     },
     updatePriceTagPrice(state, value) {
         state.options.priceTag.price = value
@@ -54,7 +54,7 @@ export default {
                 category: null,
                 name: null,
                 materials: [],
-                basePrice: null,
+                price: null,
                 priceTags: [],
             },
             isLoading: false,
@@ -64,5 +64,19 @@ export default {
         Object.keys(initialState).forEach(key => {
             state[key] = initialState[key]
         })
+    },
+    setProductToEdit(state, payload) {
+        const {name, price, category, materials, priceTags} = payload
+
+        state.params = {
+            name,
+            price,
+            category: category.data,
+            materials: materials.data,
+            priceTags: priceTags.data
+        }
+    },
+    removeMaterial(state, id) {
+        state.params.materials.splice(_.findIndex(state.params.materials, ['id', id]), 1)
     }
 }

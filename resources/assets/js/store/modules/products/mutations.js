@@ -11,5 +11,8 @@ export default {
   },
   setCurrentModule (state, value) {
     state.currentModule = value
-},
+  },
+  setEditedProductId (state, id) {
+    state.editedProductId = id
+  },
 }

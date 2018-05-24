@@ -56,7 +56,6 @@ class OrderController extends Controller
             ->withCriteria([
                 new With(['user', 'paymentType', 'product', 'user.userProfile'])
             ])
-            ->withTrashed()
             ->paginate(5);
 
         $ordersCollection = $orders->getCollection();
@@ -97,7 +96,7 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        $this->orders->store($request->data);
+        $this->orders->store($request->all());
     }
 
     /**
@@ -119,7 +118,13 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = $this->orders->findById($id);
+
+        return fractal()
+            ->item($order)
+            ->parseIncludes(['user', 'paymentType', 'product', 'paymentState'])
+            ->transformWith(new OrderTransformer)
+            ->toArray();
     }
 
     /**
@@ -129,9 +134,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreOrderRequest $request, $id)
     {
-        //
+        $this->orders->update($request->all(), $id);
     }
 
     /**

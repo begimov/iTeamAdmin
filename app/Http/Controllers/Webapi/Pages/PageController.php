@@ -83,7 +83,7 @@ class PageController extends Controller
      */
     public function store(StorePageRequest $request)
     {
-        $page = $this->pages->store($request->all());
+        $page = $this->pages->store($request);
         return response()->json([
             'page' => fractal($page, new PageTransformer)->toArray(),
         ]);
@@ -108,7 +108,13 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page = $this->pages->findById($id);
+
+        return fractal()
+            ->item($page)
+            ->parseIncludes(['category', 'elements', 'elements.block'])
+            ->transformWith(new PageTransformer)
+            ->toArray();
     }
 
     /**
@@ -118,13 +124,9 @@ class PageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePageRequest $request, $id)
     {
-        $page = $this->pages->findById($id);
-
-        $page->update($request->all());
-
-        $page->save();
+        $this->pages->update($request, $id);
     }
 
     /**

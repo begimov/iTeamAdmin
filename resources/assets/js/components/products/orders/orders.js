@@ -22,11 +22,13 @@ export default {
           paymentState: [],
         },
         searchQuery: '',
-      }
+      },
+      editedOrderId: null
     }
   },
   methods: {
     getOrders (page = 1) {
+      this.editedOrderId = null
       this.flags.isLoading = true;
       axios.get('/webapi/orders?page=' + page, {
         params: {
@@ -42,11 +44,21 @@ export default {
       })
     },
 
+    cancelOrder() {
+      this.flags.neworder = false
+      this.editedOrderId = null
+    },
+
     textSearch () {
       clearTimeout(this.timer);
       this.timer = setTimeout(function(){
           this.getOrders(1)
       }.bind(this), 1000)
+    },
+
+    setEditedOrderId (id) {
+      this.editedOrderId = id
+      this.flags.neworder = true
     },
   },
   watch: {
