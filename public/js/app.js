@@ -59298,13 +59298,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   components: {
     vueDropzone: __WEBPACK_IMPORTED_MODULE_0_vue2_dropzone___default.a
   },
-  props: ['parentResourceId', 'parentResourceType', 'maxFiles'],
+  props: ['parentResourceId', 'parentResourceType', 'maxFiles', 'maxFilesize'],
   data: function data() {
     return {
       options: _extends({
         url: '/webapi/files',
         thumbnailWidth: 150,
-        maxFilesize: 0.5,
+        maxFilesize: this.maxFilesize,
         maxFiles: this.maxFiles,
         headers: {
           'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
@@ -64897,7 +64897,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('file-uploader', {
     attrs: {
       "parent-resource-id": _vm.id,
-      "parent-resource-type": "material"
+      "parent-resource-type": "material",
+      "max-filesize": "20"
     }
   })], 1)]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "row"
