@@ -61,9 +61,17 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
 
     protected function updatePriceTags(array $priceTags, Product $product)
     {
-        $product->priceTags()->delete();
+        list($withId, $withoutId) = collect($priceTags)->partition(function ($pt) {
+            return !empty($pt['id']);
+        });
 
-        $this->storePriceTags($priceTags, $product->id);
+        $priceTagsIds = $withId->map(function ($pt) {
+            return $pt['id'];
+        })->all();
+
+        $product->priceTags()->whereNotIn('id', $priceTagsIds)->delete();
+
+        $this->storePriceTags($withoutId->all(), $product->id);
     }
 
     protected function getEntityFields()
