@@ -17,7 +17,6 @@ class CreateResourcesTable extends Migration
             $table->increments('id');
             $table->string('identifier');
             $table->integer('resource_type_id')->nullable()->unsigned();
-            $table->timestamps();
         });
     }
 
