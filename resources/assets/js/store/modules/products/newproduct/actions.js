@@ -59,10 +59,10 @@ export default {
   removeMaterial ({ commit }, id) {
     commit('removeMaterial', id)
   },
-  updateProduct ({ commit, state }, id) {
+  updateProduct ({ commit, dispatch, state }, id) {
     commit('setIsLoading', true)
     api.newproduct.updateProduct(state.params, id).then(res => {
-      commit('setIsLoading', false)
+      dispatch('setProductToEdit', id)
     }).catch(err => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)

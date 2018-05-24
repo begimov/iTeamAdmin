@@ -43761,11 +43761,12 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
   },
   updateProduct: function updateProduct(_ref15, id) {
     var commit = _ref15.commit,
+        dispatch = _ref15.dispatch,
         state = _ref15.state;
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.updateProduct(state.params, id).then(function (res) {
-      commit('setIsLoading', false);
+      dispatch('setProductToEdit', id);
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);
