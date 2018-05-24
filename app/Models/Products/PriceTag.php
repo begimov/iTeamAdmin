@@ -7,6 +7,13 @@ use App\Models\Products\Product;
 
 class PriceTag extends Model
 {
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+    
     protected $fillable = ['name', 'price', 'product_id'];
     
     public function product()
