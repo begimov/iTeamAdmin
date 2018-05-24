@@ -64752,7 +64752,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
   }),
   mounted: function mounted() {
-    // TODO: generate fresh id each time (safe) or use previous unsaved id?
     if (!this.id) {
       this.getMaterialId();
     }

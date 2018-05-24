@@ -46,7 +46,6 @@ export default {
     }
   },
   mounted() {
-    // TODO: generate fresh id each time (safe) or use previous unsaved id?
     if (!this.id) {
       this.getMaterialId()
     }
