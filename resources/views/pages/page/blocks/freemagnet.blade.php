@@ -3,7 +3,8 @@
     <file-uploader 
       v-model="data.files.doc1" 
       parent-resource-type="element"
-      maxFiles="1">
+      maxFiles="1"
+      max-filesize=20>
     </file-uploader>
   </div>
   <div class="col-md-8 col-sm-8">
