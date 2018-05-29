@@ -139,6 +139,11 @@ class OrderController extends Controller
         $this->orders->update($request->all(), $id);
     }
 
+    public function updatePaymentState(Request $request, $id)
+    {
+        $this->orders->update($request->all(), $id);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

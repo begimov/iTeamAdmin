@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     // WebAPI
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
         // Route for Orders.vue component
+        Route::patch('orders/{id}/paymentstate', 'Products\OrderController@updatePaymentState');
         Route::resource('orders', 'Products\OrderController');
 
         // Routes to retrieve user's info
