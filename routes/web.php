@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         Route::resource('materials', 'Products\MaterialController');
 
         // Route for Pages.vue component
+        Route::patch('pages/{id}/status', 'Pages\PageController@updateStatus');
         Route::resource('pages', 'Pages\PageController');
 
         // Route for FileUploader.vue component

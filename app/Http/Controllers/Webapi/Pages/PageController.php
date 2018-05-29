@@ -129,6 +129,11 @@ class PageController extends Controller
         $this->pages->update($request, $id);
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $this->pages->updateStatus($request->all(), $id);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

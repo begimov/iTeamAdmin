@@ -6,4 +6,5 @@ interface PageRepository
 {
   public function store($request);
   public function update($request, $id);
+  public function updateStatus($data, $id);
 }
