@@ -22,7 +22,7 @@ export default {
   watch: {
     selectedPaymentStateId: {
       handler: function(id) {
-        axios.patch(`/webapi/orders/${this.order.id}`, {
+        axios.patch(`/webapi/orders/${this.order.id}/paymentstate`, {
           payment_state_id: id
         }).then((response) => {
           //

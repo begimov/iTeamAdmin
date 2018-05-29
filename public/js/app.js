@@ -63385,7 +63385,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   watch: {
     selectedPaymentStateId: {
       handler: function handler(id) {
-        axios.patch('/webapi/orders/' + this.order.id, {
+        axios.patch('/webapi/orders/' + this.order.id + '/paymentstate', {
           payment_state_id: id
         }).then(function (response) {
           //
@@ -65206,7 +65206,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       switch (status) {
         case 'unpublish':
           if (confirm('\u0412\u044B \u0443\u0432\u0435\u0440\u0435\u043D\u044B, \u0447\u0442\u043E \u0445\u043E\u0442\u0438\u0442\u0435 \u0441\u043D\u044F\u0442\u044C \u0441 \u043F\u0443\u0431\u043B\u0438\u043A\u0430\u0446\u0438\u0438 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0443 \u2116 ' + this.page.id + '?')) {
-            axios.patch('/webapi/pages/' + this.page.id, {
+            axios.patch('/webapi/pages/' + this.page.id + '/status', {
               status: 0
             }).then(function (response) {
               _this.$emit('pageStatusChanged');
@@ -65217,7 +65217,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           break;
 
         case 'publish':
-          axios.patch('/webapi/pages/' + this.page.id, {
+          axios.patch('/webapi/pages/' + this.page.id + '/status', {
             status: 1
           }).then(function (response) {
             _this.$emit('pageStatusChanged');
