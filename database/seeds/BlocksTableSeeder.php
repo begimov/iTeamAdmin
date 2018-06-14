@@ -40,6 +40,10 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'videoreviews',
                 'data' => '{"video1":{"author":"","id":""},"video2":{"author":"","id":""},"video3":{"author":"","id":""},"video4":{"author":"","id":""}}'
             ],
+            [
+                'view' => 'title',
+                'data' => '{"text":""}'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);
