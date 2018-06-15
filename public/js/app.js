@@ -65734,27 +65734,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
 
     watch: {
-        'params.product': function paramsProduct(product) {
-            this.$emit('input', {
-                productId: product ? product.id : null,
-                pricetagId: null,
-                isBundle: this.params.isBundle
-            });
+        'params.product': function paramsProduct() {
+            this.$emit('input', this.prepareEmitedData());
             this.params.priceTag = null;
         },
-        'params.priceTag': function paramsPriceTag(priceTag) {
-            this.$emit('input', {
-                productId: this.params.product.id,
-                pricetagId: priceTag ? priceTag.id : null,
-                isBundle: this.params.isBundle
-            });
+        'params.priceTag': function paramsPriceTag() {
+            this.$emit('input', this.prepareEmitedData());
         },
         'params.isBundle': function paramsIsBundle() {
-            this.$emit('input', {
-                productId: this.params.product ? this.params.product.id : null,
-                pricetagId: this.params.priceTag ? this.params.priceTag.id : null,
-                isBundle: this.params.isBundle
-            });
+            this.$emit('input', this.prepareEmitedData());
         }
     },
     methods: {
@@ -65771,6 +65759,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     _this.params.priceTag = _extends({}, _.find(selectedProduct.priceTags.data, ['id', _this.product.pricetagId]));
                 }
             });
+        },
+        prepareEmitedData: function prepareEmitedData() {
+            return {
+                productId: this.params.product ? this.params.product.id : null,
+                pricetagId: this.params.priceTag ? this.params.priceTag.id : null,
+                isBundle: this.params.isBundle
+            };
         }
     },
     mounted: function mounted() {
