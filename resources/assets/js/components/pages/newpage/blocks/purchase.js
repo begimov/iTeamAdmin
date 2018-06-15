@@ -19,16 +19,25 @@ export default {
         'params.product': function (product) {
             this.$emit('input', {
                 productId: product ? product.id : null,
-                pricetagId: null
+                pricetagId: null,
+                isBundle: this.params.isBundle
             })
-            // this.params.priceTag = null;
+            this.params.priceTag = null;
         },
         'params.priceTag': function (priceTag) {
             this.$emit('input', {
                 productId: this.params.product.id,
-                pricetagId: priceTag ? priceTag.id : null
+                pricetagId: priceTag ? priceTag.id : null,
+                isBundle: this.params.isBundle
             })
-        }
+        },
+        'params.isBundle': function () {
+            this.$emit('input', {
+                productId: this.params.product ? this.params.product.id : null,
+                pricetagId: this.params.priceTag ? this.params.priceTag.id : null,
+                isBundle: this.params.isBundle
+            })
+        },
     },
     methods: {
         getProducts() {
