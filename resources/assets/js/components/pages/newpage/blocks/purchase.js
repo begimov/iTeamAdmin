@@ -10,7 +10,8 @@ export default {
               },
             params: {
                 product: null,
-                priceTag: null
+                priceTag: null,
+                isBundle: false
             },
         }
     },
