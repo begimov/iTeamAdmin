@@ -11,9 +11,13 @@
                 track-by="id">
                 <span slot="noResult">Продукт не найден</span>
             </multiselect>
+            <div class="form-check" style="margin:10px 0;">
+                <input type="checkbox" id="isBundleCheckbox" v-model="params.isBundle" class="form-check-input">
+                <label for="isBundleCheckbox" class="form-check-label">Возможность купить несколько штук</label>
+            </div>
         </div>
         <div class="col-md-6">
-            <template v-if="params.product">
+            <template v-if="params.product && params.product.priceTags.data.length">
                 <multiselect v-model="params.priceTag"
                     :options="params.product.priceTags.data"
                     select-label=""

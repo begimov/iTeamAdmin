@@ -65727,24 +65727,22 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             },
             params: {
                 product: null,
-                priceTag: null
+                priceTag: null,
+                isBundle: false
             }
         };
     },
 
     watch: {
-        'params.product': function paramsProduct(product) {
-            this.$emit('input', {
-                productId: product ? product.id : null,
-                pricetagId: null
-            });
-            // this.params.priceTag = null;
+        'params.product': function paramsProduct() {
+            this.$emit('input', this.prepareEmitedData());
+            this.params.priceTag = null;
         },
-        'params.priceTag': function paramsPriceTag(priceTag) {
-            this.$emit('input', {
-                productId: this.params.product.id,
-                pricetagId: priceTag ? priceTag.id : null
-            });
+        'params.priceTag': function paramsPriceTag() {
+            this.$emit('input', this.prepareEmitedData());
+        },
+        'params.isBundle': function paramsIsBundle() {
+            this.$emit('input', this.prepareEmitedData());
         }
     },
     methods: {
@@ -65761,6 +65759,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     _this.params.priceTag = _extends({}, _.find(selectedProduct.priceTags.data, ['id', _this.product.pricetagId]));
                 }
             });
+        },
+        prepareEmitedData: function prepareEmitedData() {
+            return {
+                productId: this.params.product ? this.params.product.id : null,
+                pricetagId: this.params.priceTag ? this.params.priceTag.id : null,
+                isBundle: this.params.isBundle
+            };
         }
     },
     mounted: function mounted() {
@@ -65796,9 +65801,52 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("Продукт не найден")])]), _vm._v(" "), _c('div', {
+    staticClass: "form-check",
+    staticStyle: {
+      "margin": "10px 0"
+    }
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.params.isBundle),
+      expression: "params.isBundle"
+    }],
+    staticClass: "form-check-input",
+    attrs: {
+      "type": "checkbox",
+      "id": "isBundleCheckbox"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.params.isBundle) ? _vm._i(_vm.params.isBundle, null) > -1 : (_vm.params.isBundle)
+    },
+    on: {
+      "__c": function($event) {
+        var $$a = _vm.params.isBundle,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.params.isBundle = $$a.concat($$v))
+          } else {
+            $$i > -1 && (_vm.params.isBundle = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.params.isBundle = $$c
+        }
+      }
+    }
+  }), _vm._v(" "), _c('label', {
+    staticClass: "form-check-label",
+    attrs: {
+      "for": "isBundleCheckbox"
+    }
+  }, [_vm._v("Возможность купить несколько штук")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
-  }, [(_vm.params.product) ? [_c('multiselect', {
+  }, [(_vm.params.product && _vm.params.product.priceTags.data.length) ? [_c('multiselect', {
     attrs: {
       "options": _vm.params.product.priceTags.data,
       "select-label": "",

@@ -10,24 +10,22 @@ export default {
               },
             params: {
                 product: null,
-                priceTag: null
+                priceTag: null,
+                isBundle: false
             },
         }
     },
     watch: {
-        'params.product': function (product) {
-            this.$emit('input', {
-                productId: product ? product.id : null,
-                pricetagId: null
-            })
-            // this.params.priceTag = null;
+        'params.product': function () {
+            this.$emit('input', this.prepareEmitedData())
+            this.params.priceTag = null;
         },
-        'params.priceTag': function (priceTag) {
-            this.$emit('input', {
-                productId: this.params.product.id,
-                pricetagId: priceTag ? priceTag.id : null
-            })
-        }
+        'params.priceTag': function () {
+            this.$emit('input', this.prepareEmitedData())
+        },
+        'params.isBundle': function () {
+            this.$emit('input', this.prepareEmitedData())
+        },
     },
     methods: {
         getProducts() {
@@ -43,6 +41,13 @@ export default {
                     }
                 }
             })
+        },
+        prepareEmitedData() {
+            return {
+                productId: this.params.product ? this.params.product.id : null,
+                pricetagId: this.params.priceTag ? this.params.priceTag.id : null,
+                isBundle: this.params.isBundle
+            }
         }
     },
     mounted() {
