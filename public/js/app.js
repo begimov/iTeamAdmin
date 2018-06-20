@@ -58567,7 +58567,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/base/Paginator.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/base/Paginator.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Paginator.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -58713,7 +58713,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/base/Search.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/base/Search.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Search.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -58817,7 +58817,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/base/TypeaheadSearch.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/base/TypeaheadSearch.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TypeaheadSearch.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -58940,7 +58940,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/base/TypeaheadSearch/ItemTemplate.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/base/TypeaheadSearch/ItemTemplate.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ItemTemplate.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -59123,7 +59123,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/base/OrderBy.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/base/OrderBy.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] OrderBy.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -59257,7 +59257,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/base/FileUploader.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/base/FileUploader.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] FileUploader.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -62966,7 +62966,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/orders/Orders.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/products/orders/Orders.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Orders.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -63329,7 +63329,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/orders/Order.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/products/orders/Order.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Order.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -63523,7 +63523,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/neworder/NewOrder.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/products/neworder/NewOrder.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NewOrder.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -63890,7 +63890,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/Products.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/products/Products.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Products.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -64108,7 +64108,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/Product.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/products/Product.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Product.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -64232,7 +64232,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/newproduct/NewProduct.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/products/newproduct/NewProduct.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NewProduct.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -64690,7 +64690,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/products/newmaterial/NewMaterial.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/products/newmaterial/NewMaterial.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NewMaterial.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -64955,7 +64955,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/pages/Pages.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/pages/Pages.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Pages.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -65165,7 +65165,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/pages/Page.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/pages/Page.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Page.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -65339,7 +65339,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/pages/newpage/NewPage.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/pages/newpage/NewPage.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] NewPage.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -65682,7 +65682,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/pages/newpage/blocks/Purchase.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/pages/newpage/blocks/Purchase.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Purchase.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -65756,7 +65756,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     var selectedProduct = _.find(_this.options.products, ['id', _this.product.productId]);
                     _this.params.product = _extends({}, selectedProduct);
 
-                    _this.params.priceTag = _extends({}, _.find(selectedProduct.priceTags.data, ['id', _this.product.pricetagId]));
+                    var selectedPriceTag = _.find(selectedProduct.priceTags.data, ['id', _this.product.pricetagId]);
+                    _this.params.priceTag = selectedPriceTag ? _extends({}, selectedPriceTag) : null;
                 }
             });
         },
@@ -65892,7 +65893,7 @@ var Component = __webpack_require__(0)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/max/Desktop/iTeamAdmin/resources/assets/js/components/pages/newpage/blocks/MpStages.vue"
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/pages/newpage/blocks/MpStages.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] MpStages.vue: functional components are not supported with templates, they should use render functions.")}
 
