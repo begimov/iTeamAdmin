@@ -44432,8 +44432,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(5);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -44452,7 +44450,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
               template: '<div>' + block.template + '<div class="row">\n                      <div class="col-md-12 text-right">\n                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">\u0432\u0432\u0435\u0440\u0445</a>\n                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">\u0432\u043D\u0438\u0437</a>\n                        <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a>\n                        <hr>\n                      </div>\n                    </div>\n                    </div>',
               data: function data() {
                 return {
-                  data: _extends({}, block.data),
+                  data: _.cloneDeep(block.data),
                   meta: { blockId: block.id }
                 };
               },
