@@ -36,9 +36,8 @@ export default {
                     const selectedProduct = _.find(this.options.products, ['id', this.product.productId])
                     this.params.product = { ...selectedProduct }
 
-                    this.params.priceTag = {
-                        ..._.find(selectedProduct.priceTags.data, ['id', this.product.pricetagId])
-                    }
+                    const selectedPriceTag = _.find(selectedProduct.priceTags.data, ['id', this.product.pricetagId])
+                    this.params.priceTag = (selectedPriceTag) ? {...selectedPriceTag} : null
                 }
             })
         },
