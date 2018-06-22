@@ -24,7 +24,7 @@ export default {
                     </div>`,
               data () {
                 return {
-                  data: { ...block.data }, 
+                  data: _.cloneDeep(block.data), 
                   meta: { blockId: block.id }
                 }
               },
