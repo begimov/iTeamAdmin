@@ -12,8 +12,8 @@
                 <span slot="noResult">Продукт не найден</span>
             </multiselect>
             <div class="form-check" style="margin:10px 0;">
-                <input type="checkbox" id="isBundleCheckbox" v-model="params.isBundle" class="form-check-input">
-                <label for="isBundleCheckbox" class="form-check-label">Возможность купить несколько штук</label>
+                <input type="checkbox" v-model="params.isBundle" class="form-check-input">
+                <label class="form-check-label">Возможность купить несколько штук</label>
             </div>
         </div>
         <div class="col-md-6">
