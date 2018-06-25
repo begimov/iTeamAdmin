@@ -18,7 +18,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
                 'view' => 'paragraph',
-                'data' => '{"text":""}'
+                'data' => '{"text":"","isCard":false}'
             ],
             [
                 'view' => 'purchase',
