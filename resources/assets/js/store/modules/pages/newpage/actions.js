@@ -86,6 +86,7 @@ export default {
     api.newpage.savePage(state.page, elements).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
+      commit('pages/setCurrentModule', 'pages', { root: true })
     }).catch(err => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)

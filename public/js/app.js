@@ -44530,6 +44530,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.savePage(state.page, elements).then(function (res) {
       commit('resetState');
       commit('setIsLoading', false);
+      commit('pages/setCurrentModule', 'pages', { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);
