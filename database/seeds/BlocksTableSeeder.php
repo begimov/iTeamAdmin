@@ -42,7 +42,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
                 'view' => 'title',
-                'data' => '{"text":""}'
+                'data' => '{"text":"","subtext":""}'
             ],
             [
                 'view' => 'subtitle',
