@@ -14,11 +14,11 @@ class BlocksTableSeeder extends Seeder
       $blocks = [
             [
                 'view' => 'imgparagraph',
-                'data' => '{"files":{"img1":""},"text":""}'
+                'data' => '{"files":{"img1":""},"text":"","isCard":false,"reversed":false}'
             ],
             [
                 'view' => 'paragraph',
-                'data' => '{"text":""}'
+                'data' => '{"text":"","isCard":false}'
             ],
             [
                 'view' => 'purchase',

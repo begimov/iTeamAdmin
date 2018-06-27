@@ -41,6 +41,7 @@ export default {
     api.newproduct.saveProduct(state.params).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
+      commit('products/setCurrentModule', 'products', { root: true })
     }).catch(err => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)

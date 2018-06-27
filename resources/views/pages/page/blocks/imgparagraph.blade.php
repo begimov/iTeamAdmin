@@ -9,5 +9,15 @@
   </div>
   <div class="col-md-8 col-sm-8">
     <quill-editor v-model="data.text"></quill-editor>
+    
+    <div class="form-check" style="margin:10px 0;">
+      <input type="checkbox" v-model="data.isCard" class="form-check-input">
+      <label class="form-check-label">Отображать текст на карточке</label>
+    </div>
+
+    <div class="form-check" style="margin:10px 0;">
+      <input type="checkbox" v-model="data.reversed" class="form-check-input">
+      <label class="form-check-label">Изображение справа</label>
+    </div>
   </div>
 </div>

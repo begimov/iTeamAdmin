@@ -43735,6 +43735,7 @@ __WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.saveProduct(state.params).then(function (res) {
       commit('resetState');
       commit('setIsLoading', false);
+      commit('products/setCurrentModule', 'products', { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);
@@ -44530,6 +44531,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.savePage(state.page, elements).then(function (res) {
       commit('resetState');
       commit('setIsLoading', false);
+      commit('pages/setCurrentModule', 'pages', { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);
@@ -65814,8 +65816,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-check-input",
     attrs: {
-      "type": "checkbox",
-      "id": "isBundleCheckbox"
+      "type": "checkbox"
     },
     domProps: {
       "checked": Array.isArray(_vm.params.isBundle) ? _vm._i(_vm.params.isBundle, null) > -1 : (_vm.params.isBundle)
@@ -65839,10 +65840,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _vm._v(" "), _c('label', {
-    staticClass: "form-check-label",
-    attrs: {
-      "for": "isBundleCheckbox"
-    }
+    staticClass: "form-check-label"
   }, [_vm._v("Возможность купить несколько штук")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [(_vm.params.product && _vm.params.product.priceTags.data.length) ? [_c('multiselect', {
