@@ -38,6 +38,8 @@ export default {
 
                     const selectedPriceTag = _.find(selectedProduct.priceTags.data, ['id', this.product.pricetagId])
                     this.params.priceTag = (selectedPriceTag) ? {...selectedPriceTag} : null
+
+                    this.params.isBundle = this.product.isBundle
                 }
             })
         },
