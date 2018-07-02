@@ -65758,6 +65758,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
                     var selectedPriceTag = _.find(selectedProduct.priceTags.data, ['id', _this.product.pricetagId]);
                     _this.params.priceTag = selectedPriceTag ? _extends({}, selectedPriceTag) : null;
+
+                    _this.params.isBundle = _this.product.isBundle;
                 }
             });
         },
