@@ -48,6 +48,10 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'subtitle',
                 'data' => '{"text":""}'
             ],
+            [
+                'view' => 'textreviews',
+                'data' => '{"reviews":""}'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);
