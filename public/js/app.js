@@ -12579,7 +12579,7 @@ module.exports = Vue$3;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(18);
-module.exports = __webpack_require__(160);
+module.exports = __webpack_require__(163);
 
 
 /***/ }),
@@ -12655,6 +12655,7 @@ Vue.component('new-page', __webpack_require__(149));
 // Special blocks
 Vue.component('purchase', __webpack_require__(154));
 Vue.component('mp-stages', __webpack_require__(157));
+Vue.component('text-reviews', __webpack_require__(160));
 
 var app = new Vue({
     el: '#app',
@@ -66055,6 +66056,185 @@ if (false) {
 
 /***/ }),
 /* 160 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(161),
+  /* template */
+  __webpack_require__(162),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/pages/newpage/blocks/TextReviews.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] TextReviews.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0d4414cd", Component.options)
+  } else {
+    hotAPI.reload("data-v-0d4414cd", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 161 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['reviews'],
+    data: function data() {
+        return {
+            params: {
+                reviews: []
+            }
+        };
+    },
+
+    watch: {
+        'params.reviews': {
+            handler: function handler(reviews) {
+                this.$emit('input', reviews);
+            },
+            deep: true
+        },
+        reviews: {
+            handler: function handler(reviews) {
+                if (!this.params.reviews.length) {
+                    this.params.reviews = reviews;
+                }
+            }
+        }
+    },
+    methods: {
+        addReview: function addReview() {
+            this.params.reviews.push({
+                name: '',
+                text: ''
+            });
+        },
+        removeReview: function removeReview() {
+            console.log('Removed');
+        }
+    },
+    mounted: function mounted() {
+        //
+    }
+});
+
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_vm._l((_vm.params.reviews), function(review, index) {
+    return _c('div', {
+      key: index,
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-12"
+    }, [_c('div', {
+      staticClass: "panel panel-primary"
+    }, [_c('div', {
+      staticClass: "panel-heading"
+    }, [_vm._v(_vm._s('Отзыв ' + (index + 1)))]), _vm._v(" "), _c('div', {
+      staticClass: "panel-body"
+    }, [_c('div', {
+      staticClass: "form-group"
+    }, [_c('label', [_vm._v("Имя")]), _vm._v(" "), _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (review.name),
+        expression: "review.name"
+      }],
+      staticClass: "form-control",
+      attrs: {
+        "type": "text"
+      },
+      domProps: {
+        "value": (review.name)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          review.name = $event.target.value
+        }
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "form-group"
+    }, [_c('label', [_vm._v("Отзыв")]), _vm._v(" "), _c('quill-editor', {
+      model: {
+        value: (review.text),
+        callback: function($$v) {
+          review.text = $$v
+        },
+        expression: "review.text"
+      }
+    })], 1)]), _vm._v(" "), _c('div', {
+      staticClass: "panel-footer"
+    }, [_c('a', {
+      staticClass: "btn btn-default",
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeReview($event)
+        }
+      }
+    }, [_vm._v("Удалить отзыв")])])])])])
+  }), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.addReview($event)
+      }
+    }
+  }, [_vm._v("Добавить отзыв")])])])], 2)])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0d4414cd", module.exports)
+  }
+}
+
+/***/ }),
+/* 163 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
