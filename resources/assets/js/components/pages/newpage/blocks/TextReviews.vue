@@ -8,7 +8,12 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-sm-2">
-                                    //
+                                     <file-uploader 
+                                        v-model="review.avatar" 
+                                        parent-resource-type="element"
+                                        maxFiles="1"
+                                        max-filesize=1>
+                                    </file-uploader>
                                 </div>
                                 <div class="col-sm-10">
                                     <div class="form-group">

@@ -26,7 +26,8 @@ export default {
         addReview() {
             this.params.reviews.push({
                 name: '',
-                text: ''
+                text: '',
+                avatar: ''
             });
         },
         removeReview() {

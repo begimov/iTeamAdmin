@@ -66129,7 +66129,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addReview: function addReview() {
             this.params.reviews.push({
                 name: '',
-                text: ''
+                text: '',
+                avatar: ''
             });
         },
         removeReview: function removeReview() {
@@ -66166,7 +66167,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "row"
     }, [_c('div', {
       staticClass: "col-sm-2"
-    }, [_vm._v("\n                                //\n                            ")]), _vm._v(" "), _c('div', {
+    }, [_c('file-uploader', {
+      attrs: {
+        "parent-resource-type": "element",
+        "maxFiles": "1",
+        "max-filesize": "1"
+      },
+      model: {
+        value: (review.avatar),
+        callback: function($$v) {
+          review.avatar = $$v
+        },
+        expression: "review.avatar"
+      }
+    })], 1), _vm._v(" "), _c('div', {
       staticClass: "col-sm-10"
     }, [_c('div', {
       staticClass: "form-group"
