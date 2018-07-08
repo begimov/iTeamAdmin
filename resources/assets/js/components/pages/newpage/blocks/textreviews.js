@@ -27,7 +27,9 @@ export default {
             this.params.reviews.push({
                 name: '',
                 text: '',
-                avatar: ''
+                files: {
+                    avatar: ''
+                }
             });
         },
         removeReview() {

@@ -9,7 +9,7 @@
                             <div class="row">
                                 <div class="col-sm-2">
                                      <file-uploader 
-                                        v-model="review.avatar" 
+                                        v-model="review.files.avatar" 
                                         parent-resource-type="element"
                                         maxFiles="1"
                                         max-filesize=1>

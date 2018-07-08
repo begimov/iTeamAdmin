@@ -66130,7 +66130,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.params.reviews.push({
                 name: '',
                 text: '',
-                avatar: ''
+                files: {
+                    avatar: ''
+                }
             });
         },
         removeReview: function removeReview() {
@@ -66174,11 +66176,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "max-filesize": "1"
       },
       model: {
-        value: (review.avatar),
+        value: (review.files.avatar),
         callback: function($$v) {
-          review.avatar = $$v
+          review.files.avatar = $$v
         },
-        expression: "review.avatar"
+        expression: "review.files.avatar"
       }
     })], 1), _vm._v(" "), _c('div', {
       staticClass: "col-sm-10"
