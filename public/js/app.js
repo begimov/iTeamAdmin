@@ -66343,7 +66343,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         getProducts: function getProducts() {
             var _this = this;
 
-            axios.get('/webapi/products/all').then(function (res) {
+            axios.get('/webapi/products/free').then(function (res) {
                 _this.options.products = res.data.data;
 
                 if (!_this.params.product && _this.product) {

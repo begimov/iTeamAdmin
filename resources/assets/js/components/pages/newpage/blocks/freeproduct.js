@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         getProducts() {
-            axios.get('/webapi/products/all').then((res) => {
+            axios.get('/webapi/products/free').then((res) => {
                 this.options.products = res.data.data
 
                 if (!this.params.product && this.product) {
