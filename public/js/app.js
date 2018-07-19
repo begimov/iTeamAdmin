@@ -12656,6 +12656,7 @@ Vue.component('new-page', __webpack_require__(149));
 Vue.component('purchase', __webpack_require__(154));
 Vue.component('mp-stages', __webpack_require__(157));
 Vue.component('text-reviews', __webpack_require__(160));
+Vue.component('free-product', __webpack_require__(170));
 
 var app = new Vue({
     el: '#app',
@@ -66260,6 +66261,147 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(171),
+  /* template */
+  __webpack_require__(172),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/pages/newpage/blocks/FreeProduct.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] FreeProduct.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6d3ab5fc", Component.options)
+  } else {
+    hotAPI.reload("data-v-6d3ab5fc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 171 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_multiselect__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['product'],
+    components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
+    data: function data() {
+        return {
+            options: {
+                products: []
+            },
+            params: {
+                product: null
+            }
+        };
+    },
+
+    watch: {
+        'params.product': function paramsProduct() {
+            this.$emit('input', this.prepareEmitedData());
+        }
+    },
+    methods: {
+        getProducts: function getProducts() {
+            var _this = this;
+
+            axios.get('/webapi/products/all').then(function (res) {
+                _this.options.products = res.data.data;
+
+                if (!_this.params.product && _this.product) {
+                    var selectedProduct = _.find(_this.options.products, ['id', _this.product.productId]);
+                    _this.params.product = _extends({}, selectedProduct);
+                }
+            });
+        },
+        prepareEmitedData: function prepareEmitedData() {
+            return {
+                productId: this.params.product ? this.params.product.id : null
+            };
+        }
+    },
+    mounted: function mounted() {
+        this.getProducts();
+    }
+});
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('multiselect', {
+    attrs: {
+      "options": _vm.options.products,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите продукт",
+      "label": "name",
+      "track-by": "id"
+    },
+    model: {
+      value: (_vm.params.product),
+      callback: function($$v) {
+        _vm.params.product = $$v
+      },
+      expression: "params.product"
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_vm._v("\n        //\n    ")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6d3ab5fc", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
