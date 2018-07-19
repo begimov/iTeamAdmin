@@ -66,7 +66,11 @@ class ProductController extends Controller
 
     public function all(Request $request)
     {
-        $products = $this->products->get();
+        $products = $this->products
+            ->withCriteria([
+                new With(['priceTags'])
+            ])
+            ->get();
 
         return fractal()
             ->collection($products)
