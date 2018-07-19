@@ -14,7 +14,10 @@ use App\Repositories\Contracts\Products\{
     MaterialRepository
 };
 
-use App\Repositories\Eloquent\Criteria\With;
+use App\Repositories\Eloquent\Criteria\{
+    With,
+    Where
+};
 
 use App\Transformers\Products\{
     ProductTransformer,
@@ -75,6 +78,20 @@ class ProductController extends Controller
         return fractal()
             ->collection($products)
             ->parseIncludes(['priceTags'])
+            ->transformWith(new ProductTransformer)
+            ->toArray();
+    }
+
+    public function getFreeProducts(Request $request)
+    {
+        $products = $this->products
+            ->withCriteria([
+                new Where('price', 0)
+            ])
+            ->get();
+
+        return fractal()
+            ->collection($products)
             ->transformWith(new ProductTransformer)
             ->toArray();
     }
