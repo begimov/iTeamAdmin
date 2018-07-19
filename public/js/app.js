@@ -66317,14 +66317,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 products: []
             },
             params: {
-                product: null
+                product: null,
+                campaignToken: null
             }
         };
     },
 
     watch: {
-        'params.product': function paramsProduct() {
-            this.$emit('input', this.prepareEmitedData());
+        'params': {
+            'handler': function handler() {
+                this.$emit('input', this.prepareEmitedData());
+            },
+            deep: true
         }
     },
     methods: {
@@ -66337,12 +66341,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 if (!_this.params.product && _this.product) {
                     var selectedProduct = _.find(_this.options.products, ['id', _this.product.productId]);
                     _this.params.product = _extends({}, selectedProduct);
+
+                    _this.params.campaignToken = _this.product.campaignToken;
                 }
             });
         },
         prepareEmitedData: function prepareEmitedData() {
             return {
-                productId: this.params.product ? this.params.product.id : null
+                productId: this.params.product ? this.params.product.id : null,
+                campaignToken: this.params.campaignToken
             };
         }
     },
@@ -66379,20 +66386,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     slot: "noResult"
-  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _vm._m(0)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_vm._v("Продукт не найден")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.params.campaignToken),
+      expression: "params.campaignToken"
+    }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
       "placeholder": "Токен GR кампании..."
+    },
+    domProps: {
+      "value": (_vm.params.campaignToken)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.params.campaignToken = $event.target.value
+      }
     }
-  })])])
-}]}
+  })])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Токен GR кампании...">
+                <input type="text" class="form-control" placeholder="Токен GR кампании..." v-model="params.campaignToken">
             </div>
         </div>
     </div>

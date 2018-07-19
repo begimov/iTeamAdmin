@@ -9,13 +9,17 @@ export default {
                 products: [],
               },
             params: {
-                product: null
+                product: null,
+                campaignToken: null
             },
         }
     },
     watch: {
-        'params.product': function () {
-            this.$emit('input', this.prepareEmitedData())
+        'params': {
+            'handler': function () {
+                this.$emit('input', this.prepareEmitedData())
+            },
+            deep: true
         },
     },
     methods: {
@@ -26,12 +30,15 @@ export default {
                 if (!this.params.product && this.product) {
                     const selectedProduct = _.find(this.options.products, ['id', this.product.productId])
                     this.params.product = { ...selectedProduct }
+
+                    this.params.campaignToken = this.product.campaignToken
                 }
             })
         },
         prepareEmitedData() {
             return {
-                productId: this.params.product ? this.params.product.id : null
+                productId: this.params.product ? this.params.product.id : null,
+                campaignToken: this.params.campaignToken
             }
         }
     },
