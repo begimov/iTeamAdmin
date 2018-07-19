@@ -56,6 +56,10 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'fbcomments',
                 'data' => '{}'
             ],
+            [
+                'view' => 'freeproduct',
+                'data' => '{"form":""}'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);
