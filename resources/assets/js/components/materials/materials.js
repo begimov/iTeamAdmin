@@ -6,6 +6,7 @@ export default {
       'currentModule',
       'isLoading',
       'materials',
+      'meta',
     ]),
   },
   methods: {

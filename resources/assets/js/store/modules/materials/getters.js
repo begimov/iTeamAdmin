@@ -8,9 +8,9 @@ export default {
   materials (state) {
     return state.materials
   },
-  // meta (state) {
-  //   return state.meta
-  // },
+  meta (state) {
+    return state.meta
+  },
   // pagination (state) {
   //   return state.meta ? state.meta.pagination : null
   // },
