@@ -21,8 +21,6 @@ class HomeController extends Controller
     public function __construct(PaymentTypeRepository $paymentTypes,
         PaymentStateRepository $paymentStates)
     {
-        $this->middleware('auth');
-
         $this->paymentTypes = $paymentTypes;
         $this->paymentStates = $paymentStates;
     }
