@@ -43529,20 +43529,23 @@ module.exports = function spread(callback) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modules_products__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__modules_pages__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vuex__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_materials__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(3);
 
 
 
 
 
-__WEBPACK_IMPORTED_MODULE_2_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */]);
 
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_3_vuex__["a" /* default */].Store({
+__WEBPACK_IMPORTED_MODULE_3_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */].Store({
   modules: {
     products: __WEBPACK_IMPORTED_MODULE_0__modules_products__["a" /* default */],
-    pages: __WEBPACK_IMPORTED_MODULE_1__modules_pages__["a" /* default */]
+    pages: __WEBPACK_IMPORTED_MODULE_1__modules_pages__["a" /* default */],
+    materials: __WEBPACK_IMPORTED_MODULE_2__modules_materials__["a" /* default */]
   }
 }));
 
@@ -66580,6 +66583,131 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getters__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(181);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations__ = __webpack_require__(182);
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  namespaced: true,
+  state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
+  getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
+  actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
+});
+
+/***/ }),
+/* 179 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // currentModule: 'pages',
+  // pages: [],
+  // meta: null,
+  // isLoading: false,
+  // params: {
+  //   searchQuery: '',
+  // },
+  // editedPageId: null
+});
+
+/***/ }),
+/* 180 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // currentModule (state) {
+  //   return state.currentModule
+  // },
+  // pages (state) {
+  //   return state.pages
+  // },
+  // meta (state) {
+  //   return state.meta
+  // },
+  // pagination (state) {
+  //   return state.meta ? state.meta.pagination : null
+  // },
+  // isLoading (state) {
+  //   return state.isLoading
+  // },
+  // getSearchQuery (state) {
+  //   return state.params.searchQuery
+  // },
+  // editedPageId (state) {
+  //   return state.editedPageId
+  // },
+});
+
+/***/ }),
+/* 181 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(6);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // getPages ({dispatch, commit, state}, page = 1) {
+  //   commit('setIsLoading', true)
+  //   api.pages.getPages(page, state.params).then(res => {
+  //     commit('setPages', res.data)
+  //     commit('setIsLoading', false)
+  //   })
+  // },
+  // updateSearchQuery ({ commit }, value) {
+  //   commit('updateSearchQuery', value)
+  // },
+  // setCurrentModule ({ commit }, value) {
+  //   commit('setCurrentModule', value)
+  // },
+  // setEditedPageId ({ commit }, id) {
+  //   commit('setEditedPageId', id)
+  //   commit('setCurrentModule', 'newpage')
+  // },
+});
+
+/***/ }),
+/* 182 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // setPages (state, pages) {
+  //   state.pages = pages.data
+  //   state.meta = pages.meta
+  // },
+  // setIsLoading (state, flag) {
+  //   state.isLoading = flag
+  // },
+  // updateSearchQuery (state, value) {
+  //     state.params.searchQuery = value
+  // },
+  // setCurrentModule (state, value) {
+  //     state.currentModule = value
+  // },
+  // setEditedPageId (state, id) {
+  //   state.editedPageId = id
+  // },
+});
 
 /***/ })
 /******/ ]);
