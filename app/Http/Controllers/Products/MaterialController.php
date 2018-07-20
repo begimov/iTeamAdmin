@@ -24,7 +24,6 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return 1;
-        // return view('products.index');
+        return view('materials.index');
     }
 }
