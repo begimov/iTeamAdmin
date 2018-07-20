@@ -1,14 +1,15 @@
 <template>
   <div>
-    <!-- <new-page v-if="currentModule === 'newpage'" v-on:cancelNewPage="cancelNewPage" :editedPageId="editedPageId"></new-page> -->
-    <!-- <div class="container" v-if="currentModule === 'pages'"> -->
-    <div class="container">
+    <new-material v-if="currentModule === 'newmaterial'" 
+      v-on:cancelNewPage="cancelNewPage"
+      :editedPageId="editedPageId"></new-material>
+    <div class="container" v-if="currentModule === 'materials'">
       <div class="row">
         <div class="col-md-12">
           <!-- <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div> -->
           <div class="panel panel-default">
             <div class="panel-heading">
-              <a href="#" @click.prevent="setCurrentModule('newpage')" class="btn btn-primary">Создать материал</a>
+              <!-- <a href="#" @click.prevent="setCurrentModule('newpage')" class="btn btn-primary">Создать материал</a> -->
             </div>
 
             <div class="panel-body">

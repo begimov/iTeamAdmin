@@ -1,5 +1,5 @@
 export default {
-  // currentModule: 'pages',
+  currentModule: 'materials',
   // pages: [],
   // meta: null,
   // isLoading: false,

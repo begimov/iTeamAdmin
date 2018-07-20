@@ -64770,12 +64770,12 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: {
-    //
-  },
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule'])),
   methods: {
     //
   },
@@ -64789,9 +64789,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _c('div', [(_vm.currentModule === 'newmaterial') ? _c('new-material', {
+    attrs: {
+      "editedPageId": _vm.editedPageId
+    },
+    on: {
+      "cancelNewPage": _vm.cancelNewPage
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'materials') ? _c('div', {
     staticClass: "container"
-  }, [_c('div', {
+  }, [_vm._m(0)]) : _vm._e()], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
@@ -64799,20 +64808,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [_c('a', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.setCurrentModule('newpage')
-      }
-    }
-  }, [_vm._v("Создать материал")])]), _vm._v(" "), _vm._m(0)])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row panel-subheading"
@@ -64822,7 +64818,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])])
+  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -66618,7 +66614,7 @@ if (false) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // currentModule: 'pages',
+  currentModule: 'materials'
   // pages: [],
   // meta: null,
   // isLoading: false,
@@ -66634,27 +66630,9 @@ if (false) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // currentModule (state) {
-  //   return state.currentModule
-  // },
-  // pages (state) {
-  //   return state.pages
-  // },
-  // meta (state) {
-  //   return state.meta
-  // },
-  // pagination (state) {
-  //   return state.meta ? state.meta.pagination : null
-  // },
-  // isLoading (state) {
-  //   return state.isLoading
-  // },
-  // getSearchQuery (state) {
-  //   return state.params.searchQuery
-  // },
-  // editedPageId (state) {
-  //   return state.editedPageId
-  // },
+  currentModule: function currentModule(state) {
+    return state.currentModule;
+  }
 });
 
 /***/ }),
