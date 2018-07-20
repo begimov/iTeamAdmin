@@ -50,6 +50,7 @@ Vue.component('new-order', require('./components/products/neworder/NewOrder.vue'
 Vue.component('products', require('./components/products/Products.vue'));
 Vue.component('product', require('./components/products/Product.vue'));
 Vue.component('new-product', require('./components/products/newproduct/NewProduct.vue'));
+Vue.component('product-materials', require('./components/materials/Materials.vue'));
 Vue.component('new-material', require('./components/products/newmaterial/NewMaterial.vue'));
 
 // Pages
