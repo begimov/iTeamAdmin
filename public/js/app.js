@@ -64807,13 +64807,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
     }
-  }), _vm._v(" "), _vm._m(0)])])]) : _vm._e()], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "panel-footer"
+  }, [(_vm.meta && _vm.materials.length) ? _c('paginator', {
+    attrs: {
+      "for": "materials",
+      "pagination": _vm.meta.pagination
+    },
+    on: {
+      "materials_pageChanged": _vm.getMaterials
+    }
+  }) : _vm._e()], 1)])])])]) : _vm._e()], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row panel-subheading"
@@ -64823,7 +64833,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])])])
+  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

@@ -43,9 +43,9 @@
 
             </div>
 
-            <!-- <div class="panel-footer">
-              <paginator v-if="meta && pages.length" for="pages" :pagination="meta.pagination" v-on:pages_pageChanged="getPages"></paginator>
-            </div> -->
+            <div class="panel-footer">
+              <paginator v-if="meta && materials.length" for="materials" :pagination="meta.pagination" v-on:materials_pageChanged="getMaterials"></paginator>
+            </div>
 
           </div>
         </div>
