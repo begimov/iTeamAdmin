@@ -66657,10 +66657,11 @@ if (false) {
         state = _ref.state;
     var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].materials.getMaterials(page, state.params).then(function (res) {
+      console.log(res);
       // commit('setPages', res.data)
-      // commit('setIsLoading', false)
+      commit('setIsLoading', false);
     });
   }
 });
@@ -66675,18 +66676,9 @@ if (false) {
   //   state.pages = pages.data
   //   state.meta = pages.meta
   // },
-  // setIsLoading (state, flag) {
-  //   state.isLoading = flag
-  // },
-  // updateSearchQuery (state, value) {
-  //     state.params.searchQuery = value
-  // },
-  // setCurrentModule (state, value) {
-  //     state.currentModule = value
-  // },
-  // setEditedPageId (state, id) {
-  //   state.editedPageId = id
-  // },
+  setIsLoading: function setIsLoading(state, flag) {
+    state.isLoading = flag;
+  }
 });
 
 /***/ }),
