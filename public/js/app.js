@@ -12649,6 +12649,7 @@ Vue.component('products', __webpack_require__(125));
 Vue.component('product', __webpack_require__(130));
 Vue.component('new-product', __webpack_require__(133));
 Vue.component('product-materials', __webpack_require__(138));
+Vue.component('product-material', __webpack_require__(184));
 Vue.component('new-material', __webpack_require__(143));
 
 // Pages
@@ -66710,6 +66711,107 @@ if (false) {
     });
   }
 });
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(185),
+  /* template */
+  __webpack_require__(186),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/materials/Material.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Material.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-dda68b72", Component.options)
+  } else {
+    hotAPI.reload("data-v-dda68b72", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 185 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['material'],
+  methods: {
+    editMaterial: function editMaterial() {
+      this.$emit('editMaterial', this.material.id);
+    }
+  },
+  mounted: function mounted() {
+    //
+  }
+});
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row panel-row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h4', [_c('span', {
+    staticClass: "badge"
+  }, [_vm._v("№ " + _vm._s(_vm.material.id) + ":")]), _vm._v(" " + _vm._s(_vm.material.name) + "\n    ")])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6 text-right orders-edit-block"
+  }, [_c('ul', {
+    staticClass: "list-inline"
+  }, [_c('li', [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.editMaterial($event)
+      }
+    }
+  }, [_c('span', {
+    staticClass: "glyphicon glyphicon-edit",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }), _vm._v(" Редактировать\n        ")])])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-dda68b72", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
