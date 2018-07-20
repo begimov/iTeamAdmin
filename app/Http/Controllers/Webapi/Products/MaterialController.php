@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Webapi\Products\StoreMaterialRequest;
 use App\Http\Controllers\Controller;
 
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+
 use App\Models\Products\Material;
-
 use App\Repositories\Contracts\Products\MaterialRepository;
-
 use App\Transformers\Products\MaterialTransformer;
 
 class MaterialController extends Controller
@@ -32,7 +32,16 @@ class MaterialController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        $materials = $this->materials->filter($request)
+            ->paginate(5);
+
+        $materialsCollection = $materials->getCollection();
+
+        return fractal()
+            ->collection($materialsCollection)
+            ->transformWith(new MaterialTransformer)
+            ->paginateWith(new IlluminatePaginatorAdapter($materials))
+            ->toArray();
     }
 
     /**

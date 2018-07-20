@@ -1,10 +1,10 @@
 export default {
   getMaterials(page, params) {
-    console.log(page)
-    // return new Promise((resolve, reject) => {
-    //   axios.get(`/webapi/products?page=${page}`, {params}).then(res => {
-    //     resolve(res)
-    //   })
-    // })
+    return new Promise((resolve, reject) => {
+      axios.get(`/webapi/materials?page=${page}`, {params}).then(res => {
+        console.log(res)
+        // resolve(res)
+      })
+    })
   }
 }
