@@ -7,9 +7,11 @@ export default {
     ]),
   },
   methods: {
-    //
+    ...mapActions('materials', [
+      'getMaterials',
+    ]),
   },
   mounted() {
-    //
+    this.getMaterials()
   }
 }

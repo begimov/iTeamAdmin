@@ -1681,8 +1681,10 @@ function applyToTag (styleElement, obj) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_products__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_pages__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_newpage__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__products_newmaterial__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__products_newproduct__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__products_materials__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__products_newmaterial__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__products_newproduct__ = __webpack_require__(53);
+
 
 
 
@@ -1693,8 +1695,9 @@ function applyToTag (styleElement, obj) {
   products: __WEBPACK_IMPORTED_MODULE_0__products_products__["a" /* default */],
   pages: __WEBPACK_IMPORTED_MODULE_1__pages_pages__["a" /* default */],
   newpage: __WEBPACK_IMPORTED_MODULE_2__pages_newpage__["a" /* default */],
-  newmaterial: __WEBPACK_IMPORTED_MODULE_3__products_newmaterial__["a" /* default */],
-  newproduct: __WEBPACK_IMPORTED_MODULE_4__products_newproduct__["a" /* default */]
+  newmaterial: __WEBPACK_IMPORTED_MODULE_4__products_newmaterial__["a" /* default */],
+  newproduct: __WEBPACK_IMPORTED_MODULE_5__products_newproduct__["a" /* default */],
+  materials: __WEBPACK_IMPORTED_MODULE_3__products_materials__["a" /* default */]
 });
 
 /***/ }),
@@ -64776,11 +64779,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule'])),
-  methods: {
-    //
-  },
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials'])),
   mounted: function mounted() {
-    //
+    this.getMaterials();
   }
 });
 
@@ -66644,23 +66645,17 @@ if (false) {
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // getPages ({dispatch, commit, state}, page = 1) {
-  //   commit('setIsLoading', true)
-  //   api.pages.getPages(page, state.params).then(res => {
-  //     commit('setPages', res.data)
-  //     commit('setIsLoading', false)
-  //   })
-  // },
-  // updateSearchQuery ({ commit }, value) {
-  //   commit('updateSearchQuery', value)
-  // },
-  // setCurrentModule ({ commit }, value) {
-  //   commit('setCurrentModule', value)
-  // },
-  // setEditedPageId ({ commit }, id) {
-  //   commit('setEditedPageId', id)
-  //   commit('setCurrentModule', 'newpage')
-  // },
+  getMaterials: function getMaterials(_ref) {
+    var commit = _ref.commit,
+        state = _ref.state;
+    var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+    // commit('setIsLoading', true)
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].materials.getMaterials(page, state.params).then(function (res) {
+      // commit('setPages', res.data)
+      // commit('setIsLoading', false)
+    });
+  }
 });
 
 /***/ }),
@@ -66685,6 +66680,22 @@ if (false) {
   // setEditedPageId (state, id) {
   //   state.editedPageId = id
   // },
+});
+
+/***/ }),
+/* 183 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  getMaterials: function getMaterials(page, params) {
+    console.log(page);
+    // return new Promise((resolve, reject) => {
+    //   axios.get(`/webapi/products?page=${page}`, {params}).then(res => {
+    //     resolve(res)
+    //   })
+    // })
+  }
 });
 
 /***/ })
