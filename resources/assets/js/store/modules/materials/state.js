@@ -1,8 +1,8 @@
 export default {
   currentModule: 'materials',
   isLoading: false,
-  // pages: [],
-  // meta: null,
+  materials: [],
+  meta: null,
   // params: {
   //   searchQuery: '',
   // },

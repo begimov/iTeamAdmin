@@ -1,8 +1,8 @@
 export default {
-  // setPages (state, pages) {
-  //   state.pages = pages.data
-  //   state.meta = pages.meta
-  // },
+  setMaterials (state, materials) {
+    state.materials = materials.data
+    state.meta = materials.meta
+  },
   setIsLoading (state, flag) {
     state.isLoading = flag
   },

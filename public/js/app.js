@@ -66620,9 +66620,9 @@ if (false) {
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   currentModule: 'materials',
-  isLoading: false
-  // pages: [],
-  // meta: null,
+  isLoading: false,
+  materials: [],
+  meta: null
   // params: {
   //   searchQuery: '',
   // },
@@ -66659,8 +66659,7 @@ if (false) {
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].materials.getMaterials(page, state.params).then(function (res) {
-      console.log(res);
-      // commit('setPages', res.data)
+      commit('setMaterials', res.data);
       commit('setIsLoading', false);
     });
   }
@@ -66672,10 +66671,10 @@ if (false) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // setPages (state, pages) {
-  //   state.pages = pages.data
-  //   state.meta = pages.meta
-  // },
+  setMaterials: function setMaterials(state, materials) {
+    state.materials = materials.data;
+    state.meta = materials.meta;
+  },
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
   }
