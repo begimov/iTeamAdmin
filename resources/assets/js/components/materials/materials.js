@@ -4,6 +4,7 @@ export default {
   computed: {
     ...mapGetters('materials', [
       'currentModule',
+      'isLoading',
     ]),
   },
   methods: {

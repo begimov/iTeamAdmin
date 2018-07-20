@@ -64778,7 +64778,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading'])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials'])),
   mounted: function mounted() {
     this.getMaterials();
@@ -64799,13 +64799,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'materials') ? _c('div', {
     staticClass: "container"
-  }, [_vm._m(0)]) : _vm._e()], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _vm._m(0)])])]) : _vm._e()], 1)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
@@ -64819,7 +64823,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])])])])])
+  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -66615,10 +66619,10 @@ if (false) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  currentModule: 'materials'
+  currentModule: 'materials',
+  isLoading: false
   // pages: [],
   // meta: null,
-  // isLoading: false,
   // params: {
   //   searchQuery: '',
   // },
@@ -66633,6 +66637,9 @@ if (false) {
 /* harmony default export */ __webpack_exports__["a"] = ({
   currentModule: function currentModule(state) {
     return state.currentModule;
+  },
+  isLoading: function isLoading(state) {
+    return state.isLoading;
   }
 });
 
@@ -66691,8 +66698,7 @@ if (false) {
   getMaterials: function getMaterials(page, params) {
     return new Promise(function (resolve, reject) {
       axios.get("/webapi/materials?page=" + page, { params: params }).then(function (res) {
-        console.log(res);
-        // resolve(res)
+        resolve(res);
       });
     });
   }

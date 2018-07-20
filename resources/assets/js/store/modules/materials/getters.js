@@ -2,6 +2,9 @@ export default {
   currentModule (state) {
     return state.currentModule
   },
+  isLoading (state) {
+    return state.isLoading
+  },
   // pages (state) {
   //   return state.pages
   // },
@@ -10,9 +13,6 @@ export default {
   // },
   // pagination (state) {
   //   return state.meta ? state.meta.pagination : null
-  // },
-  // isLoading (state) {
-  //   return state.isLoading
   // },
   // getSearchQuery (state) {
   //   return state.params.searchQuery
