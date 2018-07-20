@@ -14,6 +14,20 @@ class Material extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('named', function (Builder $builder) {
+            $builder->whereNotNull('name');
+        });
+    }
     
     public function files()
     {
