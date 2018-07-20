@@ -5,9 +5,9 @@ export default {
   isLoading (state) {
     return state.isLoading
   },
-  // pages (state) {
-  //   return state.pages
-  // },
+  materials (state) {
+    return state.materials
+  },
   // meta (state) {
   //   return state.meta
   // },

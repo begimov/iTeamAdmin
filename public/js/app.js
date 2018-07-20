@@ -64778,7 +64778,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading', 'materials'])),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials'])),
   mounted: function mounted() {
     this.getMaterials();
@@ -66640,6 +66640,9 @@ if (false) {
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
+  },
+  materials: function materials(state) {
+    return state.materials;
   }
 });
 
