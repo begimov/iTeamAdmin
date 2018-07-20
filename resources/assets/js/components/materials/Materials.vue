@@ -35,11 +35,10 @@
                   </ul>
                 </div>
               </div>
-              <!-- <page v-for="page in pages"
-              :page="page"
-              :key="page.id"
-              v-on:pageStatusChanged="getPages"
-              v-on:editPage="setEditedPageId"></page> -->
+              <product-material v-for="material in materials"
+              :material="material"
+              :key="material.id"
+              v-on:editMaterial="setEditedMaterialId"></product-material>
 
             </div>
 

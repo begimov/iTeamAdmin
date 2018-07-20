@@ -64812,7 +64812,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.materials), function(material) {
+    return _c('product-material', {
+      key: material.id,
+      attrs: {
+        "material": material
+      },
+      on: {
+        "editMaterial": _vm.setEditedMaterialId
+      }
+    })
+  })], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [(_vm.meta && _vm.materials.length) ? _c('paginator', {
     attrs: {
@@ -64825,8 +64837,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }) : _vm._e()], 1)])])])]) : _vm._e()], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "panel-body"
-  }, [_c('div', {
     staticClass: "row panel-subheading"
   }, [_c('div', {
     staticClass: "col-md-4"
@@ -64834,7 +64844,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])])
+  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
