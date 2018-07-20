@@ -32,7 +32,8 @@ class MaterialController extends Controller
      */
     public function index(Request $request)
     {
-        $materials = $this->materials->filter($request)
+        $materials = $this->materials
+            // ->filter($request)
             ->paginate(5);
 
         $materialsCollection = $materials->getCollection();
