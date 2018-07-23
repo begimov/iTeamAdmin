@@ -43,7 +43,7 @@ export default {
     commit('setIsLoading', true)
     api.newmaterial.getMaterial(id).then(res => {
       console.log(res)
-      // commit('setPageToEdit', res.data.data)
+      commit('setMaterialToEdit', res.data.data)
       commit('setIsLoading', false)
     })
   },

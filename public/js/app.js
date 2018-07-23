@@ -44184,7 +44184,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.getMaterial(id).then(function (res) {
       console.log(res);
-      // commit('setPageToEdit', res.data.data)
+      commit('setMaterialToEdit', res.data.data);
       commit('setIsLoading', false);
     });
   }
@@ -44239,6 +44239,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         Object.keys(initialState).forEach(function (key) {
             state[key] = initialState[key];
         });
+    },
+    setMaterialToEdit: function setMaterialToEdit(state, payload) {
+        state.params.id = payload.id;
+        state.params.name = payload.name;
     }
 });
 

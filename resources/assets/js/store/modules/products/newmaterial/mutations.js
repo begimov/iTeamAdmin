@@ -40,5 +40,9 @@ export default {
         Object.keys(initialState).forEach(key => {
             state[key] = initialState[key]
         })
+    },
+    setMaterialToEdit(state, payload) {
+        state.params.id = payload.id
+        state.params.name = payload.name
     }
 }
