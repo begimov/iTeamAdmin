@@ -43888,6 +43888,13 @@ __WEBPACK_IMPORTED_MODULE_3_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vuex
         reject(err);
       });
     });
+  },
+  getMaterial: function getMaterial(id) {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/materials/" + id + "/edit").then(function (res) {
+        resolve(res);
+      });
+    });
   }
 });
 
@@ -44175,7 +44182,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref9.commit;
 
     commit('setIsLoading', true);
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getPage(id).then(function (res) {
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.getMaterial(id).then(function (res) {
       console.log(res);
       // commit('setPageToEdit', res.data.data)
       commit('setIsLoading', false);

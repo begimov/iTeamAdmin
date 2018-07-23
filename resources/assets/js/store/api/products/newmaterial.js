@@ -15,4 +15,11 @@ export default {
       })
     })
   },
+  getMaterial(id) {
+    return new Promise((resolve, reject) => {
+      axios.get(`/webapi/materials/${id}/edit`).then(res => {
+        resolve(res)
+      })
+    })
+  },
 }

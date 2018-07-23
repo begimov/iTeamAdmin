@@ -41,7 +41,7 @@ export default {
   },
   setMaterialToEdit ({ commit }, id) {
     commit('setIsLoading', true)
-    api.newpage.getPage(id).then(res => {
+    api.newmaterial.getMaterial(id).then(res => {
       console.log(res)
       // commit('setPageToEdit', res.data.data)
       commit('setIsLoading', false)
