@@ -44110,6 +44110,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   errors: function errors(state) {
     return state.errors;
+  },
+  files: function files(state) {
+    return state.options.files;
   }
 });
 
@@ -44184,7 +44187,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.getMaterial(id).then(function (res) {
-      console.log(res);
       commit('setMaterialToEdit', res.data.data);
       commit('setIsLoading', false);
     });
@@ -44246,6 +44248,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.params.id = payload.id;
         state.params.name = payload.name;
         state.params.videos = payload.resources.data;
+        state.options.files = payload.files.data;
     }
 });
 
@@ -64963,7 +64966,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.$emit('cancelNewMaterial');
     }
   }),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos', 'errors']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos', 'errors', 'files']), {
     'name': {
       get: function get() {
         return this.getName;
@@ -65122,7 +65125,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addVideo($event)
       }
     }
-  }, [_vm._v("Добавить видео")])])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  }, [_vm._v("Добавить видео")])])])]), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.editedMaterialId && _vm.files.length) ? _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_vm._v("\n                //\n              ")])]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"

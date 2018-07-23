@@ -17,4 +17,7 @@ export default {
   errors (state) {
     return state.errors
   },
+  files (state) {
+    return state.options.files
+  },
 }

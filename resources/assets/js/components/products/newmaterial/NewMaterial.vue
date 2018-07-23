@@ -50,6 +50,12 @@
 
               <hr>
 
+              <div class="row" v-if="editedMaterialId && files.length">
+                <div class="col-md-12">
+                  //
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col-md-12">
                   <file-uploader 

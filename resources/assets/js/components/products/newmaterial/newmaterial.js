@@ -36,6 +36,7 @@ export default {
       'isLoading',
       'videos',
       'errors',
+      'files',
     ]),
     'name': {
       get () {

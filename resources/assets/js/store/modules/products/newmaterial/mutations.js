@@ -46,5 +46,6 @@ export default {
         state.params.id = payload.id
         state.params.name = payload.name
         state.params.videos = payload.resources.data
+        state.options.files = payload.files.data
     }
 }
