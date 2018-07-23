@@ -7,6 +7,7 @@ export default {
       'isLoading',
       'materials',
       'meta',
+      'editedMaterialId'
     ]),
   },
   methods: {
