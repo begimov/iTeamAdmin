@@ -65129,7 +65129,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_vm._v("\n                //\n              ")])]) : _vm._e(), _vm._v(" "), _c('div', {
+  }, [_c('ul', {
+    staticClass: "list-inline"
+  }, _vm._l((_vm.files), function(files, index) {
+    return _c('li', {
+      key: index
+    }, [_c('h4', [_c('span', {
+      staticClass: "label label-primary"
+    }, [_vm._v("\n                        " + _vm._s(files.name) + ": " + _vm._s(files.size) + "\n                        "), _c('a', {
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeFile(index)
+        }
+      }
+    }, [_c('span', {
+      staticClass: "glyphicon glyphicon-remove label--remove-icon",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })])])])])
+  }))])]) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
