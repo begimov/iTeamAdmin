@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Transformers\Products;
+namespace App\Transformers\Content;
 
 use App\Models\Content\File;
 
@@ -10,7 +10,6 @@ class FileTransformer extends \League\Fractal\TransformerAbstract
     {
         return [
             'id' => $file->id,
-            'material_id' => $file->material_id,
             'name' => $file->name,
             'size' => $file->size,
         ];

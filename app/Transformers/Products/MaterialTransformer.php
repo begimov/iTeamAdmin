@@ -19,6 +19,6 @@ class MaterialTransformer extends \League\Fractal\TransformerAbstract
 
     public function includeFiles(Material $material)
     {
-        return $this->item($material->files, new FileTransformer);
+        return $this->collection($material->files, new FileTransformer);
     }
 }
