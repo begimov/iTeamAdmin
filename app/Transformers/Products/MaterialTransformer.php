@@ -3,6 +3,7 @@
 namespace App\Transformers\Products;
 
 use App\Models\Products\Material;
+use App\Transformers\Content\FileTransformer;
 
 class MaterialTransformer extends \League\Fractal\TransformerAbstract
 {
@@ -14,5 +15,10 @@ class MaterialTransformer extends \League\Fractal\TransformerAbstract
             'id' => $material->id,
             'name' => $material->name,
         ];
+    }
+
+    public function includeFiles(Material $material)
+    {
+        return $this->item($material->files, new FileTransformer);
     }
 }
