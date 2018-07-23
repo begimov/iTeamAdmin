@@ -10,7 +10,7 @@
           </div>
 
           <div class="panel-body">
-            <form action="#" @submit.prevent="saveMaterial">
+            <form action="#" @submit.prevent="saveNewMaterial">
 
               <div class="row">
                 <div class="col-md-12">

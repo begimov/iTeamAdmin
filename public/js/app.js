@@ -64955,6 +64955,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     cancelMaterial: function cancelMaterial() {
       this.cancel();
       this.$emit('cancelNewMaterial');
+    },
+    saveNewMaterial: function saveNewMaterial() {
+      this.saveMaterial();
+      this.$emit('cancelNewMaterial');
     }
   }),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos', 'errors']), {
@@ -65012,7 +65016,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "submit": function($event) {
         $event.preventDefault();
-        _vm.saveMaterial($event)
+        _vm.saveNewMaterial($event)
       }
     }
   }, [_c('div', {

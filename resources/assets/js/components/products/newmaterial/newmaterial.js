@@ -22,6 +22,10 @@ export default {
     cancelMaterial() {
       this.cancel()
       this.$emit('cancelNewMaterial')
+    },
+    saveNewMaterial() {
+      this.saveMaterial()
+      this.$emit('cancelNewMaterial')
     }
   },
   computed: {
