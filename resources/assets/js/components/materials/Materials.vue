@@ -9,7 +9,7 @@
           <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
           <div class="panel panel-default">
             <div class="panel-heading">
-              <!-- <a href="#" @click.prevent="setCurrentModule('newpage')" class="btn btn-primary">Создать материал</a> -->
+              <a href="#" @click.prevent="setCurrentModule('newmaterial')" class="btn btn-primary">Создать материал</a>
             </div>
 
             <div class="panel-body">

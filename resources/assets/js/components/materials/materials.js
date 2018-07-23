@@ -12,6 +12,7 @@ export default {
   methods: {
     ...mapActions('materials', [
       'getMaterials',
+      'setCurrentModule',
     ]),
   },
   mounted() {

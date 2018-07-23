@@ -64780,7 +64780,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading', 'materials', 'meta'])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials', 'setCurrentModule'])),
   mounted: function mounted() {
     this.getMaterials();
   }
@@ -64812,7 +64812,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }), _vm._v(" "), _c('div', {
+  }, [_c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.setCurrentModule('newmaterial')
+      }
+    }
+  }, [_vm._v("Создать материал")])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.materials), function(material) {
     return _c('product-material', {
@@ -66689,6 +66700,15 @@ if (false) {
       commit('setMaterials', res.data);
       commit('setIsLoading', false);
     });
+  },
+
+  // updateSearchQuery ({ commit }, value) {
+  //   commit('updateSearchQuery', value)
+  // },
+  setCurrentModule: function setCurrentModule(_ref2, value) {
+    var commit = _ref2.commit;
+
+    commit('setCurrentModule', value);
   }
 });
 
@@ -66704,6 +66724,13 @@ if (false) {
   },
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
+  },
+
+  // updateSearchQuery (state, value) {
+  //     state.params.searchQuery = value
+  // },
+  setCurrentModule: function setCurrentModule(state, value) {
+    state.currentModule = value;
   }
 });
 
