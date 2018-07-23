@@ -64780,7 +64780,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading', 'materials', 'meta'])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials', 'setCurrentModule'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials', 'setCurrentModule']), {
+    cancelNewMaterial: function cancelNewMaterial() {
+      // this.setEditedProductId(null)
+      this.setCurrentModule('materials');
+    }
+  }),
   mounted: function mounted() {
     this.getMaterials();
   }
@@ -64793,10 +64798,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [(_vm.currentModule === 'newmaterial') ? _c('new-material', {
     attrs: {
-      "editedPageId": _vm.editedPageId
+      "editedMaterialId": _vm.editedMaterialId
     },
     on: {
-      "cancelNewPage": _vm.cancelNewPage
+      "cancelNewMaterial": _vm.cancelNewMaterial
     }
   }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'materials') ? _c('div', {
     staticClass: "container"
@@ -64924,7 +64929,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState', 'cancel'])),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState', 'cancel']), {
+    cancelMaterial: function cancelMaterial() {
+      this.cancel();
+      this.$emit('cancelNewMaterial');
+    }
+  }),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos', 'errors']), {
     'name': {
       get: function get() {
@@ -65106,7 +65116,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.cancel($event)
+        _vm.cancelMaterial($event)
       }
     }
   }, [_vm._v("Отменить")])])])])])])])])])])])

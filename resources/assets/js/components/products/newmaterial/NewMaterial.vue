@@ -64,7 +64,7 @@
                 <div class="col-md-12">
                   <ul class="list-inline">
                     <li><button type="submit" class="btn btn-primary">Сохранить</button></li>
-                    <li><a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a></li>
+                    <li><a href="#" class="btn btn-default" @click.prevent="cancelMaterial">Отменить</a></li>
                   </ul>
                 </div>
               </div>

@@ -14,6 +14,10 @@ export default {
       'getMaterials',
       'setCurrentModule',
     ]),
+    cancelNewMaterial() {
+      // this.setEditedProductId(null)
+      this.setCurrentModule('materials')
+    }
   },
   mounted() {
     this.getMaterials()

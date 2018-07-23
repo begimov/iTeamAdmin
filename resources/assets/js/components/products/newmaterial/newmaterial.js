@@ -17,7 +17,11 @@ export default {
       'removeVideo',
       'resetState',
       'cancel'
-    ])
+    ]),
+    cancelMaterial() {
+      this.cancel()
+      this.$emit('cancelNewMaterial')
+    }
   },
   computed: {
     ...mapGetters('products/newmaterial', [

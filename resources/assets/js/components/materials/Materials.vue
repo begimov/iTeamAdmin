@@ -1,8 +1,8 @@
 <template>
   <div>
     <new-material v-if="currentModule === 'newmaterial'" 
-      v-on:cancelNewPage="cancelNewPage"
-      :editedPageId="editedPageId"></new-material>
+      v-on:cancelNewMaterial="cancelNewMaterial"
+      :editedMaterialId="editedMaterialId"></new-material>
     <div class="container" v-if="currentModule === 'materials'">
       <div class="row">
         <div class="col-md-12">
