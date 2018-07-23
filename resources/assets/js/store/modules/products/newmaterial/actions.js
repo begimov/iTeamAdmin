@@ -38,5 +38,13 @@ export default {
   },
   resetState ({ commit }) {
     commit('resetState')
-  }
+  },
+  setMaterialToEdit ({ commit }, id) {
+    commit('setIsLoading', true)
+    api.newpage.getPage(id).then(res => {
+      console.log(res)
+      // commit('setPageToEdit', res.data.data)
+      commit('setIsLoading', false)
+    })
+  },
 }

@@ -16,7 +16,8 @@ export default {
       'addVideo',
       'removeVideo',
       'resetState',
-      'cancel'
+      'cancel',
+      'setMaterialToEdit'
     ]),
     cancelMaterial() {
       this.cancel()
@@ -53,7 +54,7 @@ export default {
     if (!this.id && !this.editedMaterialId) {
       this.getMaterialId()
     } else if(this.editedMaterialId) {
-      console.log('dfgdfg')
+      this.setMaterialToEdit(this.editedMaterialId)
     }
   }
 }

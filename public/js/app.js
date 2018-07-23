@@ -44170,6 +44170,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref8.commit;
 
     commit('resetState');
+  },
+  setMaterialToEdit: function setMaterialToEdit(_ref9, id) {
+    var commit = _ref9.commit;
+
+    commit('setIsLoading', true);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getPage(id).then(function (res) {
+      console.log(res);
+      // commit('setPageToEdit', res.data.data)
+      commit('setIsLoading', false);
+    });
   }
 });
 
@@ -64929,7 +64939,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState', 'cancel']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState', 'cancel', 'setMaterialToEdit']), {
     cancelMaterial: function cancelMaterial() {
       this.cancel();
       this.$emit('cancelNewMaterial');
@@ -64957,7 +64967,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     if (!this.id && !this.editedMaterialId) {
       this.getMaterialId();
     } else if (this.editedMaterialId) {
-      console.log('dfgdfg');
+      this.setMaterialToEdit(this.editedMaterialId);
     }
   }
 });
