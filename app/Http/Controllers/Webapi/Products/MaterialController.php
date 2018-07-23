@@ -99,7 +99,7 @@ class MaterialController extends Controller
 
         return fractal()
             ->item($material)
-            ->parseIncludes(['files'])
+            ->parseIncludes(['files', 'resources'])
             ->transformWith(new MaterialTransformer)
             ->toArray();
     }
