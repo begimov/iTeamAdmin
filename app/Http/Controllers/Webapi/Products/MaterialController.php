@@ -11,6 +11,7 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use App\Models\Products\Material;
 use App\Repositories\Contracts\Products\MaterialRepository;
 use App\Transformers\Products\MaterialTransformer;
+use App\Repositories\Eloquent\Criteria\With;
 
 class MaterialController extends Controller
 {
@@ -89,7 +90,17 @@ class MaterialController extends Controller
      */
     public function edit($id)
     {
-        //
+        $material = $this->materials
+            // ->filter($request)
+            ->withCriteria([
+                new With(['files','resources'])
+            ])
+            ->findById($id);
+
+        return fractal()
+            ->item($material)
+            ->transformWith(new MaterialTransformer)
+            ->toArray();
     }
 
     /**
