@@ -12,7 +12,7 @@ export default {
   setCurrentModule (state, value) {
       state.currentModule = value
   },
-  // setEditedPageId (state, id) {
-  //   state.editedPageId = id
-  // },
+  setEditedMaterialId (state, id) {
+    state.editedMaterialId = id
+  },
 }

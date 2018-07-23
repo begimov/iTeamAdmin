@@ -64780,9 +64780,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading', 'materials', 'meta', 'editedMaterialId'])),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials', 'setCurrentModule']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials', 'setCurrentModule', 'setEditedMaterialId']), {
     cancelNewMaterial: function cancelNewMaterial() {
-      // this.setEditedProductId(null)
+      this.setEditedMaterialId(null);
       this.setCurrentModule('materials');
     }
   }),
@@ -66729,6 +66729,12 @@ if (false) {
     var commit = _ref2.commit;
 
     commit('setCurrentModule', value);
+  },
+  setEditedMaterialId: function setEditedMaterialId(_ref3, id) {
+    var commit = _ref3.commit;
+
+    commit('setEditedMaterialId', id);
+    commit('setCurrentModule', 'newmaterial');
   }
 });
 
@@ -66751,6 +66757,9 @@ if (false) {
   // },
   setCurrentModule: function setCurrentModule(state, value) {
     state.currentModule = value;
+  },
+  setEditedMaterialId: function setEditedMaterialId(state, id) {
+    state.editedMaterialId = id;
   }
 });
 

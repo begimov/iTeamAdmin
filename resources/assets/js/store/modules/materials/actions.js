@@ -14,8 +14,8 @@ export default {
   setCurrentModule ({ commit }, value) {
     commit('setCurrentModule', value)
   },
-  // setEditedPageId ({ commit }, id) {
-  //   commit('setEditedPageId', id)
-  //   commit('setCurrentModule', 'newpage')
-  // },
+  setEditedMaterialId ({ commit }, id) {
+    commit('setEditedMaterialId', id)
+    commit('setCurrentModule', 'newmaterial')
+  },
 }

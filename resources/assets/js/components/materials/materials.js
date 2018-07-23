@@ -14,9 +14,10 @@ export default {
     ...mapActions('materials', [
       'getMaterials',
       'setCurrentModule',
+      'setEditedMaterialId'
     ]),
     cancelNewMaterial() {
-      // this.setEditedProductId(null)
+      this.setEditedMaterialId(null)
       this.setCurrentModule('materials')
     }
   },
