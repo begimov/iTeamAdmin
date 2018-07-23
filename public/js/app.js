@@ -63649,7 +63649,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         _this3.order = {
           product: responseData.product.data,
-          paymentType: responseData.paymentType.data,
+          paymentType: responseData.paymentType ? responseData.paymentType.data : null,
           paymentState: responseData.paymentState.data,
           price: responseData.price,
           user: responseData.user.data

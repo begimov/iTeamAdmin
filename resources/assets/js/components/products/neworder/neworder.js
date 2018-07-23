@@ -58,7 +58,7 @@ export default {
 
         this.order = {
           product: responseData.product.data,
-          paymentType: responseData.paymentType.data,
+          paymentType: responseData.paymentType ? responseData.paymentType.data : null,
           paymentState: responseData.paymentState.data,
           price: responseData.price,
           user: responseData.user.data
