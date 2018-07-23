@@ -1,6 +1,7 @@
 export default {
   options: {
     video: { identifier: null },
+    files: []
   },
   params: {
     id: null,

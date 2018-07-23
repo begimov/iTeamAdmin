@@ -28,6 +28,7 @@ export default {
         const initialState = {
             options: {
                 video: { id: null },
+                files: []
               },
               params: {
                 id: null,

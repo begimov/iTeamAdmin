@@ -44075,7 +44075,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   options: {
-    video: { identifier: null }
+    video: { identifier: null },
+    files: []
   },
   params: {
     id: null,
@@ -44226,7 +44227,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     resetState: function resetState(state) {
         var initialState = {
             options: {
-                video: { id: null }
+                video: { id: null },
+                files: []
             },
             params: {
                 id: null,
