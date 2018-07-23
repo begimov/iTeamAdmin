@@ -53,11 +53,11 @@
               <div class="row" v-if="editedMaterialId && files.length">
                 <div class="col-md-12">
                   <ul class="list-inline">
-                    <li v-for="(files, index) in files" :key="index">
+                    <li v-for="(file, index) in files" :key="index">
                       <h4>
                         <span class="label label-primary">
-                          {{ files.name }}: {{ files.size }}
-                          <a href="#" @click.prevent="removeFile(index)">
+                          {{ file.name }}: {{ file.size }}
+                          <a href="#" @click.prevent="removeFile(file.id)">
                             <span class="glyphicon glyphicon-remove label--remove-icon" aria-hidden="true"></span>
                           </a>
                         </span> 

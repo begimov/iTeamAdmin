@@ -64964,6 +64964,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     saveNewMaterial: function saveNewMaterial() {
       this.saveMaterial();
       this.$emit('cancelNewMaterial');
+    },
+    removeFile: function removeFile(id) {
+      axios.delete('/webapi/files/' + id);
     }
   }),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos', 'errors', 'files']), {
@@ -65131,19 +65134,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, _vm._l((_vm.files), function(files, index) {
+  }, _vm._l((_vm.files), function(file, index) {
     return _c('li', {
       key: index
     }, [_c('h4', [_c('span', {
       staticClass: "label label-primary"
-    }, [_vm._v("\n                        " + _vm._s(files.name) + ": " + _vm._s(files.size) + "\n                        "), _c('a', {
+    }, [_vm._v("\n                        " + _vm._s(file.name) + ": " + _vm._s(file.size) + "\n                        "), _c('a', {
       attrs: {
         "href": "#"
       },
       on: {
         "click": function($event) {
           $event.preventDefault();
-          _vm.removeFile(index)
+          _vm.removeFile(file.id)
         }
       }
     }, [_c('span', {

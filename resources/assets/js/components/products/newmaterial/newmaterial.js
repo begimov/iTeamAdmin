@@ -26,6 +26,9 @@ export default {
     saveNewMaterial() {
       this.saveMaterial()
       this.$emit('cancelNewMaterial')
+    },
+    removeFile(id) {
+      axios.delete(`/webapi/files/${id}`)
     }
   },
   computed: {
