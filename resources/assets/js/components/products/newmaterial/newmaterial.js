@@ -1,7 +1,7 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  props: [],
+  props: ['editedMaterialId'],
   data() {
     return {
       //
@@ -50,8 +50,10 @@ export default {
     }
   },
   mounted() {
-    if (!this.id) {
+    if (!this.id && !this.editedMaterialId) {
       this.getMaterialId()
+    } else if(this.editedMaterialId) {
+      console.log('dfgdfg')
     }
   }
 }

@@ -64922,7 +64922,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: [],
+  props: ['editedMaterialId'],
   data: function data() {
     return {
       //
@@ -64954,8 +64954,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
   }),
   mounted: function mounted() {
-    if (!this.id) {
+    if (!this.id && !this.editedMaterialId) {
       this.getMaterialId();
+    } else if (this.editedMaterialId) {
+      console.log('dfgdfg');
     }
   }
 });
