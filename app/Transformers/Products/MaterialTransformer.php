@@ -6,6 +6,8 @@ use App\Models\Products\Material;
 
 class MaterialTransformer extends \League\Fractal\TransformerAbstract
 {
+    protected $availableIncludes = ['files', 'resources'];
+
     public function transform(Material $material)
     {
         return [
