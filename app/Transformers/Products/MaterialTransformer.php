@@ -3,7 +3,10 @@
 namespace App\Transformers\Products;
 
 use App\Models\Products\Material;
-use App\Transformers\Content\FileTransformer;
+use App\Transformers\Content\{
+    FileTransformer,
+    ResourceTransformer
+};
 
 class MaterialTransformer extends \League\Fractal\TransformerAbstract
 {
@@ -20,5 +23,10 @@ class MaterialTransformer extends \League\Fractal\TransformerAbstract
     public function includeFiles(Material $material)
     {
         return $this->collection($material->files, new FileTransformer);
+    }
+
+    public function includeResources(Material $material)
+    {
+        return $this->collection($material->resources, new ResourceTransformer);
     }
 }
