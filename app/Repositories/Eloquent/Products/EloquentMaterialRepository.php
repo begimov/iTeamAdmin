@@ -39,7 +39,7 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
         foreach ($videos as $video) {
             $resource = new Resource;
 
-            $resource->identifier = $video['id'];
+            $resource->identifier = $video['identifier'];
 
             $resource->resourceType()
                 ->associate(ResourceType::find(config('resources.youtubevideo_type_id')));

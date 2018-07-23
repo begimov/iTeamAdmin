@@ -44075,7 +44075,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   options: {
-    video: { id: null }
+    video: { identifier: null }
   },
   params: {
     id: null,
@@ -44099,7 +44099,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return state.params.name;
   },
   getVideoId: function getVideoId(state) {
-    return state.options.video.id;
+    return state.options.video.identifier;
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
@@ -44205,13 +44205,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.params.name = value;
     },
     updateVideoId: function updateVideoId(state, value) {
-        state.options.video.id = value;
+        state.options.video.identifier = value;
     },
     addVideo: function addVideo(state) {
         var video = state.options.video;
-        if (video.id) {
+        if (video.identifier) {
             state.params.videos.push(_extends({}, video));
-            video.id = null;
+            video.identifier = null;
         }
     },
     removeVideo: function removeVideo(state, index) {
@@ -44243,6 +44243,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setMaterialToEdit: function setMaterialToEdit(state, payload) {
         state.params.id = payload.id;
         state.params.name = payload.name;
+        state.params.videos = payload.resources.data;
     }
 });
 
@@ -65058,7 +65059,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [_c('iframe', {
       staticClass: "embed-responsive-item",
       attrs: {
-        "src": 'https://www.youtube.com/embed/' + video.id,
+        "src": 'https://www.youtube.com/embed/' + video.identifier,
         "frameborder": "0",
         "allow": "autoplay; encrypted-media",
         "allowfullscreen": ""

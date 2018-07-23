@@ -6,13 +6,13 @@ export default {
         state.params.name = value
     },
     updateVideoId (state, value) {
-        state.options.video.id = value
+        state.options.video.identifier = value
     },
     addVideo (state) {
         const video = state.options.video
-        if (video.id) {
+        if (video.identifier) {
             state.params.videos.push({ ...video })
-            video.id = null
+            video.identifier = null
         }
     },
     removeVideo (state, index) {
@@ -44,5 +44,6 @@ export default {
     setMaterialToEdit(state, payload) {
         state.params.id = payload.id
         state.params.name = payload.name
+        state.params.videos = payload.resources.data
     }
 }

@@ -24,9 +24,9 @@ class Material extends Model
     {
         parent::boot();
 
-        static::addGlobalScope('named', function (Builder $builder) {
-            $builder->whereNotNull('name');
-        });
+        // static::addGlobalScope('named', function (Builder $builder) {
+        //     $builder->whereNotNull('name');
+        // });
     }
     
     public function files()

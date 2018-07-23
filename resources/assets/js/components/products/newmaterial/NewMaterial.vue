@@ -29,7 +29,7 @@
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" :src="'https://www.youtube.com/embed/' + video.id" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" :src="'https://www.youtube.com/embed/' + video.identifier" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                       </div>
                     </div>
                     <div class="panel-footer">
