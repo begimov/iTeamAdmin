@@ -35,7 +35,7 @@ class MaterialController extends Controller
     {
         $materials = $this->materials
             // ->filter($request)
-            ->paginate(5);
+            ->paginate(20);
 
         $materialsCollection = $materials->getCollection();
 
