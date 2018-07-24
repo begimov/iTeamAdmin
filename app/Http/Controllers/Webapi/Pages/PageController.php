@@ -14,6 +14,8 @@ use App\Transformers\Pages\PageTransformer;
 use App\Transformers\Pages\BlockTransformer;
 use App\Transformers\Products\CategoryTransformer;
 
+use App\Repositories\Eloquent\Criteria\With;
+
 use App\Models\Pages\Block;
 
 use App\Http\Requests\Webapi\Pages\StorePageRequest;
@@ -47,7 +49,11 @@ class PageController extends Controller
     public function index(Request $request)
     {
         $pages = $this->pages->filter($request)
-            ->paginate(5);
+            ->withCriteria([
+                new With(['category'])
+            ])
+            ->highestIdsFirst()
+            ->paginate(20);
 
         $pagesCollection = $pages->getCollection();
 
