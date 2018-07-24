@@ -5,6 +5,7 @@ namespace App\Models\Products;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Content\File;
+use App\Filters\Products\MaterialFilters;
 
 class Material extends Model
 {
@@ -42,5 +43,10 @@ class Material extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class, 'products_materials');
+    }
+
+    public function scopeFilter($builder, $repository, $request, array $filters = [])
+    {
+        return (new MaterialFilters($request))->add($filters)->filter($repository);
     }
 }

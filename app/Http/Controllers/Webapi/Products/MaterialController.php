@@ -34,7 +34,7 @@ class MaterialController extends Controller
     public function index(Request $request)
     {
         $materials = $this->materials
-            // ->filter($request)
+            ->filter($request)
             ->withCriteria([
                 new With(['products'])
             ])
