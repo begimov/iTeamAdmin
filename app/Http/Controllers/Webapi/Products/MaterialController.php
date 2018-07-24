@@ -35,6 +35,7 @@ class MaterialController extends Controller
     {
         $materials = $this->materials
             // ->filter($request)
+            ->highestIdsFirst()
             ->paginate(20);
 
         $materialsCollection = $materials->getCollection();
