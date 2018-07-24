@@ -44940,17 +44940,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('setIsLoading', false);
     });
   },
-
-  // updateSearchQuery ({ commit }, value) {
-  //   commit('updateSearchQuery', value)
-  // },
-  setCurrentModule: function setCurrentModule(_ref2, value) {
+  updateSearchQuery: function updateSearchQuery(_ref2, value) {
     var commit = _ref2.commit;
+
+    commit('updateSearchQuery', value);
+  },
+  setCurrentModule: function setCurrentModule(_ref3, value) {
+    var commit = _ref3.commit;
 
     commit('setCurrentModule', value);
   },
-  setEditedMaterialId: function setEditedMaterialId(_ref3, id) {
-    var commit = _ref3.commit;
+  setEditedMaterialId: function setEditedMaterialId(_ref4, id) {
+    var commit = _ref4.commit;
 
     commit('setEditedMaterialId', id);
     commit('setCurrentModule', 'newmaterial');
@@ -44970,10 +44971,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
   },
-
-  // updateSearchQuery (state, value) {
-  //     state.params.searchQuery = value
-  // },
+  updateSearchQuery: function updateSearchQuery(state, value) {
+    state.params.searchQuery = value;
+  },
   setCurrentModule: function setCurrentModule(state, value) {
     state.currentModule = value;
   },
@@ -64961,7 +64961,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials', 'setCurrentModule', 'setEditedMaterialId']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials', 'setCurrentModule', 'setEditedMaterialId', 'updateSearchQuery']), {
     cancelNewMaterial: function cancelNewMaterial() {
       this.setEditedMaterialId(null);
       this.setCurrentModule('materials');

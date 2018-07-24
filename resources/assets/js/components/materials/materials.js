@@ -23,7 +23,8 @@ export default {
     ...mapActions('materials', [
       'getMaterials',
       'setCurrentModule',
-      'setEditedMaterialId'
+      'setEditedMaterialId',
+      'updateSearchQuery',
     ]),
     cancelNewMaterial() {
       this.setEditedMaterialId(null)

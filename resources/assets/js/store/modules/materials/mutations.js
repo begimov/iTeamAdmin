@@ -6,9 +6,9 @@ export default {
   setIsLoading (state, flag) {
     state.isLoading = flag
   },
-  // updateSearchQuery (state, value) {
-  //     state.params.searchQuery = value
-  // },
+  updateSearchQuery (state, value) {
+      state.params.searchQuery = value
+  },
   setCurrentModule (state, value) {
       state.currentModule = value
   },
