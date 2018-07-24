@@ -44912,9 +44912,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   // pagination (state) {
   //   return state.meta ? state.meta.pagination : null
   // },
-  // getSearchQuery (state) {
-  //   return state.params.searchQuery
-  // },
+  getSearchQuery: function getSearchQuery(state) {
+    return state.params.searchQuery;
+  },
   editedMaterialId: function editedMaterialId(state) {
     return state.editedMaterialId;
   }
@@ -64951,7 +64951,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading', 'materials', 'meta', 'editedMaterialId']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading', 'materials', 'meta', 'editedMaterialId', 'getSearchQuery']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;

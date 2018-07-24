@@ -14,9 +14,9 @@ export default {
   // pagination (state) {
   //   return state.meta ? state.meta.pagination : null
   // },
-  // getSearchQuery (state) {
-  //   return state.params.searchQuery
-  // },
+  getSearchQuery (state) {
+    return state.params.searchQuery
+  },
   editedMaterialId (state) {
     return state.editedMaterialId
   },

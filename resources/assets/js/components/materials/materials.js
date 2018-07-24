@@ -7,7 +7,8 @@ export default {
       'isLoading',
       'materials',
       'meta',
-      'editedMaterialId'
+      'editedMaterialId',
+      'getSearchQuery',
     ]),
     'searchQuery': {
       get () {
