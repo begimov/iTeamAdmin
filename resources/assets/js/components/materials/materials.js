@@ -9,6 +9,14 @@ export default {
       'meta',
       'editedMaterialId'
     ]),
+    'searchQuery': {
+      get () {
+        return this.getSearchQuery
+      },
+      set (value) {
+        this.updateSearchQuery(value)
+      }
+    },
   },
   methods: {
     ...mapActions('materials', [
@@ -19,7 +27,13 @@ export default {
     cancelNewMaterial() {
       this.setEditedMaterialId(null)
       this.setCurrentModule('materials')
-    }
+    },
+    textSearch () {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function(){
+          this.getMaterials()
+      }.bind(this), 1000)
+    },
   },
   mounted() {
     this.getMaterials()

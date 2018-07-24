@@ -3,8 +3,8 @@ export default {
   isLoading: false,
   materials: [],
   meta: null,
-  // params: {
-  //   searchQuery: '',
-  // },
+  params: {
+    searchQuery: '',
+  },
   editedMaterialId: null
 }

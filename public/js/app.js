@@ -44884,9 +44884,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   isLoading: false,
   materials: [],
   meta: null,
-  // params: {
-  //   searchQuery: '',
-  // },
+  params: {
+    searchQuery: ''
+  },
   editedMaterialId: null
 });
 
@@ -64951,11 +64951,26 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading', 'materials', 'meta', 'editedMaterialId'])),
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('materials', ['currentModule', 'isLoading', 'materials', 'meta', 'editedMaterialId']), {
+    'searchQuery': {
+      get: function get() {
+        return this.getSearchQuery;
+      },
+      set: function set(value) {
+        this.updateSearchQuery(value);
+      }
+    }
+  }),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('materials', ['getMaterials', 'setCurrentModule', 'setEditedMaterialId']), {
     cancelNewMaterial: function cancelNewMaterial() {
       this.setEditedMaterialId(null);
       this.setCurrentModule('materials');
+    },
+    textSearch: function textSearch() {
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function () {
+        this.getMaterials();
+      }.bind(this), 1000);
     }
   }),
   mounted: function mounted() {
