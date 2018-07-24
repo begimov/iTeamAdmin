@@ -35,6 +35,9 @@ class MaterialController extends Controller
     {
         $materials = $this->materials
             // ->filter($request)
+            ->withCriteria([
+                new With(['products'])
+            ])
             ->highestIdsFirst()
             ->paginate(20);
 
@@ -42,6 +45,7 @@ class MaterialController extends Controller
 
         return fractal()
             ->collection($materialsCollection)
+            ->parseIncludes(['products'])
             ->transformWith(new MaterialTransformer)
             ->paginateWith(new IlluminatePaginatorAdapter($materials))
             ->toArray();
