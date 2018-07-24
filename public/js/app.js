@@ -65560,7 +65560,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
-        this.getProducts();
+        this.getPages();
       }.bind(this), 1000);
     },
     cancelNewPage: function cancelNewPage() {

@@ -29,7 +29,7 @@ export default {
       textSearch () {
         clearTimeout(this.timer);
         this.timer = setTimeout(function(){
-            this.getProducts()
+            this.getPages()
         }.bind(this), 1000)
       },
       cancelNewPage() {
