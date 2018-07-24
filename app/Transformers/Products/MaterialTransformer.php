@@ -10,7 +10,7 @@ use App\Transformers\Content\{
 
 class MaterialTransformer extends \League\Fractal\TransformerAbstract
 {
-    protected $availableIncludes = ['files', 'resources'];
+    protected $availableIncludes = ['files', 'resources', 'products'];
 
     public function transform(Material $material)
     {
@@ -28,5 +28,10 @@ class MaterialTransformer extends \League\Fractal\TransformerAbstract
     public function includeResources(Material $material)
     {
         return $this->collection($material->resources, new ResourceTransformer);
+    }
+
+    public function includeProducts(Material $material)
+    {
+        return $this->collection($material->products, new ProductTransformer);
     }
 }
