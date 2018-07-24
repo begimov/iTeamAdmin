@@ -18,7 +18,7 @@
                   <h4>
                     Материалы
                   </h4>
-                  <!-- <search v-model="searchQuery" v-on:input="textSearch"></search> -->
+                  <search v-model="searchQuery" v-on:input="textSearch"></search>
                 </div>
                 <div class="col-md-8 text-right">
                   <ul class="list-inline">
