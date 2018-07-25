@@ -19,6 +19,7 @@ export default {
       'cancel',
       'setMaterialToEdit',
       'removeDeletedFile',
+      'updateMaterial'
     ]),
     cancelMaterial() {
       this.cancel()

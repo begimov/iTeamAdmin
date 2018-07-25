@@ -44210,6 +44210,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref10.commit;
 
     commit('removeDeletedFile', id);
+  },
+  updateMaterial: function updateMaterial(_ref11, id) {
+    var commit = _ref11.commit,
+        dispatch = _ref11.dispatch,
+        state = _ref11.state;
+
+    commit('setIsLoading', true);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.updateMaterial(state.params, id).then(function (res) {
+      dispatch('setMaterialToEdit', id);
+    }).catch(function (err) {
+      commit('setErrors', err.response.data);
+      commit('setIsLoading', false);
+    });
   }
 });
 
@@ -65246,7 +65259,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState', 'cancel', 'setMaterialToEdit', 'removeDeletedFile']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState', 'cancel', 'setMaterialToEdit', 'removeDeletedFile', 'updateMaterial']), {
     cancelMaterial: function cancelMaterial() {
       this.cancel();
       this.$emit('cancelNewMaterial');

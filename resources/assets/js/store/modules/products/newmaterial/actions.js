@@ -49,4 +49,13 @@ export default {
   removeDeletedFile ({ commit }, id) {
     commit('removeDeletedFile', id)
   },
+  updateMaterial ({ commit, dispatch, state }, id) {
+    commit('setIsLoading', true)
+    api.newmaterial.updateMaterial(state.params, id).then(res => {
+      dispatch('setMaterialToEdit', id)
+    }).catch(err => {
+      commit('setErrors', err.response.data)
+      commit('setIsLoading', false)
+    })
+  }
 }
