@@ -16,6 +16,8 @@ class Material extends Model
      */
     public $timestamps = false;
 
+    protected $fillable = ['name'];
+
     /**
      * The "booting" method of the model.
      *

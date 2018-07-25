@@ -44,6 +44,13 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
         }
     }
 
+    public function update($request, $id)
+    {
+        $material = $this->entity->find($id);
+
+        $material->update($request->only($this->getEntityFields()));
+    }
+
     protected function storeVideoResources($videos, $material)
     {
         foreach ($videos as $video) {
@@ -56,5 +63,12 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
 
             $material->resources()->save($resource);
         }
+    }
+
+    protected function getEntityFields()
+    {
+        return [
+            'name'
+        ];
     }
 }
