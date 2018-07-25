@@ -43910,6 +43910,23 @@ __WEBPACK_IMPORTED_MODULE_3_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vuex
         resolve(res);
       });
     });
+  },
+  updateMaterial: function updateMaterial(data, id) {
+    var _this = this;
+
+    return new Promise(function (resolve, reject) {
+      axios.patch("/webapi/materials/" + id, _this.processData(data)).then(function (res) {
+        resolve(res);
+      }).catch(function (err) {
+        reject(err);
+      });
+    });
+  },
+  processData: function processData(data) {
+    return {
+      name: data.name,
+      videos: data.videos
+    };
   }
 });
 
