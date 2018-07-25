@@ -10,7 +10,7 @@
           </div>
 
           <div class="panel-body">
-            <form action="#" @submit.prevent="saveMaterial">
+            <form action="#">
 
               <div class="row">
                 <div class="col-md-12">
@@ -29,7 +29,7 @@
                   <div class="panel panel-default">
                     <div class="panel-body">
                       <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" :src="'https://www.youtube.com/embed/' + video.id" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" :src="'https://www.youtube.com/embed/' + video.identifier" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                       </div>
                     </div>
                     <div class="panel-footer">
@@ -50,6 +50,23 @@
 
               <hr>
 
+              <div class="row" v-if="editedMaterialId && files.length">
+                <div class="col-md-12">
+                  <ul class="list-inline">
+                    <li v-for="(file, index) in files" :key="index">
+                      <h4>
+                        <span class="label label-primary">
+                          {{ file.name }}: {{ file.size }}
+                          <a href="#" @click.prevent="removeFile(file.id)">
+                            <span class="glyphicon glyphicon-remove label--remove-icon" aria-hidden="true"></span>
+                          </a>
+                        </span> 
+                      </h4>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col-md-12">
                   <file-uploader 
@@ -63,8 +80,11 @@
               <div class="row">
                 <div class="col-md-12">
                   <ul class="list-inline">
-                    <li><button type="submit" class="btn btn-primary">Сохранить</button></li>
-                    <li><a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a></li>
+                    <li>
+                      <a href="#" class="btn btn-primary" @click.prevent="saveNewMaterial" v-if="!editedMaterialId">Создать</a>
+                      <a href="#" class="btn btn-primary" v-else @click.prevent="updateMaterial(editedMaterialId)">Сохранить</a>
+                    </li>
+                    <li><a href="#" class="btn btn-default" @click.prevent="cancelMaterial">Отменить</a></li>
                   </ul>
                 </div>
               </div>

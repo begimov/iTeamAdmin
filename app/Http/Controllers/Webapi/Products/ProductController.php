@@ -55,7 +55,8 @@ class ProductController extends Controller
             ->withCriteria([
                 new With(['category','priceTags'])
             ])
-            ->paginate(5);
+            ->highestIdsFirst()
+            ->paginate(20);
 
         $productsCollection = $products->getCollection();
 

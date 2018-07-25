@@ -5,6 +5,7 @@ namespace App\Models\Products;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Content\File;
+use App\Filters\Products\MaterialFilters;
 
 class Material extends Model
 {
@@ -14,6 +15,22 @@ class Material extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    protected $fillable = ['name'];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        // static::addGlobalScope('named', function (Builder $builder) {
+        //     $builder->whereNotNull('name');
+        // });
+    }
     
     public function files()
     {
@@ -23,5 +40,15 @@ class Material extends Model
     public function resources()
     {
         return $this->morphMany('App\Models\Content\Resource', 'resourceable');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'products_materials');
+    }
+
+    public function scopeFilter($builder, $repository, $request, array $filters = [])
+    {
+        return (new MaterialFilters($request))->add($filters)->filter($repository);
     }
 }

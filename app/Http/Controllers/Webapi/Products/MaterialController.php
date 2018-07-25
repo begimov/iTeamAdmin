@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Webapi\Products\StoreMaterialRequest;
 use App\Http\Controllers\Controller;
 
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+
 use App\Models\Products\Material;
-
 use App\Repositories\Contracts\Products\MaterialRepository;
-
 use App\Transformers\Products\MaterialTransformer;
+use App\Repositories\Eloquent\Criteria\With;
 
 class MaterialController extends Controller
 {
@@ -32,7 +33,22 @@ class MaterialController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        $materials = $this->materials
+            ->filter($request)
+            ->withCriteria([
+                new With(['products'])
+            ])
+            ->highestIdsFirst()
+            ->paginate(20);
+
+        $materialsCollection = $materials->getCollection();
+
+        return fractal()
+            ->collection($materialsCollection)
+            ->parseIncludes(['products'])
+            ->transformWith(new MaterialTransformer)
+            ->paginateWith(new IlluminatePaginatorAdapter($materials))
+            ->toArray();
     }
 
     /**
@@ -79,7 +95,18 @@ class MaterialController extends Controller
      */
     public function edit($id)
     {
-        //
+        $material = $this->materials
+            // ->filter($request)
+            ->withCriteria([
+                new With(['files','resources'])
+            ])
+            ->findById($id);
+
+        return fractal()
+            ->item($material)
+            ->parseIncludes(['files', 'resources'])
+            ->transformWith(new MaterialTransformer)
+            ->toArray();
     }
 
     /**
@@ -89,9 +116,9 @@ class MaterialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreMaterialRequest $request, $id)
     {
-        //
+        $this->materials->update($request, $id);
     }
 
     /**

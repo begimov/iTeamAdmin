@@ -6,7 +6,7 @@ export default {
     return state.params.name
   },
   getVideoId (state) {
-    return state.options.video.id
+    return state.options.video.identifier
   },
   isLoading (state) {
     return state.isLoading
@@ -16,5 +16,8 @@ export default {
   },
   errors (state) {
     return state.errors
+  },
+  files (state) {
+    return state.options.files
   },
 }

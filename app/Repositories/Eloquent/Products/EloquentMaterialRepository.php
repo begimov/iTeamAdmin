@@ -16,6 +16,11 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
         return Material::class;
     }
 
+    public function paginate($by)
+    {
+        return $this->entity->whereNotNull('name')->paginate($by);
+    }
+
     public function get()
     {
         return $this->entity->whereNotNull('name')->get();
@@ -34,7 +39,20 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
         $material->name = $data['name'];
         $material->save();
 
-        if (isset($data['videos']) && !empty($data['videos'])) {
+        if ($this->hasVideoResources($data)) {
+            $this->storeVideoResources($data['videos'], $material);
+        }
+    }
+
+    public function update($request, $id)
+    {
+        $material = $this->entity->find($id);
+
+        $material->update($request->only($this->getEntityFields()));
+
+        $material->resources()->delete();
+
+        if ($this->hasVideoResources($data = $request->all())) {         
             $this->storeVideoResources($data['videos'], $material);
         }
     }
@@ -44,12 +62,24 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
         foreach ($videos as $video) {
             $resource = new Resource;
 
-            $resource->identifier = $video['id'];
+            $resource->identifier = $video['identifier'];
 
             $resource->resourceType()
                 ->associate(ResourceType::find(config('resources.youtubevideo_type_id')));
 
             $material->resources()->save($resource);
         }
+    }
+
+    protected function hasVideoResources($data)
+    {
+        return isset($data['videos']) && !empty($data['videos']);
+    }
+
+    protected function getEntityFields()
+    {
+        return [
+            'name'
+        ];
     }
 }

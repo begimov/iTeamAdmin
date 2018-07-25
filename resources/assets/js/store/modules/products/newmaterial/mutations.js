@@ -6,13 +6,13 @@ export default {
         state.params.name = value
     },
     updateVideoId (state, value) {
-        state.options.video.id = value
+        state.options.video.identifier = value
     },
     addVideo (state) {
         const video = state.options.video
-        if (video.id) {
+        if (video.identifier) {
             state.params.videos.push({ ...video })
-            video.id = null
+            video.identifier = null
         }
     },
     removeVideo (state, index) {
@@ -28,6 +28,7 @@ export default {
         const initialState = {
             options: {
                 video: { id: null },
+                files: []
               },
               params: {
                 id: null,
@@ -40,5 +41,15 @@ export default {
         Object.keys(initialState).forEach(key => {
             state[key] = initialState[key]
         })
+    },
+    setMaterialToEdit(state, payload) {
+        state.params.id = payload.id
+        state.params.name = payload.name
+        state.params.videos = payload.resources.data
+        state.options.files = payload.files.data
+    },
+    removeDeletedFile(state, id) {
+        const files = _.filter(state.options.files, e => e.id !== id)
+        state.options.files = [ ...files ]
     }
 }

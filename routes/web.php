@@ -20,6 +20,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     // Products page
     Route::get('products', 'Products\ProductController@index')->name('products');
 
+    // Materials page
+    Route::get('materials', 'Products\MaterialController@index')->name('materials');
+
     // Pages page
     Route::get('pages', 'Pages\PageController@index')->name('pages');
 

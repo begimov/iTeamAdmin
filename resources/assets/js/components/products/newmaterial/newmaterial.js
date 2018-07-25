@@ -1,7 +1,7 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  props: [],
+  props: ['editedMaterialId'],
   data() {
     return {
       //
@@ -16,8 +16,24 @@ export default {
       'addVideo',
       'removeVideo',
       'resetState',
-      'cancel'
-    ])
+      'cancel',
+      'setMaterialToEdit',
+      'removeDeletedFile',
+      'updateMaterial'
+    ]),
+    cancelMaterial() {
+      this.cancel()
+      this.$emit('cancelNewMaterial')
+    },
+    saveNewMaterial() {
+      this.saveMaterial()
+      this.$emit('cancelNewMaterial')
+    },
+    removeFile(id) {
+      axios.delete(`/webapi/files/${id}`).then(res => {
+        this.removeDeletedFile(id)
+      })
+    }
   },
   computed: {
     ...mapGetters('products/newmaterial', [
@@ -27,6 +43,7 @@ export default {
       'isLoading',
       'videos',
       'errors',
+      'files',
     ]),
     'name': {
       get () {
@@ -46,8 +63,10 @@ export default {
     }
   },
   mounted() {
-    if (!this.id) {
+    if (!this.id && !this.editedMaterialId) {
       this.getMaterialId()
+    } else if(this.editedMaterialId) {
+      this.setMaterialToEdit(this.editedMaterialId)
     }
   }
 }

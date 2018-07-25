@@ -15,4 +15,27 @@ export default {
       })
     })
   },
+  getMaterial(id) {
+    return new Promise((resolve, reject) => {
+      axios.get(`/webapi/materials/${id}/edit`).then(res => {
+        resolve(res)
+      })
+    })
+  },
+  updateMaterial(data, id) {
+    return new Promise((resolve, reject) => {
+      axios.patch(`/webapi/materials/${id}`, this.processData(data)).then((res) => {
+        resolve(res)
+      }).catch((err) => {
+        reject(err)
+      })
+    })
+  },
+  processData(data) {
+    return {
+      id: data.id,
+      name: data.name,
+      videos: data.videos
+    }
+  },
 }

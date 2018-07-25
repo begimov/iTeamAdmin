@@ -38,5 +38,24 @@ export default {
   },
   resetState ({ commit }) {
     commit('resetState')
+  },
+  setMaterialToEdit ({ commit }, id) {
+    commit('setIsLoading', true)
+    api.newmaterial.getMaterial(id).then(res => {
+      commit('setMaterialToEdit', res.data.data)
+      commit('setIsLoading', false)
+    })
+  },
+  removeDeletedFile ({ commit }, id) {
+    commit('removeDeletedFile', id)
+  },
+  updateMaterial ({ commit, dispatch, state }, id) {
+    commit('setIsLoading', true)
+    api.newmaterial.updateMaterial(state.params, id).then(res => {
+      dispatch('setMaterialToEdit', id)
+    }).catch(err => {
+      commit('setErrors', err.response.data)
+      commit('setIsLoading', false)
+    })
   }
 }
