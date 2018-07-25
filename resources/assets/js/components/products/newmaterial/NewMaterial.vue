@@ -10,7 +10,7 @@
           </div>
 
           <div class="panel-body">
-            <form action="#" @submit.prevent="saveNewMaterial">
+            <form action="#">
 
               <div class="row">
                 <div class="col-md-12">
@@ -80,7 +80,10 @@
               <div class="row">
                 <div class="col-md-12">
                   <ul class="list-inline">
-                    <li><button type="submit" class="btn btn-primary">Сохранить</button></li>
+                    <li>
+                      <a href="#" class="btn btn-primary" @click.prevent="saveNewMaterial" v-if="!editedMaterialId">Создать</a>
+                      <a href="#" class="btn btn-primary" v-else @click.prevent="updateMaterial(editedMaterialId)">Сохранить</a>
+                    </li>
                     <li><a href="#" class="btn btn-default" @click.prevent="cancelMaterial">Отменить</a></li>
                   </ul>
                 </div>

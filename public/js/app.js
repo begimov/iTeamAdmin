@@ -65314,12 +65314,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('form', {
     attrs: {
       "action": "#"
-    },
-    on: {
-      "submit": function($event) {
-        $event.preventDefault();
-        _vm.saveNewMaterial($event)
-      }
     }
   }, [_c('div', {
     staticClass: "row"
@@ -65465,7 +65459,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_vm._m(0), _vm._v(" "), _c('li', [_c('a', {
+  }, [_c('li', [(!_vm.editedMaterialId) ? _c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.saveNewMaterial($event)
+      }
+    }
+  }, [_vm._v("Создать")]) : _c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.updateMaterial(_vm.editedMaterialId)
+      }
+    }
+  }, [_vm._v("Сохранить")])]), _vm._v(" "), _c('li', [_c('a', {
     staticClass: "btn btn-default",
     attrs: {
       "href": "#"
@@ -65477,14 +65493,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("Отменить")])])])])])])])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('button', {
-    staticClass: "btn btn-primary",
-    attrs: {
-      "type": "submit"
-    }
-  }, [_vm._v("Сохранить")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
