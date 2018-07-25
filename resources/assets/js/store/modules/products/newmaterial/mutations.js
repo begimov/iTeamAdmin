@@ -47,5 +47,9 @@ export default {
         state.params.name = payload.name
         state.params.videos = payload.resources.data
         state.options.files = payload.files.data
+    },
+    removeDeletedFile(state, id) {
+        const files = _.filter(state.options.files, e => e.id !== id)
+        state.options.files = [ ...files ]
     }
 }
