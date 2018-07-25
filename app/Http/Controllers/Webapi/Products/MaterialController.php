@@ -118,7 +118,7 @@ class MaterialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->materials->update($request, $id);
     }
 
     /**
