@@ -39,7 +39,7 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
         $material->name = $data['name'];
         $material->save();
 
-        if (isset($data['videos']) && !empty($data['videos'])) {
+        if ($this->hasVideoResources($data)) {
             $this->storeVideoResources($data['videos'], $material);
         }
     }
@@ -49,6 +49,11 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
         $material = $this->entity->find($id);
 
         $material->update($request->only($this->getEntityFields()));
+
+        if ($this->hasVideoResources($data = $request->all())) {
+            $material->resources()->delete();
+            $this->storeVideoResources($data['videos'], $material);
+        }
     }
 
     protected function storeVideoResources($videos, $material)
@@ -63,6 +68,11 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
 
             $material->resources()->save($resource);
         }
+    }
+
+    protected function hasVideoResources($data)
+    {
+        return isset($data['videos']) && !empty($data['videos']);
     }
 
     protected function getEntityFields()
