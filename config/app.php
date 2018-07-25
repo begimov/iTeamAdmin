@@ -169,6 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Spatie\Fractal\FractalServiceProvider::class,
+        Cocur\Slugify\Bridge\Laravel\SlugifyServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -231,6 +232,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        "Slugify" => Cocur\Slugify\Bridge\Laravel\SlugifyFacade::class,
     ],
 
 ];
