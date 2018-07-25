@@ -46,4 +46,7 @@ export default {
       commit('setIsLoading', false)
     })
   },
+  removeDeletedFile ({ commit }, id) {
+    commit('removeDeletedFile', id)
+  },
 }

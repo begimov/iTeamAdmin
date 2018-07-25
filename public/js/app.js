@@ -44205,6 +44205,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('setMaterialToEdit', res.data.data);
       commit('setIsLoading', false);
     });
+  },
+  removeDeletedFile: function removeDeletedFile(_ref10, id) {
+    var commit = _ref10.commit;
+
+    commit('removeDeletedFile', id);
   }
 });
 
@@ -65233,7 +65238,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState', 'cancel', 'setMaterialToEdit']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newmaterial', ['getMaterialId', 'saveMaterial', 'updateName', 'updateVideoId', 'addVideo', 'removeVideo', 'resetState', 'cancel', 'setMaterialToEdit', 'removeDeletedFile']), {
     cancelMaterial: function cancelMaterial() {
       this.cancel();
       this.$emit('cancelNewMaterial');
@@ -65243,7 +65248,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.$emit('cancelNewMaterial');
     },
     removeFile: function removeFile(id) {
-      axios.delete('/webapi/files/' + id);
+      var _this = this;
+
+      axios.delete('/webapi/files/' + id).then(function (res) {
+        _this.removeDeletedFile(id);
+      });
     }
   }),
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newmaterial', ['id', 'getName', 'getVideoId', 'isLoading', 'videos', 'errors', 'files']), {

@@ -17,7 +17,8 @@ export default {
       'removeVideo',
       'resetState',
       'cancel',
-      'setMaterialToEdit'
+      'setMaterialToEdit',
+      'removeDeletedFile',
     ]),
     cancelMaterial() {
       this.cancel()
@@ -28,7 +29,9 @@ export default {
       this.$emit('cancelNewMaterial')
     },
     removeFile(id) {
-      axios.delete(`/webapi/files/${id}`)
+      axios.delete(`/webapi/files/${id}`).then(res => {
+        this.removeDeletedFile(id)
+      })
     }
   },
   computed: {
