@@ -50,8 +50,9 @@ class EloquentMaterialRepository extends EloquentRepositoryAbstract implements M
 
         $material->update($request->only($this->getEntityFields()));
 
-        if ($this->hasVideoResources($data = $request->all())) {
-            $material->resources()->delete();
+        $material->resources()->delete();
+
+        if ($this->hasVideoResources($data = $request->all())) {         
             $this->storeVideoResources($data['videos'], $material);
         }
     }

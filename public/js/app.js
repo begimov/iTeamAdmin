@@ -43924,6 +43924,7 @@ __WEBPACK_IMPORTED_MODULE_3_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vuex
   },
   processData: function processData(data) {
     return {
+      id: data.id,
       name: data.name,
       videos: data.videos
     };

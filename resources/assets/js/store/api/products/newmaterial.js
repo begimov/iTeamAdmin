@@ -33,6 +33,7 @@ export default {
   },
   processData(data) {
     return {
+      id: data.id,
       name: data.name,
       videos: data.videos
     }
