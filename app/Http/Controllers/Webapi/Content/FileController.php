@@ -66,6 +66,8 @@ class FileController extends Controller
 
     protected function storeFileOnDisk($disk, $path, $file)
     {
-        Storage::disk($disk)->putFileAs($path, $file, $file->getClientOriginalName());
+        $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $file->getClientOriginalExtension();
+        Storage::disk($disk)->putFileAs($path, $file, \Slugify::slugify($name) . '.' . $extension);
     }
 }
