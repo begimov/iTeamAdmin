@@ -14,7 +14,7 @@ class AddOriginalNameToFilesTable extends Migration
     public function up()
     {
         Schema::table('files', function (Blueprint $table) {
-            //
+            $table->string('original_name')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddOriginalNameToFilesTable extends Migration
     public function down()
     {
         Schema::table('files', function (Blueprint $table) {
-            //
+            $table->dropColumn('original_name');
         });
     }
 }
