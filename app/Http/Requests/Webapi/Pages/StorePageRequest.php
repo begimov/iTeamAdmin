@@ -28,6 +28,7 @@ class StorePageRequest extends FormRequest
             'description' => 'required|string',
             'category_id' => 'required|numeric|exists:categories,id',
             'elements' => 'required|array',
+            'slug' => 'required|string|unique:pages,slug' . ",{$this->page}"
         ];
     }
 
@@ -44,5 +45,15 @@ class StorePageRequest extends FormRequest
             'category.required' => trans('validation.store-page-request.categoryId.required'),
             'elements.required' => trans('validation.store-page-request.elements.required'),
         ];
+    }
+
+    /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge(['slug' => \Slugify::slugify($this->name)]);
     }
 }
