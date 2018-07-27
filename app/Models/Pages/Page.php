@@ -10,7 +10,7 @@ use App\Models\Products\Category;
 
 class Page extends Model
 {
-    protected $fillable = ['name', 'description', 'category_id', 'status'];
+    protected $fillable = ['name', 'description', 'category_id', 'status', 'slug'];
     
     public function elements()
     {

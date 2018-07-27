@@ -26,6 +26,7 @@
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Введите название страницы..." v-model="pageName">
                   <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span>
+                  <span class="help-block alert-danger" v-if="!errors.name && errors.slug">{{ errors.slug[0] }}</span>
                 </div>
               </div>
               <div class="col-md-6">
