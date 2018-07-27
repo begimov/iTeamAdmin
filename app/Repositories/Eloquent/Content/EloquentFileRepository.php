@@ -33,9 +33,13 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
 
     public function storeElementFile(UploadedFile $uploadedFile)
     {
+        $name = pathinfo($originalName = $uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $uploadedFile->getClientOriginalExtension();
+
         $file = $this->entity;
-        $file->name = $uploadedFile->getClientOriginalName();
+        $file->name = \Slugify::slugify($name) . '.' . $extension;
         $file->size = $uploadedFile->getSize();
+        $file->original_name = $originalName;
         $file->save();
 
         return $file;
