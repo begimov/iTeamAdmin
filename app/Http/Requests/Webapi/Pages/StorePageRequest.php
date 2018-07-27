@@ -44,6 +44,7 @@ class StorePageRequest extends FormRequest
             'desc.required' => trans('validation.store-page-request.desc.required'),
             'category.required' => trans('validation.store-page-request.categoryId.required'),
             'elements.required' => trans('validation.store-page-request.elements.required'),
+            'slug.unique' => trans('validation.store-page-request.slug.unique'),
         ];
     }
 
