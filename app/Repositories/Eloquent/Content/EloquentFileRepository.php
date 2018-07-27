@@ -18,14 +18,16 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
 
     public function store(Material $material, UploadedFile $uploadedFile)
     {
-        $name = pathinfo($originalName = $uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $extension = $uploadedFile->getClientOriginalExtension();
+        ["originalName" => $originalName, "name" => $name, "extension" => $extension, 'size' => $size] 
+            = $this->getFileMetaData($uploadedFile);
 
         $file = $this->entity;
-        $file->name = \Slugify::slugify($name) . '.' . $extension;
-        $file->size = $uploadedFile->getSize();
+
+        $file->name = $this->slugify($name, $extension);
+        $file->size = $size;
         $file->original_name = $originalName;
         $file->material()->associate($material);
+
         $file->save();
 
         return $file;
@@ -33,13 +35,15 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
 
     public function storeElementFile(UploadedFile $uploadedFile)
     {
-        $name = pathinfo($originalName = $uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $extension = $uploadedFile->getClientOriginalExtension();
+        ["originalName" => $originalName, "name" => $name, "extension" => $extension, 'size' => $size]  
+            = $this->getFileMetaData($uploadedFile);
 
         $file = $this->entity;
-        $file->name = \Slugify::slugify($name) . '.' . $extension;
-        $file->size = $uploadedFile->getSize();
+
+        $file->name = $this->slugify($name, $extension);
+        $file->size = $size;
         $file->original_name = $originalName;
+
         $file->save();
 
         return $file;
@@ -48,5 +52,20 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
     public function destroy(File $file)
     {
         $file->delete();
+    }
+
+    protected function slugify($name, $extension)
+    {
+        return \Slugify::slugify($name) . '.' . $extension;
+    }
+
+    protected function getFileMetaData(UploadedFile $uploadedFile)
+    {
+        return [
+            'originalName' => $originalName = $uploadedFile->getClientOriginalName(),
+            'name' => pathinfo($originalName, PATHINFO_FILENAME),
+            'extension' => $uploadedFile->getClientOriginalExtension(),
+            'size' => $uploadedFile->getSize()
+        ];
     }
 }
