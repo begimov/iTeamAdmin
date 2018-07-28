@@ -5,13 +5,11 @@ export default {
     components: { Multiselect },
     data () {
         return {
-            options: {
-                products: [],
-              },
             params: {
-                product: null,
-                priceTag: null,
-                isBundle: false
+                products: [
+                    {isBundle:false, pricetagId:null,productId:1},
+                    {isBundle:false, pricetagId:1,productId:2}
+                ]
             },
             isLoaded: false
         }
@@ -20,14 +18,9 @@ export default {
         //
     },
     methods: {
-        getProducts() {
-            //
-        },
-        prepareEmitedData() {
-            //
-        }
+        //
     },
     mounted() {
-        this.getProducts();
+        //
     }
 }

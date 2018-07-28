@@ -67090,13 +67090,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: { Multiselect: __WEBPACK_IMPORTED_MODULE_0_vue_multiselect___default.a },
     data: function data() {
         return {
-            options: {
-                products: []
-            },
             params: {
-                product: null,
-                priceTag: null,
-                isBundle: false
+                products: [{ isBundle: false, pricetagId: null, productId: 1 }, { isBundle: false, pricetagId: 1, productId: 2 }]
             },
             isLoaded: false
         };
@@ -67106,15 +67101,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //
     },
     methods: {
-        getProducts: function getProducts() {
-            //
-        },
-        prepareEmitedData: function prepareEmitedData() {
-            //
-        }
+        //
     },
     mounted: function mounted() {
-        this.getProducts();
+        //
     }
 });
 
@@ -67123,14 +67113,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_vm._v("\n        //\n    ")])])
-}]}
+  }, _vm._l((_vm.params.products), function(product, index) {
+    return _c('div', {
+      key: product.id,
+      staticClass: "col-md-12"
+    }, [_c('purchase', {
+      attrs: {
+        "product": product
+      },
+      model: {
+        value: (_vm.params.products[index]),
+        callback: function($$v) {
+          _vm.$set(_vm.params.products, index, $$v)
+        },
+        expression: "params.products[index]"
+      }
+    })], 1)
+  }))
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
