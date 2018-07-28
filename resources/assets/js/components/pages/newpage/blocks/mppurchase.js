@@ -6,19 +6,14 @@ export default {
     data () {
         return {
             params: {
-                products: [
-                    {isBundle:false, pricetagId:null,productId:1},
-                    {isBundle:false, pricetagId:1,productId:2}
-                ]
-            },
-            isLoaded: false
+                products: []
+            }
         }
     },
-    watch: {
-        //
-    },
     methods: {
-        //
+        addProduct() {
+            this.params.products.push({isBundle:false, pricetagId:null,productId:1})
+        }
     },
     mounted() {
         //

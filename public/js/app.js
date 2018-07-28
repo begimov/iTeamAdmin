@@ -67091,17 +67091,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             params: {
-                products: [{ isBundle: false, pricetagId: null, productId: 1 }, { isBundle: false, pricetagId: 1, productId: 2 }]
-            },
-            isLoaded: false
+                products: []
+            }
         };
     },
 
-    watch: {
-        //
-    },
     methods: {
-        //
+        addProduct: function addProduct() {
+            this.params.products.push({ isBundle: false, pricetagId: null, productId: 1 });
+        }
     },
     mounted: function mounted() {
         //
@@ -67113,7 +67111,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('div', [_c('div', {
     staticClass: "row"
   }, _vm._l((_vm.params.products), function(product, index) {
     return _c('div', {
@@ -67131,7 +67129,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         expression: "params.products[index]"
       }
     })], 1)
-  }))
+  })), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.addProduct($event)
+      }
+    }
+  }, [_vm._v("Добавить продукт")])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
