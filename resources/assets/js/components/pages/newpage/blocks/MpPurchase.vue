@@ -2,7 +2,11 @@
     <div>
         <div class="row">
             <div class="col-md-12" v-for="(product, index) in params.products" :key="product.id">
-                <purchase v-model="params.products[index]" :product="product"/>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <purchase v-model="params.products[index]" :product="product"/>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

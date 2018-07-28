@@ -22,6 +22,13 @@ export default {
             },
             deep: true
         },
+        products: {
+            handler: function(products) {
+                if (!this.params.products.length) {
+                    this.params.products = products
+                }
+            }
+        }
     },
     mounted() {
         //

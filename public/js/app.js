@@ -67107,6 +67107,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.$emit('input', products);
             },
             deep: true
+        },
+        products: {
+            handler: function handler(products) {
+                if (!this.params.products.length) {
+                    this.params.products = products;
+                }
+            }
         }
     },
     mounted: function mounted() {
@@ -67125,6 +67132,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('div', {
       key: product.id,
       staticClass: "col-md-12"
+    }, [_c('div', {
+      staticClass: "panel panel-default"
+    }, [_c('div', {
+      staticClass: "panel-body"
     }, [_c('purchase', {
       attrs: {
         "product": product
@@ -67136,7 +67147,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "params.products[index]"
       }
-    })], 1)
+    })], 1)])])
   })), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
