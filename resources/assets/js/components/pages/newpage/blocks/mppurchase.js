@@ -15,6 +15,14 @@ export default {
             this.params.products.push({isBundle:false, pricetagId:null,productId:1})
         }
     },
+    watch: {
+        'params.products': {
+            handler: function (products) {
+                this.$emit('input', products);
+            },
+            deep: true
+        },
+    },
     mounted() {
         //
     }

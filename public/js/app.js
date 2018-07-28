@@ -67101,6 +67101,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.params.products.push({ isBundle: false, pricetagId: null, productId: 1 });
         }
     },
+    watch: {
+        'params.products': {
+            handler: function handler(products) {
+                this.$emit('input', products);
+            },
+            deep: true
+        }
+    },
     mounted: function mounted() {
         //
     }
