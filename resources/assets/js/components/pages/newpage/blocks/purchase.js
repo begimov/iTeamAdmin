@@ -13,12 +13,14 @@ export default {
                 priceTag: null,
                 isBundle: false
             },
+            isLoaded: false
         }
     },
     watch: {
         'params.product': function () {
             this.$emit('input', this.prepareEmitedData())
-            this.params.priceTag = null;
+            this.params.priceTag = this.isLoaded ? null : this.params.priceTag;
+            this.isLoaded = true
         },
         'params.priceTag': function () {
             this.$emit('input', this.prepareEmitedData())

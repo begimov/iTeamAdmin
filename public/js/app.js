@@ -66330,14 +66330,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 product: null,
                 priceTag: null,
                 isBundle: false
-            }
+            },
+            isLoaded: false
         };
     },
 
     watch: {
         'params.product': function paramsProduct() {
             this.$emit('input', this.prepareEmitedData());
-            this.params.priceTag = null;
+            this.params.priceTag = this.isLoaded ? null : this.params.priceTag;
+            this.isLoaded = true;
         },
         'params.priceTag': function paramsPriceTag() {
             this.$emit('input', this.prepareEmitedData());
