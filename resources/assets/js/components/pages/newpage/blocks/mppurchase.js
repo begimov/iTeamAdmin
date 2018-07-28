@@ -12,7 +12,7 @@ export default {
     },
     methods: {
         addProduct() {
-            this.params.products.push({isBundle:false, pricetagId:null,productId:1})
+            this.params.products.push({})
         }
     },
     watch: {

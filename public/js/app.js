@@ -66356,7 +66356,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             axios.get('/webapi/products/all').then(function (res) {
                 _this.options.products = res.data.data;
 
-                if (!_this.params.product && !_this.params.priceTag && _this.product) {
+                if (!_this.params.product && !_this.params.priceTag && _this.product && _this.product.productId) {
                     var selectedProduct = _.find(_this.options.products, ['id', _this.product.productId]);
                     _this.params.product = _extends({}, selectedProduct);
 
@@ -67098,7 +67098,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         addProduct: function addProduct() {
-            this.params.products.push({ isBundle: false, pricetagId: null, productId: 1 });
+            this.params.products.push({});
         }
     },
     watch: {

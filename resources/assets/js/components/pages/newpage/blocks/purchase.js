@@ -34,7 +34,7 @@ export default {
             axios.get('/webapi/products/all').then((res) => {
                 this.options.products = res.data.data
 
-                if (!this.params.product && !this.params.priceTag && this.product) {
+                if (!this.params.product && !this.params.priceTag && this.product && this.product.productId) {
                     const selectedProduct = _.find(this.options.products, ['id', this.product.productId])
                     this.params.product = { ...selectedProduct }
 
