@@ -60,6 +60,10 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'freeproduct',
                 'data' => '{"form":""}'
             ],
+            [
+                'view' => 'mppurchase',
+                'data' => '{"products":""}'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);
