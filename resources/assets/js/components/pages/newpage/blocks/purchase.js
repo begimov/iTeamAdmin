@@ -9,6 +9,10 @@ export default {
                 products: [],
               },
             params: {
+                data: {
+                    title: '',
+                    description: ''
+                },
                 product: null,
                 priceTag: null,
                 isBundle: false
@@ -42,11 +46,13 @@ export default {
                     this.params.priceTag = (selectedPriceTag) ? {...selectedPriceTag} : null
 
                     this.params.isBundle = this.product.isBundle
+                    this.params.data = this.product.data ? this.product.data : this.params.data
                 }
             })
         },
         prepareEmitedData() {
             return {
+                data: this.params.data,
                 productId: this.params.product ? this.params.product.id : null,
                 pricetagId: this.params.priceTag ? this.params.priceTag.id : null,
                 isBundle: this.params.isBundle
