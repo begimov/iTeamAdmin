@@ -66351,6 +66351,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         'params.isBundle': function paramsIsBundle() {
             this.$emit('input', this.prepareEmitedData());
+        },
+        'params.data': {
+            handler: function handler() {
+                this.$emit('input', this.prepareEmitedData());
+            },
+            deep: true
         }
     },
     methods: {

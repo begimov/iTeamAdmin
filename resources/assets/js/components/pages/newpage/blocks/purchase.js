@@ -32,6 +32,12 @@ export default {
         'params.isBundle': function () {
             this.$emit('input', this.prepareEmitedData())
         },
+        'params.data': {
+            handler: function () {
+                this.$emit('input', this.prepareEmitedData())
+            },
+            deep: true
+        }
     },
     methods: {
         getProducts() {
