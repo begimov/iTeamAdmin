@@ -66424,28 +66424,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
+  }, [_c('quill-editor', {
+    model: {
       value: (_vm.params.data.description),
+      callback: function($$v) {
+        _vm.params.data.description = $$v
+      },
       expression: "params.data.description"
-    }],
-    staticClass: "form-control",
-    attrs: {
-      "type": "text",
-      "placeholder": "Описание..."
-    },
-    domProps: {
-      "value": (_vm.params.data.description)
-    },
-    on: {
-      "input": function($event) {
-        if ($event.target.composing) { return; }
-        _vm.params.data.description = $event.target.value
-      }
     }
-  })])])]), _vm._v(" "), _c('div', {
+  })], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-6"

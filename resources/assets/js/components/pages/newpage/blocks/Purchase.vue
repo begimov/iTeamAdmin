@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <input type="text" v-model="params.data.description" class="form-control" placeholder="Описание...">
+                    <quill-editor v-model="params.data.description"></quill-editor>
                 </div>
             </div>
         </div>
