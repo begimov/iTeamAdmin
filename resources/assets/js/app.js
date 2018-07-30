@@ -61,6 +61,7 @@ Vue.component('new-page', require('./components/pages/newpage/NewPage.vue'));
 
 // Special blocks
 Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vue'));
+Vue.component('mp-purchase', require('./components/pages/newpage/blocks/MpPurchase.vue'));
 Vue.component('mp-stages', require('./components/pages/newpage/blocks/MpStages.vue'));
 Vue.component('text-reviews', require('./components/pages/newpage/blocks/TextReviews.vue'));
 Vue.component('free-product', require('./components/pages/newpage/blocks/FreeProduct.vue'));
