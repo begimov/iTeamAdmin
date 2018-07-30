@@ -26,7 +26,7 @@ class BlocksTableSeeder extends Seeder
             ],
             [
                 'view' => 'threecards',
-                'data' => '{"title1":"","text1":"","title2":"","text2":"","title3":"","text3":""}'
+                'data' => '{"files":{"img1":"","img2":"","img3":""},"title1":"","text1":"","title2":"","text2":"","title3":"","text3":""}'
             ],
             [
                 'view' => 'freemagnet',
