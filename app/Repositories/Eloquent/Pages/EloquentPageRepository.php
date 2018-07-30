@@ -59,8 +59,18 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
             $e->page()->associate($page);
             $e->save();
 
-            if (isset($element['data']['files'])) {
-                $this->associateElementFiles($element['data']['files'], $e);
+            $this->storeFiles($element['data'], $e);
+        }
+    }
+
+    protected function storeFiles($elementData, $newElement)
+    {
+        if (isset($elementData['files'])) {
+            $this->associateElementFiles($elementData['files'], $newElement);
+        }
+        foreach ($elementData as $e) {
+            if (is_array($e)) {
+                $this->storeFiles($e, $newElement);
             }
         }
     }
