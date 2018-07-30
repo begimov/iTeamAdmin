@@ -18,7 +18,7 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
 
     public function store(Material $material, UploadedFile $uploadedFile)
     {
-        list("originalName" => $originalName, "name" => $name, "extension" => $extension, 'size' => $size) = $this->getFileMetaData($uploadedFile);
+        list($originalName, $name, $extension, $size) = $this->getFileMetaData($uploadedFile);
 
         $file = $this->entity;
 
@@ -34,7 +34,7 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
 
     public function storeElementFile(UploadedFile $uploadedFile)
     {
-        list("originalName" => $originalName, "name" => $name, "extension" => $extension, 'size' => $size) = $this->getFileMetaData($uploadedFile);
+        list($originalName, $name, $extension, $size) = $this->getFileMetaData($uploadedFile);
 
         $file = $this->entity;
 
@@ -60,10 +60,10 @@ class EloquentFileRepository extends EloquentRepositoryAbstract implements FileR
     protected function getFileMetaData(UploadedFile $uploadedFile)
     {
         return [
-            'originalName' => $originalName = $uploadedFile->getClientOriginalName(),
-            'name' => pathinfo($originalName, PATHINFO_FILENAME),
-            'extension' => $uploadedFile->getClientOriginalExtension(),
-            'size' => $uploadedFile->getSize()
+            $originalName = $uploadedFile->getClientOriginalName(),
+            pathinfo($originalName, PATHINFO_FILENAME),
+            $uploadedFile->getClientOriginalExtension(),
+            $uploadedFile->getSize()
         ];
     }
 }
