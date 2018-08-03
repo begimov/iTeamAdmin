@@ -17,6 +17,7 @@ class PageTransformer extends \League\Fractal\TransformerAbstract
             'name' => $page->name,
             'description' => $page->description,
             'status' => $page->status,
+            'slug' => $page->slug
         ];
     }
 

@@ -33,6 +33,14 @@ export default {
       this.$emit('editPage', this.page.id)
     }
   },
+  computed: {
+    previewUrl() {
+      const hostParts = window.location.host.split('.')
+      const domain = hostParts.pop()
+      return window.location.protocol + '//' + hostParts.pop() + '.' 
+        + domain + '/pages/' + this.page.slug
+    }
+  },
   mounted() {
     //
   }

@@ -3,7 +3,7 @@
 
     <div class="col-md-6">
       <h4>
-        <span class="badge">№ {{ page.id }}:</span> {{ page.name }}
+        <span class="badge">№ {{ page.id }}:</span> <a :href="previewUrl" target="_blank">{{ page.name }}</a>
       </h4>
       <p>
         Категория: <span class="badge">{{ page.category.data.name }}</span>
