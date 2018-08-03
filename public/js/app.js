@@ -65832,6 +65832,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$emit('editPage', this.page.id);
     }
   },
+  computed: {
+    previewUrl: function previewUrl() {
+      var hostParts = window.location.host.split('.');
+      var domain = hostParts.pop();
+      return window.location.protocol + '//' + hostParts.pop() + '.' + domain + '/pages/' + this.page.slug;
+    }
+  },
   mounted: function mounted() {
     //
   }
@@ -65848,7 +65855,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6"
   }, [_c('h4', [_c('span', {
     staticClass: "badge"
-  }, [_vm._v("№ " + _vm._s(_vm.page.id) + ":")]), _vm._v(" " + _vm._s(_vm.page.name) + "\n    ")]), _vm._v(" "), _c('p', [_vm._v("\n      Категория: "), _c('span', {
+  }, [_vm._v("№ " + _vm._s(_vm.page.id) + ":")]), _vm._v(" "), _c('a', {
+    attrs: {
+      "href": _vm.previewUrl,
+      "target": "_blank"
+    }
+  }, [_vm._v(_vm._s(_vm.page.name))])]), _vm._v(" "), _c('p', [_vm._v("\n      Категория: "), _c('span', {
     staticClass: "badge"
   }, [_vm._v(_vm._s(_vm.page.category.data.name))])]), _vm._v(" "), _c('p', [_vm._v("\n      Описание: " + _vm._s(_vm.page.description) + "\n    ")])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6 text-right orders-edit-block"
