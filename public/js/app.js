@@ -66217,10 +66217,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-body"
+  }, [_c('div', {
+    staticClass: "row"
   }, _vm._l((_vm.blocks), function(block) {
-    return _c('p', {
-      key: block.id
-    }, [_c('a', {
+    return _c('div', {
+      key: block.id,
+      staticClass: "col-md-3 col-sm-4 col-xs-6"
+    }, [_c('p', [_c('a', {
       attrs: {
         "href": "#"
       },
@@ -66233,8 +66236,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           })
         }
       }
-    }, [_vm._v(_vm._s(block.name))])])
-  }))])])]) : _vm._e()]), _vm._v(" "), _c('div', {
+    }, [_vm._v(_vm._s(block.name))])])])
+  }))])])])]) : _vm._e()]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [(!_vm.editedPageId) ? _c('a', {
     staticClass: "btn btn-primary",
