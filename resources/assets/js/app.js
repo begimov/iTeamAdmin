@@ -20,9 +20,10 @@ import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor, {
     modules: {
         toolbar: [
-            ['bold', 'italic'], 
+            ['bold', 'italic', 'strike'], 
             [{ 'list': 'ordered'}, { 'list': 'bullet' }], 
-            [{ 'align': [] }]
+            [{ 'align': [] }],
+            [{ 'header': [3, 4, 5, false] }]
         ]
     },
     placeholder: '...'

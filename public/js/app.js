@@ -12621,7 +12621,7 @@ window.Vue = __webpack_require__(16);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_quill_editor___default.a, {
     modules: {
-        toolbar: [['bold', 'italic'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'align': [] }]]
+        toolbar: [['bold', 'italic', 'strike'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'align': [] }], [{ 'header': [3, 4, 5, false] }]]
     },
     placeholder: '...'
 });
