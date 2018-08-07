@@ -64,9 +64,13 @@
               <div class="col-md-12">
                 <div class="panel panel-default">
                   <div class="panel-body">
-                    <p v-for="block in blocks" :key="block.id">
-                      <a href="#" @click.prevent="addBlockToLayout({tag: block.tag, id: Date.now()})">{{ block.name }}</a>
-                    </p>
+                    <div class="row">
+                      <div class="col-md-3 col-sm-4 col-xs-6" v-for="block in blocks" :key="block.id">
+                        <p>
+                          <a href="#" @click.prevent="addBlockToLayout({tag: block.tag, id: Date.now()})">{{ block.name }}</a>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
