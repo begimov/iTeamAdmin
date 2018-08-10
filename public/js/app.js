@@ -59532,6 +59532,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       options: _extends({
         url: '/webapi/files',
         thumbnailWidth: 150,
+        timeout: 0,
         maxFilesize: this.maxFilesize,
         maxFiles: this.maxFiles,
         headers: {

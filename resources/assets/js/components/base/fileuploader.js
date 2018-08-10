@@ -11,6 +11,7 @@ export default {
       options: {
         url: `/webapi/files`,
         thumbnailWidth: 150,
+        timeout: 0,
         maxFilesize: this.maxFilesize,
         maxFiles: this.maxFiles,
         headers: {
