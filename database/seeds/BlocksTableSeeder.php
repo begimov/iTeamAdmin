@@ -64,6 +64,10 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'mppurchase',
                 'data' => '{"products":""}'
             ],
+            [
+                'view' => 'image',
+                'data' => '{"files":{"img1":""}}'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);
