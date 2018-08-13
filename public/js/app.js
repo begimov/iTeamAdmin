@@ -65484,7 +65484,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "parent-resource-id": _vm.id,
       "parent-resource-type": "material",
-      "max-filesize": "20"
+      "max-filesize": "50"
     }
   })], 1)]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "row"
