@@ -68,6 +68,10 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'image',
                 'data' => '{"files":{"img1":""}}'
             ],
+            [
+                'view' => 'video',
+                'data' => '{"resources":{"video1":""}}'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);
