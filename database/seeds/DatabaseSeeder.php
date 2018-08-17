@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(BlocksTableSeeder::class);
         $this->call(ResourceTypesTableSeeder::class);
+        $this->call(ThemesTableSeeder::class);
     }
 }
