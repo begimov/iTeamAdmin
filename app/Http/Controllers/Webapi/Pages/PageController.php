@@ -129,7 +129,7 @@ class PageController extends Controller
 
         return fractal()
             ->item($page)
-            ->parseIncludes(['category', 'elements', 'elements.block'])
+            ->parseIncludes(['category', 'theme', 'elements', 'elements.block'])
             ->transformWith(new PageTransformer)
             ->toArray();
     }

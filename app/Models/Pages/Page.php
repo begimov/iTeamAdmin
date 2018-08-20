@@ -22,6 +22,11 @@ class Page extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function theme()
+    {
+        return $this->belongsTo(Theme::class);
+    }
+
     public function scopeFilter($builder, $repository, $request, array $filters = [])
     {
         return (new PageFilters($request))->add($filters)->filter($repository);
