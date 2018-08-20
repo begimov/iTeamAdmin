@@ -43845,6 +43845,7 @@ __WEBPACK_IMPORTED_MODULE_3_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vuex
       name: page.name,
       description: page.desc,
       category_id: page.category ? page.category.id : null,
+      theme_id: page.theme ? page.theme.id : null,
       elements: elements
     };
   },

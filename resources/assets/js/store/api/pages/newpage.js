@@ -20,6 +20,7 @@ export default {
       name: page.name,
       description: page.desc,
       category_id: page.category ? page.category.id : null,
+      theme_id: page.theme ? page.theme.id : null,
       elements
     }
   },
