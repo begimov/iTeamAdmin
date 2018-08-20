@@ -10,7 +10,7 @@ use App\Models\Products\Category;
 
 class Page extends Model
 {
-    protected $fillable = ['name', 'description', 'category_id', 'status', 'slug'];
+    protected $fillable = ['name', 'description', 'category_id', 'status', 'slug', 'theme_id'];
     
     public function elements()
     {
@@ -20,6 +20,11 @@ class Page extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function theme()
+    {
+        return $this->belongsTo(Theme::class);
     }
 
     public function scopeFilter($builder, $repository, $request, array $filters = [])

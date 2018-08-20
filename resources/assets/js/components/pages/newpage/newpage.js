@@ -17,6 +17,8 @@ export default {
           'layout',
           'categoryOptions',
           'categoryParams',
+          'themeOptions',
+          'themeParams',
           'isLoading',
           'errors'
       ]),
@@ -43,6 +45,7 @@ export default {
           'updatePageName',
           'updatePageDesc',
           'updateCategoryParams',
+          'updateThemeParams',
           'addBlockToLayout',
           'moveElementUp',
           'moveElementDown',

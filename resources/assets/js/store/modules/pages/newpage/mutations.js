@@ -8,11 +8,17 @@ export default {
     setCategoriesOptions(state, payload) {
         state.options.categories = payload
     },
+    setThemesOptions(state, payload) {
+        state.options.themes = payload
+    },
     setErrors(state, errors) {
         state.errors = errors
     },
     updateCategoryParams(state, value) {
         state.page.category = value
+    },
+    updateThemeParams(state, value) {
+        state.page.theme = value
     },
     updatePageName(state, name) {
         state.page.name = name
@@ -51,9 +57,11 @@ export default {
             isLoading: false,
             options: {
               categories:[],
+              themes:[],
             },
             page: {
-              categoryId: null,
+              category: null,
+              theme: null,
               name: '',
               desc: ''
             },
@@ -69,12 +77,13 @@ export default {
         })
     },
     setPageToEdit(state, payload) {
-        const { name, description, category, elements } = payload
+        const { name, description, category, elements, theme } = payload
 
         state.page = {
             name,
             desc: description,
-            category: category.data
+            category: category.data,
+            theme: theme.data
         }
 
         new Promise ((resolve, reject) => { 

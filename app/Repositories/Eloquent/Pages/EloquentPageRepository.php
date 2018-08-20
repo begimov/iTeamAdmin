@@ -90,7 +90,7 @@ class EloquentPageRepository extends EloquentRepositoryAbstract implements PageR
     protected function getEntityFields()
     {
         return [
-            'name', 'description', 'category_id', 'slug'
+            'name', 'description', 'category_id', 'slug', 'theme_id'
         ];
     }
 }

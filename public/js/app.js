@@ -43845,6 +43845,7 @@ __WEBPACK_IMPORTED_MODULE_3_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vuex
       name: page.name,
       description: page.desc,
       category_id: page.category ? page.category.id : null,
+      theme_id: page.theme ? page.theme.id : null,
       elements: elements
     };
   },
@@ -44477,10 +44478,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
   options: {
-    categories: []
+    categories: [],
+    themes: []
   },
   page: {
     category: null,
+    theme: null,
     name: '',
     desc: ''
   },
@@ -44515,6 +44518,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
   categoryParams: function categoryParams(state) {
     return state.page.category;
+  },
+  themeOptions: function themeOptions(state) {
+    return state.options.themes;
+  },
+  themeParams: function themeParams(state) {
+    return state.page.theme;
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
@@ -44575,6 +44584,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
         commit('setBlocks', blocks);
         commit('setCategoriesOptions', res.data.categories.data);
+        commit('setThemesOptions', res.data.themes.data);
         commit('setIsLoading', false);
         resolve(res);
       });
@@ -44585,41 +44595,46 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     commit('updateCategoryParams', value);
   },
-  updatePageName: function updatePageName(_ref3, name) {
+  updateThemeParams: function updateThemeParams(_ref3, value) {
     var commit = _ref3.commit;
+
+    commit('updateThemeParams', value);
+  },
+  updatePageName: function updatePageName(_ref4, name) {
+    var commit = _ref4.commit;
 
     commit('updatePageName', name);
   },
-  updatePageDesc: function updatePageDesc(_ref4, desc) {
-    var commit = _ref4.commit;
+  updatePageDesc: function updatePageDesc(_ref5, desc) {
+    var commit = _ref5.commit;
 
     commit('updatePageDesc', desc);
   },
-  addBlockToLayout: function addBlockToLayout(_ref5, data) {
-    var commit = _ref5.commit;
+  addBlockToLayout: function addBlockToLayout(_ref6, data) {
+    var commit = _ref6.commit;
 
     commit('addBlockToLayout', data);
   },
-  moveElementUp: function moveElementUp(_ref6, id) {
-    var commit = _ref6.commit;
+  moveElementUp: function moveElementUp(_ref7, id) {
+    var commit = _ref7.commit;
 
     commit('moveElementUp', { id: id, type: 'blocks' });
     commit('moveElementUp', { id: id, type: 'elements' });
   },
-  moveElementDown: function moveElementDown(_ref7, id) {
-    var commit = _ref7.commit;
+  moveElementDown: function moveElementDown(_ref8, id) {
+    var commit = _ref8.commit;
 
     commit('moveElementDown', { id: id, type: 'blocks' });
     commit('moveElementDown', { id: id, type: 'elements' });
   },
-  deleteElement: function deleteElement(_ref8, id) {
-    var commit = _ref8.commit;
+  deleteElement: function deleteElement(_ref9, id) {
+    var commit = _ref9.commit;
 
     commit('deleteElement', id);
   },
-  save: function save(_ref9) {
-    var commit = _ref9.commit,
-        state = _ref9.state;
+  save: function save(_ref10) {
+    var commit = _ref10.commit,
+        state = _ref10.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -44634,13 +44649,13 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       commit('setIsLoading', false);
     });
   },
-  resetState: function resetState(_ref10) {
-    var commit = _ref10.commit;
+  resetState: function resetState(_ref11) {
+    var commit = _ref11.commit;
 
     commit('resetState');
   },
-  setPageToEdit: function setPageToEdit(_ref11, id) {
-    var commit = _ref11.commit;
+  setPageToEdit: function setPageToEdit(_ref12, id) {
+    var commit = _ref12.commit;
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getPage(id).then(function (res) {
@@ -44648,9 +44663,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       commit('setIsLoading', false);
     });
   },
-  update: function update(_ref12, id) {
-    var commit = _ref12.commit,
-        state = _ref12.state;
+  update: function update(_ref13, id) {
+    var commit = _ref13.commit,
+        state = _ref13.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -44682,11 +44697,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setCategoriesOptions: function setCategoriesOptions(state, payload) {
         state.options.categories = payload;
     },
+    setThemesOptions: function setThemesOptions(state, payload) {
+        state.options.themes = payload;
+    },
     setErrors: function setErrors(state, errors) {
         state.errors = errors;
     },
     updateCategoryParams: function updateCategoryParams(state, value) {
         state.page.category = value;
+    },
+    updateThemeParams: function updateThemeParams(state, value) {
+        state.page.theme = value;
     },
     updatePageName: function updatePageName(state, name) {
         state.page.name = name;
@@ -44734,10 +44755,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         var initialState = {
             isLoading: false,
             options: {
-                categories: []
+                categories: [],
+                themes: []
             },
             page: {
-                categoryId: null,
+                category: null,
+                theme: null,
                 name: '',
                 desc: ''
             },
@@ -44756,13 +44779,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         var name = payload.name,
             description = payload.description,
             category = payload.category,
-            elements = payload.elements;
+            elements = payload.elements,
+            theme = payload.theme;
 
 
         state.page = {
             name: name,
             desc: description,
-            category: category.data
+            category: category.data,
+            theme: theme.data
         };
 
         new Promise(function (resolve, reject) {
@@ -66038,7 +66063,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'pagedesc', 'blocks', 'layout', 'categoryOptions', 'categoryParams', 'isLoading', 'errors']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages/newpage', ['pagename', 'pagedesc', 'blocks', 'layout', 'categoryOptions', 'categoryParams', 'themeOptions', 'themeParams', 'isLoading', 'errors']), {
     'pageName': {
       get: function get() {
         return this.pagename;
@@ -66056,7 +66081,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState', 'setPageToEdit', 'update']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'updateThemeParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState', 'setPageToEdit', 'update']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     },
@@ -66120,6 +66145,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("Категория не найдена")])]), _vm._v(" "), (_vm.errors.category_id) ? _c('span', {
     staticClass: "help-block alert-danger"
   }, [_vm._v(_vm._s(_vm.errors.category_id[0]))]) : _vm._e()], 1), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('multiselect', {
+    attrs: {
+      "value": _vm.themeParams,
+      "options": _vm.themeOptions,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите тему",
+      "label": "name",
+      "track-by": "id"
+    },
+    on: {
+      "input": _vm.updateThemeParams
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Тема не найдена")])]), _vm._v(" "), (_vm.errors.theme_id) ? _c('span', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v(_vm._s(_vm.errors.theme_id[0]))]) : _vm._e()], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('input', {
     directives: [{

@@ -6,12 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
-use App\Repositories\Contracts\Pages\PageRepository;
-use App\Repositories\Contracts\Pages\BlockRepository;
+use App\Repositories\Contracts\Pages\{ 
+    PageRepository,
+    BlockRepository,
+    ThemeRepository
+};
 use App\Repositories\Contracts\Products\CategoryRepository;
 
-use App\Transformers\Pages\PageTransformer;
-use App\Transformers\Pages\BlockTransformer;
+use App\Transformers\Pages\{
+    PageTransformer,
+    BlockTransformer,
+    ThemeTransformer
+};
 use App\Transformers\Products\CategoryTransformer;
 
 use App\Repositories\Eloquent\Criteria\With;
@@ -25,6 +31,7 @@ class PageController extends Controller
     protected $pages;
     protected $categories;
     protected $blocks;
+    protected $themes;
     
     /**
      * Create a new controller instance.
@@ -34,11 +41,13 @@ class PageController extends Controller
     public function __construct(
         PageRepository $pages, 
         CategoryRepository $categories,
-        BlockRepository $blocks)
+        BlockRepository $blocks,
+        ThemeRepository $themes)
     {
         $this->pages = $pages;
         $this->categories = $categories;
         $this->blocks = $blocks;
+        $this->themes = $themes;
     }
 
     /**
@@ -74,10 +83,12 @@ class PageController extends Controller
     {
         $blocks = fractal($this->blocks->get(), new BlockTransformer)->toArray();
         $categories = fractal($this->categories->get(), new CategoryTransformer)->toArray();
+        $themes = fractal($this->themes->get(), new ThemeTransformer)->toArray();
 
         return response()->json([
             'blocks' => $blocks,
             'categories' => $categories,
+            'themes' => $themes
         ]);
     }
 
@@ -118,7 +129,7 @@ class PageController extends Controller
 
         return fractal()
             ->item($page)
-            ->parseIncludes(['category', 'elements', 'elements.block'])
+            ->parseIncludes(['category', 'theme', 'elements', 'elements.block'])
             ->transformWith(new PageTransformer)
             ->toArray();
     }
