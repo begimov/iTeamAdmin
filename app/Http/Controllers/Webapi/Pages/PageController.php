@@ -13,8 +13,11 @@ use App\Repositories\Contracts\Pages\{
 };
 use App\Repositories\Contracts\Products\CategoryRepository;
 
-use App\Transformers\Pages\PageTransformer;
-use App\Transformers\Pages\BlockTransformer;
+use App\Transformers\Pages\{
+    PageTransformer,
+    BlockTransformer,
+    ThemeTransformer
+};
 use App\Transformers\Products\CategoryTransformer;
 
 use App\Repositories\Eloquent\Criteria\With;
@@ -80,10 +83,12 @@ class PageController extends Controller
     {
         $blocks = fractal($this->blocks->get(), new BlockTransformer)->toArray();
         $categories = fractal($this->categories->get(), new CategoryTransformer)->toArray();
+        $themes = fractal($this->themes->get(), new ThemeTransformer)->toArray();
 
         return response()->json([
             'blocks' => $blocks,
             'categories' => $categories,
+            'themes' => $themes
         ]);
     }
 
