@@ -51,9 +51,11 @@ export default {
             isLoading: false,
             options: {
               categories:[],
+              themes:[],
             },
             page: {
-              categoryId: null,
+              category: null,
+              theme: null,
               name: '',
               desc: ''
             },

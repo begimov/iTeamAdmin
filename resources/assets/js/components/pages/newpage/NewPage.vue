@@ -24,6 +24,20 @@
                   <span class="help-block alert-danger" v-if="errors.category_id">{{ errors.category_id[0] }}</span>
                 </div>
                 <div class="form-group">
+                  <multiselect :value="themeParams"
+                    :options="themeOptions"
+                    v-on:input="updateThemeParams"
+                    select-label=""
+                    selected-label="Выбран"
+                    deselect-label=""
+                    placeholder="Выберите тему"
+                    label="name"
+                    track-by="id">
+                    <span slot="noResult">Тема не найдена</span>
+                  </multiselect>
+                  <span class="help-block alert-danger" v-if="errors.theme_id">{{ errors.theme_id[0] }}</span>
+                </div>
+                <div class="form-group">
                   <input type="text" class="form-control" placeholder="Введите название страницы..." v-model="pageName">
                   <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span>
                   <span class="help-block alert-danger" v-if="!errors.name && errors.slug">{{ errors.slug[0] }}</span>

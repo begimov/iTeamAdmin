@@ -58,6 +58,9 @@ export default {
   updateCategoryParams ({ commit }, value) {
     commit('updateCategoryParams', value)
   },
+  updateThemeParams ({ commit }, value) {
+    commit('updateCategoryParams', value)
+  },
   updatePageName ({ commit }, name) {
     commit('updatePageName', name)
   },

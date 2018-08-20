@@ -17,6 +17,12 @@ export default {
   categoryParams (state) {
     return state.page.category
   },
+  themeOptions (state) {
+    return state.options.themes
+  },
+  themeParams (state) {
+    return state.page.theme
+  },
   isLoading (state) {
     return state.isLoading
   },
