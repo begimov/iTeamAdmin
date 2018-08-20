@@ -77,12 +77,13 @@ export default {
         })
     },
     setPageToEdit(state, payload) {
-        const { name, description, category, elements } = payload
+        const { name, description, category, elements, theme } = payload
 
         state.page = {
             name,
             desc: description,
-            category: category.data
+            category: category.data,
+            theme: theme.data
         }
 
         new Promise ((resolve, reject) => { 

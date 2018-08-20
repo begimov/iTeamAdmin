@@ -44779,13 +44779,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         var name = payload.name,
             description = payload.description,
             category = payload.category,
-            elements = payload.elements;
+            elements = payload.elements,
+            theme = payload.theme;
 
 
         state.page = {
             name: name,
             desc: description,
-            category: category.data
+            category: category.data,
+            theme: theme.data
         };
 
         new Promise(function (resolve, reject) {
