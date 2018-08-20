@@ -50,6 +50,7 @@ export default {
         });
         commit('setBlocks', blocks)
         commit('setCategoriesOptions', res.data.categories.data)
+        commit('setThemesOptions', res.data.themes.data)
         commit('setIsLoading', false)
         resolve(res)
       })
@@ -59,7 +60,7 @@ export default {
     commit('updateCategoryParams', value)
   },
   updateThemeParams ({ commit }, value) {
-    commit('updateCategoryParams', value)
+    commit('updateThemeParams', value)
   },
   updatePageName ({ commit }, name) {
     commit('updatePageName', name)

@@ -44583,6 +44583,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         });
         commit('setBlocks', blocks);
         commit('setCategoriesOptions', res.data.categories.data);
+        commit('setThemesOptions', res.data.themes.data);
         commit('setIsLoading', false);
         resolve(res);
       });
@@ -44596,7 +44597,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   updateThemeParams: function updateThemeParams(_ref3, value) {
     var commit = _ref3.commit;
 
-    commit('updateCategoryParams', value);
+    commit('updateThemeParams', value);
   },
   updatePageName: function updatePageName(_ref4, name) {
     var commit = _ref4.commit;
@@ -44695,11 +44696,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setCategoriesOptions: function setCategoriesOptions(state, payload) {
         state.options.categories = payload;
     },
+    setThemesOptions: function setThemesOptions(state, payload) {
+        state.options.themes = payload;
+    },
     setErrors: function setErrors(state, errors) {
         state.errors = errors;
     },
     updateCategoryParams: function updateCategoryParams(state, value) {
         state.page.category = value;
+    },
+    updateThemeParams: function updateThemeParams(state, value) {
+        state.page.theme = value;
     },
     updatePageName: function updatePageName(state, name) {
         state.page.name = name;

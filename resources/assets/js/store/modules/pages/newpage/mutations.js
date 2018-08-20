@@ -8,11 +8,17 @@ export default {
     setCategoriesOptions(state, payload) {
         state.options.categories = payload
     },
+    setThemesOptions(state, payload) {
+        state.options.themes = payload
+    },
     setErrors(state, errors) {
         state.errors = errors
     },
     updateCategoryParams(state, value) {
         state.page.category = value
+    },
+    updateThemeParams(state, value) {
+        state.page.theme = value
     },
     updatePageName(state, name) {
         state.page.name = name
