@@ -72,7 +72,7 @@
                   <file-uploader 
                     :parent-resource-id="id" 
                     parent-resource-type="material"
-                    max-filesize=50>
+                    max-filesize=100>
                   </file-uploader>
                 </div>
               </div>
