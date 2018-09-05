@@ -3,7 +3,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   computed: {
       ...mapGetters('tests', [
-          // 'currentModule',
+          'currentModule',
           'tests',
           'meta',
           'isLoading',

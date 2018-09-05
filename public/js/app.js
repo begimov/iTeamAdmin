@@ -45476,7 +45476,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // currentModule: 'pages',
+  currentModule: 'tests',
   tests: [],
   meta: null,
   isLoading: false,
@@ -45492,9 +45492,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // currentModule (state) {
-  //   return state.currentModule
-  // },
+  currentModule: function currentModule(state) {
+    return state.currentModule;
+  },
   tests: function tests(state) {
     return state.tests;
   },
@@ -66930,9 +66930,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests', [
-  // 'currentModule',
-  'tests', 'meta', 'isLoading', 'getSearchQuery']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests', ['currentModule', 'tests', 'meta', 'isLoading', 'getSearchQuery']
   // 'editedPageId'
   ), {
     'searchQuery': {
@@ -66965,7 +66963,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _c('div', [(_vm.currentModule === 'tests') ? _c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
@@ -67013,7 +67011,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "tests_pageChanged": _vm.getTests
     }
-  }) : _vm._e()], 1)])])])])])
+  }) : _vm._e()], 1)])])])]) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-8 text-right"

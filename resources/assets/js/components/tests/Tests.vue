@@ -1,8 +1,7 @@
 <template>
   <div>
     <!-- <new-page v-if="currentModule === 'newpage'" v-on:cancelNewPage="cancelNewPage" :editedPageId="editedPageId"></new-page> -->
-    <!-- <div class="container" v-if="currentModule === 'pages'"> -->
-    <div class="container">
+    <div class="container" v-if="currentModule === 'tests'">
       <div class="row">
         <div class="col-md-12">
           <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
