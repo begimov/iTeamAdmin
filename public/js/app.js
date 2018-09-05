@@ -1681,9 +1681,11 @@ function applyToTag (styleElement, obj) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__products_products__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_pages__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_newpage__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__products_materials__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__products_newmaterial__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__products_newproduct__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tests_tests__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__products_materials__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__products_newmaterial__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__products_newproduct__ = __webpack_require__(54);
+
 
 
 
@@ -1695,9 +1697,10 @@ function applyToTag (styleElement, obj) {
   products: __WEBPACK_IMPORTED_MODULE_0__products_products__["a" /* default */],
   pages: __WEBPACK_IMPORTED_MODULE_1__pages_pages__["a" /* default */],
   newpage: __WEBPACK_IMPORTED_MODULE_2__pages_newpage__["a" /* default */],
-  newmaterial: __WEBPACK_IMPORTED_MODULE_4__products_newmaterial__["a" /* default */],
-  newproduct: __WEBPACK_IMPORTED_MODULE_5__products_newproduct__["a" /* default */],
-  materials: __WEBPACK_IMPORTED_MODULE_3__products_materials__["a" /* default */]
+  tests: __WEBPACK_IMPORTED_MODULE_3__tests_tests__["a" /* default */],
+  newmaterial: __WEBPACK_IMPORTED_MODULE_5__products_newmaterial__["a" /* default */],
+  newproduct: __WEBPACK_IMPORTED_MODULE_6__products_newproduct__["a" /* default */],
+  materials: __WEBPACK_IMPORTED_MODULE_4__products_materials__["a" /* default */]
 });
 
 /***/ }),
@@ -67897,10 +67900,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
     commit('setIsLoading', true);
-    // api.pages.getPages(page, state.params).then(res => {
-    //   commit('setPages', res.data)
-    //   commit('setIsLoading', false)
-    // })
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].tests.getTests(page, state.params).then(function (res) {
+      console.log(res.data);
+      // commit('setPages', res.data)
+      commit('setIsLoading', false);
+    });
   }
 });
 
@@ -67916,6 +67920,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   // },
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
+  }
+});
+
+/***/ }),
+/* 205 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  getTests: function getTests(page, params) {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/tests?page=" + page, { params: params }).then(function (res) {
+        resolve(res);
+      });
+    });
   }
 });
 
