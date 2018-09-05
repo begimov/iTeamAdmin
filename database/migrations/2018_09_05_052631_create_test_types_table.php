@@ -15,7 +15,7 @@ class CreateTestTypesTable extends Migration
     {
         Schema::create('test_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('name');
         });
     }
 
