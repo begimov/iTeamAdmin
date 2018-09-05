@@ -4,8 +4,7 @@ export default {
   getTests ({commit, state}, page = 1) {
     commit('setIsLoading', true)
     api.tests.getTests(page, state.params).then(res => {
-      console.log(res.data)
-      // commit('setPages', res.data)
+      commit('setTests', res.data)
       commit('setIsLoading', false)
     })
   },

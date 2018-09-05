@@ -1,8 +1,8 @@
 export default {
-  // setPages (state, pages) {
-  //   state.pages = pages.data
-  //   state.meta = pages.meta
-  // },
+  setTests (state, tests) {
+    state.tests = tests.data
+    state.meta = tests.meta
+  },
   setIsLoading (state, flag) {
     state.isLoading = flag
   },

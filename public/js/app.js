@@ -45478,7 +45478,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
   // currentModule: 'pages',
   tests: [],
-  // meta: null,
+  meta: null,
   isLoading: false
   // params: {
   //   searchQuery: '',
@@ -45525,8 +45525,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].tests.getTests(page, state.params).then(function (res) {
-      console.log(res.data);
-      // commit('setPages', res.data)
+      commit('setTests', res.data);
       commit('setIsLoading', false);
     });
   }
@@ -45538,10 +45537,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // setPages (state, pages) {
-  //   state.pages = pages.data
-  //   state.meta = pages.meta
-  // },
+  setTests: function setTests(state, tests) {
+    state.tests = tests.data;
+    state.meta = tests.meta;
+  },
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
   }

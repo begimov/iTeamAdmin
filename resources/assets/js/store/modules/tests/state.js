@@ -1,7 +1,7 @@
 export default {
   // currentModule: 'pages',
   tests: [],
-  // meta: null,
+  meta: null,
   isLoading: false,
   // params: {
   //   searchQuery: '',
