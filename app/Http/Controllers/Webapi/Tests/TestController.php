@@ -4,18 +4,20 @@ namespace App\Http\Controllers\Webapi\Tests;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\Tests\TestRepository;
 
 class TestController extends Controller
 {
-   
+    protected $tests;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(TestRepository $tests)
     {
-        //
+        $this->tests = $tests;
     }
 
     /**
@@ -25,7 +27,7 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
-        return 1;
+        dd($this->tests);
     }
 
     /**
