@@ -26,6 +26,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     // Pages page
     Route::get('pages', 'Pages\PageController@index')->name('pages');
 
+    // Tests page
+    Route::get('tests', 'Tests\TestController@index')->name('tests');
+
     // WebAPI
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
         // Route for Orders.vue component
