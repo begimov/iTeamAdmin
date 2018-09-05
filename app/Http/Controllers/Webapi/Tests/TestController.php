@@ -30,7 +30,7 @@ class TestController extends Controller
     public function index(Request $request)
     {
         $tests = $this->tests
-            ->paginate(1);
+            ->paginate(20);
 
         $testsCollection = $tests->getCollection();
 

@@ -8,9 +8,9 @@ export default {
       commit('setIsLoading', false)
     })
   },
-  // updateSearchQuery ({ commit }, value) {
-  //   commit('updateSearchQuery', value)
-  // },
+  updateSearchQuery ({ commit }, value) {
+    commit('updateSearchQuery', value)
+  },
   // setCurrentModule ({ commit }, value) {
   //   commit('setCurrentModule', value)
   // },

@@ -14,9 +14,9 @@ export default {
   isLoading (state) {
     return state.isLoading
   },
-  // getSearchQuery (state) {
-  //   return state.params.searchQuery
-  // },
+  getSearchQuery (state) {
+    return state.params.searchQuery
+  },
   // editedPageId (state) {
   //   return state.editedPageId
   // },

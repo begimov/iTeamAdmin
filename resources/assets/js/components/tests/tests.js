@@ -7,31 +7,31 @@ export default {
           'tests',
           'meta',
           'isLoading',
-          // 'getSearchQuery',
+          'getSearchQuery',
           // 'editedPageId'
       ]),
-      // 'searchQuery': {
-      //   get () {
-      //     return this.getSearchQuery
-      //   },
-      //   set (value) {
-      //     this.updateSearchQuery(value)
-      //   }
-      // },
+      'searchQuery': {
+        get () {
+          return this.getSearchQuery
+        },
+        set (value) {
+          this.updateSearchQuery(value)
+        }
+      },
   },
   methods: {
       ...mapActions('tests', [
           'getTests',
-          // 'updateSearchQuery',
+          'updateSearchQuery',
           // 'setCurrentModule',
           // 'setEditedPageId'
       ]),
-      // textSearch () {
-      //   clearTimeout(this.timer);
-      //   this.timer = setTimeout(function(){
-      //       this.getPages()
-      //   }.bind(this), 1000)
-      // },
+      textSearch () {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(function(){
+            this.getTests()
+        }.bind(this), 1000)
+      },
       // cancelNewPage() {
       //   this.setEditedPageId(null)
       //   this.setCurrentModule('pages')

@@ -3,8 +3,8 @@ export default {
   tests: [],
   meta: null,
   isLoading: false,
-  // params: {
-  //   searchQuery: '',
-  // },
+  params: {
+    searchQuery: '',
+  },
   // editedPageId: null
 }
