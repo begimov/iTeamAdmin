@@ -2,7 +2,7 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
   computed: {
-      // ...mapGetters('pages', [
+      // ...mapGetters('test', [
       //     'currentModule',
       //     'pages',
       //     'meta',
@@ -20,12 +20,12 @@ export default {
       // },
   },
   methods: {
-      // ...mapActions('pages', [
-      //     'getPages',
-      //     'updateSearchQuery',
-      //     'setCurrentModule',
-      //     'setEditedPageId'
-      // ]),
+      ...mapActions('tests', [
+          'getTests',
+          // 'updateSearchQuery',
+          // 'setCurrentModule',
+          // 'setEditedPageId'
+      ]),
       // textSearch () {
       //   clearTimeout(this.timer);
       //   this.timer = setTimeout(function(){
@@ -38,6 +38,6 @@ export default {
       // }
   },
   mounted() {
-    // this.getPages()
+    this.getTests()
   }
 }
