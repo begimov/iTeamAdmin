@@ -62,6 +62,7 @@ Vue.component('new-page', require('./components/pages/newpage/NewPage.vue'));
 
 // Tests
 Vue.component('iteam-tests', require('./components/tests/Tests.vue'));
+Vue.component('iteam-test', require('./components/tests/Test.vue'));
 
 // Special blocks
 Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vue'));
