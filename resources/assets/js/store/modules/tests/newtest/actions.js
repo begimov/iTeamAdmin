@@ -1,19 +1,20 @@
 import api from '../../../api'
 
 export default {
-  // getInitialData ({ commit }) {
-  //   return new Promise((resolve, reject) => {
+  getInitialData ({ commit }) {
+    return new Promise((resolve, reject) => {
   //     commit('setIsLoading', true)
-  //     api.newpage.getInitialData().then(res => {
+      api.newtest.getInitialData().then(res => {
+        console.log(res)
   //       const blocks = res.data.blocks.data
   //       commit('setBlocks', blocks)
   //       commit('setCategoriesOptions', res.data.categories.data)
   //       commit('setThemesOptions', res.data.themes.data)
   //       commit('setIsLoading', false)
   //       resolve(res)
-  //     })
-  //   })
-  // },
+      })
+    })
+  },
   // updateCategoryParams ({ commit }, value) {
   //   commit('updateCategoryParams', value)
   // },

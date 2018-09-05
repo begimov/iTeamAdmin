@@ -41,7 +41,7 @@ export default {
   },
   methods: {
       ...mapActions('tests/newtest', [
-      //     'getInitialData',
+          'getInitialData',
           'updateTestName',
           'updateTestDesc',
       //     'updateCategoryParams',
@@ -64,10 +64,10 @@ export default {
       }
   },
   mounted() {
-    // this.getInitialData().then(res => {
+    this.getInitialData().then(res => {
     //   if (this.editedPageId) {
     //     this.setPageToEdit(this.editedPageId)
     //   }
-    // })
+    })
   }
 }

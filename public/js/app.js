@@ -1455,9 +1455,11 @@ var index_esm = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_pages__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_newpage__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tests_tests__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__products_materials__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__products_newmaterial__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__products_newproduct__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tests_newtest__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__products_materials__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__products_newmaterial__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__products_newproduct__ = __webpack_require__(55);
+
 
 
 
@@ -1471,9 +1473,10 @@ var index_esm = {
   pages: __WEBPACK_IMPORTED_MODULE_1__pages_pages__["a" /* default */],
   newpage: __WEBPACK_IMPORTED_MODULE_2__pages_newpage__["a" /* default */],
   tests: __WEBPACK_IMPORTED_MODULE_3__tests_tests__["a" /* default */],
-  newmaterial: __WEBPACK_IMPORTED_MODULE_5__products_newmaterial__["a" /* default */],
-  newproduct: __WEBPACK_IMPORTED_MODULE_6__products_newproduct__["a" /* default */],
-  materials: __WEBPACK_IMPORTED_MODULE_4__products_materials__["a" /* default */]
+  newtest: __WEBPACK_IMPORTED_MODULE_4__tests_newtest__["a" /* default */],
+  newmaterial: __WEBPACK_IMPORTED_MODULE_6__products_newmaterial__["a" /* default */],
+  newproduct: __WEBPACK_IMPORTED_MODULE_7__products_newproduct__["a" /* default */],
+  materials: __WEBPACK_IMPORTED_MODULE_5__products_materials__["a" /* default */]
 });
 
 /***/ }),
@@ -45175,32 +45178,36 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // getInitialData ({ commit }) {
-  //   return new Promise((resolve, reject) => {
-  //     commit('setIsLoading', true)
-  //     api.newpage.getInitialData().then(res => {
-  //       const blocks = res.data.blocks.data
-  //       commit('setBlocks', blocks)
-  //       commit('setCategoriesOptions', res.data.categories.data)
-  //       commit('setThemesOptions', res.data.themes.data)
-  //       commit('setIsLoading', false)
-  //       resolve(res)
-  //     })
-  //   })
-  // },
+  getInitialData: function getInitialData(_ref) {
+    var commit = _ref.commit;
+
+    return new Promise(function (resolve, reject) {
+      //     commit('setIsLoading', true)
+      __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newtest.getInitialData().then(function (res) {
+        console.log(res);
+        //       const blocks = res.data.blocks.data
+        //       commit('setBlocks', blocks)
+        //       commit('setCategoriesOptions', res.data.categories.data)
+        //       commit('setThemesOptions', res.data.themes.data)
+        //       commit('setIsLoading', false)
+        //       resolve(res)
+      });
+    });
+  },
+
   // updateCategoryParams ({ commit }, value) {
   //   commit('updateCategoryParams', value)
   // },
   // updateThemeParams ({ commit }, value) {
   //   commit('updateThemeParams', value)
   // },
-  updateTestName: function updateTestName(_ref, name) {
-    var commit = _ref.commit;
+  updateTestName: function updateTestName(_ref2, name) {
+    var commit = _ref2.commit;
 
     commit('updateTestName', name);
   },
-  updateTestDesc: function updateTestDesc(_ref2, desc) {
-    var commit = _ref2.commit;
+  updateTestDesc: function updateTestDesc(_ref3, desc) {
+    var commit = _ref3.commit;
 
     commit('updateTestDesc', desc);
   }
@@ -68025,9 +68032,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', [
-  //     'getInitialData',
-  'updateTestName', 'updateTestDesc']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc']
   //     'updateCategoryParams',
   //     'updateThemeParams',
   //     'addBlockToLayout',
@@ -68048,11 +68053,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
   }),
   mounted: function mounted() {
-    // this.getInitialData().then(res => {
-    //   if (this.editedPageId) {
-    //     this.setPageToEdit(this.editedPageId)
-    //   }
-    // })
+    this.getInitialData().then(function (res) {
+      //   if (this.editedPageId) {
+      //     this.setPageToEdit(this.editedPageId)
+      //   }
+    });
   }
 });
 
@@ -68146,6 +68151,21 @@ if (false) {
      require("vue-hot-reload-api").rerender("data-v-41e8fb7a", module.exports)
   }
 }
+
+/***/ }),
+/* 214 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  getInitialData: function getInitialData() {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/tests/create").then(function (res) {
+        resolve(res);
+      });
+    });
+  }
+});
 
 /***/ })
 /******/ ]);
