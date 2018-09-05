@@ -13,6 +13,7 @@ class TestTransformer extends \League\Fractal\TransformerAbstract
         return [
             'id' => $test->id,
             'name' => $test->name,
+            'description' => $test->description,
         ];
     }
 }

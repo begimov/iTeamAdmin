@@ -4,7 +4,7 @@ export default {
   computed: {
       ...mapGetters('tests', [
           // 'currentModule',
-          // 'pages',
+          'tests',
           // 'meta',
           'isLoading',
           // 'getSearchQuery',

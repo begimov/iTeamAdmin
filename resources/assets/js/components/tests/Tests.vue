@@ -34,11 +34,9 @@
                   </ul>
                 </div>
               </div>
-              <!-- <page v-for="page in pages"
-              :page="page"
-              :key="page.id"
-              v-on:pageStatusChanged="getPages"
-              v-on:editPage="setEditedPageId"></page> -->
+              <iteam-test v-for="test in tests"
+              :test="test"
+              :key="test.id"></iteam-test>
 
             </div>
 
