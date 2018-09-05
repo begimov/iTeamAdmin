@@ -60,6 +60,9 @@ Vue.component('pages', require('./components/pages/Pages.vue'));
 Vue.component('page', require('./components/pages/Page.vue'));
 Vue.component('new-page', require('./components/pages/newpage/NewPage.vue'));
 
+// Tests
+Vue.component('iteam-tests', require('./components/tests/Tests.vue'));
+
 // Special blocks
 Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vue'));
 Vue.component('mp-purchase', require('./components/pages/newpage/blocks/MpPurchase.vue'));
