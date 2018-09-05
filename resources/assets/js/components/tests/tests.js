@@ -23,7 +23,7 @@ export default {
       ...mapActions('tests', [
           'getTests',
           'updateSearchQuery',
-          // 'setCurrentModule',
+          'setCurrentModule',
           // 'setEditedPageId'
       ]),
       textSearch () {

@@ -45482,8 +45482,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   isLoading: false,
   params: {
     searchQuery: ''
-  }
-  // editedPageId: null
+  },
+  editedPageId: null
 });
 
 /***/ }),
@@ -45510,6 +45510,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   getSearchQuery: function getSearchQuery(state) {
     return state.params.searchQuery;
+  },
+  editedPageId: function editedPageId(state) {
+    return state.editedPageId;
   }
 });
 
@@ -45537,6 +45540,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref2.commit;
 
     commit('updateSearchQuery', value);
+  },
+  setCurrentModule: function setCurrentModule(_ref3, value) {
+    var commit = _ref3.commit;
+
+    commit('setCurrentModule', value);
   }
 });
 
@@ -45555,6 +45563,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   updateSearchQuery: function updateSearchQuery(state, value) {
     state.params.searchQuery = value;
+  },
+  setCurrentModule: function setCurrentModule(state, value) {
+    state.currentModule = value;
   }
 });
 
@@ -66942,8 +66953,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests', ['getTests', 'updateSearchQuery']
-  // 'setCurrentModule',
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests', ['getTests', 'updateSearchQuery', 'setCurrentModule']
   // 'setEditedPageId'
   ), {
     textSearch: function textSearch() {
@@ -66977,7 +66987,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }), _vm._v(" "), _c('div', {
+  }, [_c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.setCurrentModule('newtest')
+      }
+    }
+  }, [_vm._v("Создать тест")])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row panel-subheading"

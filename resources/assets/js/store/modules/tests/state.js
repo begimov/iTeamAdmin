@@ -6,5 +6,5 @@ export default {
   params: {
     searchQuery: '',
   },
-  // editedPageId: null
+  editedPageId: null
 }

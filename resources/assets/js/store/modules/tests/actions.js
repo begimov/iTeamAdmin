@@ -11,9 +11,9 @@ export default {
   updateSearchQuery ({ commit }, value) {
     commit('updateSearchQuery', value)
   },
-  // setCurrentModule ({ commit }, value) {
-  //   commit('setCurrentModule', value)
-  // },
+  setCurrentModule ({ commit }, value) {
+    commit('setCurrentModule', value)
+  },
   // setEditedPageId ({ commit }, id) {
   //   commit('setEditedPageId', id)
   //   commit('setCurrentModule', 'newpage')
