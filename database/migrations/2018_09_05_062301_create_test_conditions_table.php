@@ -15,7 +15,12 @@ class CreateTestConditionsTable extends Migration
     {
         Schema::create('test_conditions', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('test_id')->unsigned();
+            $table->string('name');
+            $table->text('description');
+            $table->integer('score');
+
+            $table->foreign('test_id')->references('id')->on('tests')->onDelete('cascade');
         });
     }
 
