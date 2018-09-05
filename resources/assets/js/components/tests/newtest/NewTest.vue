@@ -43,10 +43,10 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <!-- <div class="form-group">
-                  <textarea class="form-control" placeholder="Введите описание страницы..." v-model="pageDesc" cols="30" rows="4"></textarea>
-                  <span class="help-block alert-danger" v-if="errors.description">{{ errors.description[0] }}</span>
-                </div> -->
+                <div class="form-group">
+                  <textarea class="form-control" placeholder="Введите описание теста..." v-model="testDesc" cols="30" rows="4"></textarea>
+                  <!-- <span class="help-block alert-danger" v-if="errors.description">{{ errors.description[0] }}</span> -->
+                </div>
               </div>
             </div>
 

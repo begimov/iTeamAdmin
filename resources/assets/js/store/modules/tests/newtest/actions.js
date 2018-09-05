@@ -23,9 +23,9 @@ export default {
   updateTestName ({ commit }, name) {
     commit('updateTestName', name)
   },
-  // updatePageDesc ({ commit }, desc) {
-  //   commit('updatePageDesc', desc)
-  // },
+  updateTestDesc ({ commit }, desc) {
+    commit('updateTestDesc', desc)
+  },
   // addBlockToLayout ({ commit }, data) {
   //   commit('addBlockToLayout', data)
   // },

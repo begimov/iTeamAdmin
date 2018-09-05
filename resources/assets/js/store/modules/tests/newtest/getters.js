@@ -2,9 +2,9 @@ export default {
   testname (state) {
     return state.test.name
   },
-  // pagedesc (state) {
-  //   return state.page.desc
-  // },
+  testdesc (state) {
+    return state.test.desc
+  },
   // blocks (state) {
   //   return state.blocks
   // },

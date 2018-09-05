@@ -8,7 +8,7 @@ export default {
     // category: null,
     // theme: null,
     name: '',
-    // desc: ''
+    desc: ''
   },
   // blocks: [],
   // layout: {

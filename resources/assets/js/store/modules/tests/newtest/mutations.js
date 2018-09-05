@@ -23,9 +23,9 @@ export default {
     updateTestName(state, name) {
         state.test.name = name
     },
-    // updatePageDesc(state, desc) {
-    //     state.page.desc = desc
-    // },
+    updateTestDesc(state, desc) {
+        state.test.desc = desc
+    },
     // addBlockToLayout(state, data) {
     //     state.layout.blocks.push(data)
     // },

@@ -11,8 +11,8 @@ export default {
   },
   computed: {
       ...mapGetters('tests/newtest', [
-        'testname',
-      //     'pagedesc',
+          'testname',
+          'testdesc',
       //     'blocks',
       //     'layout',
       //     'categoryOptions',
@@ -30,20 +30,20 @@ export default {
           this.updateTestName(value)
         }
       },
-      // 'pageDesc': {
-      //   get () {
-      //     return this.pagedesc
-      //   },
-      //   set (value) {
-      //     this.updatePageDesc(value)
-      //   }
-      // },
+      'testDesc': {
+        get () {
+          return this.testdesc
+        },
+        set (value) {
+          this.updateTestDesc(value)
+        }
+      },
   },
   methods: {
       ...mapActions('tests/newtest', [
       //     'getInitialData',
-        'updateTestName',
-      //     'updatePageDesc',
+          'updateTestName',
+          'updateTestDesc',
       //     'updateCategoryParams',
       //     'updateThemeParams',
       //     'addBlockToLayout',

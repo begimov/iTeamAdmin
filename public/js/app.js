@@ -45141,8 +45141,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   test: {
     // category: null,
     // theme: null,
-    name: ''
-    // desc: ''
+    name: '',
+    desc: ''
   }
   // blocks: [],
   // layout: {
@@ -45160,6 +45160,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
   testname: function testname(state) {
     return state.test.name;
+  },
+  testdesc: function testdesc(state) {
+    return state.test.desc;
   }
 });
 
@@ -45195,6 +45198,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref.commit;
 
     commit('updateTestName', name);
+  },
+  updateTestDesc: function updateTestDesc(_ref2, desc) {
+    var commit = _ref2.commit;
+
+    commit('updateTestDesc', desc);
   }
 });
 
@@ -45227,6 +45235,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     // },
     updateTestName: function updateTestName(state, name) {
         state.test.name = name;
+    },
+    updateTestDesc: function updateTestDesc(state, desc) {
+        state.test.desc = desc;
     }
 });
 
@@ -67987,8 +67998,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname']
-  //     'pagedesc',
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc']
   //     'blocks',
   //     'layout',
   //     'categoryOptions',
@@ -68005,20 +68015,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       set: function set(value) {
         this.updateTestName(value);
       }
+    },
+    'testDesc': {
+      get: function get() {
+        return this.testdesc;
+      },
+      set: function set(value) {
+        this.updateTestDesc(value);
+      }
     }
-    // 'pageDesc': {
-    //   get () {
-    //     return this.pagedesc
-    //   },
-    //   set (value) {
-    //     this.updatePageDesc(value)
-    //   }
-    // },
   }),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', [
   //     'getInitialData',
-  'updateTestName']
-  //     'updatePageDesc',
+  'updateTestName', 'updateTestDesc']
   //     'updateCategoryParams',
   //     'updateThemeParams',
   //     'addBlockToLayout',
@@ -68091,7 +68100,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
-  })])]), _vm._v(" "), _c('div', {
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.testDesc),
+      expression: "testDesc"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "placeholder": "Введите описание теста...",
+      "cols": "30",
+      "rows": "4"
+    },
+    domProps: {
+      "value": (_vm.testDesc)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.testDesc = $event.target.value
+      }
+    }
+  })])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [_c('a', {
     staticClass: "btn btn-default",
