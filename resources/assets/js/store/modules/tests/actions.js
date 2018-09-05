@@ -2,8 +2,7 @@ import api from '../../api'
 
 export default {
   getTests ({commit, state}, page = 1) {
-    console.log('TESTS')
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true)
     // api.pages.getPages(page, state.params).then(res => {
     //   commit('setPages', res.data)
     //   commit('setIsLoading', false)

@@ -2,14 +2,14 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
   computed: {
-      // ...mapGetters('test', [
-      //     'currentModule',
-      //     'pages',
-      //     'meta',
-      //     'isLoading',
-      //     'getSearchQuery',
-      //     'editedPageId'
-      // ]),
+      ...mapGetters('tests', [
+          // 'currentModule',
+          // 'pages',
+          // 'meta',
+          'isLoading',
+          // 'getSearchQuery',
+          // 'editedPageId'
+      ]),
       // 'searchQuery': {
       //   get () {
       //     return this.getSearchQuery

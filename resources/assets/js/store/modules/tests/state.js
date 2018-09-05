@@ -2,7 +2,7 @@ export default {
   // currentModule: 'pages',
   tests: [],
   // meta: null,
-  // isLoading: false,
+  isLoading: false,
   // params: {
   //   searchQuery: '',
   // },

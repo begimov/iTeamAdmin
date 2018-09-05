@@ -66430,24 +66430,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: {
-        // ...mapGetters('test', [
-        //     'currentModule',
-        //     'pages',
-        //     'meta',
-        //     'isLoading',
-        //     'getSearchQuery',
-        //     'editedPageId'
-        // ]),
-        // 'searchQuery': {
-        //   get () {
-        //     return this.getSearchQuery
-        //   },
-        //   set (value) {
-        //     this.updateSearchQuery(value)
-        //   }
-        // },
-    },
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests', [
+    // 'currentModule',
+    // 'pages',
+    // 'meta',
+    'isLoading']
+    // 'getSearchQuery',
+    // 'editedPageId'
+    )),
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests', ['getTests']
     // 'updateSearchQuery',
     // 'setCurrentModule',
@@ -66463,8 +66453,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('div', {
     staticClass: "container"
   }, [_c('div', {
@@ -66472,6 +66460,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _vm._m(0)])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
@@ -66487,7 +66481,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "list-inline"
   }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
-  })])])])])])
+  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -67856,9 +67850,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   // currentModule: 'pages',
-  tests: []
+  tests: [],
   // meta: null,
-  // isLoading: false,
+  isLoading: false
   // params: {
   //   searchQuery: '',
   // },
@@ -67883,15 +67877,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   // pagination (state) {
   //   return state.meta ? state.meta.pagination : null
   // },
-  // isLoading (state) {
-  //   return state.isLoading
-  // },
-  // getSearchQuery (state) {
-  //   return state.params.searchQuery
-  // },
-  // editedPageId (state) {
-  //   return state.editedPageId
-  // },
+  isLoading: function isLoading(state) {
+    return state.isLoading;
+  }
 });
 
 /***/ }),
@@ -67908,8 +67896,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state = _ref.state;
     var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    console.log('TESTS');
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true);
     // api.pages.getPages(page, state.params).then(res => {
     //   commit('setPages', res.data)
     //   commit('setIsLoading', false)
@@ -67927,18 +67914,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   //   state.pages = pages.data
   //   state.meta = pages.meta
   // },
-  // setIsLoading (state, flag) {
-  //   state.isLoading = flag
-  // },
-  // updateSearchQuery (state, value) {
-  //     state.params.searchQuery = value
-  // },
-  // setCurrentModule (state, value) {
-  //     state.currentModule = value
-  // },
-  // setEditedPageId (state, id) {
-  //   state.editedPageId = id
-  // },
+  setIsLoading: function setIsLoading(state, flag) {
+    state.isLoading = flag;
+  }
 });
 
 /***/ })

@@ -11,9 +11,9 @@ export default {
   // pagination (state) {
   //   return state.meta ? state.meta.pagination : null
   // },
-  // isLoading (state) {
-  //   return state.isLoading
-  // },
+  isLoading (state) {
+    return state.isLoading
+  },
   // getSearchQuery (state) {
   //   return state.params.searchQuery
   // },
