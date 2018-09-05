@@ -1,19 +1,19 @@
 export default {
-  isLoading: false,
-  options: {
-    categories:[],
-    themes:[],
-  },
-  page: {
-    category: null,
-    theme: null,
+  // isLoading: false,
+  // options: {
+  //   categories:[],
+  //   themes:[],
+  // },
+  test: {
+    // category: null,
+    // theme: null,
     name: '',
-    desc: ''
+    // desc: ''
   },
-  blocks: [],
-  layout: {
-    blocks: [],
-    elements: []
-  },
-  errors: {}
+  // blocks: [],
+  // layout: {
+  //   blocks: [],
+  //   elements: []
+  // },
+  // errors: {}
 }

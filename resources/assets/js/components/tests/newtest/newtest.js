@@ -10,8 +10,8 @@ export default {
     }
   },
   computed: {
-      // ...mapGetters('pages/newpage', [
-      //     'pagename',
+      ...mapGetters('tests/newtest', [
+        'testname',
       //     'pagedesc',
       //     'blocks',
       //     'layout',
@@ -21,15 +21,15 @@ export default {
       //     'themeParams',
       //     'isLoading',
       //     'errors'
-      // ]),
-      // 'pageName': {
-      //   get () {
-      //     return this.pagename
-      //   },
-      //   set (value) {
-      //     this.updatePageName(value)
-      //   }
-      // },
+      ]),
+      'testName': {
+        get () {
+          return this.testname
+        },
+        set (value) {
+          this.updateTestName(value)
+        }
+      },
       // 'pageDesc': {
       //   get () {
       //     return this.pagedesc
@@ -40,9 +40,9 @@ export default {
       // },
   },
   methods: {
-      // ...mapActions('pages/newpage', [
+      ...mapActions('tests/newtest', [
       //     'getInitialData',
-      //     'updatePageName',
+        'updateTestName',
       //     'updatePageDesc',
       //     'updateCategoryParams',
       //     'updateThemeParams',
@@ -54,7 +54,7 @@ export default {
       //     'resetState',
       //     'setPageToEdit',
       //     'update'
-      // ]),
+      ]),
       // findBlock (id) {
       //   return _.find(this.blocks, ['id',id])
       // },

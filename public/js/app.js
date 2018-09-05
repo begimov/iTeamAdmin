@@ -45133,23 +45133,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  isLoading: false,
-  options: {
-    categories: [],
-    themes: []
-  },
-  page: {
-    category: null,
-    theme: null,
-    name: '',
-    desc: ''
-  },
-  blocks: [],
-  layout: {
-    blocks: [],
-    elements: []
-  },
-  errors: {}
+  // isLoading: false,
+  // options: {
+  //   categories:[],
+  //   themes:[],
+  // },
+  test: {
+    // category: null,
+    // theme: null,
+    name: ''
+    // desc: ''
+  }
+  // blocks: [],
+  // layout: {
+  //   blocks: [],
+  //   elements: []
+  // },
+  // errors: {}
 });
 
 /***/ }),
@@ -45158,35 +45158,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  pagename: function pagename(state) {
-    return state.page.name;
-  },
-  pagedesc: function pagedesc(state) {
-    return state.page.desc;
-  },
-  blocks: function blocks(state) {
-    return state.blocks;
-  },
-  layout: function layout(state) {
-    return state.layout;
-  },
-  categoryOptions: function categoryOptions(state) {
-    return state.options.categories;
-  },
-  categoryParams: function categoryParams(state) {
-    return state.page.category;
-  },
-  themeOptions: function themeOptions(state) {
-    return state.options.themes;
-  },
-  themeParams: function themeParams(state) {
-    return state.page.theme;
-  },
-  isLoading: function isLoading(state) {
-    return state.isLoading;
-  },
-  errors: function errors(state) {
-    return state.errors;
+  testname: function testname(state) {
+    return state.test.name;
   }
 });
 
@@ -45199,141 +45172,29 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  getInitialData: function getInitialData(_ref) {
+  // getInitialData ({ commit }) {
+  //   return new Promise((resolve, reject) => {
+  //     commit('setIsLoading', true)
+  //     api.newpage.getInitialData().then(res => {
+  //       const blocks = res.data.blocks.data
+  //       commit('setBlocks', blocks)
+  //       commit('setCategoriesOptions', res.data.categories.data)
+  //       commit('setThemesOptions', res.data.themes.data)
+  //       commit('setIsLoading', false)
+  //       resolve(res)
+  //     })
+  //   })
+  // },
+  // updateCategoryParams ({ commit }, value) {
+  //   commit('updateCategoryParams', value)
+  // },
+  // updateThemeParams ({ commit }, value) {
+  //   commit('updateThemeParams', value)
+  // },
+  updateTestName: function updateTestName(_ref, name) {
     var commit = _ref.commit;
 
-    return new Promise(function (resolve, reject) {
-      commit('setIsLoading', true);
-      __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getInitialData().then(function (res) {
-        var blocks = res.data.blocks.data;
-
-        _.forEach(blocks, function (block, key) {
-          Vue.component(block.tag, function (resolve, reject) {
-            resolve({
-              props: ['id'],
-              template: '<div>' + block.template + '<div class="row">\n                      <div class="col-md-12 text-right">\n                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">\u0432\u0432\u0435\u0440\u0445</a>\n                        <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">\u0432\u043D\u0438\u0437</a>\n                        <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">\u0423\u0414\u0410\u041B\u0418\u0422\u042C</a>\n                        <hr>\n                      </div>\n                    </div>\n                    </div>',
-              data: function data() {
-                return {
-                  data: _.cloneDeep(block.data),
-                  meta: { blockId: block.id }
-                };
-              },
-
-              methods: {
-                moveUp: function moveUp(id) {
-                  this.$emit('elementMovedUp', id);
-                },
-                moveDown: function moveDown(id) {
-                  this.$emit('elementMovedDown', id);
-                },
-                deleteElement: function deleteElement(id) {
-                  this.$emit('elementDeleted', id);
-                }
-              },
-              mounted: function mounted() {
-                commit('addElementToElements', {
-                  id: this.id,
-                  data: this.$data
-                });
-              }
-            });
-          });
-        });
-        commit('setBlocks', blocks);
-        commit('setCategoriesOptions', res.data.categories.data);
-        commit('setThemesOptions', res.data.themes.data);
-        commit('setIsLoading', false);
-        resolve(res);
-      });
-    });
-  },
-  updateCategoryParams: function updateCategoryParams(_ref2, value) {
-    var commit = _ref2.commit;
-
-    commit('updateCategoryParams', value);
-  },
-  updateThemeParams: function updateThemeParams(_ref3, value) {
-    var commit = _ref3.commit;
-
-    commit('updateThemeParams', value);
-  },
-  updatePageName: function updatePageName(_ref4, name) {
-    var commit = _ref4.commit;
-
-    commit('updatePageName', name);
-  },
-  updatePageDesc: function updatePageDesc(_ref5, desc) {
-    var commit = _ref5.commit;
-
-    commit('updatePageDesc', desc);
-  },
-  addBlockToLayout: function addBlockToLayout(_ref6, data) {
-    var commit = _ref6.commit;
-
-    commit('addBlockToLayout', data);
-  },
-  moveElementUp: function moveElementUp(_ref7, id) {
-    var commit = _ref7.commit;
-
-    commit('moveElementUp', { id: id, type: 'blocks' });
-    commit('moveElementUp', { id: id, type: 'elements' });
-  },
-  moveElementDown: function moveElementDown(_ref8, id) {
-    var commit = _ref8.commit;
-
-    commit('moveElementDown', { id: id, type: 'blocks' });
-    commit('moveElementDown', { id: id, type: 'elements' });
-  },
-  deleteElement: function deleteElement(_ref9, id) {
-    var commit = _ref9.commit;
-
-    commit('deleteElement', id);
-  },
-  save: function save(_ref10) {
-    var commit = _ref10.commit,
-        state = _ref10.state;
-
-    commit('setIsLoading', true);
-    var elements = _.map(state.layout.elements, function (element) {
-      return { data: element.data.data, meta: element.data.meta };
-    });
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.savePage(state.page, elements).then(function (res) {
-      commit('resetState');
-      commit('setIsLoading', false);
-      commit('pages/setCurrentModule', 'pages', { root: true });
-    }).catch(function (err) {
-      commit('setErrors', err.response.data);
-      commit('setIsLoading', false);
-    });
-  },
-  resetState: function resetState(_ref11) {
-    var commit = _ref11.commit;
-
-    commit('resetState');
-  },
-  setPageToEdit: function setPageToEdit(_ref12, id) {
-    var commit = _ref12.commit;
-
-    commit('setIsLoading', true);
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getPage(id).then(function (res) {
-      commit('setPageToEdit', res.data.data);
-      commit('setIsLoading', false);
-    });
-  },
-  update: function update(_ref13, id) {
-    var commit = _ref13.commit,
-        state = _ref13.state;
-
-    commit('setIsLoading', true);
-    var elements = _.map(state.layout.elements, function (element) {
-      return { data: element.data.data, meta: element.data.meta };
-    });
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.updatePage(id, state.page, elements).then(function (res) {
-      commit('setIsLoading', false);
-    }).catch(function (err) {
-      commit('setErrors', err.response.data);
-      commit('setIsLoading', false);
-    });
+    commit('updateTestName', name);
   }
 });
 
@@ -45342,132 +45203,30 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 /* harmony default export */ __webpack_exports__["a"] = ({
-    setIsLoading: function setIsLoading(state, value) {
-        state.isLoading = value;
-    },
-    setBlocks: function setBlocks(state, value) {
-        state.blocks = value;
-    },
-    setCategoriesOptions: function setCategoriesOptions(state, payload) {
-        state.options.categories = payload;
-    },
-    setThemesOptions: function setThemesOptions(state, payload) {
-        state.options.themes = payload;
-    },
-    setErrors: function setErrors(state, errors) {
-        state.errors = errors;
-    },
-    updateCategoryParams: function updateCategoryParams(state, value) {
-        state.page.category = value;
-    },
-    updateThemeParams: function updateThemeParams(state, value) {
-        state.page.theme = value;
-    },
-    updatePageName: function updatePageName(state, name) {
-        state.page.name = name;
-    },
-    updatePageDesc: function updatePageDesc(state, desc) {
-        state.page.desc = desc;
-    },
-    addBlockToLayout: function addBlockToLayout(state, data) {
-        state.layout.blocks.push(data);
-    },
-    addElementToElements: function addElementToElements(state, value) {
-        state.layout.elements.push(value);
-    },
-    moveElementUp: function moveElementUp(state, _ref) {
-        var id = _ref.id,
-            type = _ref.type;
-
-        var index = _.findIndex(state.layout[type], function (elem) {
-            return elem.id === id;
-        });
-        if (index === 0) return;
-
-        state.layout[type].splice(index - 1, 0, state.layout[type].splice(index, 1)[0]);
-    },
-    moveElementDown: function moveElementDown(state, _ref2) {
-        var id = _ref2.id,
-            type = _ref2.type;
-
-        var index = _.findIndex(state.layout[type], function (elem) {
-            return elem.id === id;
-        });
-        if (index === state.layout[type].length - 1) return;
-
-        state.layout[type].splice(index + 1, 0, state.layout[type].splice(index, 1)[0]);
-    },
-    deleteElement: function deleteElement(state, id) {
-        state.layout.blocks = _.filter(state.layout.blocks, function (o) {
-            return o.id != id;
-        });
-        state.layout.elements = _.filter(state.layout.elements, function (o) {
-            return o.id != id;
-        });
-    },
-    resetState: function resetState(state) {
-        var initialState = {
-            isLoading: false,
-            options: {
-                categories: [],
-                themes: []
-            },
-            page: {
-                category: null,
-                theme: null,
-                name: '',
-                desc: ''
-            },
-            blocks: [],
-            layout: {
-                blocks: [],
-                elements: []
-            },
-            errors: {}
-        };
-        Object.keys(initialState).forEach(function (key) {
-            state[key] = initialState[key];
-        });
-    },
-    setPageToEdit: function setPageToEdit(state, payload) {
-        var name = payload.name,
-            description = payload.description,
-            category = payload.category,
-            elements = payload.elements,
-            theme = payload.theme;
-
-
-        state.page = {
-            name: name,
-            desc: description,
-            category: category.data,
-            theme: theme.data
-        };
-
-        new Promise(function (resolve, reject) {
-            elements.data.forEach(function (element) {
-                state.layout.blocks.push({
-                    id: uuidv4(),
-                    tag: element.block.data.tag
-                });
-            });
-            resolve();
-        }).then(function (res) {
-            state.layout.elements.forEach(function (element, index) {
-                element.data.data = _extends({}, elements.data[index].data);
-            });
-        });
-
-        function uuidv4() {
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-                var r = Math.random() * 16 | 0,
-                    v = c == 'x' ? r : r & 0x3 | 0x8;
-                return v.toString(16);
-            });
-        }
+    // setIsLoading(state, value) {
+    //     state.isLoading = value
+    // },
+    // setBlocks(state, value) {
+    //     state.blocks = value
+    // },
+    // setCategoriesOptions(state, payload) {
+    //     state.options.categories = payload
+    // },
+    // setThemesOptions(state, payload) {
+    //     state.options.themes = payload
+    // },
+    // setErrors(state, errors) {
+    //     state.errors = errors
+    // },
+    // updateCategoryParams(state, value) {
+    //     state.page.category = value
+    // },
+    // updateThemeParams(state, value) {
+    //     state.page.theme = value
+    // },
+    updateTestName: function updateTestName(state, name) {
+        state.test.name = name;
     }
 });
 
@@ -68214,6 +67973,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_multiselect__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 
 
 
@@ -68226,27 +67987,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
 
-  computed: {
-    // ...mapGetters('pages/newpage', [
-    //     'pagename',
-    //     'pagedesc',
-    //     'blocks',
-    //     'layout',
-    //     'categoryOptions',
-    //     'categoryParams',
-    //     'themeOptions',
-    //     'themeParams',
-    //     'isLoading',
-    //     'errors'
-    // ]),
-    // 'pageName': {
-    //   get () {
-    //     return this.pagename
-    //   },
-    //   set (value) {
-    //     this.updatePageName(value)
-    //   }
-    // },
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname']
+  //     'pagedesc',
+  //     'blocks',
+  //     'layout',
+  //     'categoryOptions',
+  //     'categoryParams',
+  //     'themeOptions',
+  //     'themeParams',
+  //     'isLoading',
+  //     'errors'
+  ), {
+    'testName': {
+      get: function get() {
+        return this.testname;
+      },
+      set: function set(value) {
+        this.updateTestName(value);
+      }
+    }
     // 'pageDesc': {
     //   get () {
     //     return this.pagedesc
@@ -68255,23 +68014,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //     this.updatePageDesc(value)
     //   }
     // },
-  },
-  methods: {
-    // ...mapActions('pages/newpage', [
-    //     'getInitialData',
-    //     'updatePageName',
-    //     'updatePageDesc',
-    //     'updateCategoryParams',
-    //     'updateThemeParams',
-    //     'addBlockToLayout',
-    //     'moveElementUp',
-    //     'moveElementDown',
-    //     'deleteElement',
-    //     'save',
-    //     'resetState',
-    //     'setPageToEdit',
-    //     'update'
-    // ]),
+  }),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', [
+  //     'getInitialData',
+  'updateTestName']
+  //     'updatePageDesc',
+  //     'updateCategoryParams',
+  //     'updateThemeParams',
+  //     'addBlockToLayout',
+  //     'moveElementUp',
+  //     'moveElementDown',
+  //     'deleteElement',
+  //     'save',
+  //     'resetState',
+  //     'setPageToEdit',
+  //     'update'
+  ), {
     // findBlock (id) {
     //   return _.find(this.blocks, ['id',id])
     // },
@@ -68279,7 +68037,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       // this.resetState()
       this.$emit('cancelNewTest');
     }
-  },
+  }),
   mounted: function mounted() {
     // this.getInitialData().then(res => {
     //   if (this.editedPageId) {
@@ -68302,7 +68060,38 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('div', {
     staticClass: "panel panel-primary"
-  }, [_vm._m(0), _vm._v(" "), _c('div', {
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_c('h4', [_vm._v("Новый тест")]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.testName),
+      expression: "testName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Введите название теста..."
+    },
+    domProps: {
+      "value": (_vm.testName)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.testName = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  })])]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [_c('a', {
     staticClass: "btn btn-default",
@@ -68316,11 +68105,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_vm._v("Отменить")])])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-heading"
-  }, [_c('h4', [_vm._v("Новый тест")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
