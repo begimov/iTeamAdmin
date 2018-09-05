@@ -8,7 +8,7 @@ export default {
           'meta',
           'isLoading',
           'getSearchQuery',
-          // 'editedPageId'
+          'editedTestId'
       ]),
       'searchQuery': {
         get () {
@@ -32,10 +32,10 @@ export default {
             this.getTests()
         }.bind(this), 1000)
       },
-      // cancelNewPage() {
-      //   this.setEditedPageId(null)
-      //   this.setCurrentModule('pages')
-      // }
+      cancelNewTest() {
+        // this.setEditedPageId(null)
+        this.setCurrentModule('tests')
+      }
   },
   mounted() {
     this.getTests()

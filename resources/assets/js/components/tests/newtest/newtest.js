@@ -3,7 +3,7 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   components: { Multiselect },
-  props: ['editedPageId'],
+  props: ['editedTestId'],
   data () {
     return {
       isShowingBlocksPanel: false,

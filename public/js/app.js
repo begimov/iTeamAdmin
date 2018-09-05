@@ -45484,7 +45484,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   params: {
     searchQuery: ''
   },
-  editedPageId: null
+  editedTestId: null
 });
 
 /***/ }),
@@ -45512,8 +45512,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   getSearchQuery: function getSearchQuery(state) {
     return state.params.searchQuery;
   },
-  editedPageId: function editedPageId(state) {
-    return state.editedPageId;
+  editedTestId: function editedTestId(state) {
+    return state.editedTestId;
   }
 });
 
@@ -66942,9 +66942,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests', ['currentModule', 'tests', 'meta', 'isLoading', 'getSearchQuery']
-  // 'editedPageId'
-  ), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests', ['currentModule', 'tests', 'meta', 'isLoading', 'getSearchQuery', 'editedTestId']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -66962,6 +66960,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.timer = setTimeout(function () {
         this.getTests();
       }.bind(this), 1000);
+    },
+    cancelNewTest: function cancelNewTest() {
+      // this.setEditedPageId(null)
+      this.setCurrentModule('tests');
     }
   }),
   mounted: function mounted() {
@@ -66974,7 +66976,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.currentModule === 'tests') ? _c('div', {
+  return _c('div', [(_vm.currentModule === 'newtest') ? _c('new-test', {
+    attrs: {
+      "editedTestId": _vm.editedTestId
+    },
+    on: {
+      "cancelNewTest": _vm.cancelNewTest
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'tests') ? _c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
@@ -67033,7 +67042,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "tests_pageChanged": _vm.getTests
     }
-  }) : _vm._e()], 1)])])])]) : _vm._e()])
+  }) : _vm._e()], 1)])])])]) : _vm._e()], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-8 text-right"
@@ -68210,7 +68219,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-  props: ['editedPageId'],
+  props: ['editedTestId'],
   data: function data() {
     return {
       isShowingBlocksPanel: false
