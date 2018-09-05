@@ -15,7 +15,11 @@ class CreateTestQuestionsTable extends Migration
     {
         Schema::create('test_questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('test_id')->unsigned();
+            $table->text('question');
+            $table->integer('sort_order');
+
+            $table->foreign('test_id')->references('id')->on('tests')->onDelete('cascade');;
         });
     }
 
