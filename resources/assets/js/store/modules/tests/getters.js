@@ -5,9 +5,9 @@ export default {
   tests (state) {
     return state.tests
   },
-  // meta (state) {
-  //   return state.meta
-  // },
+  meta (state) {
+    return state.meta
+  },
   // pagination (state) {
   //   return state.meta ? state.meta.pagination : null
   // },

@@ -41,7 +41,7 @@
             </div>
 
             <div class="panel-footer">
-              <!--<paginator v-if="meta && pages.length" for="pages" :pagination="meta.pagination" v-on:pages_pageChanged="getPages"></paginator> -->
+              <paginator v-if="meta && tests.length" for="tests" :pagination="meta.pagination" v-on:tests_pageChanged="getTests"></paginator>
             </div>
 
           </div>

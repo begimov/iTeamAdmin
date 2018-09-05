@@ -45498,10 +45498,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   tests: function tests(state) {
     return state.tests;
   },
+  meta: function meta(state) {
+    return state.meta;
+  },
 
-  // meta (state) {
-  //   return state.meta
-  // },
   // pagination (state) {
   //   return state.meta ? state.meta.pagination : null
   // },
@@ -66921,9 +66921,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
     computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests', [
     // 'currentModule',
-    'tests',
-    // 'meta',
-    'isLoading']
+    'tests', 'meta', 'isLoading']
     // 'getSearchQuery',
     // 'editedPageId'
     )),
@@ -66967,7 +66965,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   })], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
-  })])])])])])
+  }, [(_vm.meta && _vm.tests.length) ? _c('paginator', {
+    attrs: {
+      "for": "tests",
+      "pagination": _vm.meta.pagination
+    },
+    on: {
+      "tests_pageChanged": _vm.getTests
+    }
+  }) : _vm._e()], 1)])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row panel-subheading"

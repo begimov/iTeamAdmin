@@ -5,7 +5,7 @@ export default {
       ...mapGetters('tests', [
           // 'currentModule',
           'tests',
-          // 'meta',
+          'meta',
           'isLoading',
           // 'getSearchQuery',
           // 'editedPageId'
