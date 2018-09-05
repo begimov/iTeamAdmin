@@ -68275,10 +68275,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // findBlock (id) {
     //   return _.find(this.blocks, ['id',id])
     // },
-    // cancel () {
-    //   this.resetState()
-    //   this.$emit('cancelNewPage')
-    // }
+    cancel: function cancel() {
+      // this.resetState()
+      this.$emit('cancelNewTest');
+    }
   },
   mounted: function mounted() {
     // this.getInitialData().then(res => {
@@ -68294,8 +68294,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "container"
   }, [_c('div', {
@@ -68304,9 +68302,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('div', {
     staticClass: "panel panel-primary"
-  }, [_c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "panel-footer"
+  }, [_c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.cancel($event)
+      }
+    }
+  }, [_vm._v("Отменить")])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "panel-heading"
-  }, [_c('h4', [_vm._v("Новый тест")])])])])])])
+  }, [_c('h4', [_vm._v("Новый тест")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

@@ -58,10 +58,10 @@ export default {
       // findBlock (id) {
       //   return _.find(this.blocks, ['id',id])
       // },
-      // cancel () {
-      //   this.resetState()
-      //   this.$emit('cancelNewPage')
-      // }
+      cancel () {
+        // this.resetState()
+        this.$emit('cancelNewTest')
+      }
   },
   mounted() {
     // this.getInitialData().then(res => {
