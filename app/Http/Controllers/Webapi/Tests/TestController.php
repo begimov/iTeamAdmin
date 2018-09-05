@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Webapi\Tests;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\Contracts\Tests\TestRepository;
 use App\Transformers\Tests\TestTransformer;
+use App\Repositories\Contracts\Tests\TestRepository;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class TestController extends Controller
 {
@@ -32,8 +33,6 @@ class TestController extends Controller
             ->paginate(20);
 
         $testsCollection = $tests->getCollection();
-
-        dd($tests);
 
         return fractal()
             ->collection($testsCollection)
