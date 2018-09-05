@@ -19,7 +19,7 @@ class CreateTestQuestionsTable extends Migration
             $table->text('question');
             $table->integer('sort_order');
 
-            $table->foreign('test_id')->references('id')->on('tests')->onDelete('cascade');;
+            $table->foreign('test_id')->references('id')->on('tests')->onDelete('cascade');
         });
     }
 

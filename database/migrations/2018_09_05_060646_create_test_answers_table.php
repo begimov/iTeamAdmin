@@ -15,7 +15,12 @@ class CreateTestAnswersTable extends Migration
     {
         Schema::create('test_answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('test_question_id')->unsigned();
+            $table->text('answer');
+            $table->integer('points')->default(0);
+            $table->integer('sort_order');
+
+            $table->foreign('test_question_id')->references('id')->on('test_questions')->onDelete('cascade');
         });
     }
 
