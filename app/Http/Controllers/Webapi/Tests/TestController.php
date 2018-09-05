@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Webapi\Tests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Tests\TestRepository;
+use App\Transformers\Tests\TestTransformer;
 
 class TestController extends Controller
 {
@@ -27,7 +28,18 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
-        dd($this->tests);
+        $tests = $this->tests
+            ->paginate(20);
+
+        $testsCollection = $tests->getCollection();
+
+        dd($tests);
+
+        return fractal()
+            ->collection($testsCollection)
+            ->transformWith(new TestTransformer)
+            ->paginateWith(new IlluminatePaginatorAdapter($tests))
+            ->toArray();
     }
 
     /**
