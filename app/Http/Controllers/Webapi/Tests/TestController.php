@@ -5,21 +5,31 @@ namespace App\Http\Controllers\Webapi\Tests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Transformers\Tests\TestTransformer;
-use App\Repositories\Contracts\Tests\TestRepository;
+use App\Repositories\Contracts\Tests\{
+    TestRepository,
+    TestTypeRepository
+};
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class TestController extends Controller
 {
     protected $tests;
 
+    protected $testTypes;
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(TestRepository $tests)
+    public function __construct(
+        TestRepository $tests,
+        TestTypeRepository $testTypes
+    )
     {
         $this->tests = $tests;
+
+        $this->testTypes = $testTypes;
     }
 
     /**
