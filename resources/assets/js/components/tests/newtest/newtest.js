@@ -19,7 +19,7 @@ export default {
       //     'categoryParams',
       //     'themeOptions',
       //     'themeParams',
-      //     'isLoading',
+          'isLoading',
       //     'errors'
       ]),
       'testName': {

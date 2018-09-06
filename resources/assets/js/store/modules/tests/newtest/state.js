@@ -1,5 +1,5 @@
 export default {
-  // isLoading: false,
+  isLoading: false,
   // options: {
   //   categories:[],
   //   themes:[],

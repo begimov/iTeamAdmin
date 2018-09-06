@@ -23,9 +23,9 @@ export default {
   // themeParams (state) {
   //   return state.page.theme
   // },
-  // isLoading (state) {
-  //   return state.isLoading
-  // },
+  isLoading (state) {
+    return state.isLoading
+  },
   // errors (state) {
   //   return state.errors
   // },

@@ -45160,7 +45160,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // isLoading: false,
+  isLoading: false,
   // options: {
   //   categories:[],
   //   themes:[],
@@ -45190,6 +45190,28 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   testdesc: function testdesc(state) {
     return state.test.desc;
+  },
+
+  // blocks (state) {
+  //   return state.blocks
+  // },
+  // layout (state) {
+  //   return state.layout
+  // },
+  // categoryOptions (state) {
+  //   return state.options.categories
+  // },
+  // categoryParams (state) {
+  //   return state.page.category
+  // },
+  // themeOptions (state) {
+  //   return state.options.themes
+  // },
+  // themeParams (state) {
+  //   return state.page.theme
+  // },
+  isLoading: function isLoading(state) {
+    return state.isLoading;
   }
 });
 
@@ -45206,14 +45228,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref.commit;
 
     return new Promise(function (resolve, reject) {
-      //     commit('setIsLoading', true)
+      commit('setIsLoading', true);
       __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newtest.getInitialData().then(function (res) {
         console.log(res);
         //       const blocks = res.data.blocks.data
         //       commit('setBlocks', blocks)
         //       commit('setCategoriesOptions', res.data.categories.data)
         //       commit('setThemesOptions', res.data.themes.data)
-        //       commit('setIsLoading', false)
+        commit('setIsLoading', false);
         //       resolve(res)
       });
     });
@@ -45272,9 +45294,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    // setIsLoading(state, value) {
-    //     state.isLoading = value
-    // },
+    setIsLoading: function setIsLoading(state, value) {
+        state.isLoading = value;
+    },
+
     // setBlocks(state, value) {
     //     state.blocks = value
     // },
@@ -67099,14 +67122,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc',
   //     'blocks',
   //     'layout',
   //     'categoryOptions',
   //     'categoryParams',
   //     'themeOptions',
   //     'themeParams',
-  //     'isLoading',
+  'isLoading']
   //     'errors'
   ), {
     'testName': {
@@ -67167,6 +67190,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-primary"
   }, [_c('div', {
     staticClass: "panel-heading"
@@ -67225,7 +67252,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
-  }, [(!_vm.editedPageId) ? _c('a', {
+  }, [(!_vm.editedTestId) ? _c('a', {
     staticClass: "btn btn-primary",
     attrs: {
       "href": "#"

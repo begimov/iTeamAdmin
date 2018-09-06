@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <!-- <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div> -->
+        <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4>Новый тест</h4>
@@ -53,7 +53,7 @@
           </div>
 
           <div class="panel-footer">
-            <a href="#" class="btn btn-primary" @click.prevent="save" v-if="!editedPageId">Создать</a>
+            <a href="#" class="btn btn-primary" @click.prevent="save" v-if="!editedTestId">Создать</a>
             <!-- <a href="#" class="btn btn-primary" @click.prevent="update(editedPageId)" v-else>Сохранить</a> -->
             <a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a>
           </div>

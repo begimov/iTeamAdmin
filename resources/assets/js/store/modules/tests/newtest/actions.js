@@ -3,14 +3,14 @@ import api from '../../../api'
 export default {
   getInitialData ({ commit }) {
     return new Promise((resolve, reject) => {
-  //     commit('setIsLoading', true)
+      commit('setIsLoading', true)
       api.newtest.getInitialData().then(res => {
         console.log(res)
   //       const blocks = res.data.blocks.data
   //       commit('setBlocks', blocks)
   //       commit('setCategoriesOptions', res.data.categories.data)
   //       commit('setThemesOptions', res.data.themes.data)
-  //       commit('setIsLoading', false)
+        commit('setIsLoading', false)
   //       resolve(res)
       })
     })
