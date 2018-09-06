@@ -50,7 +50,7 @@ export default {
       //     'moveElementUp',
       //     'moveElementDown',
       //     'deleteElement',
-      //     'save',
+          'save',
       //     'resetState',
       //     'setPageToEdit',
       //     'update'

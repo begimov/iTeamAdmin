@@ -6,15 +6,15 @@ export default {
       })
     })
   },
-  // savePage(page, elements) {
-  //   return new Promise((resolve, reject) => {
-  //     axios.post(`/webapi/pages`, this.processData(page, elements)).then(res => {
-  //       resolve(res)
-  //     }).catch(err => {
-  //       reject(err)
-  //     })
-  //   })
-  // },
+  saveTest(test) {
+    return new Promise((resolve, reject) => {
+      axios.post(`/webapi/tests`, test).then(res => {
+        resolve(res)
+      }).catch(err => {
+        reject(err)
+      })
+    })
+  },
   // processData(page, elements) {
   //   return {
   //     name: page.name,

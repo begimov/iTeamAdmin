@@ -60,7 +60,7 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->tests->store($request);
     }
 
     /**

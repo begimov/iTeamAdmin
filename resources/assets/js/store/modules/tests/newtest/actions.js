@@ -41,20 +41,17 @@ export default {
   // deleteElement ({ commit }, id) {
   //   commit('deleteElement', id)
   // },
-  // save ({ commit, state }) {
-  //   commit('setIsLoading', true)
-  //   const elements = _.map(state.layout.elements, (element) => {
-  //     return { data: element.data.data, meta: element.data.meta }
-  //   })
-  //   api.newpage.savePage(state.page, elements).then(res => {
-  //     commit('resetState')
-  //     commit('setIsLoading', false)
-  //     commit('pages/setCurrentModule', 'pages', { root: true })
-  //   }).catch(err => {
-  //     commit('setErrors', err.response.data)
-  //     commit('setIsLoading', false)
-  //   })
-  // },
+  save ({ commit, state }) {
+    // commit('setIsLoading', true)
+    api.newtest.saveTest(state.test).then(res => {
+      // commit('resetState')
+      // commit('setIsLoading', false)
+      // commit('pages/setCurrentModule', 'pages', { root: true })
+    }).catch(err => {
+      // commit('setErrors', err.response.data)
+      // commit('setIsLoading', false)
+    })
+  },
   // resetState ({ commit }) {
   //   commit('resetState')
   // },
