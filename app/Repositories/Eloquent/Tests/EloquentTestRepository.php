@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent\Tests;
 use App\Repositories\EloquentRepositoryAbstract;
 use App\Repositories\Contracts\Tests\TestRepository;
 use App\Models\Tests\Test;
+use App\Services\App\Tests\TestAbstract;
 
 class EloquentTestRepository extends EloquentRepositoryAbstract implements TestRepository
 {
@@ -15,6 +16,11 @@ class EloquentTestRepository extends EloquentRepositoryAbstract implements TestR
 
     public function store($request)
     {
-        dd($request);
+        $payload = $request->all();
+        $payload['type'] = 'certification';
+
+        $test = TestAbstract::create($payload['type']);
+
+        dd($test->store($payload));
     }
 }

@@ -4,7 +4,7 @@ namespace App\Services\App\Tests;
 
 abstract class TestAbstract
 {
-    protected $mappings = [
+    protected static $mappings = [
 
         'certification' => CertificationTest::class
 
@@ -12,7 +12,7 @@ abstract class TestAbstract
 
     public static function create($test)
     {
-        return new $this->mappings[$test];
+        return new self::$mappings[$test];
     }
 
     abstract public function store($data);
