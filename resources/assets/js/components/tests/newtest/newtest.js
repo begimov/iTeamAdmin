@@ -13,10 +13,6 @@ export default {
       ...mapGetters('tests/newtest', [
           'testname',
           'testdesc',
-      //     'blocks',
-      //     'layout',
-      //     'categoryOptions',
-      //     'categoryParams',
           'typeOptions',
           'typeParams',
           'isLoading',
@@ -51,7 +47,7 @@ export default {
       //     'moveElementDown',
       //     'deleteElement',
           'save',
-      //     'resetState',
+          'resetState',
       //     'setPageToEdit',
       //     'update'
       ]),
@@ -59,7 +55,7 @@ export default {
       //   return _.find(this.blocks, ['id',id])
       // },
       cancel () {
-        // this.resetState()
+        this.resetState()
         this.$emit('cancelNewTest')
       }
   },

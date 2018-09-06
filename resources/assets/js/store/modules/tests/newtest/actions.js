@@ -48,9 +48,9 @@ export default {
       // commit('setIsLoading', false)
     })
   },
-  // resetState ({ commit }) {
-  //   commit('resetState')
-  // },
+  resetState ({ commit }) {
+    commit('resetState')
+  },
   // setPageToEdit ({ commit }, id) {
   //   commit('setIsLoading', true)
   //   api.newpage.getPage(id).then(res => {

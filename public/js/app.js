@@ -45292,6 +45292,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       // commit('setErrors', err.response.data)
       // commit('setIsLoading', false)
     });
+  },
+  resetState: function resetState(_ref6) {
+    var commit = _ref6.commit;
+
+    commit('resetState');
   }
 });
 
@@ -67174,12 +67179,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc',
-  //     'blocks',
-  //     'layout',
-  //     'categoryOptions',
-  //     'categoryParams',
-  'typeOptions', 'typeParams', 'isLoading']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc', 'typeOptions', 'typeParams', 'isLoading']
   //     'errors'
   ), {
     'testName': {
@@ -67206,8 +67206,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   //     'moveElementUp',
   //     'moveElementDown',
   //     'deleteElement',
-  'save']
-  //     'resetState',
+  'save', 'resetState']
   //     'setPageToEdit',
   //     'update'
   ), {
@@ -67215,7 +67214,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     //   return _.find(this.blocks, ['id',id])
     // },
     cancel: function cancel() {
-      // this.resetState()
+      this.resetState();
       this.$emit('cancelNewTest');
     }
   }),
