@@ -19,7 +19,7 @@ export default {
     return {
       name: test.name,
       description: test.desc,
-      type_id: test.type ? test.type.id : null
+      test_type_id: test.type ? test.type.id : null
     }
   },
   // getPage(id) {

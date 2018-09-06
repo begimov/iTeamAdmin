@@ -6,7 +6,7 @@ abstract class TestAbstract
 {
     protected static $mappings = [
 
-        'certification' => CertificationTest::class
+        '1' => CertificationTest::class
 
     ];
 
