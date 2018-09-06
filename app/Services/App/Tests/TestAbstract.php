@@ -7,11 +7,13 @@ abstract class TestAbstract
     protected $mappings = [
 
         'certification' => CertificationTest::class
-        
+
     ];
 
     public static function create($test)
     {
         return new $this->mappings[$test];
     }
+
+    abstract public function store($data);
 }
