@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Webapi\Tests;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Transformers\Tests\TestTransformer;
+use App\Transformers\Tests\{
+    TestTransformer,
+    TestTypeTransformer
+};
 use App\Repositories\Contracts\Tests\{
     TestRepository,
     TestTypeRepository
@@ -59,9 +62,11 @@ class TestController extends Controller
      */
     public function create()
     {
-        $testTypes = \App\Models\Tests\TestType::get();
+        $testTypes = fractal($this->testTypes->get(), new TestTypeTransformer)->toArray();
 
-        return $testTypes;
+        return response()->json([
+            'testTypes' => $testTypes
+        ]);
     }
 
     /**
