@@ -45285,9 +45285,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newtest.saveTest(state.test).then(function (res) {
-      // commit('resetState')
+      commit('resetState');
       commit('setIsLoading', false);
-      // commit('pages/setCurrentModule', 'pages', { root: true })
+      commit('tests/setCurrentModule', 'tests', { root: true });
     }).catch(function (err) {
       // commit('setErrors', err.response.data)
       // commit('setIsLoading', false)
@@ -45329,6 +45329,50 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     updateTestDesc: function updateTestDesc(state, desc) {
         state.test.desc = desc;
+    },
+
+    // addBlockToLayout(state, data) {
+    //     state.layout.blocks.push(data)
+    // },
+    // addElementToElements(state, value) {
+    //     state.layout.elements.push(value)
+    // },
+    // moveElementUp(state, { id, type }) {
+    //     const index = _.findIndex(state.layout[type], function(elem) {
+    //         return elem.id === id
+    //     })
+    //     if (index === 0) return
+
+    //     state.layout[type].splice(index - 1, 0, state.layout[type].splice(index, 1)[0])
+    // },
+    // moveElementDown(state, { id, type }) {
+    //     const index = _.findIndex(state.layout[type], function(elem) {
+    //         return elem.id === id
+    //     })
+    //     if (index === state.layout[type].length - 1) return
+
+    //     state.layout[type].splice(index + 1, 0, state.layout[type].splice(index, 1)[0])
+    // },
+    // deleteElement(state, id) {
+    //     state.layout.blocks = _.filter(state.layout.blocks, function (o) { return o.id != id; })
+    //     state.layout.elements = _.filter(state.layout.elements, function (o) { return o.id != id; })
+    // },
+    resetState: function resetState(state) {
+        var initialState = {
+            isLoading: false,
+            options: {
+                types: []
+            },
+            test: {
+                type: null,
+                name: '',
+                desc: ''
+            },
+            errors: {}
+        };
+        Object.keys(initialState).forEach(function (key) {
+            state[key] = initialState[key];
+        });
     }
 });
 

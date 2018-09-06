@@ -52,30 +52,23 @@ export default {
     //     state.layout.blocks = _.filter(state.layout.blocks, function (o) { return o.id != id; })
     //     state.layout.elements = _.filter(state.layout.elements, function (o) { return o.id != id; })
     // },
-    // resetState(state) {
-    //     const initialState = {
-    //         isLoading: false,
-    //         options: {
-    //           categories:[],
-    //           themes:[],
-    //         },
-    //         page: {
-    //           category: null,
-    //           theme: null,
-    //           name: '',
-    //           desc: ''
-    //         },
-    //         blocks: [],
-    //         layout: {
-    //           blocks: [],
-    //           elements: []
-    //         },
-    //         errors: {}
-    //     }
-    //     Object.keys(initialState).forEach(key => {
-    //         state[key] = initialState[key]
-    //     })
-    // },
+    resetState(state) {
+        const initialState = {
+            isLoading: false,
+            options: {
+                types:[],
+            },
+            test: {
+                type: null,
+                name: '',
+                desc: ''
+            },
+            errors: {}
+        }
+        Object.keys(initialState).forEach(key => {
+            state[key] = initialState[key]
+        })
+    },
     // setPageToEdit(state, payload) {
     //     const { name, description, category, elements, theme } = payload
 

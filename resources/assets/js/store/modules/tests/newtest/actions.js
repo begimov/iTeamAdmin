@@ -40,9 +40,9 @@ export default {
   save ({ commit, state }) {
     commit('setIsLoading', true)
     api.newtest.saveTest(state.test).then(res => {
-      // commit('resetState')
+      commit('resetState')
       commit('setIsLoading', false)
-      // commit('pages/setCurrentModule', 'pages', { root: true })
+      commit('tests/setCurrentModule', 'tests', { root: true })
     }).catch(err => {
       // commit('setErrors', err.response.data)
       // commit('setIsLoading', false)
