@@ -8,22 +8,20 @@ export default {
   },
   saveTest(test) {
     return new Promise((resolve, reject) => {
-      axios.post(`/webapi/tests`, test).then(res => {
+      axios.post(`/webapi/tests`, this.processData(test)).then(res => {
         resolve(res)
       }).catch(err => {
         reject(err)
       })
     })
   },
-  // processData(page, elements) {
-  //   return {
-  //     name: page.name,
-  //     description: page.desc,
-  //     category_id: page.category ? page.category.id : null,
-  //     theme_id: page.theme ? page.theme.id : null,
-  //     elements
-  //   }
-  // },
+  processData(test) {
+    return {
+      name: test.name,
+      description: test.desc,
+      type_id: test.type ? test.type.id : null
+    }
+  },
   // getPage(id) {
   //   return new Promise((resolve, reject) => {
   //     axios.get(`/webapi/pages/${id}/edit`).then(res => {

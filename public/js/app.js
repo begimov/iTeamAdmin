@@ -43912,13 +43912,22 @@ __WEBPACK_IMPORTED_MODULE_4_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_5_vuex
     });
   },
   saveTest: function saveTest(test) {
+    var _this = this;
+
     return new Promise(function (resolve, reject) {
-      axios.post("/webapi/tests", test).then(function (res) {
+      axios.post("/webapi/tests", _this.processData(test)).then(function (res) {
         resolve(res);
       }).catch(function (err) {
         reject(err);
       });
     });
+  },
+  processData: function processData(test) {
+    return {
+      name: test.name,
+      description: test.desc,
+      type_id: test.type ? test.type.id : null
+    };
   }
 });
 
@@ -45274,10 +45283,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref5.commit,
         state = _ref5.state;
 
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newtest.saveTest(state.test).then(function (res) {
       // commit('resetState')
-      // commit('setIsLoading', false)
+      commit('setIsLoading', false);
       // commit('pages/setCurrentModule', 'pages', { root: true })
     }).catch(function (err) {
       // commit('setErrors', err.response.data)

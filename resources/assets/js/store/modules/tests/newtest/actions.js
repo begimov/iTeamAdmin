@@ -38,10 +38,10 @@ export default {
   //   commit('deleteElement', id)
   // },
   save ({ commit, state }) {
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true)
     api.newtest.saveTest(state.test).then(res => {
       // commit('resetState')
-      // commit('setIsLoading', false)
+      commit('setIsLoading', false)
       // commit('pages/setCurrentModule', 'pages', { root: true })
     }).catch(err => {
       // commit('setErrors', err.response.data)
