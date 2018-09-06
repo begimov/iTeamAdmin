@@ -49,7 +49,9 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
+        $testTypes = \App\Models\Tests\TestType::get();
+
+        return $testTypes;
     }
 
     /**
