@@ -65,7 +65,7 @@ class TestController extends Controller
         $testTypes = fractal($this->testTypes->get(), new TestTypeTransformer)->toArray();
 
         return response()->json([
-            'testTypes' => $testTypes
+            'types' => $testTypes
         ]);
     }
 

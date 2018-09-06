@@ -1,9 +1,9 @@
 export default {
   isLoading: false,
-  // options: {
-  //   categories:[],
-  //   themes:[],
-  // },
+  options: {
+    // categories:[],
+    types:[],
+  },
   test: {
     // category: null,
     // theme: null,

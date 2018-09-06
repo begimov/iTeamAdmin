@@ -8,9 +8,9 @@ export default {
     // setCategoriesOptions(state, payload) {
     //     state.options.categories = payload
     // },
-    // setThemesOptions(state, payload) {
-    //     state.options.themes = payload
-    // },
+    setTypesOptions(state, payload) {
+        state.options.types = payload
+    },
     // setErrors(state, errors) {
     //     state.errors = errors
     // },

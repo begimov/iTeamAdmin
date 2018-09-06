@@ -45161,10 +45161,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
-  // options: {
-  //   categories:[],
-  //   themes:[],
-  // },
+  options: {
+    // categories:[],
+    types: []
+  },
   test: {
     // category: null,
     // theme: null,
@@ -45230,13 +45230,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     return new Promise(function (resolve, reject) {
       commit('setIsLoading', true);
       __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newtest.getInitialData().then(function (res) {
-        console.log(res);
-        //       const blocks = res.data.blocks.data
-        //       commit('setBlocks', blocks)
-        //       commit('setCategoriesOptions', res.data.categories.data)
-        //       commit('setThemesOptions', res.data.themes.data)
+        commit('setTypesOptions', res.data.types.data);
         commit('setIsLoading', false);
-        //       resolve(res)
+        resolve(res);
       });
     });
   },
@@ -45304,9 +45300,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     // setCategoriesOptions(state, payload) {
     //     state.options.categories = payload
     // },
-    // setThemesOptions(state, payload) {
-    //     state.options.themes = payload
-    // },
+    setTypesOptions: function setTypesOptions(state, payload) {
+        state.options.types = payload;
+    },
+
     // setErrors(state, errors) {
     //     state.errors = errors
     // },

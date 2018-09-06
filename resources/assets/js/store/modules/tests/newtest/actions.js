@@ -5,13 +5,9 @@ export default {
     return new Promise((resolve, reject) => {
       commit('setIsLoading', true)
       api.newtest.getInitialData().then(res => {
-        console.log(res)
-  //       const blocks = res.data.blocks.data
-  //       commit('setBlocks', blocks)
-  //       commit('setCategoriesOptions', res.data.categories.data)
-  //       commit('setThemesOptions', res.data.themes.data)
+        commit('setTypesOptions', res.data.types.data)
         commit('setIsLoading', false)
-  //       resolve(res)
+        resolve(res)
       })
     })
   },
