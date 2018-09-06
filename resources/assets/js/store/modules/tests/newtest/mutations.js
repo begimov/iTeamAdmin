@@ -17,9 +17,9 @@ export default {
     // updateCategoryParams(state, value) {
     //     state.page.category = value
     // },
-    // updateThemeParams(state, value) {
-    //     state.page.theme = value
-    // },
+    updateTypeParams(state, value) {
+        state.test.type = value
+    },
     updateTestName(state, name) {
         state.test.name = name
     },

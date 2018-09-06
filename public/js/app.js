@@ -45167,7 +45167,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   test: {
     // category: null,
-    // theme: null,
+    type: null,
     name: '',
     desc: ''
   }
@@ -45204,12 +45204,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   // categoryParams (state) {
   //   return state.page.category
   // },
-  // themeOptions (state) {
-  //   return state.options.themes
-  // },
-  // themeParams (state) {
-  //   return state.page.theme
-  // },
+  typeOptions: function typeOptions(state) {
+    return state.options.types;
+  },
+  typeParams: function typeParams(state) {
+    return state.test.type;
+  },
   isLoading: function isLoading(state) {
     return state.isLoading;
   }
@@ -45240,16 +45240,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   // updateCategoryParams ({ commit }, value) {
   //   commit('updateCategoryParams', value)
   // },
-  // updateThemeParams ({ commit }, value) {
-  //   commit('updateThemeParams', value)
-  // },
-  updateTestName: function updateTestName(_ref2, name) {
+  updateTypeParams: function updateTypeParams(_ref2, value) {
     var commit = _ref2.commit;
+
+    commit('updateTypeParams', value);
+  },
+  updateTestName: function updateTestName(_ref3, name) {
+    var commit = _ref3.commit;
 
     commit('updateTestName', name);
   },
-  updateTestDesc: function updateTestDesc(_ref3, desc) {
-    var commit = _ref3.commit;
+  updateTestDesc: function updateTestDesc(_ref4, desc) {
+    var commit = _ref4.commit;
 
     commit('updateTestDesc', desc);
   },
@@ -45268,9 +45270,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   // deleteElement ({ commit }, id) {
   //   commit('deleteElement', id)
   // },
-  save: function save(_ref4) {
-    var commit = _ref4.commit,
-        state = _ref4.state;
+  save: function save(_ref5) {
+    var commit = _ref5.commit,
+        state = _ref5.state;
 
     // commit('setIsLoading', true)
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newtest.saveTest(state.test).then(function (res) {
@@ -45310,9 +45312,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     // updateCategoryParams(state, value) {
     //     state.page.category = value
     // },
-    // updateThemeParams(state, value) {
-    //     state.page.theme = value
-    // },
+    updateTypeParams: function updateTypeParams(state, value) {
+        state.test.type = value;
+    },
     updateTestName: function updateTestName(state, name) {
         state.test.name = name;
     },
@@ -67124,9 +67126,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   //     'layout',
   //     'categoryOptions',
   //     'categoryParams',
-  //     'themeOptions',
-  //     'themeParams',
-  'isLoading']
+  'typeOptions', 'typeParams', 'isLoading']
   //     'errors'
   ), {
     'testName': {
@@ -67148,7 +67148,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   }),
   methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc',
   //     'updateCategoryParams',
-  //     'updateThemeParams',
+  'updateTypeParams',
   //     'addBlockToLayout',
   //     'moveElementUp',
   //     'moveElementDown',
@@ -67199,6 +67199,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('multiselect', {
+    attrs: {
+      "value": _vm.typeParams,
+      "options": _vm.typeOptions,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите тип",
+      "label": "name",
+      "track-by": "id"
+    },
+    on: {
+      "input": _vm.updateTypeParams
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Тип не найден")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('input', {
     directives: [{

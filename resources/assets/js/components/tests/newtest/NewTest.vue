@@ -9,34 +9,20 @@
 
             <div class="row">
               <div class="col-md-6">
-                <!-- <div class="form-group">
-                  <multiselect :value="categoryParams"
-                    :options="categoryOptions"
-                    v-on:input="updateCategoryParams"
-                    select-label=""
-                    selected-label="Выбран"
-                    deselect-label=""
-                    placeholder="Выберите категорию"
-                    label="name"
-                    track-by="id">
-                    <span slot="noResult">Категория не найдена</span>
-                  </multiselect>
-                  <span class="help-block alert-danger" v-if="errors.category_id">{{ errors.category_id[0] }}</span>
-                </div>
                 <div class="form-group">
-                  <multiselect :value="themeParams"
-                    :options="themeOptions"
-                    v-on:input="updateThemeParams"
+                  <multiselect :value="typeParams"
+                    :options="typeOptions"
+                    v-on:input="updateTypeParams"
                     select-label=""
                     selected-label="Выбран"
                     deselect-label=""
-                    placeholder="Выберите тему"
+                    placeholder="Выберите тип"
                     label="name"
                     track-by="id">
-                    <span slot="noResult">Тема не найдена</span>
+                    <span slot="noResult">Тип не найден</span>
                   </multiselect>
-                  <span class="help-block alert-danger" v-if="errors.theme_id">{{ errors.theme_id[0] }}</span>
-                </div> -->
+                  <!-- <span class="help-block alert-danger" v-if="errors.type_id">{{ errors.type_id[0] }}</span> -->
+                </div>
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Введите название теста..." v-model="testName">
                   <!-- <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span> -->

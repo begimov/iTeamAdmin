@@ -6,7 +6,7 @@ export default {
   },
   test: {
     // category: null,
-    // theme: null,
+    type: null,
     name: '',
     desc: ''
   },

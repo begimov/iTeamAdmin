@@ -14,9 +14,9 @@ export default {
   // updateCategoryParams ({ commit }, value) {
   //   commit('updateCategoryParams', value)
   // },
-  // updateThemeParams ({ commit }, value) {
-  //   commit('updateThemeParams', value)
-  // },
+  updateTypeParams ({ commit }, value) {
+    commit('updateTypeParams', value)
+  },
   updateTestName ({ commit }, name) {
     commit('updateTestName', name)
   },
