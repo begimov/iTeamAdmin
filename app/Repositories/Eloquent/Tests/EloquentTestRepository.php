@@ -16,10 +16,8 @@ class EloquentTestRepository extends EloquentRepositoryAbstract implements TestR
 
     public function store($request)
     {
-        $payload = $request->all();
+        $test = TestAbstract::create($request->all()['test_type_id']);
 
-        $test = TestAbstract::create($payload['test_type_id']);
-
-        $test->store($payload);
+        return $test->store($request);
     }
 }

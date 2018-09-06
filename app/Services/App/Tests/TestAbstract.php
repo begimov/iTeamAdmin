@@ -2,6 +2,8 @@
 
 namespace App\Services\App\Tests;
 
+use App\Models\Tests\Test;
+
 abstract class TestAbstract
 {
     protected static $mappings = [
@@ -10,10 +12,15 @@ abstract class TestAbstract
 
     ];
 
+    abstract public function store($request);
+
     public static function create($test)
     {
         return new self::$mappings[$test];
     }
 
-    abstract public function store($data);
+    protected function storeBaseInfo($data)
+    {
+        return Test::create($data);
+    }
 }
