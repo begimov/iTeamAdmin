@@ -43,10 +43,12 @@ use App\Repositories\Eloquent\Pages\{
 };
 
 use App\Repositories\Contracts\Tests\{ 
-    TestRepository
+    TestRepository,
+    TestTypeRepository
 };
 use App\Repositories\Eloquent\Tests\{ 
-    EloquentTestRepository
+    EloquentTestRepository,
+    EloquentTestTypeRepository
 };
 
 use App\Repositories\Contracts\Content\FileRepository;
@@ -85,6 +87,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(BlockRepository::class, EloquentBlockRepository::class);
         $this->app->bind(ThemeRepository::class, EloquentThemeRepository::class);
         $this->app->bind(TestRepository::class, EloquentTestRepository::class);
+        $this->app->bind(TestTypeRepository::class, EloquentTestTypeRepository::class);
     }
 
     /**
