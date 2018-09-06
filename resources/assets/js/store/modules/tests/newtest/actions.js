@@ -11,9 +11,6 @@ export default {
       })
     })
   },
-  // updateCategoryParams ({ commit }, value) {
-  //   commit('updateCategoryParams', value)
-  // },
   updateTypeParams ({ commit }, value) {
     commit('updateTypeParams', value)
   },
@@ -23,20 +20,6 @@ export default {
   updateTestDesc ({ commit }, desc) {
     commit('updateTestDesc', desc)
   },
-  // addBlockToLayout ({ commit }, data) {
-  //   commit('addBlockToLayout', data)
-  // },
-  // moveElementUp ({ commit }, id) {
-  //   commit('moveElementUp', {id, type:'blocks'})
-  //   commit('moveElementUp', {id, type:'elements'})
-  // },
-  // moveElementDown ({ commit }, id) {
-  //   commit('moveElementDown', { id, type:'blocks' })
-  //   commit('moveElementDown', { id, type:'elements' })
-  // },
-  // deleteElement ({ commit }, id) {
-  //   commit('deleteElement', id)
-  // },
   save ({ commit, state }) {
     commit('setIsLoading', true)
     api.newtest.saveTest(state.test).then(res => {

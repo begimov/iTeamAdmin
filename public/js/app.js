@@ -45171,20 +45171,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: false,
   options: {
-    // categories:[],
     types: []
   },
   test: {
-    // category: null,
     type: null,
     name: '',
     desc: ''
   }
-  // blocks: [],
-  // layout: {
-  //   blocks: [],
-  //   elements: []
-  // },
   // errors: {}
 });
 
@@ -45200,19 +45193,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   testdesc: function testdesc(state) {
     return state.test.desc;
   },
-
-  // blocks (state) {
-  //   return state.blocks
-  // },
-  // layout (state) {
-  //   return state.layout
-  // },
-  // categoryOptions (state) {
-  //   return state.options.categories
-  // },
-  // categoryParams (state) {
-  //   return state.page.category
-  // },
   typeOptions: function typeOptions(state) {
     return state.options.types;
   },
@@ -45245,10 +45225,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       });
     });
   },
-
-  // updateCategoryParams ({ commit }, value) {
-  //   commit('updateCategoryParams', value)
-  // },
   updateTypeParams: function updateTypeParams(_ref2, value) {
     var commit = _ref2.commit;
 
@@ -45264,21 +45240,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('updateTestDesc', desc);
   },
-
-  // addBlockToLayout ({ commit }, data) {
-  //   commit('addBlockToLayout', data)
-  // },
-  // moveElementUp ({ commit }, id) {
-  //   commit('moveElementUp', {id, type:'blocks'})
-  //   commit('moveElementUp', {id, type:'elements'})
-  // },
-  // moveElementDown ({ commit }, id) {
-  //   commit('moveElementDown', { id, type:'blocks' })
-  //   commit('moveElementDown', { id, type:'elements' })
-  // },
-  // deleteElement ({ commit }, id) {
-  //   commit('deleteElement', id)
-  // },
   save: function save(_ref5) {
     var commit = _ref5.commit,
         state = _ref5.state;
@@ -45309,22 +45270,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setIsLoading: function setIsLoading(state, value) {
         state.isLoading = value;
     },
-
-    // setBlocks(state, value) {
-    //     state.blocks = value
-    // },
-    // setCategoriesOptions(state, payload) {
-    //     state.options.categories = payload
-    // },
     setTypesOptions: function setTypesOptions(state, payload) {
         state.options.types = payload;
     },
 
     // setErrors(state, errors) {
     //     state.errors = errors
-    // },
-    // updateCategoryParams(state, value) {
-    //     state.page.category = value
     // },
     updateTypeParams: function updateTypeParams(state, value) {
         state.test.type = value;
@@ -45335,33 +45286,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     updateTestDesc: function updateTestDesc(state, desc) {
         state.test.desc = desc;
     },
-
-    // addBlockToLayout(state, data) {
-    //     state.layout.blocks.push(data)
-    // },
-    // addElementToElements(state, value) {
-    //     state.layout.elements.push(value)
-    // },
-    // moveElementUp(state, { id, type }) {
-    //     const index = _.findIndex(state.layout[type], function(elem) {
-    //         return elem.id === id
-    //     })
-    //     if (index === 0) return
-
-    //     state.layout[type].splice(index - 1, 0, state.layout[type].splice(index, 1)[0])
-    // },
-    // moveElementDown(state, { id, type }) {
-    //     const index = _.findIndex(state.layout[type], function(elem) {
-    //         return elem.id === id
-    //     })
-    //     if (index === state.layout[type].length - 1) return
-
-    //     state.layout[type].splice(index + 1, 0, state.layout[type].splice(index, 1)[0])
-    // },
-    // deleteElement(state, id) {
-    //     state.layout.blocks = _.filter(state.layout.blocks, function (o) { return o.id != id; })
-    //     state.layout.elements = _.filter(state.layout.elements, function (o) { return o.id != id; })
-    // },
     resetState: function resetState(state) {
         var initialState = {
             isLoading: false,
@@ -67199,20 +67123,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc',
-  //     'updateCategoryParams',
-  'updateTypeParams',
-  //     'addBlockToLayout',
-  //     'moveElementUp',
-  //     'moveElementDown',
-  //     'deleteElement',
-  'save', 'resetState']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc', 'updateTypeParams', 'save', 'resetState']
   //     'setPageToEdit',
   //     'update'
   ), {
-    // findBlock (id) {
-    //   return _.find(this.blocks, ['id',id])
-    // },
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewTest');

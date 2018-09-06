@@ -40,20 +40,12 @@ export default {
           'getInitialData',
           'updateTestName',
           'updateTestDesc',
-      //     'updateCategoryParams',
           'updateTypeParams',
-      //     'addBlockToLayout',
-      //     'moveElementUp',
-      //     'moveElementDown',
-      //     'deleteElement',
           'save',
           'resetState',
       //     'setPageToEdit',
       //     'update'
       ]),
-      // findBlock (id) {
-      //   return _.find(this.blocks, ['id',id])
-      // },
       cancel () {
         this.resetState()
         this.$emit('cancelNewTest')
