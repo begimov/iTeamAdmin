@@ -12,4 +12,9 @@ class EloquentTestRepository extends EloquentRepositoryAbstract implements TestR
     {
         return Test::class;
     }
+
+    public function store($request)
+    {
+        dd($request);
+    }
 }
