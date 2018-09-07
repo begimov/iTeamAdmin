@@ -67247,7 +67247,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "row"
     }, [_c('div', {
       staticClass: "col-md-12"
-    }, [_c('question')], 1)])
+    }, [_c('question', {
+      model: {
+        value: (_vm.questions[index]),
+        callback: function($$v) {
+          _vm.$set(_vm.questions, index, $$v)
+        },
+        expression: "questions[index]"
+      }
+    })], 1)])
   }), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
@@ -68306,11 +68314,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       question: {
-        question: 'question 1'
+        question: ''
       }
     };
   },
 
+  watch: {
+    question: {
+      handler: function handler(question) {
+        this.$emit('input', question);
+      },
+      deep: true
+    }
+  },
   computed: {
     //
   },
