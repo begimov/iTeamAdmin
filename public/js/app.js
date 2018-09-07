@@ -12668,6 +12668,7 @@ Vue.component('iteam-tests', __webpack_require__(180));
 Vue.component('iteam-test', __webpack_require__(185));
 Vue.component('new-test', __webpack_require__(188));
 Vue.component('question', __webpack_require__(215));
+Vue.component('answer', __webpack_require__(218));
 
 // Special blocks
 Vue.component('purchase', __webpack_require__(193));
@@ -68335,8 +68336,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
-    staticClass: "panel panel-default"
+    staticClass: "panel panel-primary"
   }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_vm._v("Вопрос")]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row"
@@ -68344,7 +68347,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Вопрос")]), _vm._v(" "), _c('input', {
+  }, [_c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -68353,7 +68356,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
-      "type": "text"
+      "type": "text",
+      "placeholder": "Вопрос..."
     },
     domProps: {
       "value": (_vm.question.question)
@@ -68364,7 +68368,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.question.question = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _c('div', {
+  })])])]), _vm._v(" "), _vm._l((2), function(answer, index) {
+    return _c('div', {
+      key: index,
+      staticClass: "row"
+    }, [_c('answer')], 1)
+  }), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
@@ -68379,7 +68388,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addAnswer($event)
       }
     }
-  }, [_vm._v("Добавить ответ")])])])]), _vm._v(" "), _vm._m(0)])])
+  }, [_vm._v("Добавить ответ")])])])], 2), _vm._v(" "), _vm._m(0)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "panel-footer"
@@ -68395,6 +68404,112 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-27c64dee", module.exports)
+  }
+}
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(219),
+  /* template */
+  __webpack_require__(220),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/tests/newtest/Answer.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Answer.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a2b2fc74", Component.options)
+  } else {
+    hotAPI.reload("data-v-a2b2fc74", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 219 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      answer: {
+        answer: '',
+        points: 0
+      }
+    };
+  },
+
+  watch: {
+    answer: {
+      handler: function handler(answer) {
+        this.$emit('input', answer);
+      },
+      deep: true
+    }
+  }
+});
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.answer.answer),
+      expression: "answer.answer"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Ответ..."
+    },
+    domProps: {
+      "value": (_vm.answer.answer)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.answer.answer = $event.target.value
+      }
+    }
+  })])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-a2b2fc74", module.exports)
   }
 }
 

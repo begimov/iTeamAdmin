@@ -1,14 +1,17 @@
 <template>
   <div class="col-md-12">
-    <div class="panel panel-default">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Вопрос</div>
       <div class="panel-body">
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label>Вопрос</label>
-                <input type="text" v-model="question.question" class="form-control">
+                <input type="text" v-model="question.question" class="form-control" placeholder="Вопрос...">
               </div>
             </div>
+          </div>
+          <div class="row" v-for="(answer, index) in 2" :key="index">
+            <answer />
           </div>
           <div class="row">
             <div class="col-md-12">
