@@ -40,9 +40,7 @@
 
           <div class="panel-body">
             <div class="row" v-for="(question, index) in questions" :key="index">
-                <div class="col-md-12">
-                    <question v-model="questions[index]" />
-                </div>
+              <question v-model="questions[index]" />
             </div>
             <div class="row">
                 <div class="col-md-12">

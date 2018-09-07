@@ -67245,8 +67245,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('div', {
       key: index,
       staticClass: "row"
-    }, [_c('div', {
-      staticClass: "col-md-12"
     }, [_c('question', {
       model: {
         value: (_vm.questions[index]),
@@ -67255,7 +67253,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         },
         expression: "questions[index]"
       }
-    })], 1)])
+    })], 1)
   }), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
@@ -68344,9 +68342,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "col-md-12"
+  }, [_c('div', {
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-body"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('label', [_vm._v("Вопрос")]), _vm._v(" "), _c('input', {
@@ -68369,7 +68373,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.question.question = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _vm._m(0)])
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('a', {
+    staticClass: "btn btn-default btn-sm",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.addAnswer($event)
+      }
+    }
+  }, [_vm._v("Добавить ответ")])])])]), _vm._v(" "), _vm._m(0)])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "panel-footer"
