@@ -6,7 +6,8 @@ export default {
   test: {
     type: null,
     name: '',
-    desc: ''
+    desc: '',
+    questions: []
   },
   // errors: {}
 }

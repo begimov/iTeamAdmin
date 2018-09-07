@@ -45176,7 +45176,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   test: {
     type: null,
     name: '',
-    desc: ''
+    desc: '',
+    questions: []
   }
   // errors: {}
 });
@@ -45295,7 +45296,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             test: {
                 type: null,
                 name: '',
-                desc: ''
+                desc: '',
+                questions: []
             },
             errors: {}
         };
