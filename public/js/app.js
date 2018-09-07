@@ -67100,12 +67100,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   props: ['editedTestId'],
-  data: function data() {
-    return {
-      isShowingBlocksPanel: false
-    };
-  },
-
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc', 'typeOptions', 'typeParams', 'isLoading']
   //     'errors'
   ), {
@@ -67235,6 +67229,30 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })])])])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_vm._l((2), function(question, index) {
+    return _c('div', {
+      key: index,
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-md-12"
+    }, [_c('question')], 1)])
+  }), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.addReview($event)
+      }
+    }
+  }, [_vm._v("Добавить отзыв")])])])], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [(!_vm.editedTestId) ? _c('a', {
     staticClass: "btn btn-primary",
@@ -68276,7 +68294,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      //
+      question: {
+        question: 'question 1'
+      }
     };
   },
 
@@ -68296,15 +68316,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
+  return _c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Вопрос")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.question.question),
+      expression: "question.question"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.question.question)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.question.question = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _vm._m(0)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "container"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_vm._v("\n      QUESTION\n    ")])])])
+    staticClass: "panel-footer"
+  }, [_c('a', {
+    staticClass: "btn btn-default btn-sm",
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Удалить вопрос")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

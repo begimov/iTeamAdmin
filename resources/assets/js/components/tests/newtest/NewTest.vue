@@ -38,6 +38,19 @@
 
           </div>
 
+          <div class="panel-body">
+            <div class="row" v-for="(question, index) in 2" :key="index">
+                <div class="col-md-12">
+                    <question />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#" class="btn btn-default" @click.prevent="addReview">Добавить отзыв</a>
+                </div>
+            </div>
+          </div>
+
           <div class="panel-footer">
             <a href="#" class="btn btn-primary" @click.prevent="save" v-if="!editedTestId">Создать</a>
             <!-- <a href="#" class="btn btn-primary" @click.prevent="update(editedPageId)" v-else>Сохранить</a> -->
