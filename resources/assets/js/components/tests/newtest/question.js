@@ -13,14 +13,5 @@ export default {
         },
         deep: true
     }
-  },
-  computed: {
-    //
-  },
-  methods: {
-    //
-  },
-  mounted() {
-    //
   }
 }

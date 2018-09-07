@@ -68324,15 +68324,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       },
       deep: true
     }
-  },
-  computed: {
-    //
-  },
-  methods: {
-    //
-  },
-  mounted: function mounted() {
-    //
   }
 });
 
