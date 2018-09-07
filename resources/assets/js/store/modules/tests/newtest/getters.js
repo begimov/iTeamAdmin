@@ -14,6 +14,9 @@ export default {
   isLoading (state) {
     return state.isLoading
   },
+  questions (state) {
+    return state.test.questions
+  },
   // errors (state) {
   //   return state.errors
   // },

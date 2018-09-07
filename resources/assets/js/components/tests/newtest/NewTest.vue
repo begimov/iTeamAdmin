@@ -39,14 +39,14 @@
           </div>
 
           <div class="panel-body">
-            <div class="row" v-for="(question, index) in 2" :key="index">
+            <div class="row" v-for="(question, index) in questions" :key="index">
                 <div class="col-md-12">
                     <question />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <a href="#" class="btn btn-default" @click.prevent="addReview">Добавить отзыв</a>
+                    <a href="#" class="btn btn-default" @click.prevent="addQuestion">Добавить вопрос</a>
                 </div>
             </div>
           </div>

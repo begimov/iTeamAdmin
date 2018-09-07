@@ -45203,6 +45203,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   isLoading: function isLoading(state) {
     return state.isLoading;
+  },
+  questions: function questions(state) {
+    return state.test.questions;
   }
 });
 
@@ -67100,7 +67103,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   props: ['editedTestId'],
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc', 'typeOptions', 'typeParams', 'isLoading']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc', 'typeOptions', 'typeParams', 'isLoading', 'questions']
   //     'errors'
   ), {
     'testName': {
@@ -67127,6 +67130,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewTest');
+    },
+    addQuestion: function addQuestion() {
+      this.questions.push({});
     }
   }),
   mounted: function mounted() {
@@ -67230,7 +67236,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_vm._l((2), function(question, index) {
+  }, [_vm._l((_vm.questions), function(question, index) {
     return _c('div', {
       key: index,
       staticClass: "row"
@@ -67249,10 +67255,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": function($event) {
         $event.preventDefault();
-        _vm.addReview($event)
+        _vm.addQuestion($event)
       }
     }
-  }, [_vm._v("Добавить отзыв")])])])], 2), _vm._v(" "), _c('div', {
+  }, [_vm._v("Добавить вопрос")])])])], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [(!_vm.editedTestId) ? _c('a', {
     staticClass: "btn btn-primary",
