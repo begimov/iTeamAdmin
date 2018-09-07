@@ -45263,6 +45263,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref6.commit;
 
     commit('resetState');
+  },
+  addQuestion: function addQuestion(_ref7) {
+    var commit = _ref7.commit;
+
+    commit('addQuestion');
   }
 });
 
@@ -45308,6 +45313,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         Object.keys(initialState).forEach(function (key) {
             state[key] = initialState[key];
         });
+    },
+    addQuestion: function addQuestion(state) {
+        state.test.questions.push({});
     }
 });
 
@@ -67123,16 +67131,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc', 'updateTypeParams', 'save', 'resetState']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc', 'updateTypeParams', 'save', 'resetState', 'addQuestion']
   //     'setPageToEdit',
   //     'update'
   ), {
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewTest');
-    },
-    addQuestion: function addQuestion() {
-      this.questions.push({});
     }
   }),
   mounted: function mounted() {

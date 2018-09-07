@@ -35,6 +35,9 @@ export default {
             state[key] = initialState[key]
         })
     },
+    addQuestion(state) {
+        state.test.questions.push({})
+    },
     // setPageToEdit(state, payload) {
     //     const { name, description, category, elements, theme } = payload
 

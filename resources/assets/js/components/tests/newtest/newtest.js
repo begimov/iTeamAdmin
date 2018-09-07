@@ -39,16 +39,14 @@ export default {
           'updateTypeParams',
           'save',
           'resetState',
+          'addQuestion',
       //     'setPageToEdit',
       //     'update'
       ]),
       cancel () {
         this.resetState()
         this.$emit('cancelNewTest')
-      },
-      addQuestion() {
-        this.questions.push({});
-      },
+      }
   },
   mounted() {
     this.getInitialData().then(res => {
