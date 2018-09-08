@@ -42,6 +42,7 @@ export default {
           'resetState',
           'addQuestion',
           'addCondition',
+          'removeQuestion',
       //     'setPageToEdit',
       //     'update'
       ]),

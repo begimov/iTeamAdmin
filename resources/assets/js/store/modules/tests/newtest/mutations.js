@@ -41,6 +41,9 @@ export default {
     addCondition(state) {
         state.test.conditions.push({})
     },
+    removeQuestion(state) {
+        console.log('REMOVE')
+    },
     // setPageToEdit(state, payload) {
     //     const { name, description, category, elements, theme } = payload
 

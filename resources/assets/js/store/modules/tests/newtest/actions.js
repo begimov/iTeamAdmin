@@ -40,6 +40,9 @@ export default {
   addCondition ({ commit }) {
     commit('addCondition')
   },
+  removeQuestion ({ commit }) {
+    commit('removeQuestion')
+  },
   // setPageToEdit ({ commit }, id) {
   //   commit('setIsLoading', true)
   //   api.newpage.getPage(id).then(res => {

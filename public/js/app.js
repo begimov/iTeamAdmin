@@ -45279,6 +45279,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref8.commit;
 
     commit('addCondition');
+  },
+  removeQuestion: function removeQuestion(_ref9) {
+    var commit = _ref9.commit;
+
+    commit('removeQuestion');
   }
 });
 
@@ -45330,6 +45335,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     addCondition: function addCondition(state) {
         state.test.conditions.push({});
+    },
+    removeQuestion: function removeQuestion(state) {
+        console.log('REMOVE');
     }
 });
 
@@ -67145,7 +67153,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc', 'updateTypeParams', 'save', 'resetState', 'addQuestion', 'addCondition']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc', 'updateTypeParams', 'save', 'resetState', 'addQuestion', 'addCondition', 'removeQuestion']
   //     'setPageToEdit',
   //     'update'
   ), {
@@ -67260,6 +67268,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       key: index,
       staticClass: "row"
     }, [_c('question', {
+      on: {
+        "removeQuestion": _vm.removeQuestion
+      },
       model: {
         value: (_vm.questions[index]),
         callback: function($$v) {
