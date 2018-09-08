@@ -10,7 +10,7 @@ export default {
   watch: {
     question: {
         handler: function (question) {
-            this.$emit('input', question);
+            this.$emit('input', question)
         },
         deep: true
     }
@@ -18,6 +18,9 @@ export default {
   methods: {
     addAnswer() {
       this.question.answers.push({})
+    },
+    removeQuestion() {
+      this.$emit('removeQuestion')
     }
   }
 }

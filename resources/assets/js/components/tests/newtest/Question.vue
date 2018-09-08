@@ -4,7 +4,10 @@
       <div class="panel-heading">
         <p>Вопрос:</p>
         <div class="form-group">
-          <input type="text" v-model="question.question" class="form-control">
+          <div class="input-group">
+            <input type="text" v-model="question.question" class="form-control">
+            <div class="input-group-addon"><a href="#" @click.prevent="removeQuestion">X</a></div>
+          </div>
         </div>
         </div>
       <div class="panel-body">
@@ -17,7 +20,6 @@
             </div>
           </div>
       </div>
-      <div class="panel-footer"><a href="#" class="btn btn-default btn-sm" >Удалить вопрос</a></div>
     </div>
   </div>
 </template>

@@ -68371,6 +68371,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   methods: {
     addAnswer: function addAnswer() {
       this.question.answers.push({});
+    },
+    removeQuestion: function removeQuestion() {
+      this.$emit('removeQuestion');
     }
   }
 });
@@ -68388,6 +68391,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }, [_c('p', [_vm._v("Вопрос:")]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
+  }, [_c('div', {
+    staticClass: "input-group"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -68408,7 +68413,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.question.question = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "input-group-addon"
+  }, [_c('a', {
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.removeQuestion($event)
+      }
+    }
+  }, [_vm._v("X")])])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_vm._l((_vm.question.answers), function(answer, index) {
     return _c('div', {
@@ -68438,17 +68455,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addAnswer($event)
       }
     }
-  }, [_vm._v("Добавить ответ")])])])], 2), _vm._v(" "), _vm._m(0)])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "panel-footer"
-  }, [_c('a', {
-    staticClass: "btn btn-default btn-sm",
-    attrs: {
-      "href": "#"
-    }
-  }, [_vm._v("Удалить вопрос")])])
-}]}
+  }, [_vm._v("Добавить ответ")])])])], 2)])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
