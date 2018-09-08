@@ -12669,6 +12669,7 @@ Vue.component('iteam-test', __webpack_require__(185));
 Vue.component('new-test', __webpack_require__(188));
 Vue.component('question', __webpack_require__(215));
 Vue.component('answer', __webpack_require__(218));
+Vue.component('condition', __webpack_require__(221));
 
 // Special blocks
 Vue.component('purchase', __webpack_require__(193));
@@ -45179,7 +45180,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     type: null,
     name: '',
     desc: '',
-    questions: []
+    questions: [],
+    conditions: []
   }
   // errors: {}
 });
@@ -45189,7 +45191,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+/* harmony default export */ __webpack_exports__["a"] = (_defineProperty({
   testname: function testname(state) {
     return state.test.name;
   },
@@ -45208,7 +45212,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   questions: function questions(state) {
     return state.test.questions;
   }
-});
+}, "questions", function questions(state) {
+  return state.test.conditions;
+}));
 
 /***/ }),
 /* 86 */
@@ -67112,7 +67118,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   props: ['editedTestId'],
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc', 'typeOptions', 'typeParams', 'isLoading', 'questions']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc', 'typeOptions', 'typeParams', 'isLoading', 'questions', 'conditions']
   //     'errors'
   ), {
     'testName': {
@@ -68544,6 +68550,168 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
      require("vue-hot-reload-api").rerender("data-v-a2b2fc74", module.exports)
+  }
+}
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(0)(
+  /* script */
+  __webpack_require__(222),
+  /* template */
+  __webpack_require__(223),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/begimov/Documents/Work/iTeamAdmin/resources/assets/js/components/tests/newtest/Condition.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Condition.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-62dca5c3", Component.options)
+  } else {
+    hotAPI.reload("data-v-62dca5c3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 222 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      condition: {
+        name: '',
+        description: '',
+        score: 0
+      }
+    };
+  },
+
+  watch: {
+    condition: {
+      handler: function handler(condition) {
+        this.$emit('input', condition);
+      },
+      deep: true
+    }
+  }
+});
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-8"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.condition.name),
+      expression: "condition.name"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Ответ..."
+    },
+    domProps: {
+      "value": (_vm.condition.name)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.condition.name = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.condition.score),
+      expression: "condition.score"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Ответ..."
+    },
+    domProps: {
+      "value": (_vm.condition.score)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.condition.score = $event.target.value
+      }
+    }
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.condition.description),
+      expression: "condition.description"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "cols": "30",
+      "rows": "10"
+    },
+    domProps: {
+      "value": (_vm.condition.description)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.condition.description = $event.target.value
+      }
+    }
+  })])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-62dca5c3", module.exports)
   }
 }
 

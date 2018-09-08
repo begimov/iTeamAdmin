@@ -66,6 +66,7 @@ Vue.component('iteam-test', require('./components/tests/Test.vue'));
 Vue.component('new-test', require('./components/tests/newtest/NewTest.vue'));
 Vue.component('question', require('./components/tests/newtest/Question.vue'));
 Vue.component('answer', require('./components/tests/newtest/Answer.vue'));
+Vue.component('condition', require('./components/tests/newtest/Condition.vue'));
 
 // Special blocks
 Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vue'));

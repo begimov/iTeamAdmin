@@ -12,6 +12,7 @@ export default {
           'typeParams',
           'isLoading',
           'questions',
+          'conditions',
       //     'errors'
       ]),
       'testName': {
