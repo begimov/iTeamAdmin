@@ -41,6 +41,7 @@ export default {
           'save',
           'resetState',
           'addQuestion',
+          'addCondition',
       //     'setPageToEdit',
       //     'update'
       ]),

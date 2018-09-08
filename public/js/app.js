@@ -45191,9 +45191,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-/* harmony default export */ __webpack_exports__["a"] = (_defineProperty({
+/* harmony default export */ __webpack_exports__["a"] = ({
   testname: function testname(state) {
     return state.test.name;
   },
@@ -45211,10 +45209,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   questions: function questions(state) {
     return state.test.questions;
+  },
+  conditions: function conditions(state) {
+    return state.test.conditions;
   }
-}, "questions", function questions(state) {
-  return state.test.conditions;
-}));
+});
 
 /***/ }),
 /* 86 */
@@ -45275,6 +45274,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var commit = _ref7.commit;
 
     commit('addQuestion');
+  },
+  addCondition: function addCondition(_ref8) {
+    var commit = _ref8.commit;
+
+    commit('addCondition');
   }
 });
 
@@ -45323,6 +45327,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     addQuestion: function addQuestion(state) {
         state.test.questions.push({});
+    },
+    addCondition: function addCondition(state) {
+        state.test.conditions.push({});
     }
 });
 
@@ -67138,7 +67145,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc', 'updateTypeParams', 'save', 'resetState', 'addQuestion']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc', 'updateTypeParams', 'save', 'resetState', 'addQuestion', 'addCondition']
   //     'setPageToEdit',
   //     'update'
   ), {
@@ -67276,7 +67283,35 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addQuestion($event)
       }
     }
-  }, [_vm._v("Добавить вопрос")])])])], 2), _vm._v(" "), _c('div', {
+  }, [_vm._v("Добавить вопрос")])])]), _vm._v(" "), _vm._l((_vm.conditions), function(condition, index) {
+    return _c('div', {
+      key: index,
+      staticClass: "row"
+    }, [_c('condition', {
+      model: {
+        value: (_vm.conditions[index]),
+        callback: function($$v) {
+          _vm.$set(_vm.conditions, index, $$v)
+        },
+        expression: "conditions[index]"
+      }
+    })], 1)
+  }), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.addCondition($event)
+      }
+    }
+  }, [_vm._v("Добавить условие")])])])], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [(!_vm.editedTestId) ? _c('a', {
     staticClass: "btn btn-primary",
@@ -68625,7 +68660,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-8"
@@ -68680,7 +68717,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-2"
+    staticClass: "col-md-12"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('textarea', {

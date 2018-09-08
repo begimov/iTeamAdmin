@@ -38,6 +38,9 @@ export default {
     addQuestion(state) {
         state.test.questions.push({})
     },
+    addCondition(state) {
+        state.test.conditions.push({})
+    },
     // setPageToEdit(state, payload) {
     //     const { name, description, category, elements, theme } = payload
 

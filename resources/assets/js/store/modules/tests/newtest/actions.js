@@ -37,6 +37,9 @@ export default {
   addQuestion ({ commit }) {
     commit('addQuestion')
   },
+  addCondition ({ commit }) {
+    commit('addCondition')
+  },
   // setPageToEdit ({ commit }, id) {
   //   commit('setIsLoading', true)
   //   api.newpage.getPage(id).then(res => {

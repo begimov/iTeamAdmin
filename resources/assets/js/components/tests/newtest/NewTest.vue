@@ -47,6 +47,15 @@
                     <a href="#" class="btn btn-default" @click.prevent="addQuestion">Добавить вопрос</a>
                 </div>
             </div>
+
+            <div class="row" v-for="(condition, index) in conditions" :key="index">
+              <condition v-model="conditions[index]" />
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#" class="btn btn-default" @click.prevent="addCondition">Добавить условие</a>
+                </div>
+            </div>
           </div>
 
           <div class="panel-footer">

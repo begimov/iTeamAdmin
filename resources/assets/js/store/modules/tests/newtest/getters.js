@@ -17,7 +17,7 @@ export default {
   questions (state) {
     return state.test.questions
   },
-  questions (state) {
+  conditions (state) {
     return state.test.conditions
   },
   // errors (state) {
