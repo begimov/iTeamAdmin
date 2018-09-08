@@ -67283,7 +67283,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addQuestion($event)
       }
     }
-  }, [_vm._v("Добавить вопрос")])])]), _vm._v(" "), _vm._l((_vm.conditions), function(condition, index) {
+  }, [_vm._v("Добавить вопрос")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._l((_vm.conditions), function(condition, index) {
     return _c('div', {
       key: index,
       staticClass: "row"
@@ -68508,7 +68508,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       answer: {
         answer: '',
-        points: 0
+        points: null
       }
     };
   },
@@ -68567,7 +68567,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "placeholder": "Очки..."
+      "placeholder": "Очков..."
     },
     domProps: {
       "value": (_vm.answer.points)
@@ -68640,7 +68640,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       condition: {
         name: '',
         description: '',
-        score: 0
+        score: null
       }
     };
   },
@@ -68661,14 +68661,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "container"
+    staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-heading"
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-8"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('input', {
+  }, [_c('label', [_vm._v("Условие:")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -68678,7 +68682,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "placeholder": "Ответ..."
+      "placeholder": "Заголовок..."
     },
     domProps: {
       "value": (_vm.condition.name)
@@ -68693,7 +68697,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('input', {
+  }, [_c('label', [_vm._v("Потолок очков:")]), _vm._v(" "), _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -68703,7 +68707,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "placeholder": "Ответ..."
+      "placeholder": "Максимум очков..."
     },
     domProps: {
       "value": (_vm.condition.score)
@@ -68714,7 +68718,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.condition.score = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _c('div', {
+  })])])])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
@@ -68730,8 +68736,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-control",
     attrs: {
       "type": "text",
-      "cols": "30",
-      "rows": "10"
+      "rows": "5"
     },
     domProps: {
       "value": (_vm.condition.description)
@@ -68742,7 +68747,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.condition.description = $event.target.value
       }
     }
-  })])])])])
+  })])])])])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-2">
       <div class="form-group">
-        <input type="text" v-model="answer.points" class="form-control" placeholder="Очки...">
+        <input type="text" v-model="answer.points" class="form-control" placeholder="Очков...">
       </div>
     </div>
   </div>

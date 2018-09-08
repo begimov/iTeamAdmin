@@ -47,7 +47,7 @@
                     <a href="#" class="btn btn-default" @click.prevent="addQuestion">Добавить вопрос</a>
                 </div>
             </div>
-
+            <hr>
             <div class="row" v-for="(condition, index) in conditions" :key="index">
               <condition v-model="conditions[index]" />
             </div>

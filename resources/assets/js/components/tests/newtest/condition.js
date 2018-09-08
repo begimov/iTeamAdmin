@@ -4,7 +4,7 @@ export default {
       condition: {
         name: '',
         description: '',
-        score: 0
+        score: null
       }
     }
   },
