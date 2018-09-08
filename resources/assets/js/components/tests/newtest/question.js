@@ -2,7 +2,8 @@ export default {
   data () {
     return {
       question: {
-        question: ''
+        question: '',
+        answers: []
       }
     }
   },
@@ -12,6 +13,11 @@ export default {
             this.$emit('input', question);
         },
         deep: true
+    }
+  },
+  methods: {
+    addAnswer() {
+      this.question.answers.push({})
     }
   }
 }

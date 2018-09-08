@@ -68313,7 +68313,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
     return {
       question: {
-        question: ''
+        question: '',
+        answers: []
       }
     };
   },
@@ -68324,6 +68325,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$emit('input', question);
       },
       deep: true
+    }
+  },
+  methods: {
+    addAnswer: function addAnswer() {
+      this.question.answers.push({});
     }
   }
 });
@@ -68339,13 +68345,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-primary"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }, [_vm._v("Вопрос")]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [_c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('div', {
+  }, [_c('p', [_vm._v("Вопрос:")]), _vm._v(" "), _c('div', {
     staticClass: "form-group"
   }, [_c('input', {
     directives: [{
@@ -68356,8 +68356,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     staticClass: "form-control",
     attrs: {
-      "type": "text",
-      "placeholder": "Вопрос..."
+      "type": "text"
     },
     domProps: {
       "value": (_vm.question.question)
@@ -68368,11 +68367,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.question.question = $event.target.value
       }
     }
-  })])])]), _vm._v(" "), _vm._l((2), function(answer, index) {
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_vm._l((_vm.question.answers), function(answer, index) {
     return _c('div', {
       key: index,
       staticClass: "row"
-    }, [_c('answer')], 1)
+    }, [_c('answer', {
+      model: {
+        value: (_vm.question.answers[index]),
+        callback: function($$v) {
+          _vm.$set(_vm.question.answers, index, $$v)
+        },
+        expression: "question.answers[index]"
+      }
+    })], 1)
   }), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
