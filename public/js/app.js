@@ -68487,8 +68487,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-12"
+  return _c('div', [_c('div', {
+    staticClass: "col-md-10"
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('input', {
@@ -68512,7 +68512,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.answer.answer = $event.target.value
       }
     }
-  })])])
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-2"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.answer.points),
+      expression: "answer.points"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Очки..."
+    },
+    domProps: {
+      "value": (_vm.answer.points)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.answer.points = $event.target.value
+      }
+    }
+  })])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
