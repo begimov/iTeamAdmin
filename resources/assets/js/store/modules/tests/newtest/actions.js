@@ -40,7 +40,7 @@ export default {
   addCondition ({ commit }) {
     commit('addCondition')
   },
-  removeQuestion ({ commit }) {
+  removeQuestion ({ commit }, index) {
     commit('removeQuestion')
   },
   // setPageToEdit ({ commit }, id) {

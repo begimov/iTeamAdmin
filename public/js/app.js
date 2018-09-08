@@ -45280,7 +45280,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('addCondition');
   },
-  removeQuestion: function removeQuestion(_ref9) {
+  removeQuestion: function removeQuestion(_ref9, index) {
     var commit = _ref9.commit;
 
     commit('removeQuestion');
@@ -67268,6 +67268,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       key: index,
       staticClass: "row"
     }, [_c('question', {
+      attrs: {
+        "index": index
+      },
       on: {
         "removeQuestion": _vm.removeQuestion
       },
@@ -68362,6 +68365,12 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    index: {
+      type: Number,
+      required: true
+    }
+  },
   data: function data() {
     return {
       question: {
@@ -68384,7 +68393,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.question.answers.push({});
     },
     removeQuestion: function removeQuestion() {
-      this.$emit('removeQuestion');
+      this.$emit('removeQuestion', this.index);
     }
   }
 });

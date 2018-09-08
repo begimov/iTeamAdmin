@@ -1,4 +1,10 @@
 export default {
+  props: {
+    index: {
+      type: Number,
+      required: true
+    }
+  },
   data () {
     return {
       question: {
@@ -20,7 +26,7 @@ export default {
       this.question.answers.push({})
     },
     removeQuestion() {
-      this.$emit('removeQuestion')
+      this.$emit('removeQuestion', this.index)
     }
   }
 }
