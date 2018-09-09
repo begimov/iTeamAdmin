@@ -45324,7 +45324,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 type: null,
                 name: '',
                 desc: '',
-                questions: []
+                questions: [],
+                conditions: []
             },
             errors: {}
         };
@@ -68539,7 +68540,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       answer: {
         answer: '',
-        points: null
+        points: 0,
+        sort_order: 0
       }
     };
   },

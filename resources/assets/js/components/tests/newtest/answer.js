@@ -3,7 +3,8 @@ export default {
     return {
       answer: {
         answer: '',
-        points: null
+        points: 0,
+        sort_order: 0
       }
     }
   },

@@ -27,7 +27,8 @@ export default {
                 type: null,
                 name: '',
                 desc: '',
-                questions: []
+                questions: [],
+                conditions: []
             },
             errors: {}
         }

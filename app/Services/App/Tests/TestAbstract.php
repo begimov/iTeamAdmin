@@ -5,7 +5,8 @@ namespace App\Services\App\Tests;
 use App\Models\Tests\{
     Test,
     TestQuestion,
-    TestCondition
+    TestCondition,
+    TestAnswer
 };
 
 abstract class TestAbstract
@@ -41,6 +42,8 @@ abstract class TestAbstract
             $newQuestion->test()->associate($test);
 
             $newQuestion->save();
+
+            $this->storeQuestionAnswers($question['answers'], $newQuestion);
         }
     }
 
@@ -53,12 +56,30 @@ abstract class TestAbstract
             $newCondition->name = $condition['name'];
 
             $newCondition->description = $condition['description'];
-            
+
             $newCondition->score = $condition['score'];
 
             $newCondition->test()->associate($test);
 
             $newCondition->save();
+        }
+    }
+
+    public function storeQuestionAnswers($answers, $question)
+    {
+        foreach ($answers as $answer) {
+            
+            $newAnswer = new TestAnswer();
+
+            $newAnswer->answer = $answer['answer'];
+
+            $newAnswer->points = $answer['points'];
+
+            $newAnswer->sort_order = $answer['sort_order'];
+
+            $newAnswer->testQuestion()->associate($question);
+
+            $newAnswer->save();
         }
     }
 }
