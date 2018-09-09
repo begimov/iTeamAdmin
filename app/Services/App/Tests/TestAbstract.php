@@ -23,4 +23,14 @@ abstract class TestAbstract
     {
         return Test::create($data);
     }
+
+    protected function storeTestQuestions($questions, $test)
+    {
+        dd($questions, $test);
+    }
+
+    protected function storeTestConditions($conditions, $test)
+    {
+        //
+    }
 }

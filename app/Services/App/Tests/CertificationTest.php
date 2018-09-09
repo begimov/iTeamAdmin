@@ -6,7 +6,15 @@ class CertificationTest extends TestAbstract
 {
     public function store($request)
     {
-        return $this->storeBaseInfo($request->only($this->getBaseFields()));
+        $test = $this->storeBaseInfo($request->only($this->getBaseFields()));
+
+        $questions = $request->questions;
+
+        $conditions = $request->conditions;
+
+        $this->storeTestQuestions($questions, $test);
+
+        $this->storeTestConditions($conditions, $test);
     }
     
     protected function getBaseFields()
