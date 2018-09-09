@@ -4,7 +4,8 @@ namespace App\Services\App\Tests;
 
 use App\Models\Tests\{
     Test,
-    TestQuestion
+    TestQuestion,
+    TestCondition
 };
 
 abstract class TestAbstract
@@ -30,16 +31,34 @@ abstract class TestAbstract
     protected function storeTestQuestions($questions, $test)
     {
         foreach ($questions as $question) {
+
             $newQuestion = new TestQuestion();
+
             $newQuestion->question = $question['question'];
+
             $newQuestion->sort_order = $question['sort_order'];
+
             $newQuestion->test()->associate($test);
+
             $newQuestion->save();
         }
     }
 
     protected function storeTestConditions($conditions, $test)
     {
-        //
+        foreach ($conditions as $condition) {
+
+            $newCondition = new TestCondition();
+
+            $newCondition->name = $condition['name'];
+
+            $newCondition->description = $condition['description'];
+            
+            $newCondition->score = $condition['score'];
+
+            $newCondition->test()->associate($test);
+
+            $newCondition->save();
+        }
     }
 }
