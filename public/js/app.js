@@ -45214,7 +45214,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   conditions: function conditions(state) {
     return state.test.conditions;
+  },
+  totalScore: function totalScore(state) {
+    var result = _.sum(_.flatten(_.map(state.test.questions, function (q) {
+      return _.map(q.answers, function (a) {
+        return parseInt(a.points);
+      });
+    })));
+    return !result ? 'не для всех ответов введены кол-во очков' : result;
   }
+  // errors (state) {
+  //   return state.errors
+  // },
+
 });
 
 /***/ }),
@@ -67136,7 +67148,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   props: ['editedTestId'],
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc', 'typeOptions', 'typeParams', 'isLoading', 'questions', 'conditions']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('tests/newtest', ['testname', 'testdesc', 'typeOptions', 'typeParams', 'isLoading', 'questions', 'conditions', 'totalScore']
   //     'errors'
   ), {
     'testName': {
@@ -67300,7 +67312,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.addQuestion($event)
       }
     }
-  }, [_vm._v("Добавить вопрос")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _vm._l((_vm.conditions), function(condition, index) {
+  }, [_vm._v("Добавить вопрос")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('h3', [_c('span', {
+    staticClass: "label label-default"
+  }, [_vm._v("Всего очков: " + _vm._s(_vm.totalScore))])])])]), _vm._v(" "), _vm._l((_vm.conditions), function(condition, index) {
     return _c('div', {
       key: index,
       staticClass: "row"
@@ -68540,7 +68558,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       answer: {
         answer: '',
-        points: 0,
+        points: null,
         sort_order: 0
       }
     };

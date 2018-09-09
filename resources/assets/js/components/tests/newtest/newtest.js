@@ -13,6 +13,7 @@ export default {
           'isLoading',
           'questions',
           'conditions',
+          'totalScore',
       //     'errors'
       ]),
       'testName': {
@@ -30,7 +31,7 @@ export default {
         set (value) {
           this.updateTestDesc(value)
         }
-      },
+      }
   },
   methods: {
       ...mapActions('tests/newtest', [

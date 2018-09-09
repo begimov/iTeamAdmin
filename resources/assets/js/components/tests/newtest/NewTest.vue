@@ -48,6 +48,11 @@
                 </div>
             </div>
             <hr>
+            <div class="row">
+              <div class="col-md-12">
+                <h3><span class="label label-default">Всего очков: {{ totalScore }}</span></h3>
+              </div>
+            </div>
             <div class="row" v-for="(condition, index) in conditions" :key="index">
               <condition v-model="conditions[index]" />
             </div>

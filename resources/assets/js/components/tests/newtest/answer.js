@@ -3,7 +3,7 @@ export default {
     return {
       answer: {
         answer: '',
-        points: 0,
+        points: null,
         sort_order: 0
       }
     }

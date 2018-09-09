@@ -20,6 +20,14 @@ export default {
   conditions (state) {
     return state.test.conditions
   },
+  totalScore (state) {
+    const result = _.sum(_.flatten(_.map(state.test.questions, (q) => {
+      return _.map(q.answers, (a) => {
+        return parseInt(a.points)
+      })
+    })))
+    return !result ? 'не для всех ответов введены кол-во очков' : result
+  }
   // errors (state) {
   //   return state.errors
   // },
