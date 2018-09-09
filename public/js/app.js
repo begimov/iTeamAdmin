@@ -68377,6 +68377,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       question: {
         question: '',
+        sort_order: 0,
         answers: []
       }
     };

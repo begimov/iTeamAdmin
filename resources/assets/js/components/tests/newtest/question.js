@@ -9,6 +9,7 @@ export default {
     return {
       question: {
         question: '',
+        sort_order: 0,
         answers: []
       }
     }
