@@ -60,6 +60,14 @@ Vue.component('pages', require('./components/pages/Pages.vue'));
 Vue.component('page', require('./components/pages/Page.vue'));
 Vue.component('new-page', require('./components/pages/newpage/NewPage.vue'));
 
+// Tests
+Vue.component('iteam-tests', require('./components/tests/Tests.vue'));
+Vue.component('iteam-test', require('./components/tests/Test.vue'));
+Vue.component('new-test', require('./components/tests/newtest/NewTest.vue'));
+Vue.component('question', require('./components/tests/newtest/Question.vue'));
+Vue.component('answer', require('./components/tests/newtest/Answer.vue'));
+Vue.component('condition', require('./components/tests/newtest/Condition.vue'));
+
 // Special blocks
 Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vue'));
 Vue.component('mp-purchase', require('./components/pages/newpage/blocks/MpPurchase.vue'));

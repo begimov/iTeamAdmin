@@ -7,8 +7,16 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\Eloquent\EloquentUserRepository;
 
-use App\Repositories\Contracts\Users\{ UserProfileRepository, CompanyRepository, BusinessEntityRepository };
-use App\Repositories\Eloquent\Users\{ EloquentUserProfileRepository, EloquentCompanyRepository, EloquentBusinessEntityRepository };
+use App\Repositories\Contracts\Users\{ 
+    UserProfileRepository, 
+    CompanyRepository, 
+    BusinessEntityRepository 
+};
+use App\Repositories\Eloquent\Users\{ 
+    EloquentUserProfileRepository, 
+    EloquentCompanyRepository, 
+    EloquentBusinessEntityRepository 
+};
 
 use App\Repositories\Contracts\Products\{ 
     OrderRepository, 
@@ -34,11 +42,26 @@ use App\Repositories\Eloquent\Pages\{
     EloquentThemeRepository
 };
 
+use App\Repositories\Contracts\Tests\{ 
+    TestRepository,
+    TestTypeRepository
+};
+use App\Repositories\Eloquent\Tests\{ 
+    EloquentTestRepository,
+    EloquentTestTypeRepository
+};
+
 use App\Repositories\Contracts\Content\FileRepository;
 use App\Repositories\Eloquent\Content\EloquentFileRepository;
 
-use App\Repositories\Contracts\Payments\{ PaymentTypeRepository, PaymentStateRepository };
-use App\Repositories\Eloquent\Payments\{ EloquentPaymentTypeRepository, EloquentPaymentStateRepository };
+use App\Repositories\Contracts\Payments\{ 
+    PaymentTypeRepository, 
+    PaymentStateRepository 
+};
+use App\Repositories\Eloquent\Payments\{ 
+    EloquentPaymentTypeRepository, 
+    EloquentPaymentStateRepository 
+};
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -63,6 +86,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(CategoryRepository::class, EloquentCategoryRepository::class);
         $this->app->bind(BlockRepository::class, EloquentBlockRepository::class);
         $this->app->bind(ThemeRepository::class, EloquentThemeRepository::class);
+        $this->app->bind(TestRepository::class, EloquentTestRepository::class);
+        $this->app->bind(TestTypeRepository::class, EloquentTestTypeRepository::class);
     }
 
     /**

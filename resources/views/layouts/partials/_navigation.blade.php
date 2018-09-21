@@ -31,6 +31,7 @@
                       </ul>
                   </li>
                   <li><a href="{{ route('pages') }}">@lang('navigation.pages')</a></li>
+                  <li><a href="{{ route('tests') }}">@lang('navigation.tests')</a></li>
                 @endrole
             </ul>
 

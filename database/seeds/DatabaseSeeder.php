@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BlocksTableSeeder::class);
         $this->call(ResourceTypesTableSeeder::class);
         $this->call(ThemesTableSeeder::class);
+        $this->call(TestsTypesTableSeeder::class);
     }
 }

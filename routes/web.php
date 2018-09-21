@@ -26,6 +26,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     // Pages page
     Route::get('pages', 'Pages\PageController@index')->name('pages');
 
+    // Tests page
+    Route::get('tests', 'Tests\TestController@index')->name('tests');
+
     // WebAPI
     Route::group(['prefix' => 'webapi', 'namespace' => 'Webapi'], function () {
         // Route for Orders.vue component
@@ -46,6 +49,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for Pages.vue component
         Route::patch('pages/{id}/status', 'Pages\PageController@updateStatus');
         Route::resource('pages', 'Pages\PageController');
+
+        // Route for Tests.vue component
+        Route::resource('tests', 'Tests\TestController');
 
         // Route for FileUploader.vue component
         Route::resource('files', 'Content\FileController');
