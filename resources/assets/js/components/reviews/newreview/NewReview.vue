@@ -25,6 +25,15 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Отзыв</label>
+                  <textarea class="form-control" placeholder="Введите текст отзыва..." v-model="reviewQuote" cols="30" rows="4"></textarea>
+                  <!-- <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span> -->
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="panel-footer">

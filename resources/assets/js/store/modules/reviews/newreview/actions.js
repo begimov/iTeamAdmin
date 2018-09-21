@@ -17,6 +17,9 @@ export default {
   updatePosition ({ commit }, position) {
     commit('updatePosition', position)
   },
+  updateQuote ({ commit }, quote) {
+    commit('updateQuote', quote)
+  },
   // save ({ commit, state }) {
   //   commit('setIsLoading', true)
   //   api.newtest.saveTest(state.test).then(res => {

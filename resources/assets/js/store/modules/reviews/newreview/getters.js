@@ -5,6 +5,9 @@ export default {
   position (state) {
     return state.review.position
   },
+  quote (state) {
+    return state.review.quote
+  },
   // errors (state) {
   //   return state.errors
   // },

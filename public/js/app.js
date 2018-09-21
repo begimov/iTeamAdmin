@@ -69350,7 +69350,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   // props: ['editedTestId'],
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['author', 'position']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['author', 'position', 'quote']
   // 'errors'
   ), {
     'reviewAuthor': {
@@ -69368,9 +69368,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       set: function set(value) {
         this.updatePosition(value);
       }
+    },
+    'reviewQuote': {
+      get: function get() {
+        return this.quote;
+      },
+      set: function set(value) {
+        this.updateQuote(value);
+      }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews/newreview', ['updateAuthor', 'updatePosition']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews/newreview', ['updateAuthor', 'updatePosition', 'updateQuote']
   //     'setPageToEdit',
   //     'update'
   ), {
@@ -69455,6 +69463,34 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.authorPosition = $event.target.value
       }
     }
+  })])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Отзыв")]), _vm._v(" "), _c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.reviewQuote),
+      expression: "reviewQuote"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "placeholder": "Введите текст отзыва...",
+      "cols": "30",
+      "rows": "4"
+    },
+    domProps: {
+      "value": (_vm.reviewQuote)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.reviewQuote = $event.target.value
+      }
+    }
   })])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [_c('a', {
@@ -69516,7 +69552,8 @@ if (false) {
   // },
   review: {
     author: '',
-    position: ''
+    position: '',
+    quote: ''
   }
   // errors: {}
 });
@@ -69532,6 +69569,9 @@ if (false) {
   },
   position: function position(state) {
     return state.review.position;
+  },
+  quote: function quote(state) {
+    return state.review.quote;
   }
 });
 
@@ -69563,6 +69603,11 @@ if (false) {
     var commit = _ref2.commit;
 
     commit('updatePosition', position);
+  },
+  updateQuote: function updateQuote(_ref3, quote) {
+    var commit = _ref3.commit;
+
+    commit('updateQuote', quote);
   }
 });
 
@@ -69583,6 +69628,9 @@ if (false) {
     },
     updatePosition: function updatePosition(state, position) {
         state.review.position = position;
+    },
+    updateQuote: function updateQuote(state, quote) {
+        state.review.quote = quote;
     }
 });
 

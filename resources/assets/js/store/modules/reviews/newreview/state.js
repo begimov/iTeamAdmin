@@ -6,6 +6,7 @@ export default {
   review: {
     author: '',
     position: '',
+    quote: '',
   },
   // errors: {}
 }

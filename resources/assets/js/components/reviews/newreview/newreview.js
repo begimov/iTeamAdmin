@@ -8,6 +8,7 @@ export default {
       ...mapGetters('reviews/newreview', [
           'author',
           'position',
+          'quote',
           // 'errors'
       ]),
       'reviewAuthor': {
@@ -25,12 +26,21 @@ export default {
         set (value) {
           this.updatePosition(value)
         }
+      },
+      'reviewQuote': {
+        get () {
+          return this.quote
+        },
+        set (value) {
+          this.updateQuote(value)
+        }
       }
   },
   methods: {
       ...mapActions('reviews/newreview', [
           'updateAuthor',
           'updatePosition',
+          'updateQuote',
       //     'setPageToEdit',
       //     'update'
       ]),

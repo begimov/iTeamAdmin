@@ -11,6 +11,9 @@ export default {
     updatePosition(state, position) {
         state.review.position = position
     },
+    updateQuote(state, quote) {
+        state.review.quote = quote
+    },
     // resetState(state) {
     //     const initialState = {
     //         isLoading: false,
