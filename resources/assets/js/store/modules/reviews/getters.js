@@ -5,9 +5,9 @@ export default {
   reviews (state) {
     return state.reviews
   },
-  // meta (state) {
-  //   return state.meta
-  // },
+  meta (state) {
+    return state.meta
+  },
   isLoading (state) {
     return state.isLoading
   },

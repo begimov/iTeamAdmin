@@ -7,6 +7,7 @@ export default {
             'isLoading',
             'reviews',
             'getSearchQuery',
+            'meta',
         ]),
         'searchQuery': {
           get () {
@@ -29,6 +30,10 @@ export default {
                 this.getReviews()
             }.bind(this), 1000)
         },
+        cancelNewReview() {
+          // this.setEditedPageId(null)
+          this.setCurrentModule('reviews')
+        }
     },
     mounted () {
         this.getReviews()

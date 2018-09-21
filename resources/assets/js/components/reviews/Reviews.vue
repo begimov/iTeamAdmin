@@ -39,9 +39,9 @@
 
             </div>
 
-            <!-- <div class="panel-footer">
-              <paginator v-if="meta && tests.length" for="tests" :pagination="meta.pagination" v-on:tests_pageChanged="getTests"></paginator>
-            </div> -->
+            <div class="panel-footer">
+              <paginator v-if="meta && reviews.length" for="tests" :pagination="meta.pagination" v-on:reviews_pageChanged="getReviews"></paginator>
+            </div>
 
           </div>
         </div>

@@ -68874,7 +68874,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['currentModule', 'isLoading', 'reviews', 'getSearchQuery']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['currentModule', 'isLoading', 'reviews', 'getSearchQuery', 'meta']), {
         'searchQuery': {
             get: function get() {
                 return this.getSearchQuery;
@@ -68890,6 +68890,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.timer = setTimeout(function () {
                 this.getReviews();
             }.bind(this), 1000);
+        },
+        cancelNewReview: function cancelNewReview() {
+            // this.setEditedPageId(null)
+            this.setCurrentModule('reviews');
         }
     }),
     mounted: function mounted() {
@@ -68958,7 +68962,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "review": review
       }
     })
-  })], 2)])])])]) : _vm._e()], 1)
+  })], 2), _vm._v(" "), _c('div', {
+    staticClass: "panel-footer"
+  }, [(_vm.meta && _vm.reviews.length) ? _c('paginator', {
+    attrs: {
+      "for": "tests",
+      "pagination": _vm.meta.pagination
+    },
+    on: {
+      "reviews_pageChanged": _vm.getReviews
+    }
+  }) : _vm._e()], 1)])])])]) : _vm._e()], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-8 text-right"
@@ -69068,10 +69082,9 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   reviews: function reviews(state) {
     return state.reviews;
   },
-
-  // meta (state) {
-  //   return state.meta
-  // },
+  meta: function meta(state) {
+    return state.meta;
+  },
   isLoading: function isLoading(state) {
     return state.isLoading;
   },
