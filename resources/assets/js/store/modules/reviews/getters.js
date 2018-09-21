@@ -2,9 +2,9 @@ export default {
   // currentModule (state) {
   //   return state.currentModule
   // },
-  // tests (state) {
-  //   return state.tests
-  // },
+  reviews (state) {
+    return state.reviews
+  },
   // meta (state) {
   //   return state.meta
   // },

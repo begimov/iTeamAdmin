@@ -4,6 +4,7 @@ export default {
     computed: {
         ...mapGetters('reviews', [
             'isLoading',
+            'reviews',
         ])
     },
     methods: {

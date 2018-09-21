@@ -1,7 +1,11 @@
-import { mapActions, mapGetters } from 'vuex'
-
 export default {
+    props: {
+        review: {
+            type: Object,
+            required: true
+        }
+    },
     mounted () {
-        console.log('REVIEW')
+        //
     }
 }

@@ -68874,7 +68874,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['isLoading'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['isLoading', 'reviews'])),
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews', ['getReviews'])),
     mounted: function mounted() {
         this.getReviews();
@@ -69020,9 +69020,10 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   // currentModule (state) {
   //   return state.currentModule
   // },
-  // tests (state) {
-  //   return state.tests
-  // },
+  reviews: function reviews(state) {
+    return state.reviews;
+  },
+
   // meta (state) {
   //   return state.meta
   // },
@@ -69172,7 +69173,15 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_vm._v("\n  REVIEW\n")])
+  return _c('div', {
+    staticClass: "row panel-row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('h4', [_c('span', {
+    staticClass: "badge"
+  }, [_vm._v("№ " + _vm._s(_vm.review.id) + ":")]), _vm._v(" " + _vm._s(_vm.review.author) + "\n    ")]), _vm._v(" "), _c('h5', [_vm._v(_vm._s(_vm.review.position))]), _vm._v(" "), _c('p', [_vm._v("\n      " + _vm._s(_vm.review.quote) + "\n    ")])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6 text-right orders-edit-block"
+  })])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -69188,12 +69197,15 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
-
-
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        review: {
+            type: Object,
+            required: true
+        }
+    },
     mounted: function mounted() {
-        console.log('REVIEW');
+        //
     }
 });
 
