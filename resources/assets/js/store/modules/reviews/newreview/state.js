@@ -3,12 +3,8 @@ export default {
   // options: {
   //   types:[],
   // },
-  // test: {
-  //   type: null,
-  //   name: '',
-  //   desc: '',
-  //   questions: [],
-  //   conditions: [],
-  // },
+  review: {
+    author: '',
+  },
   // errors: {}
 }

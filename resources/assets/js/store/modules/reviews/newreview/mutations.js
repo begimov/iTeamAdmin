@@ -2,21 +2,12 @@ export default {
     // setIsLoading(state, value) {
     //     state.isLoading = value
     // },
-    // setTypesOptions(state, payload) {
-    //     state.options.types = payload
-    // },
     // setErrors(state, errors) {
     //     state.errors = errors
     // },
-    // updateTypeParams(state, value) {
-    //     state.test.type = value
-    // },
-    // updateTestName(state, name) {
-    //     state.test.name = name
-    // },
-    // updateTestDesc(state, desc) {
-    //     state.test.desc = desc
-    // },
+    updateAuthor(state, author) {
+        state.review.author = author
+    },
     // resetState(state) {
     //     const initialState = {
     //         isLoading: false,
@@ -35,15 +26,6 @@ export default {
     //     Object.keys(initialState).forEach(key => {
     //         state[key] = initialState[key]
     //     })
-    // },
-    // addQuestion(state) {
-    //     state.test.questions.push({})
-    // },
-    // addCondition(state) {
-    //     state.test.conditions.push({})
-    // },
-    // removeQuestion(state) {
-    //     console.log('REMOVE')
     // },
     // setPageToEdit(state, payload) {
     //     const { name, description, category, elements, theme } = payload

@@ -11,15 +11,9 @@ export default {
   //     })
   //   })
   // },
-  // updateTypeParams ({ commit }, value) {
-  //   commit('updateTypeParams', value)
-  // },
-  // updateTestName ({ commit }, name) {
-  //   commit('updateTestName', name)
-  // },
-  // updateTestDesc ({ commit }, desc) {
-  //   commit('updateTestDesc', desc)
-  // },
+  updateAuthor ({ commit }, author) {
+    commit('updateAuthor', author)
+  },
   // save ({ commit, state }) {
   //   commit('setIsLoading', true)
   //   api.newtest.saveTest(state.test).then(res => {
@@ -33,15 +27,6 @@ export default {
   // },
   // resetState ({ commit }) {
   //   commit('resetState')
-  // },
-  // addQuestion ({ commit }) {
-  //   commit('addQuestion')
-  // },
-  // addCondition ({ commit }) {
-  //   commit('addCondition')
-  // },
-  // removeQuestion ({ commit }, index) {
-  //   commit('removeQuestion')
   // },
   // setPageToEdit ({ commit }, id) {
   //   commit('setIsLoading', true)

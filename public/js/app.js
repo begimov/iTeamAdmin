@@ -69350,20 +69350,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   // props: ['editedTestId'],
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['reviewAuthor']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['author']
   // 'errors'
-  )),
-  methods: {
-    // ...mapActions('tests/newtest', [
-    //     'updateReviewAuthor',
-    //     'setPageToEdit',
-    //     'update'
-    // ]),
+  ), {
+    'reviewAuthor': {
+      get: function get() {
+        return this.author;
+      },
+      set: function set(value) {
+        this.updateAuthor(value);
+      }
+    }
+    // 'testDesc': {
+    //   get () {
+    //     return this.testdesc
+    //   },
+    //   set (value) {
+    //     this.updateTestDesc(value)
+    //   }
+    // }
+  }),
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews/newreview', ['updateAuthor']
+  //     'setPageToEdit',
+  //     'update'
+  ), {
     cancel: function cancel() {
       // this.resetState()
       this.$emit('cancelNewReview');
     }
-  },
+  }),
   mounted: function mounted() {
     // this.getInitialData().then(res => {
     //   if (this.editedPageId) {
@@ -69480,13 +69495,9 @@ if (false) {
   // options: {
   //   types:[],
   // },
-  // test: {
-  //   type: null,
-  //   name: '',
-  //   desc: '',
-  //   questions: [],
-  //   conditions: [],
-  // },
+  review: {
+    author: ''
+  }
   // errors: {}
 });
 
@@ -69496,38 +69507,9 @@ if (false) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // testname (state) {
-  //   return state.test.name
-  // },
-  // testdesc (state) {
-  //   return state.test.desc
-  // },
-  // typeOptions (state) {
-  //   return state.options.types
-  // },
-  // typeParams (state) {
-  //   return state.test.type
-  // },
-  // isLoading (state) {
-  //   return state.isLoading
-  // },
-  // questions (state) {
-  //   return state.test.questions
-  // },
-  // conditions (state) {
-  //   return state.test.conditions
-  // },
-  // totalScore (state) {
-  //   const result = _.sum(_.flatten(_.map(state.test.questions, (q) => {
-  //     return _.map(q.answers, (a) => {
-  //       return parseInt(a.points)
-  //     })
-  //   })))
-  //   return !result ? 'не для всех ответов введены кол-во очков' : result
-  // }
-  // errors (state) {
-  //   return state.errors
-  // },
+  author: function author(state) {
+    return state.review.author;
+  }
 });
 
 /***/ }),
@@ -69549,58 +69531,11 @@ if (false) {
   //     })
   //   })
   // },
-  // updateTypeParams ({ commit }, value) {
-  //   commit('updateTypeParams', value)
-  // },
-  // updateTestName ({ commit }, name) {
-  //   commit('updateTestName', name)
-  // },
-  // updateTestDesc ({ commit }, desc) {
-  //   commit('updateTestDesc', desc)
-  // },
-  // save ({ commit, state }) {
-  //   commit('setIsLoading', true)
-  //   api.newtest.saveTest(state.test).then(res => {
-  //     commit('resetState')
-  //     commit('setIsLoading', false)
-  //     commit('tests/setCurrentModule', 'tests', { root: true })
-  //   }).catch(err => {
-  //     // commit('setErrors', err.response.data)
-  //     // commit('setIsLoading', false)
-  //   })
-  // },
-  // resetState ({ commit }) {
-  //   commit('resetState')
-  // },
-  // addQuestion ({ commit }) {
-  //   commit('addQuestion')
-  // },
-  // addCondition ({ commit }) {
-  //   commit('addCondition')
-  // },
-  // removeQuestion ({ commit }, index) {
-  //   commit('removeQuestion')
-  // },
-  // setPageToEdit ({ commit }, id) {
-  //   commit('setIsLoading', true)
-  //   api.newpage.getPage(id).then(res => {
-  //     commit('setPageToEdit', res.data.data)
-  //     commit('setIsLoading', false)
-  //   })
+  updateAuthor: function updateAuthor(_ref, author) {
+    var commit = _ref.commit;
 
-  // },
-  // update ({ commit, state }, id) {
-  //   commit('setIsLoading', true)
-  //   const elements = _.map(state.layout.elements, (element) => {
-  //     return { data: element.data.data, meta: element.data.meta }
-  //   })
-  //   api.newpage.updatePage(id, state.page, elements).then(res => {
-  //     commit('setIsLoading', false)
-  //   }).catch(err => {
-  //     commit('setErrors', err.response.data)
-  //     commit('setIsLoading', false)
-  //   })
-  // }
+    commit('updateAuthor', author);
+  }
 });
 
 /***/ }),
@@ -69612,80 +69547,12 @@ if (false) {
     // setIsLoading(state, value) {
     //     state.isLoading = value
     // },
-    // setTypesOptions(state, payload) {
-    //     state.options.types = payload
-    // },
     // setErrors(state, errors) {
     //     state.errors = errors
     // },
-    // updateTypeParams(state, value) {
-    //     state.test.type = value
-    // },
-    // updateTestName(state, name) {
-    //     state.test.name = name
-    // },
-    // updateTestDesc(state, desc) {
-    //     state.test.desc = desc
-    // },
-    // resetState(state) {
-    //     const initialState = {
-    //         isLoading: false,
-    //         options: {
-    //             types:[],
-    //         },
-    //         test: {
-    //             type: null,
-    //             name: '',
-    //             desc: '',
-    //             questions: [],
-    //             conditions: []
-    //         },
-    //         errors: {}
-    //     }
-    //     Object.keys(initialState).forEach(key => {
-    //         state[key] = initialState[key]
-    //     })
-    // },
-    // addQuestion(state) {
-    //     state.test.questions.push({})
-    // },
-    // addCondition(state) {
-    //     state.test.conditions.push({})
-    // },
-    // removeQuestion(state) {
-    //     console.log('REMOVE')
-    // },
-    // setPageToEdit(state, payload) {
-    //     const { name, description, category, elements, theme } = payload
-
-    //     state.page = {
-    //         name,
-    //         desc: description,
-    //         category: category.data,
-    //         theme: theme.data
-    //     }
-
-    //     new Promise ((resolve, reject) => { 
-    //         elements.data.forEach(element => {
-    //             state.layout.blocks.push({
-    //                 id: uuidv4(),
-    //                 tag: element.block.data.tag
-    //             })
-    //         })
-    //         resolve()
-    //     }).then(res => {
-    //         state.layout.elements.forEach((element, index) => {
-    //             element.data.data = {...elements.data[index].data}
-    //         });
-    //     })
-
-    //     function uuidv4() {
-    //         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    //           var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-    //           return v.toString(16);
-    //         });
-    //      }
-    // }
+    updateAuthor: function updateAuthor(state, author) {
+        state.review.author = author;
+    }
 });
 
 /***/ })

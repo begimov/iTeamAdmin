@@ -6,17 +6,17 @@ export default {
   // props: ['editedTestId'],
   computed: {
       ...mapGetters('reviews/newreview', [
-          'reviewAuthor',
+          'author',
           // 'errors'
       ]),
-      // 'reviewAuthor': {
-      //   get () {
-      //     return this.reviewAuthor
-      //   },
-      //   set (value) {
-      //     this.updateReviewAuthor(value)
-      //   }
-      // },
+      'reviewAuthor': {
+        get () {
+          return this.author
+        },
+        set (value) {
+          this.updateAuthor(value)
+        }
+      },
       // 'testDesc': {
       //   get () {
       //     return this.testdesc
@@ -27,11 +27,11 @@ export default {
       // }
   },
   methods: {
-      // ...mapActions('tests/newtest', [
-      //     'updateReviewAuthor',
+      ...mapActions('reviews/newreview', [
+          'updateAuthor',
       //     'setPageToEdit',
       //     'update'
-      // ]),
+      ]),
       cancel () {
         // this.resetState()
         this.$emit('cancelNewReview')
