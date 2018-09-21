@@ -68875,7 +68875,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['currentModule', 'isLoading', 'reviews', 'getSearchQuery', 'meta']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['currentModule', 'isLoading', 'reviews', 'getSearchQuery', 'meta', 'editedReviewId']), {
         'searchQuery': {
             get: function get() {
                 return this.getSearchQuery;
@@ -69067,8 +69067,8 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   isLoading: false,
   params: {
     searchQuery: ''
-  }
-  // editedTestId: null
+  },
+  editedReviewId: null
 });
 
 /***/ }),
@@ -69091,6 +69091,9 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   },
   getSearchQuery: function getSearchQuery(state) {
     return state.params.searchQuery;
+  },
+  editedReviewId: function editedReviewId(state) {
+    return state.editedReviewId;
   }
 });
 
@@ -69384,63 +69387,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-    // props: ['editedTestId'],
-    computed: {
-        // ...mapGetters('tests/newtest', [
-        //     'testname',
-        //     'testdesc',
-        //     'typeOptions',
-        //     'typeParams',
-        //     'isLoading',
-        //     'questions',
-        //     'conditions',
-        //     'totalScore',
-        // //     'errors'
-        // ]),
-        // 'testName': {
-        //   get () {
-        //     return this.testname
-        //   },
-        //   set (value) {
-        //     this.updateTestName(value)
-        //   }
-        // },
-        // 'testDesc': {
-        //   get () {
-        //     return this.testdesc
-        //   },
-        //   set (value) {
-        //     this.updateTestDesc(value)
-        //   }
-        // }
-    },
-    methods: {
-        // ...mapActions('tests/newtest', [
-        //     'getInitialData',
-        //     'updateTestName',
-        //     'updateTestDesc',
-        //     'updateTypeParams',
-        //     'save',
-        //     'resetState',
-        //     'addQuestion',
-        //     'addCondition',
-        //     'removeQuestion',
-        // //     'setPageToEdit',
-        // //     'update'
-        // ]),
-        // cancel () {
-        //   this.resetState()
-        //   this.$emit('cancelNewTest')
-        // }
-    },
-    mounted: function mounted() {
-        // this.getInitialData().then(res => {
-        //   if (this.editedPageId) {
-        //     this.setPageToEdit(this.editedPageId)
-        //   }
-        // })
+  components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
+  // props: ['editedTestId'],
+  computed: {
+    // ...mapGetters('tests/newtest', [
+    //     'testname',
+    //     'testdesc',
+    //     'typeOptions',
+    //     'typeParams',
+    //     'isLoading',
+    //     'questions',
+    //     'conditions',
+    //     'totalScore',
+    // //     'errors'
+    // ]),
+    // 'testName': {
+    //   get () {
+    //     return this.testname
+    //   },
+    //   set (value) {
+    //     this.updateTestName(value)
+    //   }
+    // },
+    // 'testDesc': {
+    //   get () {
+    //     return this.testdesc
+    //   },
+    //   set (value) {
+    //     this.updateTestDesc(value)
+    //   }
+    // }
+  },
+  methods: {
+    // ...mapActions('tests/newtest', [
+    //     'getInitialData',
+    //     'updateTestName',
+    //     'updateTestDesc',
+    //     'updateTypeParams',
+    //     'save',
+    //     'resetState',
+    //     'addQuestion',
+    //     'addCondition',
+    //     'removeQuestion',
+    // //     'setPageToEdit',
+    // //     'update'
+    // ]),
+    cancel: function cancel() {
+      // this.resetState()
+      this.$emit('cancelNewReview');
     }
+  },
+  mounted: function mounted() {
+    // this.getInitialData().then(res => {
+    //   if (this.editedPageId) {
+    //     this.setPageToEdit(this.editedPageId)
+    //   }
+    // })
+  }
 });
 
 /***/ }),
@@ -69448,8 +69451,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "container"
   }, [_c('div', {
@@ -69458,7 +69459,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-12"
   }, [_c('div', {
     staticClass: "panel panel-primary"
-  }, [_c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }), _vm._v(" "), _c('div', {
+    staticClass: "panel-footer"
+  }, [_c('a', {
+    staticClass: "btn btn-default",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.cancel($event)
+      }
+    }
+  }, [_vm._v("Отменить")])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "panel-heading"
   }, [_c('h4', [_vm._v("Новый отзыв")]), _vm._v(" "), _c('div', {
     staticClass: "row"
@@ -69472,11 +69490,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
-  })])])]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }), _vm._v(" "), _c('div', {
-    staticClass: "panel-footer"
-  })])])])])
+  })])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

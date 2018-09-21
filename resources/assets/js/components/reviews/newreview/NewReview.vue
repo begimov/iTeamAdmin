@@ -66,7 +66,7 @@
           <div class="panel-footer">
             <!-- <a href="#" class="btn btn-primary" @click.prevent="save" v-if="!editedTestId">Создать</a> -->
             <!-- <a href="#" class="btn btn-primary" @click.prevent="update(editedPageId)" v-else>Сохранить</a> -->
-            <!-- <a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a> -->
+            <a href="#" class="btn btn-default" @click.prevent="cancel">Отменить</a>
           </div>
 
         </div>

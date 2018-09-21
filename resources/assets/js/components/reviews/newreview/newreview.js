@@ -47,10 +47,10 @@ export default {
       // //     'setPageToEdit',
       // //     'update'
       // ]),
-      // cancel () {
-      //   this.resetState()
-      //   this.$emit('cancelNewTest')
-      // }
+      cancel () {
+        // this.resetState()
+        this.$emit('cancelNewReview')
+      }
   },
   mounted() {
     // this.getInitialData().then(res => {

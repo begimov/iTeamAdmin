@@ -8,6 +8,7 @@ export default {
             'reviews',
             'getSearchQuery',
             'meta',
+            'editedReviewId',
         ]),
         'searchQuery': {
           get () {

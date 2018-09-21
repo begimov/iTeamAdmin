@@ -6,5 +6,5 @@ export default {
   params: {
     searchQuery: '',
   },
-  // editedTestId: null
+  editedReviewId: null
 }
