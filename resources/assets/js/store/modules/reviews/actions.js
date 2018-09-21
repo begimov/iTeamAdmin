@@ -3,10 +3,10 @@ import api from '../../api'
 export default {
   getReviews ({commit, state}, page = 1) {
     commit('setIsLoading', true)
-    // api.tests.getTests(page, state.params).then(res => {
-    //   commit('setTests', res.data)
-    //   commit('setIsLoading', false)
-    // })
+    api.reviews.getReviews(page, state.params).then(res => {
+      // commit('setTests', res.data)
+      commit('setIsLoading', false)
+    })
   },
   // updateSearchQuery ({ commit }, value) {
   //   commit('updateSearchQuery', value)

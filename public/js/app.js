@@ -1680,6 +1680,8 @@ function applyToTag (styleElement, obj) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__products_materials__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__products_newmaterial__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__products_newproduct__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__reviews_reviews__ = __webpack_require__(234);
+
 
 
 
@@ -1697,7 +1699,8 @@ function applyToTag (styleElement, obj) {
   newtest: __WEBPACK_IMPORTED_MODULE_4__tests_newtest__["a" /* default */],
   newmaterial: __WEBPACK_IMPORTED_MODULE_6__products_newmaterial__["a" /* default */],
   newproduct: __WEBPACK_IMPORTED_MODULE_7__products_newproduct__["a" /* default */],
-  materials: __WEBPACK_IMPORTED_MODULE_5__products_materials__["a" /* default */]
+  materials: __WEBPACK_IMPORTED_MODULE_5__products_materials__["a" /* default */],
+  reviews: __WEBPACK_IMPORTED_MODULE_8__reviews_reviews__["a" /* default */]
 });
 
 /***/ }),
@@ -69035,10 +69038,10 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
     var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
     commit('setIsLoading', true);
-    // api.tests.getTests(page, state.params).then(res => {
-    //   commit('setTests', res.data)
-    //   commit('setIsLoading', false)
-    // })
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].reviews.getReviews(page, state.params).then(function (res) {
+      // commit('setTests', res.data)
+      commit('setIsLoading', false);
+    });
   }
 });
 
@@ -69054,6 +69057,21 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   // },
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
+  }
+});
+
+/***/ }),
+/* 234 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  getReviews: function getReviews(page, params) {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/reviews?page=" + page, { params: params }).then(function (res) {
+        resolve(res);
+      });
+    });
   }
 });
 

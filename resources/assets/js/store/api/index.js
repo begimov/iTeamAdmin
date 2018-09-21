@@ -6,6 +6,7 @@ import newtest from './tests/newtest'
 import materials from './products/materials'
 import newmaterial from './products/newmaterial'
 import newproduct from './products/newproduct'
+import reviews from './reviews/reviews'
 
 export default {
   products,
@@ -15,5 +16,6 @@ export default {
   newtest,
   newmaterial,
   newproduct,
-  materials
+  materials,
+  reviews
 }
