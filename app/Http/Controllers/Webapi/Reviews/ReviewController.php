@@ -20,7 +20,7 @@ class ReviewController extends Controller
     public function index(Request $request)
     {
         $reviews = $this->reviews
-            // ->filter($request)
+            ->filter($request)
             ->paginate(20);
 
         $reviewsCollection = $reviews->getCollection();
