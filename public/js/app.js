@@ -68884,7 +68884,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }
         }
     }),
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews', ['getReviews', 'updateSearchQuery']), {
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews', ['getReviews', 'updateSearchQuery', 'setCurrentModule']), {
         textSearch: function textSearch() {
             clearTimeout(this.timer);
             this.timer = setTimeout(function () {
@@ -68902,7 +68902,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [(_vm.currentModule === 'reviews') ? _c('div', {
+  return _c('div', [(_vm.currentModule === 'newreview') ? _c('new-review', {
+    attrs: {
+      "editedReviewId": _vm.editedReviewId
+    },
+    on: {
+      "cancelNewReview": _vm.cancelNewReview
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.currentModule === 'reviews') ? _c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
@@ -68916,7 +68923,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
-  }), _vm._v(" "), _c('div', {
+  }, [_c('a', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        $event.preventDefault();
+        _vm.setCurrentModule('newreview')
+      }
+    }
+  }, [_vm._v("Добавить отзыв")])]), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
   }, [_c('div', {
     staticClass: "row panel-subheading"
@@ -68940,7 +68958,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "review": review
       }
     })
-  })], 2)])])])]) : _vm._e()])
+  })], 2)])])])]) : _vm._e()], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-8 text-right"
@@ -69086,6 +69104,11 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
     var commit = _ref2.commit;
 
     commit('updateSearchQuery', value);
+  },
+  setCurrentModule: function setCurrentModule(_ref3, value) {
+    var commit = _ref3.commit;
+
+    commit('setCurrentModule', value);
   }
 });
 
@@ -69104,6 +69127,9 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   },
   updateSearchQuery: function updateSearchQuery(state, value) {
     state.params.searchQuery = value;
+  },
+  setCurrentModule: function setCurrentModule(state, value) {
+    state.currentModule = value;
   }
 });
 

@@ -1,13 +1,13 @@
 <template>
   <div>
-    <!-- <new-test v-if="currentModule === 'newtest'" v-on:cancelNewTest="cancelNewTest" :editedTestId="editedTestId"></new-test> -->
+    <new-review v-if="currentModule === 'newreview'" v-on:cancelNewReview="cancelNewReview" :editedReviewId="editedReviewId"></new-review>
     <div class="container" v-if="currentModule === 'reviews'">
       <div class="row">
         <div class="col-md-12">
           <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
           <div class="panel panel-default">
             <div class="panel-heading">
-              <!-- <a href="#" @click.prevent="setCurrentModule('newtest')" class="btn btn-primary">Создать тест</a> -->
+              <a href="#" @click.prevent="setCurrentModule('newreview')" class="btn btn-primary">Добавить отзыв</a>
             </div>
 
             <div class="panel-body">

@@ -9,9 +9,9 @@ export default {
   updateSearchQuery (state, value) {
       state.params.searchQuery = value
   },
-  // setCurrentModule (state, value) {
-  //     state.currentModule = value
-  // },
+  setCurrentModule (state, value) {
+      state.currentModule = value
+  },
   // setEditedPageId (state, id) {
   //   state.editedPageId = id
   // },

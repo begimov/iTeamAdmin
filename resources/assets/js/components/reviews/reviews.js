@@ -21,6 +21,7 @@ export default {
         ...mapActions('reviews', [
             'getReviews',
             'updateSearchQuery',
+            'setCurrentModule',
         ]),
         textSearch () {
             clearTimeout(this.timer);
