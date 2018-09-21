@@ -63,6 +63,9 @@ use App\Repositories\Eloquent\Payments\{
     EloquentPaymentStateRepository 
 };
 
+use App\Repositories\Contracts\Reviews\ReviewRepository;
+use App\Repositories\Eloquent\Reviews\EloquentReviewRepository;
+
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
@@ -88,6 +91,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ThemeRepository::class, EloquentThemeRepository::class);
         $this->app->bind(TestRepository::class, EloquentTestRepository::class);
         $this->app->bind(TestTypeRepository::class, EloquentTestTypeRepository::class);
+        $this->app->bind(ReviewRepository::class, EloquentReviewRepository::class);
     }
 
     /**
