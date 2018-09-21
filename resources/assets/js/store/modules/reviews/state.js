@@ -3,8 +3,8 @@ export default {
   reviews: [],
   meta: null,
   isLoading: false,
-  // params: {
-  //   searchQuery: '',
-  // },
+  params: {
+    searchQuery: '',
+  },
   // editedTestId: null
 }

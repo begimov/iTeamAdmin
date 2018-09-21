@@ -68874,8 +68874,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['isLoading', 'reviews'])),
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews', ['getReviews'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['isLoading', 'reviews', 'getSearchQuery']), {
+        'searchQuery': {
+            get: function get() {
+                return this.getSearchQuery;
+            },
+            set: function set(value) {
+                this.updateSearchQuery(value);
+            }
+        }
+    }),
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews', ['getReviews', 'updateSearchQuery']), {
+        textSearch: function textSearch() {
+            clearTimeout(this.timer);
+            this.timer = setTimeout(function () {
+                this.getReviews();
+            }.bind(this), 1000);
+        }
+    }),
     mounted: function mounted() {
         this.getReviews();
     }
@@ -68902,7 +68918,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-heading"
   }), _vm._v(" "), _c('div', {
     staticClass: "panel-body"
-  }, [_vm._m(0), _vm._v(" "), _vm._l((_vm.reviews), function(review) {
+  }, [_c('div', {
+    staticClass: "row panel-subheading"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('h4', [_vm._v("\n                  Отзывы\n                ")]), _vm._v(" "), _c('search', {
+    on: {
+      "input": _vm.textSearch
+    },
+    model: {
+      value: (_vm.searchQuery),
+      callback: function($$v) {
+        _vm.searchQuery = $$v
+      },
+      expression: "searchQuery"
+    }
+  })], 1), _vm._v(" "), _vm._m(0)]), _vm._v(" "), _vm._l((_vm.reviews), function(review) {
     return _c('client-review', {
       key: review.id,
       attrs: {
@@ -68912,14 +68943,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })], 2)])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    staticClass: "row panel-subheading"
-  }, [_c('div', {
-    staticClass: "col-md-4"
-  }, [_c('h4', [_vm._v("\n                  Отзывы\n                ")])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])
+  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -69004,10 +69031,10 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   // currentModule: 'tests',
   reviews: [],
   meta: null,
-  isLoading: false
-  // params: {
-  //   searchQuery: '',
-  // },
+  isLoading: false,
+  params: {
+    searchQuery: ''
+  }
   // editedTestId: null
 });
 
@@ -69029,6 +69056,9 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   // },
   isLoading: function isLoading(state) {
     return state.isLoading;
+  },
+  getSearchQuery: function getSearchQuery(state) {
+    return state.params.searchQuery;
   }
 });
 
@@ -69051,6 +69081,11 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
       commit('setReviews', res.data);
       commit('setIsLoading', false);
     });
+  },
+  updateSearchQuery: function updateSearchQuery(_ref2, value) {
+    var commit = _ref2.commit;
+
+    commit('updateSearchQuery', value);
   }
 });
 
@@ -69066,6 +69101,9 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   },
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
+  },
+  updateSearchQuery: function updateSearchQuery(state, value) {
+    state.params.searchQuery = value;
   }
 });
 
