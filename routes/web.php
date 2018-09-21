@@ -56,6 +56,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for Tests.vue component
         Route::resource('tests', 'Tests\TestController');
 
+        // Route for Reviews.vue component
+        Route::resource('reviews', 'Reviews\ReviewController');
+
         // Route for FileUploader.vue component
         Route::resource('files', 'Content\FileController');
 
