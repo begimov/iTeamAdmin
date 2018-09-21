@@ -32,6 +32,14 @@
                   </li>
                   <li><a href="{{ route('pages') }}">@lang('navigation.pages')</a></li>
                   <li><a href="{{ route('tests') }}">@lang('navigation.tests')</a></li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        @lang('navigation.others') <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="{{ route('reviews') }}">@lang('navigation.reviews')</a></li>
+                      </ul>
+                  </li>
                 @endrole
             </ul>
 
