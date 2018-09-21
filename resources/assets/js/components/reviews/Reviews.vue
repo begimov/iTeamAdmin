@@ -34,9 +34,9 @@
                   </ul>
                 </div>
               </div>
-              <!-- <iteam-test v-for="test in tests"
-              :test="test"
-              :key="test.id"></iteam-test> -->
+              <client-review v-for="review in reviews"
+              :review="review"
+              :key="review.id"></client-review>
 
             </div>
 
