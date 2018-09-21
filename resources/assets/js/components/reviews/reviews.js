@@ -1,5 +1,12 @@
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
+    methods: {
+        ...mapActions('reviews', [
+            'getReviews',
+        ])
+    },
     mounted () {
-        console.log('MOUNTED REVIEWS')
+        this.getReviews()
     }
 }
