@@ -7,6 +7,7 @@ export default {
   computed: {
       ...mapGetters('reviews/newreview', [
           'author',
+          'position',
           // 'errors'
       ]),
       'reviewAuthor': {
@@ -17,18 +18,19 @@ export default {
           this.updateAuthor(value)
         }
       },
-      // 'testDesc': {
-      //   get () {
-      //     return this.testdesc
-      //   },
-      //   set (value) {
-      //     this.updateTestDesc(value)
-      //   }
-      // }
+      'authorPosition': {
+        get () {
+          return this.position
+        },
+        set (value) {
+          this.updatePosition(value)
+        }
+      }
   },
   methods: {
       ...mapActions('reviews/newreview', [
           'updateAuthor',
+          'updatePosition',
       //     'setPageToEdit',
       //     'update'
       ]),

@@ -14,6 +14,9 @@ export default {
   updateAuthor ({ commit }, author) {
     commit('updateAuthor', author)
   },
+  updatePosition ({ commit }, position) {
+    commit('updatePosition', position)
+  },
   // save ({ commit, state }) {
   //   commit('setIsLoading', true)
   //   api.newtest.saveTest(state.test).then(res => {

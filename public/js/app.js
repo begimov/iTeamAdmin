@@ -69350,7 +69350,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   // props: ['editedTestId'],
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['author']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['author', 'position']
   // 'errors'
   ), {
     'reviewAuthor': {
@@ -69360,17 +69360,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       set: function set(value) {
         this.updateAuthor(value);
       }
+    },
+    'authorPosition': {
+      get: function get() {
+        return this.position;
+      },
+      set: function set(value) {
+        this.updatePosition(value);
+      }
     }
-    // 'testDesc': {
-    //   get () {
-    //     return this.testdesc
-    //   },
-    //   set (value) {
-    //     this.updateTestDesc(value)
-    //   }
-    // }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews/newreview', ['updateAuthor']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews/newreview', ['updateAuthor', 'updatePosition']
   //     'setPageToEdit',
   //     'update'
   ), {
@@ -69430,7 +69430,32 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.reviewAuthor = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _vm._m(1)])]), _vm._v(" "), _c('div', {
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Должность")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.authorPosition),
+      expression: "authorPosition"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Введите должность и компанию автора..."
+    },
+    domProps: {
+      "value": (_vm.authorPosition)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.authorPosition = $event.target.value
+      }
+    }
+  })])])])]), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
   }, [_c('a', {
     staticClass: "btn btn-default",
@@ -69448,12 +69473,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "panel-heading"
   }, [_c('h4', [_vm._v("Новый отзыв")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "col-md-6"
-  }, [_c('div', {
-    staticClass: "form-group"
-  })])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -69496,7 +69515,8 @@ if (false) {
   //   types:[],
   // },
   review: {
-    author: ''
+    author: '',
+    position: ''
   }
   // errors: {}
 });
@@ -69509,6 +69529,9 @@ if (false) {
 /* harmony default export */ __webpack_exports__["a"] = ({
   author: function author(state) {
     return state.review.author;
+  },
+  position: function position(state) {
+    return state.review.position;
   }
 });
 
@@ -69535,6 +69558,11 @@ if (false) {
     var commit = _ref.commit;
 
     commit('updateAuthor', author);
+  },
+  updatePosition: function updatePosition(_ref2, position) {
+    var commit = _ref2.commit;
+
+    commit('updatePosition', position);
   }
 });
 
@@ -69552,6 +69580,9 @@ if (false) {
     // },
     updateAuthor: function updateAuthor(state, author) {
         state.review.author = author;
+    },
+    updatePosition: function updatePosition(state, position) {
+        state.review.position = position;
     }
 });
 

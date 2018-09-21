@@ -8,6 +8,9 @@ export default {
     updateAuthor(state, author) {
         state.review.author = author
     },
+    updatePosition(state, position) {
+        state.review.position = position
+    },
     // resetState(state) {
     //     const initialState = {
     //         isLoading: false,

@@ -5,6 +5,7 @@ export default {
   // },
   review: {
     author: '',
+    position: '',
   },
   // errors: {}
 }
