@@ -9,6 +9,6 @@ class ReviewController extends Controller
 {
     public function index()
     {
-        return 'REVIEWS';
+        return view('reviews.index');
     }
 }
