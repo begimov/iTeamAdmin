@@ -4,7 +4,7 @@ export default {
   getReviews ({commit, state}, page = 1) {
     commit('setIsLoading', true)
     api.reviews.getReviews(page, state.params).then(res => {
-      // commit('setTests', res.data)
+      commit('setReviews', res.data)
       commit('setIsLoading', false)
     })
   },

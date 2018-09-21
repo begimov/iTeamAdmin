@@ -1,8 +1,8 @@
 export default {
-  // setTests (state, tests) {
-  //   state.tests = tests.data
-  //   state.meta = tests.meta
-  // },
+  setReviews (state, reviews) {
+    state.reviews = reviews.data
+    state.meta = reviews.meta
+  },
   setIsLoading (state, flag) {
     state.isLoading = flag
   },

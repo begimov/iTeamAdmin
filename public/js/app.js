@@ -69002,8 +69002,8 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   // currentModule: 'tests',
-  // tests: [],
-  // meta: null,
+  reviews: [],
+  meta: null,
   isLoading: false
   // params: {
   //   searchQuery: '',
@@ -69047,7 +69047,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].reviews.getReviews(page, state.params).then(function (res) {
-      // commit('setTests', res.data)
+      commit('setReviews', res.data);
       commit('setIsLoading', false);
     });
   }
@@ -69059,10 +69059,10 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // setTests (state, tests) {
-  //   state.tests = tests.data
-  //   state.meta = tests.meta
-  // },
+  setReviews: function setReviews(state, reviews) {
+    state.reviews = reviews.data;
+    state.meta = reviews.meta;
+  },
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
   }

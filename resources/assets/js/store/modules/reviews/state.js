@@ -1,7 +1,7 @@
 export default {
   // currentModule: 'tests',
-  // tests: [],
-  // meta: null,
+  reviews: [],
+  meta: null,
   isLoading: false,
   // params: {
   //   searchQuery: '',
