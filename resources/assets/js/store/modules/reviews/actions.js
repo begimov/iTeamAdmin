@@ -2,8 +2,7 @@ import api from '../../api'
 
 export default {
   getReviews ({commit, state}, page = 1) {
-    console.log('RRR')
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true)
     // api.tests.getTests(page, state.params).then(res => {
     //   commit('setTests', res.data)
     //   commit('setIsLoading', false)

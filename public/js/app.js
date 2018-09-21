@@ -68870,6 +68870,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['isLoading'])),
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews', ['getReviews'])),
     mounted: function mounted() {
         this.getReviews();
@@ -68881,8 +68882,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('div', {
     staticClass: "container"
   }, [_c('div', {
@@ -68890,6 +68889,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _vm._m(0)])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-heading"
@@ -68903,7 +68908,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-8 text-right"
   }, [_c('ul', {
     staticClass: "list-inline"
-  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])])])])])])])
+  }, [_c('li', [_c('div', [_vm._v("\n                       \n                    ")])]), _vm._v(" "), _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -68988,7 +68993,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   // currentModule: 'tests',
   // tests: [],
   // meta: null,
-  // isLoading: false,
+  isLoading: false
   // params: {
   //   searchQuery: '',
   // },
@@ -69010,15 +69015,9 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   // meta (state) {
   //   return state.meta
   // },
-  // isLoading (state) {
-  //   return state.isLoading
-  // },
-  // getSearchQuery (state) {
-  //   return state.params.searchQuery
-  // },
-  // editedTestId (state) {
-  //   return state.editedTestId
-  // },
+  isLoading: function isLoading(state) {
+    return state.isLoading;
+  }
 });
 
 /***/ }),
@@ -69035,8 +69034,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
         state = _ref.state;
     var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
-    console.log('RRR');
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true);
     // api.tests.getTests(page, state.params).then(res => {
     //   commit('setTests', res.data)
     //   commit('setIsLoading', false)
@@ -69054,18 +69052,9 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
   //   state.tests = tests.data
   //   state.meta = tests.meta
   // },
-  // setIsLoading (state, flag) {
-  //   state.isLoading = flag
-  // },
-  // updateSearchQuery (state, value) {
-  //     state.params.searchQuery = value
-  // },
-  // setCurrentModule (state, value) {
-  //     state.currentModule = value
-  // },
-  // setEditedPageId (state, id) {
-  //   state.editedPageId = id
-  // },
+  setIsLoading: function setIsLoading(state, flag) {
+    state.isLoading = flag;
+  }
 });
 
 /***/ })

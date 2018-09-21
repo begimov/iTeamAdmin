@@ -3,9 +3,9 @@ export default {
   //   state.tests = tests.data
   //   state.meta = tests.meta
   // },
-  // setIsLoading (state, flag) {
-  //   state.isLoading = flag
-  // },
+  setIsLoading (state, flag) {
+    state.isLoading = flag
+  },
   // updateSearchQuery (state, value) {
   //     state.params.searchQuery = value
   // },

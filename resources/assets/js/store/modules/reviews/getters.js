@@ -8,9 +8,9 @@ export default {
   // meta (state) {
   //   return state.meta
   // },
-  // isLoading (state) {
-  //   return state.isLoading
-  // },
+  isLoading (state) {
+    return state.isLoading
+  },
   // getSearchQuery (state) {
   //   return state.params.searchQuery
   // },

@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <!-- <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div> -->
+          <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
           <div class="panel panel-default">
             <div class="panel-heading">
               <!-- <a href="#" @click.prevent="setCurrentModule('newtest')" class="btn btn-primary">Создать тест</a> -->
