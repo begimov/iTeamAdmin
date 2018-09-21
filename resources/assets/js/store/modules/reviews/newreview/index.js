@@ -1,4 +1,3 @@
-import newreview from './newreview'
 import state from './state'
 import getters from './getters'
 import actions from './actions'
@@ -10,7 +9,4 @@ export default {
   getters,
   actions,
   mutations,
-  modules: {
-    newreview
-  }
 }

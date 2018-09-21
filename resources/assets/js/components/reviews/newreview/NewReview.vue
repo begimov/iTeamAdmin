@@ -6,25 +6,14 @@
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4>Новый отзыв</h4>
+          </div>
 
+          <div class="panel-body">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <!-- <multiselect :value="typeParams"
-                    :options="typeOptions"
-                    v-on:input="updateTypeParams"
-                    select-label=""
-                    selected-label="Выбран"
-                    deselect-label=""
-                    placeholder="Выберите тип"
-                    label="name"
-                    track-by="id">
-                    <span slot="noResult">Тип не найден</span>
-                  </multiselect> -->
-                  <!-- <span class="help-block alert-danger" v-if="errors.type_id">{{ errors.type_id[0] }}</span> -->
-                </div>
-                <div class="form-group">
-                  <!-- <input type="text" class="form-control" placeholder="Введите название теста..." v-model="testName"> -->
+                  <label>Автор</label>
+                  <input type="text" class="form-control" placeholder="Введите автора отзыва..." v-model="reviewAuthor">
                   <!-- <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span> -->
                 </div>
               </div>
@@ -35,32 +24,6 @@
                 </div>
               </div>
             </div>
-
-          </div>
-
-          <div class="panel-body">
-            <!-- <div class="row" v-for="(question, index) in questions" :key="index">
-              <question v-model="questions[index]" :index="index" @removeQuestion="removeQuestion"/>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="#" class="btn btn-default" @click.prevent="addQuestion">Добавить вопрос</a>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-md-12">
-                <h3><span class="label label-default">Всего очков: {{ totalScore }}</span></h3>
-              </div>
-            </div>
-            <div class="row" v-for="(condition, index) in conditions" :key="index">
-              <condition v-model="conditions[index]" />
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="#" class="btn btn-default" @click.prevent="addCondition">Добавить условие</a>
-                </div>
-            </div> -->
           </div>
 
           <div class="panel-footer">
@@ -76,4 +39,3 @@
 </template>
 
 <script src="./newreview.js"></script>
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

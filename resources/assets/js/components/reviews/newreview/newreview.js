@@ -5,23 +5,16 @@ export default {
   components: { Multiselect },
   // props: ['editedTestId'],
   computed: {
-      // ...mapGetters('tests/newtest', [
-      //     'testname',
-      //     'testdesc',
-      //     'typeOptions',
-      //     'typeParams',
-      //     'isLoading',
-      //     'questions',
-      //     'conditions',
-      //     'totalScore',
-      // //     'errors'
-      // ]),
-      // 'testName': {
+      ...mapGetters('reviews/newreview', [
+          'reviewAuthor',
+          // 'errors'
+      ]),
+      // 'reviewAuthor': {
       //   get () {
-      //     return this.testname
+      //     return this.reviewAuthor
       //   },
       //   set (value) {
-      //     this.updateTestName(value)
+      //     this.updateReviewAuthor(value)
       //   }
       // },
       // 'testDesc': {
@@ -35,17 +28,9 @@ export default {
   },
   methods: {
       // ...mapActions('tests/newtest', [
-      //     'getInitialData',
-      //     'updateTestName',
-      //     'updateTestDesc',
-      //     'updateTypeParams',
-      //     'save',
-      //     'resetState',
-      //     'addQuestion',
-      //     'addCondition',
-      //     'removeQuestion',
-      // //     'setPageToEdit',
-      // //     'update'
+      //     'updateReviewAuthor',
+      //     'setPageToEdit',
+      //     'update'
       // ]),
       cancel () {
         // this.resetState()
