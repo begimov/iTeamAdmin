@@ -1,5 +1,5 @@
 export default {
-  // currentModule: 'tests',
+  currentModule: 'reviews',
   reviews: [],
   meta: null,
   isLoading: false,

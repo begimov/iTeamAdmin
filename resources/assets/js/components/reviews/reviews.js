@@ -3,6 +3,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
     computed: {
         ...mapGetters('reviews', [
+            'currentModule',
             'isLoading',
             'reviews',
             'getSearchQuery',

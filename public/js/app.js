@@ -68874,7 +68874,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['isLoading', 'reviews', 'getSearchQuery']), {
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', ['currentModule', 'isLoading', 'reviews', 'getSearchQuery']), {
         'searchQuery': {
             get: function get() {
                 return this.getSearchQuery;
@@ -68902,7 +68902,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
+  return _c('div', [(_vm.currentModule === 'reviews') ? _c('div', {
     staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
@@ -68940,7 +68940,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "review": review
       }
     })
-  })], 2)])])])])])
+  })], 2)])])])]) : _vm._e()])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-8 text-right"
@@ -69028,7 +69028,7 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // currentModule: 'tests',
+  currentModule: 'reviews',
   reviews: [],
   meta: null,
   isLoading: false,
@@ -69044,9 +69044,9 @@ exports.push([module.i, "\nfieldset[disabled] .multiselect{pointer-events:none\n
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // currentModule (state) {
-  //   return state.currentModule
-  // },
+  currentModule: function currentModule(state) {
+    return state.currentModule;
+  },
   reviews: function reviews(state) {
     return state.reviews;
   },

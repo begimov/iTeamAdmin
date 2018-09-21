@@ -1,8 +1,7 @@
 <template>
   <div>
     <!-- <new-test v-if="currentModule === 'newtest'" v-on:cancelNewTest="cancelNewTest" :editedTestId="editedTestId"></new-test> -->
-    <!-- <div class="container" v-if="currentModule === 'tests'"> -->
-    <div class="container">
+    <div class="container" v-if="currentModule === 'reviews'">
       <div class="row">
         <div class="col-md-12">
           <div v-bind:class="{ 'isActive': isLoading, 'loader': true, 'loader-def': true }"></div>
