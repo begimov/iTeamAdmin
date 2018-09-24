@@ -41,11 +41,12 @@ export default {
           'updatePosition',
           'updateQuote',
           'save',
+          'resetState',
       //     'setPageToEdit',
       //     'update'
       ]),
       cancel () {
-        // this.resetState()
+        this.resetState()
         this.$emit('cancelNewReview')
       }
   },

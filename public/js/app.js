@@ -45615,6 +45615,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       // commit('setErrors', err.response.data)
       // commit('setIsLoading', false)
     });
+  },
+  resetState: function resetState(_ref5) {
+    var commit = _ref5.commit;
+
+    commit('resetState');
   }
 });
 
@@ -68561,12 +68566,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews/newreview', ['updateAuthor', 'updatePosition', 'updateQuote', 'save']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews/newreview', ['updateAuthor', 'updatePosition', 'updateQuote', 'save', 'resetState']
   //     'setPageToEdit',
   //     'update'
   ), {
     cancel: function cancel() {
-      // this.resetState()
+      this.resetState();
       this.$emit('cancelNewReview');
     }
   }),
