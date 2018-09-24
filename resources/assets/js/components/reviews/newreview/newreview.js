@@ -3,7 +3,7 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   components: { Multiselect },
-  // props: ['editedTestId'],
+  props: ['editedReviewId'],
   computed: {
       ...mapGetters('reviews/newreview', [
           'author',
@@ -41,6 +41,7 @@ export default {
           'updateAuthor',
           'updatePosition',
           'updateQuote',
+          'save',
       //     'setPageToEdit',
       //     'update'
       ]),

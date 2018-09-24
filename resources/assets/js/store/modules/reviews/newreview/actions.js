@@ -20,17 +20,17 @@ export default {
   updateQuote ({ commit }, quote) {
     commit('updateQuote', quote)
   },
-  // save ({ commit, state }) {
-  //   commit('setIsLoading', true)
-  //   api.newtest.saveTest(state.test).then(res => {
-  //     commit('resetState')
-  //     commit('setIsLoading', false)
-  //     commit('tests/setCurrentModule', 'tests', { root: true })
-  //   }).catch(err => {
-  //     // commit('setErrors', err.response.data)
-  //     // commit('setIsLoading', false)
-  //   })
-  // },
+  save ({ commit, state }) {
+    // commit('setIsLoading', true)
+    api.newreview.saveReview(state.review).then(res => {
+      // commit('resetState')
+      // commit('setIsLoading', false)
+      // commit('tests/setCurrentModule', 'tests', { root: true })
+    }).catch(err => {
+      // commit('setErrors', err.response.data)
+      // commit('setIsLoading', false)
+    })
+  },
   // resetState ({ commit }) {
   //   commit('resetState')
   // },
