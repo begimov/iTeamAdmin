@@ -45539,7 +45539,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // isLoading: false,
+  isLoading: false,
   review: {
     author: '',
     position: '',
@@ -45554,6 +45554,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
+  isLoading: function isLoading(state) {
+    return state.isLoading;
+  },
   author: function author(state) {
     return state.review.author;
   },
@@ -45603,10 +45606,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref4.commit,
         state = _ref4.state;
 
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newreview.saveReview(state.review).then(function (res) {
       commit('resetState');
-      // commit('setIsLoading', false)
+      commit('setIsLoading', false);
       // commit('tests/setCurrentModule', 'tests', { root: true })
     }).catch(function (err) {
       // commit('setErrors', err.response.data)
@@ -45621,9 +45624,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-    // setIsLoading(state, value) {
-    //     state.isLoading = value
-    // },
+    setIsLoading: function setIsLoading(state, value) {
+        state.isLoading = value;
+    },
+
     // setErrors(state, errors) {
     //     state.errors = errors
     // },
@@ -68523,17 +68527,13 @@ module.exports = Component.exports
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuex__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_multiselect__);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
   props: ['editedReviewId'],
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['author', 'position', 'quote']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['isLoading', 'author', 'position', 'quote']
   // 'errors'
   ), {
     'reviewAuthor': {
@@ -68591,6 +68591,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-primary"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "panel-body"

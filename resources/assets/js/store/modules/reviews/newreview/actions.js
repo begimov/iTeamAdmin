@@ -21,10 +21,10 @@ export default {
     commit('updateQuote', quote)
   },
   save ({ commit, state }) {
-    // commit('setIsLoading', true)
+    commit('setIsLoading', true)
     api.newreview.saveReview(state.review).then(res => {
       commit('resetState')
-      // commit('setIsLoading', false)
+      commit('setIsLoading', false)
       // commit('tests/setCurrentModule', 'tests', { root: true })
     }).catch(err => {
       // commit('setErrors', err.response.data)

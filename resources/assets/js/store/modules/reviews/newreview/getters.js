@@ -1,4 +1,7 @@
 export default {
+  isLoading (state) {
+    return state.isLoading
+  },
   author (state) {
     return state.review.author
   },

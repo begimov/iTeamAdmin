@@ -1,11 +1,10 @@
 import { mapActions, mapGetters } from 'vuex'
-import Multiselect from 'vue-multiselect'
 
 export default {
-  components: { Multiselect },
   props: ['editedReviewId'],
   computed: {
       ...mapGetters('reviews/newreview', [
+          'isLoading',
           'author',
           'position',
           'quote',
