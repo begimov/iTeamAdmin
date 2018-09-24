@@ -25,7 +25,7 @@ export default {
     api.newreview.saveReview(state.review).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
-      // commit('tests/setCurrentModule', 'tests', { root: true })
+      commit('reviews/setCurrentModule', 'reviews', { root: true })
     }).catch(err => {
       // commit('setErrors', err.response.data)
       // commit('setIsLoading', false)
