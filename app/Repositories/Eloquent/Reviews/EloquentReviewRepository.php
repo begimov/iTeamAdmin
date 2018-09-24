@@ -15,7 +15,7 @@ class EloquentReviewRepository extends EloquentRepositoryAbstract implements Rev
 
     public function store($request)
     {
-        Review::create($request->only($this->getEntityFields()));
+        $this->entity->create($request->only($this->getEntityFields()));
     }
 
     protected function getEntityFields()
