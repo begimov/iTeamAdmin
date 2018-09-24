@@ -12,4 +12,16 @@ class EloquentReviewRepository extends EloquentRepositoryAbstract implements Rev
     {
         return Review::class;
     }
+
+    public function store($request)
+    {
+        Review::create($request->only($this->getEntityFields()));
+    }
+
+    protected function getEntityFields()
+    {
+        return [
+            'author', 'position', 'quote'
+        ];
+    }
 }

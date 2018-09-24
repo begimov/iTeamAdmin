@@ -69667,12 +69667,11 @@ if (false) {
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   saveReview: function saveReview(review) {
-    console.log(review);
-    // return new Promise((resolve, reject) => {
-    //   axios.get(`/webapi/reviews?page=${page}`, {params}).then(res => {
-    //     resolve(res)
-    //   })
-    // })
+    return new Promise(function (resolve, reject) {
+      axios.post("/webapi/reviews", review).then(function (res) {
+        resolve(res);
+      });
+    });
   }
 });
 

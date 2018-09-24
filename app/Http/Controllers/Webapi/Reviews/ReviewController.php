@@ -31,4 +31,9 @@ class ReviewController extends Controller
             ->paginateWith(new IlluminatePaginatorAdapter($reviews))
             ->toArray();
     }
+
+    public function store(Request $request)
+    {
+        $this->reviews->store($request);
+    }
 }
