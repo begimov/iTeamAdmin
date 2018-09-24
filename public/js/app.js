@@ -45540,9 +45540,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   // isLoading: false,
-  // options: {
-  //   types:[],
-  // },
   review: {
     author: '',
     position: '',
@@ -45608,7 +45605,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     // commit('setIsLoading', true)
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newreview.saveReview(state.review).then(function (res) {
-      // commit('resetState')
+      commit('resetState');
       // commit('setIsLoading', false)
       // commit('tests/setCurrentModule', 'tests', { root: true })
     }).catch(function (err) {
@@ -45638,6 +45635,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     updateQuote: function updateQuote(state, quote) {
         state.review.quote = quote;
+    },
+    resetState: function resetState(state) {
+        var initialState = {
+            // isLoading: false,
+            review: {
+                author: '',
+                position: '',
+                quote: ''
+            }
+            // errors: {}
+        };
+        Object.keys(initialState).forEach(function (key) {
+            state[key] = initialState[key];
+        });
     }
 });
 

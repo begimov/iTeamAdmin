@@ -23,7 +23,7 @@ export default {
   save ({ commit, state }) {
     // commit('setIsLoading', true)
     api.newreview.saveReview(state.review).then(res => {
-      // commit('resetState')
+      commit('resetState')
       // commit('setIsLoading', false)
       // commit('tests/setCurrentModule', 'tests', { root: true })
     }).catch(err => {

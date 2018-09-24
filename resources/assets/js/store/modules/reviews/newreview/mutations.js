@@ -14,25 +14,20 @@ export default {
     updateQuote(state, quote) {
         state.review.quote = quote
     },
-    // resetState(state) {
-    //     const initialState = {
-    //         isLoading: false,
-    //         options: {
-    //             types:[],
-    //         },
-    //         test: {
-    //             type: null,
-    //             name: '',
-    //             desc: '',
-    //             questions: [],
-    //             conditions: []
-    //         },
-    //         errors: {}
-    //     }
-    //     Object.keys(initialState).forEach(key => {
-    //         state[key] = initialState[key]
-    //     })
-    // },
+    resetState(state) {
+        const initialState = {
+            // isLoading: false,
+            review: {
+                author: '',
+                position: '',
+                quote: '',
+            },
+            // errors: {}
+        }
+        Object.keys(initialState).forEach(key => {
+            state[key] = initialState[key]
+        })
+    },
     // setPageToEdit(state, payload) {
     //     const { name, description, category, elements, theme } = payload
 
