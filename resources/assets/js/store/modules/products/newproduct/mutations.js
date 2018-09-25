@@ -5,6 +5,9 @@ export default {
     setMaterials(state, value) {
         state.options.materials = value
     },
+    setTests(state, value) {
+        state.options.tests = value
+    },
     setErrors(state, errors) {
         state.errors = errors
     },
@@ -48,6 +51,7 @@ export default {
             options: {
                 materials: [],
                 categories: [],
+                tests: [],
                 priceTag: { price: null, name: null }
             },
             params: {

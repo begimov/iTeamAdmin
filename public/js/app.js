@@ -43646,6 +43646,7 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
   options: {
     materials: [],
     categories: [],
+    tests: [],
     priceTag: { price: null, name: null }
   },
   params: {
@@ -43721,6 +43722,7 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.getInitialData().then(function (res) {
       commit('setCategories', res.data.categories.data);
       commit('setMaterials', res.data.materials.data);
+      commit('setTests', res.data.tests.data);
       commit('setIsLoading', false);
     });
   },
@@ -44111,6 +44113,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     setMaterials: function setMaterials(state, value) {
         state.options.materials = value;
     },
+    setTests: function setTests(state, value) {
+        state.options.tests = value;
+    },
     setErrors: function setErrors(state, errors) {
         state.errors = errors;
     },
@@ -44154,6 +44159,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             options: {
                 materials: [],
                 categories: [],
+                tests: [],
                 priceTag: { price: null, name: null }
             },
             params: {

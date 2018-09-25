@@ -6,6 +6,7 @@ export default {
     api.newproduct.getInitialData().then(res => {
       commit('setCategories', res.data.categories.data)
       commit('setMaterials', res.data.materials.data)
+      commit('setTests', res.data.tests.data)
       commit('setIsLoading', false)
     })
   },
