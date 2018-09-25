@@ -13,6 +13,9 @@ export default {
   updateMaterialParams ({ commit }, value) {
     commit('updateMaterialParams', value)
   },
+  updateTestParams ({ commit }, value) {
+    commit('updateTestParams', value)
+  },
   updateCategoryParams ({ commit }, value) {
     commit('updateCategoryParams', value)
   },

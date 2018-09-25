@@ -14,6 +14,9 @@ export default {
     updateMaterialParams(state, value) {
         state.params.materials = value
     },
+    updateTestParams(state, value) {
+        state.params.tests = value
+    },
     updateCategoryParams(state, value) {
         state.params.category = value
     },
@@ -58,6 +61,7 @@ export default {
                 category: null,
                 name: null,
                 materials: [],
+                tests: [],
                 price: null,
                 priceTags: [],
             },

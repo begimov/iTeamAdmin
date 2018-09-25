@@ -10,6 +10,7 @@ export default {
     category: null,
     name: null,
     materials: [],
+    tests: [],
     price: null,
     priceTags: [],
   },

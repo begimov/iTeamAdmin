@@ -43654,6 +43654,7 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
     category: null,
     name: null,
     materials: [],
+    tests: [],
     price: null,
     priceTags: []
   },
@@ -43673,6 +43674,12 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
   },
   materialParams: function materialParams(state) {
     return state.params.materials;
+  },
+  testOptions: function testOptions(state) {
+    return state.options.tests;
+  },
+  testParams: function testParams(state) {
+    return state.params.tests;
   },
   categoryOptions: function categoryOptions(state) {
     return state.options.categories;
@@ -43731,49 +43738,54 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
 
     commit('updateMaterialParams', value);
   },
-  updateCategoryParams: function updateCategoryParams(_ref3, value) {
+  updateTestParams: function updateTestParams(_ref3, value) {
     var commit = _ref3.commit;
+
+    commit('updateTestParams', value);
+  },
+  updateCategoryParams: function updateCategoryParams(_ref4, value) {
+    var commit = _ref4.commit;
 
     commit('updateCategoryParams', value);
   },
-  updateName: function updateName(_ref4, value) {
-    var commit = _ref4.commit;
+  updateName: function updateName(_ref5, value) {
+    var commit = _ref5.commit;
 
     commit('updateName', value);
   },
-  updateBasePrice: function updateBasePrice(_ref5, value) {
-    var commit = _ref5.commit;
+  updateBasePrice: function updateBasePrice(_ref6, value) {
+    var commit = _ref6.commit;
 
     commit('updateBasePrice', value);
   },
-  updatePriceTagPrice: function updatePriceTagPrice(_ref6, value) {
-    var commit = _ref6.commit;
+  updatePriceTagPrice: function updatePriceTagPrice(_ref7, value) {
+    var commit = _ref7.commit;
 
     commit('updatePriceTagPrice', value);
   },
-  updatePriceTagName: function updatePriceTagName(_ref7, value) {
-    var commit = _ref7.commit;
+  updatePriceTagName: function updatePriceTagName(_ref8, value) {
+    var commit = _ref8.commit;
 
     commit('updatePriceTagName', value);
   },
-  switchNewMaterial: function switchNewMaterial(_ref8, value) {
-    var commit = _ref8.commit;
+  switchNewMaterial: function switchNewMaterial(_ref9, value) {
+    var commit = _ref9.commit;
 
     commit('switchNewMaterial', value);
   },
-  addPriceTag: function addPriceTag(_ref9) {
-    var commit = _ref9.commit;
+  addPriceTag: function addPriceTag(_ref10) {
+    var commit = _ref10.commit;
 
     commit('addPriceTag');
   },
-  removePriceTag: function removePriceTag(_ref10, index) {
-    var commit = _ref10.commit;
+  removePriceTag: function removePriceTag(_ref11, index) {
+    var commit = _ref11.commit;
 
     commit('removePriceTag', index);
   },
-  saveProduct: function saveProduct(_ref11) {
-    var commit = _ref11.commit,
-        state = _ref11.state;
+  saveProduct: function saveProduct(_ref12) {
+    var commit = _ref12.commit,
+        state = _ref12.state;
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.saveProduct(state.params).then(function (res) {
@@ -43785,13 +43797,13 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
       commit('setIsLoading', false);
     });
   },
-  resetState: function resetState(_ref12) {
-    var commit = _ref12.commit;
+  resetState: function resetState(_ref13) {
+    var commit = _ref13.commit;
 
     commit('resetState');
   },
-  setProductToEdit: function setProductToEdit(_ref13, id) {
-    var commit = _ref13.commit;
+  setProductToEdit: function setProductToEdit(_ref14, id) {
+    var commit = _ref14.commit;
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.getProduct(id).then(function (res) {
@@ -43799,15 +43811,15 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
       commit('setIsLoading', false);
     });
   },
-  removeMaterial: function removeMaterial(_ref14, id) {
-    var commit = _ref14.commit;
+  removeMaterial: function removeMaterial(_ref15, id) {
+    var commit = _ref15.commit;
 
     commit('removeMaterial', id);
   },
-  updateProduct: function updateProduct(_ref15, id) {
-    var commit = _ref15.commit,
-        dispatch = _ref15.dispatch,
-        state = _ref15.state;
+  updateProduct: function updateProduct(_ref16, id) {
+    var commit = _ref16.commit,
+        dispatch = _ref16.dispatch,
+        state = _ref16.state;
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.updateProduct(state.params, id).then(function (res) {
@@ -44122,6 +44134,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     updateMaterialParams: function updateMaterialParams(state, value) {
         state.params.materials = value;
     },
+    updateTestParams: function updateTestParams(state, value) {
+        state.params.tests = value;
+    },
     updateCategoryParams: function updateCategoryParams(state, value) {
         state.params.category = value;
     },
@@ -44166,6 +44181,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 category: null,
                 name: null,
                 materials: [],
+                tests: [],
                 price: null,
                 priceTags: []
             },
@@ -65309,13 +65325,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit', 'removeMaterial', 'updateProduct']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateTestParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit', 'removeMaterial', 'updateProduct']), {
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewProduct');
     }
   }),
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn', 'isLoading', 'priceTags', 'errors']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products/newproduct', ['materialOptions', 'materialParams', 'testOptions', 'testParams', 'categoryOptions', 'categoryParams', 'getName', 'getBasePrice', 'getPriceTagPrice', 'getPriceTagName', 'isNewMaterialOn', 'isLoading', 'priceTags', 'errors']), {
     'name': {
       get: function get() {
         return this.getName;
@@ -65514,6 +65530,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _vm._v(" "), (_vm.errors.price) ? _c('span', {
     staticClass: "help-block alert-danger"
   }, [_vm._v(_vm._s(_vm.errors.price[0]))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-6"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('label', [_vm._v("Тесты")]), _vm._v(" "), _c('multiselect', {
+    attrs: {
+      "value": _vm.testParams,
+      "options": _vm.testOptions,
+      "multiple": true,
+      "hide-selected": true,
+      "close-on-select": false,
+      "select-label": "",
+      "selected-label": "Выбран",
+      "deselect-label": "",
+      "placeholder": "Выберите тест",
+      "label": "name",
+      "track-by": "id"
+    },
+    on: {
+      "input": _vm.updateTestParams
+    }
+  }, [_c('span', {
+    slot: "noResult"
+  }, [_vm._v("Тест не найден")])]), _vm._v(" "), (_vm.errors.tests) ? _c('span', {
+    staticClass: "help-block alert-danger"
+  }, [_vm._v(_vm._s(_vm.errors.tests[0]))]) : _vm._e()], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"
