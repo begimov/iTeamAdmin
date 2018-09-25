@@ -33,11 +33,6 @@ class FileController extends Controller
             case 'element':
                 $upload = $this->storeElementFile($request, $request->file('file'));
                 break;
-            case 'review':
-                return response()->json([
-                    'id' => 'test_id'
-                ]);
-                break;
         }
         return response()->json([
             'id' => $upload->id

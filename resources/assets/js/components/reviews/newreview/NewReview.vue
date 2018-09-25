@@ -15,7 +15,7 @@
                 <div class="form-group">
                   <file-uploader
                       v-model="reviewAvatar" 
-                      parent-resource-type="review"
+                      parent-resource-type="element"
                       max-filesize=1
                       maxFiles="1">
                     </file-uploader>

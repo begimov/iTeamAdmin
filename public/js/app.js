@@ -68647,7 +68647,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "form-group"
   }, [_c('file-uploader', {
     attrs: {
-      "parent-resource-type": "review",
+      "parent-resource-type": "element",
       "max-filesize": "1",
       "maxFiles": "1"
     },
