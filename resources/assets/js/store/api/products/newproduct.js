@@ -21,6 +21,7 @@ export default {
       price: data.price,
       category_id: data.category ? data.category.id : null,
       materials: data.materials,
+      tests: data.tests,
       priceTags: data.priceTags
     }
   },

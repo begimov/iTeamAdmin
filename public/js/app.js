@@ -44063,6 +44063,7 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
       price: data.price,
       category_id: data.category ? data.category.id : null,
       materials: data.materials,
+      tests: data.tests,
       priceTags: data.priceTags
     };
   },
