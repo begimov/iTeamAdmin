@@ -10,6 +10,19 @@
 
           <div class="panel-body">
             <div class="row">
+              <div class="col-md-12">
+                <label>Аватар:</label>
+                <div class="form-group">
+                  <file-uploader
+                      v-model="avatar" 
+                      parent-resource-type="review"
+                      max-filesize=1
+                      maxFiles="1">
+                    </file-uploader>
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Автор</label>
