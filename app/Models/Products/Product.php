@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Filters\Products\ProductFilters;
+use App\Models\Tests\Test;
 
 class Product extends Model
 {
@@ -40,6 +41,11 @@ class Product extends Model
     public function materials()
     {
         return $this->belongsToMany(Material::class, 'products_materials');
+    }
+
+    public function tests()
+    {
+        return $this->belongsToMany(Test::class, 'products_tests');
     }
 
     public function scopeFilter($builder, $repository, $request, array $filters = [])
