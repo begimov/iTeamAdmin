@@ -163,7 +163,7 @@ class ProductController extends Controller
 
         return fractal()
             ->item($product)
-            ->parseIncludes(['category', 'priceTags', 'materials'])
+            ->parseIncludes(['category', 'priceTags', 'materials', 'tests'])
             ->transformWith(new ProductTransformer)
             ->toArray();
     }

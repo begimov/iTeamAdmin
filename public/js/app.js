@@ -44204,6 +44204,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             price = payload.price,
             category = payload.category,
             materials = payload.materials,
+            tests = payload.tests,
             priceTags = payload.priceTags;
 
 
@@ -44212,6 +44213,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             price: price,
             category: category.data,
             materials: materials.data,
+            tests: tests.data,
             priceTags: priceTags.data
         };
     },

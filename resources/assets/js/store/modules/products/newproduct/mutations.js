@@ -74,13 +74,14 @@ export default {
         })
     },
     setProductToEdit(state, payload) {
-        const {name, price, category, materials, priceTags} = payload
+        const {name, price, category, materials, tests, priceTags} = payload
 
         state.params = {
             name,
             price,
             category: category.data,
             materials: materials.data,
+            tests: tests.data,
             priceTags: priceTags.data
         }
     },
