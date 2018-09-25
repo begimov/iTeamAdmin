@@ -27,6 +27,8 @@ use App\Transformers\Products\{
     MaterialTransformer
 };
 
+use App\Transformers\Tests\TestTransformer;
+
 class ProductController extends Controller
 {
     protected $products;
@@ -118,10 +120,12 @@ class ProductController extends Controller
     {
         $categories = fractal($this->categories->get(), new CategoryTransformer)->toArray();
         $materials = fractal($this->materials->get(), new MaterialTransformer)->toArray();
+        $tests = fractal($this->tests->get(), new TestTransformer)->toArray();
 
         return response()->json([
             'categories' => $categories,
             'materials' => $materials,
+            'tests' => $tests,
         ]);
     }
 
