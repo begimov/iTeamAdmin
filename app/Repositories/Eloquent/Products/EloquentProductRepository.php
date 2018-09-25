@@ -35,6 +35,8 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
 
         $this->updateMaterialRelations($request->materials, $product);
 
+        $this->updateTestRelations($request->tests, $product);
+
         $this->updatePriceTags($request->priceTags, $product);
     }
 
@@ -66,6 +68,13 @@ class EloquentProductRepository extends EloquentRepositoryAbstract implements Pr
         $product->materials()->detach();
 
         $this->storeMaterialRelations($materials, $product);
+    }
+    
+    protected function updateTestRelations(array $tests, Product $product)
+    {
+        $product->tests()->detach();
+
+        $this->storeTestRelations($tests, $product);
     }
 
     protected function updatePriceTags(array $priceTags, Product $product)
