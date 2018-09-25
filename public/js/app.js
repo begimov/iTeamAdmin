@@ -43816,10 +43816,15 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
 
     commit('removeMaterial', id);
   },
-  updateProduct: function updateProduct(_ref16, id) {
-    var commit = _ref16.commit,
-        dispatch = _ref16.dispatch,
-        state = _ref16.state;
+  removeTest: function removeTest(_ref16, id) {
+    var commit = _ref16.commit;
+
+    commit('removeTest', id);
+  },
+  updateProduct: function updateProduct(_ref17, id) {
+    var commit = _ref17.commit,
+        dispatch = _ref17.dispatch,
+        state = _ref17.state;
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.updateProduct(state.params, id).then(function (res) {
@@ -44211,6 +44216,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     removeMaterial: function removeMaterial(state, id) {
         state.params.materials.splice(_.findIndex(state.params.materials, ['id', id]), 1);
+    },
+    removeTest: function removeTest(state, id) {
+        state.params.tests.splice(_.findIndex(state.params.tests, ['id', id]), 1);
     }
 });
 
@@ -65325,7 +65333,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateTestParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit', 'removeMaterial', 'updateProduct']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products/newproduct', ['getInitialData', 'updateMaterialParams', 'updateTestParams', 'updateCategoryParams', 'updateName', 'updateBasePrice', 'updatePriceTagPrice', 'updatePriceTagName', 'switchNewMaterial', 'addPriceTag', 'removePriceTag', 'saveProduct', 'resetState', 'setProductToEdit', 'removeMaterial', 'removeTest', 'updateProduct']), {
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewProduct');
@@ -65535,7 +65543,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
-  }, [_c('label', [_vm._v("Тесты")]), _vm._v(" "), _c('multiselect', {
+  }, [_c('label', [_vm._v("Тесты")]), _vm._v(" "), _vm._l((_vm.testParams), function(testParam) {
+    return _c('p', {
+      key: testParam.id
+    }, [_c('span', {
+      staticClass: "custom__tag"
+    }, [_c('span', [_vm._v(_vm._s(testParam.name))]), _vm._v(" "), _c('span', {
+      staticClass: "custom__remove",
+      on: {
+        "click": function($event) {
+          $event.preventDefault();
+          _vm.removeTest(testParam.id)
+        }
+      }
+    }, [_c('span', {
+      staticClass: "glyphicon glyphicon-remove",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    })])])])
+  }), _vm._v(" "), _c('multiselect', {
     attrs: {
       "value": _vm.testParams,
       "options": _vm.testOptions,
@@ -65556,7 +65583,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     slot: "noResult"
   }, [_vm._v("Тест не найден")])]), _vm._v(" "), (_vm.errors.tests) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors.tests[0]))]) : _vm._e()], 1)])]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors.tests[0]))]) : _vm._e()], 2)])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-12"

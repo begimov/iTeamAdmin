@@ -86,5 +86,8 @@ export default {
     },
     removeMaterial(state, id) {
         state.params.materials.splice(_.findIndex(state.params.materials, ['id', id]), 1)
+    },
+    removeTest(state, id) {
+        state.params.tests.splice(_.findIndex(state.params.tests, ['id', id]), 1)
     }
 }

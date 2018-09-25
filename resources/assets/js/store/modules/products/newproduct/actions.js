@@ -64,6 +64,9 @@ export default {
   removeMaterial ({ commit }, id) {
     commit('removeMaterial', id)
   },
+  removeTest ({ commit }, id) {
+    commit('removeTest', id)
+  },
   updateProduct ({ commit, dispatch, state }, id) {
     commit('setIsLoading', true)
     api.newproduct.updateProduct(state.params, id).then(res => {

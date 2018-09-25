@@ -84,14 +84,14 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Тесты</label>
-                    <!-- <p v-for="materialParam in materialParams" :key="materialParam.id">
+                    <p v-for="testParam in testParams" :key="testParam.id">
                       <span class="custom__tag">
-                        <span>{{ materialParam.name }}</span>
-                        <span class="custom__remove" @click.prevent="removeMaterial(materialParam.id)">
+                        <span>{{ testParam.name }}</span>
+                        <span class="custom__remove" @click.prevent="removeTest(testParam.id)">
                           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                         </span>
                       </span>
-                    </p> -->
+                    </p>
                     <multiselect :value="testParams"
                     :options="testOptions"
                     v-on:input="updateTestParams"

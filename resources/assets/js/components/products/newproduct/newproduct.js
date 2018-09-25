@@ -26,6 +26,7 @@ export default {
           'resetState',
           'setProductToEdit',
           'removeMaterial',
+          'removeTest',
           'updateProduct'
       ]),
       cancel () {
