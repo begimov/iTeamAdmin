@@ -20,7 +20,9 @@ class EloquentReviewRepository extends EloquentRepositoryAbstract implements Rev
 
         $file = File::find($request->avatar);
 
-        $review->files()->save($file);
+        if ($file) {
+            $review->files()->save($file);
+        }
     }
 
     protected function getEntityFields()
