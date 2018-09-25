@@ -14,6 +14,8 @@ use App\Repositories\Contracts\Products\{
     MaterialRepository
 };
 
+use App\Repositories\Contracts\Tests\TestRepository;
+
 use App\Repositories\Eloquent\Criteria\{
     With,
     Where
@@ -28,8 +30,13 @@ use App\Transformers\Products\{
 class ProductController extends Controller
 {
     protected $products;
+
     protected $categories;
+
     protected $materials;
+
+    protected $tests;
+
     /**
      * Create a new controller instance.
      *
@@ -37,11 +44,16 @@ class ProductController extends Controller
      */
     public function __construct(ProductRepository $products,
         CategoryRepository $categories,
-        MaterialRepository $materials)
+        MaterialRepository $materials,
+        TestRepository $tests)
     {
         $this->products = $products;
+
         $this->categories = $categories;
+
         $this->materials = $materials;
+
+        $this->tests = $tests;
     }
 
     /**
