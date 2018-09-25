@@ -11,6 +11,9 @@ export default {
   quote (state) {
     return state.review.quote
   },
+  avatar (state) {
+    return state.review.avatar
+  },
   // errors (state) {
   //   return state.errors
   // },

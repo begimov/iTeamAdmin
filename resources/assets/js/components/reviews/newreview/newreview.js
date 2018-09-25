@@ -8,6 +8,7 @@ export default {
           'author',
           'position',
           'quote',
+          'avatar',
           // 'errors'
       ]),
       'reviewAuthor': {
@@ -33,6 +34,14 @@ export default {
         set (value) {
           this.updateQuote(value)
         }
+      },
+      'reviewAvatar': {
+        get () {
+          return this.avatar
+        },
+        set (value) {
+          this.updateAvatar(value)
+        }
       }
   },
   methods: {
@@ -40,6 +49,7 @@ export default {
           'updateAuthor',
           'updatePosition',
           'updateQuote',
+          'updateAvatar',
           'save',
           'resetState',
       //     'setPageToEdit',

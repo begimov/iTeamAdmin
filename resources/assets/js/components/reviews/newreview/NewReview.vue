@@ -14,7 +14,7 @@
                 <label>Аватар:</label>
                 <div class="form-group">
                   <file-uploader
-                      v-model="avatar" 
+                      v-model="reviewAvatar" 
                       parent-resource-type="review"
                       max-filesize=1
                       maxFiles="1">

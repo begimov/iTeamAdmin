@@ -20,6 +20,9 @@ export default {
   updateQuote ({ commit }, quote) {
     commit('updateQuote', quote)
   },
+  updateAvatar ({ commit }, quote) {
+    commit('updateAvatar', quote)
+  },
   save ({ commit, state }) {
     commit('setIsLoading', true)
     api.newreview.saveReview(state.review).then(res => {

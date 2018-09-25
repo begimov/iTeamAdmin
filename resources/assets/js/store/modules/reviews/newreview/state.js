@@ -4,6 +4,7 @@ export default {
     author: '',
     position: '',
     quote: '',
+    avatar: '',
   },
   // errors: {}
 }

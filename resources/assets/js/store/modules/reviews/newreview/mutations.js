@@ -14,6 +14,9 @@ export default {
     updateQuote(state, quote) {
         state.review.quote = quote
     },
+    updateAvatar(state, avatar) {
+        state.review.avatar = avatar
+    },
     resetState(state) {
         const initialState = {
             // isLoading: false,
@@ -21,6 +24,7 @@ export default {
                 author: '',
                 position: '',
                 quote: '',
+                avatar: '',
             },
             // errors: {}
         }

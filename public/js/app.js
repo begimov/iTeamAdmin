@@ -45558,7 +45558,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   review: {
     author: '',
     position: '',
-    quote: ''
+    quote: '',
+    avatar: ''
   }
   // errors: {}
 });
@@ -45580,6 +45581,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   quote: function quote(state) {
     return state.review.quote;
+  },
+  avatar: function avatar(state) {
+    return state.review.avatar;
   }
 });
 
@@ -45617,9 +45621,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('updateQuote', quote);
   },
-  save: function save(_ref4) {
-    var commit = _ref4.commit,
-        state = _ref4.state;
+  updateAvatar: function updateAvatar(_ref4, quote) {
+    var commit = _ref4.commit;
+
+    commit('updateAvatar', quote);
+  },
+  save: function save(_ref5) {
+    var commit = _ref5.commit,
+        state = _ref5.state;
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newreview.saveReview(state.review).then(function (res) {
@@ -45631,8 +45640,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       // commit('setIsLoading', false)
     });
   },
-  resetState: function resetState(_ref5) {
-    var commit = _ref5.commit;
+  resetState: function resetState(_ref6) {
+    var commit = _ref6.commit;
 
     commit('resetState');
   }
@@ -45660,13 +45669,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     updateQuote: function updateQuote(state, quote) {
         state.review.quote = quote;
     },
+    updateAvatar: function updateAvatar(state, avatar) {
+        state.review.avatar = avatar;
+    },
     resetState: function resetState(state) {
         var initialState = {
             // isLoading: false,
             review: {
                 author: '',
                 position: '',
-                quote: ''
+                quote: '',
+                avatar: ''
             }
             // errors: {}
         };
@@ -68553,7 +68566,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['editedReviewId'],
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['isLoading', 'author', 'position', 'quote']
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews/newreview', ['isLoading', 'author', 'position', 'quote', 'avatar']
   // 'errors'
   ), {
     'reviewAuthor': {
@@ -68579,9 +68592,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       set: function set(value) {
         this.updateQuote(value);
       }
+    },
+    'reviewAvatar': {
+      get: function get() {
+        return this.avatar;
+      },
+      set: function set(value) {
+        this.updateAvatar(value);
+      }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews/newreview', ['updateAuthor', 'updatePosition', 'updateQuote', 'save', 'resetState']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews/newreview', ['updateAuthor', 'updatePosition', 'updateQuote', 'updateAvatar', 'save', 'resetState']
   //     'setPageToEdit',
   //     'update'
   ), {
@@ -68631,11 +68652,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "maxFiles": "1"
     },
     model: {
-      value: (_vm.avatar),
+      value: (_vm.reviewAvatar),
       callback: function($$v) {
-        _vm.avatar = $$v
+        _vm.reviewAvatar = $$v
       },
-      expression: "avatar"
+      expression: "reviewAvatar"
     }
   })], 1)])]), _vm._v(" "), _c('div', {
     staticClass: "row"
