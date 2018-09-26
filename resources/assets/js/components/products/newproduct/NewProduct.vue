@@ -81,6 +81,36 @@
                 </div>
               </div>
               <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Тесты</label>
+                    <p v-for="testParam in testParams" :key="testParam.id">
+                      <span class="custom__tag">
+                        <span>{{ testParam.name }}</span>
+                        <span class="custom__remove" @click.prevent="removeTest(testParam.id)">
+                          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </span>
+                      </span>
+                    </p>
+                    <multiselect :value="testParams"
+                    :options="testOptions"
+                    v-on:input="updateTestParams"
+                    :multiple="true"
+                    :hide-selected="true"
+                    :close-on-select="false"
+                    select-label=""
+                    selected-label="Выбран"
+                    deselect-label=""
+                    placeholder="Выберите тест"
+                    label="name"
+                    track-by="id">
+                      <span slot="noResult">Тест не найден</span>
+                    </multiselect>
+                    <span class="help-block alert-danger" v-if="errors.tests">{{ errors.tests[0] }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-md-12">
                   <ul class="list-inline" v-if="priceTags.length">
                     <li v-for="(priceTag, index) in priceTags" :key="index">

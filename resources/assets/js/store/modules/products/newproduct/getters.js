@@ -5,6 +5,12 @@ export default {
   materialParams (state) {
     return state.params.materials
   },
+  testOptions (state) {
+    return state.options.tests
+  },
+  testParams (state) {
+    return state.params.tests
+  },
   categoryOptions (state) {
     return state.options.categories
   },

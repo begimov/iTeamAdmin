@@ -5,11 +5,17 @@ export default {
     setMaterials(state, value) {
         state.options.materials = value
     },
+    setTests(state, value) {
+        state.options.tests = value
+    },
     setErrors(state, errors) {
         state.errors = errors
     },
     updateMaterialParams(state, value) {
         state.params.materials = value
+    },
+    updateTestParams(state, value) {
+        state.params.tests = value
     },
     updateCategoryParams(state, value) {
         state.params.category = value
@@ -48,12 +54,14 @@ export default {
             options: {
                 materials: [],
                 categories: [],
+                tests: [],
                 priceTag: { price: null, name: null }
             },
             params: {
                 category: null,
                 name: null,
                 materials: [],
+                tests: [],
                 price: null,
                 priceTags: [],
             },
@@ -66,17 +74,21 @@ export default {
         })
     },
     setProductToEdit(state, payload) {
-        const {name, price, category, materials, priceTags} = payload
+        const {name, price, category, materials, tests, priceTags} = payload
 
         state.params = {
             name,
             price,
             category: category.data,
             materials: materials.data,
+            tests: tests.data,
             priceTags: priceTags.data
         }
     },
     removeMaterial(state, id) {
         state.params.materials.splice(_.findIndex(state.params.materials, ['id', id]), 1)
+    },
+    removeTest(state, id) {
+        state.params.tests.splice(_.findIndex(state.params.tests, ['id', id]), 1)
     }
 }

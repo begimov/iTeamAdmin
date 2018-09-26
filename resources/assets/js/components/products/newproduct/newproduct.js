@@ -13,6 +13,7 @@ export default {
       ...mapActions('products/newproduct', [
           'getInitialData',
           'updateMaterialParams',
+          'updateTestParams',
           'updateCategoryParams',
           'updateName',
           'updateBasePrice',
@@ -25,6 +26,7 @@ export default {
           'resetState',
           'setProductToEdit',
           'removeMaterial',
+          'removeTest',
           'updateProduct'
       ]),
       cancel () {
@@ -36,6 +38,8 @@ export default {
       ...mapGetters('products/newproduct', [
           'materialOptions',
           'materialParams',
+          'testOptions',
+          'testParams',
           'categoryOptions',
           'categoryParams',
           'getName',

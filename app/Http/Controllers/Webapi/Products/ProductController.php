@@ -14,6 +14,8 @@ use App\Repositories\Contracts\Products\{
     MaterialRepository
 };
 
+use App\Repositories\Contracts\Tests\TestRepository;
+
 use App\Repositories\Eloquent\Criteria\{
     With,
     Where
@@ -25,11 +27,18 @@ use App\Transformers\Products\{
     MaterialTransformer
 };
 
+use App\Transformers\Tests\TestTransformer;
+
 class ProductController extends Controller
 {
     protected $products;
+
     protected $categories;
+
     protected $materials;
+
+    protected $tests;
+
     /**
      * Create a new controller instance.
      *
@@ -37,11 +46,16 @@ class ProductController extends Controller
      */
     public function __construct(ProductRepository $products,
         CategoryRepository $categories,
-        MaterialRepository $materials)
+        MaterialRepository $materials,
+        TestRepository $tests)
     {
         $this->products = $products;
+
         $this->categories = $categories;
+
         $this->materials = $materials;
+
+        $this->tests = $tests;
     }
 
     /**
@@ -106,10 +120,12 @@ class ProductController extends Controller
     {
         $categories = fractal($this->categories->get(), new CategoryTransformer)->toArray();
         $materials = fractal($this->materials->get(), new MaterialTransformer)->toArray();
+        $tests = fractal($this->tests->get(), new TestTransformer)->toArray();
 
         return response()->json([
             'categories' => $categories,
             'materials' => $materials,
+            'tests' => $tests,
         ]);
     }
 
@@ -147,7 +163,7 @@ class ProductController extends Controller
 
         return fractal()
             ->item($product)
-            ->parseIncludes(['category', 'priceTags', 'materials'])
+            ->parseIncludes(['category', 'priceTags', 'materials', 'tests'])
             ->transformWith(new ProductTransformer)
             ->toArray();
     }

@@ -6,11 +6,15 @@ export default {
     api.newproduct.getInitialData().then(res => {
       commit('setCategories', res.data.categories.data)
       commit('setMaterials', res.data.materials.data)
+      commit('setTests', res.data.tests.data)
       commit('setIsLoading', false)
     })
   },
   updateMaterialParams ({ commit }, value) {
     commit('updateMaterialParams', value)
+  },
+  updateTestParams ({ commit }, value) {
+    commit('updateTestParams', value)
   },
   updateCategoryParams ({ commit }, value) {
     commit('updateCategoryParams', value)
@@ -59,6 +63,9 @@ export default {
   },
   removeMaterial ({ commit }, id) {
     commit('removeMaterial', id)
+  },
+  removeTest ({ commit }, id) {
+    commit('removeTest', id)
   },
   updateProduct ({ commit, dispatch, state }, id) {
     commit('setIsLoading', true)
