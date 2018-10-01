@@ -13,6 +13,7 @@ export default {
           'isLoading',
           'questions',
           'conditions',
+          'certificate',
           'totalScore',
       //     'errors'
       ]),
@@ -31,6 +32,14 @@ export default {
         set (value) {
           this.updateTestDesc(value)
         }
+      },
+      'testCertificate': {
+        get () {
+          return this.certificate
+        },
+        set (value) {
+          this.updateCertificate(value)
+        }
       }
   },
   methods: {
@@ -38,6 +47,7 @@ export default {
           'getInitialData',
           'updateTestName',
           'updateTestDesc',
+          'updateCertificate',
           'updateTypeParams',
           'save',
           'resetState',

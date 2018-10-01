@@ -20,6 +20,9 @@ export default {
   updateTestDesc ({ commit }, desc) {
     commit('updateTestDesc', desc)
   },
+  updateCertificate ({ commit }, cert) {
+    commit('updateCertificate', cert)
+  },
   save ({ commit, state }) {
     commit('setIsLoading', true)
     api.newtest.saveTest(state.test).then(res => {

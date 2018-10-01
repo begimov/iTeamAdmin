@@ -9,6 +9,7 @@ export default {
     desc: '',
     questions: [],
     conditions: [],
+    certificate: null,
   },
   // errors: {}
 }

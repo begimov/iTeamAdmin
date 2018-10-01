@@ -12,9 +12,13 @@ class CertificationTest extends TestAbstract
 
         $conditions = $request->conditions;
 
+        $certificate = $request->certificate;
+
         $this->storeTestQuestions($questions, $test);
 
         $this->storeTestConditions($conditions, $test);
+
+        $this->storeTestCertificate($certificate, $test);
     }
     
     protected function getBaseFields()

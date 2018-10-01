@@ -6,6 +6,7 @@ use App\Models\Tests\{
     Test,
     TestQuestion,
     TestCondition,
+    TestCertificate,
     TestAnswer
 };
 
@@ -63,6 +64,17 @@ abstract class TestAbstract
 
             $newCondition->save();
         }
+    }
+
+    protected function storeTestCertificate($certificate, $test)
+    {
+        $newCertificate = new TestCertificate();
+
+        $newCertificate->score = $certificate['score'];
+
+        $newCertificate->test()->associate($test);
+
+        $newCertificate->save();
     }
 
     public function storeQuestionAnswers($answers, $question)
