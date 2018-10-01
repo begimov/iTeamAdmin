@@ -67,6 +67,7 @@ Vue.component('new-test', require('./components/tests/newtest/NewTest.vue'));
 Vue.component('question', require('./components/tests/newtest/Question.vue'));
 Vue.component('answer', require('./components/tests/newtest/Answer.vue'));
 Vue.component('condition', require('./components/tests/newtest/Condition.vue'));
+Vue.component('test-certificate', require('./components/tests/newtest/Certificate.vue'));
 
 // Reviews
 Vue.component('client-reviews', require('./components/reviews/Reviews.vue'));

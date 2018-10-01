@@ -61,6 +61,10 @@
                     <a href="#" class="btn btn-default" @click.prevent="addCondition">Добавить условие</a>
                 </div>
             </div>
+            <hr>
+            <div class="row">
+              <test-certificate v-model="certificate" />
+            </div>
           </div>
 
           <div class="panel-footer">

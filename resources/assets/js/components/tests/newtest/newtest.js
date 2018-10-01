@@ -13,6 +13,7 @@ export default {
           'isLoading',
           'questions',
           'conditions',
+          'certificate',
           'totalScore',
       //     'errors'
       ]),
