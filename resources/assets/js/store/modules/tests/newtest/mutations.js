@@ -17,6 +17,9 @@ export default {
     updateTestDesc(state, desc) {
         state.test.desc = desc
     },
+    updateCertificate(state, cert) {
+        state.test.certificate = cert
+    },
     resetState(state) {
         const initialState = {
             isLoading: false,

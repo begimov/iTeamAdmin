@@ -45261,7 +45261,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     name: '',
     desc: '',
     questions: [],
-    conditions: []
+    conditions: [],
+    certificate: null
   }
   // errors: {}
 });
@@ -45292,6 +45293,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   conditions: function conditions(state) {
     return state.test.conditions;
+  },
+  certificate: function certificate(state) {
+    return state.test.certificate;
   },
   totalScore: function totalScore(state) {
     var result = _.sum(_.flatten(_.map(state.test.questions, function (q) {
@@ -45343,9 +45347,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('updateTestDesc', desc);
   },
-  save: function save(_ref5) {
-    var commit = _ref5.commit,
-        state = _ref5.state;
+  updateCertificate: function updateCertificate(_ref5, cert) {
+    var commit = _ref5.commit;
+
+    commit('updateCertificate', cert);
+  },
+  save: function save(_ref6) {
+    var commit = _ref6.commit,
+        state = _ref6.state;
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newtest.saveTest(state.test).then(function (res) {
@@ -45357,23 +45366,23 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       // commit('setIsLoading', false)
     });
   },
-  resetState: function resetState(_ref6) {
-    var commit = _ref6.commit;
+  resetState: function resetState(_ref7) {
+    var commit = _ref7.commit;
 
     commit('resetState');
   },
-  addQuestion: function addQuestion(_ref7) {
-    var commit = _ref7.commit;
+  addQuestion: function addQuestion(_ref8) {
+    var commit = _ref8.commit;
 
     commit('addQuestion');
   },
-  addCondition: function addCondition(_ref8) {
-    var commit = _ref8.commit;
+  addCondition: function addCondition(_ref9) {
+    var commit = _ref9.commit;
 
     commit('addCondition');
   },
-  removeQuestion: function removeQuestion(_ref9, index) {
-    var commit = _ref9.commit;
+  removeQuestion: function removeQuestion(_ref10, index) {
+    var commit = _ref10.commit;
 
     commit('removeQuestion');
   }
@@ -45403,6 +45412,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     updateTestDesc: function updateTestDesc(state, desc) {
         state.test.desc = desc;
+    },
+    updateCertificate: function updateCertificate(state, cert) {
+        state.test.certificate = cert;
     },
     resetState: function resetState(state) {
         var initialState = {
@@ -67575,9 +67587,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       set: function set(value) {
         this.updateTestDesc(value);
       }
+    },
+    'testCertificate': {
+      get: function get() {
+        return this.certificate;
+      },
+      set: function set(value) {
+        this.updateCertificate(value);
+      }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc', 'updateTypeParams', 'save', 'resetState', 'addQuestion', 'addCondition', 'removeQuestion']
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('tests/newtest', ['getInitialData', 'updateTestName', 'updateTestDesc', 'updateCertificate', 'updateTypeParams', 'save', 'resetState', 'addQuestion', 'addCondition', 'removeQuestion']
   //     'setPageToEdit',
   //     'update'
   ), {
@@ -67759,11 +67779,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row"
   }, [_c('test-certificate', {
     model: {
-      value: (_vm.certificate),
+      value: (_vm.testCertificate),
       callback: function($$v) {
-        _vm.certificate = $$v
+        _vm.testCertificate = $$v
       },
-      expression: "certificate"
+      expression: "testCertificate"
     }
   })], 1)], 2), _vm._v(" "), _c('div', {
     staticClass: "panel-footer"
@@ -69895,8 +69915,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
@@ -69906,13 +69924,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "form-group"
   }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.certificate.score),
+      expression: "certificate.score"
+    }],
     staticClass: "form-control",
     attrs: {
       "type": "text",
       "placeholder": "После скольки очков выдается сертификат"
+    },
+    domProps: {
+      "value": (_vm.certificate.score)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.certificate.score = $event.target.value
+      }
     }
   })])])])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

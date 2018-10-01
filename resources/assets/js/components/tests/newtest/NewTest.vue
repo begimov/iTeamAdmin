@@ -63,7 +63,7 @@
             </div>
             <hr>
             <div class="row">
-              <test-certificate v-model="certificate" />
+              <test-certificate v-model="testCertificate" />
             </div>
           </div>
 

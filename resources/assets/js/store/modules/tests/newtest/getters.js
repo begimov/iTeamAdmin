@@ -20,6 +20,9 @@ export default {
   conditions (state) {
     return state.test.conditions
   },
+  certificate (state) {
+    return state.test.certificate
+  },
   totalScore (state) {
     const result = _.sum(_.flatten(_.map(state.test.questions, (q) => {
       return _.map(q.answers, (a) => {
