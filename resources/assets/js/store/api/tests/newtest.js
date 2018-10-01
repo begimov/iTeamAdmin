@@ -21,7 +21,8 @@ export default {
       description: test.desc,
       test_type_id: test.type ? test.type.id : null,
       questions: test.questions,
-      conditions: test.conditions
+      conditions: test.conditions,
+      certificate: test.certificate
     }
   },
   // getPage(id) {

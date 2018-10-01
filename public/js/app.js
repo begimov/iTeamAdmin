@@ -43965,7 +43965,8 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
       description: test.desc,
       test_type_id: test.type ? test.type.id : null,
       questions: test.questions,
-      conditions: test.conditions
+      conditions: test.conditions,
+      certificate: test.certificate
     };
   }
 });
