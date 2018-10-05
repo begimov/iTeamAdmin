@@ -13,6 +13,7 @@ use App\Repositories\Contracts\Tests\{
     TestTypeRepository
 };
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+use App\Http\Requests\Webapi\Tests\StoreTestRequest;
 
 class TestController extends Controller
 {
@@ -76,7 +77,7 @@ class TestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTestRequest $request)
     {
         return $this->tests->store($request);
     }
