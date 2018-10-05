@@ -9,7 +9,7 @@ export default {
           'position',
           'quote',
           'avatar',
-          // 'errors'
+          'errors'
       ]),
       'reviewAuthor': {
         get () {

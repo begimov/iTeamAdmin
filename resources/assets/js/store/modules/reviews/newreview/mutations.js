@@ -2,9 +2,9 @@ export default {
     setIsLoading(state, value) {
         state.isLoading = value
     },
-    // setErrors(state, errors) {
-    //     state.errors = errors
-    // },
+    setErrors(state, errors) {
+        state.errors = errors
+    },
     updateAuthor(state, author) {
         state.review.author = author
     },
@@ -19,14 +19,14 @@ export default {
     },
     resetState(state) {
         const initialState = {
-            // isLoading: false,
+            isLoading: false,
             review: {
                 author: '',
                 position: '',
                 quote: '',
                 avatar: '',
             },
-            // errors: {}
+            errors: {}
         }
         Object.keys(initialState).forEach(key => {
             state[key] = initialState[key]
