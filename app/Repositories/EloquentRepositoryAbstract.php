@@ -25,6 +25,12 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface, Criter
         return $this->entity->paginate($by);
     }
 
+    public function latest()
+    {
+        $this->entity = $this->entity->latest();
+        return $this;
+    }
+
     public function highestIdsFirst()
     {
         $this->entity = $this->entity->orderBy('id', 'desc');

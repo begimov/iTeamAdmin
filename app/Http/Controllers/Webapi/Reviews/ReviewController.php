@@ -20,6 +20,7 @@ class ReviewController extends Controller
     public function index(Request $request)
     {
         $reviews = $this->reviews
+            ->latest()
             ->filter($request)
             ->paginate(20);
 

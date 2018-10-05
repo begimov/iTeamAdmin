@@ -43,6 +43,7 @@ class TestController extends Controller
     public function index(Request $request)
     {
         $tests = $this->tests
+            ->latest()
             ->filter($request)
             ->paginate(20);
 
