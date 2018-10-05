@@ -31,7 +31,7 @@ class StoreReviewRequest extends FormRequest
     public function messages()
     {
         return [
-            'quote.required' => trans('validation.store-test-request.quote.required'),
+            'quote.required' => trans('validation.store-review-request.quote.required'),
         ];
     }
 }

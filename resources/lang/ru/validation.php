@@ -166,9 +166,17 @@ return [
             'unique' => 'Название страницы должно быть уникальным'
         ],
     ],
-    'store-test-request' => [
+    'store-review-request' => [
         'quote' => [
             'required' => 'Введите текст отзыва'
+        ],
+    ],
+    'store-test-request' => [
+        'name' => [
+            'required' => 'Введите название теста'
+        ],
+        'test_type_id' => [
+            'required' => 'Необходимо выбрать тип теста'
         ],
     ],
 

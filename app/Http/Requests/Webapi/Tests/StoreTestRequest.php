@@ -28,4 +28,12 @@ class StoreTestRequest extends FormRequest
             'test_type_id' => 'required|exists:test_types,id',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => trans('validation.store-test-request.name.required'),
+            'test_type_id.required' => trans('validation.store-test-request.test_type_id.required'),
+        ];
+    }
 }
