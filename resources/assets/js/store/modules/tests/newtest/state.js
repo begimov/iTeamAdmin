@@ -11,5 +11,5 @@ export default {
     conditions: [],
     certificate: null,
   },
-  // errors: {}
+  errors: {}
 }

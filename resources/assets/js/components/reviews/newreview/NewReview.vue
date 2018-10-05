@@ -27,14 +27,12 @@
                 <div class="form-group">
                   <label>Автор</label>
                   <input type="text" class="form-control" placeholder="Введите автора отзыва..." v-model="reviewAuthor">
-                  <!-- <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span> -->
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Должность</label>
                   <input type="text" class="form-control" placeholder="Введите должность и компанию автора..." v-model="authorPosition">
-                  <!-- <span class="help-block alert-danger" v-if="errors.description">{{ errors.description[0] }}</span> -->
                 </div>
               </div>
             </div>
@@ -43,7 +41,7 @@
                 <div class="form-group">
                   <label>Отзыв</label>
                   <textarea class="form-control" placeholder="Введите текст отзыва..." v-model="reviewQuote" cols="30" rows="4"></textarea>
-                  <!-- <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span> -->
+                  <span class="help-block alert-danger" v-if="errors.quote">{{ errors.quote[0] }}</span>
                 </div>
               </div>
             </div>

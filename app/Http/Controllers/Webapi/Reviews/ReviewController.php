@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Transformers\Reviews\ReviewTransformer;
 use App\Repositories\Contracts\Reviews\ReviewRepository;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+use App\Http\Requests\Webapi\Reviews\StoreReviewRequest;
 
 class ReviewController extends Controller
 {
@@ -20,6 +21,7 @@ class ReviewController extends Controller
     public function index(Request $request)
     {
         $reviews = $this->reviews
+            ->latest()
             ->filter($request)
             ->paginate(20);
 
@@ -32,7 +34,7 @@ class ReviewController extends Controller
             ->toArray();
     }
 
-    public function store(Request $request)
+    public function store(StoreReviewRequest $request)
     {
         $this->reviews->store($request);
     }

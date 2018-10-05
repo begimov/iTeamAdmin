@@ -14,7 +14,7 @@ export default {
   avatar (state) {
     return state.review.avatar
   },
-  // errors (state) {
-  //   return state.errors
-  // },
+  errors (state) {
+    return state.errors
+  },
 }

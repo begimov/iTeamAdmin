@@ -6,5 +6,5 @@ export default {
     quote: '',
     avatar: '',
   },
-  // errors: {}
+  errors: {}
 }

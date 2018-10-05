@@ -30,8 +30,8 @@ export default {
       })
     })))
     return !result ? 'не для всех ответов введены кол-во очков' : result
-  }
-  // errors (state) {
-  //   return state.errors
-  // },
+  },
+  errors (state) {
+    return state.errors
+  },
 }
