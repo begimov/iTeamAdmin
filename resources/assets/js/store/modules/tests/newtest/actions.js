@@ -30,8 +30,8 @@ export default {
       commit('setIsLoading', false)
       commit('tests/setCurrentModule', 'tests', { root: true })
     }).catch(err => {
-      // commit('setErrors', err.response.data)
-      // commit('setIsLoading', false)
+      commit('setErrors', err.response.data)
+      commit('setIsLoading', false)
     })
   },
   resetState ({ commit }) {

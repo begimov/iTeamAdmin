@@ -5,9 +5,9 @@ export default {
     setTypesOptions(state, payload) {
         state.options.types = payload
     },
-    // setErrors(state, errors) {
-    //     state.errors = errors
-    // },
+    setErrors(state, errors) {
+        state.errors = errors
+    },
     updateTypeParams(state, value) {
         state.test.type = value
     },

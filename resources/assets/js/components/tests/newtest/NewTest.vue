@@ -21,17 +21,16 @@
                     track-by="id">
                     <span slot="noResult">Тип не найден</span>
                   </multiselect>
-                  <!-- <span class="help-block alert-danger" v-if="errors.type_id">{{ errors.type_id[0] }}</span> -->
+                  <span class="help-block alert-danger" v-if="errors.test_type_id">{{ errors.test_type_id[0] }}</span>
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Введите название теста..." v-model="testName">
-                  <!-- <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span> -->
+                  <span class="help-block alert-danger" v-if="errors.name">{{ errors.name[0] }}</span>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <textarea class="form-control" placeholder="Введите описание теста..." v-model="testDesc" cols="30" rows="4"></textarea>
-                  <!-- <span class="help-block alert-danger" v-if="errors.description">{{ errors.description[0] }}</span> -->
                 </div>
               </div>
             </div>

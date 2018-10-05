@@ -15,7 +15,7 @@ export default {
           'conditions',
           'certificate',
           'totalScore',
-      //     'errors'
+          'errors'
       ]),
       'testName': {
         get () {
