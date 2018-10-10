@@ -49,7 +49,7 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'videoreviews',
                 'data' => '{"video1":{"author":"","id":""},"video2":{"author":"","id":""},"video3":{"author":"","id":""},"video4":{"author":"","id":""}}',
                 'name' => '4 видеоотзыва',
-                'description' => 'На каждой странице уже есть по-умолчанию'
+                'description' => 'На каждой странице есть по-умолчанию'
             ],
             [
                 'view' => 'title',
@@ -71,13 +71,13 @@ class BlocksTableSeeder extends Seeder
                 'view' => 'fbcomments',
                 'data' => '{}',
                 'name' => 'Facebook комментарии',
-                'description' => 'На каждой странице уже есть по-умолчанию'
+                'description' => 'На каждой странице есть по-умолчанию'
             ],
             [
                 'view' => 'freeproduct',
                 'data' => '{"form":""}',
                 'name' => 'GR форма доступа',
-                'description' => 'Для доступа к бесплатному продукту'
+                'description' => 'Для доступа к материалам бесплатного продукта'
             ],
             [
                 'view' => 'mppurchase',
