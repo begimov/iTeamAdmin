@@ -11,9 +11,10 @@ class BlockTransformer extends \League\Fractal\TransformerAbstract
         return [
             'id' => $block->id,
             'tag' => 'block-' . $block->view,
-            'name' => $block->view,
+            'name' => $block->name,
             'template' => view('pages.page.blocks.' . $block->view)->render(),
-            'data' => $block->data
+            'data' => $block->data,
+            'description' => $block->description
         ];
     }
 }
