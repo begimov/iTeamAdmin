@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNameAndDescriptionToBlocksTable extends Migration
+class AddTokenToMaterialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddNameAndDescriptionToBlocksTable extends Migration
      */
     public function up()
     {
-        Schema::table('blocks', function (Blueprint $table) {
-            $table->string('name')->nullable();
-            $table->string('description')->nullable();
+        Schema::table('materials', function (Blueprint $table) {
+            $table->string('token')->nullable();
         });
     }
 
@@ -26,9 +25,8 @@ class AddNameAndDescriptionToBlocksTable extends Migration
      */
     public function down()
     {
-        Schema::table('blocks', function (Blueprint $table) {
-            $table->dropColumn('description');
-            $table->dropColumn('name');
+        Schema::table('materials', function (Blueprint $table) {
+            $table->dropColumn('token');
         });
     }
 }
