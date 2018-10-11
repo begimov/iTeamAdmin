@@ -17,7 +17,7 @@ class MaterialTransformer extends \League\Fractal\TransformerAbstract
         return [
             'id' => $material->id,
             'name' => $material->name,
-            'accessUrl' => env('BASE_APP_URL') . '/materials/' . $material->id . '/' . $material->token
+            'accessUrl' => $this->generateAccessUrl($material)
         ];
     }
 
@@ -34,5 +34,14 @@ class MaterialTransformer extends \League\Fractal\TransformerAbstract
     public function includeProducts(Material $material)
     {
         return $this->collection($material->products, new ProductTransformer);
+    }
+
+    protected function generateAccessUrl(Material $material)
+    {
+        return $material->token 
+            ? env('BASE_APP_URL') 
+                . '/materials/' . $material->id 
+                . '/' . $material->token
+            : '';
     }
 }
