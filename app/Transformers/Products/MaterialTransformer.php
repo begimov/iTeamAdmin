@@ -17,6 +17,7 @@ class MaterialTransformer extends \League\Fractal\TransformerAbstract
         return [
             'id' => $material->id,
             'name' => $material->name,
+            'accessUrl' => env('BASE_APP_URL') . '/materials/' . $material->id . '/' . $material->token
         ];
     }
 
