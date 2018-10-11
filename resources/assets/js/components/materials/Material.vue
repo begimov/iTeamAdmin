@@ -16,7 +16,7 @@
     <div class="col-md-6 text-right orders-edit-block">
       <ul class="list-inline">
         <li>
-          <a :href="material.accessUrl" target="_blank">
+          <a :href="material.accessUrl" target="_blank" v-if="material.accessUrl">
             <span class="glyphicon glyphicon-link" aria-hidden="true"></span> Ссылка
           </a>
         </li>
