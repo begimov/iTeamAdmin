@@ -30,6 +30,10 @@ class Material extends Model
         // static::addGlobalScope('named', function (Builder $builder) {
         //     $builder->whereNotNull('name');
         // });
+
+        static::creating(function ($material) {
+            $material->token = uniqid();
+        });
     }
     
     public function files()
