@@ -40,12 +40,13 @@ export default {
   removePriceTag ({ commit }, index) {
     commit('removePriceTag', index)
   },
-  saveProduct ({ commit, state }) {
+  saveProduct ({ commit, dispatch, state }) {
     commit('setIsLoading', true)
     api.newproduct.saveProduct(state.params).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
       commit('products/setCurrentModule', 'products', { root: true })
+      dispatch('products/getProducts', null, { root: true })
     }).catch(err => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)
