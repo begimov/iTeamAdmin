@@ -43832,6 +43832,8 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newproduct.updateProduct(state.params, id).then(function (res) {
       dispatch('setProductToEdit', id);
+      commit('products/setCurrentModule', 'products', { root: true });
+      dispatch('products/getProducts', null, { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);

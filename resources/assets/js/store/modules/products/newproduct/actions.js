@@ -72,6 +72,8 @@ export default {
     commit('setIsLoading', true)
     api.newproduct.updateProduct(state.params, id).then(res => {
       dispatch('setProductToEdit', id)
+      commit('products/setCurrentModule', 'products', { root: true })
+      dispatch('products/getProducts', null, { root: true })
     }).catch(err => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)
