@@ -65522,18 +65522,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     slot: "noResult"
   }, [_vm._v("Материал не найден")])]), _vm._v(" "), (_vm.errors.materials) ? _c('span', {
     staticClass: "help-block alert-danger"
-  }, [_vm._v(_vm._s(_vm.errors.materials[0]))]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v(" "), _c('a', {
-    staticClass: "btn btn-default btn-sm",
-    attrs: {
-      "href": "#"
-    },
-    on: {
-      "click": function($event) {
-        $event.preventDefault();
-        _vm.switchNewMaterial(true)
-      }
-    }
-  }, [_vm._v("Создать материал")])], 2)]), _vm._v(" "), _c('div', {
+  }, [_vm._v(_vm._s(_vm.errors.materials[0]))]) : _vm._e(), _vm._v(" "), _c('br')], 2)]), _vm._v(" "), _c('div', {
     staticClass: "col-md-6"
   }, [_c('div', {
     staticClass: "form-group"
