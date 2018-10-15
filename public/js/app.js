@@ -66513,6 +66513,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     cancelNewPage: function cancelNewPage() {
       this.setEditedPageId(null);
       this.setCurrentModule('pages');
+      this.getPages();
     }
   }),
   mounted: function mounted() {
