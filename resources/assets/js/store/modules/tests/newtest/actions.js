@@ -23,12 +23,13 @@ export default {
   updateCertificate ({ commit }, cert) {
     commit('updateCertificate', cert)
   },
-  save ({ commit, state }) {
+  save ({ commit, dispatch, state }) {
     commit('setIsLoading', true)
     api.newtest.saveTest(state.test).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
       commit('tests/setCurrentModule', 'tests', { root: true })
+      dispatch('tests/getTests', null, { root: true })
     }).catch(err => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)

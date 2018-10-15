@@ -45367,6 +45367,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   save: function save(_ref6) {
     var commit = _ref6.commit,
+        dispatch = _ref6.dispatch,
         state = _ref6.state;
 
     commit('setIsLoading', true);
@@ -45374,6 +45375,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('resetState');
       commit('setIsLoading', false);
       commit('tests/setCurrentModule', 'tests', { root: true });
+      dispatch('tests/getTests', null, { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);
