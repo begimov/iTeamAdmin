@@ -44332,7 +44332,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.saveMaterial(state.params).then(function (res) {
       commit('resetState');
       commit('setIsLoading', false);
-      commit('products/newproduct/switchNewMaterial', false, { root: true });
+      // commit('products/newproduct/switchNewMaterial', false, { root: true })
       dispatch('materials/getMaterials', null, { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
@@ -44343,7 +44343,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref3.commit;
 
     commit('resetState');
-    commit('products/newproduct/switchNewMaterial', false, { root: true });
+    // commit('products/newproduct/switchNewMaterial', false, { root: true })
   },
   updateName: function updateName(_ref4, value) {
     var commit = _ref4.commit;
@@ -44391,7 +44391,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newmaterial.updateMaterial(state.params, id).then(function (res) {
-      dispatch('setMaterialToEdit', id);
+      // dispatch('setMaterialToEdit', id)
+      commit('resetState');
+      dispatch('materials/setEditedMaterialId', null, { root: true });
+      dispatch('materials/setCurrentModule', 'materials', { root: true });
+      dispatch('materials/getMaterials', null, { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);
