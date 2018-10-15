@@ -44791,6 +44791,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
   save: function save(_ref10) {
     var commit = _ref10.commit,
+        dispatch = _ref10.dispatch,
         state = _ref10.state;
 
     commit('setIsLoading', true);
@@ -44801,6 +44802,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       commit('resetState');
       commit('setIsLoading', false);
       commit('pages/setCurrentModule', 'pages', { root: true });
+      dispatch('pages/getPages', null, { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);
