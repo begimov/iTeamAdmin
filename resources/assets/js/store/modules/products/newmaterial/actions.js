@@ -14,7 +14,7 @@ export default {
       commit('resetState')
       commit('setIsLoading', false)
       commit('products/newproduct/switchNewMaterial', false, { root: true })
-
+      dispatch('materials/getMaterials', null, { root: true })
     }).catch((err) => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)

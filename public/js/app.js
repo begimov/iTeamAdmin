@@ -44333,6 +44333,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       commit('resetState');
       commit('setIsLoading', false);
       commit('products/newproduct/switchNewMaterial', false, { root: true });
+      dispatch('materials/getMaterials', null, { root: true });
     }).catch(function (err) {
       commit('setErrors', err.response.data);
       commit('setIsLoading', false);
