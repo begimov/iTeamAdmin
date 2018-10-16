@@ -82,7 +82,7 @@ export default {
   deleteElement ({ commit }, id) {
     commit('deleteElement', id)
   },
-  save ({ commit, state }) {
+  save ({ commit, dispatch, state }) {
     commit('setIsLoading', true)
     const elements = _.map(state.layout.elements, (element) => {
       return { data: element.data.data, meta: element.data.meta }
@@ -91,6 +91,7 @@ export default {
       commit('resetState')
       commit('setIsLoading', false)
       commit('pages/setCurrentModule', 'pages', { root: true })
+      dispatch('pages/getPages', null, { root: true })
     }).catch(err => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)

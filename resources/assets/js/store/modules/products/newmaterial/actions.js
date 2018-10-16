@@ -13,8 +13,8 @@ export default {
     api.newmaterial.saveMaterial(state.params).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
-      commit('products/newproduct/switchNewMaterial', false, { root: true })
-
+      // commit('products/newproduct/switchNewMaterial', false, { root: true })
+      dispatch('materials/getMaterials', null, { root: true })
     }).catch((err) => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)
@@ -22,7 +22,7 @@ export default {
   },
   cancel ({ commit }) {
     commit('resetState')
-    commit('products/newproduct/switchNewMaterial', false, { root: true })
+    // commit('products/newproduct/switchNewMaterial', false, { root: true })
   },
   updateName ({ commit }, value) {
     commit('updateName', value)
@@ -52,7 +52,11 @@ export default {
   updateMaterial ({ commit, dispatch, state }, id) {
     commit('setIsLoading', true)
     api.newmaterial.updateMaterial(state.params, id).then(res => {
-      dispatch('setMaterialToEdit', id)
+      // dispatch('setMaterialToEdit', id)
+      commit('resetState')
+      dispatch('materials/setEditedMaterialId', null, { root: true })
+      dispatch('materials/setCurrentModule', 'materials', { root: true })
+      dispatch('materials/getMaterials', null, { root: true })
     }).catch(err => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)

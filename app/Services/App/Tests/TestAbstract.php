@@ -68,13 +68,16 @@ abstract class TestAbstract
 
     protected function storeTestCertificate($certificate, $test)
     {
-        $newCertificate = new TestCertificate();
+        if ($certificate) {
+            
+            $newCertificate = new TestCertificate();
 
-        $newCertificate->score = $certificate['score'];
-
-        $newCertificate->test()->associate($test);
-
-        $newCertificate->save();
+            $newCertificate->score = $certificate['score'];
+    
+            $newCertificate->test()->associate($test);
+    
+            $newCertificate->save();
+        }
     }
 
     public function storeQuestionAnswers($answers, $question)

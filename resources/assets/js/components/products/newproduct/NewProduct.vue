@@ -69,7 +69,7 @@
                     </multiselect>
                     <span class="help-block alert-danger" v-if="errors.materials">{{ errors.materials[0] }}</span>
                     <br>
-                    <a href="#" @click.prevent="switchNewMaterial(true)" class="btn btn-default btn-sm">Создать материал</a>
+                    <!-- <a href="#" @click.prevent="switchNewMaterial(true)" class="btn btn-default btn-sm">Создать материал</a> -->
                   </div>
                 </div>
                 <div class="col-md-6">

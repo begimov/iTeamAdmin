@@ -23,12 +23,13 @@ export default {
   updateAvatar ({ commit }, quote) {
     commit('updateAvatar', quote)
   },
-  save ({ commit, state }) {
+  save ({ commit, dispatch, state }) {
     commit('setIsLoading', true)
     api.newreview.saveReview(state.review).then(res => {
       commit('resetState')
       commit('setIsLoading', false)
       commit('reviews/setCurrentModule', 'reviews', { root: true })
+      dispatch('reviews/getReviews', null, { root: true })
     }).catch(err => {
       commit('setErrors', err.response.data)
       commit('setIsLoading', false)

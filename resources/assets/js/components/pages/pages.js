@@ -35,6 +35,7 @@ export default {
       cancelNewPage() {
         this.setEditedPageId(null)
         this.setCurrentModule('pages')
+        this.getPages()
       }
   },
   mounted() {
