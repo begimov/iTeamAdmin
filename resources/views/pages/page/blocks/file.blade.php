@@ -4,7 +4,7 @@
       v-model="data.files.file1" 
       parent-resource-type="element"
       maxFiles="1"
-      max-filesize=1>
+      max-filesize=100>
     </file-uploader>
   </div>
 </div>
