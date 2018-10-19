@@ -95,6 +95,11 @@ class BlocksTableSeeder extends Seeder
                 'data' => '{"resources":{"video1":""}}',
                 'name' => 'YouTube видео'
             ],
+            [
+                'view' => 'file',
+                'data' => '{"files":{"file1":""}}',
+                'name' => 'Кнопка на скачивание файла'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);
