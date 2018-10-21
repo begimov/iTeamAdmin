@@ -5,6 +5,10 @@ export default {
   isLoading: false,
   params: {
     searchQuery: '',
+    category: null,
+  },
+  options: {
+    categories: []
   },
   editedPageId: null
 }

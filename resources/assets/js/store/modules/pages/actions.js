@@ -18,4 +18,7 @@ export default {
     commit('setEditedPageId', id)
     commit('setCurrentModule', 'newpage')
   },
+  updateCategoryParams ({ commit }, category) {
+    commit('updateCategoryParams', category)
+  },
 }

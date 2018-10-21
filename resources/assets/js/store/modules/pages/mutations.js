@@ -15,4 +15,7 @@ export default {
   setEditedPageId (state, id) {
     state.editedPageId = id
   },
+  updateCategoryParams (state, category) {
+    state.params.category = category
+  },
 }
