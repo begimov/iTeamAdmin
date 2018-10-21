@@ -57,6 +57,7 @@ export default {
         },
         set (data) {
           this.updateOrderByParams(data)
+          this.getPages(this.meta.pagination.current_page)
         }
       },
   },

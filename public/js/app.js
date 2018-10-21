@@ -43861,6 +43861,8 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   getPages: function getPages(page, params) {
     var _this = this;
@@ -43872,7 +43874,7 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
     });
   },
   preparePayload: function preparePayload(data) {
-    return {
+    return _extends({
       searchQuery: data.searchQuery,
       categories: _.map(data.categories, function (category) {
         return category.id;
@@ -43880,7 +43882,7 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
       themes: _.map(data.themes, function (theme) {
         return theme.id;
       })
-    };
+    }, data.orderBy);
   }
 });
 
@@ -66604,6 +66606,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       },
       set: function set(data) {
         this.updateOrderByParams(data);
+        this.getPages(this.meta.pagination.current_page);
       }
     }
   }),

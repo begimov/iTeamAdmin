@@ -10,7 +10,8 @@ export default {
     return {
       searchQuery: data.searchQuery,
       categories: _.map(data.categories, (category) => category.id),
-      themes: _.map(data.themes, (theme) => theme.id)
+      themes: _.map(data.themes, (theme) => theme.id),
+      ...data.orderBy
     }
   }
 }
