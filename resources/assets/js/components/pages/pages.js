@@ -24,7 +24,8 @@ export default {
           'categoriesOptions',
           'getCategoriesParams',
           'themesOptions',
-          'getThemesParams'
+          'getThemesParams',
+          'getOrderByParams'
       ]),
       'searchQuery': {
         get () {
@@ -50,6 +51,14 @@ export default {
           this.updateThemesParams(category)
         }
       },
+      'orderByParams': {
+        get () {
+          return this.getOrderByParams
+        },
+        set (data) {
+          this.updateOrderByParams(data)
+        }
+      },
   },
   methods: {
       ...mapActions('pages', [
@@ -58,7 +67,8 @@ export default {
           'setCurrentModule',
           'setEditedPageId',
           'updateCategoriesParams',
-          'updateThemesParams'
+          'updateThemesParams',
+          'updateOrderByParams'
       ]),
       textSearch () {
         clearTimeout(this.timer);

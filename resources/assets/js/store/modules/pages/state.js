@@ -6,7 +6,11 @@ export default {
   params: {
     searchQuery: '',
     categories: [],
-    themes: []
+    themes: [],
+    orderBy: {
+      created_at: 'desc',
+      id: ''
+    }
   },
   options: {
     categories: [],

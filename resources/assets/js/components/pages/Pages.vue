@@ -68,6 +68,9 @@
                         </multiselect>
                       </div>
                     </li>
+                    <li>
+                      <div><orderby v-model="orderByParams" :init-data="orderByParams"></orderby></div>
+                    </li>
                   </ul>
                 </div>
               </div>

@@ -32,4 +32,7 @@ export default {
   getThemesParams (state) {
     return state.params.themes
   },
+  getOrderByParams (state) {
+    return state.params.orderBy
+  },
 }

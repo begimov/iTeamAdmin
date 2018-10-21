@@ -21,4 +21,7 @@ export default {
   updateThemesParams (state, themes) {
     state.params.themes = themes
   },
+  updateOrderByParams (state, params) {
+    state.params.orderBy = params
+  },
 }

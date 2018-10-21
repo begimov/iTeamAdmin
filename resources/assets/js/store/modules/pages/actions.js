@@ -24,4 +24,7 @@ export default {
   updateThemesParams ({ commit }, themes) {
     commit('updateThemesParams', themes)
   },
+  updateOrderByParams ({ commit }, params) {
+    commit('updateOrderByParams', params)
+  },
 }
