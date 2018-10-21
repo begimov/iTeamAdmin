@@ -17,6 +17,6 @@ class OrWhere implements CriterionInterface
 
     public function apply($entity)
     {
-        return $entity->orWhere($this->column, $this->value);;
+        return $entity->orWhere($this->column, $this->value);
     }
 }
