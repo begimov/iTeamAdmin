@@ -18,7 +18,7 @@ export default {
           'getSearchQuery',
           'editedPageId',
           'categoryOptions',
-          'getCategoryParams'
+          'getCategoriesParams'
       ]),
       'searchQuery': {
         get () {
@@ -28,12 +28,12 @@ export default {
           this.updateSearchQuery(value)
         }
       },
-      'categoryParams': {
+      'categoriesParams': {
         get () {
-          return this.getCategoryParams
+          return this.getCategoriesParams
         },
         set (category) {
-          this.updateCategoryParams(category)
+          this.updateCategoriesParams(category)
         }
       }
   },
@@ -43,7 +43,7 @@ export default {
           'updateSearchQuery',
           'setCurrentModule',
           'setEditedPageId',
-          'updateCategoryParams',
+          'updateCategoriesParams',
       ]),
       textSearch () {
         clearTimeout(this.timer);

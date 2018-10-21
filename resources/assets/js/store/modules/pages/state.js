@@ -5,7 +5,7 @@ export default {
   isLoading: false,
   params: {
     searchQuery: '',
-    category: null,
+    categories: null,
   },
   options: {
     categories: []

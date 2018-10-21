@@ -22,7 +22,7 @@
                   <ul class="list-inline">
                     <li>
                       <div>
-                        <multiselect v-model="categoryParams"
+                        <multiselect v-model="categoriesParams"
                         select-label=""
                         track-by="id"
                         label="name"

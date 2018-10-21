@@ -43863,11 +43863,21 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   getPages: function getPages(page, params) {
+    var _this = this;
+
     return new Promise(function (resolve, reject) {
-      axios.get("/webapi/pages?page=" + page, { params: params }).then(function (res) {
+      axios.get("/webapi/pages?page=" + page, { params: _this.preparePayload(params) }).then(function (res) {
         resolve(res);
       });
     });
+  },
+  preparePayload: function preparePayload(data) {
+    return {
+      searchQuery: data.searchQuery,
+      categories: _.map(data.categories, function (category) {
+        return category.id;
+      })
+    };
   }
 });
 
@@ -44985,7 +44995,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   isLoading: false,
   params: {
     searchQuery: '',
-    category: null
+    categories: null
   },
   options: {
     categories: []
@@ -45023,8 +45033,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   categoryOptions: function categoryOptions(state) {
     return state.options.categories;
   },
-  getCategoryParams: function getCategoryParams(state) {
-    return state.params.category;
+  getCategoriesParams: function getCategoriesParams(state) {
+    return state.params.categories;
   }
 });
 
@@ -45065,10 +45075,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     commit('setEditedPageId', id);
     commit('setCurrentModule', 'newpage');
   },
-  updateCategoryParams: function updateCategoryParams(_ref5, category) {
+  updateCategoriesParams: function updateCategoriesParams(_ref5, categories) {
     var commit = _ref5.commit;
 
-    commit('updateCategoryParams', category);
+    commit('updateCategoriesParams', categories);
   }
 });
 
@@ -45094,8 +45104,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   setEditedPageId: function setEditedPageId(state, id) {
     state.editedPageId = id;
   },
-  updateCategoryParams: function updateCategoryParams(state, category) {
-    state.params.category = category;
+  updateCategoriesParams: function updateCategoriesParams(state, categories) {
+    state.params.categories = categories;
   }
 });
 
@@ -66525,7 +66535,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       type: Array
     }
   },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery', 'editedPageId', 'categoryOptions', 'getCategoryParams']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery', 'editedPageId', 'categoryOptions', 'getCategoriesParams']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -66534,16 +66544,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.updateSearchQuery(value);
       }
     },
-    'categoryParams': {
+    'categoriesParams': {
       get: function get() {
-        return this.getCategoryParams;
+        return this.getCategoriesParams;
       },
       set: function set(category) {
-        this.updateCategoryParams(category);
+        this.updateCategoriesParams(category);
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery', 'setCurrentModule', 'setEditedPageId', 'updateCategoryParams']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery', 'setCurrentModule', 'setEditedPageId', 'updateCategoriesParams']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
@@ -66658,11 +66668,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }]),
     model: {
-      value: (_vm.categoryParams),
+      value: (_vm.categoriesParams),
       callback: function($$v) {
-        _vm.categoryParams = $$v
+        _vm.categoriesParams = $$v
       },
-      expression: "categoryParams"
+      expression: "categoriesParams"
     }
   })], 1)]), _vm._v(" "), _vm._m(0)])])]), _vm._v(" "), _vm._l((_vm.pages), function(page) {
     return _c('page', {

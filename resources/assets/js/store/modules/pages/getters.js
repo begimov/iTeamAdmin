@@ -23,7 +23,7 @@ export default {
   categoryOptions (state) {
     return state.options.categories
   },
-  getCategoryParams (state) {
-    return state.params.category
+  getCategoriesParams (state) {
+    return state.params.categories
   },
 }
