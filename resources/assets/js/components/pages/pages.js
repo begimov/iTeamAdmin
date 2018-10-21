@@ -7,6 +7,10 @@ export default {
     categories: {
       required: true,
       type: Array
+    },
+    themes: {
+      required: true,
+      type: Array
     }
   },
   computed: {
@@ -71,5 +75,6 @@ export default {
   mounted() {
     this.getPages()
     this.$store.state.pages.options.categories = this.categories
+    this.$store.state.pages.options.themes = this.themes
   }
 }

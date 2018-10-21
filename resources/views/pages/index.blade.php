@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<pages :categories="{{ $categories }}"></pages>
+<pages :categories="{{ $categories }}" :themes="{{ $themes }}"></pages>
 @endsection

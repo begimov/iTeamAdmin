@@ -6,15 +6,20 @@ use App\Models\Pages\Page;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\Pages\ThemeRepository;
 use App\Repositories\Contracts\Products\CategoryRepository;
 
 class PageController extends Controller
 {
     protected $categories;
 
-    public function __construct(CategoryRepository $categories)
+    protected $themes;
+
+    public function __construct(CategoryRepository $categories, ThemeRepository $themes)
     {
         $this->categories = $categories;
+
+        $this->themes = $themes;
     }
 
     /**
@@ -26,6 +31,8 @@ class PageController extends Controller
     {
         $categories = $this->categories->get();
 
-        return view('pages.index', compact('categories'));
+        $themes = $this->themes->get();
+
+        return view('pages.index', compact('categories', 'themes'));
     }
 }
