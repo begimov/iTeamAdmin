@@ -59,6 +59,6 @@ export default {
   },
   mounted() {
     this.getPages()
-    console.log(this.categories)
+    this.$store.state.pages.options.categories = this.categories
   }
 }
