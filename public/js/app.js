@@ -66519,6 +66519,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
+  props: {
+    categories: {
+      required: true,
+      type: Array
+    }
+  },
   computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery', 'editedPageId', 'categoryOptions', 'getCategoryParams']), {
     'searchQuery': {
       get: function get() {
@@ -66552,6 +66558,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   }),
   mounted: function mounted() {
     this.getPages();
+    console.log(this.categories);
   }
 });
 

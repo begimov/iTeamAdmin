@@ -3,6 +3,12 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   components: { Multiselect },
+  props: {
+    categories: {
+      required: true,
+      type: Array
+    }
+  },
   computed: {
       ...mapGetters('pages', [
           'currentModule',
@@ -53,5 +59,6 @@ export default {
   },
   mounted() {
     this.getPages()
+    console.log(this.categories)
   }
 }
