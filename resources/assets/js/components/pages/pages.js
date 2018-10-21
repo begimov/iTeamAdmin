@@ -17,8 +17,10 @@ export default {
           'isLoading',
           'getSearchQuery',
           'editedPageId',
-          'categoryOptions',
-          'getCategoriesParams'
+          'categoriesOptions',
+          'getCategoriesParams',
+          'themesOptions',
+          'getThemesParams'
       ]),
       'searchQuery': {
         get () {
@@ -35,7 +37,15 @@ export default {
         set (category) {
           this.updateCategoriesParams(category)
         }
-      }
+      },
+      'themesParams': {
+        get () {
+          return this.getThemesParams
+        },
+        set (category) {
+          this.updateThemesParams(category)
+        }
+      },
   },
   methods: {
       ...mapActions('pages', [
@@ -44,6 +54,7 @@ export default {
           'setCurrentModule',
           'setEditedPageId',
           'updateCategoriesParams',
+          'updateThemesParams'
       ]),
       textSearch () {
         clearTimeout(this.timer);

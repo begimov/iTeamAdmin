@@ -18,4 +18,7 @@ export default {
   updateCategoriesParams (state, categories) {
     state.params.categories = categories
   },
+  updateThemesParams (state, themes) {
+    state.params.themes = themes
+  },
 }

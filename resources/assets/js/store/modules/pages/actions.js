@@ -21,4 +21,7 @@ export default {
   updateCategoriesParams ({ commit }, categories) {
     commit('updateCategoriesParams', categories)
   },
+  updateThemesParams ({ commit }, themes) {
+    commit('updateThemesParams', themes)
+  },
 }

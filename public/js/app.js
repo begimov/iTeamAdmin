@@ -44995,10 +44995,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   isLoading: false,
   params: {
     searchQuery: '',
-    categories: null
+    categories: [],
+    themes: []
   },
   options: {
-    categories: []
+    categories: [],
+    themes: []
   },
   editedPageId: null
 });
@@ -45030,11 +45032,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   editedPageId: function editedPageId(state) {
     return state.editedPageId;
   },
-  categoryOptions: function categoryOptions(state) {
+  categoriesOptions: function categoriesOptions(state) {
     return state.options.categories;
   },
   getCategoriesParams: function getCategoriesParams(state) {
     return state.params.categories;
+  },
+  themesOptions: function themesOptions(state) {
+    return state.options.themes;
+  },
+  getThemesParams: function getThemesParams(state) {
+    return state.params.themes;
   }
 });
 
@@ -45079,6 +45087,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref5.commit;
 
     commit('updateCategoriesParams', categories);
+  },
+  updateThemesParams: function updateThemesParams(_ref6, themes) {
+    var commit = _ref6.commit;
+
+    commit('updateThemesParams', themes);
   }
 });
 
@@ -45106,6 +45119,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   updateCategoriesParams: function updateCategoriesParams(state, categories) {
     state.params.categories = categories;
+  },
+  updateThemesParams: function updateThemesParams(state, themes) {
+    state.params.themes = themes;
   }
 });
 
@@ -66535,7 +66551,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       type: Array
     }
   },
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery', 'editedPageId', 'categoryOptions', 'getCategoriesParams']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('pages', ['currentModule', 'pages', 'meta', 'isLoading', 'getSearchQuery', 'editedPageId', 'categoriesOptions', 'getCategoriesParams', 'themesOptions', 'getThemesParams']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -66551,9 +66567,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       set: function set(category) {
         this.updateCategoriesParams(category);
       }
+    },
+    'themesParams': {
+      get: function get() {
+        return this.getThemesParams;
+      },
+      set: function set(category) {
+        this.updateThemesParams(category);
+      }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery', 'setCurrentModule', 'setEditedPageId', 'updateCategoriesParams']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages', ['getPages', 'updateSearchQuery', 'setCurrentModule', 'setEditedPageId', 'updateCategoriesParams', 'updateThemesParams']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
@@ -66635,12 +66659,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "select-label": "",
       "track-by": "id",
       "label": "name",
-      "options": _vm.categoryOptions,
+      "options": _vm.categoriesOptions,
       "multiple": true,
       "close-on-select": false,
       "hide-selected": true,
       "searchable": false,
-      "placeholder": "Категория"
+      "placeholder": "Категории"
     },
     on: {
       "input": function($event) {
@@ -66674,7 +66698,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "categoriesParams"
     }
-  })], 1)]), _vm._v(" "), _vm._m(0)])])]), _vm._v(" "), _vm._l((_vm.pages), function(page) {
+  })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('multiselect', {
+    attrs: {
+      "select-label": "",
+      "track-by": "id",
+      "label": "name",
+      "options": _vm.themesOptions,
+      "multiple": true,
+      "close-on-select": false,
+      "hide-selected": true,
+      "searchable": false,
+      "placeholder": "Темы"
+    },
+    on: {
+      "input": function($event) {
+        _vm.getPages()
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "tag",
+      fn: function(props) {
+        return [_c('span', {
+          staticClass: "custom__tag"
+        }, [_c('span', [_vm._v(_vm._s(props.option.name))]), _vm._v(" "), _c('span', {
+          staticClass: "custom__remove",
+          on: {
+            "click": function($event) {
+              props.remove(props.option)
+            }
+          }
+        }, [_c('span', {
+          staticClass: "glyphicon glyphicon-remove",
+          attrs: {
+            "aria-hidden": "true"
+          }
+        })])])]
+      }
+    }]),
+    model: {
+      value: (_vm.themesParams),
+      callback: function($$v) {
+        _vm.themesParams = $$v
+      },
+      expression: "themesParams"
+    }
+  })], 1)])])])]), _vm._v(" "), _vm._l((_vm.pages), function(page) {
     return _c('page', {
       key: page.id,
       attrs: {
@@ -66696,9 +66764,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "pages_pageChanged": _vm.getPages
     }
   }) : _vm._e()], 1)])])])]) : _vm._e()], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

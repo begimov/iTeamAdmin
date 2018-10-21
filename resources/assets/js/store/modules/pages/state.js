@@ -5,10 +5,12 @@ export default {
   isLoading: false,
   params: {
     searchQuery: '',
-    categories: null,
+    categories: [],
+    themes: []
   },
   options: {
-    categories: []
+    categories: [],
+    themes: []
   },
   editedPageId: null
 }

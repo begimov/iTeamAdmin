@@ -20,10 +20,16 @@ export default {
   editedPageId (state) {
     return state.editedPageId
   },
-  categoryOptions (state) {
+  categoriesOptions (state) {
     return state.options.categories
   },
   getCategoriesParams (state) {
     return state.params.categories
+  },
+  themesOptions (state) {
+    return state.options.themes
+  },
+  getThemesParams (state) {
+    return state.params.themes
   },
 }
