@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers\Pages;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-
 use App\Models\Pages\Page;
+use Illuminate\Http\Request;
+
+use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\Products\CategoryRepository;
 
 class PageController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected $categories;
+
+    public function __construct(CategoryRepository $categories)
     {
-        //
+        $this->categories = $categories;
     }
 
     /**
@@ -26,6 +24,8 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
+        $categories = $this->categories->get();
+
+        return view('pages.index', compact('categories'));
     }
 }
