@@ -43876,6 +43876,9 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
       searchQuery: data.searchQuery,
       categories: _.map(data.categories, function (category) {
         return category.id;
+      }),
+      themes: _.map(data.themes, function (theme) {
+        return theme.id;
       })
     };
   }

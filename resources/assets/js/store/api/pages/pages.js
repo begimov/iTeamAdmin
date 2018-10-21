@@ -9,7 +9,8 @@ export default {
   preparePayload(data) {
     return {
       searchQuery: data.searchQuery,
-      categories: _.map(data.categories, (category) => category.id)
+      categories: _.map(data.categories, (category) => category.id),
+      themes: _.map(data.themes, (theme) => theme.id)
     }
   }
 }
