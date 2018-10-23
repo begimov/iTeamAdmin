@@ -3,7 +3,12 @@ import Multiselect from 'vue-multiselect'
 
 export default {
   components: { Multiselect },
-  props: [],
+  props: {
+    categories: {
+      required: true,
+      type: Array
+    }
+  },
   data () {
     return {
       timer: 0,
@@ -57,5 +62,6 @@ export default {
   },
   mounted() {
     this.getProducts()
+    this.$store.state.products.options.categories = this.categories
   }
 }

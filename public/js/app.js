@@ -65100,7 +65100,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: { Multiselect: __WEBPACK_IMPORTED_MODULE_1_vue_multiselect___default.a },
-  props: [],
+  props: {
+    categories: {
+      required: true,
+      type: Array
+    }
+  },
   data: function data() {
     return {
       timer: 0
@@ -65139,6 +65144,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   }),
   mounted: function mounted() {
     this.getProducts();
+    this.$store.state.products.options.categories = this.categories;
   }
 });
 
