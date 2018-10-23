@@ -64,6 +64,7 @@
                     v-on:elementMovedUp="moveElementUp"
                     v-on:elementMovedDown="moveElementDown"
                     v-on:elementDeleted="deleteElement"
+                    v-on:elementCopied="copyElement"
                     ></component>
                 </template>
               </div>

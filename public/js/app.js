@@ -44806,6 +44806,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
                 },
                 deleteElement: function deleteElement(id) {
                   this.$emit('elementDeleted', id);
+                },
+                copyElement: function copyElement(id) {
+                  this.$emit('elementCopied', id);
                 }
               },
               mounted: function mounted() {
@@ -44867,10 +44870,15 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
     commit('deleteElement', id);
   },
-  save: function save(_ref10) {
-    var commit = _ref10.commit,
-        dispatch = _ref10.dispatch,
-        state = _ref10.state;
+  copyExistingElement: function copyExistingElement(_ref10, id) {
+    var commit = _ref10.commit;
+
+    commit('copyExistingElement', id);
+  },
+  save: function save(_ref11) {
+    var commit = _ref11.commit,
+        dispatch = _ref11.dispatch,
+        state = _ref11.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -44886,13 +44894,13 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       commit('setIsLoading', false);
     });
   },
-  resetState: function resetState(_ref11) {
-    var commit = _ref11.commit;
+  resetState: function resetState(_ref12) {
+    var commit = _ref12.commit;
 
     commit('resetState');
   },
-  setPageToEdit: function setPageToEdit(_ref12, id) {
-    var commit = _ref12.commit;
+  setPageToEdit: function setPageToEdit(_ref13, id) {
+    var commit = _ref13.commit;
 
     commit('setIsLoading', true);
     __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].newpage.getPage(id).then(function (res) {
@@ -44900,9 +44908,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       commit('setIsLoading', false);
     });
   },
-  update: function update(_ref13, id) {
-    var commit = _ref13.commit,
-        state = _ref13.state;
+  update: function update(_ref14, id) {
+    var commit = _ref14.commit,
+        state = _ref14.state;
 
     commit('setIsLoading', true);
     var elements = _.map(state.layout.elements, function (element) {
@@ -44923,6 +44931,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 "use strict";
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     setIsLoading: function setIsLoading(state, value) {
@@ -44987,6 +44997,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         state.layout.elements = _.filter(state.layout.elements, function (o) {
             return o.id != id;
         });
+    },
+    copyExistingElement: function copyExistingElement(state, id) {
+        var block = _extends({}, _.find(state.layout.blocks, ['id', id]));
+        block.id = Date.now();
+        state.layout.blocks = [].concat(_toConsumableArray(state.layout.blocks), [block]);
     },
     resetState: function resetState(state) {
         var initialState = {
@@ -67319,21 +67334,29 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'updateThemeParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'save', 'resetState', 'setPageToEdit', 'update']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('pages/newpage', ['getInitialData', 'updatePageName', 'updatePageDesc', 'updateCategoryParams', 'updateThemeParams', 'addBlockToLayout', 'moveElementUp', 'moveElementDown', 'deleteElement', 'copyExistingElement', 'save', 'resetState', 'setPageToEdit', 'update']), {
     findBlock: function findBlock(id) {
       return _.find(this.blocks, ['id', id]);
     },
     cancel: function cancel() {
       this.resetState();
       this.$emit('cancelNewPage');
+    },
+    copyElement: function copyElement(id) {
+      var _this = this;
+
+      this.copyExistingElement(id);
+      this.$nextTick(function () {
+        console.log(_this.$store.state);
+      });
     }
   }),
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     this.getInitialData().then(function (res) {
-      if (_this.editedPageId) {
-        _this.setPageToEdit(_this.editedPageId);
+      if (_this2.editedPageId) {
+        _this2.setPageToEdit(_this2.editedPageId);
       }
     });
   }
@@ -67473,7 +67496,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       on: {
         "elementMovedUp": _vm.moveElementUp,
         "elementMovedDown": _vm.moveElementDown,
-        "elementDeleted": _vm.deleteElement
+        "elementDeleted": _vm.deleteElement,
+        "elementCopied": _vm.copyElement
       }
     })]
   })], 2)]), _vm._v(" "), _c('div', {

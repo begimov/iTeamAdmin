@@ -50,6 +50,7 @@ export default {
           'moveElementUp',
           'moveElementDown',
           'deleteElement',
+          'copyExistingElement',
           'save',
           'resetState',
           'setPageToEdit',
@@ -61,7 +62,13 @@ export default {
       cancel () {
         this.resetState()
         this.$emit('cancelNewPage')
-      }
+      },
+      copyElement(id) {
+        this.copyExistingElement(id)
+        this.$nextTick(() => {
+            console.log(this.$store.state)
+        })
+    }
   },
   mounted() {
     this.getInitialData().then(res => {

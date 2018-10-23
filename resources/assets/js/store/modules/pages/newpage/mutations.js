@@ -52,6 +52,11 @@ export default {
         state.layout.blocks = _.filter(state.layout.blocks, function (o) { return o.id != id; })
         state.layout.elements = _.filter(state.layout.elements, function (o) { return o.id != id; })
     },
+    copyExistingElement(state, id) {
+        let block = {..._.find(state.layout.blocks, ['id', id])}
+        block.id = Date.now()
+        state.layout.blocks = [...state.layout.blocks, block]
+    },
     resetState(state) {
         const initialState = {
             isLoading: false,

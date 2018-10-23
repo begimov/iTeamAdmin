@@ -39,6 +39,9 @@ export default {
                 deleteElement (id) {
                   this.$emit('elementDeleted', id)
                 },
+                copyElement (id) {
+                  this.$emit('elementCopied', id)
+                },
               },
               mounted () {
                 commit('addElementToElements', {
@@ -82,6 +85,9 @@ export default {
   },
   deleteElement ({ commit }, id) {
     commit('deleteElement', id)
+  },
+  copyExistingElement ({ commit }, id) {
+    commit('copyExistingElement', id)
   },
   save ({ commit, dispatch, state }) {
     commit('setIsLoading', true)
