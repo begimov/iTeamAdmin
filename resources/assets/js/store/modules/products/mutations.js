@@ -17,5 +17,8 @@ export default {
   },
   updateCategoriesParams (state, categories) {
     state.params.categories = categories
-  }
+  },
+  updateOrderByParams (state, params) {
+    state.params.orderBy = params
+  },
 }

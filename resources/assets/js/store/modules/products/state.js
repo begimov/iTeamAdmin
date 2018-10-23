@@ -5,7 +5,11 @@ export default {
   isLoading: false,
   params: {
     searchQuery: '',
-    categories: []
+    categories: [],
+    orderBy: {
+      created_at: 'desc',
+      id: ''
+    }
   },
   options: {
     categories: []

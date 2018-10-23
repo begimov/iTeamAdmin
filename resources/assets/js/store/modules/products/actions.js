@@ -20,5 +20,8 @@ export default {
   },
   updateCategoriesParams ({ commit }, categories) {
     commit('updateCategoriesParams', categories)
-  }
+  },
+  updateOrderByParams ({ commit }, params) {
+    commit('updateOrderByParams', params)
+  },
 }

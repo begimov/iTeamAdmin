@@ -22,7 +22,8 @@ export default {
           'isLoading',
           'editedProductId',
           'categoriesOptions',
-          'getCategoriesParams'
+          'getCategoriesParams',
+          'getOrderByParams'
       ]),
       'searchQuery': {
         get () {
@@ -40,6 +41,15 @@ export default {
           this.updateCategoriesParams(category)
         }
       },
+      'orderByParams': {
+        get () {
+          return this.getOrderByParams
+        },
+        set (data) {
+          this.updateOrderByParams(data)
+          this.getProducts(this.meta.pagination.current_page)
+        }
+      },
   },
   methods: {
       ...mapActions('products', [
@@ -47,7 +57,8 @@ export default {
           'updateSearchQuery',
           'setCurrentModule',
           'setEditedProductId',
-          'updateCategoriesParams'
+          'updateCategoriesParams',
+          'updateOrderByParams'
       ]),
       textSearch () {
         clearTimeout(this.timer);

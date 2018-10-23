@@ -44507,7 +44507,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   isLoading: false,
   params: {
     searchQuery: '',
-    categories: []
+    categories: [],
+    orderBy: {
+      created_at: 'desc',
+      id: ''
+    }
   },
   options: {
     categories: []
@@ -44547,6 +44551,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
   getCategoriesParams: function getCategoriesParams(state) {
     return state.params.categories;
+  },
+  getOrderByParams: function getOrderByParams(state) {
+    return state.params.orderBy;
   }
 });
 
@@ -44591,6 +44598,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     var commit = _ref5.commit;
 
     commit('updateCategoriesParams', categories);
+  },
+  updateOrderByParams: function updateOrderByParams(_ref6, params) {
+    var commit = _ref6.commit;
+
+    commit('updateOrderByParams', params);
   }
 });
 
@@ -44618,6 +44630,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
   updateCategoriesParams: function updateCategoriesParams(state, categories) {
     state.params.categories = categories;
+  },
+  updateOrderByParams: function updateOrderByParams(state, params) {
+    state.params.orderBy = params;
   }
 });
 
@@ -65122,7 +65137,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading', 'editedProductId', 'categoriesOptions', 'getCategoriesParams']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading', 'editedProductId', 'categoriesOptions', 'getCategoriesParams', 'getOrderByParams']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -65138,9 +65153,18 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       set: function set(category) {
         this.updateCategoriesParams(category);
       }
+    },
+    'orderByParams': {
+      get: function get() {
+        return this.getOrderByParams;
+      },
+      set: function set(data) {
+        this.updateOrderByParams(data);
+        this.getProducts(this.meta.pagination.current_page);
+      }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule', 'setEditedProductId', 'updateCategoriesParams']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule', 'setEditedProductId', 'updateCategoriesParams', 'updateOrderByParams']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
@@ -65260,7 +65284,18 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       },
       expression: "categoriesParams"
     }
-  })], 1)]), _vm._v(" "), _vm._m(0)])])]), _vm._v(" "), _vm._l((_vm.products), function(product) {
+  })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('orderby', {
+    attrs: {
+      "init-data": _vm.orderByParams
+    },
+    model: {
+      value: (_vm.orderByParams),
+      callback: function($$v) {
+        _vm.orderByParams = $$v
+      },
+      expression: "orderByParams"
+    }
+  })], 1)])])])]), _vm._v(" "), _vm._l((_vm.products), function(product) {
     return _c('product', {
       key: product.id,
       attrs: {
@@ -65282,9 +65317,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "products_pageChanged": _vm.getProducts
     }
   }) : _vm._e()], 1)])])])]) : _vm._e()], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('li', [_c('div', [_vm._v("\n                       \n                    ")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

@@ -25,5 +25,8 @@ export default {
   },
   getCategoriesParams (state) {
     return state.params.categories
-  }
+  },
+  getOrderByParams (state) {
+    return state.params.orderBy
+  },
 }
