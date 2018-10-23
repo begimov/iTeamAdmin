@@ -65,6 +65,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        dd($request->all());
         $products = $this->products->filter($request)
             ->withCriteria([
                 new With(['category','priceTags'])

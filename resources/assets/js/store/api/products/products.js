@@ -10,7 +10,8 @@ export default {
     return {
       searchQuery: data.searchQuery,
       categories: _.map(data.categories, (category) => category.id),
-      ...data.orderBy
+      ...data.orderBy,
+      cost: data.cost ? data.cost.id : null
     }
   }
 }

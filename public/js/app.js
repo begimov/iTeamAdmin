@@ -43864,7 +43864,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       categories: _.map(data.categories, function (category) {
         return category.id;
       })
-    }, data.orderBy);
+    }, data.orderBy, {
+      cost: data.cost ? data.cost.id : null
+    });
   }
 });
 
