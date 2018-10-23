@@ -24,4 +24,7 @@ export default {
   updateOrderByParams ({ commit }, params) {
     commit('updateOrderByParams', params)
   },
+  updateCostParams ({ commit }, params) {
+    commit('updateCostParams', params)
+  },
 }

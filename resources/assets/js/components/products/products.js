@@ -23,7 +23,9 @@ export default {
           'editedProductId',
           'categoriesOptions',
           'getCategoriesParams',
-          'getOrderByParams'
+          'getOrderByParams',
+          'getCostParams',
+          'costOptions'
       ]),
       'searchQuery': {
         get () {
@@ -50,6 +52,14 @@ export default {
           this.getProducts(this.meta.pagination.current_page)
         }
       },
+      'costParams': {
+        get () {
+          return this.getCostParams
+        },
+        set (data) {
+          this.updateCostParams(data)
+        }
+      },
   },
   methods: {
       ...mapActions('products', [
@@ -58,7 +68,8 @@ export default {
           'setCurrentModule',
           'setEditedProductId',
           'updateCategoriesParams',
-          'updateOrderByParams'
+          'updateOrderByParams',
+          'updateCostParams'
       ]),
       textSearch () {
         clearTimeout(this.timer);

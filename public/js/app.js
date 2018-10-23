@@ -44513,10 +44513,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     orderBy: {
       created_at: 'desc',
       id: ''
-    }
+    },
+    cost: null
   },
   options: {
-    categories: []
+    categories: [],
+    cost: [{ id: 1, name: "Все" }, { id: 2, name: "Платные" }, { id: 3, name: "Бесплатные" }]
   },
   editedProductId: null
 });
@@ -44556,6 +44558,12 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
   getOrderByParams: function getOrderByParams(state) {
     return state.params.orderBy;
+  },
+  costOptions: function costOptions(state) {
+    return state.options.cost;
+  },
+  getCostParams: function getCostParams(state) {
+    return state.params.cost;
   }
 });
 
@@ -44605,6 +44613,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     var commit = _ref6.commit;
 
     commit('updateOrderByParams', params);
+  },
+  updateCostParams: function updateCostParams(_ref7, params) {
+    var commit = _ref7.commit;
+
+    commit('updateCostParams', params);
   }
 });
 
@@ -44635,6 +44648,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
   updateOrderByParams: function updateOrderByParams(state, params) {
     state.params.orderBy = params;
+  },
+  updateCostParams: function updateCostParams(state, params) {
+    state.params.cost = params;
   }
 });
 
@@ -65139,7 +65155,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading', 'editedProductId', 'categoriesOptions', 'getCategoriesParams', 'getOrderByParams']), {
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('products', ['currentModule', 'products', 'meta', 'isLoading', 'editedProductId', 'categoriesOptions', 'getCategoriesParams', 'getOrderByParams', 'getCostParams', 'costOptions']), {
     'searchQuery': {
       get: function get() {
         return this.getSearchQuery;
@@ -65164,9 +65180,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         this.updateOrderByParams(data);
         this.getProducts(this.meta.pagination.current_page);
       }
+    },
+    'costParams': {
+      get: function get() {
+        return this.getCostParams;
+      },
+      set: function set(data) {
+        this.updateCostParams(data);
+      }
     }
   }),
-  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule', 'setEditedProductId', 'updateCategoriesParams', 'updateOrderByParams']), {
+  methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('products', ['getProducts', 'updateSearchQuery', 'setCurrentModule', 'setEditedProductId', 'updateCategoriesParams', 'updateOrderByParams', 'updateCostParams']), {
     textSearch: function textSearch() {
       clearTimeout(this.timer);
       this.timer = setTimeout(function () {
@@ -65285,6 +65309,50 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.categoriesParams = $$v
       },
       expression: "categoriesParams"
+    }
+  })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('multiselect', {
+    attrs: {
+      "select-label": "",
+      "track-by": "id",
+      "label": "name",
+      "options": _vm.costOptions,
+      "multiple": false,
+      "close-on-select": false,
+      "hide-selected": true,
+      "searchable": false,
+      "placeholder": "По стоимости"
+    },
+    on: {
+      "input": function($event) {
+        _vm.getProducts()
+      }
+    },
+    scopedSlots: _vm._u([{
+      key: "tag",
+      fn: function(props) {
+        return [_c('span', {
+          staticClass: "custom__tag"
+        }, [_c('span', [_vm._v(_vm._s(props.option.name))]), _vm._v(" "), _c('span', {
+          staticClass: "custom__remove",
+          on: {
+            "click": function($event) {
+              props.remove(props.option)
+            }
+          }
+        }, [_c('span', {
+          staticClass: "glyphicon glyphicon-remove",
+          attrs: {
+            "aria-hidden": "true"
+          }
+        })])])]
+      }
+    }]),
+    model: {
+      value: (_vm.costParams),
+      callback: function($$v) {
+        _vm.costParams = $$v
+      },
+      expression: "costParams"
     }
   })], 1)]), _vm._v(" "), _c('li', [_c('div', [_c('orderby', {
     attrs: {

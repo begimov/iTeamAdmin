@@ -29,4 +29,10 @@ export default {
   getOrderByParams (state) {
     return state.params.orderBy
   },
+  costOptions (state) {
+    return state.options.cost
+  },
+  getCostParams (state) {
+    return state.params.cost
+  },
 }

@@ -21,4 +21,7 @@ export default {
   updateOrderByParams (state, params) {
     state.params.orderBy = params
   },
+  updateCostParams (state, params) {
+    state.params.cost = params
+  },
 }
