@@ -6,7 +6,8 @@ use App\Filters\FiltersAbstract;
 use App\Filters\Products\Product\{
     SearchFilter,
     CategoryFilter,
-    IdOrderBy
+    IdOrderBy,
+    CostFilter
 };
 
 class ProductFilters extends FiltersAbstract
@@ -16,5 +17,6 @@ class ProductFilters extends FiltersAbstract
         'categories' => CategoryFilter::class,
         'created_at' => IdOrderBy::class,
         'id' => IdOrderBy::class,
+        'cost' => CostFilter::class,
     ];
 }
