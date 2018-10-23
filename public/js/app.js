@@ -43848,11 +43848,21 @@ __WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
   getProducts: function getProducts(page, params) {
+    var _this = this;
+
     return new Promise(function (resolve, reject) {
-      axios.get("/webapi/products?page=" + page, { params: params }).then(function (res) {
+      axios.get("/webapi/products?page=" + page, { params: _this.preparePayload(params) }).then(function (res) {
         resolve(res);
       });
     });
+  },
+  preparePayload: function preparePayload(data) {
+    return {
+      searchQuery: data.searchQuery,
+      categories: _.map(data.categories, function (category) {
+        return category.id;
+      })
+    };
   }
 });
 
