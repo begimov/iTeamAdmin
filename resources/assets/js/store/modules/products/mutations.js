@@ -15,4 +15,7 @@ export default {
   setEditedProductId (state, id) {
     state.editedProductId = id
   },
+  updateCategoriesParams (state, categories) {
+    state.params.categories = categories
+  }
 }

@@ -20,4 +20,10 @@ export default {
   editedProductId (state) {
     return state.editedProductId
   },
+  categoriesOptions (state) {
+    return state.options.categories
+  },
+  getCategoriesParams (state) {
+    return state.params.categories
+  }
 }

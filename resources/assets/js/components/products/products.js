@@ -1,7 +1,8 @@
 import { mapActions, mapGetters } from 'vuex'
+import Multiselect from 'vue-multiselect'
 
 export default {
-  components: {},
+  components: { Multiselect },
   props: [],
   data () {
     return {
@@ -14,7 +15,9 @@ export default {
           'products',
           'meta',
           'isLoading',
-          'editedProductId'
+          'editedProductId',
+          'categoriesOptions',
+          'getCategoriesParams'
       ]),
       'searchQuery': {
         get () {
@@ -24,13 +27,22 @@ export default {
           this.updateSearchQuery(value)
         }
       },
+      'categoriesParams': {
+        get () {
+          return this.getCategoriesParams
+        },
+        set (category) {
+          this.updateCategoriesParams(category)
+        }
+      },
   },
   methods: {
       ...mapActions('products', [
           'getProducts',
           'updateSearchQuery',
           'setCurrentModule',
-          'setEditedProductId'
+          'setEditedProductId',
+          'updateCategoriesParams'
       ]),
       textSearch () {
         clearTimeout(this.timer);
