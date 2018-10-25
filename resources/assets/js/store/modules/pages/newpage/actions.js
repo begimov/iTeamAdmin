@@ -88,6 +88,9 @@ export default {
   },
   copyExistingElement ({ commit }, id) {
     commit('copyExistingElement', id)
+    Vue.nextTick(() => {
+      commit('copyExistingElementData')
+    })
   },
   save ({ commit, dispatch, state }) {
     commit('setIsLoading', true)

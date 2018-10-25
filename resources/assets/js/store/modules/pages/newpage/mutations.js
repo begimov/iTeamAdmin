@@ -56,6 +56,33 @@ export default {
         let block = {..._.find(state.layout.blocks, ['id', id])}
         block.id = Date.now()
         state.layout.blocks = [...state.layout.blocks, block]
+        state.copied = {
+            originalId: id,
+            copyId: block.id
+        }
+    },
+    copyExistingElementData(state) {
+        const originalData = _.find(state.layout.elements, ['id', state.copied.originalId]).data.data
+
+        const copyData = _.find(state.layout.elements, ['id', state.copied.copyId]).data.data
+
+        const iter = (originalData, copyData) => {
+
+            _.each(originalData, function(value, key) {
+                if (Array.isArray(value)) {
+                    copyData[key] = [...iter(value, [])]
+                }
+                else if (typeof(value) == 'object') {
+                    copyData[key] = {...iter(value, {})}
+                } else {
+                    copyData[key] = value
+                }
+            })
+
+            return copyData
+        }
+
+        iter(originalData, copyData)
     },
     resetState(state) {
         const initialState = {
