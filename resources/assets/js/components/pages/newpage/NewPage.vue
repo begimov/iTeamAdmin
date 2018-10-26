@@ -64,6 +64,7 @@
                     v-on:elementMovedUp="moveElementUp"
                     v-on:elementMovedDown="moveElementDown"
                     v-on:elementDeleted="deleteElement"
+                    v-on:elementCopied="copyExistingElement"
                     ></component>
                 </template>
               </div>
@@ -79,11 +80,11 @@
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <div class="row">
-                      <div class="col-md-12" v-for="block in blocks" :key="block.id">
+                      <div class="col-lg-6" v-for="block in blocks" :key="block.id">
                         <div class="panel panel-default">
                           <div class="panel-body">
                             <a href="#" @click.prevent="addBlockToLayout({tag: block.tag, id: Date.now()})">{{ block.name }}</a><br>
-                            {{ block.description }}
+                            {{ block.description ? block.description : '&nbsp;' }}
                           </div>
                         </div>
                       </div>

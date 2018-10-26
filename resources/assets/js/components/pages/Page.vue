@@ -8,9 +8,9 @@
       <p>
         Категория: <span class="badge">{{ page.category.data.name }}</span>
       </p>
-      <p>
+      <!-- <p>
         Описание: {{ page.description }}
-      </p>
+      </p> -->
     </div>
 
     <div class="col-md-6 text-right orders-edit-block">

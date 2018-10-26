@@ -20,4 +20,19 @@ export default {
   editedProductId (state) {
     return state.editedProductId
   },
+  categoriesOptions (state) {
+    return state.options.categories
+  },
+  getCategoriesParams (state) {
+    return state.params.categories
+  },
+  getOrderByParams (state) {
+    return state.params.orderBy
+  },
+  costOptions (state) {
+    return state.options.cost
+  },
+  getCostParams (state) {
+    return state.params.cost
+  },
 }

@@ -15,5 +15,6 @@ export default {
     blocks: [],
     elements: []
   },
-  errors: {}
+  errors: {},
+  copied: null
 }

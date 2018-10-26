@@ -22,13 +22,54 @@
                   <ul class="list-inline">
                     <li>
                       <div>
-                        &nbsp;
+                        <multiselect v-model="categoriesParams"
+                        select-label=""
+                        track-by="id"
+                        label="name"
+                        :options="categoriesOptions"
+                        :multiple="true"
+                        :close-on-select="false"
+                        :hide-selected="true"
+                        :searchable="false"
+                        @input = "getPages()"
+                        placeholder="Категории">
+                        <template slot="tag" scope="props">
+                          <span class="custom__tag">
+                            <span>{{ props.option.name }}</span>
+                            <span class="custom__remove" @click="props.remove(props.option)">
+                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </span>
+                          </span>
+                        </template>
+                        </multiselect>
                       </div>
                     </li>
                     <li>
                       <div>
-                        &nbsp;
+                        <multiselect v-model="themesParams"
+                        select-label=""
+                        track-by="id"
+                        label="name"
+                        :options="themesOptions"
+                        :multiple="true"
+                        :close-on-select="false"
+                        :hide-selected="true"
+                        :searchable="false"
+                        @input = "getPages()"
+                        placeholder="Темы">
+                        <template slot="tag" scope="props">
+                          <span class="custom__tag">
+                            <span>{{ props.option.name }}</span>
+                            <span class="custom__remove" @click="props.remove(props.option)">
+                              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </span>
+                          </span>
+                        </template>
+                        </multiselect>
                       </div>
+                    </li>
+                    <li>
+                      <div><orderby v-model="orderByParams" :init-data="orderByParams"></orderby></div>
                     </li>
                   </ul>
                 </div>

@@ -17,6 +17,7 @@ export default {
                       <div class="col-md-12 text-right">
                         <a href="#" class="btn btn-default btn-xs" @click.prevent="moveUp(id)">вверх</a>
                         <a href="#" class="btn btn-default btn-xs" @click.prevent="moveDown(id)">вниз</a>
+                        <a href="#" class="btn btn-info btn-xs" @click.prevent="copyElement(id)">ДУБЛИРОВАТЬ</a>
                         <a href="#" class="btn btn-primary btn-xs" @click.prevent="deleteElement(id)">УДАЛИТЬ</a>
                         <hr>
                       </div>
@@ -37,6 +38,9 @@ export default {
                 },
                 deleteElement (id) {
                   this.$emit('elementDeleted', id)
+                },
+                copyElement (id) {
+                  this.$emit('elementCopied', id)
                 },
               },
               mounted () {
@@ -81,6 +85,12 @@ export default {
   },
   deleteElement ({ commit }, id) {
     commit('deleteElement', id)
+  },
+  copyExistingElement ({ commit }, id) {
+    commit('copyExistingElement', id)
+    Vue.nextTick(() => {
+      commit('copyExistingElementData')
+    })
   },
   save ({ commit, dispatch, state }) {
     commit('setIsLoading', true)

@@ -18,4 +18,13 @@ export default {
     commit('setEditedPageId', id)
     commit('setCurrentModule', 'newpage')
   },
+  updateCategoriesParams ({ commit }, categories) {
+    commit('updateCategoriesParams', categories)
+  },
+  updateThemesParams ({ commit }, themes) {
+    commit('updateThemesParams', themes)
+  },
+  updateOrderByParams ({ commit }, params) {
+    commit('updateOrderByParams', params)
+  },
 }

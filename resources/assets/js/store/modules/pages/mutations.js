@@ -15,4 +15,13 @@ export default {
   setEditedPageId (state, id) {
     state.editedPageId = id
   },
+  updateCategoriesParams (state, categories) {
+    state.params.categories = categories
+  },
+  updateThemesParams (state, themes) {
+    state.params.themes = themes
+  },
+  updateOrderByParams (state, params) {
+    state.params.orderBy = params
+  },
 }

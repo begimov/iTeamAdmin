@@ -20,4 +20,19 @@ export default {
   editedPageId (state) {
     return state.editedPageId
   },
+  categoriesOptions (state) {
+    return state.options.categories
+  },
+  getCategoriesParams (state) {
+    return state.params.categories
+  },
+  themesOptions (state) {
+    return state.options.themes
+  },
+  getThemesParams (state) {
+    return state.params.themes
+  },
+  getOrderByParams (state) {
+    return state.params.orderBy
+  },
 }

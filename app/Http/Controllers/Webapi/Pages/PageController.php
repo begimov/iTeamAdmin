@@ -81,7 +81,9 @@ class PageController extends Controller
      */
     public function create()
     {
-        $blocks = fractal($this->blocks->get(), new BlockTransformer)->toArray();
+        $sortedBlocksCollection = $this->blocks->get()->sortBy('name');
+
+        $blocks = fractal($sortedBlocksCollection, new BlockTransformer)->toArray();
         $categories = fractal($this->categories->get(), new CategoryTransformer)->toArray();
         $themes = fractal($this->themes->get(), new ThemeTransformer)->toArray();
 

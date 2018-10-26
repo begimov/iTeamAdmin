@@ -18,4 +18,13 @@ export default {
     commit('setEditedProductId', id)
     commit('setCurrentModule', 'newproduct')
   },
+  updateCategoriesParams ({ commit }, categories) {
+    commit('updateCategoriesParams', categories)
+  },
+  updateOrderByParams ({ commit }, params) {
+    commit('updateOrderByParams', params)
+  },
+  updateCostParams ({ commit }, params) {
+    commit('updateCostParams', params)
+  },
 }

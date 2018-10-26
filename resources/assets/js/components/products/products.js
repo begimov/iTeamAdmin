@@ -1,8 +1,14 @@
 import { mapActions, mapGetters } from 'vuex'
+import Multiselect from 'vue-multiselect'
 
 export default {
-  components: {},
-  props: [],
+  components: { Multiselect },
+  props: {
+    categories: {
+      required: true,
+      type: Array
+    }
+  },
   data () {
     return {
       timer: 0,
@@ -14,7 +20,12 @@ export default {
           'products',
           'meta',
           'isLoading',
-          'editedProductId'
+          'editedProductId',
+          'categoriesOptions',
+          'getCategoriesParams',
+          'getOrderByParams',
+          'getCostParams',
+          'costOptions'
       ]),
       'searchQuery': {
         get () {
@@ -24,13 +35,41 @@ export default {
           this.updateSearchQuery(value)
         }
       },
+      'categoriesParams': {
+        get () {
+          return this.getCategoriesParams
+        },
+        set (category) {
+          this.updateCategoriesParams(category)
+        }
+      },
+      'orderByParams': {
+        get () {
+          return this.getOrderByParams
+        },
+        set (data) {
+          this.updateOrderByParams(data)
+          this.getProducts(this.meta.pagination.current_page)
+        }
+      },
+      'costParams': {
+        get () {
+          return this.getCostParams
+        },
+        set (data) {
+          this.updateCostParams(data)
+        }
+      },
   },
   methods: {
       ...mapActions('products', [
           'getProducts',
           'updateSearchQuery',
           'setCurrentModule',
-          'setEditedProductId'
+          'setEditedProductId',
+          'updateCategoriesParams',
+          'updateOrderByParams',
+          'updateCostParams'
       ]),
       textSearch () {
         clearTimeout(this.timer);
@@ -45,5 +84,6 @@ export default {
   },
   mounted() {
     this.getProducts()
+    this.$store.state.products.options.categories = this.categories
   }
 }
