@@ -56,7 +56,7 @@ class OrderController extends Controller
             ->withCriteria([
                 new With(['user', 'paymentType', 'product', 'user.userProfile'])
             ])
-            ->paginate(5);
+            ->paginate(20);
 
         $ordersCollection = $orders->getCollection();
 
