@@ -47,6 +47,10 @@ class ProductTest extends TestCase
 
         $user->roles()->attach(1);
 
+        $product = factory(Product::class)->create([
+            'price' => 0
+        ]);
+
         $response = $this->actingAs($user)->get('/webapi/products/free')
             ->assertSuccessful()
             ->assertJsonStructure([
