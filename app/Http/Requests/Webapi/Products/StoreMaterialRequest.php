@@ -24,7 +24,7 @@ class StoreMaterialRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|numeric',
+            'id' => 'required|numeric|exists:materials,id',
             'name' => 'required|string',
         ];
     }
