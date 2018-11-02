@@ -19,12 +19,12 @@ class Page extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class)->withDefault();
     }
 
     public function theme()
     {
-        return $this->belongsTo(Theme::class);
+        return $this->belongsTo(Theme::class)->withDefault();
     }
 
     public function scopeFilter($builder, $repository, $request, array $filters = [])

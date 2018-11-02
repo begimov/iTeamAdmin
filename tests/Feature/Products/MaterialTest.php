@@ -61,7 +61,7 @@ class MaterialTest extends TestCase
             ->assertStatus(404);
     }
 
-    public function test_admin_can_store_new_product()
+    public function test_admin_can_store_new_material()
     {
         $user = factory(User::class)->create();
 
