@@ -28,8 +28,9 @@ class StoreProductRequest extends FormRequest
             'category_id' => 'required|numeric|exists:categories,id',
             'price' => 'required|numeric',
             'materials' => 'required|array',
-            'priceTags' => 'array',
+            'priceTags' => 'sometimes|array',
             'priceTags.*.price' => 'numeric',
+            'tests' => 'sometimes|array'
         ];
     }
 
