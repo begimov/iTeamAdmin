@@ -30,6 +30,10 @@
                     <input type="checkbox" v-model="params.isBundle" class="form-check-input">
                     <label class="form-check-label">Возможность купить несколько штук</label>
                 </div>
+                <div class="form-check" style="margin:10px 0;">
+                    <input type="checkbox" v-model="params.isFastOrder" class="form-check-input">
+                    <label class="form-check-label">Быстрая покупка</label>
+                </div>
             </div>
             <div class="col-md-6">
                 <template v-if="params.product && params.product.priceTags.data.length">

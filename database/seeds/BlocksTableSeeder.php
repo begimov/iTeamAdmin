@@ -100,6 +100,11 @@ class BlocksTableSeeder extends Seeder
                 'data' => '{"files":{"file1":""}}',
                 'name' => 'Кнопка на скачивание файла'
             ],
+            [
+                'view' => 'imgpurchase',
+                'data' => '{"files":{"img1":""},"product":""}',
+                'name' => 'Изображение и модуль покупки'
+            ],
       ];
       foreach ($blocks as $key => $value) {
           DB::table('blocks')->insert($value);

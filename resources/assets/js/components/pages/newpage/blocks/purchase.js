@@ -15,7 +15,8 @@ export default {
                 },
                 product: null,
                 priceTag: null,
-                isBundle: false
+                isBundle: false,
+                isFastOrder: false
             },
             isLoaded: false
         }
@@ -30,6 +31,9 @@ export default {
             this.$emit('input', this.prepareEmitedData())
         },
         'params.isBundle': function () {
+            this.$emit('input', this.prepareEmitedData())
+        },
+        'params.isFastOrder': function () {
             this.$emit('input', this.prepareEmitedData())
         },
         'params.data': {
@@ -52,6 +56,7 @@ export default {
                     this.params.priceTag = (selectedPriceTag) ? {...selectedPriceTag} : null
 
                     this.params.isBundle = this.product.isBundle
+                    this.params.isFastOrder = this.product.isFastOrder ? this.product.isFastOrder : false
                     this.params.data = this.product.data ? this.product.data : this.params.data
                 }
             })
@@ -61,7 +66,8 @@ export default {
                 data: this.params.data,
                 productId: this.params.product ? this.params.product.id : null,
                 pricetagId: this.params.priceTag ? this.params.priceTag.id : null,
-                isBundle: this.params.isBundle
+                isBundle: this.params.isBundle,
+                isFastOrder: this.params.isFastOrder
             }
         }
     },
