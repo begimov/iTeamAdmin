@@ -11,7 +11,8 @@ export default {
             params: {
                 data: {
                     title: '',
-                    description: ''
+                    description: '',
+                    originalPrice: null
                 },
                 product: null,
                 priceTag: null,

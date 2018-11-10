@@ -15,6 +15,13 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="text" v-model="params.data.originalPrice" class="form-control" placeholder="Цена без скидки...">
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <multiselect v-model="params.product"
                     :options="options.products"
