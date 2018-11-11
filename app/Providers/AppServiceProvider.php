@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\App\Reports\ReportBuilder;
+use App\Services\App\Reports\Contracts\ReportBuilder as ReportBuilderInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(ReportBuilderInterface::class, ReportBuilder::class);
     }
 }

@@ -75,6 +75,16 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //
+    }
+
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
         $this->app->bind(UserRepository::class, EloquentUserRepository::class);
         $this->app->bind(UserProfileRepository::class, EloquentUserProfileRepository::class);
         $this->app->bind(CompanyRepository::class, EloquentCompanyRepository::class);
@@ -92,15 +102,5 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(TestRepository::class, EloquentTestRepository::class);
         $this->app->bind(TestTypeRepository::class, EloquentTestTypeRepository::class);
         $this->app->bind(ReviewRepository::class, EloquentReviewRepository::class);
-    }
-
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }
