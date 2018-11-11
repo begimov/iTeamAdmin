@@ -62,6 +62,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         // Route for FileUploader.vue component
         Route::resource('files', 'Content\FileController');
 
+        // Reports
+        Route::get('/reports/daily', 'Reports\ReportController@daily');
+
     });
 
 });
