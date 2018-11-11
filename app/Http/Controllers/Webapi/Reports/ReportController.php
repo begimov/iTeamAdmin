@@ -15,8 +15,16 @@ class ReportController extends Controller
         $this->builder = $builder;
     }
     
-    public function daily()
+    public function show(Request $request, $type)
     {
-        dd($this->builder);
+        if (method_exists($this, $type)) {
+            return $this->{$type}();
+        }
+        return $this->getDaily();
+    }
+
+    protected function daily()
+    {
+        dd($this->builder->dailyReport()->build());
     }
 }

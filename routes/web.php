@@ -63,7 +63,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
         Route::resource('files', 'Content\FileController');
 
         // Reports
-        Route::get('/reports/daily', 'Reports\ReportController@daily');
+        Route::get('/reports/{type}', 'Reports\ReportController@show');
 
     });
 

@@ -7,11 +7,11 @@ use App\Services\App\Reports\Contracts\ReportBuilder as ReportBuilderInterface;
 
 class ReportBuilder implements ReportBuilderInterface
 {
-    protected $period;
+    public $fromDate;
+
+    public $data = [];
 
     protected $parameters = [];
-
-    protected $data = [];
 
     public function __construct()
     {
@@ -21,16 +21,10 @@ class ReportBuilder implements ReportBuilderInterface
 
     public function dailyReport()
     {
-        $this->setDatePeriod(1);
+        $this->setFromDate(Carbon::now()->subDay());
 
         $this->withMagnetDownloads();
 
-        return $this;
-    }
-
-    public function withMagnetDownloads()
-    {
-        $this->parameters[] = 'magnetDownloads';
         return $this;
     }
 
@@ -43,9 +37,15 @@ class ReportBuilder implements ReportBuilderInterface
         return new Report($this);
     }
 
-    protected function setDatePeriod(integer $days)
+    protected function withMagnetDownloads()
     {
-        $this->period = $days;
+        $this->parameters[] = 'magnetDownloads';
+        return $this;
+    }
+
+    protected function setFromDate(Carbon $date)
+    {
+        $this->fromDate = $date;
         return $this;
     }
 

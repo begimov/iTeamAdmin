@@ -4,17 +4,13 @@ namespace App\Services\App\Reports;
 
 class Report
 {
-    protected $period;
-
-    protected $parameters = [];
+    protected $fromDate;
 
     protected $data = [];
 
     public function __construct(ReportBuilder $builder)
     {
-        $this->period = $builder->period;
-
-        $this->parameters = $builder->parameters;
+        $this->fromDate = $builder->fromDate;
 
         $this->data = $builder->data;
     }
