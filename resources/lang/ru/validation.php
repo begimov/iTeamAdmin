@@ -133,6 +133,11 @@ return [
         //
     ],
 
+    'exception_errors' => [
+        'check_your_data' => 'Пожалуйста проверьте правильность введенных данных',
+        '404' => 'К сожалению, запрашиваемая страница не найдена.',
+    ],
+
     // Custom messages
     'store-product-request' => [
         'name' => [

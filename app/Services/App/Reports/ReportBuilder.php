@@ -3,6 +3,7 @@
 namespace App\Services\App\Reports;
 
 use Carbon\Carbon;
+use App\Services\Stats\Contracts\IGetResponse;
 use App\Services\App\Reports\Contracts\ReportBuilder as ReportBuilderInterface;
 
 class ReportBuilder implements ReportBuilderInterface
@@ -13,9 +14,12 @@ class ReportBuilder implements ReportBuilderInterface
 
     protected $parameters = [];
 
-    public function __construct()
+    protected $gr;
+
+    public function __construct(IGetResponse $gr)
     {
-        // GR client with injected Guzzle http client
+        $this->gr = $gr;
+
         // Google Analytics client with injected Guzzle http client
     }
 
@@ -51,6 +55,6 @@ class ReportBuilder implements ReportBuilderInterface
 
     protected function magnetDownloads()
     {
-        return 10;
+        return $this->gr->getCampaign('VjVkP');
     }
 }
