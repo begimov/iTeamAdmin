@@ -4,9 +4,9 @@ namespace App\Services\App\Reports;
 
 class Report
 {
-    protected $fromDate;
+    public $fromDate;
 
-    protected $data = [];
+    public $data = [];
 
     public function __construct(ReportBuilder $builder)
     {

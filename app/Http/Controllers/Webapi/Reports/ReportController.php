@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Webapi\Reports;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Transformers\Reports\ReportTransformer;
 use App\Services\App\Reports\Contracts\ReportBuilder;
 
 class ReportController extends Controller
@@ -20,11 +21,14 @@ class ReportController extends Controller
         if (method_exists($this, $type)) {
             return $this->{$type}();
         }
-        return $this->getDaily();
+        return $this->daily();
     }
 
     protected function daily()
     {
-        dd($this->builder->dailyReport()->build());
+        return fractal(
+            $this->builder->dailyReport()->build(), 
+            new ReportTransformer()
+        )->toArray();
     }
 }
