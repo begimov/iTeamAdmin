@@ -3,8 +3,9 @@
 namespace App\Services\App\Reports;
 
 use Carbon\Carbon;
+use App\Services\App\Reports\Contracts\ReportBuilder as ReportBuilderInterface;
 
-class ReportBuilder
+class ReportBuilder implements ReportBuilderInterface
 {
     protected $period;
 
@@ -23,7 +24,7 @@ class ReportBuilder
         $this->setDatePeriod(1);
 
         $this->withMagnetDownloads();
-        
+
         return $this;
     }
 
