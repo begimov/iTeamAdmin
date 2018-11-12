@@ -69514,17 +69514,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     class: {
       'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
     }
-  }), _vm._v(" "), _vm._m(0)])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }), _vm._v(" "), _c('div', {
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-body"
-  }, [_c('div', {
-    staticClass: "row panel-subheading"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('h4', [_vm._v("\n                  Ежедневный отчет\n                ")])])]), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
     staticClass: "col-md-4"
@@ -69532,19 +69526,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-primary"
   }, [_c('div', {
     staticClass: "panel-body"
-  }, [_c('h5', [_vm._v("Число скачавших магнит")]), _vm._v(" "), _c('h1', [_vm._v("100")])])])]), _vm._v(" "), _c('div', {
+  }, [_c('h5', [_vm._v("Число скачавших магнит")]), _vm._v(" "), (_vm.dailyReport) ? _c('h1', [_vm._v(_vm._s(_vm.dailyReport.magnetDownloads))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "panel panel-primary"
   }, [_c('div', {
     staticClass: "panel-body"
-  }, [_c('h5', [_vm._v("Число нажавших кнопку «Получить» на странице трипваера")]), _vm._v(" "), _c('h1', [_vm._v("100")])])])]), _vm._v(" "), _c('div', {
+  }, [_c('h5', [_vm._v("Число нажавших кнопку «Получить» на странице трипваера")]), _vm._v(" "), (_vm.dailyReport) ? _c('h1', [_vm._v(_vm._s(_vm.dailyReport.tripwireOrders))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
     staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "panel panel-primary"
   }, [_c('div', {
     staticClass: "panel-body"
-  }, [_c('h5', [_vm._v("Число купивших трипваер")]), _vm._v(" "), _c('h1', [_vm._v("100")])])])])])])])
+  }, [_c('h5', [_vm._v("Число купивших трипваер")]), _vm._v(" "), (_vm.dailyReport) ? _c('h1', [_vm._v(_vm._s(_vm.dailyReport.tripwirePurchases))]) : _vm._e()])])])])])])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row panel-subheading"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('h4', [_vm._v("\n                  Ежедневный отчет\n                ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -70598,7 +70598,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reports', ['isLoading'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reports', ['isLoading', 'dailyReport'])),
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reports', ['getReports'])),
     mounted: function mounted() {
         this.getReports();
@@ -70633,7 +70633,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  reports: [],
+  reports: {
+    dailyReport: null
+  },
   isLoading: false
 });
 
@@ -70645,6 +70647,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 /* harmony default export */ __webpack_exports__["a"] = ({
   isLoading: function isLoading(state) {
     return state.isLoading;
+  },
+  dailyReport: function dailyReport(state) {
+    return state.reports.dailyReport;
   }
 });
 
@@ -70661,9 +70666,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     var commit = _ref.commit;
 
     commit('setIsLoading', true);
-    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].reports.getReports().then(function (res) {
-      console.log(res.data);
-      // commit('setReviews', res.data)
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].reports.getDailyReport().then(function (res) {
+      commit('setDailyReport', res.data.data);
       commit('setIsLoading', false);
     });
   }
@@ -70675,10 +70679,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  // setReviews (state, reviews) {
-  //   state.reviews = reviews.data
-  //   state.meta = reviews.meta
-  // },
+  setDailyReport: function setDailyReport(state, report) {
+    state.reports.dailyReport = report.data;
+  },
   setIsLoading: function setIsLoading(state, flag) {
     state.isLoading = flag;
   }
@@ -70690,7 +70693,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = ({
-  getReports: function getReports() {
+  getDailyReport: function getDailyReport() {
     return new Promise(function (resolve, reject) {
       axios.get("/webapi/reports/daily").then(function (res) {
         resolve(res);

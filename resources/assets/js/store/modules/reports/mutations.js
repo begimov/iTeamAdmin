@@ -1,8 +1,7 @@
 export default {
-  // setReviews (state, reviews) {
-  //   state.reviews = reviews.data
-  //   state.meta = reviews.meta
-  // },
+  setDailyReport (state, report) {
+    state.reports.dailyReport = report.data
+  },
   setIsLoading (state, flag) {
     state.isLoading = flag
   }

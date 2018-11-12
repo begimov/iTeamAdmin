@@ -1,4 +1,6 @@
 export default {
-  reports: [],
+  reports: {
+    dailyReport: null
+  },
   isLoading: false
 }

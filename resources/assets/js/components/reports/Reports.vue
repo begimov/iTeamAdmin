@@ -19,7 +19,7 @@
                   <div class="panel panel-primary">
                     <div class="panel-body">
                       <h5>Число скачавших магнит</h5>
-                      <h1>100</h1>
+                      <h1 v-if="dailyReport">{{ dailyReport.magnetDownloads }}</h1>
                     </div>
                   </div>
                 </div>
@@ -27,7 +27,7 @@
                   <div class="panel panel-primary">
                     <div class="panel-body">
                       <h5>Число нажавших кнопку «Получить» на странице трипваера</h5>
-                      <h1>100</h1>
+                      <h1 v-if="dailyReport">{{ dailyReport.tripwireOrders }}</h1>
                     </div>
                   </div>
                 </div>
@@ -35,7 +35,7 @@
                   <div class="panel panel-primary">
                     <div class="panel-body">
                       <h5>Число купивших трипваер</h5>
-                      <h1>100</h1>
+                      <h1 v-if="dailyReport">{{ dailyReport.tripwirePurchases }}</h1>
                     </div>
                   </div>
                 </div>
