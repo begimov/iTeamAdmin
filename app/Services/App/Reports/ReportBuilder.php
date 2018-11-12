@@ -27,7 +27,8 @@ class ReportBuilder implements ReportBuilderInterface
     {
         $this->setFromDate(Carbon::now()->subDay());
 
-        $this->withMagnetDownloads();
+        $this->withMagnetDownloads()
+            ->withTripwirePurchases();
 
         return $this;
     }
@@ -47,6 +48,12 @@ class ReportBuilder implements ReportBuilderInterface
         return $this;
     }
 
+    protected function withTripwirePurchases()
+    {
+        $this->parameters[] = 'tripwirePurchases';
+        return $this;
+    }
+
     protected function setFromDate(Carbon $date)
     {
         $this->fromDate = $date;
@@ -55,6 +62,18 @@ class ReportBuilder implements ReportBuilderInterface
 
     protected function magnetDownloads()
     {
-        return $this->gr->getCampaign('VjVkP');
+        $grData = $this->gr->getCampaignStatisticsListsize(
+            config('services.getresponse.book_magnet_campaign'), 
+            $this->fromDate
+        );
+
+        return array_reduce($grData, function($acc, $e) {
+            return $acc + $e->addedSubscribers;
+        }, 0);
+    }
+
+    protected function tripwirePurchases()
+    {
+        // count number of paid orders of tripwire product
     }
 }

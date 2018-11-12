@@ -2,8 +2,9 @@
 
 namespace App\Services\Stats;
 
-use App\Services\Stats\Contracts\IGetResponse;
+use Carbon\Carbon;
 
+use App\Services\Stats\Contracts\IGetResponse;
 use App\Exceptions\Services\Stats\GetResponseAPIException;
 
 class GetResponse implements IGetResponse
@@ -34,6 +35,13 @@ class GetResponse implements IGetResponse
     public function getCampaign($campaign_id)
     {
         return $this->call('campaigns/' . $campaign_id);
+    }
+
+    public function getCampaignStatisticsListsize($campaign_id, Carbon $fromDate, $groupBy = 'day')
+    {
+        return $this->call('campaigns/statistics/list-size?query[groupBy]=' . $groupBy 
+            . '&query[createdOn][from]=' . $fromDate->toDateString() 
+            . '&query[campaignId]=' . $campaign_id);
     }
 
     /**
@@ -87,6 +95,8 @@ class GetResponse implements IGetResponse
                     'form_params' => $params,
                 ]
             );
+        return json_decode($response->getBody()->getContents());
+
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $response = json_decode((string) $e->getResponse()->getBody());
 

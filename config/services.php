@@ -38,6 +38,7 @@ return [
     'getresponse' => [
         'url' => env('GETRESPONSE_URL'),
         'key' => env('GETRESPONSE_KEY'),
+        'book_magnet_campaign' => 'VjVkP'
     ],
 
 ];
