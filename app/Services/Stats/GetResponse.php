@@ -44,6 +44,19 @@ class GetResponse implements IGetResponse
             . '&query[campaignId]=' . $campaign_id);
     }
 
+    public function getAutorespondersStatistics(Carbon $fromDate, $groupBy = 'total')
+    {
+        $latestAutoresponders = $this->call('autoresponders?sort[createdOn]=desc');
+
+        $latestAutorespondersIds = array_map(function($e) {
+            return $e->autoresponderId;
+        }, $latestAutoresponders);
+
+        return $this->call('autoresponders/statistics?query[groupBy]=' . $groupBy
+            . '&query[createdOn][from]=' . $fromDate->toDateString()
+            . '&query[autoresponderId]=' . implode(',', $latestAutorespondersIds));
+    }
+
     /**
      * add single contact into your campaign
      *

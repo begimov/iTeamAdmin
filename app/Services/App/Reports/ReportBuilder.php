@@ -47,7 +47,8 @@ class ReportBuilder implements ReportBuilderInterface
 
         $this->withMagnetDownloads()
             ->withTripwireOrders()
-            ->withTripwirePurchases();
+            ->withTripwirePurchases()
+            ->withAutorespondersStatistics();
 
         return $this;
     }
@@ -76,6 +77,12 @@ class ReportBuilder implements ReportBuilderInterface
     protected function withTripwirePurchases()
     {
         $this->parameters[] = 'tripwirePurchases';
+        return $this;
+    }
+
+    protected function withAutorespondersStatistics()
+    {
+        $this->parameters[] = 'autorespondersStatistics';
         return $this;
     }
 
@@ -116,5 +123,19 @@ class ReportBuilder implements ReportBuilderInterface
         ])->get();
 
         return $tripwireOrders->count();
+    }
+
+    protected function autorespondersStatistics()
+    {
+        $response = $this->gr->getAutorespondersStatistics($this->fromDate);
+
+        $response = array_pop($response);
+
+        return [
+            'sent' => $sent = $response->sent,
+            'opened' => round(($response->uniqueOpened / $sent) * 100, 2),
+            'clicked' => round(($response->uniqueClicked / $sent) * 100, 2),
+            'complaints' => round(($response->complaints / $sent) * 100, 2),
+        ];
     }
 }
