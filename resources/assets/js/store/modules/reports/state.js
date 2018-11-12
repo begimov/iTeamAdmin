@@ -1,6 +1,7 @@
 export default {
   reports: {
-    dailyReport: null
+    dailyReport: null,
+    weeklyReport: null,
   },
   isLoading: false
 }

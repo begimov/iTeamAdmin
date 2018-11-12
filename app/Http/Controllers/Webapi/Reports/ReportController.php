@@ -31,4 +31,12 @@ class ReportController extends Controller
             new ReportTransformer()
         )->toArray();
     }
+
+    protected function weekly()
+    {
+        return fractal(
+            $this->builder->weeklyReport()->build(), 
+            new ReportTransformer()
+        )->toArray();
+    }
 }
