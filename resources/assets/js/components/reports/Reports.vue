@@ -74,6 +74,40 @@
                   </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Отправленных писем</h5>
+                      <h1 v-if="weeklyReport">{{ weeklyReport.autorespondersStatistics.sent }}</h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Открытых писем</h5>
+                      <h1 v-if="weeklyReport">{{ weeklyReport.autorespondersStatistics.opened }}%</h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Кликов по ссылкам</h5>
+                      <h1 v-if="weeklyReport">{{ weeklyReport.autorespondersStatistics.clicked }}%</h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Жалоб</h5>
+                      <h1 v-if="weeklyReport">{{ weeklyReport.autorespondersStatistics.complaints }}%</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             </div>
 
