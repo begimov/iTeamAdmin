@@ -1682,6 +1682,8 @@ function applyToTag (styleElement, obj) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__products_newproduct__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__reviews_reviews__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__reviews_newreview__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__reports_reports__ = __webpack_require__(260);
+
 
 
 
@@ -1703,7 +1705,8 @@ function applyToTag (styleElement, obj) {
   newproduct: __WEBPACK_IMPORTED_MODULE_7__products_newproduct__["a" /* default */],
   materials: __WEBPACK_IMPORTED_MODULE_5__products_materials__["a" /* default */],
   reviews: __WEBPACK_IMPORTED_MODULE_8__reviews_reviews__["a" /* default */],
-  newreview: __WEBPACK_IMPORTED_MODULE_9__reviews_newreview__["a" /* default */]
+  newreview: __WEBPACK_IMPORTED_MODULE_9__reviews_newreview__["a" /* default */],
+  reports: __WEBPACK_IMPORTED_MODULE_10__reports_reports__["a" /* default */]
 });
 
 /***/ }),
@@ -43566,9 +43569,10 @@ module.exports = function spread(callback) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_materials__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_tests__ = __webpack_require__(84);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_reviews__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuex__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_reports__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuex__ = __webpack_require__(2);
 
 
 
@@ -43577,15 +43581,17 @@ module.exports = function spread(callback) {
 
 
 
-__WEBPACK_IMPORTED_MODULE_5_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */]);
 
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_6_vuex__["a" /* default */].Store({
+__WEBPACK_IMPORTED_MODULE_6_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_7_vuex__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_7_vuex__["a" /* default */].Store({
   modules: {
     products: __WEBPACK_IMPORTED_MODULE_0__modules_products__["a" /* default */],
     pages: __WEBPACK_IMPORTED_MODULE_1__modules_pages__["a" /* default */],
     materials: __WEBPACK_IMPORTED_MODULE_2__modules_materials__["a" /* default */],
     tests: __WEBPACK_IMPORTED_MODULE_3__modules_tests__["a" /* default */],
-    reviews: __WEBPACK_IMPORTED_MODULE_4__modules_reviews__["a" /* default */]
+    reviews: __WEBPACK_IMPORTED_MODULE_4__modules_reviews__["a" /* default */],
+    reports: __WEBPACK_IMPORTED_MODULE_5__modules_reports__["a" /* default */]
   }
 }));
 
@@ -69498,8 +69504,6 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('div', {
     staticClass: "container"
   }, [_c('div', {
@@ -69507,6 +69511,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('div', {
+    class: {
+      'isActive': _vm.isLoading, 'loader': true, 'loader-def': true
+    }
+  }), _vm._v(" "), _vm._m(0)])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "panel panel-default"
   }, [_c('div', {
     staticClass: "panel-body"
@@ -69514,7 +69524,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "row panel-subheading"
   }, [_c('div', {
     staticClass: "col-md-12"
-  }, [_c('h4', [_vm._v("\n                  Отчеты\n                ")])])])])])])])])])
+  }, [_c('h4', [_vm._v("\n                  Ежедневный отчет\n                ")])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Число скачавших магнит")]), _vm._v(" "), _c('h1', [_vm._v("100")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Число нажавших кнопку «Получить» на странице трипваера")]), _vm._v(" "), _c('h1', [_vm._v("100")])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Число купивших трипваер")]), _vm._v(" "), _c('h1', [_vm._v("100")])])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -70568,16 +70598,105 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reviews', [
-        //
-    ])),
-    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reviews', [
-        //
-    ])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reports', ['isLoading'])),
+    methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reports', ['getReports'])),
     mounted: function mounted() {
-        // this.getReviews()
-        console.log('dsfsdf');
+        this.getReports();
     }
+});
+
+/***/ }),
+/* 255 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getters__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__actions__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations__ = __webpack_require__(259);
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  namespaced: true,
+  state: __WEBPACK_IMPORTED_MODULE_0__state__["a" /* default */],
+  getters: __WEBPACK_IMPORTED_MODULE_1__getters__["a" /* default */],
+  actions: __WEBPACK_IMPORTED_MODULE_2__actions__["a" /* default */],
+  mutations: __WEBPACK_IMPORTED_MODULE_3__mutations__["a" /* default */]
+});
+
+/***/ }),
+/* 256 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  reports: [],
+  isLoading: false
+});
+
+/***/ }),
+/* 257 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  isLoading: function isLoading(state) {
+    return state.isLoading;
+  }
+});
+
+/***/ }),
+/* 258 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api__ = __webpack_require__(5);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  getReports: function getReports(_ref) {
+    var commit = _ref.commit;
+
+    commit('setIsLoading', true);
+    __WEBPACK_IMPORTED_MODULE_0__api__["a" /* default */].reports.getReports().then(function (res) {
+      console.log(res.data);
+      // commit('setReviews', res.data)
+      commit('setIsLoading', false);
+    });
+  }
+});
+
+/***/ }),
+/* 259 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  // setReviews (state, reviews) {
+  //   state.reviews = reviews.data
+  //   state.meta = reviews.meta
+  // },
+  setIsLoading: function setIsLoading(state, flag) {
+    state.isLoading = flag;
+  }
+});
+
+/***/ }),
+/* 260 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ({
+  getReports: function getReports() {
+    return new Promise(function (resolve, reject) {
+      axios.get("/webapi/reports/daily").then(function (res) {
+        resolve(res);
+      });
+    });
+  }
 });
 
 /***/ })

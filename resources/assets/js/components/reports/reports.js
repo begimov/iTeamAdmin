@@ -2,17 +2,16 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
     computed: {
-        ...mapGetters('reviews', [
-            //
+        ...mapGetters('reports', [
+            'isLoading'
         ])
     },
     methods: {
-        ...mapActions('reviews', [
-            //
+        ...mapActions('reports', [
+            'getReports'
         ])
     },
     mounted () {
-        // this.getReviews()
-        console.log('dsfsdf')
+        this.getReports()
     }
 }
