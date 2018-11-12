@@ -3,7 +3,10 @@
 namespace App\Services\App\Reports;
 
 use Carbon\Carbon;
+use App\Repositories\Eloquent\Criteria\Where;
 use App\Services\Stats\Contracts\IGetResponse;
+use App\Repositories\Eloquent\Criteria\WhereGreater;
+use App\Repositories\Contracts\Products\OrderRepository;
 use App\Services\App\Reports\Contracts\ReportBuilder as ReportBuilderInterface;
 
 class ReportBuilder implements ReportBuilderInterface
@@ -16,9 +19,13 @@ class ReportBuilder implements ReportBuilderInterface
 
     protected $gr;
 
-    public function __construct(IGetResponse $gr)
+    protected $orders;
+
+    public function __construct(IGetResponse $gr, OrderRepository $orders)
     {
         $this->gr = $gr;
+
+        $this->orders = $orders;
 
         // Google Analytics client with injected Guzzle http client
     }
@@ -74,6 +81,12 @@ class ReportBuilder implements ReportBuilderInterface
 
     protected function tripwirePurchases()
     {
-        // count number of paid orders of tripwire product
+        $tripwireProductOrders = $this->orders->withCriteria([
+            new Where('product_id', config('orders.tripwire_product_id')),
+            new Where('payment_state_id', config('orders.payed_payment_state_id')),
+            new WhereGreater('created_at', $this->fromDate),
+        ])->get();
+
+        return $tripwireProductOrders->count();
     }
 }
