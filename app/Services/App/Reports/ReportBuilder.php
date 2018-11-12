@@ -35,6 +35,7 @@ class ReportBuilder implements ReportBuilderInterface
         $this->setFromDate(Carbon::now()->subDay());
 
         $this->withMagnetDownloads()
+            ->withTripwireOrders()
             ->withTripwirePurchases();
 
         return $this;
@@ -52,6 +53,12 @@ class ReportBuilder implements ReportBuilderInterface
     protected function withMagnetDownloads()
     {
         $this->parameters[] = 'magnetDownloads';
+        return $this;
+    }
+
+    protected function withTripwireOrders()
+    {
+        $this->parameters[] = 'tripwireOrders';
         return $this;
     }
 
@@ -79,14 +86,24 @@ class ReportBuilder implements ReportBuilderInterface
         }, 0);
     }
 
+    protected function tripwireOrders()
+    {
+        $tripwireOrders = $this->orders->withCriteria([
+            new Where('product_id', config('orders.tripwire_product_id')),
+            new WhereGreater('created_at', $this->fromDate),
+        ])->get();
+
+        return $tripwireOrders->count();
+    }
+
     protected function tripwirePurchases()
     {
-        $tripwireProductOrders = $this->orders->withCriteria([
+        $tripwireOrders = $this->orders->withCriteria([
             new Where('product_id', config('orders.tripwire_product_id')),
             new Where('payment_state_id', config('orders.payed_payment_state_id')),
             new WhereGreater('created_at', $this->fromDate),
         ])->get();
 
-        return $tripwireProductOrders->count();
+        return $tripwireOrders->count();
     }
 }
