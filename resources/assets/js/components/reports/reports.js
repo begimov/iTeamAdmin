@@ -4,7 +4,8 @@ export default {
     computed: {
         ...mapGetters('reports', [
             'isLoading',
-            'dailyReport'
+            'dailyReport',
+            'weeklyReport'
         ])
     },
     methods: {

@@ -4,5 +4,8 @@ export default {
   },
   dailyReport (state) {
     return state.reports.dailyReport
+  },
+  weeklyReport (state) {
+    return state.reports.weeklyReport
   }
 }

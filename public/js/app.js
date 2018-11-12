@@ -46099,6 +46099,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
   dailyReport: function dailyReport(state) {
     return state.reports.dailyReport;
+  },
+  weeklyReport: function weeklyReport(state) {
+    return state.reports.weeklyReport;
   }
 });
 
@@ -69622,7 +69625,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reports', ['isLoading', 'dailyReport'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["c" /* mapGetters */])('reports', ['isLoading', 'dailyReport', 'weeklyReport'])),
     methods: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapActions */])('reports', ['getReports'])),
     mounted: function mounted() {
         this.getReports();
@@ -69668,13 +69671,39 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-primary"
   }, [_c('div', {
     staticClass: "panel-body"
-  }, [_c('h5', [_vm._v("Покупок трипваера")]), _vm._v(" "), (_vm.dailyReport) ? _c('h1', [_vm._v(_vm._s(_vm.dailyReport.tripwirePurchases))]) : _vm._e()])])])])])])])])])])
+  }, [_c('h5', [_vm._v("Покупок трипваера")]), _vm._v(" "), (_vm.dailyReport) ? _c('h1', [_vm._v(_vm._s(_vm.dailyReport.tripwirePurchases))]) : _vm._e()])])])]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Скачиваний магнита")]), _vm._v(" "), (_vm.weeklyReport) ? _c('h1', [_vm._v(_vm._s(_vm.weeklyReport.magnetDownloads))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Нажатий на кнопку «Купить»")]), _vm._v(" "), (_vm.weeklyReport) ? _c('h1', [_vm._v(_vm._s(_vm.weeklyReport.tripwireOrders))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Покупок трипваера")]), _vm._v(" "), (_vm.weeklyReport) ? _c('h1', [_vm._v(_vm._s(_vm.weeklyReport.tripwirePurchases))]) : _vm._e()])])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row panel-subheading"
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('h4', [_vm._v("\n                  Ежедневный отчет\n                ")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row panel-subheading"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('h4', [_vm._v("\n                  Еженедельный отчет\n                ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
