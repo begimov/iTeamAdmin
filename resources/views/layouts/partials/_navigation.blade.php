@@ -38,6 +38,7 @@
                       </a>
                       <ul class="dropdown-menu" role="menu">
                           <li><a href="{{ route('reviews') }}">@lang('navigation.reviews')</a></li>
+                          <li><a href="{{ route('reports') }}">@lang('navigation.reports')</a></li>
                       </ul>
                   </li>
                 @endrole
