@@ -7,7 +7,10 @@ export default {
       commit('setDailyReport', res.data.data)
       api.reports.getWeeklyReport().then(res => {
         commit('setWeeklyReport', res.data.data)
-        commit('setIsLoading', false)
+        api.reports.getMonthlyReport().then(res => {
+          commit('setMonthlyReport', res.data.data)
+          commit('setIsLoading', false)
+        })
       })
     })
     

@@ -12,5 +12,12 @@ export default {
         resolve(res)
       })
     })
+  },
+  getMonthlyReport() {
+    return new Promise((resolve, reject) => {
+      axios.get(`/webapi/reports/monthly`).then(res => {
+        resolve(res)
+      })
+    })
   }
 }

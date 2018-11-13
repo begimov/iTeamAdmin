@@ -53,6 +53,18 @@ class ReportBuilder implements ReportBuilderInterface
         return $this;
     }
 
+    public function monthly()
+    {
+        $this->setFromDate(Carbon::now()->subMonth());
+
+        $this->withMagnetDownloads()
+            ->withTripwireOrders()
+            ->withTripwirePurchases()
+            ->withAutorespondersStatistics();
+
+        return $this;
+    }
+
     public function build(): Report
     {
         foreach ($this->parameters as $parameter) {

@@ -5,6 +5,9 @@ export default {
   setWeeklyReport (state, report) {
     state.reports.weeklyReport = report.data
   },
+  setMonthlyReport (state, report) {
+    state.reports.monthlyReport = report.data
+  },
   setIsLoading (state, flag) {
     state.isLoading = flag
   }

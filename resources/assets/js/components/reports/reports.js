@@ -5,7 +5,8 @@ export default {
         ...mapGetters('reports', [
             'isLoading',
             'dailyReport',
-            'weeklyReport'
+            'weeklyReport',
+            'monthlyReport'
         ])
     },
     methods: {
