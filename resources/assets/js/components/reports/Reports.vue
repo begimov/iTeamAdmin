@@ -109,6 +109,74 @@
                 </div>
               </div>
 
+              <div class="row panel-subheading">
+                <div class="col-md-12">
+                  <h4>
+                    Ежемесячный отчет
+                  </h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Скачиваний магнита</h5>
+                      <h1 v-if="monthlyReport">{{ monthlyReport.magnetDownloads }}</h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Нажатий на кнопку «Купить»</h5>
+                      <h1 v-if="monthlyReport">{{ monthlyReport.tripwireOrders }}</h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Покупок трипваера</h5>
+                      <h1 v-if="monthlyReport">{{ monthlyReport.tripwirePurchases }}</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Отправленных писем</h5>
+                      <h1 v-if="monthlyReport">{{ monthlyReport.autorespondersStatistics.sent }}</h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Открытых писем</h5>
+                      <h1 v-if="monthlyReport">{{ monthlyReport.autorespondersStatistics.opened }}%</h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Кликов по ссылкам</h5>
+                      <h1 v-if="monthlyReport">{{ monthlyReport.autorespondersStatistics.clicked }}%</h1>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="panel panel-primary">
+                    <div class="panel-body">
+                      <h5>Жалоб</h5>
+                      <h1 v-if="monthlyReport">{{ monthlyReport.autorespondersStatistics.complaints }}%</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
           </div>

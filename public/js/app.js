@@ -46110,6 +46110,9 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
   },
   weeklyReport: function weeklyReport(state) {
     return state.reports.weeklyReport;
+  },
+  monthlyReport: function monthlyReport(state) {
+    return state.reports.monthlyReport;
   }
 });
 
@@ -69731,7 +69734,53 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel panel-primary"
   }, [_c('div', {
     staticClass: "panel-body"
-  }, [_c('h5', [_vm._v("Жалоб")]), _vm._v(" "), (_vm.weeklyReport) ? _c('h1', [_vm._v(_vm._s(_vm.weeklyReport.autorespondersStatistics.complaints) + "%")]) : _vm._e()])])])])])])])])])])
+  }, [_c('h5', [_vm._v("Жалоб")]), _vm._v(" "), (_vm.weeklyReport) ? _c('h1', [_vm._v(_vm._s(_vm.weeklyReport.autorespondersStatistics.complaints) + "%")]) : _vm._e()])])])]), _vm._v(" "), _vm._m(2), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Скачиваний магнита")]), _vm._v(" "), (_vm.monthlyReport) ? _c('h1', [_vm._v(_vm._s(_vm.monthlyReport.magnetDownloads))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Нажатий на кнопку «Купить»")]), _vm._v(" "), (_vm.monthlyReport) ? _c('h1', [_vm._v(_vm._s(_vm.monthlyReport.tripwireOrders))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Покупок трипваера")]), _vm._v(" "), (_vm.monthlyReport) ? _c('h1', [_vm._v(_vm._s(_vm.monthlyReport.tripwirePurchases))]) : _vm._e()])])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-3"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Отправленных писем")]), _vm._v(" "), (_vm.monthlyReport) ? _c('h1', [_vm._v(_vm._s(_vm.monthlyReport.autorespondersStatistics.sent))]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Открытых писем")]), _vm._v(" "), (_vm.monthlyReport) ? _c('h1', [_vm._v(_vm._s(_vm.monthlyReport.autorespondersStatistics.opened) + "%")]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Кликов по ссылкам")]), _vm._v(" "), (_vm.monthlyReport) ? _c('h1', [_vm._v(_vm._s(_vm.monthlyReport.autorespondersStatistics.clicked) + "%")]) : _vm._e()])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-3"
+  }, [_c('div', {
+    staticClass: "panel panel-primary"
+  }, [_c('div', {
+    staticClass: "panel-body"
+  }, [_c('h5', [_vm._v("Жалоб")]), _vm._v(" "), (_vm.monthlyReport) ? _c('h1', [_vm._v(_vm._s(_vm.monthlyReport.autorespondersStatistics.complaints) + "%")]) : _vm._e()])])])])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "row panel-subheading"
@@ -69744,6 +69793,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "col-md-12"
   }, [_c('h4', [_vm._v("\n                  Еженедельный отчет\n                ")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "row panel-subheading"
+  }, [_c('div', {
+    staticClass: "col-md-12"
+  }, [_c('h4', [_vm._v("\n                  Ежемесячный отчет\n                ")])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

@@ -11,5 +11,7 @@ interface ReportBuilder
 
     public function weekly();
 
+    public function monthly();
+
     public function build(): Report;
 }

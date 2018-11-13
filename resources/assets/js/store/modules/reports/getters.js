@@ -7,5 +7,8 @@ export default {
   },
   weeklyReport (state) {
     return state.reports.weeklyReport
+  },
+  monthlyReport (state) {
+    return state.reports.monthlyReport
   }
 }
