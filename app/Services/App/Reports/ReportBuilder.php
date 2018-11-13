@@ -30,7 +30,7 @@ class ReportBuilder implements ReportBuilderInterface
         // Google Analytics client with injected Guzzle http client
     }
 
-    public function dailyReport()
+    public function daily()
     {
         $this->setFromDate(Carbon::now()->subDay());
 
@@ -41,7 +41,7 @@ class ReportBuilder implements ReportBuilderInterface
         return $this;
     }
 
-    public function weeklyReport()
+    public function weekly()
     {
         $this->setFromDate(Carbon::now()->subWeek());
 

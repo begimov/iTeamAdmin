@@ -7,7 +7,9 @@ use App\Services\App\Reports\Report;
 
 interface ReportBuilder
 {
-    public function dailyReport();
+    public function daily();
+
+    public function weekly();
 
     public function build(): Report;
 }

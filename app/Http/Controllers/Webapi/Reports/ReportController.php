@@ -18,25 +18,11 @@ class ReportController extends Controller
     
     public function show(Request $request, $type)
     {
-        if (method_exists($this, $type)) {
-            return $this->{$type}();
+        if (method_exists($this->builder, $type)) {
+            return fractal(
+                $this->builder->{$type}()->build(), 
+                new ReportTransformer()
+            )->toArray();
         }
-        return $this->daily();
-    }
-
-    protected function daily()
-    {
-        return fractal(
-            $this->builder->dailyReport()->build(), 
-            new ReportTransformer()
-        )->toArray();
-    }
-
-    protected function weekly()
-    {
-        return fractal(
-            $this->builder->weeklyReport()->build(), 
-            new ReportTransformer()
-        )->toArray();
     }
 }
