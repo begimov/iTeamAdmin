@@ -8,6 +8,7 @@ import newmaterial from './products/newmaterial'
 import newproduct from './products/newproduct'
 import reviews from './reviews/reviews'
 import newreview from './reviews/newreview'
+import reports from './reports/reports'
 
 export default {
   products,
@@ -19,5 +20,6 @@ export default {
   newproduct,
   materials,
   reviews,
-  newreview
+  newreview,
+  reports
 }

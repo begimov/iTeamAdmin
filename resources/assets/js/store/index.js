@@ -3,6 +3,7 @@ import pages from './modules/pages'
 import materials from './modules/materials'
 import tests from './modules/tests'
 import reviews from './modules/reviews'
+import reports from './modules/reports'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     pages,
     materials,
     tests,
-    reviews
+    reviews,
+    reports
   }
 })

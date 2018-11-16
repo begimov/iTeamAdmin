@@ -74,6 +74,9 @@ Vue.component('client-reviews', require('./components/reviews/Reviews.vue'));
 Vue.component('client-review', require('./components/reviews/Review.vue'));
 Vue.component('new-review', require('./components/reviews/newreview/NewReview.vue'));
 
+// Reports
+Vue.component('reports', require('./components/reports/Reports.vue'));
+
 // Special blocks
 Vue.component('purchase', require('./components/pages/newpage/blocks/Purchase.vue'));
 Vue.component('mp-purchase', require('./components/pages/newpage/blocks/MpPurchase.vue'));

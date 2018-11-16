@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'getresponse' => [
+        'url' => env('GETRESPONSE_URL'),
+        'key' => env('GETRESPONSE_KEY'),
+        'book_magnet_campaign' => 'VjVkP'
+    ],
+
 ];

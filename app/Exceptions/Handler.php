@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use App\Exceptions\Services\Stats\GetResponseAPIException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -44,6 +45,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof GetResponseAPIException) {
+            return response()->json([
+                'errors' => [
+                    '_message' => trans('validation.exception_errors.check_your_data')
+                ]
+            ], $exception->getResponse()->httpStatus);
+        }
+
         return parent::render($request, $exception);
     }
 
