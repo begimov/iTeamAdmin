@@ -10,7 +10,8 @@ export default {
               },
             params: {
                 product: null,
-                campaignToken: null
+                campaignToken: null,
+                noPhone: false
             },
         }
     },
@@ -32,13 +33,15 @@ export default {
                     this.params.product = { ...selectedProduct }
 
                     this.params.campaignToken = this.product.campaignToken
+                    this.params.noPhone = this.product.noPhone ? this.product.noPhone : false
                 }
             })
         },
         prepareEmitedData() {
             return {
                 productId: this.params.product ? this.params.product.id : null,
-                campaignToken: this.params.campaignToken
+                campaignToken: this.params.campaignToken,
+                noPhone: this.params.noPhone
             }
         }
     },

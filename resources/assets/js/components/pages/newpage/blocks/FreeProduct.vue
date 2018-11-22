@@ -17,6 +17,14 @@
                 <input type="text" class="form-control" placeholder="Токен GR кампании..." v-model="params.campaignToken">
             </div>
         </div>
+        <div class="col-md-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" v-model="params.noPhone">
+                <label class="form-check-label">
+                    Не запрашивать телефон
+                </label>
+            </div>
+        </div>
     </div>
 </template>
 
