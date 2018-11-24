@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\Reports\StatsReport::class
     ];
 
     /**
@@ -24,8 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('report:build daily')
+            ->everyMinute();
+            // ->emailOutputTo('begimov@gmail.com');
     }
 
     /**
