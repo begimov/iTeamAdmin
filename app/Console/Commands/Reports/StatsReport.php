@@ -50,10 +50,26 @@ class StatsReport extends Command
 
             $report = $this->builder->{$period}()->build();
 
-            Log::info(json_encode($report));
+            $stats = $report->getData();
+
+            if (method_exists($this, $period)) {
+                $this->{$period}($stats);
+            } else {
+                $this->daily($stats);
+            }
 
         } else {
             $this->error('No such reporting period');
         }
+    }
+
+    protected function daily($stats)
+    {
+        $this->line(
+            'Ежедневный отчет / '
+            . 'Скачиваний магнита: ' . $stats['magnetDownloads'] . ' / '
+            . 'Нажатий на кнопку «Купить»: ' . $stats['tripwireOrders'] . ' / '
+            . 'Покупок трипваера: ' . $stats['tripwirePurchases']
+        );
     }
 }

@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('report:build daily')
-            ->everyMinute();
-            // ->emailOutputTo('begimov@gmail.com');
+            ->daily()
+            ->emailOutputTo(config('reports.stats_recipients'));
     }
 
     /**

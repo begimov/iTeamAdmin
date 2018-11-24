@@ -14,4 +14,9 @@ class Report
 
         $this->data = $builder->data;
     }
+
+    public function getData()
+    {
+        return $this->data;
+    }
 }
