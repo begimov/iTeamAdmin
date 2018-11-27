@@ -1,5 +1,10 @@
 <template>
     <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Заголовок..." v-model="params.title">
+            </div>
+        </div>
         <div class="col-md-6">
             <multiselect v-model="params.product"
                 :options="options.products"

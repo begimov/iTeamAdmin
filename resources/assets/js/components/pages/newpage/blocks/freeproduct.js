@@ -9,6 +9,7 @@ export default {
                 products: [],
               },
             params: {
+                title: '',
                 product: null,
                 campaignToken: null,
                 noPhone: false
@@ -34,6 +35,7 @@ export default {
 
                     this.params.campaignToken = this.product.campaignToken
                     this.params.noPhone = this.product.noPhone ? this.product.noPhone : false
+                    this.params.title = this.product.title ? this.product.title : ''
                 }
             })
         },
@@ -41,7 +43,8 @@ export default {
             return {
                 productId: this.params.product ? this.params.product.id : null,
                 campaignToken: this.params.campaignToken,
-                noPhone: this.params.noPhone
+                noPhone: this.params.noPhone,
+                title: this.params.title
             }
         }
     },
