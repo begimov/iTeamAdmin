@@ -53,9 +53,9 @@ class StatsReport extends Command
             $stats = $report->getData();
 
             if (method_exists($this, $period)) {
-                $this->{$period}($stats);
+                $this->output($this->{$period}($stats));
             } else {
-                $this->daily($stats);
+                $this->output($this->daily($stats));
             }
 
         } else {
@@ -65,11 +65,41 @@ class StatsReport extends Command
 
     protected function daily($stats)
     {
-        $this->line(
-            'Ежедневный отчет / '
-            . 'Скачиваний магнита: ' . $stats['magnetDownloads'] . ' / '
-            . 'Нажатий на кнопку «Купить»: ' . $stats['tripwireOrders'] . ' / '
-            . 'Покупок трипваера: ' . $stats['tripwirePurchases']
-        );
+        return
+            'Ежедневный отчет' . PHP_EOL
+            . 'Скачиваний магнита: ' . $stats['magnetDownloads'] . PHP_EOL
+            . 'Нажатий на кнопку «Купить»: ' . $stats['tripwireOrders'] . PHP_EOL
+            . 'Покупок трипваера: ' . $stats['tripwirePurchases'];
+    }
+
+    protected function weekly($stats)
+    {
+        return
+            'Еженедельный отчет' . PHP_EOL
+            . 'Скачиваний магнита: ' . $stats['magnetDownloads'] . PHP_EOL
+            . 'Нажатий на кнопку «Купить»: ' . $stats['tripwireOrders'] . PHP_EOL
+            . 'Покупок трипваера: ' . $stats['tripwirePurchases'] . PHP_EOL
+            . 'Отправленных писем: ' . $stats['autorespondersStatistics']['sent'] . PHP_EOL
+            . 'Открытых писем: ' . $stats['autorespondersStatistics']['opened'] . '%' . PHP_EOL
+            . 'Кликов писем: ' . $stats['autorespondersStatistics']['clicked'] . '%' . PHP_EOL
+            . 'Жалоб: ' . $stats['autorespondersStatistics']['complaints'] . '%';
+    }
+
+    protected function monthly($stats)
+    {
+        return
+            'Ежемесячный отчет' . PHP_EOL
+            . 'Скачиваний магнита: ' . $stats['magnetDownloads'] . PHP_EOL
+            . 'Нажатий на кнопку «Купить»: ' . $stats['tripwireOrders'] . PHP_EOL
+            . 'Покупок трипваера: ' . $stats['tripwirePurchases'] . PHP_EOL
+            . 'Отправленных писем: ' . $stats['autorespondersStatistics']['sent'] . PHP_EOL
+            . 'Открытых писем: ' . $stats['autorespondersStatistics']['opened'] . '%' . PHP_EOL
+            . 'Кликов писем: ' . $stats['autorespondersStatistics']['clicked'] . '%' . PHP_EOL
+            . 'Жалоб: ' . $stats['autorespondersStatistics']['complaints'] . '%';
+    }
+
+    protected function output($msg)
+    {
+        $this->line($msg);
     }
 }

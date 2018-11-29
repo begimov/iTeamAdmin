@@ -27,6 +27,14 @@ class Kernel extends ConsoleKernel
         $schedule->command('report:build daily')
             ->daily()
             ->emailOutputTo(config('reports.stats_recipients'));
+
+        $schedule->command('report:build weekly')
+            ->weekly()
+            ->emailOutputTo(config('reports.stats_recipients'));
+
+        $schedule->command('report:build monthly')
+            ->monthly()
+            ->emailOutputTo(config('reports.stats_recipients'));
     }
 
     /**
